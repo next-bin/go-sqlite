@@ -1,6 +1,7 @@
 // Code generated for linux/riscv64 by 'gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc --package-name=main -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o example64.go example64.o.go -L. libz.a', DO NOT EDIT.
 
 //go:build linux && riscv64
+// +build linux,riscv64
 
 package main
 
@@ -307,7 +308,7 @@ const m___DBL_DIG__ = 15
 const m___DBL_HAS_DENORM__ = 1
 const m___DBL_HAS_INFINITY__ = 1
 const m___DBL_HAS_QUIET_NAN__ = 1
-const m___DBL_IS_IEC_60559__ = 1
+const m___DBL_IS_IEC_60559__ = 2
 const m___DBL_MANT_DIG__ = 53
 const m___DBL_MAX_10_EXP__ = 308
 const m___DBL_MAX_EXP__ = 1024
@@ -327,27 +328,13 @@ const m___FLT128_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const m___FLT128_HAS_DENORM__ = 1
 const m___FLT128_HAS_INFINITY__ = 1
 const m___FLT128_HAS_QUIET_NAN__ = 1
-const m___FLT128_IS_IEC_60559__ = 1
+const m___FLT128_IS_IEC_60559__ = 2
 const m___FLT128_MANT_DIG__ = 113
 const m___FLT128_MAX_10_EXP__ = 4932
 const m___FLT128_MAX_EXP__ = 16384
 const m___FLT128_MAX__ = "1.18973149535723176508575932662800702e+4932"
 const m___FLT128_MIN__ = 3.36210314311209350626267781732175260e-4932
 const m___FLT128_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
-const m___FLT16_DECIMAL_DIG__ = 5
-const m___FLT16_DENORM_MIN__ = 5.96046447753906250000000000000000000e-8
-const m___FLT16_DIG__ = 3
-const m___FLT16_EPSILON__ = 9.76562500000000000000000000000000000e-4
-const m___FLT16_HAS_DENORM__ = 1
-const m___FLT16_HAS_INFINITY__ = 1
-const m___FLT16_HAS_QUIET_NAN__ = 1
-const m___FLT16_IS_IEC_60559__ = 1
-const m___FLT16_MANT_DIG__ = 11
-const m___FLT16_MAX_10_EXP__ = 4
-const m___FLT16_MAX_EXP__ = 16
-const m___FLT16_MAX__ = 6.55040000000000000000000000000000000e+4
-const m___FLT16_MIN__ = 6.10351562500000000000000000000000000e-5
-const m___FLT16_NORM_MAX__ = 6.55040000000000000000000000000000000e+4
 const m___FLT32X_DECIMAL_DIG__ = 17
 const m___FLT32X_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
 const m___FLT32X_DIG__ = 15
@@ -355,7 +342,7 @@ const m___FLT32X_EPSILON__ = 2.22044604925031308084726333618164062e-16
 const m___FLT32X_HAS_DENORM__ = 1
 const m___FLT32X_HAS_INFINITY__ = 1
 const m___FLT32X_HAS_QUIET_NAN__ = 1
-const m___FLT32X_IS_IEC_60559__ = 1
+const m___FLT32X_IS_IEC_60559__ = 2
 const m___FLT32X_MANT_DIG__ = 53
 const m___FLT32X_MAX_10_EXP__ = 308
 const m___FLT32X_MAX_EXP__ = 1024
@@ -369,7 +356,7 @@ const m___FLT32_EPSILON__ = 1.19209289550781250000000000000000000e-7
 const m___FLT32_HAS_DENORM__ = 1
 const m___FLT32_HAS_INFINITY__ = 1
 const m___FLT32_HAS_QUIET_NAN__ = 1
-const m___FLT32_IS_IEC_60559__ = 1
+const m___FLT32_IS_IEC_60559__ = 2
 const m___FLT32_MANT_DIG__ = 24
 const m___FLT32_MAX_10_EXP__ = 38
 const m___FLT32_MAX_EXP__ = 128
@@ -383,7 +370,7 @@ const m___FLT64X_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const m___FLT64X_HAS_DENORM__ = 1
 const m___FLT64X_HAS_INFINITY__ = 1
 const m___FLT64X_HAS_QUIET_NAN__ = 1
-const m___FLT64X_IS_IEC_60559__ = 1
+const m___FLT64X_IS_IEC_60559__ = 2
 const m___FLT64X_MANT_DIG__ = 113
 const m___FLT64X_MAX_10_EXP__ = 4932
 const m___FLT64X_MAX_EXP__ = 16384
@@ -397,7 +384,7 @@ const m___FLT64_EPSILON__ = 2.22044604925031308084726333618164062e-16
 const m___FLT64_HAS_DENORM__ = 1
 const m___FLT64_HAS_INFINITY__ = 1
 const m___FLT64_HAS_QUIET_NAN__ = 1
-const m___FLT64_IS_IEC_60559__ = 1
+const m___FLT64_IS_IEC_60559__ = 2
 const m___FLT64_MANT_DIG__ = 53
 const m___FLT64_MAX_10_EXP__ = 308
 const m___FLT64_MAX_EXP__ = 1024
@@ -413,7 +400,7 @@ const m___FLT_EVAL_METHOD__ = 0
 const m___FLT_HAS_DENORM__ = 1
 const m___FLT_HAS_INFINITY__ = 1
 const m___FLT_HAS_QUIET_NAN__ = 1
-const m___FLT_IS_IEC_60559__ = 1
+const m___FLT_IS_IEC_60559__ = 2
 const m___FLT_MANT_DIG__ = 24
 const m___FLT_MAX_10_EXP__ = 38
 const m___FLT_MAX_EXP__ = 128
@@ -432,34 +419,31 @@ const m___FSFILCNT64_T_TYPE = "__UQUAD_TYPE"
 const m___FSFILCNT_T_TYPE = "__ULONGWORD_TYPE"
 const m___FSWORD_T_TYPE = "__SWORD_TYPE"
 const m___FUNCTION__ = "__func__"
-const m___GCC_ATOMIC_BOOL_LOCK_FREE = 2
-const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
+const m___GCC_ATOMIC_BOOL_LOCK_FREE = 1
+const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 1
 const m___GCC_ATOMIC_CHAR32_T_LOCK_FREE = 2
-const m___GCC_ATOMIC_CHAR_LOCK_FREE = 2
+const m___GCC_ATOMIC_CHAR_LOCK_FREE = 1
 const m___GCC_ATOMIC_INT_LOCK_FREE = 2
 const m___GCC_ATOMIC_LLONG_LOCK_FREE = 2
 const m___GCC_ATOMIC_LONG_LOCK_FREE = 2
 const m___GCC_ATOMIC_POINTER_LOCK_FREE = 2
-const m___GCC_ATOMIC_SHORT_LOCK_FREE = 2
+const m___GCC_ATOMIC_SHORT_LOCK_FREE = 1
 const m___GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
 const m___GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
-const m___GCC_HAVE_DWARF2_CFI_ASM = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const m___GCC_IEC_559 = 2
 const m___GCC_IEC_559_COMPLEX = 2
 const m___GID_T_TYPE = "__U32_TYPE"
-const m___GLIBC_MINOR__ = 38
+const m___GLIBC_MINOR__ = 34
 const m___GLIBC__ = 2
 const m___GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
-const m___GNUC_MINOR__ = 3
+const m___GNUC_MINOR__ = 2
 const m___GNUC_PATCHLEVEL__ = 0
 const m___GNUC_STDC_INLINE__ = 1
 const m___GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-32LE"
-const m___GNUC__ = 13
-const m___GXX_ABI_VERSION = 1018
+const m___GNUC__ = 11
+const m___GXX_ABI_VERSION = 1016
 const m___HAVE_DISTINCT_FLOAT128 = 0
 const m___HAVE_DISTINCT_FLOAT128X = "__HAVE_FLOAT128X"
 const m___HAVE_DISTINCT_FLOAT16 = "__HAVE_FLOAT16"
@@ -517,7 +501,7 @@ const m___LDBL_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const m___LDBL_HAS_DENORM__ = 1
 const m___LDBL_HAS_INFINITY__ = 1
 const m___LDBL_HAS_QUIET_NAN__ = 1
-const m___LDBL_IS_IEC_60559__ = 1
+const m___LDBL_IS_IEC_60559__ = 2
 const m___LDBL_MANT_DIG__ = 113
 const m___LDBL_MAX_10_EXP__ = 4932
 const m___LDBL_MAX_EXP__ = 16384
@@ -550,8 +534,6 @@ const m___PRETTY_FUNCTION__ = "__func__"
 const m___PTHREAD_MUTEX_HAVE_PREV = 1
 const m___PTRDIFF_MAX__ = 0x7fffffffffffffff
 const m___PTRDIFF_WIDTH__ = 64
-const m___REDIRECT_FORTIFY = "__REDIRECT"
-const m___REDIRECT_FORTIFY_NTH = "__REDIRECT_NTH"
 const m___RLIM64_T_TYPE = "__UQUAD_TYPE"
 const m___RLIM_T_MATCHES_RLIM64_T = 1
 const m___RLIM_T_TYPE = "__ULONGWORD_TYPE"
@@ -589,12 +571,11 @@ const m___SIZE_MAX__ = 0xffffffffffffffff
 const m___SIZE_WIDTH__ = 64
 const m___SLONG32_TYPE = "int"
 const m___SSIZE_T_TYPE = "__SWORD_TYPE"
+const m___SSP_STRONG__ = 3
 const m___STATFS_MATCHES_STATFS64 = 1
 const m___STDC_HOSTED__ = 1
 const m___STDC_IEC_559_COMPLEX__ = 1
 const m___STDC_IEC_559__ = 1
-const m___STDC_IEC_60559_BFP__ = 201404
-const m___STDC_IEC_60559_COMPLEX__ = 201404
 const m___STDC_ISO_10646__ = 201706
 const m___STDC_UTF_16__ = 1
 const m___STDC_UTF_32__ = 1
@@ -624,7 +605,7 @@ const m___UINT_LEAST64_MAX__ = 0xffffffffffffffff
 const m___UINT_LEAST8_MAX__ = 0xff
 const m___USECONDS_T_TYPE = "__U32_TYPE"
 const m___USE_POSIX_IMPLICITLY = 1
-const m___VERSION__ = "13.3.0"
+const m___VERSION__ = "11.2.0"
 const m___WALL = 0x40000000
 const m___WCHAR_MAX__ = 0x7fffffff
 const m___WCHAR_TYPE__ = "int"
@@ -644,7 +625,6 @@ const m______fpos_t_defined = 1
 const m_____mbstate_t_defined = 1
 const m___clock_t_defined = 1
 const m___clockid_t_defined = 1
-const m___cookie_io_functions_t_defined = 1
 const m___glibc_c99_flexarr_available = 1
 const m___gnu_linux__ = 1
 const m___have_pthread_attr_t = 1
@@ -655,20 +635,21 @@ const m___lldiv_t_defined = 1
 const m___pic__ = 2
 const m___pie__ = 2
 const m___riscv = 1
-const m___riscv_a = 2001000
+const m___riscv_a = 2000000
 const m___riscv_arch_test = 1
 const m___riscv_atomic = 1
 const m___riscv_c = 2000000
 const m___riscv_cmodel_medany = 1
+const m___riscv_cmodel_pic = 1
 const m___riscv_compressed = 1
-const m___riscv_d = 2002000
+const m___riscv_d = 2000000
 const m___riscv_div = 1
-const m___riscv_f = 2002000
+const m___riscv_f = 2000000
 const m___riscv_fdiv = 1
 const m___riscv_flen = 64
 const m___riscv_float_abi_double = 1
 const m___riscv_fsqrt = 1
-const m___riscv_i = 2001000
+const m___riscv_i = 2000000
 const m___riscv_m = 2000000
 const m___riscv_mul = 1
 const m___riscv_muldiv = 1
@@ -989,14 +970,6 @@ type Tfsblkcnt64_t = uint64
 
 type Tfsfilcnt64_t = uint64
 
-type T__atomic_wide_counter = struct {
-	F__value32 [0]struct {
-		F__low  uint32
-		F__high uint32
-	}
-	F__value64 uint64
-}
-
 type T__pthread_list_t = struct {
 	F__prev uintptr
 	F__next uintptr
@@ -1035,8 +1008,20 @@ type T__pthread_rwlock_arch_t = struct {
 }
 
 type T__pthread_cond_s = struct {
-	F__wseq         T__atomic_wide_counter
-	F__g1_start     T__atomic_wide_counter
+	F__ccgo0_0 struct {
+		F__wseq32 [0]struct {
+			F__low  uint32
+			F__high uint32
+		}
+		F__wseq uint64
+	}
+	F__ccgo1_8 struct {
+		F__g1_start32 [0]struct {
+			F__low  uint32
+			F__high uint32
+		}
+		F__g1_start uint64
+	}
 	F__g_refs       [2]uint32
 	F__g_size       [2]uint32
 	F__g1_orig_size uint32
@@ -1603,15 +1588,6 @@ type TFILE = struct {
 
 type T_IO_lock_t = struct{}
 
-type Tcookie_io_functions_t = struct {
-	Fread   uintptr
-	Fwrite  uintptr
-	Fseek   uintptr
-	Fclose1 uintptr
-}
-
-type T_IO_cookie_io_functions_t = Tcookie_io_functions_t
-
 type Tfpos_t = struct {
 	F__pos   T__off64_t
 	F__state T__mbstate_t
@@ -1670,7 +1646,7 @@ type Tdrand48_data = struct {
 type T__compar_fn_t = uintptr
 
 /* Floating-point inline functions for stdlib.h.
-   Copyright (C) 2012-2023 Free Software Foundation, Inc.
+   Copyright (C) 2012-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -1690,7 +1666,7 @@ type T__compar_fn_t = uintptr
 /* Define some macros helping to catch buffer overflows.  */
 
 /* Macros to control TS 18661-3 glibc features on ldbl-128 platforms.
-   Copyright (C) 2017-2023 Free Software Foundation, Inc.
+   Copyright (C) 2017-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -21617,15 +21593,15 @@ const m_F_DUPFD_CLOEXEC = 1030
 const m_F_EXLCK = 4
 const m_F_GETFD = 1
 const m_F_GETFL = 3
-const m_F_GETLK = "F_GETLK64"
+const m_F_GETLK = 5
 const m_F_GETLK64 = 5
 const m_F_GETOWN = "__F_GETOWN"
 const m_F_RDLCK = 0
 const m_F_SETFD = 2
 const m_F_SETFL = 4
-const m_F_SETLK = "F_SETLK64"
+const m_F_SETLK = 6
 const m_F_SETLK64 = 6
-const m_F_SETLKW = "F_SETLKW64"
+const m_F_SETLKW = 7
 const m_F_SETLKW64 = 7
 const m_F_SETOWN = "__F_SETOWN"
 const m_F_SHLCK = 8
@@ -23723,7 +23699,7 @@ func x_gzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
 	return v1
 }
 
-/* Copyright (C) 1989-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1989-2021 Free Software Foundation, Inc.
 
 This file is part of GCC.
 

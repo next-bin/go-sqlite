@@ -1,6 +1,8 @@
-// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc -D_UCRT -build-lines \/\/go:build windows && (amd64 || arm64)\n --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows --package-name=main -map ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc -o minigzip.exe.go minigzip.o.go libz.a', DO NOT EDIT.
+// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows --package-name=main -map ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc -o minigzip.exe.go minigzip.o.go libz.a', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
+// +build windows
+// +build amd64 arm64
 
 package main
 
@@ -203,12 +205,12 @@ const m__CRT_INTERNAL_LOCAL_PRINTF_OPTIONS = "_CRT_INTERNAL_PRINTF_LEGACY_WIDE_S
 const m__CRT_INTERNAL_LOCAL_SCANF_OPTIONS = "_CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS"
 const m__CRT_INTERNAL_PRINTF_LEGACY_MSVCRT_COMPATIBILITY = "0x0008U"
 const m__CRT_INTERNAL_PRINTF_LEGACY_THREE_DIGIT_EXPONENTS = "0x0010U"
-const m__CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION = 1
-const m__CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS = 4
-const m__CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = 2
+const m__CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION = "0x0001U"
+const m__CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS = "0x0004U"
+const m__CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = "0x0002U"
 const m__CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY = "0x0004U"
-const m__CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = 2
-const m__CRT_INTERNAL_SCANF_SECURECRT = 1
+const m__CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = "0x0002U"
+const m__CRT_INTERNAL_SCANF_SECURECRT = "0x0001U"
 const m__FREEENTRY = 0
 const m__HEAP_MAXREQ = 0xFFFFFFFFFFFFFFE0
 const m__I16_MAX = 32767
@@ -217,9 +219,16 @@ const m__I64_MAX = "9223372036854775807ll"
 const m__I8_MAX = 127
 const m__INTEGRAL_MAX_BITS = 64
 const m__IOB_ENTRIES = 20
+const m__IOEOF = 0x0010
+const m__IOERR = 0x0020
 const m__IOFBF = 0x0000
 const m__IOLBF = 0x0040
+const m__IOMYBUF = 0x0008
 const m__IONBF = 0x0004
+const m__IOREAD = 0x0001
+const m__IORW = 0x0080
+const m__IOSTRG = 0x0040
+const m__IOWRT = 0x0002
 const m__MAX_DIR = 256
 const m__MAX_DRIVE = 3
 const m__MAX_ENV = 32767
@@ -266,7 +275,6 @@ const m__REPORT_ERRMODE = 3
 const m__SECURECRT_FILL_BUFFER_PATTERN = 0xFD
 const m__SYS_OPEN = 20
 const m__TWO_DIGIT_EXPONENT = 0x1
-const m__UCRT = 1
 const m__UI16_MAX = "0xffffu"
 const m__UI32_MAX = "0xffffffffu"
 const m__UI64_MAX = "0xffffffffffffffffull"
@@ -514,7 +522,7 @@ const m___MINGW_HAVE_WIDE_C99_SCANF = 1
 const m___MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
 const m___MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
 const m___MINGW_USE_UNDERSCORE_PREFIX = 0
-const m___MSVCRT_VERSION__ = 0xE00
+const m___MSVCRT_VERSION__ = 0x700
 const m___MSVCRT__ = 1
 const m___OPTIMIZE__ = 1
 const m___ORDER_BIG_ENDIAN__ = 4321
@@ -572,7 +580,8 @@ const m___UINT_LEAST16_MAX__ = 0xffff
 const m___UINT_LEAST32_MAX__ = 0xffffffff
 const m___UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
 const m___UINT_LEAST8_MAX__ = 0xff
-const m___USE_MINGW_ANSI_STDIO = 0
+const m___USE_MINGW_ANSI_STDIO = 1
+const m___USE_MINGW_STRTOX = 1
 const m___VERSION__ = "12-win32"
 const m___WCHAR_MAX__ = 0xffff
 const m___WCHAR_MIN__ = 0
@@ -588,6 +597,8 @@ const m___WINT_MIN__ = 0
 const m___WINT_WIDTH__ = 16
 const m___amd64 = 1
 const m___amd64__ = 1
+const m___builtin_vsnprintf = "__mingw_vsnprintf"
+const m___builtin_vsprintf = "__mingw_vsprintf"
 const m___code_model_medium__ = 1
 const m___int16 = "short"
 const m___int32 = "int"
@@ -662,9 +673,29 @@ type T__time64_t = int64
 type Ttime_t = int64
 
 type Tthreadlocaleinfostruct = struct {
-	F_locale_pctype      uintptr
-	F_locale_mb_cur_max  int32
-	F_locale_lc_codepage uint32
+	Frefcount      int32
+	Flc_codepage   uint32
+	Flc_collate_cp uint32
+	Flc_handle     [6]uint32
+	Flc_id         [6]TLC_ID
+	Flc_category   [6]struct {
+		Flocale    uintptr
+		Fwlocale   uintptr
+		Frefcount  uintptr
+		Fwrefcount uintptr
+	}
+	Flc_clike            int32
+	Fmb_cur_max          int32
+	Flconv_intl_refcount uintptr
+	Flconv_num_refcount  uintptr
+	Flconv_mon_refcount  uintptr
+	Flconv               uintptr
+	Fctype1_refcount     uintptr
+	Fctype1              uintptr
+	Fpctype              uintptr
+	Fpclmap              uintptr
+	Fpcumap              uintptr
+	Flc_time_curr        uintptr
 }
 
 type Tpthreadlocinfo = uintptr
@@ -691,9 +722,29 @@ type TtagLC_ID = TLC_ID
 type TLPLC_ID = uintptr
 
 type Tthreadlocinfo = struct {
-	F_locale_pctype      uintptr
-	F_locale_mb_cur_max  int32
-	F_locale_lc_codepage uint32
+	Frefcount      int32
+	Flc_codepage   uint32
+	Flc_collate_cp uint32
+	Flc_handle     [6]uint32
+	Flc_id         [6]TLC_ID
+	Flc_category   [6]struct {
+		Flocale    uintptr
+		Fwlocale   uintptr
+		Frefcount  uintptr
+		Fwrefcount uintptr
+	}
+	Flc_clike            int32
+	Fmb_cur_max          int32
+	Flconv_intl_refcount uintptr
+	Flconv_num_refcount  uintptr
+	Flconv_mon_refcount  uintptr
+	Flconv               uintptr
+	Fctype1_refcount     uintptr
+	Fctype1              uintptr
+	Fpctype              uintptr
+	Fpclmap              uintptr
+	Fpcumap              uintptr
+	Flc_time_curr        uintptr
 }
 
 type Tmax_align_t = struct {
@@ -825,14 +876,58 @@ type TgzFile_s = struct {
 }
 
 type T_iobuf = struct {
-	F_Placeholder uintptr
+	F_ptr      uintptr
+	F_cnt      int32
+	F_base     uintptr
+	F_flag     int32
+	F_file     int32
+	F_charbuf  int32
+	F_bufsiz   int32
+	F_tmpfname uintptr
 }
 
 type TFILE = struct {
-	F_Placeholder uintptr
+	F_ptr      uintptr
+	F_cnt      int32
+	F_base     uintptr
+	F_flag     int32
+	F_file     int32
+	F_charbuf  int32
+	F_bufsiz   int32
+	F_tmpfname uintptr
 }
 
 type Tfpos_t = int64
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func _vswprintf(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func _swprintf(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv T__builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = _vswprintf(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
+}
 
 type T_onexit_t = uintptr
 
@@ -977,7 +1072,19 @@ var _prog uintptr
 func _error(tls *libc.TLS, msg uintptr) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+8, _prog, msg))
+	var __local_argv T__builtin_va_list
+	var __retval int32
+	var v1 uintptr
+	_, _, _ = __local_argv, __retval, v1
+	v1 = __ccgo_ts
+	libc.VaList(bp, _prog, msg)
+	__local_argv = bp
+	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
+	_ = __local_argv
+	_ = __retval
+	goto _2
+_2:
+	;
 	libc.Xexit(tls, int32(1))
 }
 
@@ -1054,25 +1161,51 @@ func _gz_uncompress(tls *libc.TLS, in TgzFile, out uintptr) {
 //	 * original.
 //	 */
 func _file_compress(tls *libc.TLS, file uintptr, mode uintptr) {
-	bp := tls.Alloc(1056)
-	defer tls.Free(1056)
-	var in uintptr
+	bp := tls.Alloc(1120)
+	defer tls.Free(1120)
+	var __local_argv, __local_argv1 T__builtin_va_list
+	var __retval, __retval1 int32
+	var in, v1, v3, v5 uintptr
 	var out TgzFile
-	var _ /* outfile at bp+0 */ [1024]int8
-	_, _ = in, out
+	var _ /* outfile at bp+88 */ [1024]int8
+	_, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, in, out, v1, v3, v5
 	if libc.Xstrlen(tls, file)+libc.Xstrlen(tls, __ccgo_ts+57) >= uint64(1024) {
-		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+61, libc.VaList(bp+1032, _prog))
+		v1 = __ccgo_ts + 61
+		libc.VaList(bp, _prog)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _2
+	_2:
+		;
 		libc.Xexit(tls, int32(1))
 	}
-	libc.X__builtin_snprintf(tls, bp, uint64(1024), __ccgo_ts+84, libc.VaList(bp+1032, file, __ccgo_ts+57))
+	v3 = __ccgo_ts + 84
+	libc.VaList(bp, file, __ccgo_ts+57)
+	__local_argv1 = bp
+	__retval1 = libc.X__mingw_vsnprintf(tls, bp+88, uint64(1024), v3, __local_argv1)
+	_ = __local_argv1
+	_ = __retval1
+	goto _4
+_4:
+	;
 	in = libc.Xfopen(tls, file, __ccgo_ts+89)
 	if in == libc.UintptrFromInt32(0) {
 		libc.Xperror(tls, file)
 		libc.Xexit(tls, int32(1))
 	}
-	out = x_gzopen(tls, bp, mode)
+	out = x_gzopen(tls, bp+88, mode)
 	if out == libc.UintptrFromInt32(0) {
-		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+92, libc.VaList(bp+1032, _prog, bp))
+		v5 = __ccgo_ts + 92
+		libc.VaList(bp, _prog, bp+88)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v5, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _6
+	_6:
+		;
 		libc.Xexit(tls, int32(1))
 	}
 	_gz_compress(tls, in, out)
@@ -1085,31 +1218,64 @@ func _file_compress(tls *libc.TLS, file uintptr, mode uintptr) {
 //	 * Uncompress the given file and remove the original.
 //	 */
 func _file_uncompress(tls *libc.TLS, file uintptr) {
-	bp := tls.Alloc(1056)
-	defer tls.Free(1056)
+	bp := tls.Alloc(1136)
+	defer tls.Free(1136)
+	var __local_argv, __local_argv1 T__builtin_va_list
+	var __retval, __retval1 int32
 	var in TgzFile
-	var infile, out, outfile uintptr
+	var infile, out, outfile, v1, v3, v5, v7 uintptr
 	var len1 Tz_size_t
-	var _ /* buf at bp+0 */ [1024]int8
-	_, _, _, _, _ = in, infile, len1, out, outfile
+	var _ /* buf at bp+104 */ [1024]int8
+	_, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, in, infile, len1, out, outfile, v1, v3, v5, v7
 	len1 = libc.Xstrlen(tls, file)
 	if len1+libc.Xstrlen(tls, __ccgo_ts+57) >= uint64(1024) {
-		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+61, libc.VaList(bp+1032, _prog))
+		v1 = __ccgo_ts + 61
+		libc.VaList(bp, _prog)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _2
+	_2:
+		;
 		libc.Xexit(tls, int32(1))
 	}
-	libc.X__builtin_snprintf(tls, bp, uint64(1024), __ccgo_ts+113, libc.VaList(bp+1032, file))
+	v3 = __ccgo_ts + 113
+	libc.VaList(bp, file)
+	__local_argv1 = bp
+	__retval1 = libc.X__mingw_vsnprintf(tls, bp+104, uint64(1024), v3, __local_argv1)
+	_ = __local_argv1
+	_ = __retval1
+	goto _4
+_4:
+	;
 	if len1 > libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1) && libc.Xstrcmp(tls, file+uintptr(len1)-uintptr(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)), __ccgo_ts+57) == 0 {
 		infile = file
-		outfile = bp
+		outfile = bp + 104
 		*(*int8)(unsafe.Pointer(outfile + uintptr(len1-uint64(3)))) = int8('\000')
 	} else {
 		outfile = file
-		infile = bp
-		libc.X__builtin_snprintf(tls, bp+uintptr(len1), uint64(1024)-len1, __ccgo_ts+113, libc.VaList(bp+1032, __ccgo_ts+57))
+		infile = bp + 104
+		v5 = __ccgo_ts + 113
+		libc.VaList(bp, __ccgo_ts+57)
+		__local_argv1 = bp
+		__retval1 = libc.X__mingw_vsnprintf(tls, bp+104+uintptr(len1), uint64(1024)-len1, v5, __local_argv1)
+		_ = __local_argv1
+		_ = __retval1
+		goto _6
+	_6:
 	}
 	in = x_gzopen(tls, infile, __ccgo_ts+89)
 	if in == libc.UintptrFromInt32(0) {
-		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+92, libc.VaList(bp+1032, _prog, infile))
+		v7 = __ccgo_ts + 92
+		libc.VaList(bp, _prog, infile)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v7, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _8
+	_8:
+		;
 		libc.Xexit(tls, int32(1))
 	}
 	out = libc.Xfopen(tls, outfile, __ccgo_ts+116)
@@ -1132,16 +1298,25 @@ func _file_uncompress(tls *libc.TLS, file uintptr) {
  */
 
 func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
-	bp := tls.Alloc(48)
-	defer tls.Free(48)
-	var bname, in uintptr
-	var copyout, uncompr, v1, v2 int32
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var __local_argv, __local_argv1 T__builtin_va_list
+	var __retval, __retval1, copyout, uncompr, v3, v4 int32
+	var bname, in, v1, v6 uintptr
 	var file TgzFile
-	var _ /* outmode at bp+0 */ [20]int8
-	_, _, _, _, _, _, _ = bname, copyout, file, in, uncompr, v1, v2
+	var _ /* outmode at bp+56 */ [20]int8
+	_, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, bname, copyout, file, in, uncompr, v1, v3, v4, v6
 	copyout = 0
 	uncompr = 0
-	libc.X__builtin_snprintf(tls, bp, uint64(20), __ccgo_ts+113, libc.VaList(bp+32, __ccgo_ts+119))
+	v1 = __ccgo_ts + 113
+	libc.VaList(bp, __ccgo_ts+119)
+	__local_argv1 = bp
+	__retval1 = libc.X__mingw_vsnprintf(tls, bp+56, uint64(20), v1, __local_argv1)
+	_ = __local_argv1
+	_ = __retval1
+	goto _2
+_2:
+	;
 	_prog = *(*uintptr)(unsafe.Pointer(argv))
 	bname = libc.Xstrrchr(tls, *(*uintptr)(unsafe.Pointer(argv)), int32('/'))
 	if bname != 0 {
@@ -1155,9 +1330,9 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		uncompr = int32(1)
 	} else {
 		if !(libc.Xstrcmp(tls, bname, __ccgo_ts+131) != 0) {
-			v1 = libc.Int32FromInt32(1)
-			uncompr = v1
-			copyout = v1
+			v3 = libc.Int32FromInt32(1)
+			uncompr = v3
+			copyout = v3
 		}
 	}
 	for argc > 0 {
@@ -1168,16 +1343,16 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				uncompr = int32(1)
 			} else {
 				if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+142) == 0 {
-					(*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)] = int8('f')
+					(*(*[20]int8)(unsafe.Pointer(bp + 56)))[int32(3)] = int8('f')
 				} else {
 					if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+145) == 0 {
-						(*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)] = int8('h')
+						(*(*[20]int8)(unsafe.Pointer(bp + 56)))[int32(3)] = int8('h')
 					} else {
 						if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+148) == 0 {
-							(*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)] = int8('R')
+							(*(*[20]int8)(unsafe.Pointer(bp + 56)))[int32(3)] = int8('R')
 						} else {
 							if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv))))) == int32('-') && int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 1))) >= int32('1') && int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 1))) <= int32('9') && int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 2))) == 0 {
-								(*(*[20]int8)(unsafe.Pointer(bp)))[int32(2)] = *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 1))
+								(*(*[20]int8)(unsafe.Pointer(bp + 56)))[int32(2)] = *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 1))
 							} else {
 								break
 							}
@@ -1189,8 +1364,8 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		argc--
 		argv += 8
 	}
-	if int32((*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)]) == int32(' ') {
-		(*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)] = 0
+	if int32((*(*[20]int8)(unsafe.Pointer(bp + 56)))[int32(3)]) == int32(' ') {
+		(*(*[20]int8)(unsafe.Pointer(bp + 56)))[int32(3)] = 0
 	}
 	if argc == 0 {
 		libc.Xsetmode(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(0))), int32(m__O_BINARY))
@@ -1202,7 +1377,7 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 			_gz_uncompress(tls, file, libc.X__acrt_iob_func(tls, uint32(1)))
 		} else {
-			file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(1))), bp)
+			file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(1))), bp+56)
 			if file == libc.UintptrFromInt32(0) {
 				_error(tls, __ccgo_ts+171)
 			}
@@ -1217,7 +1392,14 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				if copyout != 0 {
 					file = x_gzopen(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+89)
 					if file == libc.UintptrFromInt32(0) {
-						libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+92, libc.VaList(bp+32, _prog, *(*uintptr)(unsafe.Pointer(argv))))
+						v6 = __ccgo_ts + 92
+						libc.VaList(bp, _prog, *(*uintptr)(unsafe.Pointer(argv)))
+						__local_argv = bp
+						__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v6, __local_argv)
+						_ = __local_argv
+						_ = __retval
+						goto _7
+					_7:
 					} else {
 						_gz_uncompress(tls, file, libc.X__acrt_iob_func(tls, uint32(1)))
 					}
@@ -1230,23 +1412,23 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 					if in == libc.UintptrFromInt32(0) {
 						libc.Xperror(tls, *(*uintptr)(unsafe.Pointer(argv)))
 					} else {
-						file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(1))), bp)
+						file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(1))), bp+56)
 						if file == libc.UintptrFromInt32(0) {
 							_error(tls, __ccgo_ts+171)
 						}
 						_gz_compress(tls, in, file)
 					}
 				} else {
-					_file_compress(tls, *(*uintptr)(unsafe.Pointer(argv)), bp)
+					_file_compress(tls, *(*uintptr)(unsafe.Pointer(argv)), bp+56)
 				}
 			}
-			goto _3
-		_3:
+			goto _5
+		_5:
 			;
 			argv += 8
 			argc--
-			v2 = argc
-			if !(v2 != 0) {
+			v4 = argc
+			if !(v4 != 0) {
 				break
 			}
 		}
@@ -9514,6 +9696,36 @@ const m_GZ_WRITE = 31153
 const m_LOOK = 0
 const m__O_BINARY1 = 0x8000
 
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func _vswprintf1(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func _swprintf1(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv T__builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = _vswprintf1(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
+}
+
 type Tgz_state = struct {
 	Fx        TgzFile_s
 	Fmode     int32
@@ -9571,6 +9783,36 @@ const m__O_TRUNC1 = 512
 const m__O_WRONLY1 = 1
 const m___INT_MAX__1 = 2147483647
 
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func _vswprintf2(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func _swprintf2(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv T__builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = _vswprintf2(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
+}
+
 // C documentation
 //
 //	/* Reset gzip file state */
@@ -9593,12 +9835,14 @@ func _gz_reset(tls *libc.TLS, state Tgz_statep) {
 //
 //	/* Open a gzip file either by name or file descriptor. */
 func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
-	bp := tls.Alloc(16)
-	defer tls.Free(16)
-	var exclusive, oflag, v1, v2, v3, v4, v5 int32
+	bp := tls.Alloc(48)
+	defer tls.Free(48)
+	var __local_argv T__builtin_va_list
+	var __retval, exclusive, oflag, v3, v4, v5, v6, v7 int32
 	var len1 Tz_size_t
 	var state Tgz_statep
-	_, _, _, _, _, _, _, _, _ = exclusive, len1, oflag, state, v1, v2, v3, v4, v5
+	var v1 uintptr
+	_, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, exclusive, len1, oflag, state, v1, v3, v4, v5, v6, v7
 	exclusive = 0
 	/* check input */
 	if path == libc.UintptrFromInt32(0) {
@@ -9683,37 +9927,44 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 			*(*int8)(unsafe.Pointer((*Tgz_state)(unsafe.Pointer(state)).Fpath)) = 0
 		}
 	} else {
-		libc.X__builtin_snprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, len1+uint64(1), __ccgo_ts+113, libc.VaList(bp+8, path))
+		v1 = __ccgo_ts + 113
+		libc.VaList(bp, path)
+		__local_argv = bp
+		__retval = libc.X__mingw_vsnprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, len1+uint64(1), v1, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _2
+	_2:
 	}
 	/* compute the flags for open() */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) {
-		v1 = m__O_RDONLY1
+		v3 = m__O_RDONLY1
 	} else {
 		if exclusive != 0 {
-			v2 = int32(m__O_EXCL1)
+			v4 = int32(m__O_EXCL1)
 		} else {
-			v2 = 0
+			v4 = 0
 		}
 		if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_WRITE) {
-			v3 = int32(m__O_TRUNC1)
+			v5 = int32(m__O_TRUNC1)
 		} else {
-			v3 = int32(m__O_APPEND1)
+			v5 = int32(m__O_APPEND1)
 		}
-		v1 = libc.Int32FromInt32(m__O_WRONLY1) | libc.Int32FromInt32(m__O_CREAT1) | v2 | v3
+		v3 = libc.Int32FromInt32(m__O_WRONLY1) | libc.Int32FromInt32(m__O_CREAT1) | v4 | v5
 	}
-	oflag = int32(m__O_BINARY2) | v1
+	oflag = int32(m__O_BINARY2) | v3
 	/* open the file with the appropriate flags (or just use fd) */
 	if fd > -int32(1) {
-		v4 = fd
+		v6 = fd
 	} else {
 		if fd == -int32(2) {
-			v5 = libc.X_wopen(tls, path, oflag, libc.VaList(bp+8, int32(0666)))
+			v7 = libc.X_wopen(tls, path, oflag, libc.VaList(bp+32, int32(0666)))
 		} else {
-			v5 = libc.Xopen(tls, path, oflag, libc.VaList(bp+8, int32(0666)))
+			v7 = libc.Xopen(tls, path, oflag, libc.VaList(bp+32, int32(0666)))
 		}
-		v4 = v5
+		v6 = v7
 	}
-	(*Tgz_state)(unsafe.Pointer(state)).Ffd = v4
+	(*Tgz_state)(unsafe.Pointer(state)).Ffd = v6
 	if (*Tgz_state)(unsafe.Pointer(state)).Ffd == -int32(1) {
 		libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)
 		libc.Xfree(tls, state)
@@ -9754,12 +10005,14 @@ func x_gzopen64(tls *libc.TLS, path uintptr, mode uintptr) (r TgzFile) {
 //
 //	/* -- see zlib.h -- */
 func x_gzdopen(tls *libc.TLS, fd int32, mode uintptr) (r TgzFile) {
-	bp := tls.Alloc(16)
-	defer tls.Free(16)
+	bp := tls.Alloc(32)
+	defer tls.Free(32)
+	var __local_argv T__builtin_va_list
+	var __retval int32
 	var gz TgzFile
-	var path, v1 uintptr
+	var path, v1, v3 uintptr
 	var v2 bool
-	_, _, _, _ = gz, path, v1, v2
+	_, _, _, _, _, _, _ = __local_argv, __retval, gz, path, v1, v2, v3
 	if v2 = fd == -int32(1); !v2 {
 		v1 = libc.Xmalloc(tls, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4))
 		path = v1
@@ -9767,7 +10020,15 @@ func x_gzdopen(tls *libc.TLS, fd int32, mode uintptr) (r TgzFile) {
 	if v2 || v1 == libc.UintptrFromInt32(0) {
 		return libc.UintptrFromInt32(0)
 	}
-	libc.X__builtin_snprintf(tls, path, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4), __ccgo_ts+198, libc.VaList(bp+8, fd))
+	v3 = __ccgo_ts + 198
+	libc.VaList(bp, fd)
+	__local_argv = bp
+	__retval = libc.X__mingw_vsnprintf(tls, path, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4), v3, __local_argv)
+	_ = __local_argv
+	_ = __retval
+	goto _4
+_4:
+	;
 	gz = _gz_open(tls, path, fd, mode)
 	libc.Xfree(tls, path)
 	return gz
@@ -10098,10 +10359,12 @@ func x_gzclearerr(tls *libc.TLS, file TgzFile) {
 //	   allocation failure constructing the error message, then convert the error to
 //	   out of memory. */
 func x_gz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
-	bp := tls.Alloc(32)
-	defer tls.Free(32)
-	var v1 uintptr
-	_ = v1
+	bp := tls.Alloc(48)
+	defer tls.Free(48)
+	var __local_argv T__builtin_va_list
+	var __retval int32
+	var v1, v2 uintptr
+	_, _, _, _ = __local_argv, __retval, v1, v2
 	/* free previously allocated message and clear */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmsg != libc.UintptrFromInt32(0) {
 		if (*Tgz_state)(unsafe.Pointer(state)).Ferr != -int32(4) {
@@ -10129,7 +10392,14 @@ func x_gz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
 		(*Tgz_state)(unsafe.Pointer(state)).Ferr = -int32(4)
 		return
 	}
-	libc.X__builtin_snprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint64(3), __ccgo_ts+221, libc.VaList(bp+8, (*Tgz_state)(unsafe.Pointer(state)).Fpath, __ccgo_ts+228, msg))
+	v2 = __ccgo_ts + 221
+	libc.VaList(bp, (*Tgz_state)(unsafe.Pointer(state)).Fpath, __ccgo_ts+228, msg)
+	__local_argv = bp
+	__retval = libc.X__mingw_vsnprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint64(3), v2, __local_argv)
+	_ = __local_argv
+	_ = __retval
+	goto _3
+_3:
 }
 
 // C documentation
@@ -10150,6 +10420,36 @@ const m__O_RDONLY2 = 0x0000
 const m__O_TRUNC2 = 0x0200
 const m__O_WRONLY2 = 0x0001
 const m___INT_MAX__2 = 0x7fffffff
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func _vswprintf3(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func _swprintf3(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv T__builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = _vswprintf3(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
+}
 
 // C documentation
 //
@@ -10829,6 +11129,36 @@ func x_gzclose_r(tls *libc.TLS, file TgzFile) (r int32) {
 	return v2
 }
 
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func _vswprintf4(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func _swprintf4(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv T__builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = _vswprintf4(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
+}
+
 // C documentation
 //
 //	/* Initialize state for writing a gzip file.  Mark initialization by setting
@@ -11288,11 +11618,11 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 //	/* -- see zlib.h -- */
 func x_gzvprintf(tls *libc.TLS, file TgzFile, format uintptr, va Tva_list) (r int32) {
 	var left uint32
-	var len1 int32
+	var len1, v1 int32
 	var next uintptr
 	var state Tgz_statep
 	var strm Tz_streamp
-	_, _, _, _, _ = left, len1, next, state, strm
+	_, _, _, _, _, _ = left, len1, next, state, strm, v1
 	/* get internal structure */
 	if file == libc.UintptrFromInt32(0) {
 		return -int32(2)
@@ -11322,7 +11652,10 @@ func x_gzvprintf(tls *libc.TLS, file TgzFile, format uintptr, va Tva_list) (r in
 	}
 	next = (*Tgz_state)(unsafe.Pointer(state)).Fin + uintptr(int64((*Tz_stream)(unsafe.Pointer(strm)).Fnext_in)-int64((*Tgz_state)(unsafe.Pointer(state)).Fin)) + uintptr((*Tz_stream)(unsafe.Pointer(strm)).Favail_in)
 	*(*int8)(unsafe.Pointer(next + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize-uint32(1)))) = 0
-	len1 = libc.X__builtin_vsnprintf(tls, next, uint64((*Tgz_state)(unsafe.Pointer(state)).Fsize), format, va)
+	v1 = libc.X__mingw_vsnprintf(tls, next, uint64((*Tgz_state)(unsafe.Pointer(state)).Fsize), format, va)
+	goto _2
+_2:
+	len1 = v1
 	/* check that printf() results fit in buffer */
 	if len1 == 0 || uint32(uint32(len1)) >= (*Tgz_state)(unsafe.Pointer(state)).Fsize || int32(*(*int8)(unsafe.Pointer(next + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize-uint32(1))))) != 0 {
 		return 0
@@ -24618,6 +24951,36 @@ func x_uncompress(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, 
 	defer tls.Free(16)
 	*(*TuLong)(unsafe.Pointer(bp)) = _sourceLen
 	return x_uncompress2(tls, dest, destLen, source, bp)
+}
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func _vswprintf5(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func _swprintf5(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv T__builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = _vswprintf5(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
 }
 
 func x_zlibVersion(tls *libc.TLS) (r uintptr) {

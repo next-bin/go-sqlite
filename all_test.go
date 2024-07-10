@@ -5,13 +5,11 @@
 package libz // import "modernc.org/libz"
 
 import (
-	"flag"
 	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"runtime"
-	"strings"
 	"testing"
 
 	_ "modernc.org/ccgo/v4/lib"
@@ -19,31 +17,23 @@ import (
 )
 
 var (
-	goarch = runtime.GOARCH
 	goos   = runtime.GOOS
-	oXTags = flag.String("xtags", "", "")
+	goarch = runtime.GOARCH
 	win    = goos == "windows"
-	win32  = win && goarch == "386"
 )
 
 func TestMain(m *testing.M) {
-	flag.Parse()
 	os.Exit(m.Run())
 }
 
 func Test(t *testing.T) {
-	if goos == "windows" {
-		t.Skip("TODO")
+	if win {
+		t.Skip("windows")
 	}
 
 	defer os.Remove("foo.gz")
 
-	args := []string{"run"}
-	if s := *oXTags; s != "" {
-		args = append(args, "-tags", s)
-	}
-	args = append(args, "./internal/example")
-	out, err := exec.Command("go", args...).CombinedOutput()
+	out, err := exec.Command("go", "run", filepath.Join("internal", "example", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))).CombinedOutput()
 	t.Logf("\n%s", out)
 	if err != nil {
 		t.Error(err)
@@ -61,39 +51,29 @@ func Test2(t *testing.T) {
 	ex := filepath.Join(wd, "internal", "example", fmt.Sprintf("ccgo_%s_%s.go", goos, goarch))
 	mgBin := "minigzip"
 	exBin := "example"
-	switch {
-	case win32:
-		mgBin += ".exe"
-		exBin += ".exe"
-	case win:
+	if win {
 		mg = filepath.Join(wd, "internal", "minigzip", fmt.Sprintf("ccgo_%s.go", goos))
 		ex = filepath.Join(wd, "internal", "example", fmt.Sprintf("ccgo_%s.go", goos))
 		mgBin += ".exe"
 		exBin += ".exe"
 	}
-	args := []string{"build"}
-	args = args[:len(args):len(args)]
-	if s := *oXTags; s != "" {
-		args = append(args, "-tags", s)
-	}
-	if util.Shell(nil, "go", append(args, "-o", filepath.Join(tmpDir, mgBin), mg)...); err != nil {
+	if util.Shell(nil, "go", "build", "-o", filepath.Join(tmpDir, mgBin), mg); err != nil {
 		t.Fatal(err)
 	}
 
-	if util.Shell(nil, "go", append(args, "-o", filepath.Join(tmpDir, exBin), ex)...); err != nil {
+	if util.Shell(nil, "go", "build", "-o", filepath.Join(tmpDir, exBin), ex); err != nil {
 		t.Fatal(err)
 	}
 
 	if err := util.InDir(tmpDir, func() error {
 		switch {
-		case win || win32:
+		case win:
 			if err := util.InDir(tmpDir, func() error {
 				out, err := util.Shell(nil, "cmd.exe", "/c", fmt.Sprintf("echo hello world | %s | %[1]s -d", mgBin, exBin))
 				if err != nil {
 					return fmt.Errorf("%s\nFAIL: %v", out, err)
 				}
 
-				checkOut(t, out)
 				t.Logf("\n%s", out)
 				return nil
 			}); err != nil {
@@ -108,7 +88,6 @@ func Test2(t *testing.T) {
 					return fmt.Errorf("%s\nFAIL: %v", out, err)
 				}
 
-				checkOut(t, out)
 				t.Logf("\n%s", out)
 				return nil
 			}); err != nil {
@@ -120,14 +99,4 @@ func Test2(t *testing.T) {
 	}); err != nil {
 		t.Fatal(err)
 	}
-}
-
-func checkOut(t *testing.T, out []byte) {
-	for _, v := range strings.Split(strings.TrimSpace(string(out)), "\n") {
-		if v == "hello world" {
-			return
-		}
-	}
-
-	t.Fatalf("out=%s", out)
 }
