@@ -13,3 +13,8 @@ import (
 //
 //go:embed assets
 var FS embed.FS
+
+// Zip contains the Tcl standard library archive.
+//
+//go:embed library.zip
+var Zip string
