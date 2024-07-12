@@ -286,6 +286,7 @@ func TestMain(m *testing.M) {
 			"chan-io-54.2",
 			"chan-io-57.1",
 			"chan-io-57.2",
+			"cmdMZ-6.5a",
 			"event-11.5",
 			"io-29.34",
 			"io-29.35",
