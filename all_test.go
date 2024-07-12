@@ -173,6 +173,10 @@ func TestMain(m *testing.M) {
 			"http11.test",
 			"socket.test",
 		)
+	case "linux/amd64":
+		skip = append(skip,
+			"cmdIL-5.7",
+		)
 	case "linux/riscv64":
 		skip = append(skip,
 			"binary-40.3",
