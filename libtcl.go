@@ -15,7 +15,7 @@ const (
 	TCL_ERROR       = m_TCL_ERROR
 	TCL_EVAL_DIRECT = m_TCL_EVAL_DIRECT
 	TCL_EVAL_GLOBAL = m_TCL_EVAL_GLOBAL
-	TCL_OK = m_TCL_OK
+	TCL_OK          = m_TCL_OK
 )
 
 type in6_addr = struct {

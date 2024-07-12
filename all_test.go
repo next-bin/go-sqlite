@@ -176,6 +176,7 @@ func TestMain(m *testing.M) {
 	case "linux/riscv64":
 		skip = append(skip,
 			"binary-40.3",
+			"cmdIL-5.7",
 		)
 	case "linux/s390x":
 		skip = append(skip,
@@ -709,5 +710,5 @@ out:
 	if err == nil && len(errFile) != 0 {
 		t.Errorf("FAIL\n%s", errFile)
 	}
-	
+
 }

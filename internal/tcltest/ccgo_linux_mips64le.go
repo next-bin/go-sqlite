@@ -19317,7 +19317,7 @@ func _newnfa(tls *libc.TLS, v uintptr, cm uintptr, parent uintptr) (r uintptr) {
 	(*Tnfa)(unsafe.Pointer(nfa)).Fparent = parent                         /* Precedes newfstate so parent is valid. */
 	(*Tnfa)(unsafe.Pointer(nfa)).Fpost = _newfstate(tls, nfa, int32('@')) /* number 0 */
 	(*Tnfa)(unsafe.Pointer(nfa)).Fpre = _newfstate(tls, nfa, int32('>'))  /* number 1 */
-	(*Tnfa)(unsafe.Pointer(nfa)).Finit1 = _newstate(tls, nfa) /* May become invalid later. */
+	(*Tnfa)(unsafe.Pointer(nfa)).Finit1 = _newstate(tls, nfa)             /* May become invalid later. */
 	(*Tnfa)(unsafe.Pointer(nfa)).Ffinal = _newstate(tls, nfa)
 	if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 		_freenfa(tls, nfa)
@@ -20532,8 +20532,8 @@ func _delsub(tls *libc.TLS, nfa uintptr, lp uintptr, rp uintptr) {
 	_ = libc.Int32FromInt32(0)
 	(*Tstate)(unsafe.Pointer(rp)).Ftmp = rp /* mark end */
 	_deltraverse(tls, nfa, lp, lp)
-	_ = libc.Int32FromInt32(0) /* did the job */
-	_ = libc.Int32FromInt32(0) /* no more */
+	_ = libc.Int32FromInt32(0)                                    /* did the job */
+	_ = libc.Int32FromInt32(0)                                    /* no more */
 	(*Tstate)(unsafe.Pointer(rp)).Ftmp = libc.UintptrFromInt32(0) /* unmark end */
 	(*Tstate)(unsafe.Pointer(lp)).Ftmp = libc.UintptrFromInt32(0) /* and begin, marked by deltraverse */
 }
@@ -20570,9 +20570,9 @@ func _deltraverse(tls *libc.TLS, nfa uintptr, leftend uintptr, s uintptr) {
 			_freestate(tls, nfa, to)
 		}
 	}
-	_ = libc.Int32FromInt32(0) /* we're still here */
-	_ = libc.Int32FromInt32(0) /* and still reachable */
-	_ = libc.Int32FromInt32(0) /* but have no outarcs */
+	_ = libc.Int32FromInt32(0)                                   /* we're still here */
+	_ = libc.Int32FromInt32(0)                                   /* and still reachable */
+	_ = libc.Int32FromInt32(0)                                   /* but have no outarcs */
 	(*Tstate)(unsafe.Pointer(s)).Ftmp = libc.UintptrFromInt32(0) /* we're done here */
 }
 
@@ -34835,7 +34835,7 @@ func _AllocBB(tls *libc.TLS, assemEnvPtr uintptr) (r uintptr) {
 
 func _FinishAssembly(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 	bp := tls.Alloc(16)
-	defer tls.Free(16) /* Assembly environment */
+	defer tls.Free(16)                 /* Assembly environment */
 	var _ /* mustMove at bp+0 */ int32 /* Amount by which the code needs to be grown
 	 * because of expanding jumps */
 	/*
@@ -127216,8 +127216,8 @@ func x_TclInitByteCodeObj(tls *libc.TLS, objPtr uintptr, envPtr uintptr) {
 	 * Compute the total number of bytes needed for this bytecode.
 	 */
 	structureSize = uint64(176)
-	structureSize += uint64((int32(codeBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align object array */
-	structureSize += uint64((int32(objArrayBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align exc range arr */
+	structureSize += uint64((int32(codeBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7))        /* align object array */
+	structureSize += uint64((int32(objArrayBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7))    /* align exc range arr */
 	structureSize += uint64((int32(exceptArrayBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align AuxData array */
 	structureSize += auxDataArrayBytes
 	structureSize += cmdLocBytes
@@ -168389,50 +168389,50 @@ func _WidePwrSmallExpon(tls *libc.TLS, w1 TTcl_WideInt, exponent int64) (r TTcl_
 		wResult *= wResult /* b**4 */
 	case int64(5):
 		wResult *= wResult /* b**4 */
-		wResult *= w1 /* b**5 */
+		wResult *= w1      /* b**5 */
 	case int64(6):
-		wResult *= w1 /* b**3 */
+		wResult *= w1      /* b**3 */
 		wResult *= wResult /* b**6 */
 	case int64(7):
-		wResult *= w1 /* b**3 */
+		wResult *= w1      /* b**3 */
 		wResult *= wResult /* b**6 */
-		wResult *= w1 /* b**7 */
+		wResult *= w1      /* b**7 */
 	case int64(8):
 		wResult *= wResult /* b**4 */
 		wResult *= wResult /* b**8 */
 	case int64(9):
 		wResult *= wResult /* b**4 */
 		wResult *= wResult /* b**8 */
-		wResult *= w1 /* b**9 */
+		wResult *= w1      /* b**9 */
 	case int64(10):
 		wResult *= wResult /* b**4 */
-		wResult *= w1 /* b**5 */
+		wResult *= w1      /* b**5 */
 		wResult *= wResult /* b**10 */
 	case int64(11):
 		wResult *= wResult /* b**4 */
-		wResult *= w1 /* b**5 */
+		wResult *= w1      /* b**5 */
 		wResult *= wResult /* b**10 */
-		wResult *= w1 /* b**11 */
+		wResult *= w1      /* b**11 */
 	case int64(12):
-		wResult *= w1 /* b**3 */
+		wResult *= w1      /* b**3 */
 		wResult *= wResult /* b**6 */
 		wResult *= wResult /* b**12 */
 	case int64(13):
-		wResult *= w1 /* b**3 */
+		wResult *= w1      /* b**3 */
 		wResult *= wResult /* b**6 */
 		wResult *= wResult /* b**12 */
-		wResult *= w1 /* b**13 */
+		wResult *= w1      /* b**13 */
 	case int64(14):
-		wResult *= w1 /* b**3 */
+		wResult *= w1      /* b**3 */
 		wResult *= wResult /* b**6 */
-		wResult *= w1 /* b**7 */
+		wResult *= w1      /* b**7 */
 		wResult *= wResult /* b**14 */
 	case int64(15):
-		wResult *= w1 /* b**3 */
+		wResult *= w1      /* b**3 */
 		wResult *= wResult /* b**6 */
-		wResult *= w1 /* b**7 */
+		wResult *= w1      /* b**7 */
 		wResult *= wResult /* b**14 */
-		wResult *= w1 /* b**15 */
+		wResult *= w1      /* b**15 */
 	case int64(16):
 		wResult *= wResult /* b**4 */
 		wResult *= wResult /* b**8 */
@@ -312448,7 +312448,7 @@ func x_deflateInit2_(tls *libc.TLS, strm Tz_streamp, level int32, method int32, 
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size, uint32(libc.Uint64FromInt32(2)*libc.Uint64FromInt64(1)))
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fprev = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size, uint32(libc.Uint64FromInt64(2)))
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fhead = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size, uint32(libc.Uint64FromInt64(2)))
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water = uint64(0) /* nothing written to s->window yet */
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water = uint64(0)                                  /* nothing written to s->window yet */
 	(*Tdeflate_state)(unsafe.Pointer(s)).Flit_bufsize = uint32(int32(1) << (memLevel + int32(6))) /* 16K elements by default */
 	/* We overlay pending_buf and sym_buf. This works since the average size
 	 * for length/distance pairs over any compressed block is assured to be 31
@@ -327207,7 +327207,7 @@ func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcod
 	_19:
 		rank++
 	}
-	_send_tree(tls, s, s+212, lcodes-int32(1)) /* literal tree */
+	_send_tree(tls, s, s+212, lcodes-int32(1))  /* literal tree */
 	_send_tree(tls, s, s+2504, dcodes-int32(1)) /* distance tree */
 }
 
