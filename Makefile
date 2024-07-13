@@ -89,6 +89,19 @@ windows: download
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 
+windows_386: download
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
+	echo -n > /tmp/ccgo.log
+	echo -n > log-generate
+	echo -n > log-generate-errors
+	GO_GENERATE_WIN32=1 GO_GENERATE_DIR=$(DIR) go run generator*.go 2>&1 | tee log-generate
+	GOOS=windows GOARCH=386 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=386 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
+	git status
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
+
 windows-dev: download
 	mkdir -p $(DIR) || true
 	rm -rf $(DIR)/*
@@ -100,6 +113,20 @@ windows-dev: download
 	GOOS=windows GOARCH=amd64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
 	GOOS=windows GOARCH=arm64 go build -v ./...  | tee -a log-generate
 	GOOS=windows GOARCH=arm64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
+	git status
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
+
+windows_386-dev: download
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
+	echo -n > /tmp/ccgo.log
+	echo -n > log-generate
+	echo -n > log-generate-errors
+	GO_GENERATE_WIN32=1 GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
+	GOOS=windows GOARCH=386 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=386 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
