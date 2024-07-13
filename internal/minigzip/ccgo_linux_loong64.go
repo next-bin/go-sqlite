@@ -1,7 +1,6 @@
 // Code generated for linux/loong64 by 'gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc --package-name=main -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o minigzip64.go minigzip64.o.go -L. libz.a', DO NOT EDIT.
 
 //go:build linux && loong64
-// +build linux,loong64
 
 package main
 
@@ -190,16 +189,14 @@ const m__IOFBF = 0
 const m__IOLBF = 1
 const m__IONBF = 2
 const m__LARGEFILE64_SOURCE = 1
-const m__LOONGARCH_ARCH = "loongarch64"
-const m__LOONGARCH_ARCH_LOONGARCH64 = 1
+const m__LOONGARCH_ARCH = "la64v1.0"
 const m__LOONGARCH_FPSET = 32
 const m__LOONGARCH_SIM = "_ABILP64"
 const m__LOONGARCH_SPFPSET = 32
 const m__LOONGARCH_SZINT = 32
 const m__LOONGARCH_SZLONG = 64
 const m__LOONGARCH_SZPTR = 64
-const m__LOONGARCH_TUNE = "loongarch64"
-const m__LOONGARCH_TUNE_LOONGARCH64 = 1
+const m__LOONGARCH_TUNE = "generic"
 const m__LP64 = 1
 const m__PC_2_SYMLINKS = 20
 const m__PC_ALLOC_SIZE_MIN = 18
@@ -611,9 +608,8 @@ const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const m___GCC_IEC_559 = 2
 const m___GCC_IEC_559_COMPLEX = 2
 const m___GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
-const m___GNUC_MINOR__ = 0
-const m___GNUC_PATCHLEVEL__ = 1
-const m___GNUC_RH_RELEASE__ = 0
+const m___GNUC_MINOR__ = 1
+const m___GNUC_PATCHLEVEL__ = 0
 const m___GNUC_STDC_INLINE__ = 1
 const m___GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-32LE"
 const m___GNUC__ = 14
@@ -687,8 +683,6 @@ const m___LONG_LONG_WIDTH__ = 64
 const m___LONG_MAX = 0x7fffffffffffffff
 const m___LONG_MAX__ = 0x7fffffffffffffff
 const m___LONG_WIDTH__ = 64
-const m___LOONGARCH_ARCH_LOONGARCH64 = 1
-const m___LOONGARCH_TUNE_LOONGARCH64 = 1
 const m___LP64__ = 1
 const m___NO_INLINE__ = 1
 const m___ORDER_BIG_ENDIAN__ = 4321
@@ -823,7 +817,7 @@ const m___UTA_FBIT__ = 64
 const m___UTA_IBIT__ = 64
 const m___UTQ_FBIT__ = 128
 const m___UTQ_IBIT__ = 0
-const m___VERSION__ = "14.0.1 20240411 (Red Hat 14.0.1-0)"
+const m___VERSION__ = "14.1.0 20240507 (Red Hat 14.1.0-1)"
 const m___WCHAR_MAX__ = 0x7fffffff
 const m___WCHAR_TYPE__ = "int"
 const m___WCHAR_WIDTH__ = 32
@@ -842,13 +836,18 @@ const m___linux = 1
 const m___linux__ = 1
 const m___loongarch64 = 1
 const m___loongarch__ = 1
-const m___loongarch_arch = "loongarch64"
+const m___loongarch_arch = "la64v1.0"
 const m___loongarch_double_float = 1
 const m___loongarch_frlen = 64
 const m___loongarch_grlen = 64
 const m___loongarch_hard_float = 1
 const m___loongarch_lp64 = 1
-const m___loongarch_tune = "loongarch64"
+const m___loongarch_simd = 1
+const m___loongarch_simd_width = 128
+const m___loongarch_sx = 1
+const m___loongarch_tune = "generic"
+const m___loongarch_version_major = 1
+const m___loongarch_version_minor = 0
 const m___restrict = "restrict"
 const m___restrict_arr = "restrict"
 const m___unix = 1
