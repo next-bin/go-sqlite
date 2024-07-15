@@ -634,6 +634,7 @@ func TestMain(m *testing.M) {
 			"cmdMZ-6.6",
 			"cmdinfo-4.*",
 			"cmdinfo-5.*",
+			"cmdinfo-6.*",
 			"env-2.1",
 			"env-2.2",
 			"env-2.3",
