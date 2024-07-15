@@ -1,9 +1,9 @@
 {
-	"autoupdate": "<none>",
-	"autogen": "<none>",
-	"autotag": "darwin/(amd64|arm64)|freebsd/(amd64|arm64)|linux/(386|amd64|arm|arm64|loong64|ppc64le|riscv64|s390x)|openbsd/amd64|windows/(amd64|arm64)",
+	"autoupdate": "linux/amd64",
+	"autogen": "darwin/(amd64|arm64)|freebsd/(amd64|arm64)|linux/(386|amd64|arm|arm64|loong64|ppc64le|riscv64|s390x)",
+	"autotag": "darwin/(amd64|arm64)|freebsd/(amd64|arm64)|linux/(386|amd64|arm|arm64|loong64|ppc64le|riscv64|s390x)|windows/(amd64|arm64|386)",
 	"download": [
-		{"re": "darwin/(amd64|arm64)|freebsd/(amd64|arm64)|linux/(386|amd64|arm|arm64|loong64|ppc64le|riscv64|s390x)|openbsd/amd64|windows/(amd64|arm64)", "files": ["http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz"]}
+		{"re": "darwin/(amd64|arm64)|freebsd/(amd64|arm64)|linux/(386|amd64|arm|arm64|loong64|ppc64le|riscv64|s390x)|windows/(amd64|arm64|386)", "files": ["http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz"]}
 	],
-	"test": "darwin/(amd64|arm64)|freebsd/(amd64|arm64)|linux/(386|amd64|arm|arm64|loong64|ppc64le|riscv64|s390x)|openbsd/amd64|windows/(amd64|arm64)"
+	"test": "darwin/(amd64|arm64)|freebsd/(amd64|arm64)|linux/(386|amd64|arm|arm64|loong64|ppc64le|riscv64|s390x)|windows/(amd64|arm64|386)"
 }

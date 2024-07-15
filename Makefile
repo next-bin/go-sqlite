@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev dwonload edit editor generate test work
+.PHONY:	all clean dev dwonload edit editor generate test work vtest
 
 DIR = /tmp/libtcl8.6
 TAR = tcl8.6.13-src.tar.gz
@@ -32,7 +32,7 @@ download:
 
 edit:
 	@touch log
-	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile all_test.go generator.go libtcl.go & fi
+	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile go.mod builder.json all_test.go generator.go libtcl.go & fi
 
 editor:
 	gofmt -l -s -w . 2>&1 | tee log-editor
@@ -49,7 +49,7 @@ generate: download
 	cat log-generate-errors
 	go build -v ./...
 	# go install github.com/mdempsky/unconvert@latest
-	go build -v ./...  | tee -a log-generate
+	go build -v ./...  2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
@@ -61,7 +61,7 @@ dev: download
 	date 2>&1 | tee -a log-generate
 	GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee -a log-generate
 	date 2>&1 | tee -a log-generate
-	go build -v ./...  | tee -a log-generate
+	go build -v ./...  2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
@@ -71,6 +71,10 @@ test:
 	go test -v -timeout 24h -count=1 2>&1 | tee log-test
 	grep -a 'TRC\|TODO\|ERRORF\|FAIL' log-test || true 2>&1 | tee -a log-test
 
+vtest:
+	go test -v -timeout 24h -count=1 -verbose=bpstelmu 2>&1 | tee log-test
+	grep -a 'TRC\|TODO\|ERRORF\|FAIL' log-test || true 2>&1 | tee -a log-test
+
 windows: download
 	mkdir -p $(DIR) || true
 	rm -rf $(DIR)/*
@@ -78,10 +82,23 @@ windows: download
 	echo -n > log-generate
 	echo -n > log-generate-errors
 	GO_GENERATE_WIN=1 GO_GENERATE_DIR=$(DIR) go run generator*.go 2>&1 | tee log-generate
-	GOOS=windows GOARCH=amd64 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=amd64 go build -v ./...  2>&1 | tee -a log-generate
 	GOOS=windows GOARCH=amd64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
-	GOOS=windows GOARCH=arm64 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=arm64 go build -v ./...  2>&1 | tee -a log-generate
 	GOOS=windows GOARCH=arm64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
+	git status
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
+
+windows_386: download
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
+	echo -n > /tmp/ccgo.log
+	echo -n > log-generate
+	echo -n > log-generate-errors
+	GO_GENERATE_WIN32=1 GO_GENERATE_DIR=$(DIR) go run generator*.go 2>&1 | tee log-generate
+	GOOS=windows GOARCH=386 go build -v ./...  2>&1 | tee -a log-generate
+	GOOS=windows GOARCH=386 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
@@ -93,10 +110,24 @@ windows-dev: download
 	echo -n > log-generate
 	echo -n > log-generate-errors
 	GO_GENERATE_WIN=1 GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
-	GOOS=windows GOARCH=amd64 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=amd64 go build -v ./...  2>&1 | tee -a log-generate
 	GOOS=windows GOARCH=amd64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
-	GOOS=windows GOARCH=arm64 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=arm64 go build -v ./...  2>&1 | tee -a log-generate
 	GOOS=windows GOARCH=arm64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
+	git status
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
+
+windows_386-dev: download
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
+	echo -n > /tmp/ccgo.log
+	echo -n > log-generate
+	echo -n > log-generate-errors
+	GO_GENERATE_WIN32=1 GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
+	GOOS=windows GOARCH=386 go build -v ./...  2>&1 | tee -a log-generate
+	GOOS=windows GOARCH=386 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true

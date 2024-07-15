@@ -1,8 +1,6 @@
-// Code generated for windows/amd64 by 'generator -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl86.a libtclstub86.a -lz', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator -build-lines \/\/go:build windows && (amd64 || arm64)\n --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/jnml/src/modernc.org/libz/include/windows/amd64 -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl86.a libtclstub86.a -ladvapi32 -lkernel32 -lnetapi32 -luser32 -luserenv -lws2_32', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
-// +build windows
-// +build amd64 arm64
 
 package libtcl8_6
 
@@ -26001,36 +25999,6 @@ type Toff_t = int32
 
 type Tfpos_t = int64
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type TWSPIAPI_PGETADDRINFO = uintptr
 
 type TWSPIAPI_PGETNAMEINFO = uintptr
@@ -33417,7 +33385,7 @@ func _newnfa(tls *libc.TLS, v uintptr, cm uintptr, parent uintptr) (r uintptr) {
 	(*Tnfa)(unsafe.Pointer(nfa)).Fparent = parent                         /* Precedes newfstate so parent is valid. */
 	(*Tnfa)(unsafe.Pointer(nfa)).Fpost = _newfstate(tls, nfa, int32('@')) /* number 0 */
 	(*Tnfa)(unsafe.Pointer(nfa)).Fpre = _newfstate(tls, nfa, int32('>'))  /* number 1 */
-	(*Tnfa)(unsafe.Pointer(nfa)).Finit1 = _newstate(tls, nfa)             /* May become invalid later. */
+	(*Tnfa)(unsafe.Pointer(nfa)).Finit1 = _newstate(tls, nfa) /* May become invalid later. */
 	(*Tnfa)(unsafe.Pointer(nfa)).Ffinal = _newstate(tls, nfa)
 	if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 		_freenfa(tls, nfa)
@@ -42505,36 +42473,6 @@ const m_STARTER = 1
 const m_WORK = 1
 const m___SHRT_MAX__1 = 0x7fff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf1(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf1(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf1(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Magic for allocating a variable workspace. This default version is
  * stack-hungry.
@@ -44603,36 +44541,6 @@ const m_REG_UIMPOSSIBLE1 = 010000
 const m_REMAGIC1 = 0xFED7
 const m_SHORTER1 = 02
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf2(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf2(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf2(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Magic for allocating a variable workspace. This default version is
  * stack-hungry.
@@ -44658,36 +44566,6 @@ func XTclReFree(tls *libc.TLS, re uintptr) {
 		return
 	}
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*Tfns)(unsafe.Pointer((*Tregex_t)(unsafe.Pointer(re)).Fre_fns)).Ffree})))(tls, re)
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf3(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf3(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf3(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /*
@@ -44932,36 +44810,6 @@ _4:
 		}
 	}
 	return len1
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf4(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf4(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf4(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /*
@@ -45268,36 +45116,6 @@ const m_TCL_REG_NOCASE1 = 8
 const m_USE_CLASS_CACHE = 0x4000
 const m_USE_DECLARER_NS = 0x80
 const m__TCLCOMPILATION = 1
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf5(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf5(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf5(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TCompileEnv1 = struct {
 	FiPtr                    uintptr
@@ -49279,7 +49097,7 @@ func _AllocBB(tls *libc.TLS, assemEnvPtr uintptr) (r uintptr) {
 
 func _FinishAssembly(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 	bp := tls.Alloc(16)
-	defer tls.Free(16)                 /* Assembly environment */
+	defer tls.Free(16) /* Assembly environment */
 	var _ /* mustMove at bp+0 */ int32 /* Amount by which the code needs to be grown
 	 * because of expanding jumps */
 	/*
@@ -50779,36 +50597,6 @@ const m_TCL_EVAL_DIRECT2 = 0x040000
 const m_TCL_REG_ADVANCED2 = 000003
 const m_TCL_REG_NOCASE2 = 000010
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf6(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf6(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf6(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -51198,36 +50986,6 @@ const m___mingw_choose_expr = "__builtin_choose_expr"
 const m___setusermatherr = "__mingw_setusermatherr"
 const m__hypotl = "hypotl"
 const m_matherr = "_matherr"
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf7(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf7(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf7(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type T_exception = struct {
 	Ftype1  int32
@@ -60965,36 +60723,6 @@ const m_TCL_TRACE_WRITES2 = 0x20
 const m___FLT_MAX__1 = 3.4028234663852886e+38
 const m___LONG_MAX__2 = 0x7fffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf8(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf8(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf8(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * The following tables are used by the binary encoders
  */
@@ -65060,36 +64788,6 @@ var _optStrings4 = [2]uintptr{
 const m_TCL_LEAVE_ERR_MSG2 = 0x200
 const m___FLT_MAX__2 = 3.40282346638528859811704183484516925e+38
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf9(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf9(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf9(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Local Variables:
  * mode: c
@@ -65322,36 +65020,6 @@ const m_ONE_CENTURY_GREGORIAN = 36524
 const m_ONE_YEAR = 365
 const m_SECONDS_PER_DAY = 86400
 const m_TCL_CLOCK_PREFIX_LEN = 14
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf10(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf10(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf10(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * Local Variables:
@@ -67520,36 +67188,6 @@ const m__S_IFDIR1 = 16384
 const m__S_IFIFO1 = 4096
 const m__S_IFMT1 = 61440
 const m__S_IFREG1 = 32768
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf11(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf11(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf11(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TTCLEXCEPTION_REGISTRATION = struct {
 	Flink    uintptr
@@ -71891,36 +71529,6 @@ const m___REG_REGOFF_T = "long"
 const m___REG_WIDE_COMPILE = "TclReComp"
 const m___REG_WIDE_EXEC = "TclReExec"
 const m___REG_WIDE_T = "Tcl_UniChar"
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf12(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf12(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf12(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TTclRegexp = struct {
 	Fflags      int32
@@ -77516,36 +77124,6 @@ const m_TCL_SUBST_BACKSLASHES1 = 4
 const m_TCL_SUBST_COMMANDS1 = 1
 const m_TCL_SUBST_VARIABLES1 = 2
 const m_VAR_ARGUMENT2 = 0x100
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf13(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf13(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf13(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  *----------------------------------------------------------------------
@@ -83482,7 +83060,7 @@ func XTclNRTryObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).Fbytes = libc.UintptrFromInt32(0)
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).FinternalRep.FlongValue = int32(*(*int32)(unsafe.Pointer(bp + 4)))
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType)) /* returnCode */
-		if (*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(2)] == libc.UintptrFromInt32(0) {                                              /* errorCodePrefix */
+		if (*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(2)] == libc.UintptrFromInt32(0) {                                               /* errorCodePrefix */
 			if XtclFreeObjList == libc.UintptrFromInt32(0) {
 				XTclAllocateFreeObjects(tls)
 			}
@@ -84310,36 +83888,6 @@ const m_TCL_SUBST_ALL2 = 007
 const m_TCL_SUBST_BACKSLASHES2 = 004
 const m_TCL_SUBST_COMMANDS2 = 001
 const m_TCL_SUBST_VARIABLES2 = 002
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf14(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf14(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf14(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * The structures below define the AuxData types defined in this file.
@@ -99842,36 +99390,6 @@ func XTclPushVarName(tls *libc.TLS, interp uintptr, varTokenPtr uintptr, envPtr 
 const m_TCL_REG_ADVANCED5 = 3
 const m_TCL_REG_NOCASE5 = 8
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf15(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf15(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf15(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  *----------------------------------------------------------------------
  *
@@ -112106,36 +111624,6 @@ compileSelfNamespace:
 }
 
 const m_TCL_SUBST_ALL3 = 7
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf16(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf16(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf16(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 func init() {
 	p := unsafe.Pointer(&XtclJumptableInfoType)
@@ -135707,36 +135195,6 @@ const m_TCL_REG_NOCASE6 = 000010
 const m_TCL_SUBST_ALL4 = 007
 const m_UNARY = 128
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf17(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf17(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf17(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  *----------------------------------------------------------------
  * Macros and flag values used by Tcl bytecode compilation and execution
@@ -139643,36 +139101,6 @@ const m_TCL_LIMIT_COMMANDS3 = 1
 const m_TCL_LIMIT_TIME3 = 2
 const m_VAR_TEMPORARY1 = 512
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf18(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf18(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf18(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 func init() {
 	p := unsafe.Pointer(&XtclByteCodeType)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_FreeByteCodeInternalRep)
@@ -142873,8 +142301,8 @@ func XTclInitByteCodeObj(tls *libc.TLS, objPtr uintptr, envPtr uintptr) {
 	 * Compute the total number of bytes needed for this bytecode.
 	 */
 	structureSize = uint64(176)
-	structureSize += uint64((int32(codeBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7))        /* align object array */
-	structureSize += uint64((int32(objArrayBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7))    /* align exc range arr */
+	structureSize += uint64((int32(codeBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align object array */
+	structureSize += uint64((int32(objArrayBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align exc range arr */
 	structureSize += uint64((int32(exceptArrayBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align AuxData array */
 	structureSize += auxDataArrayBytes
 	structureSize += cmdLocBytes
@@ -145085,36 +144513,6 @@ const m_TCL_LIMIT_COMMANDS4 = 0x01
 const m_TCL_LIMIT_TIME4 = 0x02
 const m_VAR_TEMPORARY2 = 0x200
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf19(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf19(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf19(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -145512,36 +144910,6 @@ const m_yyerror = "TclDateerror"
 const m_yylex = "TclDatelex"
 const m_yynerrs = "TclDatenerrs"
 const m_yyparse = "TclDateparse"
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf20(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf20(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf20(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -148599,36 +147967,6 @@ func XTclClockOldscanObjCmd(tls *libc.TLS, dummy uintptr, interp uintptr, objc i
 
 const m_LOCAL_SIZE = 64
 const m_TCL_LEAVE_ERR_MSG5 = 512
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf21(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf21(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf21(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -153979,36 +153317,6 @@ const m_VAR_LINK1 = 2
 const m_VAR_RESOLVED1 = 32768
 const m_VAR_TEMPORARY3 = 512
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf22(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf22(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf22(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * The structure below defines an instruction name Tcl object to allow
  * reporting of inner contexts in errorstack without string allocation.
@@ -155865,36 +155173,6 @@ const m_VAR_RESOLVED2 = 0x8000
 const m_VAR_TEMPORARY4 = 0x200
 const m__S_IFDIR3 = 16384
 const m__S_IFMT3 = 61440
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf23(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf23(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf23(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * The following data structure represents an encoding, which describes how to
@@ -159480,36 +158758,6 @@ const m_TCL_EVAL_INVOKE3 = 524288
 const m_TCL_LEAVE_ERR_MSG7 = 512
 const m__S_IFDIR4 = 0x4000
 const m__S_IFMT4 = 0xF000
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf24(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf24(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf24(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * The lists of subcommands and options for the [namespace ensemble] command.
@@ -163891,36 +163139,6 @@ const m_TCL_TRACE_WRITES3 = 32
 const m_techar = "WCHAR"
 const m_tenviron = "_wenviron"
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf25(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf25(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf25(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 var _env struct {
 	FcacheSize int32
 	Fcache     uintptr
@@ -164566,36 +163784,6 @@ const m_TCL_EVAL_GLOBAL3 = 131072
 const m_TCL_LEAVE_ERR_MSG9 = 512
 const m_TCL_TRACE_ARRAY2 = 0x800
 const m_TCL_TRACE_READS4 = 0x10
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf26(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf26(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf26(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -166315,36 +165503,6 @@ const m_VAR_TRACED_UNSET1 = 64
 const m_VAR_TRACED_WRITE1 = 32
 const m___LONG_MAX__3 = 2147483647
 const m___SHRT_MAX__2 = 32767
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf27(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf27(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf27(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Static assertion.  Requires support in the compiler.  */
 
@@ -185670,14 +184828,14 @@ func _LongPwrSmallExpon(tls *libc.TLS, l1 int32, exponent int32) (r int32) {
 		lResult *= lResult /* b**4 */
 	case int32(5):
 		lResult *= lResult /* b**4 */
-		lResult *= l1      /* b**5 */
+		lResult *= l1 /* b**5 */
 	case int32(6):
-		lResult *= l1      /* b**3 */
+		lResult *= l1 /* b**3 */
 		lResult *= lResult /* b**6 */
 	case int32(7):
-		lResult *= l1      /* b**3 */
+		lResult *= l1 /* b**3 */
 		lResult *= lResult /* b**6 */
-		lResult *= l1      /* b**7 */
+		lResult *= l1 /* b**7 */
 	case int32(8):
 		lResult *= lResult /* b**4 */
 		lResult *= lResult /* b**8 */
@@ -185698,50 +184856,50 @@ func _WidePwrSmallExpon(tls *libc.TLS, w1 TTcl_WideInt, exponent int32) (r TTcl_
 		wResult *= wResult /* b**4 */
 	case int32(5):
 		wResult *= wResult /* b**4 */
-		wResult *= w1      /* b**5 */
+		wResult *= w1 /* b**5 */
 	case int32(6):
-		wResult *= w1      /* b**3 */
+		wResult *= w1 /* b**3 */
 		wResult *= wResult /* b**6 */
 	case int32(7):
-		wResult *= w1      /* b**3 */
+		wResult *= w1 /* b**3 */
 		wResult *= wResult /* b**6 */
-		wResult *= w1      /* b**7 */
+		wResult *= w1 /* b**7 */
 	case int32(8):
 		wResult *= wResult /* b**4 */
 		wResult *= wResult /* b**8 */
 	case int32(9):
 		wResult *= wResult /* b**4 */
 		wResult *= wResult /* b**8 */
-		wResult *= w1      /* b**9 */
+		wResult *= w1 /* b**9 */
 	case int32(10):
 		wResult *= wResult /* b**4 */
-		wResult *= w1      /* b**5 */
+		wResult *= w1 /* b**5 */
 		wResult *= wResult /* b**10 */
 	case int32(11):
 		wResult *= wResult /* b**4 */
-		wResult *= w1      /* b**5 */
+		wResult *= w1 /* b**5 */
 		wResult *= wResult /* b**10 */
-		wResult *= w1      /* b**11 */
+		wResult *= w1 /* b**11 */
 	case int32(12):
-		wResult *= w1      /* b**3 */
+		wResult *= w1 /* b**3 */
 		wResult *= wResult /* b**6 */
 		wResult *= wResult /* b**12 */
 	case int32(13):
-		wResult *= w1      /* b**3 */
+		wResult *= w1 /* b**3 */
 		wResult *= wResult /* b**6 */
 		wResult *= wResult /* b**12 */
-		wResult *= w1      /* b**13 */
+		wResult *= w1 /* b**13 */
 	case int32(14):
-		wResult *= w1      /* b**3 */
+		wResult *= w1 /* b**3 */
 		wResult *= wResult /* b**6 */
-		wResult *= w1      /* b**7 */
+		wResult *= w1 /* b**7 */
 		wResult *= wResult /* b**14 */
 	case int32(15):
-		wResult *= w1      /* b**3 */
+		wResult *= w1 /* b**3 */
 		wResult *= wResult /* b**6 */
-		wResult *= w1      /* b**7 */
+		wResult *= w1 /* b**7 */
 		wResult *= wResult /* b**14 */
-		wResult *= w1      /* b**15 */
+		wResult *= w1 /* b**15 */
 	case int32(16):
 		wResult *= wResult /* b**4 */
 		wResult *= wResult /* b**8 */
@@ -188057,36 +187215,6 @@ const m__S_IFMT5 = 61440
 const m___LONG_MAX__4 = 0x7fffffff
 const m___SHRT_MAX__3 = 0x7fff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf28(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf28(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf28(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  *---------------------------------------------------------------------------
  *
@@ -189925,36 +189053,6 @@ const m_TCL_EVAL_GLOBAL6 = 0x020000
 const m_TCL_LEAVE_ERR_MSG10 = 0x200
 const m__S_IFDIR6 = 0x4000
 const m__S_IFMT6 = 0xF000
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf29(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf29(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf29(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * When there is no support for getting the block size of a file in a stat()
@@ -192800,36 +191898,6 @@ func XTcl_GetBlockSizeFromStat(tls *libc.TLS, statPtr uintptr) (r uint32) {
 	return uint32(m_GUESSED_BLOCK_SIZE)
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf30(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf30(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf30(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Local Variables:
  * mode: c
@@ -192968,36 +192036,6 @@ const m_NUM_COUNTERS = 10
 const m_REBUILD_MULTIPLIER = 3
 const m_TCL_HASH_KEY_RANDOMIZE_HASH1 = 1
 const m_TCL_HASH_KEY_SYSTEM_HASH1 = 2
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf31(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf31(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf31(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 func init() {
 	p := unsafe.Pointer(&XtclArrayHashKeyType)
@@ -194010,36 +193048,6 @@ const m_TCL_HASH_KEY_RANDOMIZE_HASH2 = 0x1
 const m_TCL_HASH_KEY_SYSTEM_HASH2 = 0x2
 const m_TCL_NO_EVAL1 = 65536
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf32(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf32(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf32(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -194306,36 +193314,6 @@ const m_INTERP_ALTERNATE_WRONG_ARGS1 = 1024
 const m_NUM_SPACES = 20
 const m_TCL_EVAL_GLOBAL8 = 0x020000
 const m_TCL_NO_EVAL2 = 0x010000
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf33(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf33(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf33(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * The structure below defines the index Tcl object type by means of functions
@@ -195828,36 +194806,6 @@ const m_TCL_FIND_ONLY_NS1 = 4096
 const m_TCL_LEAVE_ERR_MSG11 = 512
 const m_TCL_LIMIT_COMMANDS7 = 1
 const m_TCL_LIMIT_TIME7 = 2
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf34(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf34(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf34(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TLimitHandler = struct {
 	Fflags       int32
@@ -200689,36 +199637,6 @@ const m_TCL_LIMIT_TIME8 = 0x02
 const m_TCL_PLATFORM_TRANSLATION1 = 3
 const m_UTF_EXPANSION_FACTOR = 1024
 const m___LONG_MAX__5 = 2147483647
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf35(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf35(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf35(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TChannelBuffer = struct {
 	FrefCount    int32
@@ -211613,36 +210531,6 @@ const m__O_RDWR1 = 2
 const m__O_WRONLY1 = 1
 const m___LONG_MAX__6 = 0x7fffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf36(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf36(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf36(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -213918,36 +212806,6 @@ const m__O_RDWR2 = 0x0002
 const m__O_WRONLY2 = 0x0001
 const m___LONG_MAX__7 = 2147483647
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf37(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf37(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf37(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Forward declarations of internal procedures. Third, helper procedures
  * encapsulating essential tasks.
@@ -215127,36 +213985,6 @@ func _ResultAdd(tls *libc.TLS, r uintptr, buf uintptr, toWrite Tsize_t) {
 const m_EOK = 0
 const m_RCMKEY = "ReflectedChannelMap"
 const m___LONG_MAX__8 = 0x7fffffff
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf38(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf38(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf38(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * The C layer channel type/driver definition used by the reflection.
@@ -217058,36 +215886,6 @@ const m_FLUSH_WRITE = 1
 const m_RB_INCREMENT = 512
 const m_RTMKEY = "ReflectedTransformMap"
 const m___LONG_MAX__9 = 2147483647
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf39(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf39(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf39(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * The C layer channel type/driver definition used by the reflection.
@@ -219177,36 +217975,6 @@ const m_AI_PASSIVE1 = 1
 const m_TCL_EVAL_GLOBAL12 = 0x020000
 const m___LONG_MAX__10 = 0x7fffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf40(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf40(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf40(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -219457,36 +218225,6 @@ const m__O_WRONLY3 = 1
 const m__S_IFDIR7 = 16384
 const m__S_IFMT7 = 61440
 const m___LONG_MAX__11 = 2147483647
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf41(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf41(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf41(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * Local Variables:
@@ -224149,36 +222887,6 @@ const m___FLT_MAX__3 = 3.4028234663852886e+38
 const m___SCHAR_MAX__1 = 127
 const m___SHRT_MAX__4 = 32767
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf42(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf42(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf42(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -224949,36 +223657,6 @@ const m___FLT_MAX__4 = 3.40282346638528859811704183484516925e+38
 const m___LONG_MAX__12 = 0x7fffffff
 const m___SCHAR_MAX__2 = 0x7f
 const m___SHRT_MAX__5 = 0x7fff
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf43(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf43(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf43(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  *----------------------------------------------------------------------
@@ -225936,36 +224614,6 @@ func XTclInvalidateCmdLiteral(tls *libc.TLS, interp uintptr, name uintptr, nsPtr
 		(*TTcl_Obj)(unsafe.Pointer(literalObjPtr)).FrefCount++
 		XTclReleaseLiteral(tls, interp, literalObjPtr)
 	}
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf44(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf44(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf44(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 func init() {
@@ -228218,36 +226866,6 @@ func _UpdateStringOfList(tls *libc.TLS, listPtr uintptr) {
 	}
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf45(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf45(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf45(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -230112,36 +228730,6 @@ type TWSAPROTOCOL_INFO1 = struct {
 	FszProtocol         [256]TWCHAR
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf46(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf46(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf46(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type T_TCHAR1 = uint16
 
 type T_TSCHAR1 = uint16
@@ -231888,36 +230476,6 @@ type TWSAPROTOCOL_INFO2 = struct {
 	FszProtocol         [256]TCHAR
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf47(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf47(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf47(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type T_TCHAR2 = int8
 
 type T_TSCHAR2 = int8
@@ -232629,36 +231187,6 @@ const m_VAR_TRACED_ARRAY3 = 2048
 const m_VAR_TRACED_READ3 = 16
 const m_VAR_TRACED_UNSET3 = 64
 const m_VAR_TRACED_WRITE3 = 32
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf48(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf48(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf48(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  *----------------------------------------------------------------
@@ -237962,36 +236490,6 @@ const m_VAR_TRACED_READ4 = 0x10
 const m_VAR_TRACED_UNSET4 = 0x40
 const m_VAR_TRACED_WRITE4 = 0x20
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf49(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf49(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf49(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * For each event source (created with Tcl_CreateEventSource) there is a
  * structure of the following type:
@@ -239025,36 +237523,6 @@ const m_TCL_CREATE_NS_IF_UNKNOWN9 = 2048
 const m_TCL_TRACE_DELETE3 = 16384
 const m_TCL_TRACE_RENAME3 = 8192
 const m_USE_CLASS_CACHE1 = 16384
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf50(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf50(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf50(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* !END!: Do not edit above this line. */
 
@@ -242755,36 +241223,6 @@ const m_USE_CLASS_CACHE2 = 0x4000
 const m_VAR_IN_HASHTABLE3 = 4
 const m_VAR_NAMESPACE_VAR3 = 128
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf51(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf51(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf51(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * ----------------------------------------------------------------------
  *
@@ -244100,36 +242538,6 @@ const m_TRAVERSED_MIXIN = 8388608
 const m_USE_CLASS_CACHE3 = 16384
 const m_VAR_IN_HASHTABLE4 = 0x4
 const m_VAR_NAMESPACE_VAR4 = 0x80
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf52(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf52(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf52(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* !END!: Do not edit above this line. */
 
@@ -245881,36 +244289,6 @@ const m_PUBLIC_PATTERN = "[a-z]*"
 const m_ROOT_CLASS3 = 32768
 const m_ROOT_OBJECT3 = 4096
 const m_TCL_EVAL_INVOKE9 = 524288
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf53(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf53(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf53(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* !END!: Do not edit above this line. */
 
@@ -249005,36 +247383,6 @@ const m_USE_CLASS_CACHE4 = 0x4000
 const m_VAR_ARGUMENT5 = 256
 const m_VAR_NAMESPACE_VAR5 = 128
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf54(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf54(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf54(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * List of commands that are used to implement the [info object] subcommands.
  */
@@ -251003,36 +249351,6 @@ const m_TCL_EVAL_NOERR9 = 2097152
 const m_USE_CLASS_CACHE5 = 16384
 const m_USE_DECLARER_NS1 = 128
 const m_VAR_IN_HASHTABLE5 = 4
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf55(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf55(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf55(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  *----------------------------------------------------------------
@@ -253042,36 +251360,6 @@ const m_VAR_ARGUMENT6 = 0x100
 const m_VAR_IN_HASHTABLE6 = 0x4
 const m_VAR_NAMESPACE_VAR6 = 0x80
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf56(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf56(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf56(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* !BEGIN!: Do not edit below this line. */
 
 var _tclOOIntStubs = TTclOOIntStubs{
@@ -253138,36 +251426,6 @@ func init() {
 const m_CMD_IS_DELETED7 = 1
 const m_NS_DYING9 = 1
 const m___LONG_MAX__13 = 2147483647
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf57(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf57(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf57(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Documentation on decimal float math
    http://h21007.www2.hp.com/portal/site/dspp/menuitem.863c3e4cbcdc3f3515b49c108973a801?ciid=8cf166fedd1aa110VgnVCM100000a360ea10RCRD
@@ -257481,36 +255739,6 @@ const m_CMD_IS_DELETED8 = 0x01
 const m_NS_DYING10 = 0x01
 const m___LONG_MAX__14 = 0x7fffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf58(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf58(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf58(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Helper macros.
  */
@@ -258029,36 +256257,6 @@ func XTclOptimizeBytecode(tls *libc.TLS, envPtr uintptr) {
 	_TrimUnreachable(tls, envPtr)
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf59(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf59(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf59(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * The panicProc variable contains a pointer to an application specific panic
  * procedure.
@@ -258186,36 +256384,6 @@ const m_TYPE_NORMAL = 0
 const m_TYPE_QUOTE = 8
 const m_TYPE_SPACE = 1
 const m_TYPE_SUBS = 4
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf60(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf60(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf60(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  *----------------------------------------------------------------------
@@ -260594,36 +258762,6 @@ const m_TCL_SUBST_ALL6 = 007
 const m_TCL_SUBST_BACKSLASHES4 = 004
 const m_TCL_SUBST_COMMANDS4 = 001
 const m_TCL_SUBST_VARIABLES4 = 002
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf61(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf61(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf61(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * Define the 'path' object type, which Tcl uses to represent file paths
@@ -263811,36 +261949,6 @@ const m__O_RDONLY5 = 0
 const m__O_TRUNC3 = 512
 const m__O_WRONLY5 = 1
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf62(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf62(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf62(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -264948,36 +263056,6 @@ const m__O_CREAT4 = 0x0100
 const m__O_RDONLY6 = 0x0000
 const m__O_TRUNC4 = 0x0200
 const m__O_WRONLY6 = 0x0001
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf63(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf63(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf63(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -267205,36 +265283,6 @@ const m_CFG_RUNTIME_SCRDIR = "/usr/local/lib/tcl8.6"
 const m_CFG_THREADED = "0"
 const m_TCL_EVAL_GLOBAL16 = 0x020000
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf64(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf64(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf64(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Local Variables:
  * mode: c
@@ -267328,36 +265376,6 @@ func XTclInitEmbeddedConfigurationInformation(tls *libc.TLS, interp uintptr) {
 	/* Interpreter the configuration command is
 	 * registered in. */
 	XTcl_RegisterConfig(tls, interp, __ccgo_ts+56830, uintptr(unsafe.Pointer(&_cfg)), __ccgo_ts+56834)
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf65(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf65(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf65(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /*
@@ -267857,36 +265875,6 @@ func XTcl_SignalMsg(tls *libc.TLS, sig int32) (r uintptr) {
 
 const m_INITIAL_SIZE = 2
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf66(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf66(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf66(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -268315,36 +266303,6 @@ const m_VAR_IS_ARGS1 = 1024
 const m_VAR_LINK5 = 2
 const m_VAR_RESOLVED3 = 32768
 const m_VAR_TEMPORARY5 = 512
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf67(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf67(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf67(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  *----------------------------------------------------------------
@@ -271583,36 +269541,6 @@ const m_VAR_LINK6 = 0x2
 const m_VAR_RESOLVED4 = 0x8000
 const m_VAR_TEMPORARY6 = 0x200
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf68(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf68(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf68(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Local Variables:
  * mode: c
@@ -272704,36 +270632,6 @@ const m_TCL_REG_ADVANCED8 = 000003
 const m_TCL_REG_NOCASE8 = 000010
 const m_TCL_REG_NOSUB4 = 000020
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf69(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf69(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf69(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  *----------------------------------------------------------------------
  *
@@ -273100,36 +270998,6 @@ func XTcl_GetNamespaceResolvers(tls *libc.TLS, namespacePtr uintptr, resInfoPtr 
 }
 
 const m_ERR_LEGACY_COPY7 = 2048
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf70(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf70(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf70(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -275222,36 +273090,6 @@ const m_SCAN_WIDTH = 8
 const m_TCL_LEAVE_ERR_MSG23 = 512
 const m___LONG_MAX__15 = 2147483647
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf71(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf71(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf71(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -276784,36 +274622,6 @@ const m_COMPAT = 0
 const m_MAX_FLOAT_SIZE = 320
 const m_TCL_LEAVE_ERR_MSG24 = 0x200
 const m___LONG_MAX__16 = 0x7fffffff
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf72(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf72(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf72(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TString = struct {
 	FnumChars   int32
@@ -280386,36 +278194,6 @@ const m_TEN_PMAX = 22
 const m_TWO_OVER_3LOG10 = 0.28952965460216784
 const m___LONG_MAX__17 = 2147483647
 const m_copysign = "_copysign"
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf73(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf73(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf73(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Documentation on decimal float math
    http://h21007.www2.hp.com/portal/site/dspp/menuitem.863c3e4cbcdc3f3515b49c108973a801?ciid=8cf166fedd1aa110VgnVCM100000a360ea10RCRD
@@ -285459,36 +283237,6 @@ const m_TclpIsAtty = 0
 const m_TclpReaddir = 0
 const m___LONG_MAX__18 = 0x7fffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf74(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf74(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf74(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type Tmp_word = uint64
 
 type Tmp_static_assert_prec_geq_min_prec = [1]int8
@@ -286607,36 +284355,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 5056)) = __ccgo_fp(XTcl_ZlibStreamSetCompressionDictionary)
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf75(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf75(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf75(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -287048,36 +284766,6 @@ func XTcl_MutexLock(tls *libc.TLS, mutexPtr uintptr) {
 func XTcl_MutexUnlock(tls *libc.TLS, mutexPtr uintptr) {
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf76(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf76(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf76(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Local Variables:
  * mode: c
@@ -287124,36 +284812,6 @@ func XTcl_GetMemoryInfo(tls *libc.TLS, dsPtr uintptr) {
 
 func XTclFinalizeThreadAlloc(tls *libc.TLS) {
 	XTcl_Panic(tls, __ccgo_ts+63109, 0)
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf77(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf77(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf77(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* Epoch of the tcl environment
@@ -287379,36 +285037,6 @@ func XTclSignalExitThread(tls *libc.TLS, id TTcl_ThreadId, result int32) {
 	}
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf78(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf78(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf78(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Local Variables:
  * mode: c
@@ -287435,36 +285063,6 @@ const m_TCL_EVAL_GLOBAL17 = 131072
 const m_TCL_LEAVE_ERR_MSG25 = 512
 const m_TCL_TIME_MAXIMUM_SLICE = 500
 const m___LONG_MAX__19 = 2147483647
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf79(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf79(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf79(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -288696,36 +286294,6 @@ const m_TCL_EVAL_GLOBAL18 = 0x020000
 const m_TCL_LEAVE_ERR_MSG26 = 0x200
 const m___LONG_MAX__20 = 0x7fffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf80(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf80(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf80(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  *----------------------------------------------------------------------
  *
@@ -288936,36 +286504,6 @@ const m_VAR_TRACED_READ5 = 16
 const m_VAR_TRACED_UNSET5 = 64
 const m_VAR_TRACED_WRITE5 = 32
 const m_VAR_TRACE_ACTIVE1 = 8192
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf81(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf81(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf81(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -292313,36 +289851,6 @@ const m_VAR_TRACED_READ6 = 0x10
 const m_VAR_TRACED_UNSET6 = 0x40
 const m_VAR_TRACED_WRITE6 = 0x20
 const m_VAR_TRACE_ACTIVE2 = 0x2000
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf82(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf82(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf82(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * Local Variables:
@@ -306835,36 +304343,6 @@ const m_TYPE_QUOTE1 = 0x8
 const m_TYPE_SPACE1 = 0x1
 const m_TYPE_SUBS1 = 0x4
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf83(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf83(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf83(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Documentation on decimal float math
    http://h21007.www2.hp.com/portal/site/dspp/menuitem.863c3e4cbcdc3f3515b49c108973a801?ciid=8cf166fedd1aa110VgnVCM100000a360ea10RCRD
 */
@@ -311688,36 +309166,6 @@ const m_VAR_TRACED_READ7 = 16
 const m_VAR_TRACED_UNSET7 = 64
 const m_VAR_TRACED_WRITE7 = 32
 const m_VAR_TRACE_ACTIVE3 = 8192
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf84(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf84(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf84(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 var _tclVarHashKeyType = TTcl_HashKeyType{
 	Fversion: int32(m_TCL_HASH_KEY_TYPE_VERSION),
@@ -318432,36 +315880,6 @@ const m_Z_UNKNOWN = 2
 const m_z_off64_t = "z_off_t"
 const m_z_off_t = "off_t"
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf85(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf85(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf85(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type Tz_size_t = uint64
 
 type TByte = uint8
@@ -322709,36 +320127,6 @@ const m_signature_VORTEX_ebx = 0x74726f56
 const m_signature_VORTEX_ecx = 0x436f5320
 const m_signature_VORTEX_edx = 0x36387865
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf86(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf86(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf86(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type TSETJMP_FLOAT128 = struct {
 	F__ccgo_align [0]uint64
 	FPart         [2]uint64
@@ -323248,36 +320636,6 @@ const m__O_RDWR5 = 2
 const m__O_TRUNC5 = 512
 const m__O_WRONLY7 = 1
 const m__S_IWRITE1 = 128
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf87(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf87(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf87(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * Values for the flags field in Channel. Any ORed combination of the
@@ -324689,36 +322047,6 @@ const m__O_TRUNC6 = 0x0200
 const m__O_WRONLY8 = 0x0001
 const m__S_IWRITE2 = 0x0080
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf88(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf88(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf88(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * The following variable is used to tell whether this module has been
  * initialized.
@@ -325976,36 +323304,6 @@ const m_PURGE_TXCLEAR1 = 4
 const m_RTS_CONTROL_ENABLE1 = 1
 const m_RTS_CONTROL_HANDSHAKE1 = 2
 const m_SERIAL_DEFAULT_BLOCKTIME = 10
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf89(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf89(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf89(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * The following variable is used to tell whether this module has been
@@ -328029,36 +325327,6 @@ const m_PURGE_TXCLEAR2 = 0x4
 const m_RTS_CONTROL_ENABLE2 = 0x1
 const m_RTS_CONTROL_HANDSHAKE2 = 0x2
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf90(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf90(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf90(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Local Variables:
  * mode: c
@@ -328426,36 +325694,6 @@ const m_FILE_ATTRIBUTE_NORMAL3 = 128
 const m_FILE_ATTRIBUTE_READONLY3 = 1
 const m_FILE_ATTRIBUTE_REPARSE_POINT1 = 1024
 const m_FILE_ATTRIBUTE_SYSTEM1 = 4
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf91(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf91(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf91(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 const _WIN_ARCHIVE_ATTRIBUTE = 0
 const _WIN_HIDDEN_ATTRIBUTE = 1
@@ -336350,36 +333588,6 @@ const m_sz_CERT_STORE_PROV_SYSTEM_REGISTRY_W = "SystemRegistry"
 const m_sz_CERT_STORE_PROV_SYSTEM_W = "System"
 const m_uuid_t = "UUID"
 const m_uuid_vector_t = "UUID_VECTOR"
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf92(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf92(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf92(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TSTORAGE_READ_CAPACITY = struct {
 	FVersion        TULONG
@@ -371928,36 +369136,6 @@ const m__S_IREAD2 = 0x0100
 const m__S_IWRITE4 = 0x0080
 
 /**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf93(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf93(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf93(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
-/**
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER within this package.
  */
@@ -372624,36 +369802,6 @@ done:
 
 const m_LOAD_WITH_ALTERED_SEARCH_PATH1 = 8
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf94(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf94(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf94(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Native name of the directory in the native filesystem where DLLs used in
  * this process are copied prior to loading, and mutex used to protect its
@@ -373056,36 +370204,6 @@ const m_QS_TIMER1 = 16
 const m_WM_TIMER1 = 275
 const m_WM_USER1 = 1024
 const m_WM_WAKEUP = "WM_USER"
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf95(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf95(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf95(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -373648,36 +370766,6 @@ const m__O_RDONLY9 = 0
 const m__O_RDWR7 = 2
 const m__O_TRUNC7 = 512
 const m__O_WRONLY9 = 1
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf96(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf96(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf96(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * The following variable is used to tell whether this module has been
@@ -377084,36 +374172,6 @@ const m__O_RDWR8 = 0x0002
 const m__O_TRUNC8 = 0x0200
 const m__O_WRONLY10 = 0x0001
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf97(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf97(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf97(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Support for control over sockets' KEEPALIVE and NODELAY behavior is
  * currently disabled.
@@ -379950,36 +377008,6 @@ const m_WM_USER4 = 0x0400
 const m__MCW_EM1 = 524319
 const m__MCW_RC1 = 768
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf98(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf98(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf98(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Copyright (C) 2002-2022 Free Software Foundation, Inc.
 
 This file is part of GCC.
@@ -380429,36 +377457,6 @@ const m_TCL_THREAD_JOINABLE2 = 0001
 const m__MCW_EM2 = 0x0008001F
 const m__MCW_RC2 = 0x00000300
 const m___LONG_MAX__21 = 2147483647
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf99(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf99(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf99(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * Local Variables:
@@ -387536,7 +384534,7 @@ func XdeflateInit2_(tls *libc.TLS, strm Tz_streamp, level int32, method int32, w
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size, uint32(libc.Uint64FromInt32(2)*libc.Uint64FromInt64(1)))
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fprev = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size, uint32(libc.Uint64FromInt64(2)))
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fhead = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size, uint32(libc.Uint64FromInt64(2)))
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water = uint32(0)                                  /* nothing written to s->window yet */
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water = uint32(0) /* nothing written to s->window yet */
 	(*Tdeflate_state)(unsafe.Pointer(s)).Flit_bufsize = uint32(int32(1) << (memLevel + int32(6))) /* 16K elements by default */
 	/* We overlay pending_buf and sym_buf. This works since the average size
 	 * for length/distance pairs over any compressed block is assured to be 31
@@ -402380,7 +399378,7 @@ func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcod
 		;
 		rank++
 	}
-	_send_tree(tls, s, s+188, lcodes-int32(1))  /* literal tree */
+	_send_tree(tls, s, s+188, lcodes-int32(1)) /* literal tree */
 	_send_tree(tls, s, s+2480, dcodes-int32(1)) /* distance tree */
 }
 
@@ -403084,36 +400082,6 @@ const m_GZ_READ = 7247
 const m_GZ_WRITE = 31153
 const m_LOOK = 0
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf100(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf100(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf100(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type Tgz_state = struct {
 	Fx        TgzFile_s
 	Fmode     int32
@@ -403216,36 +400184,6 @@ const m__WIN32_WINNT2 = 0x0501
 const m___INT_MAX__2 = 2147483647
 const m___LONG_LONG_MAX__2 = 9223372036854775807
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf101(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf101(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf101(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -403283,36 +400221,6 @@ func XTclBN_mp_add(tls *libc.TLS, a uintptr, b uintptr, c uintptr) (r Tmp_err) {
 		}
 	}
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf102(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf102(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf102(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -403426,36 +400334,6 @@ func XTclBN_mp_add_d(tls *libc.TLS, a uintptr, b Tmp_digit, c uintptr) (r Tmp_er
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf103(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf103(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf103(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -403554,36 +400432,6 @@ func XTclBN_mp_and(tls *libc.TLS, a uintptr, b uintptr, c uintptr) (r Tmp_err) {
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf104(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf104(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf104(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -403611,36 +400459,6 @@ func XTclBN_mp_clamp(tls *libc.TLS, a uintptr) {
 	if (*Tmp_int)(unsafe.Pointer(a)).Fused == 0 {
 		(*Tmp_int)(unsafe.Pointer(a)).Fsign = m_MP_ZPOS
 	}
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf105(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf105(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf105(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -403686,36 +400504,6 @@ func XTclBN_mp_clear(tls *libc.TLS, a uintptr) {
 		(*Tmp_int)(unsafe.Pointer(a)).Falloc = v3
 		(*Tmp_int)(unsafe.Pointer(a)).Fsign = m_MP_ZPOS
 	}
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf106(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf106(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf106(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -403802,36 +400590,6 @@ func XTclBN_mp_clear_multi(tls *libc.TLS, mp uintptr, va uintptr) {
 	_ = args
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf107(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf107(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf107(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -403859,36 +400617,6 @@ func XTclBN_mp_cmp(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_ord) {
 		return XTclBN_mp_cmp_mag(tls, a, b)
 	}
 	return r
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf108(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf108(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf108(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -403921,36 +400649,6 @@ func XTclBN_mp_cmp_d(tls *libc.TLS, a uintptr, b Tmp_digit) (r Tmp_ord) {
 		}
 	}
 	return r
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf109(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf109(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf109(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -403998,36 +400696,6 @@ func XTclBN_mp_cmp_mag(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_ord) {
 		tmpb -= 4
 	}
 	return m_MP_EQ
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf110(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf110(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf110(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -404081,36 +400749,6 @@ func XTclBN_mp_cnt_lsb(tls *libc.TLS, a uintptr) (r int32) {
 		}
 	}
 	return x
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf111(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf111(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf111(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -404181,36 +400819,6 @@ func XTclBN_mp_copy(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf112(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf112(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf112(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -404238,36 +400846,6 @@ func XTclBN_mp_count_bits(tls *libc.TLS, a uintptr) (r1 int32) {
 		q >>= uint32(1)
 	}
 	return r
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf113(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf113(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf113(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -404537,36 +401115,6 @@ LBL_Q:
 	return err
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf114(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf114(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf114(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -404656,36 +401204,6 @@ func XTclBN_mp_div_d(tls *libc.TLS, a uintptr, b Tmp_digit, c uintptr, d uintptr
 	return err
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf115(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf115(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf115(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -404754,36 +401272,6 @@ func XTclBN_mp_div_2(tls *libc.TLS, a uintptr, b uintptr) (r1 Tmp_err) {
 	(*Tmp_int)(unsafe.Pointer(b)).Fsign = (*Tmp_int)(unsafe.Pointer(a)).Fsign
 	XTclBN_mp_clamp(tls, b)
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf116(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf116(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf116(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -404862,36 +401350,6 @@ func XTclBN_mp_div_2d(tls *libc.TLS, a uintptr, b int32, c uintptr, d uintptr) (
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf117(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf117(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf117(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -404961,36 +401419,6 @@ func XTclBN_mp_div_3(tls *libc.TLS, a uintptr, c uintptr, d uintptr) (r Tmp_err)
 	return err
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf118(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf118(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf118(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -405009,36 +401437,6 @@ func XTclBN_mp_exch(tls *libc.TLS, a uintptr, b uintptr) {
 	t = *(*Tmp_int)(unsafe.Pointer(a))
 	*(*Tmp_int)(unsafe.Pointer(a)) = *(*Tmp_int)(unsafe.Pointer(b))
 	*(*Tmp_int)(unsafe.Pointer(b)) = t
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf119(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf119(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf119(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -405092,36 +401490,6 @@ LBL_ERR:
 	return err
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf120(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf120(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf120(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -405170,36 +401538,6 @@ func XTclBN_mp_grow(tls *libc.TLS, a uintptr, size int32) (r Tmp_err) {
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf121(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf121(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf121(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -405222,36 +401560,6 @@ func XTclBN_mp_init(tls *libc.TLS, a uintptr) (r Tmp_err) {
 	(*Tmp_int)(unsafe.Pointer(a)).Falloc = int32(m_MP_PREC)
 	(*Tmp_int)(unsafe.Pointer(a)).Fsign = m_MP_ZPOS
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf122(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf122(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf122(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -405278,36 +401586,6 @@ func XTclBN_mp_init_copy(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 		XTclBN_mp_clear(tls, a)
 	}
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf123(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf123(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf123(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -405416,36 +401694,6 @@ func XTclBN_mp_init_multi(tls *libc.TLS, mp uintptr, va uintptr) (r Tmp_err) {
 	return err /* Assumed ok, if error flagged above. */
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf124(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf124(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf124(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -405466,36 +401714,6 @@ func XTclBN_mp_init_set(tls *libc.TLS, a uintptr, b Tmp_digit) (r Tmp_err) {
 	}
 	XTclBN_mp_set(tls, a, b)
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf125(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf125(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf125(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -405527,36 +401745,6 @@ func XTclBN_mp_init_size(tls *libc.TLS, a uintptr, size int32) (r Tmp_err) {
 	(*Tmp_int)(unsafe.Pointer(a)).Falloc = size
 	(*Tmp_int)(unsafe.Pointer(a)).Fsign = m_MP_ZPOS
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf126(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf126(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf126(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -405631,36 +401819,6 @@ func XTclBN_mp_lshd(tls *libc.TLS, a uintptr, b int32) (r Tmp_err) {
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf127(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf127(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf127(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -405698,36 +401856,6 @@ LBL_ERR:
 	;
 	XTclBN_mp_clear(tls, bp)
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf128(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf128(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf128(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -405783,36 +401911,6 @@ func XTclBN_mp_mod_2d(tls *libc.TLS, a uintptr, b int32, c uintptr) (r Tmp_err) 
 	*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(c)).Fdp + uintptr(b/int32(m_MP_DIGIT_BIT))*4)) &= libc.Uint32FromInt32(1)<<uint32(b%libc.Int32FromInt32(m_MP_DIGIT_BIT)) - libc.Uint32FromInt32(1)
 	XTclBN_mp_clamp(tls, c)
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf129(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf129(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf129(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -405881,36 +401979,6 @@ func XTclBN_mp_mul(tls *libc.TLS, a uintptr, b uintptr, c uintptr) (r Tmp_err) {
 	}
 	(*Tmp_int)(unsafe.Pointer(c)).Fsign = v4
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf130(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf130(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf130(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -405994,36 +402062,6 @@ func XTclBN_mp_mul_2(tls *libc.TLS, a uintptr, b uintptr) (r1 Tmp_err) {
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf131(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf131(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf131(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -406101,36 +402139,6 @@ func XTclBN_mp_mul_2d(tls *libc.TLS, a uintptr, b int32, c uintptr) (r1 Tmp_err)
 	}
 	XTclBN_mp_clamp(tls, c)
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf132(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf132(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf132(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -406213,36 +402221,6 @@ func XTclBN_mp_mul_d(tls *libc.TLS, a uintptr, b Tmp_digit, c uintptr) (r1 Tmp_e
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf133(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf133(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf133(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -406275,36 +402253,6 @@ func XTclBN_mp_neg(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 		(*Tmp_int)(unsafe.Pointer(b)).Fsign = m_MP_ZPOS
 	}
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf134(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf134(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf134(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -406405,36 +402353,6 @@ func XTclBN_mp_or(tls *libc.TLS, a uintptr, b uintptr, c uintptr) (r Tmp_err) {
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf135(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf135(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf135(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -406503,66 +402421,6 @@ LBL_ERR:
 	;
 	XTclBN_mp_clear(tls, bp)
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf136(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf136(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf136(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf137(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf137(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf137(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -406652,36 +402510,6 @@ func XTclBN_mp_read_radix(tls *libc.TLS, a uintptr, str uintptr, radix int32) (r
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf138(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf138(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf138(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -406751,36 +402579,6 @@ func XTclBN_mp_rshd(tls *libc.TLS, a uintptr, b int32) {
 	*(*int32)(unsafe.Pointer(a)) -= b
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf139(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf139(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf139(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -406817,36 +402615,6 @@ func XTclBN_mp_set(tls *libc.TLS, a uintptr, b Tmp_digit) {
 	}
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf140(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf140(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf140(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -406877,36 +402645,6 @@ func XTclBN_mp_shrink(tls *libc.TLS, a uintptr) (r Tmp_err) {
 		(*Tmp_int)(unsafe.Pointer(a)).Falloc = alloc
 	}
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf141(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf141(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf141(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -406941,36 +402679,6 @@ func XTclBN_mp_sqr(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 	}
 	(*Tmp_int)(unsafe.Pointer(b)).Fsign = m_MP_ZPOS
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf142(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf142(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf142(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* Documentation on decimal float math
@@ -407109,36 +402817,6 @@ E2:
 	return err
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf143(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf143(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf143(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -407187,36 +402865,6 @@ func XTclBN_mp_sub(tls *libc.TLS, a uintptr, b uintptr, c uintptr) (r Tmp_err) {
 		}
 	}
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf144(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf144(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf144(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -407318,36 +402966,6 @@ func XTclBN_mp_sub_d(tls *libc.TLS, a uintptr, b Tmp_digit, c uintptr) (r Tmp_er
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf145(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf145(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf145(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -407376,36 +402994,6 @@ func XTclBN_mp_signed_rsh(tls *libc.TLS, a uintptr, b int32, c uintptr) (r Tmp_e
 		v1 = res
 	}
 	return v1
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf146(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf146(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf146(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -407465,36 +403053,6 @@ LBL_ERR:
 	;
 	XTclBN_mp_clear(tls, bp)
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf147(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf147(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf147(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -407598,36 +403156,6 @@ LBL_ERR:
 	return err
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf148(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf148(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf148(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -407649,36 +403177,6 @@ func XTclBN_mp_unsigned_bin_size(tls *libc.TLS, a uintptr) (r Tsize_t) {
 		v1 = 0
 	}
 	return size/uint64(8) + uint64(v1)
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf149(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf149(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf149(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -407779,36 +403277,6 @@ func XTclBN_mp_xor(tls *libc.TLS, a uintptr, b uintptr, c uintptr) (r Tmp_err) {
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf150(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf150(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf150(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -407837,36 +403305,6 @@ func XTclBN_mp_zero(tls *libc.TLS, a uintptr) {
 		zm_ += 4
 		*(*Tmp_digit)(unsafe.Pointer(v2)) = uint32(0)
 	}
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf151(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf151(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf151(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -407980,36 +403418,6 @@ func XTclBN_s_mp_add(tls *libc.TLS, a uintptr, b uintptr, c uintptr) (r Tmp_err)
 	}
 	XTclBN_mp_clamp(tls, c)
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf152(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf152(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf152(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -408157,36 +403565,6 @@ LBL_ERR:
 	;
 	XTclBN_mp_clear_multi(tls, bp, libc.VaList(bp+104, bp+24, bp+72, libc.UintptrFromInt32(0)))
 	return err
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf153(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf153(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf153(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -408419,36 +403797,6 @@ LBL_ERR:
 	return r
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf154(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf154(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf154(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -408606,36 +403954,6 @@ LBL_ERR:
 	return r
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf155(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf155(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf155(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -408734,36 +404052,6 @@ func XTclBN_s_mp_mul_digs(tls *libc.TLS, a uintptr, b uintptr, c uintptr, digs i
 	XTclBN_mp_exch(tls, bp, c)
 	XTclBN_mp_clear(tls, bp)
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf156(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf156(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf156(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -408900,36 +404188,6 @@ func XTclBN_fast_s_mp_mul_digs(tls *libc.TLS, a uintptr, b uintptr, c uintptr, d
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf157(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf157(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf157(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -408953,36 +404211,6 @@ func XTclBN_s_mp_reverse(tls *libc.TLS, s uintptr, len1 Tsize_t) {
 		ix++
 		iy--
 	}
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf158(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf158(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf158(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -409122,36 +404350,6 @@ func XTclBN_fast_s_mp_sqr(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 	return m_MP_OKAY
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf159(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf159(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf159(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -409235,36 +404433,6 @@ func XTclBN_s_mp_sqr(tls *libc.TLS, a uintptr, b uintptr) (r1 Tmp_err) {
 	XTclBN_mp_exch(tls, bp, b)
 	XTclBN_mp_clear(tls, bp)
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf160(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf160(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf160(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -409363,36 +404531,6 @@ func XTclBN_s_mp_sub(tls *libc.TLS, a uintptr, b uintptr, c uintptr) (r Tmp_err)
 	}
 	XTclBN_mp_clamp(tls, c)
 	return m_MP_OKAY
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf161(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf161(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf161(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /* deprecated functions */
@@ -409825,36 +404963,6 @@ LBL_ERRa0:
 	return err
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf162(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf162(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf162(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* deprecated functions */
 
 /* code-generating macros */
@@ -410260,36 +405368,6 @@ const m_XTYPF_NOBLOCK = 2
 const m_XTYPF_NODATA = 0x0004
 const m_XTYP_MASK = 0x00F0
 const m_XTYP_SHIFT = 4
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf163(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf163(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf163(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TDDEACK = struct {
 	F__ccgo0 uint16
@@ -412435,36 +407513,6 @@ const m_SUBLANG_DEFAULT1 = 1
 const m_WM_CREATE4 = 0x0001
 const m_WM_WININICHANGE1 = 26
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf164(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf164(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf164(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Local Variables:
  * mode: c
@@ -413882,36 +408930,6 @@ const m_SUBLANG_DEFAULT2 = 0x01
 const m_TCL_EVAL_GLOBAL20 = 0x020000
 const m_WM_WININICHANGE2 = 0x001A
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf165(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf165(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf165(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * Use our own isDigit to avoid linking to libc on windows
  */
@@ -414004,36 +409022,6 @@ func XTcl_InitStubs(tls *libc.TLS, interp uintptr, version uintptr, exact int32)
 	return actualVersion
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf166(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf166(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf166(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  *----------------------------------------------------------------------
  *
@@ -414083,36 +409071,6 @@ func XTclTomMathInitializeStubs(tls *libc.TLS, interp uintptr, version uintptr, 
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ResetResult})))(tls, interp)
 	(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+16, __ccgo_ts+74436, packageName, __ccgo_ts+74451, version, __ccgo_ts+74472, actualVersion, __ccgo_ts+74490, errMsg, libc.UintptrFromInt32(0)))
 	return libc.UintptrFromInt32(0)
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf167(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv t__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X_vsnwprintf(tls, __stream, __count, __format, __local_argv)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf167(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv t__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf167(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /*
