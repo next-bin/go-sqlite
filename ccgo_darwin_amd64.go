@@ -1,7 +1,6 @@
-// Code generated for darwin/amd64 by 'generator -hide __darwin_check_fd_set -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl8.6.a -lz', DO NOT EDIT.
+// Code generated for darwin/amd64 by 'generator -hide __darwin_check_fd_set -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/darwin/amd64 -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl8.6.a -lz', DO NOT EDIT.
 
 //go:build darwin && amd64
-// +build darwin,amd64
 
 package libtcl8_6
 
