@@ -1,7 +1,6 @@
 // Code generated for linux/loong64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3460000 -ignore-unsupported-alignment -o mptest/ccgo_linux_loong64.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && loong64
-// +build linux,loong64
 
 package main
 
@@ -630,16 +629,14 @@ const _GNU_SOURCE = 1
 const _IOFBF = 0
 const _IOLBF = 1
 const _IONBF = 2
-const _LOONGARCH_ARCH = "loongarch64"
-const _LOONGARCH_ARCH_LOONGARCH64 = 1
+const _LOONGARCH_ARCH = "la64v1.0"
 const _LOONGARCH_FPSET = 32
 const _LOONGARCH_SIM = "_ABILP64"
 const _LOONGARCH_SPFPSET = 32
 const _LOONGARCH_SZINT = 32
 const _LOONGARCH_SZLONG = 64
 const _LOONGARCH_SZPTR = 64
-const _LOONGARCH_TUNE = "loongarch64"
-const _LOONGARCH_TUNE_LOONGARCH64 = 1
+const _LOONGARCH_TUNE = "generic"
 const _LP64 = 1
 const _PC_2_SYMLINKS = 20
 const _PC_ALLOC_SIZE_MIN = 18
@@ -1001,9 +998,8 @@ const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const __GCC_IEC_559 = 2
 const __GCC_IEC_559_COMPLEX = 2
 const __GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
-const __GNUC_MINOR__ = 0
-const __GNUC_PATCHLEVEL__ = 1
-const __GNUC_RH_RELEASE__ = 0
+const __GNUC_MINOR__ = 1
+const __GNUC_PATCHLEVEL__ = 0
 const __GNUC_STDC_INLINE__ = 1
 const __GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-32LE"
 const __GNUC__ = 14
@@ -1077,8 +1073,6 @@ const __LONG_LONG_WIDTH__ = 64
 const __LONG_MAX = 0x7fffffffffffffff
 const __LONG_MAX__ = 0x7fffffffffffffff
 const __LONG_WIDTH__ = 64
-const __LOONGARCH_ARCH_LOONGARCH64 = 1
-const __LOONGARCH_TUNE_LOONGARCH64 = 1
 const __LP64__ = 1
 const __NO_INLINE__ = 1
 const __ORDER_BIG_ENDIAN__ = 4321
@@ -1212,7 +1206,7 @@ const __UTA_FBIT__ = 64
 const __UTA_IBIT__ = 64
 const __UTQ_FBIT__ = 128
 const __UTQ_IBIT__ = 0
-const __VERSION__ = "14.0.1 20240411 (Red Hat 14.0.1-0)"
+const __VERSION__ = "14.1.0 20240507 (Red Hat 14.1.0-1)"
 const __WCHAR_MAX__ = 0x7fffffff
 const __WCHAR_TYPE__ = "int"
 const __WCHAR_WIDTH__ = 32
@@ -1231,13 +1225,18 @@ const __linux = 1
 const __linux__ = 1
 const __loongarch64 = 1
 const __loongarch__ = 1
-const __loongarch_arch = "loongarch64"
+const __loongarch_arch = "la64v1.0"
 const __loongarch_double_float = 1
 const __loongarch_frlen = 64
 const __loongarch_grlen = 64
 const __loongarch_hard_float = 1
 const __loongarch_lp64 = 1
-const __loongarch_tune = "loongarch64"
+const __loongarch_simd = 1
+const __loongarch_simd_width = 128
+const __loongarch_sx = 1
+const __loongarch_tune = "generic"
+const __loongarch_version_major = 1
+const __loongarch_version_minor = 0
 const __restrict = "restrict"
 const __restrict_arr = "restrict"
 const __unix = 1
