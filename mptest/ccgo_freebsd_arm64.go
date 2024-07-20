@@ -1,7 +1,6 @@
 // Code generated for freebsd/arm64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3460000 -ignore-unsupported-alignment -o mptest/ccgo_freebsd_arm64.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build freebsd && arm64
-// +build freebsd,arm64
 
 package main
 
