@@ -1,6 +1,6 @@
-// Code generated for linux/amd64 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_linux_amd64.go -I /tmp/libsqlite3/sqlite-src-3460000 /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for windows/386 by 'generator --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -map gcc=i686-w64-mingw32-gcc -o speedtest1/ccgo_windows_386.go /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
-//go:build linux && amd64
+//go:build windows && 386
 
 package main
 
@@ -17,43 +17,114 @@ var (
 	_ unsafe.Pointer
 )
 
-const BIG_ENDIAN = "__BIG_ENDIAN"
-const BUFSIZ = 1024
-const BYTE_ORDER = "__BYTE_ORDER"
+const BUFSIZ = 512
+const E2BIG = 7
+const EACCES = 13
+const EADDRINUSE = 100
+const EADDRNOTAVAIL = 101
+const EAFNOSUPPORT = 102
+const EAGAIN = 11
+const EALREADY = 103
+const EBADF = 9
+const EBADMSG = 104
+const EBUSY = 16
+const ECANCELED = 105
+const ECHILD = 10
+const ECONNABORTED = 106
+const ECONNREFUSED = 107
+const ECONNRESET = 108
+const EDEADLK = 36
+const EDEADLOCK = "EDEADLK"
+const EDESTADDRREQ = 109
+const EDOM = 33
+const EEXIST = 17
+const EFAULT = 14
+const EFBIG = 27
+const EHOSTUNREACH = 110
+const EIDRM = 111
+const EILSEQ = 42
+const EINPROGRESS = 112
+const EINTR = 4
+const EINVAL = 22
+const EIO = 5
+const EISCONN = 113
+const EISDIR = 21
+const ELOOP = 114
+const EMFILE = 24
+const EMLINK = 31
+const EMSGSIZE = 115
+const ENAMETOOLONG = 38
+const ENETDOWN = 116
+const ENETRESET = 117
+const ENETUNREACH = 118
+const ENFILE = 23
+const ENOBUFS = 119
+const ENODATA = 120
+const ENODEV = 19
+const ENOENT = 2
+const ENOEXEC = 8
+const ENOFILE = "ENOENT"
+const ENOLCK = 39
+const ENOLINK = 121
+const ENOMEM = 12
+const ENOMSG = 122
+const ENOPROTOOPT = 123
+const ENOSPC = 28
+const ENOSR = 124
+const ENOSTR = 125
+const ENOSYS = 40
+const ENOTCONN = 126
+const ENOTDIR = 20
+const ENOTEMPTY = 41
+const ENOTRECOVERABLE = 127
+const ENOTSOCK = 128
+const ENOTSUP = 129
+const ENOTTY = 25
+const ENXIO = 6
+const EOPNOTSUPP = 130
+const EOVERFLOW = 132
+const EOWNERDEAD = 133
+const EPERM = 1
+const EPIPE = 32
+const EPROTO = 134
+const EPROTONOSUPPORT = 135
+const EPROTOTYPE = 136
+const ERANGE = 34
+const EROFS = 30
+const ESPIPE = 29
+const ESRCH = 3
+const ETIME = 137
+const ETIMEDOUT = 138
+const ETXTBSY = 139
+const EWOULDBLOCK = 140
+const EXDEV = 18
 const EXIT_FAILURE = 1
 const EXIT_SUCCESS = 0
-const FD_SETSIZE = 1024
-const FILENAME_MAX = 4096
-const FOPEN_MAX = 1000
+const FILENAME_MAX = 260
+const FOPEN_MAX = 20
 const FTS5_TOKENIZE_AUX = 0x0008
 const FTS5_TOKENIZE_DOCUMENT = 0x0004
 const FTS5_TOKENIZE_PREFIX = 0x0002
 const FTS5_TOKENIZE_QUERY = 0x0001
 const FTS5_TOKEN_COLOCATED = 0x0001
 const FULLY_WITHIN = 2
-const F_LOCK = 1
 const F_OK = 0
-const F_TEST = 3
-const F_TLOCK = 2
-const F_ULOCK = 0
-const LITTLE_ENDIAN = "__LITTLE_ENDIAN"
-const L_INCR = 1
-const L_SET = 0
-const L_XTND = 2
-const L_ctermid = 20
-const L_cuserid = 20
-const L_tmpnam = 20
+const L_tmpnam_s = "L_tmpnam"
+const MB_LEN_MAX = 5
+const MINGW_HAS_DDK_H = 1
+const MINGW_HAS_SECURE_API = 1
 const NAMEWIDTH = 60
 const NDEBUG = 1
 const NOT_WITHIN = 0
 const PARTLY_WITHIN = 1
-const PDP_ENDIAN = "__PDP_ENDIAN"
-const POSIX_CLOSE_RESTART = 0
-const P_tmpdir = "/tmp"
-const RAND_MAX = 0x7fffffff
+const PATH_MAX = 260
+const P_tmpdir = "_P_tmpdir"
+const RAND_MAX = 0x7fff
 const R_OK = 4
-const SEEK_DATA = 3
-const SEEK_HOLE = 4
+const SEEK_CUR = 1
+const SEEK_END = 2
+const SEEK_SET = 0
+const SIZE_MAX = "UINT_MAX"
 const SQLITE3_TEXT = 3
 const SQLITE_ABORT = 4
 const SQLITE_ACCESS_EXISTS = 0
@@ -300,6 +371,7 @@ const SQLITE_NOTFOUND = 12
 const SQLITE_NOTICE = 27
 const SQLITE_NULL = 5
 const SQLITE_OK = 0
+const SQLITE_OMIT_SEH = 1
 const SQLITE_OPEN_AUTOPROXY = 0x00000020
 const SQLITE_OPEN_CREATE = 4
 const SQLITE_OPEN_DELETEONCLOSE = 0x00000008
@@ -323,6 +395,7 @@ const SQLITE_OPEN_TEMP_JOURNAL = 0x00001000
 const SQLITE_OPEN_TRANSIENT_DB = 0x00000400
 const SQLITE_OPEN_URI = 0x00000040
 const SQLITE_OPEN_WAL = 0x00080000
+const SQLITE_OS_WIN = 1
 const SQLITE_PERM = 3
 const SQLITE_PRAGMA = 19
 const SQLITE_PREPARE_NORMALIZE = 0x02
@@ -443,270 +516,115 @@ const SQLITE_VTAB_USES_ALL_SCHEMAS = 4
 const SQLITE_WARNING = 28
 const SQLITE_WIN32_DATA_DIRECTORY_TYPE = 1
 const SQLITE_WIN32_TEMP_DIRECTORY_TYPE = 2
+const SSIZE_MAX = "INT_MAX"
 const STDERR_FILENO = 2
 const STDIN_FILENO = 0
 const STDOUT_FILENO = 1
-const TMP_MAX = 10000
-const WNOHANG = 1
-const WUNTRACED = 2
+const STRUNCATE = 80
+const SYS_OPEN = "_SYS_OPEN"
+const TMP_MAX = 32767
+const TMP_MAX_S = "TMP_MAX"
+const USE___UUIDOF = 0
+const WIN32 = 1
+const WINNT = 1
 const W_OK = 2
 const X_OK = 1
-const _CS_GNU_LIBC_VERSION = 2
-const _CS_GNU_LIBPTHREAD_VERSION = 3
-const _CS_PATH = 0
-const _CS_POSIX_V5_WIDTH_RESTRICTED_ENVS = 4
-const _CS_POSIX_V6_ILP32_OFF32_CFLAGS = 1116
-const _CS_POSIX_V6_ILP32_OFF32_LDFLAGS = 1117
-const _CS_POSIX_V6_ILP32_OFF32_LIBS = 1118
-const _CS_POSIX_V6_ILP32_OFF32_LINTFLAGS = 1119
-const _CS_POSIX_V6_ILP32_OFFBIG_CFLAGS = 1120
-const _CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS = 1121
-const _CS_POSIX_V6_ILP32_OFFBIG_LIBS = 1122
-const _CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS = 1123
-const _CS_POSIX_V6_LP64_OFF64_CFLAGS = 1124
-const _CS_POSIX_V6_LP64_OFF64_LDFLAGS = 1125
-const _CS_POSIX_V6_LP64_OFF64_LIBS = 1126
-const _CS_POSIX_V6_LP64_OFF64_LINTFLAGS = 1127
-const _CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS = 1128
-const _CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS = 1129
-const _CS_POSIX_V6_LPBIG_OFFBIG_LIBS = 1130
-const _CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS = 1131
-const _CS_POSIX_V6_WIDTH_RESTRICTED_ENVS = 1
-const _CS_POSIX_V7_ILP32_OFF32_CFLAGS = 1132
-const _CS_POSIX_V7_ILP32_OFF32_LDFLAGS = 1133
-const _CS_POSIX_V7_ILP32_OFF32_LIBS = 1134
-const _CS_POSIX_V7_ILP32_OFF32_LINTFLAGS = 1135
-const _CS_POSIX_V7_ILP32_OFFBIG_CFLAGS = 1136
-const _CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS = 1137
-const _CS_POSIX_V7_ILP32_OFFBIG_LIBS = 1138
-const _CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS = 1139
-const _CS_POSIX_V7_LP64_OFF64_CFLAGS = 1140
-const _CS_POSIX_V7_LP64_OFF64_LDFLAGS = 1141
-const _CS_POSIX_V7_LP64_OFF64_LIBS = 1142
-const _CS_POSIX_V7_LP64_OFF64_LINTFLAGS = 1143
-const _CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS = 1144
-const _CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS = 1145
-const _CS_POSIX_V7_LPBIG_OFFBIG_LIBS = 1146
-const _CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS = 1147
-const _CS_POSIX_V7_THREADS_CFLAGS = 1150
-const _CS_POSIX_V7_THREADS_LDFLAGS = 1151
-const _CS_POSIX_V7_WIDTH_RESTRICTED_ENVS = 5
-const _CS_V6_ENV = 1148
-const _CS_V7_ENV = 1149
-const _GNU_SOURCE = 1
-const _IOFBF = 0
-const _IOLBF = 1
-const _IONBF = 2
-const _LP64 = 1
-const _PC_2_SYMLINKS = 20
-const _PC_ALLOC_SIZE_MIN = 18
-const _PC_ASYNC_IO = 10
-const _PC_CHOWN_RESTRICTED = 6
-const _PC_FILESIZEBITS = 13
-const _PC_LINK_MAX = 0
-const _PC_MAX_CANON = 1
-const _PC_MAX_INPUT = 2
-const _PC_NAME_MAX = 3
-const _PC_NO_TRUNC = 7
-const _PC_PATH_MAX = 4
-const _PC_PIPE_BUF = 5
-const _PC_PRIO_IO = 11
-const _PC_REC_INCR_XFER_SIZE = 14
-const _PC_REC_MAX_XFER_SIZE = 15
-const _PC_REC_MIN_XFER_SIZE = 16
-const _PC_REC_XFER_ALIGN = 17
-const _PC_SOCK_MAXBUF = 12
-const _PC_SYMLINK_MAX = 19
-const _PC_SYNC_IO = 9
-const _PC_VDISABLE = 8
-const _POSIX2_C_BIND = "_POSIX_VERSION"
-const _POSIX2_VERSION = "_POSIX_VERSION"
-const _POSIX_ADVISORY_INFO = "_POSIX_VERSION"
-const _POSIX_ASYNCHRONOUS_IO = "_POSIX_VERSION"
-const _POSIX_BARRIERS = "_POSIX_VERSION"
-const _POSIX_CHOWN_RESTRICTED = 1
-const _POSIX_CLOCK_SELECTION = "_POSIX_VERSION"
-const _POSIX_CPUTIME = "_POSIX_VERSION"
-const _POSIX_FSYNC = "_POSIX_VERSION"
-const _POSIX_IPV6 = "_POSIX_VERSION"
-const _POSIX_JOB_CONTROL = 1
-const _POSIX_MAPPED_FILES = "_POSIX_VERSION"
-const _POSIX_MEMLOCK = "_POSIX_VERSION"
-const _POSIX_MEMLOCK_RANGE = "_POSIX_VERSION"
-const _POSIX_MEMORY_PROTECTION = "_POSIX_VERSION"
-const _POSIX_MESSAGE_PASSING = "_POSIX_VERSION"
-const _POSIX_MONOTONIC_CLOCK = "_POSIX_VERSION"
-const _POSIX_NO_TRUNC = 1
-const _POSIX_RAW_SOCKETS = "_POSIX_VERSION"
-const _POSIX_READER_WRITER_LOCKS = "_POSIX_VERSION"
-const _POSIX_REALTIME_SIGNALS = "_POSIX_VERSION"
-const _POSIX_REGEXP = 1
-const _POSIX_SAVED_IDS = 1
-const _POSIX_SEMAPHORES = "_POSIX_VERSION"
-const _POSIX_SHARED_MEMORY_OBJECTS = "_POSIX_VERSION"
-const _POSIX_SHELL = 1
-const _POSIX_SPAWN = "_POSIX_VERSION"
-const _POSIX_SPIN_LOCKS = "_POSIX_VERSION"
-const _POSIX_THREADS = "_POSIX_VERSION"
-const _POSIX_THREAD_ATTR_STACKADDR = "_POSIX_VERSION"
-const _POSIX_THREAD_ATTR_STACKSIZE = "_POSIX_VERSION"
-const _POSIX_THREAD_CPUTIME = "_POSIX_VERSION"
-const _POSIX_THREAD_PRIORITY_SCHEDULING = "_POSIX_VERSION"
-const _POSIX_THREAD_PROCESS_SHARED = "_POSIX_VERSION"
-const _POSIX_THREAD_SAFE_FUNCTIONS = "_POSIX_VERSION"
-const _POSIX_TIMEOUTS = "_POSIX_VERSION"
-const _POSIX_TIMERS = "_POSIX_VERSION"
-const _POSIX_V6_LP64_OFF64 = 1
-const _POSIX_V7_LP64_OFF64 = 1
-const _POSIX_VDISABLE = 0
-const _POSIX_VERSION = 200809
-const _SC_2_CHAR_TERM = 95
-const _SC_2_C_BIND = 47
-const _SC_2_C_DEV = 48
-const _SC_2_FORT_DEV = 49
-const _SC_2_FORT_RUN = 50
-const _SC_2_LOCALEDEF = 52
-const _SC_2_PBS = 168
-const _SC_2_PBS_ACCOUNTING = 169
-const _SC_2_PBS_CHECKPOINT = 175
-const _SC_2_PBS_LOCATE = 170
-const _SC_2_PBS_MESSAGE = 171
-const _SC_2_PBS_TRACK = 172
-const _SC_2_SW_DEV = 51
-const _SC_2_UPE = 97
-const _SC_2_VERSION = 46
-const _SC_ADVISORY_INFO = 132
-const _SC_AIO_LISTIO_MAX = 23
-const _SC_AIO_MAX = 24
-const _SC_AIO_PRIO_DELTA_MAX = 25
-const _SC_ARG_MAX = 0
-const _SC_ASYNCHRONOUS_IO = 12
-const _SC_ATEXIT_MAX = 87
-const _SC_AVPHYS_PAGES = 86
-const _SC_BARRIERS = 133
-const _SC_BC_BASE_MAX = 36
-const _SC_BC_DIM_MAX = 37
-const _SC_BC_SCALE_MAX = 38
-const _SC_BC_STRING_MAX = 39
-const _SC_CHILD_MAX = 1
-const _SC_CLK_TCK = 2
-const _SC_CLOCK_SELECTION = 137
-const _SC_COLL_WEIGHTS_MAX = 40
-const _SC_CPUTIME = 138
-const _SC_DELAYTIMER_MAX = 26
-const _SC_EXPR_NEST_MAX = 42
-const _SC_FSYNC = 15
-const _SC_GETGR_R_SIZE_MAX = 69
-const _SC_GETPW_R_SIZE_MAX = 70
-const _SC_HOST_NAME_MAX = 180
-const _SC_IOV_MAX = 60
-const _SC_IPV6 = 235
-const _SC_JOB_CONTROL = 7
-const _SC_LINE_MAX = 43
-const _SC_LOGIN_NAME_MAX = 71
-const _SC_MAPPED_FILES = 16
-const _SC_MEMLOCK = 17
-const _SC_MEMLOCK_RANGE = 18
-const _SC_MEMORY_PROTECTION = 19
-const _SC_MESSAGE_PASSING = 20
-const _SC_MINSIGSTKSZ = 249
-const _SC_MONOTONIC_CLOCK = 149
-const _SC_MQ_OPEN_MAX = 27
-const _SC_MQ_PRIO_MAX = 28
-const _SC_NGROUPS_MAX = 3
-const _SC_NPROCESSORS_CONF = 83
-const _SC_NPROCESSORS_ONLN = 84
-const _SC_NZERO = 109
-const _SC_OPEN_MAX = 4
-const _SC_PAGESIZE = 30
-const _SC_PAGE_SIZE = 30
-const _SC_PASS_MAX = 88
-const _SC_PHYS_PAGES = 85
-const _SC_PRIORITIZED_IO = 13
-const _SC_PRIORITY_SCHEDULING = 10
-const _SC_RAW_SOCKETS = 236
-const _SC_READER_WRITER_LOCKS = 153
-const _SC_REALTIME_SIGNALS = 9
-const _SC_REGEXP = 155
-const _SC_RE_DUP_MAX = 44
-const _SC_RTSIG_MAX = 31
-const _SC_SAVED_IDS = 8
-const _SC_SEMAPHORES = 21
-const _SC_SEM_NSEMS_MAX = 32
-const _SC_SEM_VALUE_MAX = 33
-const _SC_SHARED_MEMORY_OBJECTS = 22
-const _SC_SHELL = 157
-const _SC_SIGQUEUE_MAX = 34
-const _SC_SIGSTKSZ = 250
-const _SC_SPAWN = 159
-const _SC_SPIN_LOCKS = 154
-const _SC_SPORADIC_SERVER = 160
-const _SC_SS_REPL_MAX = 241
-const _SC_STREAMS = 174
-const _SC_STREAM_MAX = 5
-const _SC_SYMLOOP_MAX = 173
-const _SC_SYNCHRONIZED_IO = 14
-const _SC_THREADS = 67
-const _SC_THREAD_ATTR_STACKADDR = 77
-const _SC_THREAD_ATTR_STACKSIZE = 78
-const _SC_THREAD_CPUTIME = 139
-const _SC_THREAD_DESTRUCTOR_ITERATIONS = 73
-const _SC_THREAD_KEYS_MAX = 74
-const _SC_THREAD_PRIORITY_SCHEDULING = 79
-const _SC_THREAD_PRIO_INHERIT = 80
-const _SC_THREAD_PRIO_PROTECT = 81
-const _SC_THREAD_PROCESS_SHARED = 82
-const _SC_THREAD_ROBUST_PRIO_INHERIT = 247
-const _SC_THREAD_ROBUST_PRIO_PROTECT = 248
-const _SC_THREAD_SAFE_FUNCTIONS = 68
-const _SC_THREAD_SPORADIC_SERVER = 161
-const _SC_THREAD_STACK_MIN = 75
-const _SC_THREAD_THREADS_MAX = 76
-const _SC_TIMEOUTS = 164
-const _SC_TIMERS = 11
-const _SC_TIMER_MAX = 35
-const _SC_TRACE = 181
-const _SC_TRACE_EVENT_FILTER = 182
-const _SC_TRACE_EVENT_NAME_MAX = 242
-const _SC_TRACE_INHERIT = 183
-const _SC_TRACE_LOG = 184
-const _SC_TRACE_NAME_MAX = 243
-const _SC_TRACE_SYS_MAX = 244
-const _SC_TRACE_USER_EVENT_MAX = 245
-const _SC_TTY_NAME_MAX = 72
-const _SC_TYPED_MEMORY_OBJECTS = 165
-const _SC_TZNAME_MAX = 6
-const _SC_UIO_MAXIOV = 60
-const _SC_V6_ILP32_OFF32 = 176
-const _SC_V6_ILP32_OFFBIG = 177
-const _SC_V6_LP64_OFF64 = 178
-const _SC_V6_LPBIG_OFFBIG = 179
-const _SC_V7_ILP32_OFF32 = 237
-const _SC_V7_ILP32_OFFBIG = 238
-const _SC_V7_LP64_OFF64 = 239
-const _SC_V7_LPBIG_OFFBIG = 240
-const _SC_VERSION = 29
-const _SC_XBS5_ILP32_OFF32 = 125
-const _SC_XBS5_ILP32_OFFBIG = 126
-const _SC_XBS5_LP64_OFF64 = 127
-const _SC_XBS5_LPBIG_OFFBIG = 128
-const _SC_XOPEN_CRYPT = 92
-const _SC_XOPEN_ENH_I18N = 93
-const _SC_XOPEN_LEGACY = 129
-const _SC_XOPEN_REALTIME = 130
-const _SC_XOPEN_REALTIME_THREADS = 131
-const _SC_XOPEN_SHM = 94
-const _SC_XOPEN_STREAMS = 246
-const _SC_XOPEN_UNIX = 91
-const _SC_XOPEN_VERSION = 89
-const _SC_XOPEN_XCU_VERSION = 90
-const _SC_XOPEN_XPG2 = 98
-const _SC_XOPEN_XPG3 = 99
-const _SC_XOPEN_XPG4 = 100
-const _STDC_PREDEF_H = 1
-const _XOPEN_ENH_I18N = 1
-const _XOPEN_UNIX = 1
-const _XOPEN_VERSION = 700
+const _ALLOCA_S_HEAP_MARKER = 56797
+const _ALLOCA_S_MARKER_SIZE = 8
+const _ALLOCA_S_STACK_MARKER = 0xCCCC
+const _ALLOCA_S_THRESHOLD = 1024
+const _ANONYMOUS_STRUCT = "__MINGW_EXTENSION"
+const _ANONYMOUS_UNION = "__MINGW_EXTENSION"
+const _ARGMAX = 100
+const _A_ARCH = 0x20
+const _A_HIDDEN = 0x02
+const _A_NORMAL = 0x00
+const _A_RDONLY = 0x01
+const _A_SUBDIR = 0x10
+const _A_SYSTEM = 0x04
+const _BLANK = 0x40
+const _CALL_REPORTFAULT = 0x2
+const _CONTROL = 0x20
+const _CRTIMP2 = "_CRTIMP"
+const _CRTIMP_ALTERNATIVE = "_CRTIMP"
+const _CRTIMP_NOIA64 = "_CRTIMP"
+const _CRTIMP_PURE = "_CRTIMP"
+const _CRT_INTERNAL_LOCAL_PRINTF_OPTIONS = "_CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS"
+const _CRT_INTERNAL_LOCAL_SCANF_OPTIONS = "_CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS"
+const _CRT_INTERNAL_PRINTF_LEGACY_MSVCRT_COMPATIBILITY = "0x0008U"
+const _CRT_INTERNAL_PRINTF_LEGACY_THREE_DIGIT_EXPONENTS = "0x0010U"
+const _CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION = "0x0001U"
+const _CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS = "0x0004U"
+const _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = "0x0002U"
+const _CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY = "0x0004U"
+const _CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = "0x0002U"
+const _CRT_INTERNAL_SCANF_SECURECRT = "0x0001U"
+const _DIGIT = 0x4
+const _FILE_OFFSET_BITS = 64
+const _FREEENTRY = 0
+const _HEAP_MAXREQ = 0xFFFFFFE0
+const _HEX = 0x80
+const _I16_MAX = 32767
+const _I32_MAX = 2147483647
+const _I64_MAX = "9223372036854775807ll"
+const _I8_MAX = 127
+const _ILP32 = 1
+const _INTEGRAL_MAX_BITS = 64
+const _IOB_ENTRIES = 20
+const _IOEOF = 0x0010
+const _IOERR = 0x0020
+const _IOFBF = 0x0000
+const _IOLBF = 0x0040
+const _IOMYBUF = 0x0008
+const _IONBF = 0x0004
+const _IOREAD = 0x0001
+const _IORW = 0x0080
+const _IOSTRG = 0x0040
+const _IOWRT = 0x0002
+const _LEADBYTE = 0x8000
+const _LOWER = 0x2
+const _MAX_DIR = 256
+const _MAX_DRIVE = 3
+const _MAX_ENV = 32767
+const _MAX_EXT = 256
+const _MAX_FNAME = 256
+const _MAX_PATH = 260
+const _MAX_WAIT_MALLOC_CRT = 60000
+const _MCRTIMP = "_CRTIMP"
+const _MRTIMP2 = "_CRTIMP"
+const _M_IX86 = 600
+const _NFILE = "_NSTREAM_"
+const _NLSCMPERROR = 2147483647
+const _NSTREAM_ = 512
+const _OLD_P_OVERLAY = 2
+const _OUT_TO_DEFAULT = 0
+const _OUT_TO_MSGBOX = 2
+const _OUT_TO_STDERR = 1
+const _PUNCT = 0x10
+const _P_DETACH = 4
+const _P_NOWAIT = 1
+const _P_NOWAITO = 3
+const _P_OVERLAY = 2
+const _P_WAIT = 0
+const _P_tmpdir = "\\\\"
+const _REPORT_ERRMODE = 3
+const _SECURECRT_FILL_BUFFER_PATTERN = 0xFD
+const _SPACE = 0x8
+const _SYS_OPEN = 20
+const _TWO_DIGIT_EXPONENT = 0x1
+const _UI16_MAX = "0xffffu"
+const _UI32_MAX = "0xffffffffu"
+const _UI64_MAX = "0xffffffffffffffffull"
+const _UI8_MAX = "0xffu"
+const _UPPER = 0x1
+const _USEDENTRY = 1
+const _WAIT_CHILD = 0
+const _WAIT_GRANDCHILD = 1
+const _WConst_return = "_CONST_RETURN"
+const _WIN32 = 1
+const _WIN32_WINNT = 0xa00
+const _WRITE_ABORT_MSG = 0x1
+const _X86_ = 1
 const __ATOMIC_ACQUIRE = 2
 const __ATOMIC_ACQ_REL = 4
 const __ATOMIC_CONSUME = 1
@@ -716,11 +634,11 @@ const __ATOMIC_RELAXED = 0
 const __ATOMIC_RELEASE = 3
 const __ATOMIC_SEQ_CST = 5
 const __BIGGEST_ALIGNMENT__ = 16
-const __BIG_ENDIAN = 4321
-const __BYTE_ORDER = 1234
 const __BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
+const __C89_NAMELESS = "__MINGW_EXTENSION"
 const __CCGO__ = 1
 const __CHAR_BIT__ = 8
+const __CRTDECL = "__cdecl"
 const __DBL_DECIMAL_DIG__ = 17
 const __DBL_DIG__ = 15
 const __DBL_HAS_DENORM__ = 1
@@ -751,7 +669,6 @@ const __DEC64_SUBNORMAL_MIN__ = 0.000000000000001e-383
 const __DECIMAL_BID_FORMAT__ = 1
 const __DECIMAL_DIG__ = 17
 const __DEC_EVAL_METHOD__ = 2
-const __ELF__ = 1
 const __FINITE_MATH_ONLY__ = 0
 const __FLOAT_WORD_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const __FLT128_DECIMAL_DIG__ = 36
@@ -768,20 +685,6 @@ const __FLT128_MAX_EXP__ = 16384
 const __FLT128_MAX__ = "1.18973149535723176508575932662800702e+4932"
 const __FLT128_MIN__ = 3.36210314311209350626267781732175260e-4932
 const __FLT128_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
-const __FLT16_DECIMAL_DIG__ = 5
-const __FLT16_DENORM_MIN__ = 5.96046447753906250000000000000000000e-8
-const __FLT16_DIG__ = 3
-const __FLT16_EPSILON__ = 9.76562500000000000000000000000000000e-4
-const __FLT16_HAS_DENORM__ = 1
-const __FLT16_HAS_INFINITY__ = 1
-const __FLT16_HAS_QUIET_NAN__ = 1
-const __FLT16_IS_IEC_60559__ = 2
-const __FLT16_MANT_DIG__ = 11
-const __FLT16_MAX_10_EXP__ = 4
-const __FLT16_MAX_EXP__ = 16
-const __FLT16_MAX__ = 6.55040000000000000000000000000000000e+4
-const __FLT16_MIN__ = 6.10351562500000000000000000000000000e-5
-const __FLT16_NORM_MAX__ = 6.55040000000000000000000000000000000e+4
 const __FLT32X_DECIMAL_DIG__ = 17
 const __FLT32X_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
 const __FLT32X_DIG__ = 15
@@ -842,8 +745,8 @@ const __FLT_DECIMAL_DIG__ = 9
 const __FLT_DENORM_MIN__ = 1.40129846432481707092372958328991613e-45
 const __FLT_DIG__ = 6
 const __FLT_EPSILON__ = 1.19209289550781250000000000000000000e-7
-const __FLT_EVAL_METHOD_TS_18661_3__ = 0
-const __FLT_EVAL_METHOD__ = 0
+const __FLT_EVAL_METHOD_TS_18661_3__ = 2
+const __FLT_EVAL_METHOD__ = 2
 const __FLT_HAS_DENORM__ = 1
 const __FLT_HAS_INFINITY__ = 1
 const __FLT_HAS_QUIET_NAN__ = 1
@@ -856,7 +759,6 @@ const __FLT_MIN__ = 1.17549435082228750796873653722224568e-38
 const __FLT_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
 const __FLT_RADIX__ = 2
 const __FUNCTION__ = "__func__"
-const __FXSR__ = 1
 const __GCC_ASM_FLAG_OUTPUTS__ = 1
 const __GCC_ATOMIC_BOOL_LOCK_FREE = 2
 const __GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
@@ -879,13 +781,18 @@ const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const __GCC_IEC_559 = 2
 const __GCC_IEC_559_COMPLEX = 2
 const __GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
-const __GNUC_MINOR__ = 2
+const __GNUC_MINOR__ = 0
 const __GNUC_PATCHLEVEL__ = 0
 const __GNUC_STDC_INLINE__ = 1
-const __GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-32LE"
+const __GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-16LE"
 const __GNUC__ = 12
+const __GNU_EXTENSION = "__MINGW_EXTENSION"
+const __GOT_SECURE_LIB__ = "__STDC_SECURE_LIB__"
 const __GXX_ABI_VERSION = 1017
+const __GXX_MERGED_TYPEINFO_NAMES = 0
+const __GXX_TYPEINFO_EQUALITY_INLINE = 0
 const __HAVE_SPECULATION_SAFE_VALUE = 1
+const __ILP32__ = 1
 const __INT16_MAX__ = 0x7fff
 const __INT32_MAX__ = 0x7fffffff
 const __INT32_TYPE__ = "int"
@@ -893,12 +800,14 @@ const __INT64_MAX__ = 0x7fffffffffffffff
 const __INT8_MAX__ = 0x7f
 const __INTMAX_MAX__ = 0x7fffffffffffffff
 const __INTMAX_WIDTH__ = 64
-const __INTPTR_MAX__ = 0x7fffffffffffffff
-const __INTPTR_WIDTH__ = 64
-const __INT_FAST16_MAX__ = 0x7fffffffffffffff
-const __INT_FAST16_WIDTH__ = 64
-const __INT_FAST32_MAX__ = 0x7fffffffffffffff
-const __INT_FAST32_WIDTH__ = 64
+const __INTPTR_MAX__ = 0x7fffffff
+const __INTPTR_TYPE__ = "int"
+const __INTPTR_WIDTH__ = 32
+const __INT_FAST16_MAX__ = 0x7fff
+const __INT_FAST16_WIDTH__ = 16
+const __INT_FAST32_MAX__ = 0x7fffffff
+const __INT_FAST32_TYPE__ = "int"
+const __INT_FAST32_WIDTH__ = 32
 const __INT_FAST64_MAX__ = 0x7fffffffffffffff
 const __INT_FAST64_WIDTH__ = 64
 const __INT_FAST8_MAX__ = 0x7f
@@ -914,6 +823,7 @@ const __INT_LEAST8_MAX__ = 0x7f
 const __INT_LEAST8_WIDTH__ = 8
 const __INT_MAX__ = 0x7fffffff
 const __INT_WIDTH__ = 32
+const __LAHF_SAHF__ = 1
 const __LDBL_DECIMAL_DIG__ = 17
 const __LDBL_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
 const __LDBL_DIG__ = 15
@@ -928,27 +838,40 @@ const __LDBL_MAX_EXP__ = 1024
 const __LDBL_MAX__ = 1.79769313486231570814527423731704357e+308
 const __LDBL_MIN__ = 2.22507385850720138309023271733240406e-308
 const __LDBL_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
-const __LITTLE_ENDIAN = 1234
+const __LONG32 = "long"
 const __LONG_DOUBLE_64__ = 1
 const __LONG_LONG_MAX__ = 0x7fffffffffffffff
 const __LONG_LONG_WIDTH__ = 64
-const __LONG_MAX = 0x7fffffffffffffff
-const __LONG_MAX__ = 0x7fffffffffffffff
-const __LONG_WIDTH__ = 64
-const __LP64__ = 1
-const __MMX_WITH_SSE__ = 1
-const __MMX__ = 1
+const __LONG_MAX__ = 0x7fffffff
+const __LONG_WIDTH__ = 32
+const __MINGW32_MAJOR_VERSION = 3
+const __MINGW32_MINOR_VERSION = 11
+const __MINGW32__ = 1
+const __MINGW64_VERSION_BUGFIX = 0
+const __MINGW64_VERSION_MAJOR = 10
+const __MINGW64_VERSION_MINOR = 0
+const __MINGW64_VERSION_RC = 0
+const __MINGW64_VERSION_STATE = "alpha"
+const __MINGW_DEBUGBREAK_IMPL = 1
+const __MINGW_FORTIFY_LEVEL = 0
+const __MINGW_FORTIFY_VA_ARG = 0
+const __MINGW_HAVE_ANSI_C99_PRINTF = 1
+const __MINGW_HAVE_ANSI_C99_SCANF = 1
+const __MINGW_HAVE_WIDE_C99_PRINTF = 1
+const __MINGW_HAVE_WIDE_C99_SCANF = 1
+const __MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
+const __MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
+const __MSVCRT_VERSION__ = 0x700
+const __MSVCRT__ = 1
 const __NO_INLINE__ = 1
 const __ORDER_BIG_ENDIAN__ = 4321
 const __ORDER_LITTLE_ENDIAN__ = 1234
 const __ORDER_PDP_ENDIAN__ = 3412
-const __PDP_ENDIAN = 3412
-const __PIC__ = 2
-const __PIE__ = 2
 const __PRAGMA_REDEFINE_EXTNAME = 1
 const __PRETTY_FUNCTION__ = "__func__"
-const __PTRDIFF_MAX__ = 0x7fffffffffffffff
-const __PTRDIFF_WIDTH__ = 64
+const __PTRDIFF_MAX__ = 0x7fffffff
+const __PTRDIFF_TYPE__ = "int"
+const __PTRDIFF_WIDTH__ = 32
 const __SCHAR_MAX__ = 0x7f
 const __SCHAR_WIDTH__ = 8
 const __SEG_FS = 1
@@ -960,86 +883,107 @@ const __SIG_ATOMIC_TYPE__ = "int"
 const __SIG_ATOMIC_WIDTH__ = 32
 const __SIZEOF_DOUBLE__ = 8
 const __SIZEOF_FLOAT128__ = 16
-const __SIZEOF_FLOAT80__ = 16
+const __SIZEOF_FLOAT80__ = 12
 const __SIZEOF_FLOAT__ = 4
-const __SIZEOF_INT128__ = 16
 const __SIZEOF_INT__ = 4
 const __SIZEOF_LONG_DOUBLE__ = 8
 const __SIZEOF_LONG_LONG__ = 8
-const __SIZEOF_LONG__ = 8
-const __SIZEOF_POINTER__ = 8
-const __SIZEOF_PTRDIFF_T__ = 8
+const __SIZEOF_LONG__ = 4
+const __SIZEOF_POINTER__ = 4
+const __SIZEOF_PTRDIFF_T__ = 4
 const __SIZEOF_SHORT__ = 2
-const __SIZEOF_SIZE_T__ = 8
-const __SIZEOF_WCHAR_T__ = 4
-const __SIZEOF_WINT_T__ = 4
-const __SIZE_MAX__ = 0xffffffffffffffff
-const __SIZE_WIDTH__ = 64
-const __SSE2_MATH__ = 1
-const __SSE2__ = 1
-const __SSE_MATH__ = 1
-const __SSE__ = 1
+const __SIZEOF_SIZE_T__ = 4
+const __SIZEOF_WCHAR_T__ = 2
+const __SIZEOF_WINT_T__ = 2
+const __SIZE_MAX__ = 0xffffffff
+const __SIZE_WIDTH__ = 32
 const __STDC_HOSTED__ = 1
-const __STDC_IEC_559_COMPLEX__ = 1
-const __STDC_IEC_559__ = 1
-const __STDC_IEC_60559_BFP__ = 201404
-const __STDC_IEC_60559_COMPLEX__ = 201404
-const __STDC_ISO_10646__ = 201706
+const __STDC_SECURE_LIB__ = 200411
 const __STDC_UTF_16__ = 1
 const __STDC_UTF_32__ = 1
 const __STDC_VERSION__ = 201710
 const __STDC__ = 1
 const __UINT16_MAX__ = 0xffff
 const __UINT32_MAX__ = 0xffffffff
-const __UINT64_MAX__ = 0xffffffffffffffff
+const __UINT64_MAX__ = "0xffffffffffffffffU"
 const __UINT8_MAX__ = 0xff
-const __UINTMAX_MAX__ = 0xffffffffffffffff
-const __UINTPTR_MAX__ = 0xffffffffffffffff
-const __UINT_FAST16_MAX__ = 0xffffffffffffffff
-const __UINT_FAST32_MAX__ = 0xffffffffffffffff
-const __UINT_FAST64_MAX__ = 0xffffffffffffffff
+const __UINTMAX_MAX__ = "0xffffffffffffffffU"
+const __UINTPTR_MAX__ = 0xffffffff
+const __UINT_FAST16_MAX__ = 0xffff
+const __UINT_FAST32_MAX__ = 0xffffffff
+const __UINT_FAST64_MAX__ = "0xffffffffffffffffU"
 const __UINT_FAST8_MAX__ = 0xff
 const __UINT_LEAST16_MAX__ = 0xffff
 const __UINT_LEAST32_MAX__ = 0xffffffff
-const __UINT_LEAST64_MAX__ = 0xffffffffffffffff
+const __UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
 const __UINT_LEAST8_MAX__ = 0xff
-const __USE_TIME_BITS64 = 1
-const __VERSION__ = "12.2.0"
-const __WCHAR_MAX__ = 0x7fffffff
-const __WCHAR_TYPE__ = "int"
-const __WCHAR_WIDTH__ = 32
-const __WINT_MAX__ = 0xffffffff
+const __USER_LABEL_PREFIX__ = "_"
+const __USE_MINGW_ANSI_STDIO = 1
+const __USE_MINGW_STRTOX = 1
+const __VERSION__ = "12-win32"
+const __WCHAR_MAX__ = 0xffff
+const __WCHAR_MIN__ = 0
+const __WCHAR_WIDTH__ = 16
+const __WIN32 = 1
+const __WIN32__ = 1
+const __WINNT = 1
+const __WINNT__ = 1
+const __WINT_MAX__ = 0xffff
 const __WINT_MIN__ = 0
-const __WINT_WIDTH__ = 32
-const __amd64 = 1
-const __amd64__ = 1
-const __code_model_small__ = 1
-const __gnu_linux__ = 1
-const __inline = "inline"
-const __k8 = 1
-const __k8__ = 1
-const __linux = 1
-const __linux__ = 1
-const __pic__ = 2
-const __pie__ = 2
-const __restrict = "restrict"
-const __restrict_arr = "restrict"
-const __unix = 1
-const __unix__ = 1
-const __x86_64 = 1
-const __x86_64__ = 1
-const alloca1 = "__builtin_alloca"
-const linux = 1
-const static_assert = "_Static_assert"
-const unix = 1
+const __WINT_WIDTH__ = 16
+const __builtin_vsnprintf1 = "__mingw_vsnprintf"
+const __builtin_vsprintf = "__mingw_vsprintf"
+const __code_model_32__ = 1
+const __i386 = 1
+const __i386__ = 1
+const __i686 = 1
+const __i686__ = 1
+const __int16 = "short"
+const __int32 = "int"
+const __int8 = "char"
+const __mingw_bos_ovr = "__mingw_ovr"
+const __pentiumpro = 1
+const __pentiumpro__ = 1
+const _finddata_t = "_finddata32_t"
+const _finddatai64_t = "_finddata32i64_t"
+const _findfirst = "_findfirst32"
+const _findfirsti64 = "_findfirst32i64"
+const _findnext = "_findnext32"
+const _findnexti64 = "_findnext32i64"
+const _inline = "__inline"
+const _wP_tmpdir = "\\\\"
+const _wfinddata_t = "_wfinddata32_t"
+const _wfinddatai64_t = "_wfinddata32i64_t"
+const _wfindfirst = "_wfindfirst32"
+const _wfindfirst32i64 = "_wfindfirsti64"
+const _wfindnext = "_wfindnext32"
+const _wfindnext32i64 = "_wfindnexti64"
+const environ1 = "_environ"
+const fseeko = "fseeko64"
+const ftello = "ftello64"
+const i386 = 1
+const isascii1 = "__isascii"
+const iscsym = "__iscsym"
+const iscsymf = "__iscsymf"
+const lseek1 = "lseek64"
+const onexit_t = "_onexit_t"
+const pclose1 = "_pclose"
+const popen1 = "_popen"
+const strcasecmp1 = "_stricmp"
+const strncasecmp = "_strnicmp"
+const sys_errlist = "_sys_errlist"
+const sys_nerr = "_sys_nerr"
+const toascii = "__toascii"
+const wcswcs = "wcsstr"
+const wpopen = "_wpopen"
 
 type __builtin_va_list = uintptr
 
-type __predefined_size_t = uint64
+type __predefined_size_t = uint32
 
-type __predefined_wchar_t = int32
+type __predefined_wchar_t = uint16
 
-type __predefined_ptrdiff_t = int64
+type __predefined_ptrdiff_t = int32
 
 // C documentation
 //
@@ -1049,6 +993,8 @@ type __predefined_ptrdiff_t = int64
 //	** The available command-line options are described below:
 //	*/
 var zHelp = [2685]int8{'U', 's', 'a', 'g', 'e', ':', ' ', '%', 's', ' ', '[', '-', '-', 'o', 'p', 't', 'i', 'o', 'n', 's', ']', ' ', 'D', 'A', 'T', 'A', 'B', 'A', 'S', 'E', 10, 'O', 'p', 't', 'i', 'o', 'n', 's', ':', 10, ' ', ' ', '-', '-', 'a', 'u', 't', 'o', 'v', 'a', 'c', 'u', 'u', 'm', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', 'n', 'a', 'b', 'l', 'e', ' ', 'A', 'U', 'T', 'O', 'V', 'A', 'C', 'U', 'U', 'M', ' ', 'm', 'o', 'd', 'e', 10, ' ', ' ', '-', '-', 'b', 'i', 'g', '-', 't', 'r', 'a', 'n', 's', 'a', 'c', 't', 'i', 'o', 'n', 's', ' ', ' ', 'A', 'd', 'd', ' ', 'B', 'E', 'G', 'I', 'N', '/', 'E', 'N', 'D', ' ', 'a', 'r', 'o', 'u', 'n', 'd', ' ', 'a', 'l', 'l', ' ', 'l', 'a', 'r', 'g', 'e', ' ', 't', 'e', 's', 't', 's', 10, ' ', ' ', '-', '-', 'c', 'a', 'c', 'h', 'e', 's', 'i', 'z', 'e', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 'P', 'R', 'A', 'G', 'M', 'A', ' ', 'c', 'a', 'c', 'h', 'e', '_', 's', 'i', 'z', 'e', '=', 'N', '.', ' ', 'N', 'o', 't', 'e', ':', ' ', 'N', ' ', 'i', 's', ' ', 'p', 'a', 'g', 'e', 's', ',', ' ', 'n', 'o', 't', ' ', 'b', 'y', 't', 'e', 's', 10, ' ', ' ', '-', '-', 'c', 'h', 'e', 'c', 'k', 'p', 'o', 'i', 'n', 't', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'u', 'n', ' ', 'P', 'R', 'A', 'G', 'M', 'A', ' ', 'w', 'a', 'l', '_', 'c', 'h', 'e', 'c', 'k', 'p', 'o', 'i', 'n', 't', ' ', 'a', 'f', 't', 'e', 'r', ' ', 'e', 'a', 'c', 'h', ' ', 't', 'e', 's', 't', ' ', 'c', 'a', 's', 'e', 10, ' ', ' ', '-', '-', 'e', 'x', 'c', 'l', 'u', 's', 'i', 'v', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', 'n', 'a', 'b', 'l', 'e', ' ', 'l', 'o', 'c', 'k', 'i', 'n', 'g', '_', 'm', 'o', 'd', 'e', '=', 'E', 'X', 'C', 'L', 'U', 'S', 'I', 'V', 'E', 10, ' ', ' ', '-', '-', 'e', 'x', 'p', 'l', 'a', 'i', 'n', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'L', 'i', 'k', 'e', ' ', '-', '-', 's', 'q', 'l', 'o', 'n', 'l', 'y', ' ', 'b', 'u', 't', ' ', 'w', 'i', 't', 'h', ' ', 'a', 'd', 'd', 'e', 'd', ' ', 'E', 'X', 'P', 'L', 'A', 'I', 'N', ' ', 'k', 'e', 'y', 'w', 'o', 'r', 'd', 's', 10, ' ', ' ', '-', '-', 'f', 'u', 'l', 'l', 'f', 's', 'y', 'n', 'c', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', 'n', 'a', 'b', 'l', 'e', ' ', 'f', 'u', 'l', 'l', 'f', 's', 'y', 'n', 'c', '=', 'T', 'R', 'U', 'E', 10, ' ', ' ', '-', '-', 'h', 'e', 'a', 'p', ' ', 'S', 'Z', ' ', 'M', 'I', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'M', 'e', 'm', 'o', 'r', 'y', ' ', 'a', 'l', 'l', 'o', 'c', 'a', 't', 'o', 'r', ' ', 'u', 's', 'e', 's', ' ', 'S', 'Z', ' ', 'b', 'y', 't', 'e', 's', ' ', '&', ' ', 'm', 'i', 'n', ' ', 'a', 'l', 'l', 'o', 'c', 'a', 't', 'i', 'o', 'n', ' ', 'M', 'I', 'N', 10, ' ', ' ', '-', '-', 'i', 'n', 'c', 'r', 'v', 'a', 'c', 'u', 'u', 'm', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', 'n', 'a', 'b', 'l', 'e', ' ', 'i', 'n', 'c', 'r', 'e', 'm', 'e', 'n', 'a', 't', 'a', 'l', ' ', 'v', 'a', 'c', 'u', 'u', 'm', ' ', 'm', 'o', 'd', 'e', 10, ' ', ' ', '-', '-', 'j', 'o', 'u', 'r', 'n', 'a', 'l', ' ', 'M', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'h', 'e', ' ', 'j', 'o', 'u', 'r', 'n', 'a', 'l', '_', 'm', 'o', 'd', 'e', ' ', 't', 'o', ' ', 'M', 10, ' ', ' ', '-', '-', 'k', 'e', 'y', ' ', 'K', 'E', 'Y', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'h', 'e', ' ', 'e', 'n', 'c', 'r', 'y', 'p', 't', 'i', 'o', 'n', ' ', 'k', 'e', 'y', ' ', 't', 'o', ' ', 'K', 'E', 'Y', 10, ' ', ' ', '-', '-', 'l', 'o', 'o', 'k', 'a', 's', 'i', 'd', 'e', ' ', 'N', ' ', 'S', 'Z', ' ', ' ', ' ', ' ', 'C', 'o', 'n', 'f', 'i', 'g', 'u', 'r', 'e', ' ', 'l', 'o', 'o', 'k', 'a', 's', 'i', 'd', 'e', ' ', 'f', 'o', 'r', ' ', 'N', ' ', 's', 'l', 'o', 't', 's', ' ', 'o', 'f', ' ', 'S', 'Z', ' ', 'b', 'y', 't', 'e', 's', ' ', 'e', 'a', 'c', 'h', 10, ' ', ' ', '-', '-', 'm', 'e', 'm', 'd', 'b', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'a', 'n', ' ', 'i', 'n', '-', 'm', 'e', 'm', 'o', 'r', 'y', ' ', 'd', 'a', 't', 'a', 'b', 'a', 's', 'e', 10, ' ', ' ', '-', '-', 'm', 'm', 'a', 'p', ' ', 'S', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'M', 'M', 'A', 'P', ' ', 't', 'h', 'e', ' ', 'f', 'i', 'r', 's', 't', ' ', 'S', 'Z', ' ', 'b', 'y', 't', 'e', 's', ' ', 'o', 'f', ' ', 't', 'h', 'e', ' ', 'd', 'a', 't', 'a', 'b', 'a', 's', 'e', ' ', 'f', 'i', 'l', 'e', 10, ' ', ' ', '-', '-', 'm', 'u', 'l', 't', 'i', 't', 'h', 'r', 'e', 'a', 'd', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 'm', 'u', 'l', 't', 'i', 't', 'h', 'r', 'e', 'a', 'd', 'e', 'd', ' ', 'm', 'o', 'd', 'e', 10, ' ', ' ', '-', '-', 'n', 'o', 'l', 'o', 'n', 'g', 'd', 'o', 'u', 'b', 'l', 'e', ' ', ' ', ' ', ' ', ' ', ' ', 'D', 'i', 's', 'a', 'b', 'l', 'e', ' ', 't', 'h', 'e', ' ', 'u', 's', 'e', ' ', 'o', 'f', ' ', 'l', 'o', 'n', 'g', ' ', 'd', 'o', 'u', 'b', 'l', 'e', 10, ' ', ' ', '-', '-', 'n', 'o', 'm', 'e', 'm', 's', 't', 'a', 't', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'D', 'i', 's', 'a', 'b', 'l', 'e', ' ', 'm', 'e', 'm', 'o', 'r', 'y', ' ', 's', 't', 'a', 't', 'i', 's', 't', 'i', 'c', 's', 10, ' ', ' ', '-', '-', 'n', 'o', 'm', 'u', 't', 'e', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'O', 'p', 'e', 'n', ' ', 'd', 'b', ' ', 'w', 'i', 't', 'h', ' ', 'S', 'Q', 'L', 'I', 'T', 'E', '_', 'O', 'P', 'E', 'N', '_', 'N', 'O', 'M', 'U', 'T', 'E', 'X', 10, ' ', ' ', '-', '-', 'n', 'o', 's', 'y', 'n', 'c', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 'P', 'R', 'A', 'G', 'M', 'A', ' ', 's', 'y', 'n', 'c', 'h', 'r', 'o', 'n', 'o', 'u', 's', '=', 'O', 'F', 'F', 10, ' ', ' ', '-', '-', 'n', 'o', 't', 'n', 'u', 'l', 'l', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'A', 'd', 'd', ' ', 'N', 'O', 'T', ' ', 'N', 'U', 'L', 'L', ' ', 'c', 'o', 'n', 's', 't', 'r', 'a', 'i', 'n', 't', 's', ' ', 't', 'o', ' ', 't', 'a', 'b', 'l', 'e', ' ', 'c', 'o', 'l', 'u', 'm', 'n', 's', 10, ' ', ' ', '-', '-', 'o', 'u', 't', 'p', 'u', 't', ' ', 'F', 'I', 'L', 'E', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 't', 'o', 'r', 'e', ' ', 'S', 'Q', 'L', ' ', 'o', 'u', 't', 'p', 'u', 't', ' ', 'i', 'n', ' ', 'F', 'I', 'L', 'E', 10, ' ', ' ', '-', '-', 'p', 'a', 'g', 'e', 's', 'i', 'z', 'e', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'h', 'e', ' ', 'p', 'a', 'g', 'e', ' ', 's', 'i', 'z', 'e', ' ', 't', 'o', ' ', 'N', 10, ' ', ' ', '-', '-', 'p', 'c', 'a', 'c', 'h', 'e', ' ', 'N', ' ', 'S', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'o', 'n', 'f', 'i', 'g', 'u', 'r', 'e', ' ', 'N', ' ', 'p', 'a', 'g', 'e', 's', ' ', 'o', 'f', ' ', 'p', 'a', 'g', 'e', 'c', 'a', 'c', 'h', 'e', ' ', 'e', 'a', 'c', 'h', ' ', 'o', 'f', ' ', 's', 'i', 'z', 'e', ' ', 'S', 'Z', ' ', 'b', 'y', 't', 'e', 's', 10, ' ', ' ', '-', '-', 'p', 'r', 'i', 'm', 'a', 'r', 'y', 'k', 'e', 'y', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'P', 'R', 'I', 'M', 'A', 'R', 'Y', ' ', 'K', 'E', 'Y', ' ', 'i', 'n', 's', 't', 'e', 'a', 'd', ' ', 'o', 'f', ' ', 'U', 'N', 'I', 'Q', 'U', 'E', ' ', 'w', 'h', 'e', 'r', 'e', ' ', 'a', 'p', 'p', 'r', 'o', 'p', 'r', 'i', 'a', 't', 'e', 10, ' ', ' ', '-', '-', 'r', 'e', 'p', 'e', 'a', 't', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'e', 'p', 'e', 'a', 't', ' ', 'e', 'a', 'c', 'h', ' ', 'S', 'E', 'L', 'E', 'C', 'T', ' ', 'N', ' ', 't', 'i', 'm', 'e', 's', ' ', '(', 'd', 'e', 'f', 'a', 'u', 'l', 't', ':', ' ', '1', ')', 10, ' ', ' ', '-', '-', 'r', 'e', 'p', 'r', 'e', 'p', 'a', 'r', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'e', 'p', 'r', 'e', 'p', 'a', 'r', 'e', ' ', 'e', 'a', 'c', 'h', ' ', 's', 't', 'a', 't', 'e', 'm', 'e', 'n', 't', ' ', 'u', 'p', 'o', 'n', ' ', 'e', 'v', 'e', 'r', 'y', ' ', 'i', 'n', 'v', 'o', 'c', 'a', 't', 'i', 'o', 'n', 10, ' ', ' ', '-', '-', 'r', 'e', 's', 'e', 'r', 'v', 'e', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'e', 's', 'e', 'r', 'v', 'e', ' ', 'N', ' ', 'b', 'y', 't', 'e', 's', ' ', 'o', 'n', ' ', 'e', 'a', 'c', 'h', ' ', 'd', 'a', 't', 'a', 'b', 'a', 's', 'e', ' ', 'p', 'a', 'g', 'e', 10, ' ', ' ', '-', '-', 's', 'c', 'r', 'i', 'p', 't', ' ', 'F', 'I', 'L', 'E', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'r', 'i', 't', 'e', ' ', 'a', 'n', ' ', 'S', 'Q', 'L', ' ', 's', 'c', 'r', 'i', 'p', 't', ' ', 'f', 'o', 'r', ' ', 't', 'h', 'e', ' ', 't', 'e', 's', 't', ' ', 'i', 'n', 't', 'o', ' ', 'F', 'I', 'L', 'E', 10, ' ', ' ', '-', '-', 's', 'e', 'r', 'i', 'a', 'l', 'i', 'z', 'e', 'd', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 's', 'e', 'r', 'i', 'a', 'l', 'i', 'z', 'e', 'd', ' ', 't', 'h', 'r', 'e', 'a', 'd', 'i', 'n', 'g', ' ', 'm', 'o', 'd', 'e', 10, ' ', ' ', '-', '-', 's', 'i', 'n', 'g', 'l', 'e', 't', 'h', 'r', 'e', 'a', 'd', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 's', 'i', 'n', 'g', 'l', 'e', '-', 't', 'h', 'r', 'e', 'a', 'd', 'e', 'd', ' ', 'm', 'o', 'd', 'e', ' ', '-', ' ', 'd', 'i', 's', 'a', 'b', 'l', 'e', 's', ' ', 'a', 'l', 'l', ' ', 'm', 'u', 't', 'e', 'x', 'i', 'n', 'g', 10, ' ', ' ', '-', '-', 's', 'q', 'l', 'o', 'n', 'l', 'y', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'N', 'o', '-', 'o', 'p', '.', ' ', ' ', 'O', 'n', 'l', 'y', ' ', 's', 'h', 'o', 'w', ' ', 't', 'h', 'e', ' ', 'S', 'Q', 'L', ' ', 't', 'h', 'a', 't', ' ', 'w', 'o', 'u', 'l', 'd', ' ', 'h', 'a', 'v', 'e', ' ', 'b', 'e', 'e', 'n', ' ', 'r', 'u', 'n', '.', 10, ' ', ' ', '-', '-', 's', 'h', 'r', 'i', 'n', 'k', '-', 'm', 'e', 'm', 'o', 'r', 'y', ' ', ' ', ' ', ' ', ' ', 'I', 'n', 'v', 'o', 'k', 'e', ' ', 's', 'q', 'l', 'i', 't', 'e', '3', '_', 'd', 'b', '_', 'r', 'e', 'l', 'e', 'a', 's', 'e', '_', 'm', 'e', 'm', 'o', 'r', 'y', '(', ')', ' ', 'f', 'r', 'e', 'q', 'u', 'e', 'n', 't', 'l', 'y', '.', 10, ' ', ' ', '-', '-', 's', 'i', 'z', 'e', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'e', 'l', 'a', 't', 'i', 'v', 'e', ' ', 't', 'e', 's', 't', ' ', 's', 'i', 'z', 'e', '.', ' ', ' ', 'D', 'e', 'f', 'a', 'u', 'l', 't', '=', '1', '0', '0', 10, ' ', ' ', '-', '-', 's', 't', 'r', 'i', 'c', 't', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'S', 'T', 'R', 'I', 'C', 'T', ' ', 't', 'a', 'b', 'l', 'e', ' ', 'w', 'h', 'e', 'r', 'e', ' ', 'a', 'p', 'p', 'r', 'o', 'p', 'r', 'i', 'a', 't', 'e', 10, ' ', ' ', '-', '-', 's', 't', 'a', 't', 's', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'h', 'o', 'w', ' ', 's', 't', 'a', 't', 'i', 's', 't', 'i', 'c', 's', ' ', 'a', 't', ' ', 't', 'h', 'e', ' ', 'e', 'n', 'd', 10, ' ', ' ', '-', '-', 's', 't', 'm', 't', 's', 'c', 'a', 'n', 's', 't', 'a', 't', 'u', 's', ' ', ' ', ' ', ' ', 'A', 'c', 't', 'i', 'v', 'a', 't', 'e', ' ', 'S', 'Q', 'L', 'I', 'T', 'E', '_', 'D', 'B', 'C', 'O', 'N', 'F', 'I', 'G', '_', 'S', 'T', 'M', 'T', '_', 'S', 'C', 'A', 'N', 'S', 'T', 'A', 'T', 'U', 'S', 10, ' ', ' ', '-', '-', 't', 'e', 'm', 'p', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'N', ' ', 'f', 'r', 'o', 'm', ' ', '0', ' ', 't', 'o', ' ', '9', '.', ' ', ' ', '0', ':', ' ', 'n', 'o', ' ', 't', 'e', 'm', 'p', ' ', 't', 'a', 'b', 'l', 'e', '.', ' ', '9', ':', ' ', 'a', 'l', 'l', ' ', 't', 'e', 'm', 'p', ' ', 't', 'a', 'b', 'l', 'e', 's', 10, ' ', ' ', '-', '-', 't', 'e', 's', 't', 's', 'e', 't', ' ', 'T', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'u', 'n', ' ', 't', 'e', 's', 't', '-', 's', 'e', 't', ' ', 'T', ' ', '(', 'm', 'a', 'i', 'n', ',', ' ', 'c', 't', 'e', ',', ' ', 'r', 't', 'r', 'e', 'e', ',', ' ', 'o', 'r', 'm', ',', ' ', 'f', 'p', ',', ' ', 'd', 'e', 'b', 'u', 'g', ')', 10, ' ', ' ', '-', '-', 't', 'r', 'a', 'c', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'T', 'u', 'r', 'n', ' ', 'o', 'n', ' ', 'S', 'Q', 'L', ' ', 't', 'r', 'a', 'c', 'i', 'n', 'g', 10, ' ', ' ', '-', '-', 't', 'h', 'r', 'e', 'a', 'd', 's', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'u', 'p', ' ', 't', 'o', ' ', 'N', ' ', 't', 'h', 'r', 'e', 'a', 'd', 's', ' ', 'f', 'o', 'r', ' ', 's', 'o', 'r', 't', 'i', 'n', 'g', 10, ' ', ' ', '-', '-', 'u', 't', 'f', '1', '6', 'b', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'e', 'x', 't', ' ', 'e', 'n', 'c', 'o', 'd', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'U', 'T', 'F', '-', '1', '6', 'B', 'E', 10, ' ', ' ', '-', '-', 'u', 't', 'f', '1', '6', 'l', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'e', 'x', 't', ' ', 'e', 'n', 'c', 'o', 'd', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'U', 'T', 'F', '-', '1', '6', 'L', 'E', 10, ' ', ' ', '-', '-', 'v', 'e', 'r', 'i', 'f', 'y', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'u', 'n', ' ', 'a', 'd', 'd', 'i', 't', 'i', 'o', 'n', 'a', 'l', ' ', 'v', 'e', 'r', 'i', 'f', 'i', 'c', 'a', 't', 'i', 'o', 'n', ' ', 's', 't', 'e', 'p', 's', 10, ' ', ' ', '-', '-', 'v', 'f', 's', ' ', 'N', 'A', 'M', 'E', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 't', 'h', 'e', ' ', 'g', 'i', 'v', 'e', 'n', ' ', '(', 'p', 'r', 'e', 'i', 'n', 's', 't', 'a', 'l', 'l', 'e', 'd', ')', ' ', 'V', 'F', 'S', 10, ' ', ' ', '-', '-', 'w', 'i', 't', 'h', 'o', 'u', 't', '-', 'r', 'o', 'w', 'i', 'd', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'W', 'I', 'T', 'H', 'O', 'U', 'T', ' ', 'R', 'O', 'W', 'I', 'D', ' ', 'w', 'h', 'e', 'r', 'e', ' ', 'a', 'p', 'p', 'r', 'o', 'p', 'r', 'i', 'a', 't', 'e', 10}
+
+type __gnuc_va_list = uintptr
 
 type va_list = uintptr
 
@@ -1199,6 +1145,7 @@ type sqlite3_vtab = struct {
 }
 
 type sqlite3_index_info = struct {
+	F__ccgo_align     [0]uint32
 	FnConstraint      int32
 	FaConstraint      uintptr
 	FnOrderBy         int32
@@ -1208,9 +1155,11 @@ type sqlite3_index_info = struct {
 	FidxStr           uintptr
 	FneedToFreeIdxStr int32
 	ForderByConsumed  int32
+	F__ccgo_align9    [4]byte
 	FestimatedCost    float64
 	FestimatedRows    sqlite3_int64
 	FidxFlags         int32
+	F__ccgo_align12   [4]byte
 	FcolUsed          sqlite3_uint64
 }
 
@@ -1275,6 +1224,7 @@ type sqlite3_module1 = struct {
 }
 
 type sqlite3_index_info1 = struct {
+	F__ccgo_align     [0]uint32
 	FnConstraint      int32
 	FaConstraint      uintptr
 	FnOrderBy         int32
@@ -1284,9 +1234,11 @@ type sqlite3_index_info1 = struct {
 	FidxStr           uintptr
 	FneedToFreeIdxStr int32
 	ForderByConsumed  int32
+	F__ccgo_align9    [4]byte
 	FestimatedCost    float64
 	FestimatedRows    sqlite3_int64
 	FidxFlags         int32
+	F__ccgo_align12   [4]byte
 	FcolUsed          sqlite3_uint64
 }
 
@@ -1407,6 +1359,7 @@ type sqlite3_rtree_geometry = struct {
 }
 
 type sqlite3_rtree_query_info = struct {
+	F__ccgo_align  [0]uint32
 	FpContext      uintptr
 	FnParam        int32
 	FaParam        uintptr
@@ -1423,6 +1376,7 @@ type sqlite3_rtree_query_info = struct {
 	FeWithin       int32
 	FrScore        sqlite3_rtree_dbl
 	FapSqlParam    uintptr
+	F__ccgo_pad16  [4]byte
 }
 
 type sqlite3_rtree_dbl = float64
@@ -1436,6 +1390,7 @@ type sqlite3_rtree_geometry1 = struct {
 }
 
 type sqlite3_rtree_query_info1 = struct {
+	F__ccgo_align  [0]uint32
 	FpContext      uintptr
 	FnParam        int32
 	FaParam        uintptr
@@ -1452,6 +1407,7 @@ type sqlite3_rtree_query_info1 = struct {
 	FeWithin       int32
 	FrScore        sqlite3_rtree_dbl
 	FapSqlParam    uintptr
+	F__ccgo_pad16  [4]byte
 }
 
 type Fts5ExtensionApi = struct {
@@ -1542,59 +1498,283 @@ type fts5_api1 = struct {
 	FxCreateFunction  uintptr
 }
 
-type size_t = uint64
+type size_t = uint32
 
-type ssize_t = int64
+type ssize_t = int32
+
+type rsize_t = uint32
+
+type intptr_t = int32
+
+type uintptr_t = uint32
+
+type ptrdiff_t = int32
+
+type wchar_t = uint16
+
+type wint_t = uint16
+
+type wctype_t = uint16
+
+type errno_t = int32
+
+type __time32_t = int32
+
+type __time64_t = int64
+
+type time_t = int32
+
+type threadlocaleinfostruct = struct {
+	Frefcount      int32
+	Flc_codepage   uint32
+	Flc_collate_cp uint32
+	Flc_handle     [6]uint32
+	Flc_id         [6]LC_ID
+	Flc_category   [6]struct {
+		Flocale    uintptr
+		Fwlocale   uintptr
+		Frefcount  uintptr
+		Fwrefcount uintptr
+	}
+	Flc_clike            int32
+	Fmb_cur_max          int32
+	Flconv_intl_refcount uintptr
+	Flconv_num_refcount  uintptr
+	Flconv_mon_refcount  uintptr
+	Flconv               uintptr
+	Fctype1_refcount     uintptr
+	Fctype1              uintptr
+	Fpctype              uintptr
+	Fpclmap              uintptr
+	Fpcumap              uintptr
+	Flc_time_curr        uintptr
+}
+
+type pthreadlocinfo = uintptr
+
+type pthreadmbcinfo = uintptr
+
+type _locale_tstruct = struct {
+	Flocinfo pthreadlocinfo
+	Fmbcinfo pthreadmbcinfo
+}
+
+type localeinfo_struct = _locale_tstruct
+
+type _locale_t = uintptr
+
+type LC_ID = struct {
+	FwLanguage uint16
+	FwCountry  uint16
+	FwCodePage uint16
+}
+
+type tagLC_ID = LC_ID
+
+type LPLC_ID = uintptr
+
+type threadlocinfo = struct {
+	Frefcount      int32
+	Flc_codepage   uint32
+	Flc_collate_cp uint32
+	Flc_handle     [6]uint32
+	Flc_id         [6]LC_ID
+	Flc_category   [6]struct {
+		Flocale    uintptr
+		Fwlocale   uintptr
+		Frefcount  uintptr
+		Fwrefcount uintptr
+	}
+	Flc_clike            int32
+	Fmb_cur_max          int32
+	Flconv_intl_refcount uintptr
+	Flconv_num_refcount  uintptr
+	Flconv_mon_refcount  uintptr
+	Flconv               uintptr
+	Fctype1_refcount     uintptr
+	Fctype1              uintptr
+	Fpctype              uintptr
+	Fpclmap              uintptr
+	Fpcumap              uintptr
+	Flc_time_curr        uintptr
+}
+
+type _iobuf = struct {
+	F_ptr      uintptr
+	F_cnt      int32
+	F_base     uintptr
+	F_flag     int32
+	F_file     int32
+	F_charbuf  int32
+	F_bufsiz   int32
+	F_tmpfname uintptr
+}
+
+type FILE = struct {
+	F_ptr      uintptr
+	F_cnt      int32
+	F_base     uintptr
+	F_flag     int32
+	F_file     int32
+	F_charbuf  int32
+	F_bufsiz   int32
+	F_tmpfname uintptr
+}
+
+type _off_t = int32
+
+type off32_t = int32
+
+type _off64_t = int64
+
+type off64_t = int64
 
 type off_t = int64
 
-type __isoc_va_list = uintptr
+type fpos_t = int64
 
-type fpos_t = struct {
-	F__lldata [0]int64
-	F__align  [0]float64
-	F__opaque [16]int8
-}
-
-type _G_fpos64_t = fpos_t
-
-type cookie_io_functions_t = struct {
-	Fread   uintptr
-	Fwrite  uintptr
-	Fseek   uintptr
-	Fclose1 uintptr
-}
-
-type _IO_cookie_io_functions_t = cookie_io_functions_t
-
-type wchar_t = int32
+type _onexit_t = uintptr
 
 type div_t = struct {
 	Fquot int32
 	Frem  int32
 }
 
+type _div_t = div_t
+
 type ldiv_t = struct {
-	Fquot int64
-	Frem  int64
+	Fquot int32
+	Frem  int32
 }
+
+type _ldiv_t = ldiv_t
+
+type _LDOUBLE = struct {
+	Fld [10]uint8
+}
+
+type _CRT_DOUBLE = struct {
+	F__ccgo_align [0]uint32
+	Fx            float64
+}
+
+type _CRT_FLOAT = struct {
+	Ff float32
+}
+
+type _LONGDOUBLE = struct {
+	F__ccgo_align [0]uint32
+	Fx            float64
+}
+
+type _LDBL12 = struct {
+	Fld12 [12]uint8
+}
+
+type _purecall_handler = uintptr
+
+type _invalid_parameter_handler = uintptr
 
 type lldiv_t = struct {
-	Fquot int64
-	Frem  int64
+	F__ccgo_align [0]uint32
+	Fquot         int64
+	Frem          int64
 }
 
-type locale_t = uintptr
+type _HEAPINFO = struct {
+	F_pentry  uintptr
+	F_size    size_t
+	F_useflag int32
+}
 
-type intptr_t = int64
+type _heapinfo = _HEAPINFO
 
-type pid_t = int32
+type _fsize_t = uint32
 
-type uid_t = uint32
+type _finddata32_t = struct {
+	Fattrib      uint32
+	Ftime_create __time32_t
+	Ftime_access __time32_t
+	Ftime_write  __time32_t
+	Fsize        _fsize_t
+	Fname        [260]int8
+}
 
-type gid_t = uint32
+type _finddata32i64_t = struct {
+	F__ccgo_align [0]uint32
+	Fattrib       uint32
+	Ftime_create  __time32_t
+	Ftime_access  __time32_t
+	Ftime_write   __time32_t
+	Fsize         int64
+	Fname         [260]int8
+	F__ccgo_pad6  [4]byte
+}
 
-type useconds_t = uint32
+type _finddata64i32_t = struct {
+	F__ccgo_align  [0]uint32
+	Fattrib        uint32
+	F__ccgo_align1 [4]byte
+	Ftime_create   __time64_t
+	Ftime_access   __time64_t
+	Ftime_write    __time64_t
+	Fsize          _fsize_t
+	Fname          [260]int8
+}
+
+type __finddata64_t = struct {
+	F__ccgo_align  [0]uint32
+	Fattrib        uint32
+	F__ccgo_align1 [4]byte
+	Ftime_create   __time64_t
+	Ftime_access   __time64_t
+	Ftime_write    __time64_t
+	Fsize          int64
+	Fname          [260]int8
+	F__ccgo_pad6   [4]byte
+}
+
+type _wfinddata32_t = struct {
+	Fattrib      uint32
+	Ftime_create __time32_t
+	Ftime_access __time32_t
+	Ftime_write  __time32_t
+	Fsize        _fsize_t
+	Fname        [260]wchar_t
+}
+
+type _wfinddata32i64_t = struct {
+	F__ccgo_align [0]uint32
+	Fattrib       uint32
+	Ftime_create  __time32_t
+	Ftime_access  __time32_t
+	Ftime_write   __time32_t
+	Fsize         int64
+	Fname         [260]wchar_t
+}
+
+type _wfinddata64i32_t = struct {
+	F__ccgo_align  [0]uint32
+	Fattrib        uint32
+	F__ccgo_align1 [4]byte
+	Ftime_create   __time64_t
+	Ftime_access   __time64_t
+	Ftime_write    __time64_t
+	Fsize          _fsize_t
+	Fname          [260]wchar_t
+	F__ccgo_pad6   [4]byte
+}
+
+type _wfinddata64_t = struct {
+	F__ccgo_align  [0]uint32
+	Fattrib        uint32
+	F__ccgo_align1 [4]byte
+	Ftime_create   __time64_t
+	Ftime_access   __time64_t
+	Ftime_write    __time64_t
+	Fsize          int64
+	Fname          [260]wchar_t
+}
 
 type u64 = uint64
 
@@ -1623,6 +1803,7 @@ type HashContext1 = struct {
 //
 //	/* All global state is held in this structure */
 type Global = struct {
+	F__ccgo_align      [0]uint32
 	Fdb                uintptr
 	FpStmt             uintptr
 	FiStart            sqlite3_int64
@@ -1651,6 +1832,7 @@ type Global = struct {
 	FpScript           uintptr
 	FhashFile          uintptr
 	Fhash              HashContext
+	F__ccgo_pad28      [1]byte
 }
 
 // C documentation
@@ -1680,7 +1862,10 @@ func fatal_error(tls *libc.TLS, zMsg uintptr, va uintptr) {
 	var ap va_list
 	_ = ap
 	ap = va
-	libc.Xvfprintf(tls, libc.Xstderr, zMsg, ap)
+	_ = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), zMsg, ap)
+	goto _1
+_1:
+	;
 	_ = ap
 	libc.Xexit(tls, int32(1))
 }
@@ -1707,7 +1892,7 @@ func HashInit(tls *libc.TLS) {
 		if !(k < uint32(256)) {
 			break
 		}
-		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(k))) = uint8(k)
+		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(k))) = uint8(uint8(k))
 		goto _1
 	_1:
 		;
@@ -1728,17 +1913,17 @@ func HashUpdate(tls *libc.TLS, aData uintptr, nData uint32) {
 	i = g.Fhash.Fi
 	j = g.Fhash.Fj
 	if g.FhashFile != 0 {
-		libc.Xfwrite(tls, aData, uint64(1), uint64(nData), g.FhashFile)
+		libc.Xfwrite(tls, aData, uint32(1), nData, g.FhashFile)
 	}
 	k = uint32(0)
 	for {
 		if !(k < nData) {
 			break
 		}
-		j = uint8(int32(j) + (int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))) + int32(*(*uint8)(unsafe.Pointer(aData + uintptr(k))))))
-		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j)))
-		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))
-		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i))) = t
+		j = uint8(int32(j) + (int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(i)))) + int32(*(*uint8)(unsafe.Pointer(aData + uintptr(k))))))
+		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(j)))
+		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(j))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(i)))
+		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(i))) = t
 		i++
 		goto _1
 	_1:
@@ -1767,12 +1952,12 @@ func HashFinal(tls *libc.TLS) {
 			break
 		}
 		i++
-		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))
-		j = uint8(int32(j) + int32(t))
-		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j)))
-		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j))) = t
-		t = uint8(int32(t) + int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))))
-		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(k))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(t)))
+		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(i)))
+		j = uint8(int32(j) + int32(int32(t)))
+		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(i))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(j)))
+		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(j))) = t
+		t = uint8(int32(t) + int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(i)))))
+		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 259 + uintptr(k))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 3 + uintptr(t)))
 		goto _1
 	_1:
 		;
@@ -1790,14 +1975,14 @@ func HashFinal(tls *libc.TLS) {
 //	** is not a hex digit.
 //	*/
 func hexDigitValue(tls *libc.TLS, c int8) (r int32) {
-	if int32(c) >= int32('0') && int32(c) <= int32('9') {
-		return int32(c) - int32('0')
+	if int32(int32(c)) >= int32('0') && int32(int32(c)) <= int32('9') {
+		return int32(int32(c)) - int32('0')
 	}
-	if int32(c) >= int32('a') && int32(c) <= int32('f') {
-		return int32(c) - int32('a') + int32(10)
+	if int32(int32(c)) >= int32('a') && int32(int32(c)) <= int32('f') {
+		return int32(int32(c)) - int32('a') + int32(10)
 	}
-	if int32(c) >= int32('A') && int32(c) <= int32('F') {
-		return int32(c) - int32('A') + int32(10)
+	if int32(int32(c)) >= int32('A') && int32(int32(c)) <= int32('F') {
+		return int32(int32(c)) - int32('A') + int32(10)
 	}
 	return -int32(1)
 }
@@ -1833,18 +2018,18 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 			if !(v1 >= 0) {
 				break
 			}
-			v = v<<libc.Int32FromInt32(4) + int64(x)
+			v = v<<libc.Int32FromInt32(4) + int64(int64(x))
 			zArg++
 		}
 	} else {
-		for libc.BoolInt32(uint32(*(*int8)(unsafe.Pointer(zArg)))-uint32('0') < uint32(10)) != 0 {
+		for libc.Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(zArg)))) != 0 {
 			v = v*int64(10) + int64(*(*int8)(unsafe.Pointer(zArg))) - int64('0')
 			zArg++
 		}
 	}
 	i = 0
 	for {
-		if !(uint64(i) < libc.Uint64FromInt64(144)/libc.Uint64FromInt64(16)) {
+		if !(uint32(uint32(i)) < libc.Uint32FromInt64(72)/libc.Uint32FromInt64(8)) {
 			break
 		}
 		if libsqlite3.Xsqlite3_stricmp(tls, aMult[i].FzSuffix, zArg) == 0 {
@@ -2093,12 +2278,13 @@ var tens = [10]uintptr{
 var zDots = [72]int8{'.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}
 var iTestNumber = int32(0) /* Current test # for begin/end_test(). */
 func speedtest1_begin_test(tls *libc.TLS, iTestNum int32, zTestName uintptr, va uintptr) {
-	bp := tls.Alloc(48)
-	defer tls.Free(48)
+	bp := tls.Alloc(144)
+	defer tls.Free(144)
+	var __local_argv, __local_argv1 __builtin_va_list
+	var __retval, __retval1, n int32
 	var ap va_list
-	var n int32
-	var zName uintptr
-	_, _, _ = ap, n, zName
+	var zName, v1, v3, v5 uintptr
+	_, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, ap, n, zName, v1, v3, v5
 	n = int32(libc.Xstrlen(tls, zTestName))
 	iTestNumber = iTestNum
 	ap = va
@@ -2110,13 +2296,35 @@ func speedtest1_begin_test(tls *libc.TLS, iTestNum int32, zTestName uintptr, va 
 		n = int32(NAMEWIDTH)
 	}
 	if g.FpScript != 0 {
-		libc.Xfprintf(tls, g.FpScript, __ccgo_ts+297, libc.VaList(bp+8, iTestNumber, n, zName))
+		v1 = __ccgo_ts + 297
+		libc.VaList(bp, iTestNumber, n, zName)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, g.FpScript, v1, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _2
+	_2:
 	}
 	if g.FbSqlOnly != 0 {
-		libc.Xprintf(tls, __ccgo_ts+320, libc.VaList(bp+8, iTestNum, zName, int32(NAMEWIDTH)-n, uintptr(unsafe.Pointer(&zDots))))
+		v3 = __ccgo_ts + 320
+		libc.VaList(bp, iTestNum, zName, int32(NAMEWIDTH)-n, uintptr(unsafe.Pointer(&zDots)))
+		__local_argv1 = bp
+		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv1)
+		_ = __local_argv1
+		_ = __retval1
+		goto _4
+	_4:
 	} else {
-		libc.Xprintf(tls, __ccgo_ts+340, libc.VaList(bp+8, iTestNum, zName, int32(NAMEWIDTH)-n, uintptr(unsafe.Pointer(&zDots))))
-		libc.Xfflush(tls, libc.Xstdout)
+		v5 = __ccgo_ts + 340
+		libc.VaList(bp, iTestNum, zName, int32(NAMEWIDTH)-n, uintptr(unsafe.Pointer(&zDots)))
+		__local_argv1 = bp
+		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v5, __local_argv1)
+		_ = __local_argv1
+		_ = __retval1
+		goto _6
+	_6:
+		;
+		libc.Xfflush(tls, libc.X__acrt_iob_func(tls, uint32(1)))
 	}
 	libsqlite3.Xsqlite3_free(tls, zName)
 	g.FnResult = 0
@@ -2129,20 +2337,37 @@ func speedtest1_begin_test(tls *libc.TLS, iTestNum int32, zTestName uintptr, va 
 //
 //	/* Complete a test case */
 func speedtest1_end_test(tls *libc.TLS) {
-	bp := tls.Alloc(32)
-	defer tls.Free(32)
+	bp := tls.Alloc(64)
+	defer tls.Free(64)
+	var __local_argv, __local_argv1 __builtin_va_list
+	var __retval, __retval1 int32
 	var iElapseTime sqlite3_int64
-	_ = iElapseTime
+	var v1, v3 uintptr
+	_, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, iElapseTime, v1, v3
 	iElapseTime = speedtest1_timestamp(tls) - g.FiStart
 	if g.FdoCheckpoint != 0 {
 		speedtest1_exec(tls, __ccgo_ts+354, 0)
 	}
 	if g.FpScript != 0 {
-		libc.Xfprintf(tls, g.FpScript, __ccgo_ts+377, libc.VaList(bp+8, iTestNumber))
+		v1 = __ccgo_ts + 377
+		libc.VaList(bp, iTestNumber)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, g.FpScript, v1, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _2
+	_2:
 	}
 	if !(g.FbSqlOnly != 0) {
 		g.FiTotal += iElapseTime
-		libc.Xprintf(tls, __ccgo_ts+393, libc.VaList(bp+8, int32(iElapseTime/libc.Int64FromInt32(1000)), int32(iElapseTime%libc.Int64FromInt32(1000))))
+		v3 = __ccgo_ts + 393
+		libc.VaList(bp, int32(iElapseTime/libc.Int64FromInt32(1000)), int32(iElapseTime%libc.Int64FromInt32(1000)))
+		__local_argv1 = bp
+		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv1)
+		_ = __local_argv1
+		_ = __retval1
+		goto _4
+	_4:
 	}
 	if g.FpStmt != 0 {
 		libsqlite3.Xsqlite3_finalize(tls, g.FpStmt)
@@ -2155,15 +2380,32 @@ func speedtest1_end_test(tls *libc.TLS) {
 //
 //	/* Report end of testing */
 func speedtest1_final(tls *libc.TLS) {
-	bp := tls.Alloc(48)
-	defer tls.Free(48)
-	var i int32
-	_ = i
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var __local_argv __builtin_va_list
+	var __retval, i int32
+	var v1, v3, v6, v8 uintptr
+	_, _, _, _, _, _, _ = __local_argv, __retval, i, v1, v3, v6, v8
 	if !(g.FbSqlOnly != 0) {
-		libc.Xprintf(tls, __ccgo_ts+404, libc.VaList(bp+8, libc.Int32FromInt32(NAMEWIDTH)-libc.Int32FromInt32(5), uintptr(unsafe.Pointer(&zDots)), int32(g.FiTotal/libc.Int64FromInt32(1000)), int32(g.FiTotal%libc.Int64FromInt32(1000))))
+		v1 = __ccgo_ts + 404
+		libc.VaList(bp, libc.Int32FromInt32(NAMEWIDTH)-libc.Int32FromInt32(5), uintptr(unsafe.Pointer(&zDots)), int32(g.FiTotal/libc.Int64FromInt32(1000)), int32(g.FiTotal%libc.Int64FromInt32(1000)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _2
+	_2:
 	}
 	if g.FbVerify != 0 {
-		libc.Xprintf(tls, __ccgo_ts+432, libc.VaList(bp+8, g.FnResByte))
+		v3 = __ccgo_ts + 432
+		libc.VaList(bp, g.FnResByte)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _4
+	_4:
+		;
 		HashUpdate(tls, __ccgo_ts+457, uint32(1))
 		HashFinal(tls)
 		i = 0
@@ -2171,16 +2413,30 @@ func speedtest1_final(tls *libc.TLS) {
 			if !(i < int32(24)) {
 				break
 			}
-			libc.Xprintf(tls, __ccgo_ts+459, libc.VaList(bp+8, int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(i))))))
-			goto _1
-		_1:
+			v6 = __ccgo_ts + 459
+			libc.VaList(bp, int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3116 + 259 + uintptr(i)))))
+			__local_argv = bp
+			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v6, __local_argv)
+			_ = __local_argv
+			_ = __retval
+			goto _7
+		_7:
+			;
+			goto _5
+		_5:
 			;
 			i++
 		}
-		if g.FhashFile != 0 && g.FhashFile != libc.Xstdout {
+		if g.FhashFile != 0 && g.FhashFile != libc.X__acrt_iob_func(tls, uint32(1)) {
 			libc.Xfclose(tls, g.FhashFile)
 		}
-		libc.Xprintf(tls, __ccgo_ts+457, 0)
+		v8 = __ccgo_ts + 457
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v8, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _9
+	_9:
 	}
 }
 
@@ -2188,32 +2444,43 @@ func speedtest1_final(tls *libc.TLS) {
 //
 //	/* Print an SQL statement to standard output */
 func printSql(tls *libc.TLS, zSql uintptr) {
-	bp := tls.Alloc(32)
-	defer tls.Free(32)
-	var n, v1, v2 int32
-	var v4, v5 bool
-	_, _, _, _, _ = n, v1, v2, v4, v5
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var __local_argv __builtin_va_list
+	var __retval, n int32
+	var v1, v3, v5 uintptr
+	_, _, _, _, _, _ = __local_argv, __retval, n, v1, v3, v5
 	n = int32(libc.Xstrlen(tls, zSql))
-	for {
-		if v5 = n > 0; v5 {
-			if v4 = int32(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';'); !v4 {
-				v1 = int32(uint8(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))
-				v2 = libc.BoolInt32(v1 == int32(' ') || uint32(v1)-uint32('\t') < uint32(5))
-				goto _3
-			_3:
-			}
-		}
-		if !(v5 && (v4 || v2 != 0)) {
-			break
-		}
+	for n > 0 && (int32(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';') || libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))) != 0) {
 		n--
 	}
 	if g.FbExplain != 0 {
-		libc.Xprintf(tls, __ccgo_ts+464, 0)
+		v1 = __ccgo_ts + 464
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _2
+	_2:
 	}
-	libc.Xprintf(tls, __ccgo_ts+473, libc.VaList(bp+8, n, zSql))
+	v3 = __ccgo_ts + 473
+	libc.VaList(bp, n, zSql)
+	__local_argv = bp
+	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv)
+	_ = __local_argv
+	_ = __retval
+	goto _4
+_4:
+	;
 	if g.FbExplain != 0 && (libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+480, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+489, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+496, zSql) == 0) {
-		libc.Xprintf(tls, __ccgo_ts+473, libc.VaList(bp+8, n, zSql))
+		v5 = __ccgo_ts + 473
+		libc.VaList(bp, n, zSql)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v5, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _6
+	_6:
 	}
 }
 
@@ -2232,29 +2499,37 @@ func speedtest1_shrink_memory(tls *libc.TLS) {
 //
 //	/* Run SQL */
 func speedtest1_exec(tls *libc.TLS, zFormat uintptr, va uintptr) {
-	bp := tls.Alloc(32)
-	defer tls.Free(32)
+	bp := tls.Alloc(64)
+	defer tls.Free(64)
+	var __local_argv __builtin_va_list
+	var __retval, rc int32
 	var ap va_list
-	var rc int32
-	var zSql uintptr
-	var _ /* zErrMsg at bp+0 */ uintptr
-	_, _, _ = ap, rc, zSql
+	var zSql, v1 uintptr
+	var _ /* zErrMsg at bp+24 */ uintptr
+	_, _, _, _, _, _ = __local_argv, __retval, ap, rc, zSql, v1
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
 	if g.FbSqlOnly != 0 {
 		printSql(tls, zSql)
 	} else {
-		*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
+		*(*uintptr)(unsafe.Pointer(bp + 24)) = uintptr(0)
 		if g.FpScript != 0 {
-			libc.Xfprintf(tls, g.FpScript, __ccgo_ts+504, libc.VaList(bp+16, zSql))
+			v1 = __ccgo_ts + 504
+			libc.VaList(bp, zSql)
+			__local_argv = bp
+			__retval = libc.X__mingw_vfprintf(tls, g.FpScript, v1, __local_argv)
+			_ = __local_argv
+			_ = __retval
+			goto _2
+		_2:
 		}
-		rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, uintptr(0), uintptr(0), bp)
-		if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
-			fatal_error(tls, __ccgo_ts+509, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp)), zSql))
+		rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, uintptr(0), uintptr(0), bp+24)
+		if *(*uintptr)(unsafe.Pointer(bp + 24)) != 0 {
+			fatal_error(tls, __ccgo_ts+509, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(bp + 24)), zSql))
 		}
 		if rc != SQLITE_OK {
-			fatal_error(tls, __ccgo_ts+527, libc.VaList(bp+16, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
+			fatal_error(tls, __ccgo_ts+527, libc.VaList(bp+40, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
@@ -2268,13 +2543,14 @@ func speedtest1_exec(tls *libc.TLS, zFormat uintptr, va uintptr) {
 //	** the caller.
 //	*/
 func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
-	bp := tls.Alloc(32)
-	defer tls.Free(32)
+	bp := tls.Alloc(48)
+	defer tls.Free(48)
+	var __local_argv __builtin_va_list
+	var __retval, rc int32
 	var ap va_list
-	var rc int32
-	var z, z1, zResult, zSql uintptr
-	var _ /* pStmt at bp+0 */ uintptr
-	_, _, _, _, _, _ = ap, rc, z, z1, zResult, zSql
+	var z, z1, zResult, zSql, v1 uintptr
+	var _ /* pStmt at bp+24 */ uintptr
+	_, _, _, _, _, _, _, _, _ = __local_argv, __retval, ap, rc, z, z1, zResult, zSql, v1
 	zResult = uintptr(0)
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
@@ -2282,22 +2558,30 @@ func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 	if g.FbSqlOnly != 0 {
 		printSql(tls, zSql)
 	} else {
-		rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), bp, uintptr(0))
+		rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), bp+24, uintptr(0))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+16, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
+			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+40, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
 		if g.FpScript != 0 {
-			z = libsqlite3.Xsqlite3_expanded_sql(tls, *(*uintptr)(unsafe.Pointer(bp)))
-			libc.Xfprintf(tls, g.FpScript, __ccgo_ts+558, libc.VaList(bp+16, z))
+			z = libsqlite3.Xsqlite3_expanded_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
+			v1 = __ccgo_ts + 558
+			libc.VaList(bp, z)
+			__local_argv = bp
+			__retval = libc.X__mingw_vfprintf(tls, g.FpScript, v1, __local_argv)
+			_ = __local_argv
+			_ = __retval
+			goto _2
+		_2:
+			;
 			libsqlite3.Xsqlite3_free(tls, z)
 		}
-		if libsqlite3.Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) == int32(SQLITE_ROW) {
-			z1 = libsqlite3.Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
+		if libsqlite3.Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 24))) == int32(SQLITE_ROW) {
+			z1 = libsqlite3.Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0)
 			if z1 != 0 {
-				zResult = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+294, libc.VaList(bp+16, z1))
+				zResult = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+294, libc.VaList(bp+40, z1))
 			}
 		}
-		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp)))
+		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	speedtest1_shrink_memory(tls)
@@ -2323,7 +2607,7 @@ func speedtest1_prepare(tls *libc.TLS, zFormat uintptr, va uintptr) {
 		if g.FpStmt != 0 {
 			libsqlite3.Xsqlite3_finalize(tls, g.FpStmt)
 		}
-		rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), uintptr(unsafe.Pointer(&g))+8, uintptr(0))
+		rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), uintptr(unsafe.Pointer(&g))+4, uintptr(0))
 		if rc != 0 {
 			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
@@ -2337,19 +2621,28 @@ func speedtest1_prepare(tls *libc.TLS, zFormat uintptr, va uintptr) {
 func speedtest1_run(tls *libc.TLS) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	var aBlob, z, z1, v4 uintptr
-	var eType, i, iBlob, len1, n, nBlob, v3 int32
-	var _ /* pNew at bp+8 */ uintptr
-	var _ /* zChar at bp+2 */ [2]uint8
-	var _ /* zPrefix at bp+0 */ [2]uint8
-	_, _, _, _, _, _, _, _, _, _, _ = aBlob, eType, i, iBlob, len1, n, nBlob, z, z1, v3, v4
+	var __local_argv __builtin_va_list
+	var __retval, eType, i, iBlob, len1, n, nBlob, v5 int32
+	var aBlob, z, z1, v1, v6 uintptr
+	var _ /* pNew at bp+28 */ uintptr
+	var _ /* zChar at bp+26 */ [2]uint8
+	var _ /* zPrefix at bp+24 */ [2]uint8
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, aBlob, eType, i, iBlob, len1, n, nBlob, z, z1, v1, v5, v6
 	if g.FbSqlOnly != 0 {
 		return
 	}
 	g.FnResult = 0
 	if g.FpScript != 0 {
 		z = libsqlite3.Xsqlite3_expanded_sql(tls, g.FpStmt)
-		libc.Xfprintf(tls, g.FpScript, __ccgo_ts+558, libc.VaList(bp+24, z))
+		v1 = __ccgo_ts + 558
+		libc.VaList(bp, z)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, g.FpScript, v1, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _2
+	_2:
+		;
 		libsqlite3.Xsqlite3_free(tls, z)
 	}
 	for libsqlite3.Xsqlite3_step(tls, g.FpStmt) == int32(SQLITE_ROW) {
@@ -2366,12 +2659,12 @@ func speedtest1_run(tls *libc.TLS) {
 			len1 = int32(libc.Xstrlen(tls, z1))
 			if g.FbVerify != 0 {
 				eType = libsqlite3.Xsqlite3_column_type(tls, g.FpStmt, i)
-				(*(*[2]uint8)(unsafe.Pointer(bp)))[0] = uint8('\n')
-				(*(*[2]uint8)(unsafe.Pointer(bp)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 566 + uintptr(eType))))
+				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[0] = uint8('\n')
+				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 566 + uintptr(eType))))
 				if g.FnResByte != 0 {
-					HashUpdate(tls, bp, uint32(2))
+					HashUpdate(tls, bp+24, uint32(2))
 				} else {
-					HashUpdate(tls, bp+uintptr(1), uint32(1))
+					HashUpdate(tls, bp+24+uintptr(1), uint32(1))
 				}
 				if eType == int32(SQLITE_FLOAT) {
 					/* Omit the value of floating-point results from the verification
@@ -2387,41 +2680,41 @@ func speedtest1_run(tls *libc.TLS) {
 							if !(iBlob < nBlob) {
 								break
 							}
-							(*(*[2]uint8)(unsafe.Pointer(bp + 2)))[0] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4)))))
-							(*(*[2]uint8)(unsafe.Pointer(bp + 2)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15)))))
-							HashUpdate(tls, bp+2, uint32(2))
-							goto _2
-						_2:
+							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[0] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4)))))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15)))))
+							HashUpdate(tls, bp+26, uint32(2))
+							goto _4
+						_4:
 							;
 							iBlob++
 						}
 						g.FnResByte += uint64(nBlob*int32(2) + int32(2))
 					} else {
-						HashUpdate(tls, z1, uint32(len1))
+						HashUpdate(tls, z1, uint32(uint32(len1)))
 						g.FnResByte += uint64(len1 + int32(2))
 					}
 				}
 			}
-			if uint64(g.FnResult+len1) < libc.Uint64FromInt64(3000)-libc.Uint64FromInt32(2) {
+			if uint32(g.FnResult+len1) < libc.Uint32FromInt64(3000)-libc.Uint32FromInt32(2) {
 				if g.FnResult > 0 {
-					v4 = uintptr(unsafe.Pointer(&g)) + 128
-					v3 = *(*int32)(unsafe.Pointer(v4))
-					*(*int32)(unsafe.Pointer(v4))++
-					*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 132 + uintptr(v3))) = int8(' ')
+					v6 = uintptr(unsafe.Pointer(&g)) + 104
+					v5 = *(*int32)(unsafe.Pointer(v6))
+					*(*int32)(unsafe.Pointer(v6))++
+					*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 108 + uintptr(v5))) = int8(' ')
 				}
-				libc.Xmemcpy(tls, uintptr(unsafe.Pointer(&g))+132+uintptr(g.FnResult), z1, uint64(len1+int32(1)))
+				libc.Xmemcpy(tls, uintptr(unsafe.Pointer(&g))+108+uintptr(g.FnResult), z1, uint32(len1+int32(1)))
 				g.FnResult += len1
 			}
-			goto _1
-		_1:
+			goto _3
+		_3:
 			;
 			i++
 		}
 	}
 	if g.FbReprepare != 0 {
-		libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), -int32(1), bp+8, uintptr(0))
+		libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), -int32(1), bp+28, uintptr(0))
 		libsqlite3.Xsqlite3_finalize(tls, g.FpStmt)
-		g.FpStmt = *(*uintptr)(unsafe.Pointer(bp + 8))
+		g.FpStmt = *(*uintptr)(unsafe.Pointer(bp + 28))
 	} else {
 		libsqlite3.Xsqlite3_reset(tls, g.FpStmt)
 	}
@@ -2434,25 +2727,22 @@ func speedtest1_run(tls *libc.TLS) {
 func traceCallback(tls *libc.TLS, NotUsed uintptr, zSql uintptr) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	var n, v1, v2 int32
-	var v4, v5 bool
-	_, _, _, _, _ = n, v1, v2, v4, v5
+	var __local_argv __builtin_va_list
+	var __retval, n int32
+	var v1 uintptr
+	_, _, _, _ = __local_argv, __retval, n, v1
 	n = int32(libc.Xstrlen(tls, zSql))
-	for {
-		if v5 = n > 0; v5 {
-			if v4 = int32(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';'); !v4 {
-				v1 = int32(uint8(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))
-				v2 = libc.BoolInt32(v1 == int32(' ') || uint32(v1)-uint32('\t') < uint32(5))
-				goto _3
-			_3:
-			}
-		}
-		if !(v5 && (v4 || v2 != 0)) {
-			break
-		}
+	for n > 0 && (int32(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';') || libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))) != 0) {
 		n--
 	}
-	libc.Xfprintf(tls, libc.Xstderr, __ccgo_ts+473, libc.VaList(bp+8, n, zSql))
+	v1 = __ccgo_ts + 473
+	libc.VaList(bp, n, zSql)
+	__local_argv = bp
+	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
+	_ = __local_argv
+	_ = __retval
+	goto _2
+_2:
 }
 
 // C documentation
@@ -2508,7 +2798,7 @@ func testset_main(tls *libc.TLS) {
 	n = v1
 	sz = v1
 	(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = 0
-	maxb = int32(roundup_allones(tls, uint32(sz)))
+	maxb = int32(roundup_allones(tls, uint32(uint32(sz))))
 	speedtest1_begin_test(tls, int32(100), __ccgo_ts+590, libc.VaList(bp+2008, n))
 	speedtest1_exec(tls, __ccgo_ts+626, 0)
 	speedtest1_exec(tls, __ccgo_ts+632, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.FzNN, g.FzNN, g.FzNN))
@@ -2518,9 +2808,9 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
-		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(1), int64(x1))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(1), int64(int64(x1)))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), i)
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -2541,10 +2831,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), i)
-		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(2), int64(x1))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(2), int64(int64(x1)))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _3
@@ -2564,10 +2854,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), i)
-		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(1), int64(x1))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(1), int64(int64(x1)))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _4
@@ -2587,11 +2877,11 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
 			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(int32(x2)))
 		speedtest1_run(tls)
 		goto _5
 	_5:
@@ -2610,9 +2900,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = int8('%')
-			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, uint32(uint32(i)), bp+uintptr(1), int32(libc.Uint32FromInt64(2000)-libc.Uint32FromInt32(2)))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1] = int8('%')
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1+int32(1)] = 0
 		}
@@ -2635,9 +2925,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = int8('%')
-			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, uint32(uint32(i)), bp+uintptr(1), int32(libc.Uint32FromInt64(2000)-libc.Uint32FromInt32(2)))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1] = int8('%')
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1+int32(1)] = 0
 		}
@@ -2660,9 +2950,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = int8('%')
-			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, uint32(uint32(i)), bp+uintptr(1), int32(libc.Uint32FromInt64(2000)-libc.Uint32FromInt32(2)))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1] = int8('%')
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1+int32(1)] = 0
 		}
@@ -2694,11 +2984,11 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
 			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(int32(x2)))
 		speedtest1_run(tls)
 		goto _9
 	_9:
@@ -2717,11 +3007,11 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
 			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(int32(x2)))
 		speedtest1_run(tls)
 		goto _10
 	_10:
@@ -2740,8 +3030,8 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = swizzle(tls, uint32(i), uint32(maxb))
-			len1 = speedtest1_numbername(tls, x1, bp, int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(1)))
+			x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+			len1 = speedtest1_numbername(tls, x1, bp, int32(libc.Uint32FromInt64(2000)-libc.Uint32FromInt32(1)))
 		}
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(1), bp, len1, libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -2782,10 +3072,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls) % uint32(maxb)
+		x1 = speedtest1_random(tls) % uint32(uint32(maxb))
 		x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(int32(x2)))
 		speedtest1_run(tls)
 		goto _12
 	_12:
@@ -2803,8 +3093,8 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
+		x1 = speedtest1_random(tls)%uint32(uint32(sz)) + uint32(1)
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
 		speedtest1_run(tls)
 		goto _13
 	_13:
@@ -2828,10 +3118,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(maxb) + uint32(1)
+		x1 = speedtest1_random(tls)%uint32(uint32(maxb)) + uint32(1)
 		x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(int32(x2)))
 		speedtest1_run(tls)
 		goto _14
 	_14:
@@ -2849,8 +3139,8 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
+		x1 = speedtest1_random(tls)%uint32(uint32(sz)) + uint32(1)
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
 		speedtest1_run(tls)
 		goto _15
 	_15:
@@ -2877,10 +3167,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
+		x1 = speedtest1_random(tls)%uint32(uint32(sz)) + uint32(1)
 		x2 = speedtest1_random(tls)%uint32(10) + x1 + uint32(4)
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(int32(x2)))
 		speedtest1_run(tls)
 		goto _16
 	_16:
@@ -2908,9 +3198,9 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
-		speedtest1_numbername(tls, uint32(i), bp, int32(2000))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int64(x1)))
+		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+		speedtest1_numbername(tls, uint32(uint32(i)), bp, int32(2000))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int64(int64(x1))))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _18
@@ -2936,8 +3226,8 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int64(x1)))
+		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int64(int64(x1))))
 		speedtest1_run(tls)
 		goto _19
 	_19:
@@ -2967,7 +3257,7 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), i)
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(1), bp, -int32(1), libc.UintptrFromInt32(0))
@@ -2990,7 +3280,7 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(1), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -3211,13 +3501,13 @@ func testset_orm(tls *libc.TLS) {
 			case int32('I'):
 				fallthrough
 			case int32('T'):
-				libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(j+uint32(2)), int64(x1))
+				libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(j+uint32(2)), int64(int64(x1)))
 			case int32('F'):
-				libsqlite3.Xsqlite3_bind_double(tls, g.FpStmt, int32(j+uint32(2)), float64(x1))
+				libsqlite3.Xsqlite3_bind_double(tls, g.FpStmt, int32(j+uint32(2)), float64(float64(x1)))
 			case int32('V'):
 				fallthrough
 			case int32('B'):
-				libsqlite3.Xsqlite3_bind_text64(tls, g.FpStmt, int32(j+uint32(2)), bp, uint64(len1), libc.UintptrFromInt32(0), uint8(SQLITE_UTF8))
+				libsqlite3.Xsqlite3_bind_text64(tls, g.FpStmt, int32(j+uint32(2)), bp, uint64(uint64(len1)), libc.UintptrFromInt32(0), uint8(SQLITE_UTF8))
 				break
 			}
 			goto _3
@@ -3242,7 +3532,7 @@ func testset_orm(tls *libc.TLS) {
 			break
 		}
 		x1 = speedtest1_random(tls) % nRow
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int32(x1)))
 		speedtest1_run(tls)
 		goto _4
 	_4:
@@ -3278,8 +3568,8 @@ func testset_trigger(tls *libc.TLS) {
 			if !(ii < NROW) {
 				break
 			}
-			x1 = int32(speedtest1_random(tls) % uint32(NROW))
-			speedtest1_numbername(tls, uint32(x1), bp, int32(2000))
+			x1 = int32(speedtest1_random(tls) % uint32(uint32(NROW)))
+			speedtest1_numbername(tls, uint32(uint32(x1)), bp, int32(2000))
 			libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), x1)
 			libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 			speedtest1_run(tls)
@@ -3421,7 +3711,7 @@ func testset_trigger(tls *libc.TLS) {
 		if !(jj < NROW2) {
 			break
 		}
-		speedtest1_numbername(tls, uint32(jj), bp, int32(2000))
+		speedtest1_numbername(tls, uint32(uint32(jj)), bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), jj)
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -3487,7 +3777,7 @@ func testset_trigger(tls *libc.TLS) {
 		if !(jj < NROW2) {
 			break
 		}
-		speedtest1_numbername(tls, uint32(jj), bp, int32(2000))
+		speedtest1_numbername(tls, uint32(uint32(jj)), bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), jj)
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -3541,9 +3831,12 @@ func testset_trigger(tls *libc.TLS) {
 func testset_debug1(tls *libc.TLS) {
 	bp := tls.Alloc(2048)
 	defer tls.Free(2048)
+	var __local_argv __builtin_va_list
+	var __retval int32
 	var i, n, x1, x2 uint32
-	var _ /* zNum at bp+0 */ [2000]int8
-	_, _, _, _ = i, n, x1, x2 /* A number name */
+	var v2 uintptr
+	var _ /* zNum at bp+48 */ [2000]int8
+	_, _, _, _, _, _, _ = __local_argv, __retval, i, n, x1, x2, v2 /* A number name */
 	n = uint32(g.FszTest)
 	i = uint32(1)
 	for {
@@ -3552,8 +3845,16 @@ func testset_debug1(tls *libc.TLS) {
 		}
 		x1 = swizzle(tls, i, n)
 		x2 = swizzle(tls, x1, n)
-		speedtest1_numbername(tls, x1, bp, int32(2000))
-		libc.Xprintf(tls, __ccgo_ts+19044, libc.VaList(bp+2008, i, x1, x2, bp))
+		speedtest1_numbername(tls, x1, bp+48, int32(2000))
+		v2 = __ccgo_ts + 19044
+		libc.VaList(bp, i, x1, x2, bp+48)
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v2, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _3
+	_3:
+		;
 		goto _1
 	_1:
 		;
@@ -3632,252 +3933,34 @@ func testset_parsenumber(tls *libc.TLS) {
 	speedtest1_end_test(tls)
 }
 
-type register_t = int64
-
-type time_t = int64
-
-type suseconds_t = int64
-
-type int8_t = int8
-
-type int16_t = int16
-
-type int32_t = int32
-
-type int64_t = int64
-
-type u_int64_t = uint64
-
-type mode_t = uint32
-
-type nlink_t = uint64
-
-type ino_t = uint64
-
-type dev_t = uint64
-
-type blksize_t = int64
-
-type blkcnt_t = int64
-
-type fsblkcnt_t = uint64
-
-type fsfilcnt_t = uint64
-
-type timer_t = uintptr
-
-type clockid_t = int32
-
-type clock_t = int64
-
-type id_t = uint32
-
-type key_t = int32
-
-type pthread_t = uintptr
-
-type pthread_once_t = int32
-
-type pthread_key_t = uint32
-
-type pthread_spinlock_t = int32
-
-type pthread_mutexattr_t = struct {
-	F__attr uint32
-}
-
-type pthread_condattr_t = struct {
-	F__attr uint32
-}
-
-type pthread_barrierattr_t = struct {
-	F__attr uint32
-}
-
-type pthread_rwlockattr_t = struct {
-	F__attr [2]uint32
-}
-
-type pthread_attr_t = struct {
-	F__u struct {
-		F__vi [0][14]int32
-		F__s  [0][7]uint64
-		F__i  [14]int32
-	}
-}
-
-type pthread_mutex_t = struct {
-	F__u struct {
-		F__vi [0][10]int32
-		F__p  [0][5]uintptr
-		F__i  [10]int32
-	}
-}
-
-type pthread_cond_t = struct {
-	F__u struct {
-		F__vi [0][12]int32
-		F__p  [0][6]uintptr
-		F__i  [12]int32
-	}
-}
-
-type pthread_rwlock_t = struct {
-	F__u struct {
-		F__vi [0][14]int32
-		F__p  [0][7]uintptr
-		F__i  [14]int32
-	}
-}
-
-type pthread_barrier_t = struct {
-	F__u struct {
-		F__vi [0][8]int32
-		F__p  [0][4]uintptr
-		F__i  [8]int32
-	}
-}
-
-type u_int8_t = uint8
-
-type u_int16_t = uint16
-
-type u_int32_t = uint32
-
-type caddr_t = uintptr
-
-type u_char = uint8
-
-type u_short = uint16
-
-type ushort = uint16
-
-type u_int = uint32
-
-type uint1 = uint32
-
-type u_long = uint64
-
-type ulong = uint64
-
-type quad_t = int64
-
-type u_quad_t = uint64
-
-type uint16_t = uint16
-
-type uint32_t = uint32
-
-type uint64_t = uint64
-
-type timeval = struct {
-	Ftv_sec  time_t
-	Ftv_usec suseconds_t
-}
-
-type timespec = struct {
-	Ftv_sec  time_t
-	Ftv_nsec int64
-}
-
-type sigset_t = struct {
-	F__bits [16]uint64
-}
-
-type __sigset_t = sigset_t
-
-type fd_mask = uint64
-
-type fd_set = struct {
-	Ffds_bits [16]uint64
-}
-
-// C documentation
-//
-//	/*
-//	** Attempt to display I/O stats on Linux using /proc/PID/io
-//	*/
-func displayLinuxIoStats(tls *libc.TLS, out uintptr) {
-	bp := tls.Alloc(224)
-	defer tls.Free(224)
-	var i, n int32
-	var in uintptr
-	var _ /* z at bp+0 */ [200]int8
-	_, _, _ = i, in, n
-	libsqlite3.Xsqlite3_snprintf(tls, int32(200), bp, __ccgo_ts+19501, libc.VaList(bp+208, libc.Xgetpid(tls)))
-	in = libc.Xfopen(tls, bp, __ccgo_ts+19513)
-	if in == uintptr(0) {
-		return
-	}
-	for libc.Xfgets(tls, bp, int32(200), in) != uintptr(0) {
-		i = 0
-		for {
-			if !(uint64(i) < libc.Uint64FromInt64(112)/libc.Uint64FromInt64(16)) {
-				break
-			}
-			n = int32(libc.Xstrlen(tls, aTrans[i].FzPattern))
-			if libc.Xstrncmp(tls, aTrans[i].FzPattern, bp, uint64(n)) == 0 {
-				libc.Xfprintf(tls, out, __ccgo_ts+19762, libc.VaList(bp+208, aTrans[i].FzDesc, bp+uintptr(n)))
-				break
-			}
-			goto _1
-		_1:
-			;
-			i++
-		}
-	}
-	libc.Xfclose(tls, in)
-}
-
-var aTrans = [7]struct {
-	FzPattern uintptr
-	FzDesc    uintptr
-}{
-	0: {
-		FzPattern: __ccgo_ts + 19516,
-		FzDesc:    __ccgo_ts + 19524,
-	},
-	1: {
-		FzPattern: __ccgo_ts + 19550,
-		FzDesc:    __ccgo_ts + 19558,
-	},
-	2: {
-		FzPattern: __ccgo_ts + 19581,
-		FzDesc:    __ccgo_ts + 19589,
-	},
-	3: {
-		FzPattern: __ccgo_ts + 19610,
-		FzDesc:    __ccgo_ts + 19618,
-	},
-	4: {
-		FzPattern: __ccgo_ts + 19640,
-		FzDesc:    __ccgo_ts + 19653,
-	},
-	5: {
-		FzPattern: __ccgo_ts + 19678,
-		FzDesc:    __ccgo_ts + 19692,
-	},
-	6: {
-		FzPattern: __ccgo_ts + 19715,
-		FzDesc:    __ccgo_ts + 19739,
-	},
-}
-
 func xCompileOptions(tls *libc.TLS, pCtx uintptr, nVal int32, azVal uintptr, azCol uintptr) (r int32) {
-	bp := tls.Alloc(16)
-	defer tls.Free(16)
-	libc.Xprintf(tls, __ccgo_ts+19774, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(azVal))))
+	bp := tls.Alloc(32)
+	defer tls.Free(32)
+	var __local_argv __builtin_va_list
+	var __retval int32
+	var v1 uintptr
+	_, _, _ = __local_argv, __retval, v1
+	v1 = __ccgo_ts + 19501
+	libc.VaList(bp, *(*uintptr)(unsafe.Pointer(azVal)))
+	__local_argv = bp
+	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+	_ = __local_argv
+	_ = __retval
+	goto _2
+_2:
+	;
 	return SQLITE_OK
 }
 
 func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
-	bp := tls.Alloc(48)
-	defer tls.Free(48)
-	var cacheSize, doAutovac, doExclusive, doFullFSync, doIncrvac, doPCache, doTrace, i, memDb, mmapSize, mnHeap, nHeap, nLook, nPCache, nThread, noSync, openFlags, pageSize, rc, showStats, szLook, szPCache, v10, v11, v12, v13, v2, v3, v4, v5, v6, v7, v8, v9 int32
-	var pHeap, pLook, pPCache, pVfs, z, zComma, zDbName, zEncoding, zJMode, zKey, zObj, zSql, zTSet, zThisTest, zVfs, v14 uintptr
-	var _ /* iCur at bp+0 */ int32
-	var _ /* iHi at bp+4 */ int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = cacheSize, doAutovac, doExclusive, doFullFSync, doIncrvac, doPCache, doTrace, i, memDb, mmapSize, mnHeap, nHeap, nLook, nPCache, nThread, noSync, openFlags, pHeap, pLook, pPCache, pVfs, pageSize, rc, showStats, szLook, szPCache, z, zComma, zDbName, zEncoding, zJMode, zKey, zObj, zSql, zTSet, zThisTest, zVfs, v10, v11, v12, v13, v14, v2, v3, v4, v5, v6, v7, v8, v9
+	bp := tls.Alloc(528)
+	defer tls.Free(528)
+	var __local_argv __builtin_va_list
+	var __retval, cacheSize, doAutovac, doExclusive, doFullFSync, doIncrvac, doPCache, doTrace, i, memDb, mmapSize, mnHeap, nHeap, nLook, nPCache, nThread, noSync, openFlags, pageSize, rc, showStats, szLook, szPCache, v10, v11, v12, v13, v14, v15, v4, v5, v6, v7, v8, v9 int32
+	var pHeap, pLook, pPCache, pVfs, z, zComma, zDbName, zEncoding, zJMode, zKey, zObj, zSql, zTSet, zThisTest, zVfs, v1, v16, v18, v19, v21, v23, v25, v27, v29, v31, v33, v35, v37, v39, v41, v43, v45, v47, v49, v51 uintptr
+	var _ /* iCur at bp+488 */ int32
+	var _ /* iHi at bp+492 */ int32
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, cacheSize, doAutovac, doExclusive, doFullFSync, doIncrvac, doPCache, doTrace, i, memDb, mmapSize, mnHeap, nHeap, nLook, nPCache, nThread, noSync, openFlags, pHeap, pLook, pPCache, pVfs, pageSize, rc, showStats, szLook, szPCache, z, zComma, zDbName, zEncoding, zJMode, zKey, zObj, zSql, zTSet, zThisTest, zVfs, v1, v10, v11, v12, v13, v14, v15, v16, v18, v19, v21, v23, v25, v27, v29, v31, v33, v35, v37, v39, v4, v41, v43, v45, v47, v49, v5, v51, v6, v7, v8, v9
 	doAutovac = 0   /* True for --autovacuum */
 	cacheSize = 0   /* Desired cache size.  0 means default */
 	doExclusive = 0 /* True for --exclusive */
@@ -3899,22 +3982,30 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	mmapSize = 0                                                                                     /* How big of a memory map to use */
 	memDb = 0                                                                                        /* --memdb.  Use an in-memory database */
 	openFlags = libc.Int32FromInt32(SQLITE_OPEN_READWRITE) | libc.Int32FromInt32(SQLITE_OPEN_CREATE) /* SQLITE_OPEN_xxx flags. */
-	zTSet = __ccgo_ts + 19797                                                                        /* Which --testset torun */
+	zTSet = __ccgo_ts + 19524                                                                        /* Which --testset torun */
 	zVfs = uintptr(0)                                                                                /* --vfs NAME */
 	doTrace = 0                                                                                      /* True for --trace */
 	zEncoding = uintptr(0)                                                                           /* --utf16be or --utf16le */
 	zDbName = uintptr(0)                                                                             /* Name of the test database */
-	pHeap = uintptr(0)                                                                               /* Allocated heap space */
-	pLook = uintptr(0)                                                                               /* Allocated lookaside space */
-	pPCache = uintptr(0)                                                                             /* API return code */
+	pHeap = uintptr(0)   /* Allocated heap space */
+	pLook = uintptr(0)   /* Allocated lookaside space */
+	pPCache = uintptr(0) /* API return code */
 	/*
 	 ** Confirms that argc has at least N arguments following argv[i]. */
 	/* Display the version of SQLite being tested */
-	libc.Xprintf(tls, __ccgo_ts+19802, libc.VaList(bp+16, libsqlite3.Xsqlite3_libversion(tls), libsqlite3.Xsqlite3_sourceid(tls)))
+	v1 = __ccgo_ts + 19529
+	libc.VaList(bp, libsqlite3.Xsqlite3_libversion(tls), libsqlite3.Xsqlite3_sourceid(tls))
+	__local_argv = bp
+	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+	_ = __local_argv
+	_ = __retval
+	goto _2
+_2:
+	;
 	/* Process command-line arguments */
 	g.FzWR = __ccgo_ts + 6
 	g.FzNN = __ccgo_ts + 6
-	g.FzPK = __ccgo_ts + 19837
+	g.FzPK = __ccgo_ts + 19564
 	g.FszTest = int32(100)
 	g.FnRepeat = int32(1)
 	i = int32(1)
@@ -3922,270 +4013,278 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		if !(i < argc) {
 			break
 		}
-		z = *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))
+		z = *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))
 		if int32(*(*int8)(unsafe.Pointer(z))) == int32('-') {
 			for cond := true; cond; cond = int32(*(*int8)(unsafe.Pointer(z))) == int32('-') {
 				z++
 			}
-			if libc.Xstrcmp(tls, z, __ccgo_ts+19844) == 0 {
+			if libc.Xstrcmp(tls, z, __ccgo_ts+19571) == 0 {
 				doAutovac = int32(1)
 			} else {
-				if libc.Xstrcmp(tls, z, __ccgo_ts+19855) == 0 {
+				if libc.Xstrcmp(tls, z, __ccgo_ts+19582) == 0 {
 					g.FdoBigTransactions = int32(1)
 				} else {
-					if libc.Xstrcmp(tls, z, __ccgo_ts+19872) == 0 {
+					if libc.Xstrcmp(tls, z, __ccgo_ts+19599) == 0 {
 						if i >= argc-int32(1) {
-							fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+							fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 						}
 						i++
-						v2 = i
-						cacheSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v2)*8)))
+						v4 = i
+						cacheSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*4)))
 					} else {
-						if libc.Xstrcmp(tls, z, __ccgo_ts+19906) == 0 {
+						if libc.Xstrcmp(tls, z, __ccgo_ts+19633) == 0 {
 							doExclusive = int32(1)
 						} else {
-							if libc.Xstrcmp(tls, z, __ccgo_ts+19916) == 0 {
+							if libc.Xstrcmp(tls, z, __ccgo_ts+19643) == 0 {
 								doFullFSync = int32(1)
 							} else {
-								if libc.Xstrcmp(tls, z, __ccgo_ts+19926) == 0 {
+								if libc.Xstrcmp(tls, z, __ccgo_ts+19653) == 0 {
 									g.FdoCheckpoint = int32(1)
 								} else {
-									if libc.Xstrcmp(tls, z, __ccgo_ts+19937) == 0 {
+									if libc.Xstrcmp(tls, z, __ccgo_ts+19664) == 0 {
 										g.FbSqlOnly = int32(1)
 										g.FbExplain = int32(1)
 									} else {
-										if libc.Xstrcmp(tls, z, __ccgo_ts+19945) == 0 {
+										if libc.Xstrcmp(tls, z, __ccgo_ts+19672) == 0 {
 											if i >= argc-int32(2) {
-												fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+												fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 											}
-											nHeap = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
-											mnHeap = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
+											nHeap = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*4)))
+											mnHeap = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*4)))
 											i += int32(2)
 										} else {
-											if libc.Xstrcmp(tls, z, __ccgo_ts+19950) == 0 {
+											if libc.Xstrcmp(tls, z, __ccgo_ts+19677) == 0 {
 												doIncrvac = int32(1)
 											} else {
-												if libc.Xstrcmp(tls, z, __ccgo_ts+19961) == 0 {
+												if libc.Xstrcmp(tls, z, __ccgo_ts+19688) == 0 {
 													if i >= argc-int32(1) {
-														fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+														fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 													}
 													i++
-													v3 = i
-													zJMode = *(*uintptr)(unsafe.Pointer(argv + uintptr(v3)*8))
+													v5 = i
+													zJMode = *(*uintptr)(unsafe.Pointer(argv + uintptr(v5)*4))
 												} else {
-													if libc.Xstrcmp(tls, z, __ccgo_ts+19969) == 0 {
+													if libc.Xstrcmp(tls, z, __ccgo_ts+19696) == 0 {
 														if i >= argc-int32(1) {
-															fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+															fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 														}
 														i++
-														v4 = i
-														zKey = *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8))
+														v6 = i
+														zKey = *(*uintptr)(unsafe.Pointer(argv + uintptr(v6)*4))
 													} else {
-														if libc.Xstrcmp(tls, z, __ccgo_ts+19973) == 0 {
+														if libc.Xstrcmp(tls, z, __ccgo_ts+19700) == 0 {
 															if i >= argc-int32(2) {
-																fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 															}
-															nLook = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
-															szLook = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
+															nLook = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*4)))
+															szLook = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*4)))
 															i += int32(2)
 														} else {
-															if libc.Xstrcmp(tls, z, __ccgo_ts+19983) == 0 {
+															if libc.Xstrcmp(tls, z, __ccgo_ts+19710) == 0 {
 																memDb = int32(1)
 															} else {
-																if libc.Xstrcmp(tls, z, __ccgo_ts+19989) == 0 {
+																if libc.Xstrcmp(tls, z, __ccgo_ts+19716) == 0 {
 																	libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_MULTITHREAD), 0)
 																} else {
-																	if libc.Xstrcmp(tls, z, __ccgo_ts+20001) == 0 {
-																		libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_MEMSTATUS), libc.VaList(bp+16, 0))
+																	if libc.Xstrcmp(tls, z, __ccgo_ts+19728) == 0 {
+																		libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_MEMSTATUS), libc.VaList(bp+504, 0))
 																	} else {
-																		if libc.Xstrcmp(tls, z, __ccgo_ts+20011) == 0 {
+																		if libc.Xstrcmp(tls, z, __ccgo_ts+19738) == 0 {
 																			if i >= argc-int32(1) {
-																				fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																				fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																			}
 																			i++
-																			v5 = i
-																			mmapSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v5)*8)))
+																			v7 = i
+																			mmapSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v7)*4)))
 																		} else {
-																			if libc.Xstrcmp(tls, z, __ccgo_ts+20016) == 0 {
-																				libsqlite3.Xsqlite3_test_control(tls, int32(SQLITE_TESTCTRL_USELONGDOUBLE), libc.VaList(bp+16, 0))
+																			if libc.Xstrcmp(tls, z, __ccgo_ts+19743) == 0 {
+																				libsqlite3.Xsqlite3_test_control(tls, int32(SQLITE_TESTCTRL_USELONGDOUBLE), libc.VaList(bp+504, 0))
 																			} else {
-																				if libc.Xstrcmp(tls, z, __ccgo_ts+20029) == 0 {
+																				if libc.Xstrcmp(tls, z, __ccgo_ts+19756) == 0 {
 																					openFlags |= int32(SQLITE_OPEN_NOMUTEX)
 																				} else {
-																					if libc.Xstrcmp(tls, z, __ccgo_ts+20037) == 0 {
+																					if libc.Xstrcmp(tls, z, __ccgo_ts+19764) == 0 {
 																						noSync = int32(1)
 																					} else {
-																						if libc.Xstrcmp(tls, z, __ccgo_ts+20044) == 0 {
-																							g.FzNN = __ccgo_ts + 20052
+																						if libc.Xstrcmp(tls, z, __ccgo_ts+19771) == 0 {
+																							g.FzNN = __ccgo_ts + 19779
 																						} else {
-																							if libc.Xstrcmp(tls, z, __ccgo_ts+20061) == 0 {
+																							if libc.Xstrcmp(tls, z, __ccgo_ts+19788) == 0 {
 																								if i >= argc-int32(1) {
-																									fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																									fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																								}
 																								i++
-																								if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+20068) == 0 {
-																									g.FhashFile = libc.Xstdout
+																								if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)), __ccgo_ts+19795) == 0 {
+																									g.FhashFile = libc.X__acrt_iob_func(tls, uint32(1))
 																								} else {
-																									g.FhashFile = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+20070)
+																									g.FhashFile = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)), __ccgo_ts+19797)
 																									if g.FhashFile == uintptr(0) {
-																										fatal_error(tls, __ccgo_ts+20073, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																										fatal_error(tls, __ccgo_ts+19800, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																									}
 																								}
 																							} else {
-																								if libc.Xstrcmp(tls, z, __ccgo_ts+20103) == 0 {
+																								if libc.Xstrcmp(tls, z, __ccgo_ts+19830) == 0 {
 																									if i >= argc-int32(1) {
-																										fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																										fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																									}
 																									i++
-																									v6 = i
-																									pageSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v6)*8)))
+																									v8 = i
+																									pageSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v8)*4)))
 																								} else {
-																									if libc.Xstrcmp(tls, z, __ccgo_ts+20112) == 0 {
+																									if libc.Xstrcmp(tls, z, __ccgo_ts+19839) == 0 {
 																										if i >= argc-int32(2) {
-																											fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																											fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																										}
-																										nPCache = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
-																										szPCache = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
+																										nPCache = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*4)))
+																										szPCache = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*4)))
 																										doPCache = int32(1)
 																										i += int32(2)
 																									} else {
-																										if libc.Xstrcmp(tls, z, __ccgo_ts+20119) == 0 {
-																											g.FzPK = __ccgo_ts + 20130
+																										if libc.Xstrcmp(tls, z, __ccgo_ts+19846) == 0 {
+																											g.FzPK = __ccgo_ts + 19857
 																										} else {
-																											if libc.Xstrcmp(tls, z, __ccgo_ts+20142) == 0 {
+																											if libc.Xstrcmp(tls, z, __ccgo_ts+19869) == 0 {
 																												if i >= argc-int32(1) {
-																													fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																													fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																												}
 																												i++
-																												v7 = i
-																												g.FnRepeat = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v7)*8)))
+																												v9 = i
+																												g.FnRepeat = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v9)*4)))
 																											} else {
-																												if libc.Xstrcmp(tls, z, __ccgo_ts+20149) == 0 {
+																												if libc.Xstrcmp(tls, z, __ccgo_ts+19876) == 0 {
 																													g.FbReprepare = int32(1)
 																												} else {
-																													if libc.Xstrcmp(tls, z, __ccgo_ts+20159) == 0 {
+																													if libc.Xstrcmp(tls, z, __ccgo_ts+19886) == 0 {
 																														libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_SERIALIZED), 0)
 																													} else {
-																														if libc.Xstrcmp(tls, z, __ccgo_ts+20170) == 0 {
+																														if libc.Xstrcmp(tls, z, __ccgo_ts+19897) == 0 {
 																															libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_SINGLETHREAD), 0)
 																														} else {
-																															if libc.Xstrcmp(tls, z, __ccgo_ts+20183) == 0 {
+																															if libc.Xstrcmp(tls, z, __ccgo_ts+19910) == 0 {
 																																if i >= argc-int32(1) {
-																																	fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																	fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																																}
 																																if g.FpScript != 0 {
 																																	libc.Xfclose(tls, g.FpScript)
 																																}
 																																i++
-																																v8 = i
-																																g.FpScript = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v8)*8)), __ccgo_ts+20070)
+																																v10 = i
+																																g.FpScript = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v10)*4)), __ccgo_ts+19797)
 																																if g.FpScript == uintptr(0) {
-																																	fatal_error(tls, __ccgo_ts+20190, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																	fatal_error(tls, __ccgo_ts+19917, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																																}
 																															} else {
-																																if libc.Xstrcmp(tls, z, __ccgo_ts+20223) == 0 {
+																																if libc.Xstrcmp(tls, z, __ccgo_ts+19950) == 0 {
 																																	g.FbSqlOnly = int32(1)
 																																} else {
-																																	if libc.Xstrcmp(tls, z, __ccgo_ts+20231) == 0 {
+																																	if libc.Xstrcmp(tls, z, __ccgo_ts+19958) == 0 {
 																																		g.FbMemShrink = int32(1)
 																																	} else {
-																																		if libc.Xstrcmp(tls, z, __ccgo_ts+20245) == 0 {
+																																		if libc.Xstrcmp(tls, z, __ccgo_ts+19972) == 0 {
 																																			if i >= argc-int32(1) {
-																																				fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																				fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																																			}
 																																			i++
-																																			v9 = i
-																																			g.FszTest = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v9)*8)))
+																																			v11 = i
+																																			g.FszTest = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v11)*4)))
 																																		} else {
-																																			if libc.Xstrcmp(tls, z, __ccgo_ts+20250) == 0 {
+																																			if libc.Xstrcmp(tls, z, __ccgo_ts+19977) == 0 {
 																																				showStats = int32(1)
 																																			} else {
-																																				if libc.Xstrcmp(tls, z, __ccgo_ts+20256) == 0 {
+																																				if libc.Xstrcmp(tls, z, __ccgo_ts+19983) == 0 {
 																																					if i >= argc-int32(1) {
-																																						fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																						fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																																					}
 																																					i++
-																																					if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) < int32('0') || int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) > int32('9') || int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)) + 1))) != 0 {
-																																						fatal_error(tls, __ccgo_ts+20261, 0)
+																																					if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))) < int32('0') || int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))) > int32('9') || int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)) + 1))) != 0 {
+																																						fatal_error(tls, __ccgo_ts+19988, 0)
 																																					}
-																																					g.FeTemp = int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) - int32('0')
+																																					g.FeTemp = int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))) - int32('0')
 																																				} else {
-																																					if libc.Xstrcmp(tls, z, __ccgo_ts+20314) == 0 {
+																																					if libc.Xstrcmp(tls, z, __ccgo_ts+20041) == 0 {
 																																						if i >= argc-int32(1) {
-																																							fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																							fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																																						}
 																																						i++
-																																						v10 = i
-																																						zTSet = *(*uintptr)(unsafe.Pointer(argv + uintptr(v10)*8))
+																																						v12 = i
+																																						zTSet = *(*uintptr)(unsafe.Pointer(argv + uintptr(v12)*4))
 																																					} else {
-																																						if libc.Xstrcmp(tls, z, __ccgo_ts+20322) == 0 {
+																																						if libc.Xstrcmp(tls, z, __ccgo_ts+20049) == 0 {
 																																							doTrace = int32(1)
 																																						} else {
-																																							if libc.Xstrcmp(tls, z, __ccgo_ts+20328) == 0 {
+																																							if libc.Xstrcmp(tls, z, __ccgo_ts+20055) == 0 {
 																																								if i >= argc-int32(1) {
-																																									fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																									fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																																								}
 																																								i++
-																																								v11 = i
-																																								nThread = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v11)*8)))
+																																								v13 = i
+																																								nThread = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v13)*4)))
 																																							} else {
-																																								if libc.Xstrcmp(tls, z, __ccgo_ts+20336) == 0 {
-																																									zEncoding = __ccgo_ts + 20336
+																																								if libc.Xstrcmp(tls, z, __ccgo_ts+20063) == 0 {
+																																									zEncoding = __ccgo_ts + 20063
 																																								} else {
-																																									if libc.Xstrcmp(tls, z, __ccgo_ts+20344) == 0 {
-																																										zEncoding = __ccgo_ts + 20344
+																																									if libc.Xstrcmp(tls, z, __ccgo_ts+20071) == 0 {
+																																										zEncoding = __ccgo_ts + 20071
 																																									} else {
-																																										if libc.Xstrcmp(tls, z, __ccgo_ts+20352) == 0 {
+																																										if libc.Xstrcmp(tls, z, __ccgo_ts+20079) == 0 {
 																																											g.FbVerify = int32(1)
 																																											HashInit(tls)
 																																										} else {
-																																											if libc.Xstrcmp(tls, z, __ccgo_ts+20359) == 0 {
+																																											if libc.Xstrcmp(tls, z, __ccgo_ts+20086) == 0 {
 																																												if i >= argc-int32(1) {
-																																													fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																													fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																																												}
 																																												i++
-																																												v12 = i
-																																												zVfs = *(*uintptr)(unsafe.Pointer(argv + uintptr(v12)*8))
+																																												v14 = i
+																																												zVfs = *(*uintptr)(unsafe.Pointer(argv + uintptr(v14)*4))
 																																											} else {
-																																												if libc.Xstrcmp(tls, z, __ccgo_ts+20363) == 0 {
+																																												if libc.Xstrcmp(tls, z, __ccgo_ts+20090) == 0 {
 																																													if i >= argc-int32(1) {
-																																														fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																														fatal_error(tls, __ccgo_ts+19609, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 																																													}
 																																													i++
-																																													v13 = i
-																																													g.FnReserve = libc.Xatoi(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v13)*8)))
+																																													v15 = i
+																																													g.FnReserve = libc.Xatoi(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v15)*4)))
 																																												} else {
-																																													if libc.Xstrcmp(tls, z, __ccgo_ts+20371) == 0 {
+																																													if libc.Xstrcmp(tls, z, __ccgo_ts+20098) == 0 {
 																																														g.FstmtScanStatus = int32(1)
 																																													} else {
-																																														if libc.Xstrcmp(tls, z, __ccgo_ts+20386) == 0 {
-																																															if libc.Xstrstr(tls, g.FzWR, __ccgo_ts+20400) != uintptr(0) {
+																																														if libc.Xstrcmp(tls, z, __ccgo_ts+20113) == 0 {
+																																															if libc.Xstrstr(tls, g.FzWR, __ccgo_ts+20127) != uintptr(0) {
 																																																/* no-op */
 																																															} else {
-																																																if libc.Xstrstr(tls, g.FzWR, __ccgo_ts+20408) != uintptr(0) {
-																																																	g.FzWR = __ccgo_ts + 20415
+																																																if libc.Xstrstr(tls, g.FzWR, __ccgo_ts+20135) != uintptr(0) {
+																																																	g.FzWR = __ccgo_ts + 20142
 																																																} else {
 																																																	g.FzWR = __ccgo_ts + 3703
 																																																}
 																																															}
-																																															g.FzPK = __ccgo_ts + 20130
+																																															g.FzPK = __ccgo_ts + 19857
 																																														} else {
-																																															if libc.Xstrcmp(tls, z, __ccgo_ts+20436) == 0 {
-																																																if libc.Xstrstr(tls, g.FzWR, __ccgo_ts+20408) != uintptr(0) {
+																																															if libc.Xstrcmp(tls, z, __ccgo_ts+20163) == 0 {
+																																																if libc.Xstrstr(tls, g.FzWR, __ccgo_ts+20135) != uintptr(0) {
 																																																	/* no-op */
 																																																} else {
-																																																	if libc.Xstrstr(tls, g.FzWR, __ccgo_ts+20400) != uintptr(0) {
-																																																		g.FzWR = __ccgo_ts + 20415
+																																																	if libc.Xstrstr(tls, g.FzWR, __ccgo_ts+20127) != uintptr(0) {
+																																																		g.FzWR = __ccgo_ts + 20142
 																																																	} else {
-																																																		g.FzWR = __ccgo_ts + 20408
+																																																		g.FzWR = __ccgo_ts + 20135
 																																																	}
 																																																}
 																																															} else {
-																																																if libc.Xstrcmp(tls, z, __ccgo_ts+20443) == 0 || libc.Xstrcmp(tls, z, __ccgo_ts+20448) == 0 {
-																																																	libc.Xprintf(tls, uintptr(unsafe.Pointer(&zHelp)), libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv))))
+																																																if libc.Xstrcmp(tls, z, __ccgo_ts+20170) == 0 || libc.Xstrcmp(tls, z, __ccgo_ts+20175) == 0 {
+																																																	v16 = uintptr(unsafe.Pointer(&zHelp))
+																																																	libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv)))
+																																																	__local_argv = bp
+																																																	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v16, __local_argv)
+																																																	_ = __local_argv
+																																																	_ = __retval
+																																																	goto _17
+																																																_17:
+																																																	;
 																																																	libc.Xexit(tls, 0)
 																																																} else {
-																																																	fatal_error(tls, __ccgo_ts+20450, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer(argv))))
+																																																	fatal_error(tls, __ccgo_ts+20177, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)), *(*uintptr)(unsafe.Pointer(argv))))
 																																																}
 																																															}
 																																														}
@@ -4234,40 +4333,40 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 		} else {
 			if zDbName == uintptr(0) {
-				zDbName = *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))
+				zDbName = *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))
 			} else {
-				fatal_error(tls, __ccgo_ts+20491, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer(argv))))
+				fatal_error(tls, __ccgo_ts+20218, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)), *(*uintptr)(unsafe.Pointer(argv))))
 			}
 		}
-		goto _1
-	_1:
+		goto _3
+	_3:
 		;
 		i++
 	}
 	if nHeap > 0 {
-		pHeap = libc.Xmalloc(tls, uint64(nHeap))
+		pHeap = libc.Xmalloc(tls, uint32(uint32(nHeap)))
 		if pHeap == uintptr(0) {
-			fatal_error(tls, __ccgo_ts+20534, libc.VaList(bp+16, nHeap))
+			fatal_error(tls, __ccgo_ts+20261, libc.VaList(bp+504, nHeap))
 		}
-		rc = libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_HEAP), libc.VaList(bp+16, pHeap, nHeap, mnHeap))
+		rc = libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_HEAP), libc.VaList(bp+504, pHeap, nHeap, mnHeap))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+20564, libc.VaList(bp+16, rc))
+			fatal_error(tls, __ccgo_ts+20291, libc.VaList(bp+504, rc))
 		}
 	}
 	if doPCache != 0 {
 		if nPCache > 0 && szPCache > 0 {
-			pPCache = libc.Xmalloc(tls, uint64(int64(nPCache)*int64(szPCache)))
+			pPCache = libc.Xmalloc(tls, uint32(int64(int64(nPCache))*int64(int64(szPCache))))
 			if pPCache == uintptr(0) {
-				fatal_error(tls, __ccgo_ts+20595, libc.VaList(bp+16, int64(nPCache)*int64(szPCache)))
+				fatal_error(tls, __ccgo_ts+20322, libc.VaList(bp+504, int64(int64(nPCache))*int64(int64(szPCache))))
 			}
 		}
-		rc = libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_PAGECACHE), libc.VaList(bp+16, pPCache, szPCache, nPCache))
+		rc = libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_PAGECACHE), libc.VaList(bp+504, pPCache, szPCache, nPCache))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+20629, libc.VaList(bp+16, rc))
+			fatal_error(tls, __ccgo_ts+20356, libc.VaList(bp+504, rc))
 		}
 	}
 	if nLook >= 0 {
-		libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_LOOKASIDE), libc.VaList(bp+16, 0, 0))
+		libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_LOOKASIDE), libc.VaList(bp+504, 0, 0))
 	}
 	libsqlite3.Xsqlite3_initialize(tls)
 	if zDbName != uintptr(0) {
@@ -4285,72 +4384,78 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	}
 	/* Open the database and the input file */
 	if memDb != 0 {
-		v14 = __ccgo_ts + 20662
+		v18 = __ccgo_ts + 20389
 	} else {
-		v14 = zDbName
+		v18 = zDbName
 	}
-	if libsqlite3.Xsqlite3_open_v2(tls, v14, uintptr(unsafe.Pointer(&g)), openFlags, zVfs) != 0 {
-		fatal_error(tls, __ccgo_ts+20671, libc.VaList(bp+16, zDbName))
+	if libsqlite3.Xsqlite3_open_v2(tls, v18, uintptr(unsafe.Pointer(&g)), openFlags, zVfs) != 0 {
+		fatal_error(tls, __ccgo_ts+20398, libc.VaList(bp+504, zDbName))
 	}
 	if nLook > 0 && szLook > 0 {
-		pLook = libc.Xmalloc(tls, uint64(nLook*szLook))
-		rc = libsqlite3.Xsqlite3_db_config(tls, g.Fdb, int32(SQLITE_DBCONFIG_LOOKASIDE), libc.VaList(bp+16, pLook, szLook, nLook))
+		pLook = libc.Xmalloc(tls, uint32(nLook*szLook))
+		rc = libsqlite3.Xsqlite3_db_config(tls, g.Fdb, int32(SQLITE_DBCONFIG_LOOKASIDE), libc.VaList(bp+504, pLook, szLook, nLook))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+20702, libc.VaList(bp+16, rc))
+			fatal_error(tls, __ccgo_ts+20429, libc.VaList(bp+504, rc))
 		}
 	}
 	if g.FnReserve > 0 {
-		libsqlite3.Xsqlite3_file_control(tls, g.Fdb, uintptr(0), int32(SQLITE_FCNTL_RESERVE_BYTES), uintptr(unsafe.Pointer(&g))+72)
+		libsqlite3.Xsqlite3_file_control(tls, g.Fdb, uintptr(0), int32(SQLITE_FCNTL_RESERVE_BYTES), uintptr(unsafe.Pointer(&g))+64)
 	}
 	if g.FstmtScanStatus != 0 {
-		libsqlite3.Xsqlite3_db_config(tls, g.Fdb, int32(SQLITE_DBCONFIG_STMT_SCANSTATUS), libc.VaList(bp+16, int32(1), 0))
+		libsqlite3.Xsqlite3_db_config(tls, g.Fdb, int32(SQLITE_DBCONFIG_STMT_SCANSTATUS), libc.VaList(bp+504, int32(1), 0))
 	}
 	/* Set database connection options */
-	libsqlite3.Xsqlite3_create_function(tls, g.Fdb, __ccgo_ts+20738, 0, int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(randomFunc), uintptr(0), uintptr(0))
+	libsqlite3.Xsqlite3_create_function(tls, g.Fdb, __ccgo_ts+20465, 0, int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(randomFunc), uintptr(0), uintptr(0))
 	if doTrace != 0 {
 		libsqlite3.Xsqlite3_trace(tls, g.Fdb, __ccgo_fp(traceCallback), uintptr(0))
 	}
 	if memDb > 0 {
-		speedtest1_exec(tls, __ccgo_ts+20745, 0)
+		speedtest1_exec(tls, __ccgo_ts+20472, 0)
 	}
 	if mmapSize > 0 {
-		speedtest1_exec(tls, __ccgo_ts+20770, libc.VaList(bp+16, mmapSize))
+		speedtest1_exec(tls, __ccgo_ts+20497, libc.VaList(bp+504, mmapSize))
 	}
-	speedtest1_exec(tls, __ccgo_ts+20790, libc.VaList(bp+16, nThread))
+	speedtest1_exec(tls, __ccgo_ts+20517, libc.VaList(bp+504, nThread))
 	if zKey != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20808, libc.VaList(bp+16, zKey))
+		speedtest1_exec(tls, __ccgo_ts+20535, libc.VaList(bp+504, zKey))
 	}
 	if zEncoding != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20825, libc.VaList(bp+16, zEncoding))
+		speedtest1_exec(tls, __ccgo_ts+20552, libc.VaList(bp+504, zEncoding))
 	}
 	if doAutovac != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20844, 0)
+		speedtest1_exec(tls, __ccgo_ts+20571, 0)
 	} else {
 		if doIncrvac != 0 {
-			speedtest1_exec(tls, __ccgo_ts+20868, 0)
+			speedtest1_exec(tls, __ccgo_ts+20595, 0)
 		}
 	}
 	if pageSize != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20899, libc.VaList(bp+16, pageSize))
+		speedtest1_exec(tls, __ccgo_ts+20626, libc.VaList(bp+504, pageSize))
 	}
 	if cacheSize != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20919, libc.VaList(bp+16, cacheSize))
+		speedtest1_exec(tls, __ccgo_ts+20646, libc.VaList(bp+504, cacheSize))
 	}
 	if noSync != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20940, 0)
+		speedtest1_exec(tls, __ccgo_ts+20667, 0)
 	} else {
 		if doFullFSync != 0 {
-			speedtest1_exec(tls, __ccgo_ts+20963, 0)
+			speedtest1_exec(tls, __ccgo_ts+20690, 0)
 		}
 	}
 	if doExclusive != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20983, 0)
+		speedtest1_exec(tls, __ccgo_ts+20710, 0)
 	}
 	if zJMode != 0 {
-		speedtest1_exec(tls, __ccgo_ts+21013, libc.VaList(bp+16, zJMode))
+		speedtest1_exec(tls, __ccgo_ts+20740, libc.VaList(bp+504, zJMode))
 	}
 	if g.FbExplain != 0 {
-		libc.Xprintf(tls, __ccgo_ts+21036, 0)
+		v19 = __ccgo_ts + 20763
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v19, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _20
+	_20:
 	}
 	for cond := true; cond; cond = *(*int8)(unsafe.Pointer(zTSet)) != 0 {
 		zThisTest = zTSet
@@ -4362,33 +4467,40 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			zTSet = __ccgo_ts + 6
 		}
 		if g.FiTotal > 0 || zComma != uintptr(0) {
-			libc.Xprintf(tls, __ccgo_ts+21055, libc.VaList(bp+16, zThisTest))
+			v21 = __ccgo_ts + 20782
+			libc.VaList(bp, zThisTest)
+			__local_argv = bp
+			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v21, __local_argv)
+			_ = __local_argv
+			_ = __retval
+			goto _22
+		_22:
 		}
-		if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+19797) == 0 {
+		if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+19524) == 0 {
 			testset_main(tls)
 		} else {
-			if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+21082) == 0 {
+			if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20809) == 0 {
 				testset_debug1(tls)
 			} else {
-				if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+21089) == 0 {
+				if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20816) == 0 {
 					testset_orm(tls)
 				} else {
-					if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+21093) == 0 {
+					if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20820) == 0 {
 						testset_cte(tls)
 					} else {
-						if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+21097) == 0 {
+						if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20824) == 0 {
 							testset_fp(tls)
 						} else {
-							if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+21100) == 0 {
+							if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20827) == 0 {
 								testset_trigger(tls)
 							} else {
-								if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+21108) == 0 {
+								if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20835) == 0 {
 									testset_parsenumber(tls)
 								} else {
-									if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+21120) == 0 {
-										fatal_error(tls, __ccgo_ts+21126, 0)
+									if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20847) == 0 {
+										fatal_error(tls, __ccgo_ts+20853, 0)
 									} else {
-										fatal_error(tls, __ccgo_ts+21189, libc.VaList(bp+16, zThisTest))
+										fatal_error(tls, __ccgo_ts+20916, libc.VaList(bp+504, zThisTest))
 									}
 								}
 							}
@@ -4398,23 +4510,23 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 		}
 		if *(*int8)(unsafe.Pointer(zTSet)) != 0 {
-			speedtest1_begin_test(tls, int32(999), __ccgo_ts+21258, 0)
+			speedtest1_begin_test(tls, int32(999), __ccgo_ts+20985, 0)
 			for int32(1) != 0 {
-				zObj = speedtest1_once(tls, __ccgo_ts+21277, 0)
+				zObj = speedtest1_once(tls, __ccgo_ts+21004, 0)
 				if zObj == uintptr(0) {
 					break
 				}
-				zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+21347, libc.VaList(bp+16, zObj))
+				zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+21074, libc.VaList(bp+504, zObj))
 				speedtest1_exec(tls, zSql, 0)
 				libsqlite3.Xsqlite3_free(tls, zSql)
 				libsqlite3.Xsqlite3_free(tls, zObj)
 			}
 			for int32(1) != 0 {
-				zObj = speedtest1_once(tls, __ccgo_ts+21368, 0)
+				zObj = speedtest1_once(tls, __ccgo_ts+21095, 0)
 				if zObj == uintptr(0) {
 					break
 				}
-				zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+21347, libc.VaList(bp+16, zObj))
+				zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+21074, libc.VaList(bp+504, zObj))
 				speedtest1_exec(tls, zSql, 0)
 				libsqlite3.Xsqlite3_free(tls, zSql)
 				libsqlite3.Xsqlite3_free(tls, zObj)
@@ -4424,49 +4536,164 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	}
 	speedtest1_final(tls)
 	if showStats != 0 {
-		libsqlite3.Xsqlite3_exec(tls, g.Fdb, __ccgo_ts+21438, __ccgo_fp(xCompileOptions), uintptr(0), uintptr(0))
+		libsqlite3.Xsqlite3_exec(tls, g.Fdb, __ccgo_ts+21165, __ccgo_fp(xCompileOptions), uintptr(0), uintptr(0))
 	}
 	/* Database connection statistics printed after both prepared statements
 	 ** have been finalized */
 	if showStats != 0 {
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, SQLITE_DBSTATUS_LOOKASIDE_USED, bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21461, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp)), *(*int32)(unsafe.Pointer(bp + 4))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_HIT), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21506, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp + 4))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21542, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp + 4))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21578, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp + 4))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_USED), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21614, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_HIT), bp, bp+4, int32(1))
-		libc.Xprintf(tls, __ccgo_ts+21656, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_MISS), bp, bp+4, int32(1))
-		libc.Xprintf(tls, __ccgo_ts+21692, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_WRITE), bp, bp+4, int32(1))
-		libc.Xprintf(tls, __ccgo_ts+21728, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_SCHEMA_USED), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21764, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp))))
-		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_STMT_USED), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21806, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp))))
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, SQLITE_DBSTATUS_LOOKASIDE_USED, bp+488, bp+492, 0)
+		v23 = __ccgo_ts + 21188
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v23, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _24
+	_24:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_HIT), bp+488, bp+492, 0)
+		v25 = __ccgo_ts + 21233
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v25, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _26
+	_26:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE), bp+488, bp+492, 0)
+		v27 = __ccgo_ts + 21269
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v27, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _28
+	_28:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL), bp+488, bp+492, 0)
+		v29 = __ccgo_ts + 21305
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v29, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _30
+	_30:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_USED), bp+488, bp+492, 0)
+		v31 = __ccgo_ts + 21341
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v31, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _32
+	_32:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_HIT), bp+488, bp+492, int32(1))
+		v33 = __ccgo_ts + 21383
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v33, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _34
+	_34:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_MISS), bp+488, bp+492, int32(1))
+		v35 = __ccgo_ts + 21419
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v35, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _36
+	_36:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_WRITE), bp+488, bp+492, int32(1))
+		v37 = __ccgo_ts + 21455
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v37, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _38
+	_38:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_SCHEMA_USED), bp+488, bp+492, 0)
+		v39 = __ccgo_ts + 21491
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v39, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _40
+	_40:
+		;
+		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_STMT_USED), bp+488, bp+492, 0)
+		v41 = __ccgo_ts + 21533
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v41, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _42
+	_42:
 	}
 	libsqlite3.Xsqlite3_close(tls, g.Fdb)
 	/* Global memory usage statistics printed after the database connection
 	 ** has closed.  Memory usage should be zero at this point. */
 	if showStats != 0 {
-		libsqlite3.Xsqlite3_status(tls, SQLITE_STATUS_MEMORY_USED, bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21848, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp)), *(*int32)(unsafe.Pointer(bp + 4))))
-		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_COUNT), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21893, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp)), *(*int32)(unsafe.Pointer(bp + 4))))
-		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_OVERFLOW), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21938, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp)), *(*int32)(unsafe.Pointer(bp + 4))))
-		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_SIZE), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+21983, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp + 4))))
-		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_SIZE), bp, bp+4, 0)
-		libc.Xprintf(tls, __ccgo_ts+22025, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(bp + 4))))
-	}
-	if showStats != 0 {
-		displayLinuxIoStats(tls, libc.Xstdout)
+		libsqlite3.Xsqlite3_status(tls, SQLITE_STATUS_MEMORY_USED, bp+488, bp+492, 0)
+		v43 = __ccgo_ts + 21575
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v43, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _44
+	_44:
+		;
+		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_COUNT), bp+488, bp+492, 0)
+		v45 = __ccgo_ts + 21620
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v45, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _46
+	_46:
+		;
+		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_OVERFLOW), bp+488, bp+492, 0)
+		v47 = __ccgo_ts + 21665
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v47, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _48
+	_48:
+		;
+		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_SIZE), bp+488, bp+492, 0)
+		v49 = __ccgo_ts + 21710
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v49, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _50
+	_50:
+		;
+		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_SIZE), bp+488, bp+492, 0)
+		v51 = __ccgo_ts + 21752
+		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
+		__local_argv = bp
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v51, __local_argv)
+		_ = __local_argv
+		_ = __retval
+		goto _52
+	_52:
 	}
 	if g.FpScript != 0 {
 		libc.Xfclose(tls, g.FpScript)
@@ -4489,4 +4716,4 @@ func __ccgo_fp(f interface{}) uintptr {
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = " TEMP\x00\x00KiB\x00MiB\x00GiB\x00KB\x00MB\x00GB\x00K\x00M\x00G\x00parameter too large - max 2147483648\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00ten\x00eleven\x00twelve\x00thirteen\x00fourteen\x00fifteen\x00sixteen\x00seventeen\x00eighteen\x00nineteen\x00twenty\x00thirty\x00forty\x00fifty\x00sixty\x00seventy\x00eighty\x00ninety\x00 billion\x00 million\x00 thousand\x00%s hundred\x00%s\x00-- begin test %d %.*s\n\x00/* %4d - %s%.*s */\n\x00%4d - %s%.*s \x00PRAGMA wal_checkpoint;\x00-- end test %d\n\x00%4d.%03ds\n\x00       TOTAL%.*s %4d.%03ds\n\x00Verification Hash: %llu \x00\n\x00%02x\x00EXPLAIN \x00%.*s;\n\x00CREATE *\x00DROP *\x00ALTER *\x00%s;\n\x00SQL error: %s\n%s\n\x00exec error: %s\n\x00SQL error: %s\n\x00%s\n\x00nil\x00-IFTBN\x000123456789abcdef\x00%d INSERTs into table with no index\x00BEGIN\x00CREATE%s TABLE z1(a INTEGER %s, b INTEGER %s, c TEXT %s);\x00INSERT INTO z1 VALUES(?1,?2,?3); --  %d times\x00COMMIT\x00%d ordered INSERTS with one index/PK\x00CREATE%s TABLE z2(a INTEGER %s %s, b INTEGER %s, c TEXT %s) %s\x00INSERT INTO z2 VALUES(?1,?2,?3); -- %d times\x00%d unordered INSERTS with one index/PK\x00CREATE%s TABLE t3(a INTEGER %s %s, b INTEGER %s, c TEXT %s) %s\x00INSERT INTO t3 VALUES(?1,?2,?3); -- %d times\x00%d SELECTS, numeric BETWEEN, unindexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(c) FROM z1\n WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, LIKE, unindexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(c) FROM z1\n WHERE c LIKE ?1; -- %d times\x00%d SELECTS w/ORDER BY, unindexed\x00SELECT a, b, c FROM z1 WHERE c LIKE ?1\n ORDER BY a; -- %d times\x00%d SELECTS w/ORDER BY and LIMIT, unindexed\x00SELECT a, b, c FROM z1 WHERE c LIKE ?1\n ORDER BY a LIMIT 10; -- %d times\x00CREATE INDEX five times\x00BEGIN;\x00CREATE UNIQUE INDEX t1b ON z1(b);\x00CREATE INDEX t1c ON z1(c);\x00CREATE UNIQUE INDEX t2b ON z2(b);\x00CREATE INDEX t2c ON z2(c DESC);\x00CREATE INDEX t3bc ON t3(b,c);\x00COMMIT;\x00%d SELECTS, numeric BETWEEN, indexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z1\n WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, numeric BETWEEN, PK\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z2\n WHERE a BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, text BETWEEN, indexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z1\n WHERE c BETWEEN ?1 AND (?1||'~'); -- %d times\x00%d INSERTS with three indexes\x00CREATE%s TABLE t4(\n  a INTEGER %s %s,\n  b INTEGER %s,\n  c TEXT %s\n) %s\x00CREATE INDEX t4b ON t4(b)\x00CREATE INDEX t4c ON t4(c)\x00INSERT INTO t4 SELECT * FROM z1\x00DELETE and REFILL one table\x00DELETE FROM z2;\x00INSERT INTO z2 SELECT * FROM z1;\x00VACUUM\x00ALTER TABLE ADD COLUMN, and query\x00ALTER TABLE z2 ADD COLUMN d INT DEFAULT 123\x00SELECT sum(d) FROM z2\x00%d UPDATES, numeric BETWEEN, indexed\x00UPDATE z2 SET d=b*2 WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d UPDATES of individual rows\x00UPDATE z2 SET d=b*3 WHERE a=?1; -- %d times\x00One big UPDATE of the whole %d-row table\x00UPDATE z2 SET d=b*4\x00Query added column after filling\x00%d DELETEs, numeric BETWEEN, indexed\x00DELETE FROM z2 WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d DELETEs of individual rows\x00DELETE FROM t3 WHERE a=?1; -- %d times\x00Refill two %d-row tables using REPLACE\x00REPLACE INTO z2(a,b,c) SELECT a,b,c FROM z1\x00REPLACE INTO t3(a,b,c) SELECT a,b,c FROM z1\x00Refill a %d-row table using (b&1)==(a&1)\x00INSERT INTO z2(a,b,c)\n SELECT a,b,c FROM z1  WHERE (b&1)==(a&1);\x00INSERT INTO z2(a,b,c)\n SELECT a,b,c FROM z1  WHERE (b&1)<>(a&1);\x00%d four-ways joins\x00SELECT z1.c FROM z1, z2, t3, t4\n WHERE t4.a BETWEEN ?1 AND ?2\n   AND t3.a=t4.b\n   AND z2.a=t3.b\n   AND z1.c=z2.c;\x00subquery in result set\x00SELECT sum(a), max(c),\n       avg((SELECT a FROM z2 WHERE 5+z2.b=z1.b) AND rowid<?1), max(c)\n FROM z1 WHERE rowid<?1;\x00%d REPLACE ops on an IPK\x00CREATE%s TABLE t5(a INTEGER PRIMARY KEY, b %s);\x00REPLACE INTO t5 VALUES(?1,?2); --  %d times\x00%d SELECTS on an IPK\x00SELECT b FROM t5 WHERE a=?1; --  %d times\x00%d REPLACE on TEXT PK\x00WITHOUT ROWID\x00CREATE%s TABLE t6(a TEXT PRIMARY KEY, b %s)%s;\x00REPLACE INTO t6 VALUES(?1,?2); --  %d times\x00%d SELECTS on a TEXT PK\x00SELECT b FROM t6 WHERE a=?1; --  %d times\x00%d SELECT DISTINCT\x00SELECT DISTINCT b FROM t5;\x00SELECT DISTINCT b FROM t6;\x00PRAGMA integrity_check\x00ANALYZE\x00534...9..67.195....98....6.8...6...34..8.3..1....2...6.6....28....419..5...28..79\x0053....9..6..195....98....6.8...6...34..8.3..1....2...6.6....28....419..5....8..79\x0053.......6..195....98....6.8...6...34..8.3..1....2...6.6....28....419..5....8..79\x00Sudoku with recursive 'digits'\x00WITH RECURSIVE\n  input(sud) AS (VALUES(?1)),\n  digits(z,lp) AS (\n    VALUES('1', 1)\n    UNION ALL\n    SELECT CAST(lp+1 AS TEXT), lp+1 FROM digits WHERE lp<9\n  ),\n  x(s, ind) AS (\n    SELECT sud, instr(sud, '.') FROM input\n    UNION ALL\n    SELECT\n      substr(s, 1, ind-1) || z || substr(s, ind+1),\n      instr( substr(s, 1, ind-1) || z || substr(s, ind+1), '.' )\n     FROM x, digits AS z\n    WHERE ind>0\n      AND NOT EXISTS (\n            SELECT 1\n              FROM digits AS lp\n             WHERE z.z = substr(s, ((ind-1)/9)*9 + lp, 1)\n                OR z.z = substr(s, ((ind-1)%%9) + (lp-1)*9 + 1, 1)\n                OR z.z = substr(s, (((ind-1)/3) %% 3) * 3\n                        + ((ind-1)/27) * 27 + lp\n                        + ((lp-1) / 3) * 6, 1)\n         )\n  )\nSELECT s FROM x WHERE ind=0;\x00Sudoku with VALUES 'digits'\x00WITH RECURSIVE\n  input(sud) AS (VALUES(?1)),\n  digits(z,lp) AS (VALUES('1',1),('2',2),('3',3),('4',4),('5',5),\n                         ('6',6),('7',7),('8',8),('9',9)),\n  x(s, ind) AS (\n    SELECT sud, instr(sud, '.') FROM input\n    UNION ALL\n    SELECT\n      substr(s, 1, ind-1) || z || substr(s, ind+1),\n      instr( substr(s, 1, ind-1) || z || substr(s, ind+1), '.' )\n     FROM x, digits AS z\n    WHERE ind>0\n      AND NOT EXISTS (\n            SELECT 1\n              FROM digits AS lp\n             WHERE z.z = substr(s, ((ind-1)/9)*9 + lp, 1)\n                OR z.z = substr(s, ((ind-1)%%9) + (lp-1)*9 + 1, 1)\n                OR z.z = substr(s, (((ind-1)/3) %% 3) * 3\n                        + ((ind-1)/27) * 27 + lp\n                        + ((lp-1) / 3) * 6, 1)\n         )\n  )\nSELECT s FROM x WHERE ind=0;\x00Mandelbrot Set with spacing=%f\x00WITH RECURSIVE \n  xaxis(x) AS (VALUES(-2.0) UNION ALL SELECT x+?1 FROM xaxis WHERE x<1.2),\n  yaxis(y) AS (VALUES(-1.0) UNION ALL SELECT y+?2 FROM yaxis WHERE y<1.0),\n  m(iter, cx, cy, x, y) AS (\n    SELECT 0, x, y, 0.0, 0.0 FROM xaxis, yaxis\n    UNION ALL\n    SELECT iter+1, cx, cy, x*x-y*y + cx, 2.0*x*y + cy FROM m \n     WHERE (x*x + y*y) < 4.0 AND iter<28\n  ),\n  m2(iter, cx, cy) AS (\n    SELECT max(iter), cx, cy FROM m GROUP BY cx, cy\n  ),\n  a(t) AS (\n    SELECT group_concat( substr(' .+*#', 1+min(iter/7,4), 1), '') \n    FROM m2 GROUP BY cy\n  )\nSELECT group_concat(rtrim(t),x'0a') FROM a;\x00EXCEPT operator on %d-element tables\x00WITH RECURSIVE \n  z1(x) AS (VALUES(2) UNION ALL SELECT x+2 FROM z1 WHERE x<%d),\n  z2(y) AS (VALUES(3) UNION ALL SELECT y+3 FROM z2 WHERE y<%d)\nSELECT count(x), avg(x) FROM (\n  SELECT x FROM z1 EXCEPT SELECT y FROM z2 ORDER BY 1\n);\x00%d.%de%d\x00Fill a table with %d FP values\x00CREATE%s TABLE z1(a REAL %s, b REAL %s);\x00INSERT INTO z1 VALUES(?1,?2); -- %d times\x00%d range queries\x00SELECT sum(b) FROM z1 WHERE a BETWEEN ?1 AND ?2\x00CREATE INDEX three times\x00CREATE INDEX t1a ON z1(a);\x00CREATE INDEX t1b ON z1(b);\x00CREATE INDEX t1ab ON z1(a,b);\x00%d indexed range queries\x00%d calls to round()\x00SELECT sum(round(a,2)+round(b,4)) FROM z1;\x00%d printf() calls\x00WITH c(fmt) AS (VALUES('%%g'),('%%e'),('%%!g'),('%%.20f'))SELECT sum(printf(fmt,a)) FROM z1, c\x00Fill %d rows\x00BEGIN;CREATE TABLE ZLOOKSLIKECOREDATA (  ZPK INTEGER PRIMARY KEY,  ZTERMFITTINGHOUSINGCOMMAND INTEGER,  ZBRIEFGOBYDODGERHEIGHT BLOB,  ZCAPABLETRIPDOORALMOND BLOB,  ZDEPOSITPAIRCOLLEGECOMET INTEGER,  ZFRAMEENTERSIMPLEMOUTH INTEGER,  ZHOPEFULGATEHOLECHALK INTEGER,  ZSLEEPYUSERGRANDBOWL TIMESTAMP,  ZDEWPEACHCAREERCELERY INTEGER,  ZHANGERLITHIUMDINNERMEET VARCHAR,  ZCLUBRELEASELIZARDADVICE VARCHAR,  ZCHARGECLICKHUMANEHIRE INTEGER,  ZFINGERDUEPIZZAOPTION TIMESTAMP,  ZFLYINGDOCTORTABLEMELODY BLOB,  ZLONGFINLEAVEIMAGEOIL TIMESTAMP,  ZFAMILYVISUALOWNERMATTER BLOB,  ZGOLDYOUNGINITIALNOSE FLOAT,  ZCAUSESALAMITERMCYAN BLOB,  ZSPREADMOTORBISCUITBACON FLOAT,  ZGIFTICEFISHGLUEHAIR INTEGER,  ZNOTICEPEARPOLICYJUICE TIMESTAMP,  ZBANKBUFFALORECOVERORBIT TIMESTAMP,  ZLONGDIETESSAYNATURE FLOAT,  ZACTIONRANGEELEGANTNEUTRON BLOB,  ZCADETBRIGHTPLANETBANK TIMESTAMP,  ZAIRFORGIVEHEADFROG BLOB,  ZSHARKJUSTFRUITMOVIE VARCHAR,  ZFARMERMORNINGMIRRORCONCERN BLOB,  ZWOODPOETRYCOBBLERBENCH VARCHAR,  ZHAFNIUMSCRIPTSALADMOTOR INTEGER,  ZPROBLEMCLUBPOPOVERJELLY FLOAT,  ZEIGHTLEADERWORKERMOST TIMESTAMP,  ZGLASSRESERVEBARIUMMEAL BLOB,  ZCLAMBITARUGULAFAJITA BLOB,  ZDECADEJOYOUSWAVEHABIT FLOAT,  ZCOMPANYSUMMERFIBERELF INTEGER,  ZTREATTESTQUILLCHARGE TIMESTAMP,  ZBROWBALANCEKEYCHOWDER FLOAT,  ZPEACHCOPPERDINNERLAKE FLOAT,  ZDRYWALLBEYONDBROWNBOWL VARCHAR,  ZBELLYCRASHITEMLACK BLOB,  ZTENNISCYCLEBILLOFFICER INTEGER,  ZMALLEQUIPTHANKSGLUE FLOAT,  ZMISSREPLYHUMANLIVING INTEGER,  ZKIWIVISUALPRIDEAPPLE VARCHAR,  ZWISHHITSKINMOTOR BLOB,  ZCALMRACCOONPROGRAMDEBIT VARCHAR,  ZSHINYASSISTLIVINGCRAB VARCHAR,  ZRESOLVEWRISTWRAPAPPLE VARCHAR,  ZAPPEALSIMPLESECONDHOUSING BLOB,  ZCORNERANCHORTAPEDIVER TIMESTAMP,  ZMEMORYREQUESTSOURCEBIG VARCHAR,  ZTRYFACTKEEPMILK TIMESTAMP,  ZDIVERPAINTLEATHEREASY INTEGER,  ZSORTMISTYQUOTECABBAGE BLOB,  ZTUNEGASBUFFALOCAPITAL BLOB,  ZFILLSTOPLAWJOYFUL FLOAT,  ZSTEELCAREFULPLATENUMBER FLOAT,  ZGIVEVIVIDDIVINEMEANING INTEGER,  ZTREATPACKFUTURECONVERT VARCHAR,  ZCALMLYGEMFINISHEFFECT INTEGER,  ZCABBAGESOCKEASEMINUTE BLOB,  ZPLANETFAMILYPUREMEMORY TIMESTAMP,  ZMERRYCRACKTRAINLEADER BLOB,  ZMINORWAYPAPERCLASSY TIMESTAMP,  ZEAGLELINEMINEMAIL VARCHAR,  ZRESORTYARDGREENLET TIMESTAMP,  ZYARDOREGANOVIVIDJEWEL TIMESTAMP,  ZPURECAKEVIVIDNEATLY FLOAT,  ZASKCONTACTMONITORFUN TIMESTAMP,  ZMOVEWHOGAMMAINCH VARCHAR,  ZLETTUCEBIRDMEETDEBATE TIMESTAMP,  ZGENENATURALHEARINGKITE VARCHAR,  ZMUFFINDRYERDRAWFORTUNE FLOAT,  ZGRAYSURVEYWIRELOVE FLOAT,  ZPLIERSPRINTASKOREGANO INTEGER,  ZTRAVELDRIVERCONTESTLILY INTEGER,  ZHUMORSPICESANDKIDNEY TIMESTAMP,  ZARSENICSAMPLEWAITMUON INTEGER,  ZLACEADDRESSGROUNDCAREFUL FLOAT,  ZBAMBOOMESSWASABIEVENING BLOB,  ZONERELEASEAVERAGENURSE INTEGER,  ZRADIANTWHENTRYCARD TIMESTAMP,  ZREWARDINSIDEMANGOINTENSE FLOAT,  ZNEATSTEWPARTIRON TIMESTAMP,  ZOUTSIDEPEAHENCOUNTICE TIMESTAMP,  ZCREAMEVENINGLIPBRANCH FLOAT,  ZWHALEMATHAVOCADOCOPPER FLOAT,  ZLIFEUSELEAFYBELL FLOAT,  ZWEALTHLINENGLEEFULDAY VARCHAR,  ZFACEINVITETALKGOLD BLOB,  ZWESTAMOUNTAFFECTHEARING INTEGER,  ZDELAYOUTCOMEHORNAGENCY INTEGER,  ZBIGTHINKCONVERTECONOMY BLOB,  ZBASEGOUDAREGULARFORGIVE TIMESTAMP,  ZPATTERNCLORINEGRANDCOLBY TIMESTAMP,  ZCYANBASEFEEDADROIT INTEGER,  ZCARRYFLOORMINNOWDRAGON TIMESTAMP,  ZIMAGEPENCILOTHERBOTTOM FLOAT,  ZXENONFLIGHTPALEAPPLE TIMESTAMP,  ZHERRINGJOKEFEATUREHOPEFUL FLOAT,  ZCAPYEARLYRIVETBRUSH FLOAT,  ZAGEREEDFROGBASKET VARCHAR,  ZUSUALBODYHALIBUTDIAMOND VARCHAR,  ZFOOTTAPWORDENTRY VARCHAR,  ZDISHKEEPBLESTMONITOR FLOAT,  ZBROADABLESOLIDCASUAL INTEGER,  ZSQUAREGLEEFULCHILDLIGHT INTEGER,  ZHOLIDAYHEADPONYDETAIL INTEGER,  ZGENERALRESORTSKYOPEN TIMESTAMP,  ZGLADSPRAYKIDNEYGUPPY VARCHAR,  ZSWIMHEAVYMENTIONKIND BLOB,  ZMESSYSULFURDREAMFESTIVE BLOB,  ZSKYSKYCLASSICBRIEF VARCHAR,  ZDILLASKHOKILEMON FLOAT,  ZJUNIORSHOWPRESSNOVA FLOAT,  ZSIZETOEAWARDFRESH TIMESTAMP,  ZKEYFAILAPRICOTMETAL VARCHAR,  ZHANDYREPAIRPROTONAIRPORT VARCHAR,  ZPOSTPROTEINHANDLEACTOR BLOB);\x00INSERT INTO ZLOOKSLIKECOREDATA(ZPK,ZAIRFORGIVEHEADFROG,ZGIFTICEFISHGLUEHAIR,ZDELAYOUTCOMEHORNAGENCY,ZSLEEPYUSERGRANDBOWL,ZGLASSRESERVEBARIUMMEAL,ZBRIEFGOBYDODGERHEIGHT,ZBAMBOOMESSWASABIEVENING,ZFARMERMORNINGMIRRORCONCERN,ZTREATPACKFUTURECONVERT,ZCAUSESALAMITERMCYAN,ZCALMRACCOONPROGRAMDEBIT,ZHOLIDAYHEADPONYDETAIL,ZWOODPOETRYCOBBLERBENCH,ZHAFNIUMSCRIPTSALADMOTOR,ZUSUALBODYHALIBUTDIAMOND,ZOUTSIDEPEAHENCOUNTICE,ZDIVERPAINTLEATHEREASY,ZWESTAMOUNTAFFECTHEARING,ZSIZETOEAWARDFRESH,ZDEWPEACHCAREERCELERY,ZSTEELCAREFULPLATENUMBER,ZCYANBASEFEEDADROIT,ZCALMLYGEMFINISHEFFECT,ZHANDYREPAIRPROTONAIRPORT,ZGENENATURALHEARINGKITE,ZBROADABLESOLIDCASUAL,ZPOSTPROTEINHANDLEACTOR,ZLACEADDRESSGROUNDCAREFUL,ZIMAGEPENCILOTHERBOTTOM,ZPROBLEMCLUBPOPOVERJELLY,ZPATTERNCLORINEGRANDCOLBY,ZNEATSTEWPARTIRON,ZAPPEALSIMPLESECONDHOUSING,ZMOVEWHOGAMMAINCH,ZTENNISCYCLEBILLOFFICER,ZSHARKJUSTFRUITMOVIE,ZKEYFAILAPRICOTMETAL,ZCOMPANYSUMMERFIBERELF,ZTERMFITTINGHOUSINGCOMMAND,ZRESORTYARDGREENLET,ZCABBAGESOCKEASEMINUTE,ZSQUAREGLEEFULCHILDLIGHT,ZONERELEASEAVERAGENURSE,ZBIGTHINKCONVERTECONOMY,ZPLIERSPRINTASKOREGANO,ZDECADEJOYOUSWAVEHABIT,ZDRYWALLBEYONDBROWNBOWL,ZCLUBRELEASELIZARDADVICE,ZWHALEMATHAVOCADOCOPPER,ZBELLYCRASHITEMLACK,ZLETTUCEBIRDMEETDEBATE,ZCAPABLETRIPDOORALMOND,ZRADIANTWHENTRYCARD,ZCAPYEARLYRIVETBRUSH,ZAGEREEDFROGBASKET,ZSWIMHEAVYMENTIONKIND,ZTRAVELDRIVERCONTESTLILY,ZGLADSPRAYKIDNEYGUPPY,ZBANKBUFFALORECOVERORBIT,ZFINGERDUEPIZZAOPTION,ZCLAMBITARUGULAFAJITA,ZLONGFINLEAVEIMAGEOIL,ZLONGDIETESSAYNATURE,ZJUNIORSHOWPRESSNOVA,ZHOPEFULGATEHOLECHALK,ZDEPOSITPAIRCOLLEGECOMET,ZWEALTHLINENGLEEFULDAY,ZFILLSTOPLAWJOYFUL,ZTUNEGASBUFFALOCAPITAL,ZGRAYSURVEYWIRELOVE,ZCORNERANCHORTAPEDIVER,ZREWARDINSIDEMANGOINTENSE,ZCADETBRIGHTPLANETBANK,ZPLANETFAMILYPUREMEMORY,ZTREATTESTQUILLCHARGE,ZCREAMEVENINGLIPBRANCH,ZSKYSKYCLASSICBRIEF,ZARSENICSAMPLEWAITMUON,ZBROWBALANCEKEYCHOWDER,ZFLYINGDOCTORTABLEMELODY,ZHANGERLITHIUMDINNERMEET,ZNOTICEPEARPOLICYJUICE,ZSHINYASSISTLIVINGCRAB,ZLIFEUSELEAFYBELL,ZFACEINVITETALKGOLD,ZGENERALRESORTSKYOPEN,ZPURECAKEVIVIDNEATLY,ZKIWIVISUALPRIDEAPPLE,ZMESSYSULFURDREAMFESTIVE,ZCHARGECLICKHUMANEHIRE,ZHERRINGJOKEFEATUREHOPEFUL,ZYARDOREGANOVIVIDJEWEL,ZFOOTTAPWORDENTRY,ZWISHHITSKINMOTOR,ZBASEGOUDAREGULARFORGIVE,ZMUFFINDRYERDRAWFORTUNE,ZACTIONRANGEELEGANTNEUTRON,ZTRYFACTKEEPMILK,ZPEACHCOPPERDINNERLAKE,ZFRAMEENTERSIMPLEMOUTH,ZMERRYCRACKTRAINLEADER,ZMEMORYREQUESTSOURCEBIG,ZCARRYFLOORMINNOWDRAGON,ZMINORWAYPAPERCLASSY,ZDILLASKHOKILEMON,ZRESOLVEWRISTWRAPAPPLE,ZASKCONTACTMONITORFUN,ZGIVEVIVIDDIVINEMEANING,ZEIGHTLEADERWORKERMOST,ZMISSREPLYHUMANLIVING,ZXENONFLIGHTPALEAPPLE,ZSORTMISTYQUOTECABBAGE,ZEAGLELINEMINEMAIL,ZFAMILYVISUALOWNERMATTER,ZSPREADMOTORBISCUITBACON,ZDISHKEEPBLESTMONITOR,ZMALLEQUIPTHANKSGLUE,ZGOLDYOUNGINITIALNOSE,ZHUMORSPICESANDKIDNEY)VALUES(?1,?26,?20,?93,?8,?33,?3,?81,?28,?60,?18,?47,?109,?29,?30,?104,?86,?54,?92,?117,?9,?58,?97,?61,?119,?73,?107,?120,?80,?99,?31,?96,?85,?50,?71,?42,?27,?118,?36,?2,?67,?62,?108,?82,?94,?76,?35,?40,?11,?88,?41,?72,?4,?83,?102,?103,?112,?77,?111,?22,?13,?34,?15,?23,?116,?7,?5,?90,?57,?56,?75,?51,?84,?25,?63,?37,?87,?114,?79,?38,?14,?10,?21,?48,?89,?91,?110,?69,?45,?113,?12,?101,?68,?105,?46,?95,?74,?24,?53,?39,?6,?64,?52,?98,?65,?115,?49,?70,?59,?32,?44,?100,?55,?66,?16,?19,?106,?43,?17,?78);\x00Query %d rows by rowid\x00SELECT ZCYANBASEFEEDADROIT,ZJUNIORSHOWPRESSNOVA,ZCAUSESALAMITERMCYAN,ZHOPEFULGATEHOLECHALK,ZHUMORSPICESANDKIDNEY,ZSWIMHEAVYMENTIONKIND,ZMOVEWHOGAMMAINCH,ZAPPEALSIMPLESECONDHOUSING,ZHAFNIUMSCRIPTSALADMOTOR,ZNEATSTEWPARTIRON,ZLONGFINLEAVEIMAGEOIL,ZDEWPEACHCAREERCELERY,ZXENONFLIGHTPALEAPPLE,ZCALMRACCOONPROGRAMDEBIT,ZUSUALBODYHALIBUTDIAMOND,ZTRYFACTKEEPMILK,ZWEALTHLINENGLEEFULDAY,ZLONGDIETESSAYNATURE,ZLIFEUSELEAFYBELL,ZTREATPACKFUTURECONVERT,ZMEMORYREQUESTSOURCEBIG,ZYARDOREGANOVIVIDJEWEL,ZDEPOSITPAIRCOLLEGECOMET,ZSLEEPYUSERGRANDBOWL,ZBRIEFGOBYDODGERHEIGHT,ZCLUBRELEASELIZARDADVICE,ZCAPABLETRIPDOORALMOND,ZDRYWALLBEYONDBROWNBOWL,ZASKCONTACTMONITORFUN,ZKIWIVISUALPRIDEAPPLE,ZNOTICEPEARPOLICYJUICE,ZPEACHCOPPERDINNERLAKE,ZSTEELCAREFULPLATENUMBER,ZGLADSPRAYKIDNEYGUPPY,ZCOMPANYSUMMERFIBERELF,ZTENNISCYCLEBILLOFFICER,ZIMAGEPENCILOTHERBOTTOM,ZWESTAMOUNTAFFECTHEARING,ZDIVERPAINTLEATHEREASY,ZSKYSKYCLASSICBRIEF,ZMESSYSULFURDREAMFESTIVE,ZMERRYCRACKTRAINLEADER,ZBROADABLESOLIDCASUAL,ZGLASSRESERVEBARIUMMEAL,ZTUNEGASBUFFALOCAPITAL,ZBANKBUFFALORECOVERORBIT,ZTREATTESTQUILLCHARGE,ZBAMBOOMESSWASABIEVENING,ZREWARDINSIDEMANGOINTENSE,ZEAGLELINEMINEMAIL,ZCALMLYGEMFINISHEFFECT,ZKEYFAILAPRICOTMETAL,ZFINGERDUEPIZZAOPTION,ZCADETBRIGHTPLANETBANK,ZGOLDYOUNGINITIALNOSE,ZMISSREPLYHUMANLIVING,ZEIGHTLEADERWORKERMOST,ZFRAMEENTERSIMPLEMOUTH,ZBIGTHINKCONVERTECONOMY,ZFACEINVITETALKGOLD,ZPOSTPROTEINHANDLEACTOR,ZHERRINGJOKEFEATUREHOPEFUL,ZCABBAGESOCKEASEMINUTE,ZMUFFINDRYERDRAWFORTUNE,ZPROBLEMCLUBPOPOVERJELLY,ZGIVEVIVIDDIVINEMEANING,ZGENENATURALHEARINGKITE,ZGENERALRESORTSKYOPEN,ZLETTUCEBIRDMEETDEBATE,ZBASEGOUDAREGULARFORGIVE,ZCHARGECLICKHUMANEHIRE,ZPLANETFAMILYPUREMEMORY,ZMINORWAYPAPERCLASSY,ZCAPYEARLYRIVETBRUSH,ZSIZETOEAWARDFRESH,ZARSENICSAMPLEWAITMUON,ZSQUAREGLEEFULCHILDLIGHT,ZSHINYASSISTLIVINGCRAB,ZCORNERANCHORTAPEDIVER,ZDECADEJOYOUSWAVEHABIT,ZTRAVELDRIVERCONTESTLILY,ZFLYINGDOCTORTABLEMELODY,ZSHARKJUSTFRUITMOVIE,ZFAMILYVISUALOWNERMATTER,ZFARMERMORNINGMIRRORCONCERN,ZGIFTICEFISHGLUEHAIR,ZOUTSIDEPEAHENCOUNTICE,ZSPREADMOTORBISCUITBACON,ZWISHHITSKINMOTOR,ZHOLIDAYHEADPONYDETAIL,ZWOODPOETRYCOBBLERBENCH,ZAIRFORGIVEHEADFROG,ZBROWBALANCEKEYCHOWDER,ZDISHKEEPBLESTMONITOR,ZCLAMBITARUGULAFAJITA,ZPLIERSPRINTASKOREGANO,ZRADIANTWHENTRYCARD,ZDELAYOUTCOMEHORNAGENCY,ZPURECAKEVIVIDNEATLY,ZPATTERNCLORINEGRANDCOLBY,ZHANDYREPAIRPROTONAIRPORT,ZAGEREEDFROGBASKET,ZSORTMISTYQUOTECABBAGE,ZFOOTTAPWORDENTRY,ZRESOLVEWRISTWRAPAPPLE,ZDILLASKHOKILEMON,ZFILLSTOPLAWJOYFUL,ZACTIONRANGEELEGANTNEUTRON,ZRESORTYARDGREENLET,ZCREAMEVENINGLIPBRANCH,ZWHALEMATHAVOCADOCOPPER,ZGRAYSURVEYWIRELOVE,ZBELLYCRASHITEMLACK,ZHANGERLITHIUMDINNERMEET,ZCARRYFLOORMINNOWDRAGON,ZMALLEQUIPTHANKSGLUE,ZTERMFITTINGHOUSINGCOMMAND,ZONERELEASEAVERAGENURSE,ZLACEADDRESSGROUNDCAREFUL FROM ZLOOKSLIKECOREDATA WHERE ZPK=?1;\x00BEGIN;CREATE TABLE z1(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TABLE z2(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TABLE t3(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE VIEW v1 AS SELECT rowid, i, t FROM z1;CREATE VIEW v2 AS SELECT rowid, i, t FROM z2;CREATE VIEW v3 AS SELECT rowid, i, t FROM t3;\x00INSERT INTO t%d VALUES(NULL,?1,?2)\x00CREATE INDEX i1 ON z1(t);CREATE INDEX i2 ON z2(t);CREATE INDEX i3 ON t3(t);COMMIT;\x00speed4p-join1\x00SELECT * FROM z1, z2, t3 WHERE z1.oid = z2.oid AND z2.oid = t3.oid\x00speed4p-join2\x00SELECT * FROM z1, z2, t3 WHERE z1.t = z2.t AND z2.t = t3.t\x00speed4p-view1\x00SELECT * FROM v%d WHERE rowid = ?\x00speed4p-table1\x00SELECT * FROM t%d WHERE rowid = ?\x00speed4p-subselect1\x00SELECT (SELECT t FROM z1 WHERE rowid = ?1),(SELECT t FROM z2 WHERE rowid = ?1),(SELECT t FROM t3 WHERE rowid = ?1)\x00speed4p-rowid-update\x00UPDATE z1 SET i=i+1 WHERE rowid=?1\x00CREATE TABLE t5(t TEXT PRIMARY KEY, i INTEGER);\x00speed4p-insert-ignore\x00INSERT OR IGNORE INTO t5 SELECT t, i FROM z1\x00CREATE TABLE log(op TEXT, r INTEGER, i INTEGER, t TEXT);CREATE TABLE t4(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TRIGGER t4_trigger1 AFTER INSERT ON t4 BEGIN  INSERT INTO log VALUES('INSERT INTO t4', new.rowid, new.i, new.t);END;CREATE TRIGGER t4_trigger2 AFTER UPDATE ON t4 BEGIN  INSERT INTO log VALUES('UPDATE OF t4', new.rowid, new.i, new.t);END;CREATE TRIGGER t4_trigger3 AFTER DELETE ON t4 BEGIN  INSERT INTO log VALUES('DELETE OF t4', old.rowid, old.i, old.t);END;BEGIN;\x00speed4p-trigger1\x00INSERT INTO t4 VALUES(NULL, ?1, ?2)\x00speed4p-trigger2\x00UPDATE t4 SET i = ?1, t = ?2 WHERE rowid = ?3\x00speed4p-trigger3\x00DELETE FROM t4 WHERE rowid = ?1\x00DROP TABLE t4;DROP TABLE log;VACUUM;CREATE TABLE t4(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);BEGIN;\x00speed4p-notrigger1\x00speed4p-notrigger2\x00speed4p-notrigger3\x00%5d %5d %5d %s\n\x00SELECT 1, 12, 123, 1234, 12345, 123456\x00SELECT 8227256643844975616, 7932208612563860480, 2010730661871032832, 9138463067404021760, 2557616153664746496, 2557616153664746496\x00SELECT 1.0, 1.2, 1.23, 123.4, 1.2345, 1.23456\x00SELECT 8.227256643844975616, 7.932208612563860480, 2.010730661871032832, 9.138463067404021760, 2.557616153664746496, 2.557616153664746496\x00parsing small integers\x00parsing large integers\x00parsing small reals\x00parsing large reals\x00/proc/%d/io\x00rb\x00rchar: \x00Bytes received by read():\x00wchar: \x00Bytes sent to write():\x00syscr: \x00Read() system calls:\x00syscw: \x00Write() system calls:\x00read_bytes: \x00Bytes rcvd from storage:\x00write_bytes: \x00Bytes sent to storage:\x00cancelled_write_bytes: \x00Cancelled write bytes:\x00-- %-28s %s\x00-- Compile option: %s\n\x00main\x00-- Speedtest1 for SQLite %s %.48s\n\x00UNIQUE\x00autovacuum\x00big-transactions\x00cachesize\x00missing argument on %s\n\x00exclusive\x00fullfsync\x00checkpoint\x00explain\x00heap\x00incrvacuum\x00journal\x00key\x00lookaside\x00memdb\x00multithread\x00nomemstat\x00mmap\x00nolongdouble\x00nomutex\x00nosync\x00notnull\x00NOT NULL\x00output\x00-\x00wb\x00cannot open \"%s\" for writing\n\x00pagesize\x00pcache\x00primarykey\x00PRIMARY KEY\x00repeat\x00reprepare\x00serialized\x00singlethread\x00script\x00unable to open output file \"%s\"\n\x00sqlonly\x00shrink-memory\x00size\x00stats\x00temp\x00argument to --temp should be integer between 0 and 9\x00testset\x00trace\x00threads\x00utf16le\x00utf16be\x00verify\x00vfs\x00reserve\x00stmtscanstatus\x00without-rowid\x00WITHOUT\x00STRICT\x00WITHOUT ROWID,STRICT\x00strict\x00help\x00?\x00unknown option: %s\nUse \"%s -?\" for help\n\x00surplus argument: %s\nUse \"%s -?\" for help\n\x00cannot allocate %d-byte heap\n\x00heap configuration failed: %d\n\x00cannot allocate %lld-byte pcache\n\x00pcache configuration failed: %d\n\x00:memory:\x00Cannot open database file: %s\n\x00lookaside configuration failed: %d\n\x00random\x00PRAGMA temp_store=memory\x00PRAGMA mmap_size=%d\x00PRAGMA threads=%d\x00PRAGMA key('%s')\x00PRAGMA encoding=%s\x00PRAGMA auto_vacuum=FULL\x00PRAGMA auto_vacuum=INCREMENTAL\x00PRAGMA page_size=%d\x00PRAGMA cache_size=%d\x00PRAGMA synchronous=OFF\x00PRAGMA fullfsync=ON\x00PRAGMA locking_mode=EXCLUSIVE\x00PRAGMA journal_mode=%s\x00.explain\n.echo on\n\x00       Begin testset \"%s\"\n\x00debug1\x00orm\x00cte\x00fp\x00trigger\x00parsenumber\x00rtree\x00compile with -DSQLITE_ENABLE_RTREE to enable the R-Tree tests\n\x00unknown testset: \"%s\"\nChoices: cte debug1 fp main orm rtree trigger\n\x00Reset the database\x00SELECT name FROM main.sqlite_master WHERE sql LIKE 'CREATE %%TABLE%%'\x00DROP TABLE main.\"%w\"\x00SELECT name FROM temp.sqlite_master WHERE sql LIKE 'CREATE %%TABLE%%'\x00PRAGMA compile_options\x00-- Lookaside Slots Used:        %d (max %d)\n\x00-- Successful lookasides:       %d\n\x00-- Lookaside size faults:       %d\n\x00-- Lookaside OOM faults:        %d\n\x00-- Pager Heap Usage:            %d bytes\n\x00-- Page cache hits:             %d\n\x00-- Page cache misses:           %d\n\x00-- Page cache writes:           %d\n\x00-- Schema Heap Usage:           %d bytes\n\x00-- Statement Heap Usage:        %d bytes\n\x00-- Memory Used (bytes):         %d (max %d)\n\x00-- Outstanding Allocations:     %d (max %d)\n\x00-- Pcache Overflow Bytes:       %d (max %d)\n\x00-- Largest Allocation:          %d bytes\n\x00-- Largest Pcache Allocation:   %d bytes\n\x00"
+var __ccgo_ts1 = " TEMP\x00\x00KiB\x00MiB\x00GiB\x00KB\x00MB\x00GB\x00K\x00M\x00G\x00parameter too large - max 2147483648\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00ten\x00eleven\x00twelve\x00thirteen\x00fourteen\x00fifteen\x00sixteen\x00seventeen\x00eighteen\x00nineteen\x00twenty\x00thirty\x00forty\x00fifty\x00sixty\x00seventy\x00eighty\x00ninety\x00 billion\x00 million\x00 thousand\x00%s hundred\x00%s\x00-- begin test %d %.*s\n\x00/* %4d - %s%.*s */\n\x00%4d - %s%.*s \x00PRAGMA wal_checkpoint;\x00-- end test %d\n\x00%4d.%03ds\n\x00       TOTAL%.*s %4d.%03ds\n\x00Verification Hash: %llu \x00\n\x00%02x\x00EXPLAIN \x00%.*s;\n\x00CREATE *\x00DROP *\x00ALTER *\x00%s;\n\x00SQL error: %s\n%s\n\x00exec error: %s\n\x00SQL error: %s\n\x00%s\n\x00nil\x00-IFTBN\x000123456789abcdef\x00%d INSERTs into table with no index\x00BEGIN\x00CREATE%s TABLE z1(a INTEGER %s, b INTEGER %s, c TEXT %s);\x00INSERT INTO z1 VALUES(?1,?2,?3); --  %d times\x00COMMIT\x00%d ordered INSERTS with one index/PK\x00CREATE%s TABLE z2(a INTEGER %s %s, b INTEGER %s, c TEXT %s) %s\x00INSERT INTO z2 VALUES(?1,?2,?3); -- %d times\x00%d unordered INSERTS with one index/PK\x00CREATE%s TABLE t3(a INTEGER %s %s, b INTEGER %s, c TEXT %s) %s\x00INSERT INTO t3 VALUES(?1,?2,?3); -- %d times\x00%d SELECTS, numeric BETWEEN, unindexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(c) FROM z1\n WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, LIKE, unindexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(c) FROM z1\n WHERE c LIKE ?1; -- %d times\x00%d SELECTS w/ORDER BY, unindexed\x00SELECT a, b, c FROM z1 WHERE c LIKE ?1\n ORDER BY a; -- %d times\x00%d SELECTS w/ORDER BY and LIMIT, unindexed\x00SELECT a, b, c FROM z1 WHERE c LIKE ?1\n ORDER BY a LIMIT 10; -- %d times\x00CREATE INDEX five times\x00BEGIN;\x00CREATE UNIQUE INDEX t1b ON z1(b);\x00CREATE INDEX t1c ON z1(c);\x00CREATE UNIQUE INDEX t2b ON z2(b);\x00CREATE INDEX t2c ON z2(c DESC);\x00CREATE INDEX t3bc ON t3(b,c);\x00COMMIT;\x00%d SELECTS, numeric BETWEEN, indexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z1\n WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, numeric BETWEEN, PK\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z2\n WHERE a BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, text BETWEEN, indexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z1\n WHERE c BETWEEN ?1 AND (?1||'~'); -- %d times\x00%d INSERTS with three indexes\x00CREATE%s TABLE t4(\n  a INTEGER %s %s,\n  b INTEGER %s,\n  c TEXT %s\n) %s\x00CREATE INDEX t4b ON t4(b)\x00CREATE INDEX t4c ON t4(c)\x00INSERT INTO t4 SELECT * FROM z1\x00DELETE and REFILL one table\x00DELETE FROM z2;\x00INSERT INTO z2 SELECT * FROM z1;\x00VACUUM\x00ALTER TABLE ADD COLUMN, and query\x00ALTER TABLE z2 ADD COLUMN d INT DEFAULT 123\x00SELECT sum(d) FROM z2\x00%d UPDATES, numeric BETWEEN, indexed\x00UPDATE z2 SET d=b*2 WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d UPDATES of individual rows\x00UPDATE z2 SET d=b*3 WHERE a=?1; -- %d times\x00One big UPDATE of the whole %d-row table\x00UPDATE z2 SET d=b*4\x00Query added column after filling\x00%d DELETEs, numeric BETWEEN, indexed\x00DELETE FROM z2 WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d DELETEs of individual rows\x00DELETE FROM t3 WHERE a=?1; -- %d times\x00Refill two %d-row tables using REPLACE\x00REPLACE INTO z2(a,b,c) SELECT a,b,c FROM z1\x00REPLACE INTO t3(a,b,c) SELECT a,b,c FROM z1\x00Refill a %d-row table using (b&1)==(a&1)\x00INSERT INTO z2(a,b,c)\n SELECT a,b,c FROM z1  WHERE (b&1)==(a&1);\x00INSERT INTO z2(a,b,c)\n SELECT a,b,c FROM z1  WHERE (b&1)<>(a&1);\x00%d four-ways joins\x00SELECT z1.c FROM z1, z2, t3, t4\n WHERE t4.a BETWEEN ?1 AND ?2\n   AND t3.a=t4.b\n   AND z2.a=t3.b\n   AND z1.c=z2.c;\x00subquery in result set\x00SELECT sum(a), max(c),\n       avg((SELECT a FROM z2 WHERE 5+z2.b=z1.b) AND rowid<?1), max(c)\n FROM z1 WHERE rowid<?1;\x00%d REPLACE ops on an IPK\x00CREATE%s TABLE t5(a INTEGER PRIMARY KEY, b %s);\x00REPLACE INTO t5 VALUES(?1,?2); --  %d times\x00%d SELECTS on an IPK\x00SELECT b FROM t5 WHERE a=?1; --  %d times\x00%d REPLACE on TEXT PK\x00WITHOUT ROWID\x00CREATE%s TABLE t6(a TEXT PRIMARY KEY, b %s)%s;\x00REPLACE INTO t6 VALUES(?1,?2); --  %d times\x00%d SELECTS on a TEXT PK\x00SELECT b FROM t6 WHERE a=?1; --  %d times\x00%d SELECT DISTINCT\x00SELECT DISTINCT b FROM t5;\x00SELECT DISTINCT b FROM t6;\x00PRAGMA integrity_check\x00ANALYZE\x00534...9..67.195....98....6.8...6...34..8.3..1....2...6.6....28....419..5...28..79\x0053....9..6..195....98....6.8...6...34..8.3..1....2...6.6....28....419..5....8..79\x0053.......6..195....98....6.8...6...34..8.3..1....2...6.6....28....419..5....8..79\x00Sudoku with recursive 'digits'\x00WITH RECURSIVE\n  input(sud) AS (VALUES(?1)),\n  digits(z,lp) AS (\n    VALUES('1', 1)\n    UNION ALL\n    SELECT CAST(lp+1 AS TEXT), lp+1 FROM digits WHERE lp<9\n  ),\n  x(s, ind) AS (\n    SELECT sud, instr(sud, '.') FROM input\n    UNION ALL\n    SELECT\n      substr(s, 1, ind-1) || z || substr(s, ind+1),\n      instr( substr(s, 1, ind-1) || z || substr(s, ind+1), '.' )\n     FROM x, digits AS z\n    WHERE ind>0\n      AND NOT EXISTS (\n            SELECT 1\n              FROM digits AS lp\n             WHERE z.z = substr(s, ((ind-1)/9)*9 + lp, 1)\n                OR z.z = substr(s, ((ind-1)%%9) + (lp-1)*9 + 1, 1)\n                OR z.z = substr(s, (((ind-1)/3) %% 3) * 3\n                        + ((ind-1)/27) * 27 + lp\n                        + ((lp-1) / 3) * 6, 1)\n         )\n  )\nSELECT s FROM x WHERE ind=0;\x00Sudoku with VALUES 'digits'\x00WITH RECURSIVE\n  input(sud) AS (VALUES(?1)),\n  digits(z,lp) AS (VALUES('1',1),('2',2),('3',3),('4',4),('5',5),\n                         ('6',6),('7',7),('8',8),('9',9)),\n  x(s, ind) AS (\n    SELECT sud, instr(sud, '.') FROM input\n    UNION ALL\n    SELECT\n      substr(s, 1, ind-1) || z || substr(s, ind+1),\n      instr( substr(s, 1, ind-1) || z || substr(s, ind+1), '.' )\n     FROM x, digits AS z\n    WHERE ind>0\n      AND NOT EXISTS (\n            SELECT 1\n              FROM digits AS lp\n             WHERE z.z = substr(s, ((ind-1)/9)*9 + lp, 1)\n                OR z.z = substr(s, ((ind-1)%%9) + (lp-1)*9 + 1, 1)\n                OR z.z = substr(s, (((ind-1)/3) %% 3) * 3\n                        + ((ind-1)/27) * 27 + lp\n                        + ((lp-1) / 3) * 6, 1)\n         )\n  )\nSELECT s FROM x WHERE ind=0;\x00Mandelbrot Set with spacing=%f\x00WITH RECURSIVE \n  xaxis(x) AS (VALUES(-2.0) UNION ALL SELECT x+?1 FROM xaxis WHERE x<1.2),\n  yaxis(y) AS (VALUES(-1.0) UNION ALL SELECT y+?2 FROM yaxis WHERE y<1.0),\n  m(iter, cx, cy, x, y) AS (\n    SELECT 0, x, y, 0.0, 0.0 FROM xaxis, yaxis\n    UNION ALL\n    SELECT iter+1, cx, cy, x*x-y*y + cx, 2.0*x*y + cy FROM m \n     WHERE (x*x + y*y) < 4.0 AND iter<28\n  ),\n  m2(iter, cx, cy) AS (\n    SELECT max(iter), cx, cy FROM m GROUP BY cx, cy\n  ),\n  a(t) AS (\n    SELECT group_concat( substr(' .+*#', 1+min(iter/7,4), 1), '') \n    FROM m2 GROUP BY cy\n  )\nSELECT group_concat(rtrim(t),x'0a') FROM a;\x00EXCEPT operator on %d-element tables\x00WITH RECURSIVE \n  z1(x) AS (VALUES(2) UNION ALL SELECT x+2 FROM z1 WHERE x<%d),\n  z2(y) AS (VALUES(3) UNION ALL SELECT y+3 FROM z2 WHERE y<%d)\nSELECT count(x), avg(x) FROM (\n  SELECT x FROM z1 EXCEPT SELECT y FROM z2 ORDER BY 1\n);\x00%d.%de%d\x00Fill a table with %d FP values\x00CREATE%s TABLE z1(a REAL %s, b REAL %s);\x00INSERT INTO z1 VALUES(?1,?2); -- %d times\x00%d range queries\x00SELECT sum(b) FROM z1 WHERE a BETWEEN ?1 AND ?2\x00CREATE INDEX three times\x00CREATE INDEX t1a ON z1(a);\x00CREATE INDEX t1b ON z1(b);\x00CREATE INDEX t1ab ON z1(a,b);\x00%d indexed range queries\x00%d calls to round()\x00SELECT sum(round(a,2)+round(b,4)) FROM z1;\x00%d printf() calls\x00WITH c(fmt) AS (VALUES('%%g'),('%%e'),('%%!g'),('%%.20f'))SELECT sum(printf(fmt,a)) FROM z1, c\x00Fill %d rows\x00BEGIN;CREATE TABLE ZLOOKSLIKECOREDATA (  ZPK INTEGER PRIMARY KEY,  ZTERMFITTINGHOUSINGCOMMAND INTEGER,  ZBRIEFGOBYDODGERHEIGHT BLOB,  ZCAPABLETRIPDOORALMOND BLOB,  ZDEPOSITPAIRCOLLEGECOMET INTEGER,  ZFRAMEENTERSIMPLEMOUTH INTEGER,  ZHOPEFULGATEHOLECHALK INTEGER,  ZSLEEPYUSERGRANDBOWL TIMESTAMP,  ZDEWPEACHCAREERCELERY INTEGER,  ZHANGERLITHIUMDINNERMEET VARCHAR,  ZCLUBRELEASELIZARDADVICE VARCHAR,  ZCHARGECLICKHUMANEHIRE INTEGER,  ZFINGERDUEPIZZAOPTION TIMESTAMP,  ZFLYINGDOCTORTABLEMELODY BLOB,  ZLONGFINLEAVEIMAGEOIL TIMESTAMP,  ZFAMILYVISUALOWNERMATTER BLOB,  ZGOLDYOUNGINITIALNOSE FLOAT,  ZCAUSESALAMITERMCYAN BLOB,  ZSPREADMOTORBISCUITBACON FLOAT,  ZGIFTICEFISHGLUEHAIR INTEGER,  ZNOTICEPEARPOLICYJUICE TIMESTAMP,  ZBANKBUFFALORECOVERORBIT TIMESTAMP,  ZLONGDIETESSAYNATURE FLOAT,  ZACTIONRANGEELEGANTNEUTRON BLOB,  ZCADETBRIGHTPLANETBANK TIMESTAMP,  ZAIRFORGIVEHEADFROG BLOB,  ZSHARKJUSTFRUITMOVIE VARCHAR,  ZFARMERMORNINGMIRRORCONCERN BLOB,  ZWOODPOETRYCOBBLERBENCH VARCHAR,  ZHAFNIUMSCRIPTSALADMOTOR INTEGER,  ZPROBLEMCLUBPOPOVERJELLY FLOAT,  ZEIGHTLEADERWORKERMOST TIMESTAMP,  ZGLASSRESERVEBARIUMMEAL BLOB,  ZCLAMBITARUGULAFAJITA BLOB,  ZDECADEJOYOUSWAVEHABIT FLOAT,  ZCOMPANYSUMMERFIBERELF INTEGER,  ZTREATTESTQUILLCHARGE TIMESTAMP,  ZBROWBALANCEKEYCHOWDER FLOAT,  ZPEACHCOPPERDINNERLAKE FLOAT,  ZDRYWALLBEYONDBROWNBOWL VARCHAR,  ZBELLYCRASHITEMLACK BLOB,  ZTENNISCYCLEBILLOFFICER INTEGER,  ZMALLEQUIPTHANKSGLUE FLOAT,  ZMISSREPLYHUMANLIVING INTEGER,  ZKIWIVISUALPRIDEAPPLE VARCHAR,  ZWISHHITSKINMOTOR BLOB,  ZCALMRACCOONPROGRAMDEBIT VARCHAR,  ZSHINYASSISTLIVINGCRAB VARCHAR,  ZRESOLVEWRISTWRAPAPPLE VARCHAR,  ZAPPEALSIMPLESECONDHOUSING BLOB,  ZCORNERANCHORTAPEDIVER TIMESTAMP,  ZMEMORYREQUESTSOURCEBIG VARCHAR,  ZTRYFACTKEEPMILK TIMESTAMP,  ZDIVERPAINTLEATHEREASY INTEGER,  ZSORTMISTYQUOTECABBAGE BLOB,  ZTUNEGASBUFFALOCAPITAL BLOB,  ZFILLSTOPLAWJOYFUL FLOAT,  ZSTEELCAREFULPLATENUMBER FLOAT,  ZGIVEVIVIDDIVINEMEANING INTEGER,  ZTREATPACKFUTURECONVERT VARCHAR,  ZCALMLYGEMFINISHEFFECT INTEGER,  ZCABBAGESOCKEASEMINUTE BLOB,  ZPLANETFAMILYPUREMEMORY TIMESTAMP,  ZMERRYCRACKTRAINLEADER BLOB,  ZMINORWAYPAPERCLASSY TIMESTAMP,  ZEAGLELINEMINEMAIL VARCHAR,  ZRESORTYARDGREENLET TIMESTAMP,  ZYARDOREGANOVIVIDJEWEL TIMESTAMP,  ZPURECAKEVIVIDNEATLY FLOAT,  ZASKCONTACTMONITORFUN TIMESTAMP,  ZMOVEWHOGAMMAINCH VARCHAR,  ZLETTUCEBIRDMEETDEBATE TIMESTAMP,  ZGENENATURALHEARINGKITE VARCHAR,  ZMUFFINDRYERDRAWFORTUNE FLOAT,  ZGRAYSURVEYWIRELOVE FLOAT,  ZPLIERSPRINTASKOREGANO INTEGER,  ZTRAVELDRIVERCONTESTLILY INTEGER,  ZHUMORSPICESANDKIDNEY TIMESTAMP,  ZARSENICSAMPLEWAITMUON INTEGER,  ZLACEADDRESSGROUNDCAREFUL FLOAT,  ZBAMBOOMESSWASABIEVENING BLOB,  ZONERELEASEAVERAGENURSE INTEGER,  ZRADIANTWHENTRYCARD TIMESTAMP,  ZREWARDINSIDEMANGOINTENSE FLOAT,  ZNEATSTEWPARTIRON TIMESTAMP,  ZOUTSIDEPEAHENCOUNTICE TIMESTAMP,  ZCREAMEVENINGLIPBRANCH FLOAT,  ZWHALEMATHAVOCADOCOPPER FLOAT,  ZLIFEUSELEAFYBELL FLOAT,  ZWEALTHLINENGLEEFULDAY VARCHAR,  ZFACEINVITETALKGOLD BLOB,  ZWESTAMOUNTAFFECTHEARING INTEGER,  ZDELAYOUTCOMEHORNAGENCY INTEGER,  ZBIGTHINKCONVERTECONOMY BLOB,  ZBASEGOUDAREGULARFORGIVE TIMESTAMP,  ZPATTERNCLORINEGRANDCOLBY TIMESTAMP,  ZCYANBASEFEEDADROIT INTEGER,  ZCARRYFLOORMINNOWDRAGON TIMESTAMP,  ZIMAGEPENCILOTHERBOTTOM FLOAT,  ZXENONFLIGHTPALEAPPLE TIMESTAMP,  ZHERRINGJOKEFEATUREHOPEFUL FLOAT,  ZCAPYEARLYRIVETBRUSH FLOAT,  ZAGEREEDFROGBASKET VARCHAR,  ZUSUALBODYHALIBUTDIAMOND VARCHAR,  ZFOOTTAPWORDENTRY VARCHAR,  ZDISHKEEPBLESTMONITOR FLOAT,  ZBROADABLESOLIDCASUAL INTEGER,  ZSQUAREGLEEFULCHILDLIGHT INTEGER,  ZHOLIDAYHEADPONYDETAIL INTEGER,  ZGENERALRESORTSKYOPEN TIMESTAMP,  ZGLADSPRAYKIDNEYGUPPY VARCHAR,  ZSWIMHEAVYMENTIONKIND BLOB,  ZMESSYSULFURDREAMFESTIVE BLOB,  ZSKYSKYCLASSICBRIEF VARCHAR,  ZDILLASKHOKILEMON FLOAT,  ZJUNIORSHOWPRESSNOVA FLOAT,  ZSIZETOEAWARDFRESH TIMESTAMP,  ZKEYFAILAPRICOTMETAL VARCHAR,  ZHANDYREPAIRPROTONAIRPORT VARCHAR,  ZPOSTPROTEINHANDLEACTOR BLOB);\x00INSERT INTO ZLOOKSLIKECOREDATA(ZPK,ZAIRFORGIVEHEADFROG,ZGIFTICEFISHGLUEHAIR,ZDELAYOUTCOMEHORNAGENCY,ZSLEEPYUSERGRANDBOWL,ZGLASSRESERVEBARIUMMEAL,ZBRIEFGOBYDODGERHEIGHT,ZBAMBOOMESSWASABIEVENING,ZFARMERMORNINGMIRRORCONCERN,ZTREATPACKFUTURECONVERT,ZCAUSESALAMITERMCYAN,ZCALMRACCOONPROGRAMDEBIT,ZHOLIDAYHEADPONYDETAIL,ZWOODPOETRYCOBBLERBENCH,ZHAFNIUMSCRIPTSALADMOTOR,ZUSUALBODYHALIBUTDIAMOND,ZOUTSIDEPEAHENCOUNTICE,ZDIVERPAINTLEATHEREASY,ZWESTAMOUNTAFFECTHEARING,ZSIZETOEAWARDFRESH,ZDEWPEACHCAREERCELERY,ZSTEELCAREFULPLATENUMBER,ZCYANBASEFEEDADROIT,ZCALMLYGEMFINISHEFFECT,ZHANDYREPAIRPROTONAIRPORT,ZGENENATURALHEARINGKITE,ZBROADABLESOLIDCASUAL,ZPOSTPROTEINHANDLEACTOR,ZLACEADDRESSGROUNDCAREFUL,ZIMAGEPENCILOTHERBOTTOM,ZPROBLEMCLUBPOPOVERJELLY,ZPATTERNCLORINEGRANDCOLBY,ZNEATSTEWPARTIRON,ZAPPEALSIMPLESECONDHOUSING,ZMOVEWHOGAMMAINCH,ZTENNISCYCLEBILLOFFICER,ZSHARKJUSTFRUITMOVIE,ZKEYFAILAPRICOTMETAL,ZCOMPANYSUMMERFIBERELF,ZTERMFITTINGHOUSINGCOMMAND,ZRESORTYARDGREENLET,ZCABBAGESOCKEASEMINUTE,ZSQUAREGLEEFULCHILDLIGHT,ZONERELEASEAVERAGENURSE,ZBIGTHINKCONVERTECONOMY,ZPLIERSPRINTASKOREGANO,ZDECADEJOYOUSWAVEHABIT,ZDRYWALLBEYONDBROWNBOWL,ZCLUBRELEASELIZARDADVICE,ZWHALEMATHAVOCADOCOPPER,ZBELLYCRASHITEMLACK,ZLETTUCEBIRDMEETDEBATE,ZCAPABLETRIPDOORALMOND,ZRADIANTWHENTRYCARD,ZCAPYEARLYRIVETBRUSH,ZAGEREEDFROGBASKET,ZSWIMHEAVYMENTIONKIND,ZTRAVELDRIVERCONTESTLILY,ZGLADSPRAYKIDNEYGUPPY,ZBANKBUFFALORECOVERORBIT,ZFINGERDUEPIZZAOPTION,ZCLAMBITARUGULAFAJITA,ZLONGFINLEAVEIMAGEOIL,ZLONGDIETESSAYNATURE,ZJUNIORSHOWPRESSNOVA,ZHOPEFULGATEHOLECHALK,ZDEPOSITPAIRCOLLEGECOMET,ZWEALTHLINENGLEEFULDAY,ZFILLSTOPLAWJOYFUL,ZTUNEGASBUFFALOCAPITAL,ZGRAYSURVEYWIRELOVE,ZCORNERANCHORTAPEDIVER,ZREWARDINSIDEMANGOINTENSE,ZCADETBRIGHTPLANETBANK,ZPLANETFAMILYPUREMEMORY,ZTREATTESTQUILLCHARGE,ZCREAMEVENINGLIPBRANCH,ZSKYSKYCLASSICBRIEF,ZARSENICSAMPLEWAITMUON,ZBROWBALANCEKEYCHOWDER,ZFLYINGDOCTORTABLEMELODY,ZHANGERLITHIUMDINNERMEET,ZNOTICEPEARPOLICYJUICE,ZSHINYASSISTLIVINGCRAB,ZLIFEUSELEAFYBELL,ZFACEINVITETALKGOLD,ZGENERALRESORTSKYOPEN,ZPURECAKEVIVIDNEATLY,ZKIWIVISUALPRIDEAPPLE,ZMESSYSULFURDREAMFESTIVE,ZCHARGECLICKHUMANEHIRE,ZHERRINGJOKEFEATUREHOPEFUL,ZYARDOREGANOVIVIDJEWEL,ZFOOTTAPWORDENTRY,ZWISHHITSKINMOTOR,ZBASEGOUDAREGULARFORGIVE,ZMUFFINDRYERDRAWFORTUNE,ZACTIONRANGEELEGANTNEUTRON,ZTRYFACTKEEPMILK,ZPEACHCOPPERDINNERLAKE,ZFRAMEENTERSIMPLEMOUTH,ZMERRYCRACKTRAINLEADER,ZMEMORYREQUESTSOURCEBIG,ZCARRYFLOORMINNOWDRAGON,ZMINORWAYPAPERCLASSY,ZDILLASKHOKILEMON,ZRESOLVEWRISTWRAPAPPLE,ZASKCONTACTMONITORFUN,ZGIVEVIVIDDIVINEMEANING,ZEIGHTLEADERWORKERMOST,ZMISSREPLYHUMANLIVING,ZXENONFLIGHTPALEAPPLE,ZSORTMISTYQUOTECABBAGE,ZEAGLELINEMINEMAIL,ZFAMILYVISUALOWNERMATTER,ZSPREADMOTORBISCUITBACON,ZDISHKEEPBLESTMONITOR,ZMALLEQUIPTHANKSGLUE,ZGOLDYOUNGINITIALNOSE,ZHUMORSPICESANDKIDNEY)VALUES(?1,?26,?20,?93,?8,?33,?3,?81,?28,?60,?18,?47,?109,?29,?30,?104,?86,?54,?92,?117,?9,?58,?97,?61,?119,?73,?107,?120,?80,?99,?31,?96,?85,?50,?71,?42,?27,?118,?36,?2,?67,?62,?108,?82,?94,?76,?35,?40,?11,?88,?41,?72,?4,?83,?102,?103,?112,?77,?111,?22,?13,?34,?15,?23,?116,?7,?5,?90,?57,?56,?75,?51,?84,?25,?63,?37,?87,?114,?79,?38,?14,?10,?21,?48,?89,?91,?110,?69,?45,?113,?12,?101,?68,?105,?46,?95,?74,?24,?53,?39,?6,?64,?52,?98,?65,?115,?49,?70,?59,?32,?44,?100,?55,?66,?16,?19,?106,?43,?17,?78);\x00Query %d rows by rowid\x00SELECT ZCYANBASEFEEDADROIT,ZJUNIORSHOWPRESSNOVA,ZCAUSESALAMITERMCYAN,ZHOPEFULGATEHOLECHALK,ZHUMORSPICESANDKIDNEY,ZSWIMHEAVYMENTIONKIND,ZMOVEWHOGAMMAINCH,ZAPPEALSIMPLESECONDHOUSING,ZHAFNIUMSCRIPTSALADMOTOR,ZNEATSTEWPARTIRON,ZLONGFINLEAVEIMAGEOIL,ZDEWPEACHCAREERCELERY,ZXENONFLIGHTPALEAPPLE,ZCALMRACCOONPROGRAMDEBIT,ZUSUALBODYHALIBUTDIAMOND,ZTRYFACTKEEPMILK,ZWEALTHLINENGLEEFULDAY,ZLONGDIETESSAYNATURE,ZLIFEUSELEAFYBELL,ZTREATPACKFUTURECONVERT,ZMEMORYREQUESTSOURCEBIG,ZYARDOREGANOVIVIDJEWEL,ZDEPOSITPAIRCOLLEGECOMET,ZSLEEPYUSERGRANDBOWL,ZBRIEFGOBYDODGERHEIGHT,ZCLUBRELEASELIZARDADVICE,ZCAPABLETRIPDOORALMOND,ZDRYWALLBEYONDBROWNBOWL,ZASKCONTACTMONITORFUN,ZKIWIVISUALPRIDEAPPLE,ZNOTICEPEARPOLICYJUICE,ZPEACHCOPPERDINNERLAKE,ZSTEELCAREFULPLATENUMBER,ZGLADSPRAYKIDNEYGUPPY,ZCOMPANYSUMMERFIBERELF,ZTENNISCYCLEBILLOFFICER,ZIMAGEPENCILOTHERBOTTOM,ZWESTAMOUNTAFFECTHEARING,ZDIVERPAINTLEATHEREASY,ZSKYSKYCLASSICBRIEF,ZMESSYSULFURDREAMFESTIVE,ZMERRYCRACKTRAINLEADER,ZBROADABLESOLIDCASUAL,ZGLASSRESERVEBARIUMMEAL,ZTUNEGASBUFFALOCAPITAL,ZBANKBUFFALORECOVERORBIT,ZTREATTESTQUILLCHARGE,ZBAMBOOMESSWASABIEVENING,ZREWARDINSIDEMANGOINTENSE,ZEAGLELINEMINEMAIL,ZCALMLYGEMFINISHEFFECT,ZKEYFAILAPRICOTMETAL,ZFINGERDUEPIZZAOPTION,ZCADETBRIGHTPLANETBANK,ZGOLDYOUNGINITIALNOSE,ZMISSREPLYHUMANLIVING,ZEIGHTLEADERWORKERMOST,ZFRAMEENTERSIMPLEMOUTH,ZBIGTHINKCONVERTECONOMY,ZFACEINVITETALKGOLD,ZPOSTPROTEINHANDLEACTOR,ZHERRINGJOKEFEATUREHOPEFUL,ZCABBAGESOCKEASEMINUTE,ZMUFFINDRYERDRAWFORTUNE,ZPROBLEMCLUBPOPOVERJELLY,ZGIVEVIVIDDIVINEMEANING,ZGENENATURALHEARINGKITE,ZGENERALRESORTSKYOPEN,ZLETTUCEBIRDMEETDEBATE,ZBASEGOUDAREGULARFORGIVE,ZCHARGECLICKHUMANEHIRE,ZPLANETFAMILYPUREMEMORY,ZMINORWAYPAPERCLASSY,ZCAPYEARLYRIVETBRUSH,ZSIZETOEAWARDFRESH,ZARSENICSAMPLEWAITMUON,ZSQUAREGLEEFULCHILDLIGHT,ZSHINYASSISTLIVINGCRAB,ZCORNERANCHORTAPEDIVER,ZDECADEJOYOUSWAVEHABIT,ZTRAVELDRIVERCONTESTLILY,ZFLYINGDOCTORTABLEMELODY,ZSHARKJUSTFRUITMOVIE,ZFAMILYVISUALOWNERMATTER,ZFARMERMORNINGMIRRORCONCERN,ZGIFTICEFISHGLUEHAIR,ZOUTSIDEPEAHENCOUNTICE,ZSPREADMOTORBISCUITBACON,ZWISHHITSKINMOTOR,ZHOLIDAYHEADPONYDETAIL,ZWOODPOETRYCOBBLERBENCH,ZAIRFORGIVEHEADFROG,ZBROWBALANCEKEYCHOWDER,ZDISHKEEPBLESTMONITOR,ZCLAMBITARUGULAFAJITA,ZPLIERSPRINTASKOREGANO,ZRADIANTWHENTRYCARD,ZDELAYOUTCOMEHORNAGENCY,ZPURECAKEVIVIDNEATLY,ZPATTERNCLORINEGRANDCOLBY,ZHANDYREPAIRPROTONAIRPORT,ZAGEREEDFROGBASKET,ZSORTMISTYQUOTECABBAGE,ZFOOTTAPWORDENTRY,ZRESOLVEWRISTWRAPAPPLE,ZDILLASKHOKILEMON,ZFILLSTOPLAWJOYFUL,ZACTIONRANGEELEGANTNEUTRON,ZRESORTYARDGREENLET,ZCREAMEVENINGLIPBRANCH,ZWHALEMATHAVOCADOCOPPER,ZGRAYSURVEYWIRELOVE,ZBELLYCRASHITEMLACK,ZHANGERLITHIUMDINNERMEET,ZCARRYFLOORMINNOWDRAGON,ZMALLEQUIPTHANKSGLUE,ZTERMFITTINGHOUSINGCOMMAND,ZONERELEASEAVERAGENURSE,ZLACEADDRESSGROUNDCAREFUL FROM ZLOOKSLIKECOREDATA WHERE ZPK=?1;\x00BEGIN;CREATE TABLE z1(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TABLE z2(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TABLE t3(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE VIEW v1 AS SELECT rowid, i, t FROM z1;CREATE VIEW v2 AS SELECT rowid, i, t FROM z2;CREATE VIEW v3 AS SELECT rowid, i, t FROM t3;\x00INSERT INTO t%d VALUES(NULL,?1,?2)\x00CREATE INDEX i1 ON z1(t);CREATE INDEX i2 ON z2(t);CREATE INDEX i3 ON t3(t);COMMIT;\x00speed4p-join1\x00SELECT * FROM z1, z2, t3 WHERE z1.oid = z2.oid AND z2.oid = t3.oid\x00speed4p-join2\x00SELECT * FROM z1, z2, t3 WHERE z1.t = z2.t AND z2.t = t3.t\x00speed4p-view1\x00SELECT * FROM v%d WHERE rowid = ?\x00speed4p-table1\x00SELECT * FROM t%d WHERE rowid = ?\x00speed4p-subselect1\x00SELECT (SELECT t FROM z1 WHERE rowid = ?1),(SELECT t FROM z2 WHERE rowid = ?1),(SELECT t FROM t3 WHERE rowid = ?1)\x00speed4p-rowid-update\x00UPDATE z1 SET i=i+1 WHERE rowid=?1\x00CREATE TABLE t5(t TEXT PRIMARY KEY, i INTEGER);\x00speed4p-insert-ignore\x00INSERT OR IGNORE INTO t5 SELECT t, i FROM z1\x00CREATE TABLE log(op TEXT, r INTEGER, i INTEGER, t TEXT);CREATE TABLE t4(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TRIGGER t4_trigger1 AFTER INSERT ON t4 BEGIN  INSERT INTO log VALUES('INSERT INTO t4', new.rowid, new.i, new.t);END;CREATE TRIGGER t4_trigger2 AFTER UPDATE ON t4 BEGIN  INSERT INTO log VALUES('UPDATE OF t4', new.rowid, new.i, new.t);END;CREATE TRIGGER t4_trigger3 AFTER DELETE ON t4 BEGIN  INSERT INTO log VALUES('DELETE OF t4', old.rowid, old.i, old.t);END;BEGIN;\x00speed4p-trigger1\x00INSERT INTO t4 VALUES(NULL, ?1, ?2)\x00speed4p-trigger2\x00UPDATE t4 SET i = ?1, t = ?2 WHERE rowid = ?3\x00speed4p-trigger3\x00DELETE FROM t4 WHERE rowid = ?1\x00DROP TABLE t4;DROP TABLE log;VACUUM;CREATE TABLE t4(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);BEGIN;\x00speed4p-notrigger1\x00speed4p-notrigger2\x00speed4p-notrigger3\x00%5d %5d %5d %s\n\x00SELECT 1, 12, 123, 1234, 12345, 123456\x00SELECT 8227256643844975616, 7932208612563860480, 2010730661871032832, 9138463067404021760, 2557616153664746496, 2557616153664746496\x00SELECT 1.0, 1.2, 1.23, 123.4, 1.2345, 1.23456\x00SELECT 8.227256643844975616, 7.932208612563860480, 2.010730661871032832, 9.138463067404021760, 2.557616153664746496, 2.557616153664746496\x00parsing small integers\x00parsing large integers\x00parsing small reals\x00parsing large reals\x00-- Compile option: %s\n\x00main\x00-- Speedtest1 for SQLite %s %.48s\n\x00UNIQUE\x00autovacuum\x00big-transactions\x00cachesize\x00missing argument on %s\n\x00exclusive\x00fullfsync\x00checkpoint\x00explain\x00heap\x00incrvacuum\x00journal\x00key\x00lookaside\x00memdb\x00multithread\x00nomemstat\x00mmap\x00nolongdouble\x00nomutex\x00nosync\x00notnull\x00NOT NULL\x00output\x00-\x00wb\x00cannot open \"%s\" for writing\n\x00pagesize\x00pcache\x00primarykey\x00PRIMARY KEY\x00repeat\x00reprepare\x00serialized\x00singlethread\x00script\x00unable to open output file \"%s\"\n\x00sqlonly\x00shrink-memory\x00size\x00stats\x00temp\x00argument to --temp should be integer between 0 and 9\x00testset\x00trace\x00threads\x00utf16le\x00utf16be\x00verify\x00vfs\x00reserve\x00stmtscanstatus\x00without-rowid\x00WITHOUT\x00STRICT\x00WITHOUT ROWID,STRICT\x00strict\x00help\x00?\x00unknown option: %s\nUse \"%s -?\" for help\n\x00surplus argument: %s\nUse \"%s -?\" for help\n\x00cannot allocate %d-byte heap\n\x00heap configuration failed: %d\n\x00cannot allocate %lld-byte pcache\n\x00pcache configuration failed: %d\n\x00:memory:\x00Cannot open database file: %s\n\x00lookaside configuration failed: %d\n\x00random\x00PRAGMA temp_store=memory\x00PRAGMA mmap_size=%d\x00PRAGMA threads=%d\x00PRAGMA key('%s')\x00PRAGMA encoding=%s\x00PRAGMA auto_vacuum=FULL\x00PRAGMA auto_vacuum=INCREMENTAL\x00PRAGMA page_size=%d\x00PRAGMA cache_size=%d\x00PRAGMA synchronous=OFF\x00PRAGMA fullfsync=ON\x00PRAGMA locking_mode=EXCLUSIVE\x00PRAGMA journal_mode=%s\x00.explain\n.echo on\n\x00       Begin testset \"%s\"\n\x00debug1\x00orm\x00cte\x00fp\x00trigger\x00parsenumber\x00rtree\x00compile with -DSQLITE_ENABLE_RTREE to enable the R-Tree tests\n\x00unknown testset: \"%s\"\nChoices: cte debug1 fp main orm rtree trigger\n\x00Reset the database\x00SELECT name FROM main.sqlite_master WHERE sql LIKE 'CREATE %%TABLE%%'\x00DROP TABLE main.\"%w\"\x00SELECT name FROM temp.sqlite_master WHERE sql LIKE 'CREATE %%TABLE%%'\x00PRAGMA compile_options\x00-- Lookaside Slots Used:        %d (max %d)\n\x00-- Successful lookasides:       %d\n\x00-- Lookaside size faults:       %d\n\x00-- Lookaside OOM faults:        %d\n\x00-- Pager Heap Usage:            %d bytes\n\x00-- Page cache hits:             %d\n\x00-- Page cache misses:           %d\n\x00-- Page cache writes:           %d\n\x00-- Schema Heap Usage:           %d bytes\n\x00-- Statement Heap Usage:        %d bytes\n\x00-- Memory Used (bytes):         %d (max %d)\n\x00-- Outstanding Allocations:     %d (max %d)\n\x00-- Pcache Overflow Bytes:       %d (max %d)\n\x00-- Largest Allocation:          %d bytes\n\x00-- Largest Pcache Allocation:   %d bytes\n\x00"

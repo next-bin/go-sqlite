@@ -1,8 +1,6 @@
-// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -o mptest/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for windows/386 by 'generator --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -map gcc=i686-w64-mingw32-gcc -o mptest/ccgo_windows_386.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
-//go:build windows && (amd64 || arm64)
-// +build windows
-// +build amd64 arm64
+//go:build windows && 386
 
 package main
 
@@ -96,7 +94,6 @@ const AC_LINE_ONLINE = 0x01
 const AC_LINE_UNKNOWN = 0xff
 const AC_SRC_ALPHA = 0x01
 const AC_SRC_OVER = 0x00
-const ADDRESS_TAG_BIT = "0x40000000000U"
 const AD_CLOCKWISE = 2
 const AD_COUNTERCLOCKWISE = 1
 const ALERT_SYSTEM_CRITICAL = 5
@@ -403,17 +400,11 @@ const BS_RIGHTBUTTON = "BS_LEFTTEXT"
 const BS_SOLID = 0
 const BUFSIZ = 512
 const BitScanForward = "_BitScanForward"
-const BitScanForward64 = "_BitScanForward64"
 const BitScanReverse = "_BitScanReverse"
-const BitScanReverse64 = "_BitScanReverse64"
 const BitTest = "_bittest"
-const BitTest64 = "_bittest64"
 const BitTestAndComplement = "_bittestandcomplement"
-const BitTestAndComplement64 = "_bittestandcomplement64"
 const BitTestAndReset = "_bittestandreset"
-const BitTestAndReset64 = "_bittestandreset64"
 const BitTestAndSet = "_bittestandset"
-const BitTestAndSet64 = "_bittestandset64"
 const C1_ALPHA = 0x0100
 const C1_BLANK = 0x0040
 const C1_CNTRL = 0x0020
@@ -804,7 +795,7 @@ const CONNECT_RESERVED = 0xFF000000
 const CONNECT_TEMPORARY = 0x00000004
 const CONNECT_UPDATE_PROFILE = 0x00000001
 const CONNECT_UPDATE_RECENT = 0x00000002
-const CONSOLE_APPLICATION_16BIT = 0x0000
+const CONSOLE_APPLICATION_16BIT = 0x0001
 const CONSOLE_CARET_SELECTION = 0x0001
 const CONSOLE_CARET_VISIBLE = 0x0002
 const CONSOLE_FULLSCREEN = 1
@@ -822,11 +813,8 @@ const CONTACTVISUALIZATION_OFF = 0x0000
 const CONTACTVISUALIZATION_ON = 0x0001
 const CONTACTVISUALIZATION_PRESENTATIONMODE = 0x0002
 const CONTAINER_INHERIT_ACE = 0x2
-const CONTEXT_AMD64 = 0x100000
-const CONTEXT_EXCEPTION_ACTIVE = 0x8000000
-const CONTEXT_EXCEPTION_REPORTING = 0x80000000
-const CONTEXT_EXCEPTION_REQUEST = 0x40000000
-const CONTEXT_SERVICE_ACTIVE = 0x10000000
+const CONTEXT_i386 = 0x00010000
+const CONTEXT_i486 = 0x00010000
 const CONTROL_C_EXIT = "STATUS_CONTROL_C_EXIT"
 const COPY_FILE_ALLOW_DECRYPTED_DESTINATION = 0x8
 const COPY_FILE_COPY_SYMLINK = 0x800
@@ -1559,6 +1547,9 @@ const DT_WORD_ELLIPSIS = 0x00040000
 const DUPLICATE_CLOSE_SOURCE = 0x00000001
 const DUPLICATE_SAME_ACCESS = 0x00000002
 const DWLP_MSGRESULT = 0
+const DWL_DLGPROC = 4
+const DWL_MSGRESULT = 0
+const DWL_USER = 8
 const DYNAMIC_EH_CONTINUATION_TARGET_ADD = 0x00000001
 const DYNAMIC_EH_CONTINUATION_TARGET_PROCESSED = 0x00000002
 const DYNAMIC_ENFORCED_ADDRESS_RANGE_ADD = 0x00000001
@@ -2154,6 +2145,7 @@ const FAPPCOMMAND_KEY = 0
 const FAPPCOMMAND_MASK = 0xF000
 const FAPPCOMMAND_MOUSE = 0x8000
 const FAPPCOMMAND_OEM = 0x1000
+const FASTCALL = "__fastcall"
 const FAST_FAIL_CORRUPT_LIST_ENTRY = 3
 const FAST_FAIL_FATAL_APP_EXIT = 7
 const FAST_FAIL_GS_COOKIE_INIT = 6
@@ -2424,7 +2416,6 @@ const FW_SEMIBOLD = 600
 const FW_THIN = 100
 const FW_ULTRABOLD = "FW_EXTRABOLD"
 const FW_ULTRALIGHT = "FW_EXTRALIGHT"
-const FastFence = "__faststorefence"
 const FillMemory = "RtlFillMemory"
 const FindFirstVolume = "FindFirstVolumeA"
 const FindNextVolume = "FindNextVolumeA"
@@ -2613,7 +2604,7 @@ const GR_USEROBJECTS = 1
 const GR_USEROBJECTS_PEAK = 4
 const GSS_ALLOW_INHERITED_COMMON = 0x0001
 const GS_8BIT_INDICES = 0x00000001
-const GUI_16BITTASK = 0x00000000
+const GUI_16BITTASK = 0x00000020
 const GUI_CARETBLINKING = 0x00000001
 const GUI_INMENUMODE = 0x00000004
 const GUI_INMOVESIZE = 0x00000002
@@ -2628,13 +2619,14 @@ const GW_HWNDNEXT = 2
 const GW_HWNDPREV = 3
 const GW_MAX = 6
 const GW_OWNER = 4
+const GetClassLongPtrA = "GetClassLongA"
+const GetClassLongPtrW = "GetClassLongW"
 const GetEnvironmentStringsA = "GetEnvironmentStrings"
 const GetExceptionCode = "_exception_code"
 const GetFileSecurity = "GetFileSecurityA"
 const GetLocaleInfo = "GetLocaleInfoA"
 const GetLogicalDriveStrings = "GetLogicalDriveStringsA"
 const GetNamedPipeClientComputerName = "GetNamedPipeClientComputerNameA"
-const GetSegmentLimit = "__segmentlimit"
 const GetShortPathName = "GetShortPathNameA"
 const GetStartupInfo = "GetStartupInfoA"
 const GetStringTypeEx = "GetStringTypeExA"
@@ -2642,6 +2634,8 @@ const GetVolumeInformation = "GetVolumeInformationA"
 const GetVolumeNameForVolumeMountPoint = "GetVolumeNameForVolumeMountPointA"
 const GetVolumePathName = "GetVolumePathNameA"
 const GetVolumePathNamesForVolumeName = "GetVolumePathNamesForVolumeNameA"
+const GetWindowLongPtrA = "GetWindowLongA"
+const GetWindowLongPtrW1 = "GetWindowLongW"
 const HALFTONE = 4
 const HANDLE_FLAG_INHERIT = 0x1
 const HANDLE_FLAG_PROTECT_FROM_CLOSE = 0x2
@@ -2959,10 +2953,10 @@ const IMAGE_FILE_UP_SYSTEM_ONLY = 0x4000
 const IMAGE_ICON = 1
 const IMAGE_NT_OPTIONAL_HDR32_MAGIC = 0x10b
 const IMAGE_NT_OPTIONAL_HDR64_MAGIC = 0x20b
-const IMAGE_NT_OPTIONAL_HDR_MAGIC = "IMAGE_NT_OPTIONAL_HDR64_MAGIC"
+const IMAGE_NT_OPTIONAL_HDR_MAGIC = "IMAGE_NT_OPTIONAL_HDR32_MAGIC"
 const IMAGE_NT_SIGNATURE = 0x00004550
 const IMAGE_NUMBEROF_DIRECTORY_ENTRIES = 16
-const IMAGE_ORDINAL_FLAG = "IMAGE_ORDINAL_FLAG64"
+const IMAGE_ORDINAL_FLAG = "IMAGE_ORDINAL_FLAG32"
 const IMAGE_ORDINAL_FLAG32 = 0x80000000
 const IMAGE_ORDINAL_FLAG64 = "0x8000000000000000ull"
 const IMAGE_OS2_SIGNATURE = 0x454E
@@ -3247,7 +3241,7 @@ const IMAGE_SIZEOF_FILE_HEADER = 20
 const IMAGE_SIZEOF_LINENUMBER = 6
 const IMAGE_SIZEOF_NT_OPTIONAL32_HEADER = 224
 const IMAGE_SIZEOF_NT_OPTIONAL64_HEADER = 240
-const IMAGE_SIZEOF_NT_OPTIONAL_HEADER = "IMAGE_SIZEOF_NT_OPTIONAL64_HEADER"
+const IMAGE_SIZEOF_NT_OPTIONAL_HEADER = "IMAGE_SIZEOF_NT_OPTIONAL32_HEADER"
 const IMAGE_SIZEOF_RELOCATION = 10
 const IMAGE_SIZEOF_ROM_OPTIONAL_HEADER = 56
 const IMAGE_SIZEOF_SECTION_HEADER = 40
@@ -3450,8 +3444,6 @@ const INHERITED_ACE = 0x10
 const INHERIT_CALLER_PRIORITY = 0x20000
 const INHERIT_ONLY_ACE = 0x8
 const INHERIT_PARENT_AFFINITY = 0x10000
-const INITIAL_FPCSR = 0x027f
-const INITIAL_MXCSR = 0x1f80
 const INIT_ONCE_ASYNC = "RTL_RUN_ONCE_ASYNC"
 const INIT_ONCE_CHECK_ONLY = "RTL_RUN_ONCE_CHECK_ONLY"
 const INIT_ONCE_CTX_RESERVED_BITS = "RTL_RUN_ONCE_CTX_RESERVED_BITS"
@@ -3497,18 +3489,15 @@ const IS_TEXT_UNICODE_UNICODE_MASK = 0x000F
 const InterlockedAdd = "_InterlockedAdd"
 const InterlockedAdd64 = "_InterlockedAdd64"
 const InterlockedAnd = "_InterlockedAnd"
-const InterlockedAnd16 = "_InterlockedAnd16"
 const InterlockedAnd64 = "_InterlockedAnd64"
-const InterlockedAnd8 = "_InterlockedAnd8"
 const InterlockedAndAffinity = "InterlockedAnd64"
 const InterlockedCompareExchange = "_InterlockedCompareExchange"
 const InterlockedCompareExchange16 = "_InterlockedCompareExchange16"
 const InterlockedCompareExchange64 = "_InterlockedCompareExchange64"
 const InterlockedCompareExchangeAcquire = "InterlockedCompareExchange"
 const InterlockedCompareExchangeAcquire64 = "InterlockedCompareExchange64"
-const InterlockedCompareExchangePointer = "_InterlockedCompareExchangePointer"
-const InterlockedCompareExchangePointerAcquire = "_InterlockedCompareExchangePointer"
-const InterlockedCompareExchangePointerRelease = "_InterlockedCompareExchangePointer"
+const InterlockedCompareExchangePointerAcquire = "InterlockedCompareExchangePointer"
+const InterlockedCompareExchangePointerRelease = "InterlockedCompareExchangePointer"
 const InterlockedCompareExchangeRelease = "InterlockedCompareExchange"
 const InterlockedCompareExchangeRelease64 = "InterlockedCompareExchange64"
 const InterlockedDecrement = "_InterlockedDecrement"
@@ -3528,15 +3517,11 @@ const InterlockedIncrement64 = "_InterlockedIncrement64"
 const InterlockedIncrementAcquire = "InterlockedIncrement"
 const InterlockedIncrementRelease = "InterlockedIncrement"
 const InterlockedOr = "_InterlockedOr"
-const InterlockedOr16 = "_InterlockedOr16"
 const InterlockedOr64 = "_InterlockedOr64"
-const InterlockedOr8 = "_InterlockedOr8"
 const InterlockedOrAffinity = "InterlockedOr64"
 const InterlockedPushListSList = "InterlockedPushListSListEx"
 const InterlockedXor = "_InterlockedXor"
-const InterlockedXor16 = "_InterlockedXor16"
 const InterlockedXor64 = "_InterlockedXor64"
-const InterlockedXor8 = "_InterlockedXor8"
 const JOB_OBJECT_ASSIGN_PROCESS = 0x0001
 const JOB_OBJECT_BASIC_LIMIT_VALID_FLAGS = 0x000000ff
 const JOB_OBJECT_CPU_RATE_CONTROL_ENABLE = 0x1
@@ -4139,7 +4124,6 @@ const LUA_TOKEN = 0x4
 const LWA_ALPHA = 0x00000002
 const LWA_COLORKEY = 0x00000001
 const L_tmpnam_s = "L_tmpnam"
-const LoadFence = "_mm_lfence"
 const MAC_CHARSET = 77
 const MAPVK_VK_TO_CHAR = 2
 const MAPVK_VK_TO_VSC = 0
@@ -4156,7 +4140,8 @@ const MAXBYTE = 0xff
 const MAXCHAR = 0x7f
 const MAXDWORD = 0xffffffff
 const MAXIMUM_PROCESSORS = "MAXIMUM_PROC_PER_GROUP"
-const MAXIMUM_PROC_PER_GROUP = 64
+const MAXIMUM_PROC_PER_GROUP = 32
+const MAXIMUM_SUPPORTED_EXTENSION = 512
 const MAXIMUM_SUSPEND_COUNT = "MAXCHAR"
 const MAXIMUM_WAIT_OBJECTS = 64
 const MAXIMUM_XSTATE_FEATURES = 64
@@ -4309,7 +4294,7 @@ const MDM_X75_DATA_BTX = 0x4
 const MDM_X75_DATA_DEFAULT = 0x0
 const MDM_X75_DATA_T_70 = 0x3
 const MEHC_PATROL_SCRUBBER_PRESENT = 0x1
-const MEMORY_ALLOCATION_ALIGNMENT = 16
+const MEMORY_ALLOCATION_ALIGNMENT = 8
 const MEMORY_PRIORITY_BELOW_NORMAL = 4
 const MEMORY_PRIORITY_LOW = 2
 const MEMORY_PRIORITY_MEDIUM = 3
@@ -4610,11 +4595,7 @@ const MWT_MAX = "MWT_RIGHTMULTIPLY"
 const MWT_MIN = "MWT_IDENTITY"
 const MWT_RIGHTMULTIPLY = 3
 const MX_ARG = 2
-const MemoryBarrier = "_mm_mfence"
-const MemoryFence = "_mm_mfence"
 const MoveMemory = "RtlMoveMemory"
-const Multiply128 = "_mul128"
-const MultiplyHigh = "__mulh"
 const NDEBUG = 1
 const NETINFO_DISKRED = 0x00000004
 const NETINFO_DLL16 = 0x00000001
@@ -4810,7 +4791,6 @@ const OUTPUT_DEBUG_STRING_EVENT = 8
 const OUT_CHARACTER_PRECIS = 2
 const OUT_DEFAULT_PRECIS = 0
 const OUT_DEVICE_PRECIS = 5
-const OUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK_EXPORT_NAME = "OutOfProcessFunctionTableCallback"
 const OUT_OUTLINE_PRECIS = 8
 const OUT_PS_ONLY_PRECIS = 10
 const OUT_RASTER_PRECIS = 6
@@ -5095,7 +5075,6 @@ const PF_FLOATING_POINT_EMULATED = 1
 const PF_FLOATING_POINT_PRECISION_ERRATA = 0
 const PF_MMX_INSTRUCTIONS_AVAILABLE = 3
 const PF_MONITORX_INSTRUCTION_AVAILABLE = 35
-const PF_NON_TEMPORAL_LEVEL_ALL = "_MM_HINT_NTA"
 const PF_NX_ENABLED = 12
 const PF_PAE_ENABLED = 9
 const PF_PPC_MOVEMEM_64BIT_OK = 4
@@ -5110,9 +5089,6 @@ const PF_SSE4_1_INSTRUCTIONS_AVAILABLE = 37
 const PF_SSE4_2_INSTRUCTIONS_AVAILABLE = 38
 const PF_SSE_DAZ_MODE_AVAILABLE = 11
 const PF_SSSE3_INSTRUCTIONS_AVAILABLE = 36
-const PF_TEMPORAL_LEVEL_1 = "_MM_HINT_T0"
-const PF_TEMPORAL_LEVEL_2 = "_MM_HINT_T1"
-const PF_TEMPORAL_LEVEL_3 = "_MM_HINT_T2"
 const PF_VIRT_FIRMWARE_ENABLED = 21
 const PF_XMMI64_INSTRUCTIONS_AVAILABLE = 10
 const PF_XMMI_INSTRUCTIONS_AVAILABLE = 6
@@ -5574,6 +5550,7 @@ const PWR_SUSPENDRESUME = 2
 const PW_CLIENTONLY = 0x00000001
 const PW_RENDERFULLCONTENT = 0x00000002
 const P_tmpdir = "_P_tmpdir"
+const PcTeb = 24
 const PrivilegedServiceAuditAlarm = "PrivilegedServiceAuditAlarmA"
 const QDC_ALL_PATHS = 0x00000001
 const QDC_DATABASE_CURRENT = 0x00000004
@@ -5866,17 +5843,11 @@ const RTS_CONTROL_DISABLE = 0x0
 const RTS_CONTROL_ENABLE = 0x1
 const RTS_CONTROL_HANDSHAKE = 0x2
 const RTS_CONTROL_TOGGLE = 0x3
-const RUNTIME_FUNCTION_INDIRECT = 0x1
 const RUSSIAN_CHARSET = 204
-const ReadMxCsr = "_mm_getcsr"
-const RotateLeft16 = "_rotl16"
 const RotateLeft32 = "_rotl"
 const RotateLeft64 = "_rotl64"
-const RotateLeft8 = "_rotl8"
-const RotateRight16 = "_rotr16"
 const RotateRight32 = "_rotr"
 const RotateRight64 = "_rotr64"
-const RotateRight8 = "_rotr8"
 const SANDBOX_INERT = 0x2
 const SAVE_CTM = 4101
 const SBM_ENABLE_ARROWS = 0x00E4
@@ -5934,7 +5905,7 @@ const SCS_PIF_BINARY = 3
 const SCS_POSIX_BINARY = 4
 const SCS_QUERYRECONVERTSTRING = 0x00020000
 const SCS_SETRECONVERTSTRING = 0x00010000
-const SCS_THIS_PLATFORM_BINARY = "SCS_64BIT_BINARY"
+const SCS_THIS_PLATFORM_BINARY = "SCS_32BIT_BINARY"
 const SCS_WOW_BINARY = 2
 const SC_ARRANGE = 0xF110
 const SC_CLOSE = 0xF060
@@ -6346,11 +6317,12 @@ const SIZEOF_RFPO_DATA = 16
 const SIZEPALETTE = 104
 const SIZEZOOMHIDE = "SIZE_MAXHIDE"
 const SIZEZOOMSHOW = "SIZE_MAXSHOW"
-const SIZE_MAX = "_UI64_MAX"
+const SIZE_MAX = "UINT_MAX"
 const SIZE_MAXHIDE = 4
 const SIZE_MAXIMIZED = 2
 const SIZE_MAXSHOW = 3
 const SIZE_MINIMIZED = 1
+const SIZE_OF_80387_REGISTERS = 80
 const SIZE_RESTORED = 0
 const SKF_AUDIBLEFEEDBACK = 0x00000040
 const SKF_AVAILABLE = 0x00000002
@@ -7170,7 +7142,7 @@ const SSF_INDICATOR = 0x00000004
 const SSF_SOUNDSENTRYON = 0x00000001
 const SSGF_DISPLAY = 3
 const SSGF_NONE = 0
-const SSIZE_MAX = "_I64_MAX"
+const SSIZE_MAX = "INT_MAX"
 const SSTF_BORDER = 2
 const SSTF_CHARS = 1
 const SSTF_DISPLAY = 3
@@ -7603,12 +7575,13 @@ const S_WHITE2048 = 6
 const S_WHITE512 = 4
 const S_WHITEVOICE = 7
 const SecureZeroMemory = "RtlSecureZeroMemory"
+const SetClassLongPtrA = "SetClassLongA"
+const SetClassLongPtrW = "SetClassLongW"
 const SetComputerNameEx = "SetComputerNameExA"
 const SetEnvironmentStrings = "SetEnvironmentStringsA"
 const SetFileSecurity = "SetFileSecurityA"
-const ShiftLeft128 = "__shiftleft128"
-const ShiftRight128 = "__shiftright128"
-const StoreFence = "_mm_sfence"
+const SetWindowLongPtrA = "SetWindowLongA"
+const SetWindowLongPtrW1 = "SetWindowLongW"
 const TAPE_DRIVE_ABSOLUTE_BLK = 0x80001000
 const TAPE_DRIVE_ABS_BLK_IMMED = 0x80002000
 const TAPE_DRIVE_CLEAN_REQUESTS = 0x02000000
@@ -7893,14 +7866,6 @@ const UNICODE_NOCHAR = 0xFFFF
 const UNICODE_STRING_MAX_CHARS = 32767
 const UNIVERSAL_NAME_INFO_LEVEL = 0x00000001
 const UNLOAD_DLL_DEBUG_EVENT = 7
-const UNWIND_HISTORY_TABLE_GLOBAL = 1
-const UNWIND_HISTORY_TABLE_LOCAL = 2
-const UNWIND_HISTORY_TABLE_NONE = 0
-const UNWIND_HISTORY_TABLE_SIZE = 12
-const UNW_FLAG_CHAININFO = 0x4
-const UNW_FLAG_EHANDLER = 0x1
-const UNW_FLAG_NHANDLER = 0x0
-const UNW_FLAG_UHANDLER = 0x2
 const UOI_FLAGS = 1
 const UOI_HEAPSIZE = 5
 const UOI_IO = 6
@@ -7912,8 +7877,6 @@ const USER_DEFAULT_SCREEN_DPI = 96
 const USER_TIMER_MAXIMUM = 0x7FFFFFFF
 const USER_TIMER_MINIMUM = 0x0000000A
 const USE___UUIDOF = 0
-const UnsignedMultiply128 = "_umul128"
-const UnsignedMultiplyHigh = "__umulh"
 const VALID_INHERIT_FLAGS = 0x1F
 const VALID_SYMBOLIC_LINK_FLAGS = "SYMBOLIC_LINK_FLAG_DIRECTORY"
 const VARIABLE_PITCH = 2
@@ -8298,7 +8261,6 @@ const WH_SHELL = 10
 const WH_SYSMSGFILTER = 6
 const WIN31_CLASS = "NULL"
 const WIN32 = 1
-const WIN64 = 1
 const WINABLEAPI = "DECLSPEC_IMPORT"
 const WINADVAPI = "DECLSPEC_IMPORT"
 const WINAPI = "__stdcall"
@@ -8762,7 +8724,6 @@ const WVR_HREDRAW = 0x0100
 const WVR_VALIDRECTS = 0x0400
 const WVR_VREDRAW = 0x0200
 const WaitNamedPipe = "WaitNamedPipeA"
-const WriteMxCsr = "_mm_setcsr"
 const X3_BTYPE_QP_INST_VAL_POS_X = 0
 const X3_BTYPE_QP_INST_WORD_POS_X = 23
 const X3_BTYPE_QP_INST_WORD_X = 2
@@ -8828,11 +8789,11 @@ const XSTATE_MASK_USER_VISIBLE_SUPERVISOR = "XSTATE_MASK_CET_U"
 const XSTATE_MPX_BNDCSR = 4
 const XSTATE_MPX_BNDREGS = 3
 const XSTATE_PASID = 10
-const YieldProcessor = "_mm_pause"
+const YieldProcessor = "__buildpause"
 const ZAWPROXYAPI = "DECLSPEC_IMPORT"
 const ZeroMemory = "RtlZeroMemory"
 const _ALLOCA_S_HEAP_MARKER = 56797
-const _ALLOCA_S_MARKER_SIZE = 16
+const _ALLOCA_S_MARKER_SIZE = 8
 const _ALLOCA_S_STACK_MARKER = 0xCCCC
 const _ALLOCA_S_THRESHOLD = 1024
 const _ANONYMOUS_STRUCT = "__MINGW_EXTENSION"
@@ -8841,38 +8802,6 @@ const _ARGMAX = 100
 const _ASSEMBLY_DLL_REDIRECTION_DETAILED_INFORMATION = "_ASSEMBLY_FILE_DETAILED_INFORMATION"
 const _BLANK = 0x40
 const _CALL_REPORTFAULT = 0x2
-const _CMP_EQ_OQ = 0
-const _CMP_EQ_OS = 0x10
-const _CMP_EQ_UQ = 0x08
-const _CMP_EQ_US = 0x18
-const _CMP_FALSE_OQ = 0x0b
-const _CMP_FALSE_OS = 0x1b
-const _CMP_GE_OQ = 0x1d
-const _CMP_GE_OS = 0x0d
-const _CMP_GT_OQ = 0x1e
-const _CMP_GT_OS = 0x0e
-const _CMP_LE_OQ = 0x12
-const _CMP_LE_OS = 2
-const _CMP_LT_OQ = 0x11
-const _CMP_LT_OS = 1
-const _CMP_NEQ_OQ = 0x0c
-const _CMP_NEQ_OS = 0x1c
-const _CMP_NEQ_UQ = 4
-const _CMP_NEQ_US = 0x14
-const _CMP_NGE_UQ = 0x19
-const _CMP_NGE_US = 0x09
-const _CMP_NGT_UQ = 0x1a
-const _CMP_NGT_US = 0x0a
-const _CMP_NLE_UQ = 0x16
-const _CMP_NLE_US = 6
-const _CMP_NLT_UQ = 0x15
-const _CMP_NLT_US = 5
-const _CMP_ORD_Q = 7
-const _CMP_ORD_S = 0x17
-const _CMP_TRUE_UQ = 0x0f
-const _CMP_TRUE_US = 0x1f
-const _CMP_UNORD_Q = 3
-const _CMP_UNORD_S = 0x13
 const _CONTROL = 0x20
 const _CRTIMP2 = "_CRTIMP"
 const _CRTIMP_ALTERNATIVE = "_CRTIMP"
@@ -8890,13 +8819,15 @@ const _CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = "0x0002U"
 const _CRT_INTERNAL_SCANF_SECURECRT = "0x0001U"
 const _Check_return_ = "__checkReturn"
 const _DIGIT = 0x4
+const _FILE_OFFSET_BITS = 64
 const _FREEENTRY = 0
-const _HEAP_MAXREQ = 0xFFFFFFFFFFFFFFE0
+const _HEAP_MAXREQ = 0xFFFFFFE0
 const _HEX = 0x80
 const _I16_MAX = 32767
 const _I32_MAX = 2147483647
 const _I64_MAX = "9223372036854775807ll"
 const _I8_MAX = 127
+const _ILP32 = 1
 const _INC_CRT_UNICODE_MACROS = 2
 const _INTEGRAL_MAX_BITS = 64
 const _IOB_ENTRIES = 20
@@ -8920,50 +8851,8 @@ const _MAX_FNAME = 256
 const _MAX_PATH = 260
 const _MAX_WAIT_MALLOC_CRT = 60000
 const _MCRTIMP = "_CRTIMP"
-const _MM_CMPINT_EQ = 0x0
-const _MM_CMPINT_GE = 0x5
-const _MM_CMPINT_GT = 0x6
-const _MM_CMPINT_LE = 0x2
-const _MM_CMPINT_LT = 0x1
-const _MM_CMPINT_NE = 0x4
-const _MM_CMPINT_NLE = 0x6
-const _MM_CMPINT_NLT = 0x5
-const _MM_CMPINT_UNUSED = 0x3
-const _MM_DENORMALS_ZERO_MASK = 0x0040
-const _MM_DENORMALS_ZERO_OFF = 0x0000
-const _MM_DENORMALS_ZERO_ON = 0x0040
-const _MM_EXCEPT_DENORM = 0x0002
-const _MM_EXCEPT_DIV_ZERO = 0x0004
-const _MM_EXCEPT_INEXACT = 0x0020
-const _MM_EXCEPT_INVALID = 0x0001
-const _MM_EXCEPT_MASK = 63
-const _MM_EXCEPT_OVERFLOW = 0x0008
-const _MM_EXCEPT_UNDERFLOW = 0x0010
-const _MM_FLUSH_ZERO_MASK = 32768
-const _MM_FLUSH_ZERO_OFF = 0x0000
-const _MM_FLUSH_ZERO_ON = 0x8000
-const _MM_FROUND_CUR_DIRECTION = 4
-const _MM_FROUND_NO_EXC = 0x08
-const _MM_FROUND_RAISE_EXC = 0
-const _MM_FROUND_TO_NEAREST_INT = 0x00
-const _MM_FROUND_TO_NEG_INF = 1
-const _MM_FROUND_TO_POS_INF = 2
-const _MM_FROUND_TO_ZERO = 0x03
-const _MM_MASK_DENORM = 0x0100
-const _MM_MASK_DIV_ZERO = 0x0200
-const _MM_MASK_INEXACT = 0x1000
-const _MM_MASK_INVALID = 0x0080
-const _MM_MASK_MASK = 8064
-const _MM_MASK_OVERFLOW = 0x0400
-const _MM_MASK_UNDERFLOW = 0x0800
-const _MM_ROUND_DOWN = 0x2000
-const _MM_ROUND_MASK = 24576
-const _MM_ROUND_NEAREST = 0x0000
-const _MM_ROUND_TOWARD_ZERO = 0x6000
-const _MM_ROUND_UP = 0x4000
 const _MRTIMP2 = "_CRTIMP"
-const _M_AMD64 = 100
-const _M_X64 = 100
+const _M_IX86 = 600
 const _NFILE = "_NSTREAM_"
 const _NLSCMPERROR = 2147483647
 const _NSTREAM_ = 512
@@ -8982,22 +8871,6 @@ const _REPORT_ERRMODE = 3
 const _RTL_RUN_ONCE_DEF = 1
 const _ReadBarrier = "_ReadWriteBarrier"
 const _SECURECRT_FILL_BUFFER_PATTERN = 0xFD
-const _SIDD_BIT_MASK = 0x00
-const _SIDD_CMP_EQUAL_ANY = 0x00
-const _SIDD_CMP_EQUAL_EACH = 0x08
-const _SIDD_CMP_EQUAL_ORDERED = 0x0c
-const _SIDD_CMP_RANGES = 0x04
-const _SIDD_LEAST_SIGNIFICANT = 0x00
-const _SIDD_MASKED_NEGATIVE_POLARITY = 0x30
-const _SIDD_MASKED_POSITIVE_POLARITY = 0x20
-const _SIDD_MOST_SIGNIFICANT = 0x40
-const _SIDD_NEGATIVE_POLARITY = 0x10
-const _SIDD_POSITIVE_POLARITY = 0x00
-const _SIDD_SBYTE_OPS = 0x02
-const _SIDD_SWORD_OPS = 0x03
-const _SIDD_UBYTE_OPS = 0x00
-const _SIDD_UNIT_MASK = 0x40
-const _SIDD_UWORD_OPS = 0x01
 const _SPACE = 0x8
 const _STRALIGN_USE_SECURE_CRT = 0
 const _SYS_OPEN = 20
@@ -9070,9 +8943,9 @@ const _WIN32_WINNT_WINTHRESHOLD = 0x0A00
 const _WIN32_WINNT_WINXP = 0x0501
 const _WIN32_WINNT_WS03 = 0x0502
 const _WIN32_WINNT_WS08 = 0x0600
-const _WIN64 = 1
 const _WRITE_ABORT_MSG = 0x1
 const _WriteBarrier = "_ReadWriteBarrier"
+const _X86_ = 1
 const __ATOMIC_ACQUIRE = 2
 const __ATOMIC_ACQ_REL = 4
 const __ATOMIC_CONSUME = 1
@@ -9208,7 +9081,6 @@ const __FLT_MIN__ = 1.17549435082228750796873653722224568e-38
 const __FLT_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
 const __FLT_RADIX__ = 2
 const __FUNCTION__ = "__func__"
-const __FXSR__ = 1
 const __GCC_ASM_FLAG_OUTPUTS__ = 1
 const __GCC_ATOMIC_BOOL_LOCK_FREE = 2
 const __GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
@@ -9223,6 +9095,7 @@ const __GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
 const __GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
 const __GCC_CONSTRUCTIVE_SIZE = 64
 const __GCC_DESTRUCTIVE_SIZE = 64
+const __GCC_HAVE_DWARF2_CFI_ASM = 1
 const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
 const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
 const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
@@ -9241,6 +9114,7 @@ const __GXX_ABI_VERSION = 1017
 const __GXX_MERGED_TYPEINFO_NAMES = 0
 const __GXX_TYPEINFO_EQUALITY_INLINE = 0
 const __HAVE_SPECULATION_SAFE_VALUE = 1
+const __ILP32__ = 1
 const __INT16_MAX__ = 0x7fff
 const __INT32_MAX__ = 0x7fffffff
 const __INT32_TYPE__ = "int"
@@ -9248,8 +9122,9 @@ const __INT64_MAX__ = 0x7fffffffffffffff
 const __INT8_MAX__ = 0x7f
 const __INTMAX_MAX__ = 0x7fffffffffffffff
 const __INTMAX_WIDTH__ = 64
-const __INTPTR_MAX__ = 0x7fffffffffffffff
-const __INTPTR_WIDTH__ = 64
+const __INTPTR_MAX__ = 0x7fffffff
+const __INTPTR_TYPE__ = "int"
+const __INTPTR_WIDTH__ = 32
 const __INT_FAST16_MAX__ = 0x7fff
 const __INT_FAST16_WIDTH__ = 16
 const __INT_FAST32_MAX__ = 0x7fffffff
@@ -9268,8 +9143,9 @@ const __INT_LEAST64_MAX__ = 0x7fffffffffffffff
 const __INT_LEAST64_WIDTH__ = 64
 const __INT_LEAST8_MAX__ = 0x7f
 const __INT_LEAST8_WIDTH__ = 8
-const __INT_MAX__ = 2147483647
+const __INT_MAX__ = 0x7fffffff
 const __INT_WIDTH__ = 32
+const __LAHF_SAHF__ = 1
 const __LDBL_DECIMAL_DIG__ = 17
 const __LDBL_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
 const __LDBL_DIG__ = 15
@@ -9286,7 +9162,7 @@ const __LDBL_MIN__ = 2.22507385850720138309023271733240406e-308
 const __LDBL_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
 const __LONG32 = "long"
 const __LONG_DOUBLE_64__ = 1
-const __LONG_LONG_MAX__ = 9223372036854775807
+const __LONG_LONG_MAX__ = 0x7fffffffffffffff
 const __LONG_LONG_WIDTH__ = 64
 const __LONG_MAX__ = 0x7fffffff
 const __LONG_WIDTH__ = 32
@@ -9299,7 +9175,6 @@ const __MINGW64_VERSION_MAJOR = 10
 const __MINGW64_VERSION_MINOR = 0
 const __MINGW64_VERSION_RC = 0
 const __MINGW64_VERSION_STATE = "alpha"
-const __MINGW64__ = 1
 const __MINGW_DEBUGBREAK_IMPL = 1
 const __MINGW_FORTIFY_LEVEL = 0
 const __MINGW_FORTIFY_VA_ARG = 0
@@ -9310,23 +9185,21 @@ const __MINGW_HAVE_WIDE_C99_SCANF = 1
 const __MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
 const __MINGW_PROCNAMEEXT_AW = "A"
 const __MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
-const __MINGW_USE_UNDERSCORE_PREFIX = 0
 const __MSVCRT_VERSION__ = 0x700
 const __MSVCRT__ = 1
 const __NO_INLINE__ = 1
 const __ORDER_BIG_ENDIAN__ = 4321
 const __ORDER_LITTLE_ENDIAN__ = 1234
 const __ORDER_PDP_ENDIAN__ = 3412
-const __PIC__ = 1
 const __PRAGMA_REDEFINE_EXTNAME = 1
 const __PRETTY_FUNCTION__ = "__func__"
-const __PTRDIFF_MAX__ = 0x7fffffffffffffff
-const __PTRDIFF_WIDTH__ = 64
+const __PTRDIFF_MAX__ = 0x7fffffff
+const __PTRDIFF_TYPE__ = "int"
+const __PTRDIFF_WIDTH__ = 32
 const __SCHAR_MAX__ = 0x7f
 const __SCHAR_WIDTH__ = 8
 const __SEG_FS = 1
 const __SEG_GS = 1
-const __SEH__ = 1
 const __SHRT_MAX__ = 0x7fff
 const __SHRT_WIDTH__ = 16
 const __SIG_ATOMIC_MAX__ = 0x7fffffff
@@ -9334,21 +9207,20 @@ const __SIG_ATOMIC_TYPE__ = "int"
 const __SIG_ATOMIC_WIDTH__ = 32
 const __SIZEOF_DOUBLE__ = 8
 const __SIZEOF_FLOAT128__ = 16
-const __SIZEOF_FLOAT80__ = 16
+const __SIZEOF_FLOAT80__ = 12
 const __SIZEOF_FLOAT__ = 4
-const __SIZEOF_INT128__ = 16
 const __SIZEOF_INT__ = 4
 const __SIZEOF_LONG_DOUBLE__ = 8
 const __SIZEOF_LONG_LONG__ = 8
 const __SIZEOF_LONG__ = 4
-const __SIZEOF_POINTER__ = 8
-const __SIZEOF_PTRDIFF_T__ = 8
+const __SIZEOF_POINTER__ = 4
+const __SIZEOF_PTRDIFF_T__ = 4
 const __SIZEOF_SHORT__ = 2
-const __SIZEOF_SIZE_T__ = 8
+const __SIZEOF_SIZE_T__ = 4
 const __SIZEOF_WCHAR_T__ = 2
 const __SIZEOF_WINT_T__ = 2
-const __SIZE_MAX__ = "0xffffffffffffffffU"
-const __SIZE_WIDTH__ = 64
+const __SIZE_MAX__ = 0xffffffff
+const __SIZE_WIDTH__ = 32
 const __STDC_HOSTED__ = 1
 const __STDC_SECURE_LIB__ = 200411
 const __STDC_UTF_16__ = 1
@@ -9362,7 +9234,7 @@ const __UINT32_MAX__ = 0xffffffff
 const __UINT64_MAX__ = "0xffffffffffffffffU"
 const __UINT8_MAX__ = 0xff
 const __UINTMAX_MAX__ = "0xffffffffffffffffU"
-const __UINTPTR_MAX__ = "0xffffffffffffffffU"
+const __UINTPTR_MAX__ = 0xffffffff
 const __UINT_FAST16_MAX__ = 0xffff
 const __UINT_FAST32_MAX__ = 0xffffffff
 const __UINT_FAST64_MAX__ = "0xffffffffffffffffU"
@@ -9371,6 +9243,7 @@ const __UINT_LEAST16_MAX__ = 0xffff
 const __UINT_LEAST32_MAX__ = 0xffffffff
 const __UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
 const __UINT_LEAST8_MAX__ = 0xff
+const __USER_LABEL_PREFIX__ = "_"
 const __USE_MINGW_ANSI_STDIO = 1
 const __USE_MINGW_STRTOX = 1
 const __VERSION__ = "12-win32"
@@ -9379,42 +9252,34 @@ const __WCHAR_MIN__ = 0
 const __WCHAR_WIDTH__ = 16
 const __WIN32 = 1
 const __WIN32__ = 1
-const __WIN64 = 1
-const __WIN64__ = 1
 const __WINNT = 1
 const __WINNT__ = 1
 const __WINT_MAX__ = 0xffff
 const __WINT_MIN__ = 0
 const __WINT_WIDTH__ = 16
-const __amd64 = 1
-const __amd64__ = 1
 const __builtin_vsnprintf1 = "__mingw_vsnprintf"
 const __builtin_vsprintf = "__mingw_vsprintf"
 const __checkReturn = "__inner_checkReturn"
-const __code_model_medium__ = 1
+const __code_model_32__ = 1
+const __i386 = 1
+const __i386__ = 1
+const __i686 = 1
+const __i686__ = 1
 const __int16 = "short"
 const __int32 = "int"
-const __int3264 = "__int64"
+const __int3264 = "int"
 const __int8 = "char"
-const __k8 = 1
-const __k8__ = 1
 const __mingw_bos_ovr = "__mingw_ovr"
-const __pic__ = 1
-const __x86_64 = 1
-const __x86_64__ = 1
+const __pentiumpro = 1
+const __pentiumpro__ = 1
 const _inline = "__inline"
-const _kand_mask16 = "_mm512_kand"
-const _kandn_mask16 = "_mm512_kandn"
-const _knot_mask16 = "_mm512_knot"
-const _kor_mask16 = "_mm512_kor"
-const _kxnor_mask16 = "_mm512_kxnor"
-const _kxor_mask16 = "_mm512_kxor"
-const _mm512_undefined = "_mm512_undefined_ps"
-const _mm512_undefined_si512 = "_mm512_undefined_epi32"
 const _wP_tmpdir = "\\\\"
 const abnormal_termination = "_abnormal_termination"
 const environ1 = "_environ"
 const exception_code = "_exception_code"
+const fseeko = "fseeko64"
+const ftello = "ftello64"
+const i386 = 1
 const isascii1 = "__isascii"
 const iscsym = "__iscsym"
 const iscsymf = "__iscsymf"
@@ -9427,20 +9292,29 @@ const sys_errlist = "_sys_errlist"
 const sys_nerr = "_sys_nerr"
 const toascii = "__toascii"
 const ua_CharUpper = "CharUpperA"
+const ua_CharUpperW = "CharUpperW"
 const ua_lstrcmp = "lstrcmpA"
+const ua_lstrcmpW = "lstrcmpW"
 const ua_lstrcmpi = "lstrcmpiA"
+const ua_lstrcmpiW = "lstrcmpiW"
 const ua_lstrlen = "lstrlenA"
+const ua_lstrlenW = "lstrlenW"
 const ua_tcscpy = "strcpy"
+const ua_wcschr = "wcschr"
+const ua_wcscpy = "wcscpy"
+const ua_wcsicmp = "wcsicmp"
+const ua_wcslen = "wcslen"
+const ua_wcsrchr = "wcsrchr"
 const wcswcs = "wcsstr"
 const wpopen = "_wpopen"
 
 type __builtin_va_list = uintptr
 
-type __predefined_size_t = uint64
+type __predefined_size_t = uint32
 
 type __predefined_wchar_t = uint16
 
-type __predefined_ptrdiff_t = int64
+type __predefined_ptrdiff_t = int32
 
 type __gnuc_va_list = uintptr
 
@@ -9593,6 +9467,7 @@ type sqlite3_vtab = struct {
 }
 
 type sqlite3_index_info = struct {
+	F__ccgo_align     [0]uint32
 	FnConstraint      int32
 	FaConstraint      uintptr
 	FnOrderBy         int32
@@ -9602,9 +9477,11 @@ type sqlite3_index_info = struct {
 	FidxStr           uintptr
 	FneedToFreeIdxStr int32
 	ForderByConsumed  int32
+	F__ccgo_align9    [4]byte
 	FestimatedCost    float64
 	FestimatedRows    sqlite3_int64
 	FidxFlags         int32
+	F__ccgo_align12   [4]byte
 	FcolUsed          sqlite3_uint64
 }
 
@@ -9669,6 +9546,7 @@ type sqlite3_module1 = struct {
 }
 
 type sqlite3_index_info1 = struct {
+	F__ccgo_align     [0]uint32
 	FnConstraint      int32
 	FaConstraint      uintptr
 	FnOrderBy         int32
@@ -9678,9 +9556,11 @@ type sqlite3_index_info1 = struct {
 	FidxStr           uintptr
 	FneedToFreeIdxStr int32
 	ForderByConsumed  int32
+	F__ccgo_align9    [4]byte
 	FestimatedCost    float64
 	FestimatedRows    sqlite3_int64
 	FidxFlags         int32
+	F__ccgo_align12   [4]byte
 	FcolUsed          sqlite3_uint64
 }
 
@@ -9801,6 +9681,7 @@ type sqlite3_rtree_geometry = struct {
 }
 
 type sqlite3_rtree_query_info = struct {
+	F__ccgo_align  [0]uint32
 	FpContext      uintptr
 	FnParam        int32
 	FaParam        uintptr
@@ -9817,6 +9698,7 @@ type sqlite3_rtree_query_info = struct {
 	FeWithin       int32
 	FrScore        sqlite3_rtree_dbl
 	FapSqlParam    uintptr
+	F__ccgo_pad16  [4]byte
 }
 
 type sqlite3_rtree_dbl = float64
@@ -9830,6 +9712,7 @@ type sqlite3_rtree_geometry1 = struct {
 }
 
 type sqlite3_rtree_query_info1 = struct {
+	F__ccgo_align  [0]uint32
 	FpContext      uintptr
 	FnParam        int32
 	FaParam        uintptr
@@ -9846,6 +9729,7 @@ type sqlite3_rtree_query_info1 = struct {
 	FeWithin       int32
 	FrScore        sqlite3_rtree_dbl
 	FapSqlParam    uintptr
+	F__ccgo_pad16  [4]byte
 }
 
 type Fts5ExtensionApi = struct {
@@ -9936,17 +9820,17 @@ type fts5_api1 = struct {
 	FxCreateFunction  uintptr
 }
 
-type size_t = uint64
+type size_t = uint32
 
-type ssize_t = int64
+type ssize_t = int32
 
-type rsize_t = uint64
+type rsize_t = uint32
 
-type intptr_t = int64
+type intptr_t = int32
 
-type uintptr_t = uint64
+type uintptr_t = uint32
 
-type ptrdiff_t = int64
+type ptrdiff_t = int32
 
 type wchar_t = uint16
 
@@ -9960,7 +9844,7 @@ type __time32_t = int32
 
 type __time64_t = int64
 
-type time_t = int64
+type time_t = int32
 
 type threadlocaleinfostruct = struct {
 	Frefcount      int32
@@ -10067,7 +9951,7 @@ type _off64_t = int64
 
 type off64_t = int64
 
-type off_t = int32
+type off_t = int64
 
 type fpos_t = int64
 
@@ -10086,89 +9970,31 @@ type _EXCEPTION_RECORD = struct {
 }
 
 type _CONTEXT = struct {
-	FP1Home       DWORD64
-	FP2Home       DWORD64
-	FP3Home       DWORD64
-	FP4Home       DWORD64
-	FP5Home       DWORD64
-	FP6Home       DWORD64
-	FContextFlags DWORD
-	FMxCsr        DWORD
-	FSegCs        WORD
-	FSegDs        WORD
-	FSegEs        WORD
-	FSegFs        WORD
-	FSegGs        WORD
-	FSegSs        WORD
-	FEFlags       DWORD
-	FDr0          DWORD64
-	FDr1          DWORD64
-	FDr2          DWORD64
-	FDr3          DWORD64
-	FDr6          DWORD64
-	FDr7          DWORD64
-	FRax          DWORD64
-	FRcx          DWORD64
-	FRdx          DWORD64
-	FRbx          DWORD64
-	FRsp          DWORD64
-	FRbp          DWORD64
-	FRsi          DWORD64
-	FRdi          DWORD64
-	FR8           DWORD64
-	FR9           DWORD64
-	FR10          DWORD64
-	FR11          DWORD64
-	FR12          DWORD64
-	FR13          DWORD64
-	FR14          DWORD64
-	FR15          DWORD64
-	FRip          DWORD64
-	F__ccgo38_256 struct {
-		FFloatSave [0]XMM_SAVE_AREA32
-		F__ccgo2_0 [0]struct {
-			FHeader [2]M128A
-			FLegacy [8]M128A
-			FXmm0   M128A
-			FXmm1   M128A
-			FXmm2   M128A
-			FXmm3   M128A
-			FXmm4   M128A
-			FXmm5   M128A
-			FXmm6   M128A
-			FXmm7   M128A
-			FXmm8   M128A
-			FXmm9   M128A
-			FXmm10  M128A
-			FXmm11  M128A
-			FXmm12  M128A
-			FXmm13  M128A
-			FXmm14  M128A
-			FXmm15  M128A
-		}
-		FFltSave XMM_SAVE_AREA32
-	}
-	FVectorRegister       [26]M128A
-	FVectorControl        DWORD64
-	FDebugControl         DWORD64
-	FLastBranchToRip      DWORD64
-	FLastBranchFromRip    DWORD64
-	FLastExceptionToRip   DWORD64
-	FLastExceptionFromRip DWORD64
-}
-
-type _DISPATCHER_CONTEXT = struct {
-	FControlPc        ULONG64
-	FImageBase        ULONG64
-	FFunctionEntry    PRUNTIME_FUNCTION
-	FEstablisherFrame ULONG64
-	FTargetIp         ULONG64
-	FContextRecord    PCONTEXT
-	FLanguageHandler  PEXCEPTION_ROUTINE
-	FHandlerData      PVOID
-	FHistoryTable     PUNWIND_HISTORY_TABLE
-	FScopeIndex       ULONG
-	FFill0            ULONG
+	FContextFlags      DWORD
+	FDr0               DWORD
+	FDr1               DWORD
+	FDr2               DWORD
+	FDr3               DWORD
+	FDr6               DWORD
+	FDr7               DWORD
+	FFloatSave         FLOATING_SAVE_AREA
+	FSegGs             DWORD
+	FSegFs             DWORD
+	FSegEs             DWORD
+	FSegDs             DWORD
+	FEdi               DWORD
+	FEsi               DWORD
+	FEbx               DWORD
+	FEdx               DWORD
+	FEcx               DWORD
+	FEax               DWORD
+	FEbp               DWORD
+	FEip               DWORD
+	FSegCs             DWORD
+	FEFlags            DWORD
+	FEsp               DWORD
+	FSegSs             DWORD
+	FExtendedRegisters [512]BYTE
 }
 
 type _PHNDLR = uintptr
@@ -10241,7 +10067,7 @@ type UINT = uint32
 
 type PUINT = uintptr
 
-type POINTER_64_INT = uint64
+type POINTER_64_INT = uint32
 
 type INT8 = int8
 
@@ -10287,43 +10113,43 @@ type DWORD32 = uint32
 
 type PDWORD32 = uintptr
 
-type INT_PTR = int64
+type INT_PTR = int32
 
 type PINT_PTR = uintptr
 
-type UINT_PTR = uint64
+type UINT_PTR = uint32
 
 type PUINT_PTR = uintptr
 
-type LONG_PTR = int64
+type LONG_PTR = int32
 
 type PLONG_PTR = uintptr
 
-type ULONG_PTR = uint64
+type ULONG_PTR = uint32
 
 type PULONG_PTR = uintptr
 
-type SHANDLE_PTR = int64
-
-type HANDLE_PTR = uint64
-
-type UHALF_PTR = uint32
+type UHALF_PTR = uint16
 
 type PUHALF_PTR = uintptr
 
-type HALF_PTR = int32
+type HALF_PTR = int16
 
 type PHALF_PTR = uintptr
 
-type SIZE_T = uint64
+type SHANDLE_PTR = int32
+
+type HANDLE_PTR = uint32
+
+type SIZE_T = uint32
 
 type PSIZE_T = uintptr
 
-type SSIZE_T = int64
+type SSIZE_T = int32
 
 type PSSIZE_T = uintptr
 
-type DWORD_PTR = uint64
+type DWORD_PTR = uint32
 
 type PDWORD_PTR = uintptr
 
@@ -10339,7 +10165,7 @@ type DWORD64 = uint64
 
 type PDWORD64 = uintptr
 
-type KAFFINITY = uint64
+type KAFFINITY = uint32
 
 type PKAFFINITY = uintptr
 
@@ -10557,8 +10383,9 @@ const DEFAULT_COMPARTMENT_ID = 1
 type PCOMPARTMENT_ID = uintptr
 
 type FLOAT128 = struct {
-	FLowPart  int64
-	FHighPart int64
+	F__ccgo_align [0]uint32
+	FLowPart      int64
+	FHighPart     int64
 }
 
 type _FLOAT128 = FLOAT128
@@ -10576,7 +10403,8 @@ type PULONGLONG = uintptr
 type USN = int64
 
 type LARGE_INTEGER = struct {
-	Fu [0]struct {
+	F__ccgo_align [0]uint32
+	Fu            [0]struct {
 		FLowPart  DWORD
 		FHighPart LONG
 	}
@@ -10592,7 +10420,8 @@ type _LARGE_INTEGER = LARGE_INTEGER
 type PLARGE_INTEGER = uintptr
 
 type ULARGE_INTEGER = struct {
-	Fu [0]struct {
+	F__ccgo_align [0]uint32
+	Fu            [0]struct {
 		FLowPart  DWORD
 		FHighPart DWORD
 	}
@@ -10651,8 +10480,9 @@ type LIST_ENTRY32 = struct {
 type PLIST_ENTRY32 = uintptr
 
 type LIST_ENTRY64 = struct {
-	FFlink ULONGLONG
-	FBlink ULONGLONG
+	F__ccgo_align [0]uint32
+	FFlink        ULONGLONG
+	FBlink        ULONGLONG
 }
 
 type PLIST_ENTRY64 = uintptr
@@ -10706,13 +10536,14 @@ type _OBJECTID = OBJECTID
 
 type PEXCEPTION_ROUTINE = uintptr
 
-type KSPIN_LOCK = uint64
+type KSPIN_LOCK = uint32
 
 type PKSPIN_LOCK = uintptr
 
 type M128A = struct {
-	FLow  ULONGLONG
-	FHigh LONGLONG
+	F__ccgo_align [0]uint32
+	FLow          ULONGLONG
+	FHigh         LONGLONG
 }
 
 type _M128A = M128A
@@ -10720,6 +10551,7 @@ type _M128A = M128A
 type PM128A = uintptr
 
 type XSAVE_FORMAT = struct {
+	F__ccgo_align   [0]uint32
 	FControlWord    WORD
 	FStatusWord     WORD
 	FTagWord        BYTE
@@ -10734,8 +10566,9 @@ type XSAVE_FORMAT = struct {
 	FMxCsr          DWORD
 	FMxCsr_Mask     DWORD
 	FFloatRegisters [8]M128A
-	FXmmRegisters   [16]M128A
-	FReserved4      [96]BYTE
+	FXmmRegisters   [8]M128A
+	FReserved4      [220]BYTE
+	FCr0NpxState    DWORD
 }
 
 type _XSAVE_FORMAT = XSAVE_FORMAT
@@ -10743,8 +10576,9 @@ type _XSAVE_FORMAT = XSAVE_FORMAT
 type PXSAVE_FORMAT = uintptr
 
 type XSAVE_AREA_HEADER = struct {
-	FMask     DWORD64
-	FReserved [7]DWORD64
+	F__ccgo_align [0]uint32
+	FMask         DWORD64
+	FReserved     [7]DWORD64
 }
 
 type _XSAVE_AREA_HEADER = XSAVE_AREA_HEADER
@@ -10752,8 +10586,9 @@ type _XSAVE_AREA_HEADER = XSAVE_AREA_HEADER
 type PXSAVE_AREA_HEADER = uintptr
 
 type XSAVE_AREA = struct {
-	FLegacyState XSAVE_FORMAT
-	FHeader      XSAVE_AREA_HEADER
+	F__ccgo_align [0]uint32
+	FLegacyState  XSAVE_FORMAT
+	FHeader       XSAVE_AREA_HEADER
 }
 
 type _XSAVE_AREA = XSAVE_AREA
@@ -10761,11 +10596,14 @@ type _XSAVE_AREA = XSAVE_AREA
 type PXSAVE_AREA = uintptr
 
 type XSTATE_CONTEXT = struct {
-	FMask      DWORD64
-	FLength    DWORD
-	FReserved1 DWORD
-	FArea      PXSAVE_AREA
-	FBuffer    PVOID
+	F__ccgo_align [0]uint32
+	FMask         DWORD64
+	FLength       DWORD
+	FReserved1    DWORD
+	FArea         PXSAVE_AREA
+	FReserved2    DWORD
+	FBuffer       PVOID
+	FReserved3    DWORD
 }
 
 type _XSTATE_CONTEXT = XSTATE_CONTEXT
@@ -10786,477 +10624,51 @@ type _SCOPE_TABLE_AMD64 = SCOPE_TABLE_AMD64
 
 type PSCOPE_TABLE_AMD64 = uintptr
 
-type max_align_t = struct {
-	F__max_align_ll int64
-	F__max_align_ld float64
+type FLOATING_SAVE_AREA = struct {
+	FControlWord   DWORD
+	FStatusWord    DWORD
+	FTagWord       DWORD
+	FErrorOffset   DWORD
+	FErrorSelector DWORD
+	FDataOffset    DWORD
+	FDataSelector  DWORD
+	FRegisterArea  [80]BYTE
+	FCr0NpxState   DWORD
 }
 
-type __uintr_frame = struct {
-	Frip    uint64
-	Frflags uint64
-	Frsp    uint64
-}
+type _FLOATING_SAVE_AREA = FLOATING_SAVE_AREA
 
-type _onexit_t = uintptr
-
-type div_t = struct {
-	Fquot int32
-	Frem  int32
-}
-
-type _div_t = div_t
-
-type ldiv_t = struct {
-	Fquot int32
-	Frem  int32
-}
-
-type _ldiv_t = ldiv_t
-
-type _LDOUBLE = struct {
-	Fld [10]uint8
-}
-
-type _CRT_DOUBLE = struct {
-	Fx float64
-}
-
-type _CRT_FLOAT = struct {
-	Ff float32
-}
-
-type _LONGDOUBLE = struct {
-	Fx float64
-}
-
-type _LDBL12 = struct {
-	Fld12 [12]uint8
-}
-
-type _purecall_handler = uintptr
-
-type _invalid_parameter_handler = uintptr
-
-type lldiv_t = struct {
-	Fquot int64
-	Frem  int64
-}
-
-type _HEAPINFO = struct {
-	F_pentry  uintptr
-	F_size    size_t
-	F_useflag int32
-}
-
-type _heapinfo = _HEAPINFO
-
-type _mm_hint = int32
-
-const _MM_HINT_ET0 = 7
-const _MM_HINT_ET1 = 6
-const _MM_HINT_T0 = 3
-const _MM_HINT_T1 = 2
-const _MM_HINT_T2 = 1
-const _MM_HINT_NTA = 0
-
-type __mmask8 = uint8
-
-type __mmask16 = uint16
-
-type _MM_TERNLOG_ENUM = int32
-
-const _MM_TERNLOG_A = 240
-const _MM_TERNLOG_B = 204
-const _MM_TERNLOG_C = 170
-
-type _MM_PERM_ENUM = int32
-
-const _MM_PERM_AAAA = 0
-const _MM_PERM_AAAB = 1
-const _MM_PERM_AAAC = 2
-const _MM_PERM_AAAD = 3
-const _MM_PERM_AABA = 4
-const _MM_PERM_AABB = 5
-const _MM_PERM_AABC = 6
-const _MM_PERM_AABD = 7
-const _MM_PERM_AACA = 8
-const _MM_PERM_AACB = 9
-const _MM_PERM_AACC = 10
-const _MM_PERM_AACD = 11
-const _MM_PERM_AADA = 12
-const _MM_PERM_AADB = 13
-const _MM_PERM_AADC = 14
-const _MM_PERM_AADD = 15
-const _MM_PERM_ABAA = 16
-const _MM_PERM_ABAB = 17
-const _MM_PERM_ABAC = 18
-const _MM_PERM_ABAD = 19
-const _MM_PERM_ABBA = 20
-const _MM_PERM_ABBB = 21
-const _MM_PERM_ABBC = 22
-const _MM_PERM_ABBD = 23
-const _MM_PERM_ABCA = 24
-const _MM_PERM_ABCB = 25
-const _MM_PERM_ABCC = 26
-const _MM_PERM_ABCD = 27
-const _MM_PERM_ABDA = 28
-const _MM_PERM_ABDB = 29
-const _MM_PERM_ABDC = 30
-const _MM_PERM_ABDD = 31
-const _MM_PERM_ACAA = 32
-const _MM_PERM_ACAB = 33
-const _MM_PERM_ACAC = 34
-const _MM_PERM_ACAD = 35
-const _MM_PERM_ACBA = 36
-const _MM_PERM_ACBB = 37
-const _MM_PERM_ACBC = 38
-const _MM_PERM_ACBD = 39
-const _MM_PERM_ACCA = 40
-const _MM_PERM_ACCB = 41
-const _MM_PERM_ACCC = 42
-const _MM_PERM_ACCD = 43
-const _MM_PERM_ACDA = 44
-const _MM_PERM_ACDB = 45
-const _MM_PERM_ACDC = 46
-const _MM_PERM_ACDD = 47
-const _MM_PERM_ADAA = 48
-const _MM_PERM_ADAB = 49
-const _MM_PERM_ADAC = 50
-const _MM_PERM_ADAD = 51
-const _MM_PERM_ADBA = 52
-const _MM_PERM_ADBB = 53
-const _MM_PERM_ADBC = 54
-const _MM_PERM_ADBD = 55
-const _MM_PERM_ADCA = 56
-const _MM_PERM_ADCB = 57
-const _MM_PERM_ADCC = 58
-const _MM_PERM_ADCD = 59
-const _MM_PERM_ADDA = 60
-const _MM_PERM_ADDB = 61
-const _MM_PERM_ADDC = 62
-const _MM_PERM_ADDD = 63
-const _MM_PERM_BAAA = 64
-const _MM_PERM_BAAB = 65
-const _MM_PERM_BAAC = 66
-const _MM_PERM_BAAD = 67
-const _MM_PERM_BABA = 68
-const _MM_PERM_BABB = 69
-const _MM_PERM_BABC = 70
-const _MM_PERM_BABD = 71
-const _MM_PERM_BACA = 72
-const _MM_PERM_BACB = 73
-const _MM_PERM_BACC = 74
-const _MM_PERM_BACD = 75
-const _MM_PERM_BADA = 76
-const _MM_PERM_BADB = 77
-const _MM_PERM_BADC = 78
-const _MM_PERM_BADD = 79
-const _MM_PERM_BBAA = 80
-const _MM_PERM_BBAB = 81
-const _MM_PERM_BBAC = 82
-const _MM_PERM_BBAD = 83
-const _MM_PERM_BBBA = 84
-const _MM_PERM_BBBB = 85
-const _MM_PERM_BBBC = 86
-const _MM_PERM_BBBD = 87
-const _MM_PERM_BBCA = 88
-const _MM_PERM_BBCB = 89
-const _MM_PERM_BBCC = 90
-const _MM_PERM_BBCD = 91
-const _MM_PERM_BBDA = 92
-const _MM_PERM_BBDB = 93
-const _MM_PERM_BBDC = 94
-const _MM_PERM_BBDD = 95
-const _MM_PERM_BCAA = 96
-const _MM_PERM_BCAB = 97
-const _MM_PERM_BCAC = 98
-const _MM_PERM_BCAD = 99
-const _MM_PERM_BCBA = 100
-const _MM_PERM_BCBB = 101
-const _MM_PERM_BCBC = 102
-const _MM_PERM_BCBD = 103
-const _MM_PERM_BCCA = 104
-const _MM_PERM_BCCB = 105
-const _MM_PERM_BCCC = 106
-const _MM_PERM_BCCD = 107
-const _MM_PERM_BCDA = 108
-const _MM_PERM_BCDB = 109
-const _MM_PERM_BCDC = 110
-const _MM_PERM_BCDD = 111
-const _MM_PERM_BDAA = 112
-const _MM_PERM_BDAB = 113
-const _MM_PERM_BDAC = 114
-const _MM_PERM_BDAD = 115
-const _MM_PERM_BDBA = 116
-const _MM_PERM_BDBB = 117
-const _MM_PERM_BDBC = 118
-const _MM_PERM_BDBD = 119
-const _MM_PERM_BDCA = 120
-const _MM_PERM_BDCB = 121
-const _MM_PERM_BDCC = 122
-const _MM_PERM_BDCD = 123
-const _MM_PERM_BDDA = 124
-const _MM_PERM_BDDB = 125
-const _MM_PERM_BDDC = 126
-const _MM_PERM_BDDD = 127
-const _MM_PERM_CAAA = 128
-const _MM_PERM_CAAB = 129
-const _MM_PERM_CAAC = 130
-const _MM_PERM_CAAD = 131
-const _MM_PERM_CABA = 132
-const _MM_PERM_CABB = 133
-const _MM_PERM_CABC = 134
-const _MM_PERM_CABD = 135
-const _MM_PERM_CACA = 136
-const _MM_PERM_CACB = 137
-const _MM_PERM_CACC = 138
-const _MM_PERM_CACD = 139
-const _MM_PERM_CADA = 140
-const _MM_PERM_CADB = 141
-const _MM_PERM_CADC = 142
-const _MM_PERM_CADD = 143
-const _MM_PERM_CBAA = 144
-const _MM_PERM_CBAB = 145
-const _MM_PERM_CBAC = 146
-const _MM_PERM_CBAD = 147
-const _MM_PERM_CBBA = 148
-const _MM_PERM_CBBB = 149
-const _MM_PERM_CBBC = 150
-const _MM_PERM_CBBD = 151
-const _MM_PERM_CBCA = 152
-const _MM_PERM_CBCB = 153
-const _MM_PERM_CBCC = 154
-const _MM_PERM_CBCD = 155
-const _MM_PERM_CBDA = 156
-const _MM_PERM_CBDB = 157
-const _MM_PERM_CBDC = 158
-const _MM_PERM_CBDD = 159
-const _MM_PERM_CCAA = 160
-const _MM_PERM_CCAB = 161
-const _MM_PERM_CCAC = 162
-const _MM_PERM_CCAD = 163
-const _MM_PERM_CCBA = 164
-const _MM_PERM_CCBB = 165
-const _MM_PERM_CCBC = 166
-const _MM_PERM_CCBD = 167
-const _MM_PERM_CCCA = 168
-const _MM_PERM_CCCB = 169
-const _MM_PERM_CCCC = 170
-const _MM_PERM_CCCD = 171
-const _MM_PERM_CCDA = 172
-const _MM_PERM_CCDB = 173
-const _MM_PERM_CCDC = 174
-const _MM_PERM_CCDD = 175
-const _MM_PERM_CDAA = 176
-const _MM_PERM_CDAB = 177
-const _MM_PERM_CDAC = 178
-const _MM_PERM_CDAD = 179
-const _MM_PERM_CDBA = 180
-const _MM_PERM_CDBB = 181
-const _MM_PERM_CDBC = 182
-const _MM_PERM_CDBD = 183
-const _MM_PERM_CDCA = 184
-const _MM_PERM_CDCB = 185
-const _MM_PERM_CDCC = 186
-const _MM_PERM_CDCD = 187
-const _MM_PERM_CDDA = 188
-const _MM_PERM_CDDB = 189
-const _MM_PERM_CDDC = 190
-const _MM_PERM_CDDD = 191
-const _MM_PERM_DAAA = 192
-const _MM_PERM_DAAB = 193
-const _MM_PERM_DAAC = 194
-const _MM_PERM_DAAD = 195
-const _MM_PERM_DABA = 196
-const _MM_PERM_DABB = 197
-const _MM_PERM_DABC = 198
-const _MM_PERM_DABD = 199
-const _MM_PERM_DACA = 200
-const _MM_PERM_DACB = 201
-const _MM_PERM_DACC = 202
-const _MM_PERM_DACD = 203
-const _MM_PERM_DADA = 204
-const _MM_PERM_DADB = 205
-const _MM_PERM_DADC = 206
-const _MM_PERM_DADD = 207
-const _MM_PERM_DBAA = 208
-const _MM_PERM_DBAB = 209
-const _MM_PERM_DBAC = 210
-const _MM_PERM_DBAD = 211
-const _MM_PERM_DBBA = 212
-const _MM_PERM_DBBB = 213
-const _MM_PERM_DBBC = 214
-const _MM_PERM_DBBD = 215
-const _MM_PERM_DBCA = 216
-const _MM_PERM_DBCB = 217
-const _MM_PERM_DBCC = 218
-const _MM_PERM_DBCD = 219
-const _MM_PERM_DBDA = 220
-const _MM_PERM_DBDB = 221
-const _MM_PERM_DBDC = 222
-const _MM_PERM_DBDD = 223
-const _MM_PERM_DCAA = 224
-const _MM_PERM_DCAB = 225
-const _MM_PERM_DCAC = 226
-const _MM_PERM_DCAD = 227
-const _MM_PERM_DCBA = 228
-const _MM_PERM_DCBB = 229
-const _MM_PERM_DCBC = 230
-const _MM_PERM_DCBD = 231
-const _MM_PERM_DCCA = 232
-const _MM_PERM_DCCB = 233
-const _MM_PERM_DCCC = 234
-const _MM_PERM_DCCD = 235
-const _MM_PERM_DCDA = 236
-const _MM_PERM_DCDB = 237
-const _MM_PERM_DCDC = 238
-const _MM_PERM_DCDD = 239
-const _MM_PERM_DDAA = 240
-const _MM_PERM_DDAB = 241
-const _MM_PERM_DDAC = 242
-const _MM_PERM_DDAD = 243
-const _MM_PERM_DDBA = 244
-const _MM_PERM_DDBB = 245
-const _MM_PERM_DDBC = 246
-const _MM_PERM_DDBD = 247
-const _MM_PERM_DDCA = 248
-const _MM_PERM_DDCB = 249
-const _MM_PERM_DDCC = 250
-const _MM_PERM_DDCD = 251
-const _MM_PERM_DDDA = 252
-const _MM_PERM_DDDB = 253
-const _MM_PERM_DDDC = 254
-const _MM_PERM_DDDD = 255
-
-type _MM_MANTISSA_NORM_ENUM = int32
-
-const _MM_MANT_NORM_1_2 = 0
-const _MM_MANT_NORM_p5_2 = 1
-const _MM_MANT_NORM_p5_1 = 2
-const _MM_MANT_NORM_p75_1p5 = 3
-
-type _MM_MANTISSA_SIGN_ENUM = int32
-
-const _MM_MANT_SIGN_src = 0
-const _MM_MANT_SIGN_zero = 1
-const _MM_MANT_SIGN_nan = 2
-
-type __mmask32 = uint32
-
-type __mmask64 = uint64
-
-type __bfloat16 = uint16
-
-type XMM_SAVE_AREA32 = struct {
-	FControlWord    WORD
-	FStatusWord     WORD
-	FTagWord        BYTE
-	FReserved1      BYTE
-	FErrorOpcode    WORD
-	FErrorOffset    DWORD
-	FErrorSelector  WORD
-	FReserved2      WORD
-	FDataOffset     DWORD
-	FDataSelector   WORD
-	FReserved3      WORD
-	FMxCsr          DWORD
-	FMxCsr_Mask     DWORD
-	FFloatRegisters [8]M128A
-	FXmmRegisters   [16]M128A
-	FReserved4      [96]BYTE
-}
-
-type _XMM_SAVE_AREA32 = XMM_SAVE_AREA32
-
-type PXMM_SAVE_AREA32 = uintptr
+type PFLOATING_SAVE_AREA = uintptr
 
 type CONTEXT = struct {
-	FP1Home       DWORD64
-	FP2Home       DWORD64
-	FP3Home       DWORD64
-	FP4Home       DWORD64
-	FP5Home       DWORD64
-	FP6Home       DWORD64
-	FContextFlags DWORD
-	FMxCsr        DWORD
-	FSegCs        WORD
-	FSegDs        WORD
-	FSegEs        WORD
-	FSegFs        WORD
-	FSegGs        WORD
-	FSegSs        WORD
-	FEFlags       DWORD
-	FDr0          DWORD64
-	FDr1          DWORD64
-	FDr2          DWORD64
-	FDr3          DWORD64
-	FDr6          DWORD64
-	FDr7          DWORD64
-	FRax          DWORD64
-	FRcx          DWORD64
-	FRdx          DWORD64
-	FRbx          DWORD64
-	FRsp          DWORD64
-	FRbp          DWORD64
-	FRsi          DWORD64
-	FRdi          DWORD64
-	FR8           DWORD64
-	FR9           DWORD64
-	FR10          DWORD64
-	FR11          DWORD64
-	FR12          DWORD64
-	FR13          DWORD64
-	FR14          DWORD64
-	FR15          DWORD64
-	FRip          DWORD64
-	F__ccgo38_256 struct {
-		FFloatSave [0]XMM_SAVE_AREA32
-		F__ccgo2_0 [0]struct {
-			FHeader [2]M128A
-			FLegacy [8]M128A
-			FXmm0   M128A
-			FXmm1   M128A
-			FXmm2   M128A
-			FXmm3   M128A
-			FXmm4   M128A
-			FXmm5   M128A
-			FXmm6   M128A
-			FXmm7   M128A
-			FXmm8   M128A
-			FXmm9   M128A
-			FXmm10  M128A
-			FXmm11  M128A
-			FXmm12  M128A
-			FXmm13  M128A
-			FXmm14  M128A
-			FXmm15  M128A
-		}
-		FFltSave XMM_SAVE_AREA32
-	}
-	FVectorRegister       [26]M128A
-	FVectorControl        DWORD64
-	FDebugControl         DWORD64
-	FLastBranchToRip      DWORD64
-	FLastBranchFromRip    DWORD64
-	FLastExceptionToRip   DWORD64
-	FLastExceptionFromRip DWORD64
+	FContextFlags      DWORD
+	FDr0               DWORD
+	FDr1               DWORD
+	FDr2               DWORD
+	FDr3               DWORD
+	FDr6               DWORD
+	FDr7               DWORD
+	FFloatSave         FLOATING_SAVE_AREA
+	FSegGs             DWORD
+	FSegFs             DWORD
+	FSegEs             DWORD
+	FSegDs             DWORD
+	FEdi               DWORD
+	FEsi               DWORD
+	FEbx               DWORD
+	FEdx               DWORD
+	FEcx               DWORD
+	FEax               DWORD
+	FEbp               DWORD
+	FEip               DWORD
+	FSegCs             DWORD
+	FEFlags            DWORD
+	FEsp               DWORD
+	FSegSs             DWORD
+	FExtendedRegisters [512]BYTE
 }
 
 type PCONTEXT = uintptr
-
-type RUNTIME_FUNCTION = struct {
-	FBeginAddress DWORD
-	FEndAddress   DWORD
-	FUnwindData   DWORD
-}
-
-type _RUNTIME_FUNCTION = RUNTIME_FUNCTION
-
-type PRUNTIME_FUNCTION = uintptr
-
-type PGET_RUNTIME_FUNCTION_CALLBACK = uintptr
-
-type POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK = uintptr
 
 type LDT_ENTRY = struct {
 	FLimitLow WORD
@@ -11303,6 +10715,7 @@ type _EXCEPTION_RECORD32 = EXCEPTION_RECORD32
 type PEXCEPTION_RECORD32 = uintptr
 
 type EXCEPTION_RECORD64 = struct {
+	F__ccgo_align         [0]uint32
 	FExceptionCode        DWORD
 	FExceptionFlags       DWORD
 	FExceptionRecord      DWORD64
@@ -11322,55 +10735,6 @@ type EXCEPTION_POINTERS = struct {
 }
 
 type PEXCEPTION_POINTERS = uintptr
-
-type UNWIND_HISTORY_TABLE_ENTRY = struct {
-	FImageBase     ULONG64
-	FFunctionEntry PRUNTIME_FUNCTION
-}
-
-type _UNWIND_HISTORY_TABLE_ENTRY = UNWIND_HISTORY_TABLE_ENTRY
-
-type PUNWIND_HISTORY_TABLE_ENTRY = uintptr
-
-type UNWIND_HISTORY_TABLE = struct {
-	FCount       ULONG
-	FLocalHint   BYTE
-	FGlobalHint  BYTE
-	FSearch      BYTE
-	FOnce        BYTE
-	FLowAddress  ULONG64
-	FHighAddress ULONG64
-	FEntry       [12]UNWIND_HISTORY_TABLE_ENTRY
-}
-
-type _UNWIND_HISTORY_TABLE = UNWIND_HISTORY_TABLE
-
-type PUNWIND_HISTORY_TABLE = uintptr
-
-type DISPATCHER_CONTEXT = struct {
-	FControlPc        ULONG64
-	FImageBase        ULONG64
-	FFunctionEntry    PRUNTIME_FUNCTION
-	FEstablisherFrame ULONG64
-	FTargetIp         ULONG64
-	FContextRecord    PCONTEXT
-	FLanguageHandler  PEXCEPTION_ROUTINE
-	FHandlerData      PVOID
-	FHistoryTable     PUNWIND_HISTORY_TABLE
-	FScopeIndex       ULONG
-	FFill0            ULONG
-}
-
-type PDISPATCHER_CONTEXT = uintptr
-
-type KNONVOLATILE_CONTEXT_POINTERS = struct {
-	FFloatingContext [16]PM128A
-	FIntegerContext  [16]PULONG64
-}
-
-type _KNONVOLATILE_CONTEXT_POINTERS = KNONVOLATILE_CONTEXT_POINTERS
-
-type PKNONVOLATILE_CONTEXT_POINTERS = uintptr
 
 type PACCESS_TOKEN = uintptr
 
@@ -11458,7 +10822,7 @@ type SID_AND_ATTRIBUTES_ARRAY = [1]SID_AND_ATTRIBUTES
 
 type PSID_AND_ATTRIBUTES_ARRAY = uintptr
 
-type SID_HASH_ENTRY = uint64
+type SID_HASH_ENTRY = uint32
 
 type PSID_HASH_ENTRY = uintptr
 
@@ -12213,6 +11577,7 @@ type _TOKEN_SOURCE = TOKEN_SOURCE
 type PTOKEN_SOURCE = uintptr
 
 type TOKEN_STATISTICS = struct {
+	F__ccgo_align       [0]uint32
 	FTokenId            LUID
 	FAuthenticationId   LUID
 	FExpirationTime     LARGE_INTEGER
@@ -12271,8 +11636,10 @@ type _TOKEN_APPCONTAINER_INFORMATION = TOKEN_APPCONTAINER_INFORMATION
 type PTOKEN_APPCONTAINER_INFORMATION = uintptr
 
 type CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE = struct {
-	FVersion DWORD64
-	FName    PWSTR
+	F__ccgo_align [0]uint32
+	FVersion      DWORD64
+	FName         PWSTR
+	F__ccgo_pad2  [4]byte
 }
 
 type _CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE = CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE
@@ -12405,7 +11772,7 @@ type EXCEPTION_REGISTRATION_RECORD = struct {
 		Fprev [0]uintptr
 		FNext uintptr
 	}
-	F__ccgo1_8 struct {
+	F__ccgo1_4 struct {
 		Fhandler [0]PEXCEPTION_ROUTINE
 		FHandler PEXCEPTION_ROUTINE
 	}
@@ -12420,7 +11787,7 @@ type EXCEPTION_REGISTRATION = struct {
 		Fprev [0]uintptr
 		FNext uintptr
 	}
-	F__ccgo1_8 struct {
+	F__ccgo1_4 struct {
 		Fhandler [0]PEXCEPTION_ROUTINE
 		FHandler PEXCEPTION_ROUTINE
 	}
@@ -12433,7 +11800,7 @@ type NT_TIB = struct {
 	FStackBase     PVOID
 	FStackLimit    PVOID
 	FSubSystemTib  PVOID
-	F__ccgo4_32    struct {
+	F__ccgo4_16    struct {
 		FVersion   [0]DWORD
 		FFiberData PVOID
 	}
@@ -12463,13 +11830,15 @@ type _NT_TIB32 = NT_TIB32
 type PNT_TIB32 = uintptr
 
 type NT_TIB64 = struct {
+	F__ccgo_align  [0]uint32
 	FExceptionList DWORD64
 	FStackBase     DWORD64
 	FStackLimit    DWORD64
 	FSubSystemTib  DWORD64
 	F__ccgo4_32    struct {
-		FVersion   [0]DWORD
-		FFiberData DWORD64
+		F__ccgo_align [0]uint32
+		FVersion      [0]DWORD
+		FFiberData    DWORD64
 	}
 	FArbitraryUserPointer DWORD64
 	FSelf                 DWORD64
@@ -12539,11 +11908,13 @@ type _PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION = PROCESS_DYNAMIC_ENFO
 type PPROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION = uintptr
 
 type QUOTA_LIMITS = struct {
+	F__ccgo_align          [0]uint32
 	FPagedPoolLimit        SIZE_T
 	FNonPagedPoolLimit     SIZE_T
 	FMinimumWorkingSetSize SIZE_T
 	FMaximumWorkingSetSize SIZE_T
 	FPagefileLimit         SIZE_T
+	F__ccgo_align5         [4]byte
 	FTimeLimit             LARGE_INTEGER
 }
 
@@ -12563,11 +11934,13 @@ type _RATE_QUOTA_LIMIT = RATE_QUOTA_LIMIT
 type PRATE_QUOTA_LIMIT = uintptr
 
 type QUOTA_LIMITS_EX = struct {
+	F__ccgo_align          [0]uint32
 	FPagedPoolLimit        SIZE_T
 	FNonPagedPoolLimit     SIZE_T
 	FMinimumWorkingSetSize SIZE_T
 	FMaximumWorkingSetSize SIZE_T
 	FPagefileLimit         SIZE_T
+	F__ccgo_align5         [4]byte
 	FTimeLimit             LARGE_INTEGER
 	FWorkingSetLimit       SIZE_T
 	FReserved2             SIZE_T
@@ -12582,6 +11955,7 @@ type _QUOTA_LIMITS_EX = QUOTA_LIMITS_EX
 type PQUOTA_LIMITS_EX = uintptr
 
 type IO_COUNTERS = struct {
+	F__ccgo_align        [0]uint32
 	FReadOperationCount  ULONGLONG
 	FWriteOperationCount ULONGLONG
 	FOtherOperationCount ULONGLONG
@@ -12840,6 +12214,7 @@ type _PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY = PROCESS_MITIGATION_REDIRECTI
 type PPROCESS_MITIGATION_REDIRECTION_TRUST_POLICY = uintptr
 
 type JOBOBJECT_BASIC_ACCOUNTING_INFORMATION = struct {
+	F__ccgo_align              [0]uint32
 	FTotalUserTime             LARGE_INTEGER
 	FTotalKernelTime           LARGE_INTEGER
 	FThisPeriodTotalUserTime   LARGE_INTEGER
@@ -12855,6 +12230,7 @@ type _JOBOBJECT_BASIC_ACCOUNTING_INFORMATION = JOBOBJECT_BASIC_ACCOUNTING_INFORM
 type PJOBOBJECT_BASIC_ACCOUNTING_INFORMATION = uintptr
 
 type JOBOBJECT_BASIC_LIMIT_INFORMATION = struct {
+	F__ccgo_align            [0]uint32
 	FPerProcessUserTimeLimit LARGE_INTEGER
 	FPerJobUserTimeLimit     LARGE_INTEGER
 	FLimitFlags              DWORD
@@ -12864,6 +12240,7 @@ type JOBOBJECT_BASIC_LIMIT_INFORMATION = struct {
 	FAffinity                ULONG_PTR
 	FPriorityClass           DWORD
 	FSchedulingClass         DWORD
+	F__ccgo_pad9             [4]byte
 }
 
 type _JOBOBJECT_BASIC_LIMIT_INFORMATION = JOBOBJECT_BASIC_LIMIT_INFORMATION
@@ -12871,6 +12248,7 @@ type _JOBOBJECT_BASIC_LIMIT_INFORMATION = JOBOBJECT_BASIC_LIMIT_INFORMATION
 type PJOBOBJECT_BASIC_LIMIT_INFORMATION = uintptr
 
 type JOBOBJECT_EXTENDED_LIMIT_INFORMATION = struct {
+	F__ccgo_align          [0]uint32
 	FBasicLimitInformation JOBOBJECT_BASIC_LIMIT_INFORMATION
 	FIoInfo                IO_COUNTERS
 	FProcessMemoryLimit    SIZE_T
@@ -12931,8 +12309,9 @@ type _JOBOBJECT_ASSOCIATE_COMPLETION_PORT = JOBOBJECT_ASSOCIATE_COMPLETION_PORT
 type PJOBOBJECT_ASSOCIATE_COMPLETION_PORT = uintptr
 
 type JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION = struct {
-	FBasicInfo JOBOBJECT_BASIC_ACCOUNTING_INFORMATION
-	FIoInfo    IO_COUNTERS
+	F__ccgo_align [0]uint32
+	FBasicInfo    JOBOBJECT_BASIC_ACCOUNTING_INFORMATION
+	FIoInfo       IO_COUNTERS
 }
 
 type _JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION = JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION
@@ -12964,6 +12343,7 @@ const ToleranceIntervalMedium = 2
 const ToleranceIntervalLong = 3
 
 type JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = struct {
+	F__ccgo_align                 [0]uint32
 	FIoReadBytesLimit             DWORD64
 	FIoWriteBytesLimit            DWORD64
 	FPerJobUserTimeLimit          LARGE_INTEGER
@@ -12971,6 +12351,7 @@ type JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = struct {
 	FRateControlTolerance         JOBOBJECT_RATE_CONTROL_TOLERANCE
 	FRateControlToleranceInterval JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL
 	FLimitFlags                   DWORD
+	F__ccgo_pad7                  [4]byte
 }
 
 type _JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION
@@ -12978,6 +12359,7 @@ type _JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = JOBOBJECT_NOTIFICATION_LIMIT_IN
 type PJOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = uintptr
 
 type JOBOBJECT_LIMIT_VIOLATION_INFORMATION = struct {
+	F__ccgo_align              [0]uint32
 	FLimitFlags                DWORD
 	FViolationLimitFlags       DWORD
 	FIoReadBytes               DWORD64
@@ -13083,10 +12465,12 @@ type _CACHE_DESCRIPTOR = CACHE_DESCRIPTOR
 type PCACHE_DESCRIPTOR = uintptr
 
 type SYSTEM_LOGICAL_PROCESSOR_INFORMATION = struct {
+	F__ccgo_align  [0]uint32
 	FProcessorMask ULONG_PTR
 	FRelationship  LOGICAL_PROCESSOR_RELATIONSHIP
-	F__ccgo2_16    struct {
-		FNumaNode [0]struct {
+	F__ccgo2_8     struct {
+		F__ccgo_align [0]uint32
+		FNumaNode     [0]struct {
 			FNodeNumber DWORD
 		}
 		FCache         [0]CACHE_DESCRIPTOR
@@ -13186,7 +12570,8 @@ type SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX = struct {
 type PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX = uintptr
 
 type SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION = struct {
-	FCycleTime DWORD64
+	F__ccgo_align [0]uint32
+	FCycleTime    DWORD64
 }
 
 type _SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION = SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION
@@ -13211,6 +12596,7 @@ type _XSTATE_FEATURE = XSTATE_FEATURE
 type PXSTATE_FEATURE = uintptr
 
 type XSTATE_CONFIGURATION = struct {
+	F__ccgo_align            [0]uint32
 	FEnabledFeatures         DWORD64
 	FEnabledVolatileFeatures DWORD64
 	FSize                    DWORD
@@ -13251,6 +12637,7 @@ type _MEMORY_BASIC_INFORMATION32 = MEMORY_BASIC_INFORMATION32
 type PMEMORY_BASIC_INFORMATION32 = uintptr
 
 type MEMORY_BASIC_INFORMATION64 = struct {
+	F__ccgo_align      [0]uint32
 	FBaseAddress       ULONGLONG
 	FAllocationBase    ULONGLONG
 	FAllocationProtect DWORD
@@ -13300,30 +12687,36 @@ const MemExtendedParameterMax = 6
 type PMEM_EXTENDED_PARAMETER_TYPE = uintptr
 
 type MEM_EXTENDED_PARAMETER = struct {
-	F__ccgo0_0 struct {
-		F__ccgo0 uint64
+	F__ccgo_align [0]uint32
+	F__ccgo0_0    struct {
+		F__ccgo_align [0]uint32
+		F__ccgo0      uint64
 	}
 	F__ccgo1_8 struct {
-		FPointer [0]PVOID
-		FSize    [0]SIZE_T
-		FHandle  [0]HANDLE
-		FULong   [0]DWORD
-		FULong64 DWORD64
+		F__ccgo_align [0]uint32
+		FPointer      [0]PVOID
+		FSize         [0]SIZE_T
+		FHandle       [0]HANDLE
+		FULong        [0]DWORD
+		FULong64      DWORD64
 	}
 }
 
 type PMEM_EXTENDED_PARAMETER = uintptr
 
 type MEM_EXTENDED_PARAMETER1 = struct {
-	F__ccgo0_0 struct {
-		F__ccgo0 uint64
+	F__ccgo_align [0]uint32
+	F__ccgo0_0    struct {
+		F__ccgo_align [0]uint32
+		F__ccgo0      uint64
 	}
 	F__ccgo1_8 struct {
-		FPointer [0]PVOID
-		FSize    [0]SIZE_T
-		FHandle  [0]HANDLE
-		FULong   [0]DWORD
-		FULong64 DWORD64
+		F__ccgo_align [0]uint32
+		FPointer      [0]PVOID
+		FSize         [0]SIZE_T
+		FHandle       [0]HANDLE
+		FULong        [0]DWORD
+		FULong64      DWORD64
 	}
 }
 
@@ -13360,8 +12753,10 @@ type _FILE_NOTIFY_INFORMATION = FILE_NOTIFY_INFORMATION
 type PFILE_NOTIFY_INFORMATION = uintptr
 
 type FILE_SEGMENT_ELEMENT = struct {
-	FAlignment [0]ULONGLONG
-	FBuffer    PVOID64
+	F__ccgo_align [0]uint32
+	FAlignment    [0]ULONGLONG
+	FBuffer       PVOID64
+	F__ccgo_pad2  [4]byte
 }
 
 type _FILE_SEGMENT_ELEMENT = FILE_SEGMENT_ELEMENT
@@ -13395,9 +12790,11 @@ type _SCRUB_DATA_INPUT = SCRUB_DATA_INPUT
 type PSCRUB_DATA_INPUT = uintptr
 
 type SCRUB_DATA_OUTPUT = struct {
+	F__ccgo_align          [0]uint32
 	FSize                  DWORD
 	FFlags                 DWORD
 	FStatus                DWORD
+	F__ccgo_align3         [4]byte
 	FErrorFileOffset       ULONGLONG
 	FErrorLength           ULONGLONG
 	FNumberOfBytesRepaired ULONGLONG
@@ -13684,7 +13081,9 @@ type _POWER_MONITOR_INVOCATION = POWER_MONITOR_INVOCATION
 type PPOWER_MONITOR_INVOCATION = uintptr
 
 type RESUME_PERFORMANCE = struct {
+	F__ccgo_align            [0]uint32
 	FPostTimeMs              DWORD
+	F__ccgo_align1           [4]byte
 	FTotalResumeTimeMs       ULONGLONG
 	FResumeCompleteTimestamp ULONGLONG
 }
@@ -13717,6 +13116,7 @@ type NOTIFY_USER_POWER_SETTING = struct {
 type PNOTIFY_USER_POWER_SETTING = uintptr
 
 type APPLICATIONLAUNCH_SETTING_VALUE = struct {
+	F__ccgo_align     [0]uint32
 	FActivationTime   LARGE_INTEGER
 	FFlags            DWORD
 	FButtonInstanceID DWORD
@@ -13783,6 +13183,7 @@ type PPM_WMI_IDLE_STATE = struct {
 type PPPM_WMI_IDLE_STATE = uintptr
 
 type PPM_WMI_IDLE_STATES = struct {
+	F__ccgo_align     [0]uint32
 	FType             DWORD
 	FCount            DWORD
 	FTargetState      DWORD
@@ -13805,6 +13206,7 @@ type PPM_WMI_IDLE_STATES_EX = struct {
 type PPPM_WMI_IDLE_STATES_EX = uintptr
 
 type PPM_WMI_PERF_STATE = struct {
+	F__ccgo_align     [0]uint32
 	FFrequency        DWORD
 	FPower            DWORD
 	FPercentFrequency BYTE
@@ -13813,6 +13215,7 @@ type PPM_WMI_PERF_STATE = struct {
 	FType             BYTE
 	FIncreaseTime     DWORD
 	FDecreaseTime     DWORD
+	F__ccgo_align8    [4]byte
 	FControl          DWORD64
 	FStatus           DWORD64
 	FHitCount         DWORD
@@ -13824,6 +13227,7 @@ type PPM_WMI_PERF_STATE = struct {
 type PPPM_WMI_PERF_STATE = uintptr
 
 type PPM_WMI_PERF_STATES = struct {
+	F__ccgo_align      [0]uint32
 	FCount             DWORD
 	FMaxFrequency      DWORD
 	FCurrentState      DWORD
@@ -13836,6 +13240,7 @@ type PPM_WMI_PERF_STATES = struct {
 	FType              BYTE
 	FReserved          BYTE
 	FTimerInterval     DWORD
+	F__ccgo_align12    [4]byte
 	FTargetProcessors  DWORD64
 	FPStateHandler     DWORD
 	FPStateContext     DWORD
@@ -13850,6 +13255,7 @@ type PPM_WMI_PERF_STATES = struct {
 type PPPM_WMI_PERF_STATES = uintptr
 
 type PPM_WMI_PERF_STATES_EX = struct {
+	F__ccgo_align      [0]uint32
 	FCount             DWORD
 	FMaxFrequency      DWORD
 	FCurrentState      DWORD
@@ -13876,9 +13282,11 @@ type PPM_WMI_PERF_STATES_EX = struct {
 type PPPM_WMI_PERF_STATES_EX = uintptr
 
 type PPM_IDLE_STATE_ACCOUNTING = struct {
+	F__ccgo_align       [0]uint32
 	FIdleTransitions    DWORD
 	FFailedTransitions  DWORD
 	FInvalidBucketIndex DWORD
+	F__ccgo_align3      [4]byte
 	FTotalTime          DWORD64
 	FIdleTimeBuckets    [6]DWORD
 }
@@ -13886,9 +13294,11 @@ type PPM_IDLE_STATE_ACCOUNTING = struct {
 type PPPM_IDLE_STATE_ACCOUNTING = uintptr
 
 type PPM_IDLE_ACCOUNTING = struct {
+	F__ccgo_align     [0]uint32
 	FStateCount       DWORD
 	FTotalTransitions DWORD
 	FResetCount       DWORD
+	F__ccgo_align3    [4]byte
 	FStartTime        DWORD64
 	FState            [1]PPM_IDLE_STATE_ACCOUNTING
 }
@@ -13896,15 +13306,18 @@ type PPM_IDLE_ACCOUNTING = struct {
 type PPPM_IDLE_ACCOUNTING = uintptr
 
 type PPM_IDLE_STATE_BUCKET_EX = struct {
-	FTotalTimeUs DWORD64
-	FMinTimeUs   DWORD
-	FMaxTimeUs   DWORD
-	FCount       DWORD
+	F__ccgo_align [0]uint32
+	FTotalTimeUs  DWORD64
+	FMinTimeUs    DWORD
+	FMaxTimeUs    DWORD
+	FCount        DWORD
+	F__ccgo_pad4  [4]byte
 }
 
 type PPPM_IDLE_STATE_BUCKET_EX = uintptr
 
 type PPM_IDLE_STATE_ACCOUNTING_EX = struct {
+	F__ccgo_align         [0]uint32
 	FTotalTime            DWORD64
 	FIdleTransitions      DWORD
 	FFailedTransitions    DWORD
@@ -13918,6 +13331,7 @@ type PPM_IDLE_STATE_ACCOUNTING_EX = struct {
 type PPPM_IDLE_STATE_ACCOUNTING_EX = uintptr
 
 type PPM_IDLE_ACCOUNTING_EX = struct {
+	F__ccgo_align     [0]uint32
 	FStateCount       DWORD
 	FTotalTransitions DWORD
 	FResetCount       DWORD
@@ -13939,32 +13353,39 @@ type PPM_PERFSTATE_EVENT = struct {
 type PPPM_PERFSTATE_EVENT = uintptr
 
 type PPM_PERFSTATE_DOMAIN_EVENT = struct {
-	FState      DWORD
-	FLatency    DWORD
-	FSpeed      DWORD
-	FProcessors DWORD64
+	F__ccgo_align  [0]uint32
+	FState         DWORD
+	FLatency       DWORD
+	FSpeed         DWORD
+	F__ccgo_align3 [4]byte
+	FProcessors    DWORD64
 }
 
 type PPPM_PERFSTATE_DOMAIN_EVENT = uintptr
 
 type PPM_IDLESTATE_EVENT = struct {
-	FNewState   DWORD
-	FOldState   DWORD
-	FProcessors DWORD64
+	F__ccgo_align [0]uint32
+	FNewState     DWORD
+	FOldState     DWORD
+	FProcessors   DWORD64
 }
 
 type PPPM_IDLESTATE_EVENT = uintptr
 
 type PPM_THERMALCHANGE_EVENT = struct {
+	F__ccgo_align      [0]uint32
 	FThermalConstraint DWORD
+	F__ccgo_align1     [4]byte
 	FProcessors        DWORD64
 }
 
 type PPPM_THERMALCHANGE_EVENT = uintptr
 
 type PPM_THERMAL_POLICY_EVENT = struct {
-	FMode       BYTE
-	FProcessors DWORD64
+	F__ccgo_align  [0]uint32
+	FMode          BYTE
+	F__ccgo_align1 [7]byte
+	FProcessors    DWORD64
 }
 
 type PPPM_THERMAL_POLICY_EVENT = uintptr
@@ -14361,6 +13782,7 @@ type _IMAGE_ROM_OPTIONAL_HEADER = IMAGE_ROM_OPTIONAL_HEADER
 type PIMAGE_ROM_OPTIONAL_HEADER = uintptr
 
 type IMAGE_OPTIONAL_HEADER64 = struct {
+	F__ccgo_align                [0]uint32
 	FMagic                       WORD
 	FMajorLinkerVersion          BYTE
 	FMinorLinkerVersion          BYTE
@@ -14406,7 +13828,8 @@ type IMAGE_OPTIONAL_HEADER = struct {
 	FSizeOfUninitializedData     DWORD
 	FAddressOfEntryPoint         DWORD
 	FBaseOfCode                  DWORD
-	FImageBase                   ULONGLONG
+	FBaseOfData                  DWORD
+	FImageBase                   DWORD
 	FSectionAlignment            DWORD
 	FFileAlignment               DWORD
 	FMajorOperatingSystemVersion WORD
@@ -14421,10 +13844,10 @@ type IMAGE_OPTIONAL_HEADER = struct {
 	FCheckSum                    DWORD
 	FSubsystem                   WORD
 	FDllCharacteristics          WORD
-	FSizeOfStackReserve          ULONGLONG
-	FSizeOfStackCommit           ULONGLONG
-	FSizeOfHeapReserve           ULONGLONG
-	FSizeOfHeapCommit            ULONGLONG
+	FSizeOfStackReserve          DWORD
+	FSizeOfStackCommit           DWORD
+	FSizeOfHeapReserve           DWORD
+	FSizeOfHeapCommit            DWORD
 	FLoaderFlags                 DWORD
 	FNumberOfRvaAndSizes         DWORD
 	FDataDirectory               [16]IMAGE_DATA_DIRECTORY
@@ -14433,6 +13856,7 @@ type IMAGE_OPTIONAL_HEADER = struct {
 type PIMAGE_OPTIONAL_HEADER = uintptr
 
 type IMAGE_NT_HEADERS64 = struct {
+	F__ccgo_align   [0]uint32
 	FSignature      DWORD
 	FFileHeader     IMAGE_FILE_HEADER
 	FOptionalHeader IMAGE_OPTIONAL_HEADER64
@@ -14464,7 +13888,7 @@ type PIMAGE_ROM_HEADERS = uintptr
 type IMAGE_NT_HEADERS = struct {
 	FSignature      DWORD
 	FFileHeader     IMAGE_FILE_HEADER
-	FOptionalHeader IMAGE_OPTIONAL_HEADER64
+	FOptionalHeader IMAGE_OPTIONAL_HEADER32
 }
 
 type PIMAGE_NT_HEADERS = uintptr
@@ -14744,7 +14168,9 @@ type _IMAGE_IMPORT_BY_NAME = IMAGE_IMPORT_BY_NAME
 type PIMAGE_IMPORT_BY_NAME = uintptr
 
 type IMAGE_THUNK_DATA64 = struct {
-	Fu1 struct {
+	F__ccgo_align [0]uint32
+	Fu1           struct {
+		F__ccgo_align    [0]uint32
 		FFunction        [0]ULONGLONG
 		FOrdinal         [0]ULONGLONG
 		FAddressOfData   [0]ULONGLONG
@@ -14772,6 +14198,7 @@ type PIMAGE_THUNK_DATA32 = uintptr
 type PIMAGE_TLS_CALLBACK = uintptr
 
 type IMAGE_TLS_DIRECTORY64 = struct {
+	F__ccgo_align          [0]uint32
 	FStartAddressOfRawData ULONGLONG
 	FEndAddressOfRawData   ULONGLONG
 	FAddressOfIndex        ULONGLONG
@@ -14799,20 +14226,20 @@ type PIMAGE_TLS_DIRECTORY32 = uintptr
 
 type IMAGE_THUNK_DATA = struct {
 	Fu1 struct {
-		FFunction        [0]ULONGLONG
-		FOrdinal         [0]ULONGLONG
-		FAddressOfData   [0]ULONGLONG
-		FForwarderString ULONGLONG
+		FFunction        [0]DWORD
+		FOrdinal         [0]DWORD
+		FAddressOfData   [0]DWORD
+		FForwarderString DWORD
 	}
 }
 
 type PIMAGE_THUNK_DATA = uintptr
 
 type IMAGE_TLS_DIRECTORY = struct {
-	FStartAddressOfRawData ULONGLONG
-	FEndAddressOfRawData   ULONGLONG
-	FAddressOfIndex        ULONGLONG
-	FAddressOfCallBacks    ULONGLONG
+	FStartAddressOfRawData DWORD
+	FEndAddressOfRawData   DWORD
+	FAddressOfIndex        DWORD
+	FAddressOfCallBacks    DWORD
 	FSizeOfZeroFill        DWORD
 	FCharacteristics       DWORD
 }
@@ -14964,6 +14391,7 @@ type IMAGE_LOAD_CONFIG_DIRECTORY32 = struct {
 type PIMAGE_LOAD_CONFIG_DIRECTORY32 = uintptr
 
 type IMAGE_LOAD_CONFIG_DIRECTORY64 = struct {
+	F__ccgo_align                  [0]uint32
 	FSize                          DWORD
 	FTimeDateStamp                 DWORD
 	FMajorVersion                  WORD
@@ -14996,19 +14424,19 @@ type IMAGE_LOAD_CONFIG_DIRECTORY = struct {
 	FGlobalFlagsClear              DWORD
 	FGlobalFlagsSet                DWORD
 	FCriticalSectionDefaultTimeout DWORD
-	FDeCommitFreeBlockThreshold    ULONGLONG
-	FDeCommitTotalFreeThreshold    ULONGLONG
-	FLockPrefixTable               ULONGLONG
-	FMaximumAllocationSize         ULONGLONG
-	FVirtualMemoryThreshold        ULONGLONG
-	FProcessAffinityMask           ULONGLONG
+	FDeCommitFreeBlockThreshold    DWORD
+	FDeCommitTotalFreeThreshold    DWORD
+	FLockPrefixTable               DWORD
+	FMaximumAllocationSize         DWORD
+	FVirtualMemoryThreshold        DWORD
 	FProcessHeapFlags              DWORD
+	FProcessAffinityMask           DWORD
 	FCSDVersion                    WORD
 	FReserved1                     WORD
-	FEditList                      ULONGLONG
-	FSecurityCookie                ULONGLONG
-	FSEHandlerTable                ULONGLONG
-	FSEHandlerCount                ULONGLONG
+	FEditList                      DWORD
+	FSecurityCookie                DWORD
+	FSEHandlerTable                DWORD
+	FSEHandlerCount                DWORD
 }
 
 type PIMAGE_LOAD_CONFIG_DIRECTORY = uintptr
@@ -15023,6 +14451,7 @@ type _IMAGE_CE_RUNTIME_FUNCTION_ENTRY = IMAGE_CE_RUNTIME_FUNCTION_ENTRY
 type PIMAGE_CE_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY = struct {
+	F__ccgo_align     [0]uint32
 	FBeginAddress     ULONGLONG
 	FEndAddress       ULONGLONG
 	FExceptionHandler ULONGLONG
@@ -15181,9 +14610,11 @@ type _IMAGE_FUNCTION_ENTRY = IMAGE_FUNCTION_ENTRY
 type PIMAGE_FUNCTION_ENTRY = uintptr
 
 type IMAGE_FUNCTION_ENTRY64 = struct {
+	F__ccgo_align    [0]uint32
 	FStartingAddress ULONGLONG
 	FEndingAddress   ULONGLONG
 	F__ccgo2_16      struct {
+		F__ccgo_align      [0]uint32
 		FUnwindInfoAddress [0]ULONGLONG
 		FEndOfPrologue     ULONGLONG
 	}
@@ -15214,6 +14645,7 @@ type _IMAGE_SEPARATE_DEBUG_HEADER = IMAGE_SEPARATE_DEBUG_HEADER
 type PIMAGE_SEPARATE_DEBUG_HEADER = uintptr
 
 type NON_PAGED_DEBUG_INFO = struct {
+	F__ccgo_align    [0]uint32
 	FSignature       WORD
 	FFlags           WORD
 	FSize            DWORD
@@ -15347,23 +14779,16 @@ type SLIST_ENTRY = struct {
 	FNext uintptr
 }
 
-type _SLIST_ENTRY = SLIST_ENTRY
-
 type PSLIST_ENTRY = uintptr
 
 type SLIST_HEADER = struct {
-	FHeader8 [0]struct {
-		F__ccgo0 uint64
-		F__ccgo8 uint64
+	F__ccgo_align [0]uint32
+	F__ccgo1_0    [0]struct {
+		FNext     SLIST_ENTRY
+		FDepth    WORD
+		FSequence WORD
 	}
-	FHeaderX64 [0]struct {
-		F__ccgo0 uint64
-		F__ccgo8 uint64
-	}
-	F__ccgo0_0 struct {
-		FAlignment ULONGLONG
-		FRegion    ULONGLONG
-	}
+	FAlignment ULONGLONG
 }
 
 type _SLIST_HEADER = SLIST_HEADER
@@ -15709,6 +15134,7 @@ type _ASSEMBLY_FILE_DETAILED_INFORMATION = ASSEMBLY_FILE_DETAILED_INFORMATION
 type PASSEMBLY_FILE_DETAILED_INFORMATION = uintptr
 
 type ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION = struct {
+	F__ccgo_align                      [0]uint32
 	FulFlags                           DWORD
 	FulEncodedAssemblyIdentityLength   DWORD
 	FulManifestPathType                DWORD
@@ -15728,6 +15154,7 @@ type ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION = struct {
 	FlpAssemblyPolicyPath              PCWSTR
 	FlpAssemblyDirectoryName           PCWSTR
 	FulFileCount                       DWORD
+	F__ccgo_pad19                      [4]byte
 }
 
 type _ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION = ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION
@@ -15850,9 +15277,10 @@ type _RTL_VERIFIER_PROVIDER_DESCRIPTOR = RTL_VERIFIER_PROVIDER_DESCRIPTOR
 type PRTL_VERIFIER_PROVIDER_DESCRIPTOR = uintptr
 
 type HARDWARE_COUNTER_DATA = struct {
-	FType     HARDWARE_COUNTER_TYPE
-	FReserved DWORD
-	FValue    DWORD64
+	F__ccgo_align [0]uint32
+	FType         HARDWARE_COUNTER_TYPE
+	FReserved     DWORD
+	FValue        DWORD64
 }
 
 type _HARDWARE_COUNTER_DATA = HARDWARE_COUNTER_DATA
@@ -15860,6 +15288,7 @@ type _HARDWARE_COUNTER_DATA = HARDWARE_COUNTER_DATA
 type PHARDWARE_COUNTER_DATA = uintptr
 
 type PERFORMANCE_DATA = struct {
+	F__ccgo_align       [0]uint32
 	FSize               WORD
 	FVersion            BYTE
 	FHwCountersCount    BYTE
@@ -15976,9 +15405,10 @@ type _TAPE_WRITE_MARKS = TAPE_WRITE_MARKS
 type PTAPE_WRITE_MARKS = uintptr
 
 type TAPE_GET_POSITION = struct {
-	FType      DWORD
-	FPartition DWORD
-	FOffset    LARGE_INTEGER
+	F__ccgo_align [0]uint32
+	FType         DWORD
+	FPartition    DWORD
+	FOffset       LARGE_INTEGER
 }
 
 type _TAPE_GET_POSITION = TAPE_GET_POSITION
@@ -15986,10 +15416,12 @@ type _TAPE_GET_POSITION = TAPE_GET_POSITION
 type PTAPE_GET_POSITION = uintptr
 
 type TAPE_SET_POSITION = struct {
-	FMethod    DWORD
-	FPartition DWORD
-	FOffset    LARGE_INTEGER
-	FImmediate BOOLEAN
+	F__ccgo_align [0]uint32
+	FMethod       DWORD
+	FPartition    DWORD
+	FOffset       LARGE_INTEGER
+	FImmediate    BOOLEAN
+	F__ccgo_pad4  [7]byte
 }
 
 type _TAPE_SET_POSITION = TAPE_SET_POSITION
@@ -16027,11 +15459,13 @@ type _TAPE_SET_DRIVE_PARAMETERS = TAPE_SET_DRIVE_PARAMETERS
 type PTAPE_SET_DRIVE_PARAMETERS = uintptr
 
 type TAPE_GET_MEDIA_PARAMETERS = struct {
+	F__ccgo_align   [0]uint32
 	FCapacity       LARGE_INTEGER
 	FRemaining      LARGE_INTEGER
 	FBlockSize      DWORD
 	FPartitionCount DWORD
 	FWriteProtected BOOLEAN
+	F__ccgo_pad5    [7]byte
 }
 
 type _TAPE_GET_MEDIA_PARAMETERS = TAPE_GET_MEDIA_PARAMETERS
@@ -16186,10 +15620,12 @@ type PCRM_PROTOCOL_ID = uintptr
 type NOTIFICATION_MASK = uint32
 
 type TRANSACTION_NOTIFICATION = struct {
+	F__ccgo_align            [0]uint32
 	FTransactionKey          PVOID
 	FTransactionNotification ULONG
 	FTmVirtualClock          LARGE_INTEGER
 	FArgumentLength          ULONG
+	F__ccgo_pad4             [4]byte
 }
 
 type _TRANSACTION_NOTIFICATION = TRANSACTION_NOTIFICATION
@@ -16324,6 +15760,7 @@ type _TRANSACTION_BASIC_INFORMATION = TRANSACTION_BASIC_INFORMATION
 type PTRANSACTION_BASIC_INFORMATION = uintptr
 
 type TRANSACTIONMANAGER_BASIC_INFORMATION = struct {
+	F__ccgo_align [0]uint32
 	FTmIdentity   GUID
 	FVirtualClock LARGE_INTEGER
 }
@@ -16350,6 +15787,7 @@ type _TRANSACTIONMANAGER_LOGPATH_INFORMATION = TRANSACTIONMANAGER_LOGPATH_INFORM
 type PTRANSACTIONMANAGER_LOGPATH_INFORMATION = uintptr
 
 type TRANSACTIONMANAGER_RECOVERY_INFORMATION = struct {
+	F__ccgo_align     [0]uint32
 	FLastRecoveredLsn ULONGLONG
 }
 
@@ -16366,12 +15804,14 @@ type _TRANSACTIONMANAGER_OLDEST_INFORMATION = TRANSACTIONMANAGER_OLDEST_INFORMAT
 type PTRANSACTIONMANAGER_OLDEST_INFORMATION = uintptr
 
 type TRANSACTION_PROPERTIES_INFORMATION = struct {
+	F__ccgo_align      [0]uint32
 	FIsolationLevel    DWORD
 	FIsolationFlags    DWORD
 	FTimeout           LARGE_INTEGER
 	FOutcome           DWORD
 	FDescriptionLength DWORD
 	FDescription       [1]WCHAR
+	F__ccgo_pad6       [6]byte
 }
 
 type _TRANSACTION_PROPERTIES_INFORMATION = TRANSACTION_PROPERTIES_INFORMATION
@@ -16614,11 +16054,11 @@ type _PROCESSOR_NUMBER = PROCESSOR_NUMBER
 
 type PPROCESSOR_NUMBER = uintptr
 
-type WPARAM = uint64
+type WPARAM = uint32
 
-type LPARAM = int64
+type LPARAM = int32
 
-type LRESULT = int64
+type LRESULT = int32
 
 type SPHANDLE = uintptr
 
@@ -16966,7 +16406,7 @@ type LPSECURITY_ATTRIBUTES = uintptr
 type OVERLAPPED = struct {
 	FInternal     ULONG_PTR
 	FInternalHigh ULONG_PTR
-	F__ccgo2_16   struct {
+	F__ccgo2_8    struct {
 		FPointer   [0]PVOID
 		F__ccgo0_0 struct {
 			FOffset     DWORD
@@ -17155,7 +16595,7 @@ type PROCESS_HEAP_ENTRY = struct {
 	FcbOverhead   BYTE
 	FiRegionIndex BYTE
 	FwFlags       WORD
-	F__ccgo5_16   struct {
+	F__ccgo5_12   struct {
 		FRegion [0]struct {
 			FdwCommittedSize   DWORD
 			FdwUnCommittedSize DWORD
@@ -17567,6 +17007,7 @@ const ProcessMachineTypeInfo = 9
 const ProcessInformationClassMax = 10
 
 type APP_MEMORY_INFORMATION = struct {
+	F__ccgo_align           [0]uint32
 	FAvailableCommit        ULONG64
 	FPrivateCommitUsage     ULONG64
 	FPeakPrivateCommitUsage ULONG64
@@ -17708,6 +17149,7 @@ type _SYSTEM_INFO = SYSTEM_INFO
 type LPSYSTEM_INFO = uintptr
 
 type MEMORYSTATUSEX = struct {
+	F__ccgo_align            [0]uint32
 	FdwLength                DWORD
 	FdwMemoryLoad            DWORD
 	FullTotalPhys            DWORDLONG
@@ -17847,6 +17289,7 @@ type _MEMORYSTATUS = MEMORYSTATUS
 type LPMEMORYSTATUS = uintptr
 
 type JIT_DEBUG_INFO = struct {
+	F__ccgo_align            [0]uint32
 	FdwSize                  DWORD
 	FdwProcessorArchitecture DWORD
 	FdwThreadID              DWORD
@@ -17861,6 +17304,7 @@ type _JIT_DEBUG_INFO = JIT_DEBUG_INFO
 type LPJIT_DEBUG_INFO = uintptr
 
 type JIT_DEBUG_INFO32 = struct {
+	F__ccgo_align            [0]uint32
 	FdwSize                  DWORD
 	FdwProcessorArchitecture DWORD
 	FdwThreadID              DWORD
@@ -17873,6 +17317,7 @@ type JIT_DEBUG_INFO32 = struct {
 type LPJIT_DEBUG_INFO32 = uintptr
 
 type JIT_DEBUG_INFO64 = struct {
+	F__ccgo_align            [0]uint32
 	FdwSize                  DWORD
 	FdwProcessorArchitecture DWORD
 	FdwThreadID              DWORD
@@ -17946,11 +17391,13 @@ type PFE_EXPORT_FUNC = uintptr
 type PFE_IMPORT_FUNC = uintptr
 
 type WIN32_STREAM_ID = struct {
+	F__ccgo_align       [0]uint32
 	FdwStreamId         DWORD
 	FdwStreamAttributes DWORD
 	FSize               LARGE_INTEGER
 	FdwStreamNameSize   DWORD
 	FcStreamName        [1]WCHAR
+	F__ccgo_pad5        [2]byte
 }
 
 type _WIN32_STREAM_ID = WIN32_STREAM_ID
@@ -18043,10 +17490,13 @@ const COPYFILE2_PHASE_NAMEGRAFT_COPY = 6
 const COPYFILE2_PHASE_MAX = 7
 
 type COPYFILE2_MESSAGE = struct {
-	FType      COPYFILE2_MESSAGE_TYPE
-	FdwPadding DWORD
-	FInfo      struct {
+	F__ccgo_align [0]uint32
+	FType         COPYFILE2_MESSAGE_TYPE
+	FdwPadding    DWORD
+	FInfo         struct {
+		F__ccgo_align  [0]uint32
 		FChunkFinished [0]struct {
+			F__ccgo_align              [0]uint32
 			FdwStreamNumber            DWORD
 			FdwFlags                   DWORD
 			FhSourceFile               HANDLE
@@ -18059,6 +17509,7 @@ type COPYFILE2_MESSAGE = struct {
 			FuliTotalBytesTransferred  ULARGE_INTEGER
 		}
 		FStreamStarted [0]struct {
+			F__ccgo_align     [0]uint32
 			FdwStreamNumber   DWORD
 			FdwReserved       DWORD
 			FhSourceFile      HANDLE
@@ -18067,6 +17518,7 @@ type COPYFILE2_MESSAGE = struct {
 			FuliTotalFileSize ULARGE_INTEGER
 		}
 		FStreamFinished [0]struct {
+			F__ccgo_align              [0]uint32
 			FdwStreamNumber            DWORD
 			FdwReserved                DWORD
 			FhSourceFile               HANDLE
@@ -18080,6 +17532,7 @@ type COPYFILE2_MESSAGE = struct {
 			FdwReserved DWORD
 		}
 		FError [0]struct {
+			F__ccgo_align              [0]uint32
 			FCopyPhase                 COPYFILE2_COPY_PHASE
 			FdwStreamNumber            DWORD
 			FhrFailure                 HRESULT
@@ -18091,6 +17544,7 @@ type COPYFILE2_MESSAGE = struct {
 			FuliTotalBytesTransferred  ULARGE_INTEGER
 		}
 		FChunkStarted struct {
+			F__ccgo_align     [0]uint32
 			FdwStreamNumber   DWORD
 			FdwReserved       DWORD
 			FhSourceFile      HANDLE
@@ -18122,8 +17576,9 @@ const FindStreamInfoStandard = 0
 const FindStreamInfoMaxInfoLevel = 1
 
 type WIN32_FIND_STREAM_DATA = struct {
-	FStreamSize  LARGE_INTEGER
-	FcStreamName [296]WCHAR
+	F__ccgo_align [0]uint32
+	FStreamSize   LARGE_INTEGER
+	FcStreamName  [296]WCHAR
 }
 
 type _WIN32_FIND_STREAM_DATA = WIN32_FIND_STREAM_DATA
@@ -18355,11 +17810,13 @@ type PQUERYACTCTXW_FUNC = uintptr
 type APPLICATION_RECOVERY_CALLBACK = uintptr
 
 type FILE_BASIC_INFO = struct {
+	F__ccgo_align   [0]uint32
 	FCreationTime   LARGE_INTEGER
 	FLastAccessTime LARGE_INTEGER
 	FLastWriteTime  LARGE_INTEGER
 	FChangeTime     LARGE_INTEGER
 	FFileAttributes DWORD
+	F__ccgo_pad5    [4]byte
 }
 
 type _FILE_BASIC_INFO = FILE_BASIC_INFO
@@ -18367,11 +17824,13 @@ type _FILE_BASIC_INFO = FILE_BASIC_INFO
 type PFILE_BASIC_INFO = uintptr
 
 type FILE_STANDARD_INFO = struct {
+	F__ccgo_align   [0]uint32
 	FAllocationSize LARGE_INTEGER
 	FEndOfFile      LARGE_INTEGER
 	FNumberOfLinks  DWORD
 	FDeletePending  BOOLEAN
 	FDirectory      BOOLEAN
+	F__ccgo_pad5    [2]byte
 }
 
 type _FILE_STANDARD_INFO = FILE_STANDARD_INFO
@@ -18411,6 +17870,7 @@ type _FILE_RENAME_INFO = FILE_RENAME_INFO
 type PFILE_RENAME_INFO = uintptr
 
 type FILE_ALLOCATION_INFO = struct {
+	F__ccgo_align   [0]uint32
 	FAllocationSize LARGE_INTEGER
 }
 
@@ -18419,7 +17879,8 @@ type _FILE_ALLOCATION_INFO = FILE_ALLOCATION_INFO
 type PFILE_ALLOCATION_INFO = uintptr
 
 type FILE_END_OF_FILE_INFO = struct {
-	FEndOfFile LARGE_INTEGER
+	F__ccgo_align [0]uint32
+	FEndOfFile    LARGE_INTEGER
 }
 
 type _FILE_END_OF_FILE_INFO = FILE_END_OF_FILE_INFO
@@ -18427,11 +17888,13 @@ type _FILE_END_OF_FILE_INFO = FILE_END_OF_FILE_INFO
 type PFILE_END_OF_FILE_INFO = uintptr
 
 type FILE_STREAM_INFO = struct {
+	F__ccgo_align         [0]uint32
 	FNextEntryOffset      DWORD
 	FStreamNameLength     DWORD
 	FStreamSize           LARGE_INTEGER
 	FStreamAllocationSize LARGE_INTEGER
 	FStreamName           [1]WCHAR
+	F__ccgo_pad5          [6]byte
 }
 
 type _FILE_STREAM_INFO = FILE_STREAM_INFO
@@ -18439,6 +17902,7 @@ type _FILE_STREAM_INFO = FILE_STREAM_INFO
 type PFILE_STREAM_INFO = uintptr
 
 type FILE_COMPRESSION_INFO = struct {
+	F__ccgo_align         [0]uint32
 	FCompressedFileSize   LARGE_INTEGER
 	FCompressionFormat    WORD
 	FCompressionUnitShift UCHAR
@@ -18477,6 +17941,7 @@ type _FILE_DISPOSITION_INFO_EX = FILE_DISPOSITION_INFO_EX
 type PFILE_DISPOSITION_INFO_EX = uintptr
 
 type FILE_ID_BOTH_DIR_INFO = struct {
+	F__ccgo_align    [0]uint32
 	FNextEntryOffset DWORD
 	FFileIndex       DWORD
 	FCreationTime    LARGE_INTEGER
@@ -18490,8 +17955,10 @@ type FILE_ID_BOTH_DIR_INFO = struct {
 	FEaSize          DWORD
 	FShortNameLength CCHAR
 	FShortName       [12]WCHAR
+	F__ccgo_align13  [2]byte
 	FFileId          LARGE_INTEGER
 	FFileName        [1]WCHAR
+	F__ccgo_pad15    [6]byte
 }
 
 type _FILE_ID_BOTH_DIR_INFO = FILE_ID_BOTH_DIR_INFO
@@ -18499,6 +17966,7 @@ type _FILE_ID_BOTH_DIR_INFO = FILE_ID_BOTH_DIR_INFO
 type PFILE_ID_BOTH_DIR_INFO = uintptr
 
 type FILE_FULL_DIR_INFO = struct {
+	F__ccgo_align    [0]uint32
 	FNextEntryOffset ULONG
 	FFileIndex       ULONG
 	FCreationTime    LARGE_INTEGER
@@ -18511,6 +17979,7 @@ type FILE_FULL_DIR_INFO = struct {
 	FFileNameLength  ULONG
 	FEaSize          ULONG
 	FFileName        [1]WCHAR
+	F__ccgo_pad12    [2]byte
 }
 
 type _FILE_FULL_DIR_INFO = FILE_FULL_DIR_INFO
@@ -18557,6 +18026,7 @@ type _FILE_STORAGE_INFO = FILE_STORAGE_INFO
 type PFILE_STORAGE_INFO = uintptr
 
 type FILE_ID_INFO = struct {
+	F__ccgo_align       [0]uint32
 	FVolumeSerialNumber ULONGLONG
 	FFileId             FILE_ID_128
 }
@@ -18566,6 +18036,7 @@ type _FILE_ID_INFO = FILE_ID_INFO
 type PFILE_ID_INFO = uintptr
 
 type FILE_ID_EXTD_DIR_INFO = struct {
+	F__ccgo_align    [0]uint32
 	FNextEntryOffset ULONG
 	FFileIndex       ULONG
 	FCreationTime    LARGE_INTEGER
@@ -18580,6 +18051,7 @@ type FILE_ID_EXTD_DIR_INFO = struct {
 	FReparsePointTag ULONG
 	FFileId          FILE_ID_128
 	FFileName        [1]WCHAR
+	F__ccgo_pad14    [6]byte
 }
 
 type _FILE_ID_EXTD_DIR_INFO = FILE_ID_EXTD_DIR_INFO
@@ -18629,9 +18101,11 @@ const MaximumFileIdType = 3
 type PFILE_ID_TYPE = uintptr
 
 type FILE_ID_DESCRIPTOR = struct {
-	FdwSize    DWORD
-	FType      FILE_ID_TYPE
-	F__ccgo2_8 struct {
+	F__ccgo_align [0]uint32
+	FdwSize       DWORD
+	FType         FILE_ID_TYPE
+	F__ccgo2_8    struct {
+		F__ccgo_align   [0]uint32
 		FObjectId       [0]GUID
 		FExtendedFileId [0]FILE_ID_128
 		FFileId         LARGE_INTEGER
@@ -18642,9 +18116,11 @@ type FILE_ID_DESCRIPTOR = struct {
 type LPFILE_ID_DESCRIPTOR = uintptr
 
 type FILE_ID_DESCRIPTOR1 = struct {
-	FdwSize    DWORD
-	FType      FILE_ID_TYPE
-	F__ccgo2_8 struct {
+	F__ccgo_align [0]uint32
+	FdwSize       DWORD
+	FType         FILE_ID_TYPE
+	F__ccgo2_8    struct {
+		F__ccgo_align   [0]uint32
 		FObjectId       [0]GUID
 		FExtendedFileId [0]FILE_ID_128
 		FFileId         LARGE_INTEGER
@@ -19900,12 +19376,13 @@ type DISPLAYCONFIG_2DREGION = struct {
 }
 
 type DISPLAYCONFIG_VIDEO_SIGNAL_INFO = struct {
-	FpixelRate  UINT64
-	FhSyncFreq  DISPLAYCONFIG_RATIONAL
-	FvSyncFreq  DISPLAYCONFIG_RATIONAL
-	FactiveSize DISPLAYCONFIG_2DREGION
-	FtotalSize  DISPLAYCONFIG_2DREGION
-	F__ccgo5_40 struct {
+	F__ccgo_align [0]uint32
+	FpixelRate    UINT64
+	FhSyncFreq    DISPLAYCONFIG_RATIONAL
+	FvSyncFreq    DISPLAYCONFIG_RATIONAL
+	FactiveSize   DISPLAYCONFIG_2DREGION
+	FtotalSize    DISPLAYCONFIG_2DREGION
+	F__ccgo5_40   struct {
 		FvideoStandard        [0]UINT32
 		FAdditionalSignalInfo struct {
 			F__ccgo0 uint32
@@ -19956,6 +19433,7 @@ type DISPLAYCONFIG_SOURCE_MODE = struct {
 }
 
 type DISPLAYCONFIG_TARGET_MODE = struct {
+	F__ccgo_align          [0]uint32
 	FtargetVideoSignalInfo DISPLAYCONFIG_VIDEO_SIGNAL_INFO
 }
 
@@ -19966,12 +19444,14 @@ type DISPLAYCONFIG_DESKTOP_IMAGE_INFO = struct {
 }
 
 type DISPLAYCONFIG_MODE_INFO = struct {
-	FinfoType   DISPLAYCONFIG_MODE_INFO_TYPE
-	Fid         UINT32
-	FadapterId  LUID
-	F__ccgo3_16 struct {
-		FsourceMode [0]DISPLAYCONFIG_SOURCE_MODE
-		FtargetMode DISPLAYCONFIG_TARGET_MODE
+	F__ccgo_align [0]uint32
+	FinfoType     DISPLAYCONFIG_MODE_INFO_TYPE
+	Fid           UINT32
+	FadapterId    LUID
+	F__ccgo3_16   struct {
+		F__ccgo_align [0]uint32
+		FsourceMode   [0]DISPLAYCONFIG_SOURCE_MODE
+		FtargetMode   DISPLAYCONFIG_TARGET_MODE
 	}
 }
 
@@ -20067,10 +19547,12 @@ type DISPLAYCONFIG_TARGET_DEVICE_NAME = struct {
 }
 
 type DISPLAYCONFIG_TARGET_PREFERRED_MODE = struct {
-	Fheader     DISPLAYCONFIG_DEVICE_INFO_HEADER
-	Fwidth      UINT32
-	Fheight     UINT32
-	FtargetMode DISPLAYCONFIG_TARGET_MODE
+	F__ccgo_align  [0]uint32
+	Fheader        DISPLAYCONFIG_DEVICE_INFO_HEADER
+	Fwidth         UINT32
+	Fheight        UINT32
+	F__ccgo_align3 [4]byte
+	FtargetMode    DISPLAYCONFIG_TARGET_MODE
 }
 
 type DISPLAYCONFIG_ADAPTER_NAME = struct {
@@ -23004,7 +22486,7 @@ type LPHARDWAREINPUT = uintptr
 
 type INPUT = struct {
 	Ftype1     DWORD
-	F__ccgo1_8 struct {
+	F__ccgo1_4 struct {
 		Fki [0]KEYBDINPUT
 		Fhi [0]HARDWAREINPUT
 		Fmi MOUSEINPUT
@@ -23096,6 +22578,7 @@ const POINTER_CHANGE_FIFTHBUTTON_DOWN = 9
 const POINTER_CHANGE_FIFTHBUTTON_UP = 10
 
 type POINTER_INFO = struct {
+	F__ccgo_align          [0]uint32
 	FpointerType           POINTER_INPUT_TYPE
 	FpointerId             UINT32
 	FframeId               UINT32
@@ -23112,11 +22595,13 @@ type POINTER_INFO = struct {
 	FdwKeyStates           DWORD
 	FPerformanceCount      UINT64
 	FButtonChangeType      POINTER_BUTTON_CHANGE_TYPE
+	F__ccgo_pad16          [4]byte
 }
 
 type tagPOINTER_INFO = POINTER_INFO
 
 type POINTER_TOUCH_INFO = struct {
+	F__ccgo_align [0]uint32
 	FpointerInfo  POINTER_INFO
 	FtouchFlags   TOUCH_FLAGS
 	FtouchMask    TOUCH_MASK
@@ -23129,13 +22614,14 @@ type POINTER_TOUCH_INFO = struct {
 type tagPOINTER_TOUCH_INFO = POINTER_TOUCH_INFO
 
 type POINTER_PEN_INFO = struct {
-	FpointerInfo POINTER_INFO
-	FpenFlags    PEN_FLAGS
-	FpenMask     PEN_MASK
-	Fpressure    UINT32
-	Frotation    UINT32
-	FtiltX       INT32
-	FtiltY       INT32
+	F__ccgo_align [0]uint32
+	FpointerInfo  POINTER_INFO
+	FpenFlags     PEN_FLAGS
+	FpenMask      PEN_MASK
+	Fpressure     UINT32
+	Frotation     UINT32
+	FtiltX        INT32
+	FtiltY        INT32
 }
 
 type tagPOINTER_PEN_INFO = POINTER_PEN_INFO
@@ -23164,10 +22650,13 @@ type tagUSAGE_PROPERTIES = USAGE_PROPERTIES
 type PUSAGE_PROPERTIES = uintptr
 
 type POINTER_TYPE_INFO = struct {
-	Ftype1     POINTER_INPUT_TYPE
-	F__ccgo1_8 struct {
-		FpenInfo   [0]POINTER_PEN_INFO
-		FtouchInfo POINTER_TOUCH_INFO
+	F__ccgo_align  [0]uint32
+	Ftype1         POINTER_INPUT_TYPE
+	F__ccgo_align1 [4]byte
+	F__ccgo1_8     struct {
+		F__ccgo_align [0]uint32
+		FpenInfo      [0]POINTER_PEN_INFO
+		FtouchInfo    POINTER_TOUCH_INFO
 	}
 }
 
@@ -24153,7 +23642,7 @@ type MENUBARINFO = struct {
 	FrcBar    RECT
 	FhMenu    HMENU
 	FhwndMenu HWND
-	F__ccgo40 uint8
+	F__ccgo28 uint8
 }
 
 type tagMENUBARINFO = MENUBARINFO
@@ -24438,15 +23927,18 @@ type HGESTUREINFO__ = struct {
 type HGESTUREINFO = uintptr
 
 type GESTUREINFO = struct {
-	FcbSize       UINT
-	FdwFlags      DWORD
-	FdwID         DWORD
-	FhwndTarget   HWND
-	FptsLocation  POINTS
-	FdwInstanceID DWORD
-	FdwSequenceID DWORD
-	FullArguments ULONGLONG
-	FcbExtraArgs  UINT
+	F__ccgo_align  [0]uint32
+	FcbSize        UINT
+	FdwFlags       DWORD
+	FdwID          DWORD
+	FhwndTarget    HWND
+	FptsLocation   POINTS
+	FdwInstanceID  DWORD
+	FdwSequenceID  DWORD
+	F__ccgo_align7 [4]byte
+	FullArguments  ULONGLONG
+	FcbExtraArgs   UINT
+	F__ccgo_pad9   [4]byte
 }
 
 type tagGESTUREINFO = GESTUREINFO
@@ -25650,9 +25142,13 @@ type _COMPACT_VIRTUAL_DISK_PARAMETERS = COMPACT_VIRTUAL_DISK_PARAMETERS
 type PCOMPACT_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type CREATE_VIRTUAL_DISK_PARAMETERS = struct {
-	FVersion   CREATE_VIRTUAL_DISK_VERSION
-	F__ccgo1_8 struct {
-		FVersion2 [0]struct {
+	F__ccgo_align  [0]uint32
+	FVersion       CREATE_VIRTUAL_DISK_VERSION
+	F__ccgo_align1 [4]byte
+	F__ccgo1_8     struct {
+		F__ccgo_align [0]uint32
+		FVersion2     [0]struct {
+			F__ccgo_align             [0]uint32
 			FUniqueId                 GUID
 			FMaximumSize              ULONGLONG
 			FBlockSizeInBytes         ULONG
@@ -25663,8 +25159,10 @@ type CREATE_VIRTUAL_DISK_PARAMETERS = struct {
 			FParentVirtualStorageType VIRTUAL_STORAGE_TYPE
 			FSourceVirtualStorageType VIRTUAL_STORAGE_TYPE
 			FResiliencyGuid           GUID
+			F__ccgo_pad10             [4]byte
 		}
 		FVersion1 struct {
+			F__ccgo_align      [0]uint32
 			FUniqueId          GUID
 			FMaximumSize       ULONGLONG
 			FBlockSizeInBytes  ULONG
@@ -25681,10 +25179,14 @@ type _CREATE_VIRTUAL_DISK_PARAMETERS = CREATE_VIRTUAL_DISK_PARAMETERS
 type PCREATE_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type EXPAND_VIRTUAL_DISK_PARAMETERS = struct {
-	FVersion   EXPAND_VIRTUAL_DISK_VERSION
-	F__ccgo1_8 struct {
-		FVersion1 struct {
-			FNewSize ULONGLONG
+	F__ccgo_align  [0]uint32
+	FVersion       EXPAND_VIRTUAL_DISK_VERSION
+	F__ccgo_align1 [4]byte
+	F__ccgo1_8     struct {
+		F__ccgo_align [0]uint32
+		FVersion1     struct {
+			F__ccgo_align [0]uint32
+			FNewSize      ULONGLONG
 		}
 	}
 }
@@ -25694,8 +25196,11 @@ type _EXPAND_VIRTUAL_DISK_PARAMETERS = EXPAND_VIRTUAL_DISK_PARAMETERS
 type PEXPAND_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type GET_VIRTUAL_DISK_INFO = struct {
-	FVersion   GET_VIRTUAL_DISK_INFO_VERSION
-	F__ccgo1_8 struct {
+	F__ccgo_align  [0]uint32
+	FVersion       GET_VIRTUAL_DISK_INFO_VERSION
+	F__ccgo_align1 [4]byte
+	F__ccgo1_8     struct {
+		F__ccgo_align   [0]uint32
 		FIdentifier     [0]GUID
 		FParentLocation [0]struct {
 			FParentResolved       WINBOOL
@@ -25722,6 +25227,7 @@ type GET_VIRTUAL_DISK_INFO = struct {
 			FMostRecentId [1]WCHAR
 		}
 		FSize struct {
+			F__ccgo_align [0]uint32
 			FVirtualSize  ULONGLONG
 			FPhysicalSize ULONGLONG
 			FBlockSize    ULONG
@@ -25773,7 +25279,7 @@ type POPEN_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type SET_VIRTUAL_DISK_INFO = struct {
 	FVersion   SET_VIRTUAL_DISK_INFO_VERSION
-	F__ccgo1_8 struct {
+	F__ccgo1_4 struct {
 		FUniqueIdentifier        [0]GUID
 		FParentPathWithDepthInfo [0]struct {
 			FChildDepth     ULONG
@@ -25826,7 +25332,7 @@ type STORAGE_DEPENDENCY_INFO = struct {
 	F__ccgo2_8     struct {
 		FVersion2Entries [0][1]STORAGE_DEPENDENCY_INFO_TYPE_2
 		FVersion1Entries [1]STORAGE_DEPENDENCY_INFO_TYPE_1
-		F__ccgo_pad2     [36]byte
+		F__ccgo_pad2     [20]byte
 	}
 }
 
@@ -25835,7 +25341,9 @@ type _STORAGE_DEPENDENCY_INFO = STORAGE_DEPENDENCY_INFO
 type PSTORAGE_DEPENDENCY_INFO = uintptr
 
 type VIRTUAL_DISK_PROGRESS = struct {
+	F__ccgo_align    [0]uint32
 	FOperationStatus DWORD
+	F__ccgo_align1   [4]byte
 	FCurrentValue    ULONGLONG
 	FCompletionValue ULONGLONG
 }
@@ -25846,7 +25354,7 @@ type PVIRTUAL_DISK_PROGRESS = uintptr
 
 type MIRROR_VIRTUAL_DISK_PARAMETERS = struct {
 	FVersion   MIRROR_VIRTUAL_DISK_VERSION
-	F__ccgo1_8 struct {
+	F__ccgo1_4 struct {
 		FVersion1 struct {
 			FMirrorVirtualDiskPath PCWSTR
 		}
@@ -25858,10 +25366,14 @@ type _MIRROR_VIRTUAL_DISK_PARAMETERS = MIRROR_VIRTUAL_DISK_PARAMETERS
 type PMIRROR_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type RESIZE_VIRTUAL_DISK_PARAMETERS = struct {
-	FVersion   RESIZE_VIRTUAL_DISK_VERSION
-	F__ccgo1_8 struct {
-		FVersion1 struct {
-			FNewSize ULONGLONG
+	F__ccgo_align  [0]uint32
+	FVersion       RESIZE_VIRTUAL_DISK_VERSION
+	F__ccgo_align1 [4]byte
+	F__ccgo1_8     struct {
+		F__ccgo_align [0]uint32
+		FVersion1     struct {
+			F__ccgo_align [0]uint32
+			FNewSize      ULONGLONG
 		}
 	}
 }
@@ -25899,7 +25411,7 @@ type PDELETE_SNAPSHOT_VHDSET_PARAMETERS = uintptr
 
 type MODIFY_VHDSET_PARAMETERS = struct {
 	FVersion   MODIFY_VHDSET_VERSION
-	F__ccgo1_8 struct {
+	F__ccgo1_4 struct {
 		FSnapshotId      [0]GUID
 		FDefaultFilePath [0]PCWSTR
 		FSnapshotPath    struct {
@@ -25914,9 +25426,10 @@ type _MODIFY_VHDSET_PARAMETERS = MODIFY_VHDSET_PARAMETERS
 type PMODIFY_VHDSET_PARAMETERS = uintptr
 
 type QUERY_CHANGES_VIRTUAL_DISK_RANGE = struct {
-	FByteOffset ULONG64
-	FByteLength ULONG64
-	FReserved   ULONG64
+	F__ccgo_align [0]uint32
+	FByteOffset   ULONG64
+	FByteLength   ULONG64
+	FReserved     ULONG64
 }
 
 type _QUERY_CHANGES_VIRTUAL_DISK_RANGE = QUERY_CHANGES_VIRTUAL_DISK_RANGE
@@ -25935,8 +25448,6 @@ type TAKE_SNAPSHOT_VHDSET_PARAMETERS = struct {
 type _TAKE_SNAPSHOT_VHDSET_PARAMETERS = TAKE_SNAPSHOT_VHDSET_PARAMETERS
 
 type PTAKE_SNAPSHOT_VHDSET_PARAMETERS = uintptr
-
-type PUWSTR_C = uintptr
 
 type SERVICE_DESCRIPTIONA = struct {
 	FlpDescription LPSTR
@@ -26641,6 +26152,62 @@ type REGISTERWORDENUMPROCA = uintptr
 
 type REGISTERWORDENUMPROCW = uintptr
 
+type _onexit_t = uintptr
+
+type div_t = struct {
+	Fquot int32
+	Frem  int32
+}
+
+type _div_t = div_t
+
+type ldiv_t = struct {
+	Fquot int32
+	Frem  int32
+}
+
+type _ldiv_t = ldiv_t
+
+type _LDOUBLE = struct {
+	Fld [10]uint8
+}
+
+type _CRT_DOUBLE = struct {
+	F__ccgo_align [0]uint32
+	Fx            float64
+}
+
+type _CRT_FLOAT = struct {
+	Ff float32
+}
+
+type _LONGDOUBLE = struct {
+	F__ccgo_align [0]uint32
+	Fx            float64
+}
+
+type _LDBL12 = struct {
+	Fld12 [12]uint8
+}
+
+type _purecall_handler = uintptr
+
+type _invalid_parameter_handler = uintptr
+
+type lldiv_t = struct {
+	F__ccgo_align [0]uint32
+	Fquot         int64
+	Frem          int64
+}
+
+type _HEAPINFO = struct {
+	F_pentry  uintptr
+	F_size    size_t
+	F_useflag int32
+}
+
+type _heapinfo = _HEAPINFO
+
 /* Static assertion.  Requires support in the compiler.  */
 
 /**
@@ -26948,7 +26515,7 @@ func errorMessage(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	ap = va
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+8, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
+	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+8, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+32))
 	if g.FpLog != 0 {
 		printWithPrefix(tls, g.FpLog, bp, zMsg)
 		libc.Xfflush(tls, g.FpLog)
@@ -26978,7 +26545,7 @@ func fatalError(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	ap = va
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+19, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
+	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+19, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+32))
 	if g.FpLog != 0 {
 		printWithPrefix(tls, g.FpLog, bp, zMsg)
 		libc.Xfflush(tls, g.FpLog)
@@ -27023,7 +26590,7 @@ func logMessage(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	ap = va
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+60, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
+	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+60, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+32))
 	if g.FpLog != 0 {
 		printWithPrefix(tls, g.FpLog, bp, zMsg)
 		libc.Xfflush(tls, g.FpLog)
@@ -27212,7 +26779,7 @@ func stringFree(tls *libc.TLS, p uintptr) {
 	if (*String)(unsafe.Pointer(p)).Fz != 0 {
 		libsqlite3.Xsqlite3_free(tls, (*String)(unsafe.Pointer(p)).Fz)
 	}
-	libc.Xmemset(tls, p, 0, uint64(16))
+	libc.Xmemset(tls, p, 0, uint32(12))
 }
 
 // C documentation
@@ -27234,8 +26801,8 @@ func stringAppend(tls *libc.TLS, p uintptr, z uintptr, n int32) {
 		(*String)(unsafe.Pointer(p)).Fz = zNew
 		(*String)(unsafe.Pointer(p)).FnAlloc = nAlloc
 	}
-	libc.Xmemcpy(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), z, uint64(uint64(n)))
-	*(*int32)(unsafe.Pointer(p + 8)) += n
+	libc.Xmemcpy(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), z, uint32(uint32(n)))
+	*(*int32)(unsafe.Pointer(p + 4)) += n
 	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).Fz + uintptr((*String)(unsafe.Pointer(p)).Fn))) = 0
 }
 
@@ -27317,7 +26884,7 @@ func evalCallback(tls *libc.TLS, pCData uintptr, argc int32, argv uintptr, azCol
 		if !(i < argc) {
 			break
 		}
-		stringAppendTerm(tls, p, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+		stringAppendTerm(tls, p, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)))
 		goto _1
 	_1:
 		;
@@ -27338,7 +26905,7 @@ func evalSql(tls *libc.TLS, p uintptr, zFormat uintptr, va uintptr) (r int32) {
 	var ap va_list
 	var rc int32
 	var zSql uintptr
-	var _ /* zErr at bp+8 */ [30]int8
+	var _ /* zErr at bp+4 */ [30]int8
 	var _ /* zErrMsg at bp+0 */ uintptr
 	_, _, _ = ap, rc, zSql
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
@@ -27348,8 +26915,8 @@ func evalSql(tls *libc.TLS, p uintptr, zFormat uintptr, va uintptr) (r int32) {
 	rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, __ccgo_fp(evalCallback), p, bp)
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	if rc != 0 {
-		libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp+8, __ccgo_ts+151, libc.VaList(bp+48, rc))
-		stringAppendTerm(tls, p, bp+8)
+		libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp+4, __ccgo_ts+151, libc.VaList(bp+48, rc))
+		stringAppendTerm(tls, p, bp+4)
 		if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
 			stringAppendTerm(tls, p, *(*uintptr)(unsafe.Pointer(bp)))
 			libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp)))
@@ -27364,22 +26931,22 @@ func evalSql(tls *libc.TLS, p uintptr, zFormat uintptr, va uintptr) (r int32) {
 //	** Auxiliary SQL function to recursively evaluate SQL.
 //	*/
 func evalFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
-	bp := tls.Alloc(32)
-	defer tls.Free(32)
+	bp := tls.Alloc(16)
+	defer tls.Free(16)
 	var db, zSql uintptr
 	var rc int32
 	var _ /* res at bp+0 */ String
-	var _ /* zErrMsg at bp+16 */ uintptr
+	var _ /* zErrMsg at bp+12 */ uintptr
 	_, _, _ = db, rc, zSql
 	db = libsqlite3.Xsqlite3_context_db_handle(tls, context)
 	zSql = libsqlite3.Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv)))
-	*(*uintptr)(unsafe.Pointer(bp + 16)) = uintptr(0)
+	*(*uintptr)(unsafe.Pointer(bp + 12)) = uintptr(0)
 	_ = argc
-	libc.Xmemset(tls, bp, 0, uint64(16))
-	rc = libsqlite3.Xsqlite3_exec(tls, db, zSql, __ccgo_fp(evalCallback), bp, bp+16)
-	if *(*uintptr)(unsafe.Pointer(bp + 16)) != 0 {
-		libsqlite3.Xsqlite3_result_error(tls, context, *(*uintptr)(unsafe.Pointer(bp + 16)), -int32(1))
-		libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 16)))
+	libc.Xmemset(tls, bp, 0, uint32(12))
+	rc = libsqlite3.Xsqlite3_exec(tls, db, zSql, __ccgo_fp(evalCallback), bp, bp+12)
+	if *(*uintptr)(unsafe.Pointer(bp + 12)) != 0 {
+		libsqlite3.Xsqlite3_result_error(tls, context, *(*uintptr)(unsafe.Pointer(bp + 12)), -int32(1))
+		libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 	} else {
 		if rc != 0 {
 			libsqlite3.Xsqlite3_result_error_code(tls, context, rc)
@@ -27493,37 +27060,37 @@ func finishScript(tls *libc.TLS, iClient int32, taskId int32, bShutdown int32) (
 //	** is a no-op.
 //	*/
 func startClient(tls *libc.TLS, iClient int32) {
-	bp := tls.Alloc(176)
-	defer tls.Free(176)
+	bp := tls.Alloc(128)
+	defer tls.Free(128)
 	var rc int32
 	var zSys uintptr
-	var _ /* processInfo at bp+104 */ PROCESS_INFORMATION
+	var _ /* processInfo at bp+68 */ PROCESS_INFORMATION
 	var _ /* startupInfo at bp+0 */ STARTUPINFOA
 	_, _ = rc, zSys
-	runSql(tls, __ccgo_ts+701, libc.VaList(bp+136, iClient))
+	runSql(tls, __ccgo_ts+701, libc.VaList(bp+96, iClient))
 	if libsqlite3.Xsqlite3_changes(tls, g.Fdb) != 0 {
-		zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+743, libc.VaList(bp+136, g.Fargv0, g.FzDbFile, iClient, g.FiTrace))
+		zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+743, libc.VaList(bp+96, g.Fargv0, g.FzDbFile, iClient, g.FiTrace))
 		if g.FbSqlTrace != 0 {
-			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+774, libc.VaList(bp+136, zSys))
+			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+774, libc.VaList(bp+96, zSys))
 		}
 		if g.FbSync != 0 {
-			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+788, libc.VaList(bp+136, zSys))
+			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+788, libc.VaList(bp+96, zSys))
 		}
 		if g.FzVfs != 0 {
-			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+798, libc.VaList(bp+136, zSys, g.FzVfs))
+			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+798, libc.VaList(bp+96, zSys, g.FzVfs))
 		}
 		if g.FiTrace >= int32(2) {
-			logMessage(tls, __ccgo_ts+812, libc.VaList(bp+136, zSys))
+			logMessage(tls, __ccgo_ts+812, libc.VaList(bp+96, zSys))
 		}
-		libc.Xmemset(tls, bp, 0, uint64(104))
-		(*(*STARTUPINFOA)(unsafe.Pointer(bp))).Fcb = uint32(104)
-		libc.Xmemset(tls, bp+104, 0, uint64(24))
-		rc = libc.XCreateProcessA(tls, libc.UintptrFromInt32(0), zSys, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), FALSE, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, bp+104)
+		libc.Xmemset(tls, bp, 0, uint32(68))
+		(*(*STARTUPINFOA)(unsafe.Pointer(bp))).Fcb = uint32(68)
+		libc.Xmemset(tls, bp+68, 0, uint32(16))
+		rc = libc.XCreateProcessA(tls, libc.UintptrFromInt32(0), zSys, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), FALSE, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, bp+68)
 		if rc != 0 {
-			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).FhThread)
-			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).FhProcess)
+			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 68))).FhThread)
+			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 68))).FhProcess)
 		} else {
-			errorMessage(tls, __ccgo_ts+825, libc.VaList(bp+136, libc.XGetLastError(tls)))
+			errorMessage(tls, __ccgo_ts+825, libc.VaList(bp+96, libc.XGetLastError(tls)))
 		}
 		libsqlite3.Xsqlite3_free(tls, zSys)
 	}
@@ -27548,7 +27115,7 @@ func readFile(tls *libc.TLS, zFilename uintptr) (r uintptr) {
 	sz = libc.Xftell(tls, in)
 	libc.Xrewind(tls, in)
 	z = libsqlite3.Xsqlite3_malloc(tls, int32(sz+int32(1)))
-	sz = int32(libc.Xfread(tls, z, uint64(1), uint64(uint64(sz)), in))
+	sz = int32(libc.Xfread(tls, z, uint32(1), uint32(uint32(sz)), in))
 	*(*int8)(unsafe.Pointer(z + uintptr(sz))) = 0
 	libc.Xfclose(tls, in)
 	return z
@@ -27691,7 +27258,7 @@ func findEnd(tls *libc.TLS, z uintptr, pnLine uintptr) (r int32) {
 	var n int32
 	_ = n
 	n = 0
-	for *(*int8)(unsafe.Pointer(z + uintptr(n))) != 0 && (libc.Xstrncmp(tls, z+uintptr(n), __ccgo_ts+900, uint64(5)) != 0 || !(libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(z + uintptr(n+int32(5))))))) != 0)) {
+	for *(*int8)(unsafe.Pointer(z + uintptr(n))) != 0 && (libc.Xstrncmp(tls, z+uintptr(n), __ccgo_ts+900, uint32(5)) != 0 || !(libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(z + uintptr(n+int32(5))))))) != 0)) {
 		n += tokenLength(tls, z+uintptr(n), pnLine)
 	}
 	return n
@@ -27710,10 +27277,10 @@ func findEndif(tls *libc.TLS, z uintptr, stopAtElse int32, pnLine uintptr) (r in
 	n = 0
 	for *(*int8)(unsafe.Pointer(z + uintptr(n))) != 0 {
 		len1 = tokenLength(tls, z+uintptr(n), pnLine)
-		if libc.Xstrncmp(tls, z+uintptr(n), __ccgo_ts+906, uint64(7)) == 0 && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(z + uintptr(n+int32(7))))))) != 0 || stopAtElse != 0 && libc.Xstrncmp(tls, z+uintptr(n), __ccgo_ts+914, uint64(6)) == 0 && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(z + uintptr(n+int32(6))))))) != 0 {
+		if libc.Xstrncmp(tls, z+uintptr(n), __ccgo_ts+906, uint32(7)) == 0 && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(z + uintptr(n+int32(7))))))) != 0 || stopAtElse != 0 && libc.Xstrncmp(tls, z+uintptr(n), __ccgo_ts+914, uint32(6)) == 0 && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(z + uintptr(n+int32(6))))))) != 0 {
 			return n + len1
 		}
-		if libc.Xstrncmp(tls, z+uintptr(n), __ccgo_ts+921, uint64(4)) == 0 && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(z + uintptr(n+int32(4))))))) != 0 {
+		if libc.Xstrncmp(tls, z+uintptr(n), __ccgo_ts+921, uint32(4)) == 0 && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(z + uintptr(n+int32(4))))))) != 0 {
 			skip = findEndif(tls, z+uintptr(n)+uintptr(len1), 0, pnLine)
 			n += skip + len1
 		} else {
@@ -27844,22 +27411,22 @@ var cnt int32
 //	** Run a script.
 //	*/
 func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFilename uintptr) {
-	bp := tls.Alloc(1312)
-	defer tls.Free(1312)
+	bp := tls.Alloc(1296)
+	defer tls.Free(1296)
 	var c, iBegin, iEnd, iNewClient, iTarget, iTimeout, ii, isGlob, j, jj, jj1, jj2, jj3, k, len1, n, nArg, prevLine, rc, rc1, v1, v11, v12, v4 int32
 	var pStmt, zAns, zAns1, zCopy, zNewFile, zNewScript, zSql, zSql1, zTName, zTask, zToDel, v8 uintptr
-	var _ /* azArg at bp+1054 */ [2][100]int8
+	var _ /* azArg at bp+1046 */ [2][100]int8
 	var _ /* lineno at bp+0 */ int32
-	var _ /* sResult at bp+8 */ String
-	var _ /* zCmd at bp+24 */ [30]int8
-	var _ /* zError at bp+54 */ [1000]int8
+	var _ /* sResult at bp+4 */ String
+	var _ /* zCmd at bp+16 */ [30]int8
+	var _ /* zError at bp+46 */ [1000]int8
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = c, iBegin, iEnd, iNewClient, iTarget, iTimeout, ii, isGlob, j, jj, jj1, jj2, jj3, k, len1, n, nArg, pStmt, prevLine, rc, rc1, zAns, zAns1, zCopy, zNewFile, zNewScript, zSql, zSql1, zTName, zTask, zToDel, v1, v11, v12, v4, v8
 	*(*int32)(unsafe.Pointer(bp)) = int32(1)
 	prevLine = int32(1)
 	ii = 0
 	iBegin = 0
-	libc.Xmemset(tls, bp+8, 0, uint64(16))
-	stringReset(tls, bp+8)
+	libc.Xmemset(tls, bp+4, 0, uint32(12))
+	stringReset(tls, bp+4)
 	for {
 		v1 = int32(*(*int8)(unsafe.Pointer(zScript + uintptr(ii))))
 		c = v1
@@ -27878,16 +27445,16 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 		}
 		/* Run any prior SQL before processing the new --command */
 		if ii > iBegin {
-			zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1264, ii-iBegin, zScript+uintptr(iBegin)))
-			evalSql(tls, bp+8, zSql, 0)
+			zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1256, ii-iBegin, zScript+uintptr(iBegin)))
+			evalSql(tls, bp+4, zSql, 0)
 			libsqlite3.Xsqlite3_free(tls, zSql)
 			iBegin = ii + len1
 		}
 		/* Parse the --command */
 		if g.FiTrace >= int32(2) {
-			logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1264, len1, zScript+uintptr(ii)))
+			logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1256, len1, zScript+uintptr(ii)))
 		}
-		n = extractToken(tls, zScript+uintptr(ii)+uintptr(2), len1-int32(2), bp+24, int32(30))
+		n = extractToken(tls, zScript+uintptr(ii)+uintptr(2), len1-int32(2), bp+16, int32(30))
 		nArg = 0
 		for {
 			if !(n < len1-int32(2) && nArg < int32(MX_ARG)) {
@@ -27899,7 +27466,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			if n >= len1-int32(2) {
 				break
 			}
-			n += extractToken(tls, zScript+uintptr(ii)+uintptr(2)+uintptr(n), len1-int32(2)-n, bp+1054+uintptr(nArg)*100, int32(100))
+			n += extractToken(tls, zScript+uintptr(ii)+uintptr(2)+uintptr(n), len1-int32(2)-n, bp+1046+uintptr(nArg)*100, int32(100))
 			goto _2
 		_2:
 			;
@@ -27912,7 +27479,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			}
 			v4 = j
 			j++
-			*(*int8)(unsafe.Pointer(bp + 1054 + uintptr(v4)*100)) = 0
+			*(*int8)(unsafe.Pointer(bp + 1046 + uintptr(v4)*100)) = 0
 			goto _3
 		_3:
 			;
@@ -27923,8 +27490,8 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 		 **
 		 ** Pause for N milliseconds
 		 */
-		if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1211) == 0 {
-			libsqlite3.Xsqlite3_sleep(tls, libc.Xatoi(tls, bp+1054))
+		if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1211) == 0 {
+			libsqlite3.Xsqlite3_sleep(tls, libc.Xatoi(tls, bp+1046))
 		} else {
 			/*
 			 **   --exit N
@@ -27932,8 +27499,8 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			 ** Exit this process.  If N>0 then exit without shutting down
 			 ** SQLite.  (In other words, simulate a crash.)
 			 */
-			if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1217) == 0 {
-				rc = libc.Xatoi(tls, bp+1054)
+			if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1217) == 0 {
+				rc = libc.Xatoi(tls, bp+1046)
 				finishScript(tls, iClient, taskId, int32(1))
 				if rc == 0 {
 					libsqlite3.Xsqlite3_close(tls, g.Fdb)
@@ -27946,11 +27513,11 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 				 ** Begin a new test case.  Announce in the log that the test case
 				 ** has begun.
 				 */
-				if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1222) == 0 {
+				if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1222) == 0 {
 					if g.FiTrace == int32(1) {
-						logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1264, len1-int32(1), zScript+uintptr(ii)))
+						logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1256, len1-int32(1), zScript+uintptr(ii)))
 					}
-					stringReset(tls, bp+8)
+					stringReset(tls, bp+4)
 				} else {
 					/*
 					 **   --finish
@@ -27958,7 +27525,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 					 ** Mark the current task as having finished, even if it is not.
 					 ** This can be used in conjunction with --exit to simulate a crash.
 					 */
-					if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1231) == 0 && iClient > 0 {
+					if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1231) == 0 && iClient > 0 {
 						finishScript(tls, iClient, taskId, int32(1))
 					} else {
 						/*
@@ -27966,15 +27533,15 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 						 **
 						 ** Reset accumulated results back to an empty string
 						 */
-						if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1238) == 0 {
-							stringReset(tls, bp+8)
+						if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1238) == 0 {
+							stringReset(tls, bp+4)
 						} else {
 							/*
 							 **  --match ANSWER...
 							 **
 							 ** Check to see if output matches ANSWER.  Report an error if not.
 							 */
-							if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1244) == 0 {
+							if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1244) == 0 {
 								zAns = zScript + uintptr(ii)
 								jj = int32(7)
 								for {
@@ -27987,11 +27554,11 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									jj++
 								}
 								zAns += uintptr(jj)
-								if len1-jj-int32(1) != (*(*String)(unsafe.Pointer(bp + 8))).Fn || libc.Xstrncmp(tls, (*(*String)(unsafe.Pointer(bp + 8))).Fz, zAns, uint64(len1-jj-int32(1))) != 0 {
-									errorMessage(tls, __ccgo_ts+1250, libc.VaList(bp+1264, prevLine, zFilename, len1-jj-int32(1), zAns, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
+								if len1-jj-int32(1) != (*(*String)(unsafe.Pointer(bp + 4))).Fn || libc.Xstrncmp(tls, (*(*String)(unsafe.Pointer(bp + 4))).Fz, zAns, uint32(len1-jj-int32(1))) != 0 {
+									errorMessage(tls, __ccgo_ts+1250, libc.VaList(bp+1256, prevLine, zFilename, len1-jj-int32(1), zAns, (*(*String)(unsafe.Pointer(bp + 4))).Fz))
 								}
 								g.FnTest++
-								stringReset(tls, bp+8)
+								stringReset(tls, bp+4)
 							} else {
 								/*
 								 **  --glob ANSWER...
@@ -28000,9 +27567,9 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 								 ** Check to see if output does or does not match the glob pattern
 								 ** ANSWER.
 								 */
-								if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1295) == 0 || libc.Xstrcmp(tls, bp+24, __ccgo_ts+1300) == 0 {
+								if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1295) == 0 || libc.Xstrcmp(tls, bp+16, __ccgo_ts+1300) == 0 {
 									zAns1 = zScript + uintptr(ii)
-									isGlob = libc.BoolInt32(int32((*(*[30]int8)(unsafe.Pointer(bp + 24)))[0]) == int32('g'))
+									isGlob = libc.BoolInt32(int32((*(*[30]int8)(unsafe.Pointer(bp + 16)))[0]) == int32('g'))
 									jj1 = int32(9) - int32(3)*isGlob
 									for {
 										if !(jj1 < len1-int32(1) && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(zAns1 + uintptr(jj1)))))) != 0) {
@@ -28014,30 +27581,30 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 										jj1++
 									}
 									zAns1 += uintptr(jj1)
-									zCopy = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1264, len1-jj1-int32(1), zAns1))
-									if libc.BoolInt32(libsqlite3.Xsqlite3_strglob(tls, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).Fz) == 0)^isGlob != 0 {
-										errorMessage(tls, __ccgo_ts+1308, libc.VaList(bp+1264, prevLine, zFilename, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
+									zCopy = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1256, len1-jj1-int32(1), zAns1))
+									if libc.BoolInt32(libsqlite3.Xsqlite3_strglob(tls, zCopy, (*(*String)(unsafe.Pointer(bp + 4))).Fz) == 0)^isGlob != 0 {
+										errorMessage(tls, __ccgo_ts+1308, libc.VaList(bp+1256, prevLine, zFilename, zCopy, (*(*String)(unsafe.Pointer(bp + 4))).Fz))
 									}
 									libsqlite3.Xsqlite3_free(tls, zCopy)
 									g.FnTest++
-									stringReset(tls, bp+8)
+									stringReset(tls, bp+4)
 								} else {
 									/*
 									 **  --output
 									 **
 									 ** Output the result of the previous SQL.
 									 */
-									if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1351) == 0 {
-										logMessage(tls, __ccgo_ts+438, libc.VaList(bp+1264, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
+									if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1351) == 0 {
+										logMessage(tls, __ccgo_ts+438, libc.VaList(bp+1256, (*(*String)(unsafe.Pointer(bp + 4))).Fz))
 									} else {
 										/*
 										 **  --source FILENAME
 										 **
 										 ** Run a subscript from a separate file.
 										 */
-										if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1358) == 0 {
+										if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1358) == 0 {
 											zToDel = uintptr(0)
-											zNewFile = bp + 1054
+											zNewFile = bp + 1046
 											if !(int32(*(*int8)(unsafe.Pointer(zNewFile))) == int32('/') || int32(*(*int8)(unsafe.Pointer(zNewFile))) == int32('\\')) {
 												k = int32(libc.Xstrlen(tls, zFilename)) - int32(1)
 												for {
@@ -28050,19 +27617,19 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													k--
 												}
 												if k > 0 {
-													v8 = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1365, libc.VaList(bp+1264, k, zFilename, zNewFile))
+													v8 = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1365, libc.VaList(bp+1256, k, zFilename, zNewFile))
 													zToDel = v8
 													zNewFile = v8
 												}
 											}
 											zNewScript = readFile(tls, zNewFile)
 											if g.FiTrace != 0 {
-												logMessage(tls, __ccgo_ts+1373, libc.VaList(bp+1264, zNewFile))
+												logMessage(tls, __ccgo_ts+1373, libc.VaList(bp+1256, zNewFile))
 											}
 											runScript(tls, 0, 0, zNewScript, zNewFile)
 											libsqlite3.Xsqlite3_free(tls, zNewScript)
 											if g.FiTrace != 0 {
-												logMessage(tls, __ccgo_ts+1392, libc.VaList(bp+1264, zNewFile))
+												logMessage(tls, __ccgo_ts+1392, libc.VaList(bp+1256, zNewFile))
 											}
 											libsqlite3.Xsqlite3_free(tls, zToDel)
 										} else {
@@ -28071,7 +27638,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 											 **
 											 ** Output the remainder of the line to the log file
 											 */
-											if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1409) == 0 {
+											if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1409) == 0 {
 												jj2 = int32(7)
 												for {
 													if !(jj2 < len1 && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(zScript + uintptr(ii+jj2)))))) != 0) {
@@ -28082,14 +27649,14 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													;
 													jj2++
 												}
-												logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1264, len1-jj2, zScript+uintptr(ii)+uintptr(jj2)))
+												logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1256, len1-jj2, zScript+uintptr(ii)+uintptr(jj2)))
 											} else {
 												/*
 												 **  --if EXPR
 												 **
 												 ** Skip forward to the next matching --endif or --else if EXPR is false.
 												 */
-												if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1415) == 0 {
+												if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1415) == 0 {
 													jj3 = int32(4)
 													for {
 														if !(jj3 < len1 && libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(zScript + uintptr(ii+jj3)))))) != 0) {
@@ -28100,7 +27667,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 														;
 														jj3++
 													}
-													pStmt = prepareSql(tls, __ccgo_ts+1418, libc.VaList(bp+1264, len1-jj3, zScript+uintptr(ii)+uintptr(jj3)))
+													pStmt = prepareSql(tls, __ccgo_ts+1418, libc.VaList(bp+1256, len1-jj3, zScript+uintptr(ii)+uintptr(jj3)))
 													rc1 = libsqlite3.Xsqlite3_step(tls, pStmt)
 													if rc1 != int32(SQLITE_ROW) || libsqlite3.Xsqlite3_column_int(tls, pStmt, 0) == 0 {
 														ii += findEndif(tls, zScript+uintptr(ii)+uintptr(len1), int32(1), bp)
@@ -28113,7 +27680,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													 ** This command can only be encountered if currently inside an --if that
 													 ** is true.  Skip forward to the next matching --endif.
 													 */
-													if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1430) == 0 {
+													if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1430) == 0 {
 														ii += findEndif(tls, zScript+uintptr(ii)+uintptr(len1), 0, bp)
 													} else {
 														/*
@@ -28122,7 +27689,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 														 ** This command can only be encountered if currently inside an --if that
 														 ** is true or an --else of a false if.  This is a no-op.
 														 */
-														if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1435) == 0 {
+														if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1435) == 0 {
 															/* no-op */
 														} else {
 															/*
@@ -28130,8 +27697,8 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 															 **
 															 ** Start up the given client.
 															 */
-															if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1441) == 0 && iClient == 0 {
-																iNewClient = libc.Xatoi(tls, bp+1054)
+															if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1441) == 0 && iClient == 0 {
+																iNewClient = libc.Xatoi(tls, bp+1046)
 																if iNewClient > 0 {
 																	startClient(tls, iNewClient)
 																}
@@ -28143,15 +27710,15 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 																 ** "all" then wait for all clients to complete.  Wait no longer than
 																 ** TIMEOUT milliseconds (default 10,000)
 																 */
-																if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1447) == 0 && iClient == 0 {
+																if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1447) == 0 && iClient == 0 {
 																	if nArg >= int32(2) {
-																		v11 = libc.Xatoi(tls, bp+1054+1*100)
+																		v11 = libc.Xatoi(tls, bp+1046+1*100)
 																	} else {
 																		v11 = int32(10000)
 																	}
 																	iTimeout = v11
-																	libsqlite3.Xsqlite3_snprintf(tls, int32(1000), bp+54, __ccgo_ts+1452, libc.VaList(bp+1264, prevLine, zFilename))
-																	waitForClient(tls, libc.Xatoi(tls, bp+1054), iTimeout, bp+54)
+																	libsqlite3.Xsqlite3_snprintf(tls, int32(1000), bp+46, __ccgo_ts+1452, libc.VaList(bp+1256, prevLine, zFilename))
+																	waitForClient(tls, libc.Xatoi(tls, bp+1046), iTimeout, bp+46)
 																} else {
 																	/*
 																	 **  --task CLIENT
@@ -28161,20 +27728,20 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 																	 ** Assign work to a client.  Start the client if it is not running
 																	 ** already.
 																	 */
-																	if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1467) == 0 && iClient == 0 {
-																		iTarget = libc.Xatoi(tls, bp+1054)
+																	if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1467) == 0 && iClient == 0 {
+																		iTarget = libc.Xatoi(tls, bp+1046)
 																		iEnd = findEnd(tls, zScript+uintptr(ii)+uintptr(len1), bp)
 																		if iTarget < 0 {
-																			errorMessage(tls, __ccgo_ts+1472, libc.VaList(bp+1264, prevLine, zFilename, iTarget))
+																			errorMessage(tls, __ccgo_ts+1472, libc.VaList(bp+1256, prevLine, zFilename, iTarget))
 																		} else {
-																			zTask = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1264, iEnd, zScript+uintptr(ii)+uintptr(len1)))
+																			zTask = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1256, iEnd, zScript+uintptr(ii)+uintptr(len1)))
 																			if nArg > int32(1) {
-																				zTName = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+438, libc.VaList(bp+1264, bp+1054+1*100))
+																				zTName = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+438, libc.VaList(bp+1256, bp+1046+1*100))
 																			} else {
-																				zTName = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1509, libc.VaList(bp+1264, filenameTail(tls, zFilename), prevLine))
+																				zTName = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1509, libc.VaList(bp+1256, filenameTail(tls, zFilename), prevLine))
 																			}
 																			startClient(tls, iTarget)
-																			runSql(tls, __ccgo_ts+1515, libc.VaList(bp+1264, iTarget, zTask, zTName))
+																			runSql(tls, __ccgo_ts+1515, libc.VaList(bp+1256, iTarget, zTask, zTName))
 																			libsqlite3.Xsqlite3_free(tls, zTask)
 																			libsqlite3.Xsqlite3_free(tls, zTName)
 																		}
@@ -28188,7 +27755,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 																		 ** This command calls "test_breakpoint()" which is a routine provided
 																		 ** as a convenient place to set a debugger breakpoint.
 																		 */
-																		if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1571) == 0 {
+																		if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1571) == 0 {
 																			test_breakpoint(tls)
 																		} else {
 																			/*
@@ -28196,16 +27763,16 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 																			 **
 																			 ** Turn display of SQL errors on and off.
 																			 */
-																			if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1582) == 0 {
+																			if libc.Xstrcmp(tls, bp+16, __ccgo_ts+1582) == 0 {
 																				if nArg >= int32(1) {
-																					v12 = libc.BoolInt32(!(booleanValue(tls, bp+1054) != 0))
+																					v12 = libc.BoolInt32(!(booleanValue(tls, bp+1046) != 0))
 																				} else {
 																					v12 = int32(1)
 																				}
 																				g.FbIgnoreSqlErrors = v12
 																			} else {
 																				/* error */
-																				errorMessage(tls, __ccgo_ts+1598, libc.VaList(bp+1264, prevLine, zFilename, bp+24))
+																				errorMessage(tls, __ccgo_ts+1598, libc.VaList(bp+1256, prevLine, zFilename, bp+16))
 																			}
 																		}
 																	}
@@ -28227,11 +27794,11 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 		ii += len1
 	}
 	if iBegin < ii {
-		zSql1 = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1264, ii-iBegin, zScript+uintptr(iBegin)))
+		zSql1 = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1256, ii-iBegin, zScript+uintptr(iBegin)))
 		runSql(tls, zSql1, 0)
 		libsqlite3.Xsqlite3_free(tls, zSql1)
 	}
-	stringFree(tls, bp+8)
+	stringFree(tls, bp+4)
 }
 
 // C documentation
@@ -28260,7 +27827,7 @@ func findOption(tls *libc.TLS, azArg uintptr, pnArg uintptr, zOption uintptr, ha
 		if i+hasArg >= nArg {
 			break
 		}
-		z = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8))
+		z = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*4))
 		if int32(*(*int8)(unsafe.Pointer(z))) != int32('-') {
 			goto _1
 		}
@@ -28276,9 +27843,9 @@ func findOption(tls *libc.TLS, azArg uintptr, pnArg uintptr, zOption uintptr, ha
 				fatalError(tls, __ccgo_ts+1634, libc.VaList(bp+8, z))
 			}
 			if hasArg != 0 {
-				zReturn = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i+int32(1))*8))
+				zReturn = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i+int32(1))*4))
 			} else {
-				zReturn = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8))
+				zReturn = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*4))
 			}
 			j = i + int32(1) + libc.BoolInt32(hasArg != 0)
 			for j < nArg {
@@ -28286,7 +27853,7 @@ func findOption(tls *libc.TLS, azArg uintptr, pnArg uintptr, zOption uintptr, ha
 				i++
 				v3 = j
 				j++
-				*(*uintptr)(unsafe.Pointer(azArg + uintptr(v2)*8)) = *(*uintptr)(unsafe.Pointer(azArg + uintptr(v3)*8))
+				*(*uintptr)(unsafe.Pointer(azArg + uintptr(v2)*4)) = *(*uintptr)(unsafe.Pointer(azArg + uintptr(v3)*4))
 			}
 			*(*int32)(unsafe.Pointer(pnArg)) = i
 			return zReturn
@@ -28368,7 +27935,7 @@ _2:
 			break
 		}
 		v4 = __ccgo_ts + 2321
-		libc.VaList(bp, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)))
+		libc.VaList(bp, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*4)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v4, __local_argv)
 		_ = __local_argv
@@ -28393,16 +27960,16 @@ _7:
 }
 
 func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
-	bp := tls.Alloc(352)
-	defer tls.Free(352)
+	bp := tls.Alloc(336)
+	defer tls.Free(336)
 	var __local_argv, __local_argv1 __builtin_va_list
 	var __retval, __retval1, i, iClient, iRep, iTimeout, iTmout, nRep, nTry, openFlags, rc, v16, v25, v26 int32
 	var pStmt, zCOption, zClient, zJMode, zNRep, zTmout, zTrace, v1, v10, v13, v14, v19, v20, v22, v27, v29, v3, v32, v34, v6, v8 uintptr
 	var v17 bool
 	var _ /* n at bp+288 */ int32
-	var _ /* taskId at bp+304 */ int32
-	var _ /* zScript at bp+296 */ uintptr
-	var _ /* zTaskName at bp+312 */ uintptr
+	var _ /* taskId at bp+296 */ int32
+	var _ /* zScript at bp+292 */ uintptr
+	var _ /* zTaskName at bp+300 */ uintptr
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, i, iClient, iRep, iTimeout, iTmout, nRep, nTry, openFlags, pStmt, rc, zCOption, zClient, zJMode, zNRep, zTmout, zTrace, v1, v10, v13, v14, v16, v17, v19, v20, v22, v25, v26, v27, v29, v3, v32, v34, v6, v8
 	openFlags = int32(SQLITE_OPEN_READWRITE)
 	nRep = int32(1)
@@ -28412,7 +27979,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	if argc < int32(2) {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
-	g.FzDbFile = *(*uintptr)(unsafe.Pointer(argv + 1*8))
+	g.FzDbFile = *(*uintptr)(unsafe.Pointer(argv + 1*4))
 	if strglob(tls, __ccgo_ts+2327, g.FzDbFile) != 0 {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
@@ -28429,32 +27996,32 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		libc.Xexit(tls, int32(1))
 	}
 	*(*int32)(unsafe.Pointer(bp + 288)) = argc - int32(2)
-	libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+64, __ccgo_ts+2479, libc.VaList(bp+328, int32(libc.XGetCurrentProcessId(tls))))
-	zJMode = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2491, int32(1))
-	zNRep = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2503, int32(1))
+	libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+32, __ccgo_ts+2479, libc.VaList(bp+312, int32(libc.XGetCurrentProcessId(tls))))
+	zJMode = findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2491, int32(1))
+	zNRep = findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2503, int32(1))
 	if zNRep != 0 {
 		nRep = libc.Xatoi(tls, zNRep)
 	}
 	if nRep < int32(1) {
 		nRep = int32(1)
 	}
-	g.FzVfs = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2510, int32(1))
-	zClient = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2514, int32(1))
-	g.FzErrLog = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2521, int32(1))
-	g.FzLog = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2528, int32(1))
-	zTrace = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2532, int32(1))
+	g.FzVfs = findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2510, int32(1))
+	zClient = findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2514, int32(1))
+	g.FzErrLog = findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2521, int32(1))
+	g.FzLog = findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2528, int32(1))
+	zTrace = findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2532, int32(1))
 	if zTrace != 0 {
 		g.FiTrace = libc.Xatoi(tls, zTrace)
 	}
-	if findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2538, 0) != uintptr(0) {
+	if findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2538, 0) != uintptr(0) {
 		g.FiTrace = 0
 	}
-	zTmout = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2544, int32(1))
+	zTmout = findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2544, int32(1))
 	if zTmout != 0 {
 		iTmout = libc.Xatoi(tls, zTmout)
 	}
-	g.FbSqlTrace = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2552, 0) != uintptr(0))
-	g.FbSync = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2561, 0) != uintptr(0))
+	g.FbSqlTrace = libc.BoolInt32(findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2552, 0) != uintptr(0))
+	g.FbSync = libc.BoolInt32(findOption(tls, argv+uintptr(2)*4, bp+288, __ccgo_ts+2561, 0) != uintptr(0))
 	if g.FzErrLog != 0 {
 		g.FpErrLog = libc.Xfopen(tls, g.FzErrLog, __ccgo_ts+2566)
 	} else {
@@ -28465,13 +28032,13 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	} else {
 		g.FpLog = libc.X__acrt_iob_func(tls, uint32(1))
 	}
-	libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_LOG), libc.VaList(bp+328, __ccgo_fp(sqlErrorCallback), 0))
+	libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_LOG), libc.VaList(bp+312, __ccgo_fp(sqlErrorCallback), 0))
 	if zClient != 0 {
 		iClient = libc.Xatoi(tls, zClient)
 		if iClient < int32(1) {
-			fatalError(tls, __ccgo_ts+2568, libc.VaList(bp+328, iClient))
+			fatalError(tls, __ccgo_ts+2568, libc.VaList(bp+312, iClient))
 		}
-		libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+64, __ccgo_ts+2595, libc.VaList(bp+328, int32(libc.XGetCurrentProcessId(tls)), iClient))
+		libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+32, __ccgo_ts+2595, libc.VaList(bp+312, int32(libc.XGetCurrentProcessId(tls)), iClient))
 	} else {
 		nTry = 0
 		if g.FiTrace > 0 {
@@ -28490,7 +28057,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 					break
 				}
 				v6 = __ccgo_ts + 2321
-				libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+				libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)))
 				__local_argv1 = bp
 				__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v6, __local_argv1)
 				_ = __local_argv1
@@ -28575,13 +28142,13 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 		}
 		if rc != 0 {
-			fatalError(tls, __ccgo_ts+2775, libc.VaList(bp+328, g.FzDbFile, nTry))
+			fatalError(tls, __ccgo_ts+2775, libc.VaList(bp+312, g.FzDbFile, nTry))
 		}
 		openFlags |= int32(SQLITE_OPEN_CREATE)
 	}
-	rc = libsqlite3.Xsqlite3_open_v2(tls, g.FzDbFile, uintptr(unsafe.Pointer(&g))+24, openFlags, g.FzVfs)
+	rc = libsqlite3.Xsqlite3_open_v2(tls, g.FzDbFile, uintptr(unsafe.Pointer(&g))+12, openFlags, g.FzVfs)
 	if rc != 0 {
-		fatalError(tls, __ccgo_ts+2816, libc.VaList(bp+328, g.FzDbFile))
+		fatalError(tls, __ccgo_ts+2816, libc.VaList(bp+312, g.FzDbFile))
 	}
 	if iTmout > 0 {
 		libsqlite3.Xsqlite3_busy_timeout(tls, g.Fdb, iTmout)
@@ -28599,7 +28166,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			;
 			zJMode = __ccgo_ts + 2890
 		}
-		runSql(tls, __ccgo_ts+2897, libc.VaList(bp+328, zJMode))
+		runSql(tls, __ccgo_ts+2897, libc.VaList(bp+312, zJMode))
 	}
 	if !(g.FbSync != 0) {
 		trySql(tls, __ccgo_ts+2921, 0)
@@ -28614,26 +28181,26 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	}
 	if iClient > 0 {
 		if *(*int32)(unsafe.Pointer(bp + 288)) > 0 {
-			unrecognizedArguments(tls, *(*uintptr)(unsafe.Pointer(argv)), *(*int32)(unsafe.Pointer(bp + 288)), argv+uintptr(2)*8)
+			unrecognizedArguments(tls, *(*uintptr)(unsafe.Pointer(argv)), *(*int32)(unsafe.Pointer(bp + 288)), argv+uintptr(2)*4)
 		}
 		if g.FiTrace != 0 {
 			logMessage(tls, __ccgo_ts+2957, 0)
 		}
 		for int32(1) != 0 {
-			*(*uintptr)(unsafe.Pointer(bp + 312)) = uintptr(0)
-			rc = startScript(tls, iClient, bp+296, bp+304, bp+312)
+			*(*uintptr)(unsafe.Pointer(bp + 300)) = uintptr(0)
+			rc = startScript(tls, iClient, bp+292, bp+296, bp+300)
 			if rc == int32(SQLITE_DONE) {
 				break
 			}
 			if g.FiTrace != 0 {
-				logMessage(tls, __ccgo_ts+2970, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp + 312)), *(*int32)(unsafe.Pointer(bp + 304))))
+				logMessage(tls, __ccgo_ts+2970, libc.VaList(bp+312, *(*uintptr)(unsafe.Pointer(bp + 300)), *(*int32)(unsafe.Pointer(bp + 296))))
 			}
-			runScript(tls, iClient, *(*int32)(unsafe.Pointer(bp + 304)), *(*uintptr)(unsafe.Pointer(bp + 296)), *(*uintptr)(unsafe.Pointer(bp + 312)))
+			runScript(tls, iClient, *(*int32)(unsafe.Pointer(bp + 296)), *(*uintptr)(unsafe.Pointer(bp + 292)), *(*uintptr)(unsafe.Pointer(bp + 300)))
 			if g.FiTrace != 0 {
-				logMessage(tls, __ccgo_ts+2984, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp + 312)), *(*int32)(unsafe.Pointer(bp + 304))))
+				logMessage(tls, __ccgo_ts+2984, libc.VaList(bp+312, *(*uintptr)(unsafe.Pointer(bp + 300)), *(*int32)(unsafe.Pointer(bp + 296))))
 			}
-			finishScript(tls, iClient, *(*int32)(unsafe.Pointer(bp + 304)), 0)
-			libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 312)))
+			finishScript(tls, iClient, *(*int32)(unsafe.Pointer(bp + 296)), 0)
+			libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 300)))
 			libsqlite3.Xsqlite3_sleep(tls, int32(10))
 		}
 		if g.FiTrace != 0 {
@@ -28644,28 +28211,28 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			fatalError(tls, __ccgo_ts+3007, 0)
 		}
 		if *(*int32)(unsafe.Pointer(bp + 288)) > int32(1) {
-			unrecognizedArguments(tls, *(*uintptr)(unsafe.Pointer(argv)), *(*int32)(unsafe.Pointer(bp + 288)), argv+uintptr(2)*8)
+			unrecognizedArguments(tls, *(*uintptr)(unsafe.Pointer(argv)), *(*int32)(unsafe.Pointer(bp + 288)), argv+uintptr(2)*4)
 		}
 		runSql(tls, __ccgo_ts+3031, 0)
-		*(*uintptr)(unsafe.Pointer(bp + 296)) = readFile(tls, *(*uintptr)(unsafe.Pointer(argv + 2*8)))
+		*(*uintptr)(unsafe.Pointer(bp + 292)) = readFile(tls, *(*uintptr)(unsafe.Pointer(argv + 2*4)))
 		iRep = int32(1)
 		for {
 			if !(iRep <= nRep) {
 				break
 			}
 			if g.FiTrace != 0 {
-				logMessage(tls, __ccgo_ts+3467, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(argv + 2*8)), iRep))
+				logMessage(tls, __ccgo_ts+3467, libc.VaList(bp+312, *(*uintptr)(unsafe.Pointer(argv + 2*4)), iRep))
 			}
-			runScript(tls, 0, 0, *(*uintptr)(unsafe.Pointer(bp + 296)), *(*uintptr)(unsafe.Pointer(argv + 2*8)))
+			runScript(tls, 0, 0, *(*uintptr)(unsafe.Pointer(bp + 292)), *(*uintptr)(unsafe.Pointer(argv + 2*4)))
 			if g.FiTrace != 0 {
-				logMessage(tls, __ccgo_ts+3495, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(argv + 2*8)), iRep))
+				logMessage(tls, __ccgo_ts+3495, libc.VaList(bp+312, *(*uintptr)(unsafe.Pointer(argv + 2*4)), iRep))
 			}
 			goto _24
 		_24:
 			;
 			iRep++
 		}
-		libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 296)))
+		libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 292)))
 		waitForClient(tls, 0, int32(2000), __ccgo_ts+3521)
 		trySql(tls, __ccgo_ts+3541, 0)
 		libsqlite3.Xsqlite3_sleep(tls, int32(10))
@@ -28726,7 +28293,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				break
 			}
 			v32 = __ccgo_ts + 2321
-			libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+			libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)))
 			__local_argv1 = bp
 			__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v32, __local_argv1)
 			_ = __local_argv1

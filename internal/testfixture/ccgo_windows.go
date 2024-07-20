@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/windows/amd64 -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/include/windows/amd64 --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DSQLITE_HAVE_C99_MATH_FUNCS=(1) -Dmalloc_usable_size(x)=( (int) ( unsigned long long ) ( malloc_usable_size ( x ) ) ) -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -DSQLITE_OMIT_SEH -I. -I../sqlite-src-3460000/src -I../sqlite-src-3460000/ext/rtree -I../sqlite-src-3460000/ext/icu -I../sqlite-src-3460000/ext/fts3 -I../sqlite-src-3460000/ext/async -I../sqlite-src-3460000/ext/session -I../sqlite-src-3460000/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/usr/include/tcl8.6 -DSQLITE_THREADSAFE=1 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -DSQLITE_STATIC_RANDOMJSON -DSQLITE_STRICT_SUBTYPE=1 -o testfixture.exe.go ../sqlite-src-3460000/src/test1.c ../sqlite-src-3460000/src/test2.c ../sqlite-src-3460000/src/test3.c ../sqlite-src-3460000/src/test4.c ../sqlite-src-3460000/src/test5.c ../sqlite-src-3460000/src/test6.c ../sqlite-src-3460000/src/test8.c ../sqlite-src-3460000/src/test9.c ../sqlite-src-3460000/src/test_autoext.c ../sqlite-src-3460000/src/test_async.c ../sqlite-src-3460000/src/test_backup.c ../sqlite-src-3460000/src/test_bestindex.c ../sqlite-src-3460000/src/test_blob.c ../sqlite-src-3460000/src/test_btree.c ../sqlite-src-3460000/src/test_config.c ../sqlite-src-3460000/src/test_delete.c ../sqlite-src-3460000/src/test_demovfs.c ../sqlite-src-3460000/src/test_devsym.c ../sqlite-src-3460000/src/test_fs.c ../sqlite-src-3460000/src/test_func.c ../sqlite-src-3460000/src/test_hexio.c ../sqlite-src-3460000/src/test_init.c ../sqlite-src-3460000/src/test_intarray.c ../sqlite-src-3460000/src/test_journal.c ../sqlite-src-3460000/src/test_malloc.c ../sqlite-src-3460000/src/test_md5.c ../sqlite-src-3460000/src/test_multiplex.c ../sqlite-src-3460000/src/test_mutex.c ../sqlite-src-3460000/src/test_onefile.c ../sqlite-src-3460000/src/test_osinst.c ../sqlite-src-3460000/src/test_pcache.c ../sqlite-src-3460000/src/test_quota.c ../sqlite-src-3460000/src/test_rtree.c ../sqlite-src-3460000/src/test_schema.c ../sqlite-src-3460000/src/test_superlock.c ../sqlite-src-3460000/src/test_syscall.c ../sqlite-src-3460000/src/test_tclsh.c ../sqlite-src-3460000/src/test_tclvar.c ../sqlite-src-3460000/src/test_thread.c ../sqlite-src-3460000/src/test_vdbecov.c ../sqlite-src-3460000/src/test_vfs.c ../sqlite-src-3460000/src/test_windirent.c ../sqlite-src-3460000/src/test_window.c ../sqlite-src-3460000/src/test_wsd.c ../sqlite-src-3460000/ext/fts3/fts3_term.c ../sqlite-src-3460000/ext/fts3/fts3_test.c ../sqlite-src-3460000/ext/session/test_session.c ../sqlite-src-3460000/ext/recover/sqlite3recover.c ../sqlite-src-3460000/ext/recover/dbdata.c ../sqlite-src-3460000/ext/recover/test_recover.c ../sqlite-src-3460000/ext/intck/test_intck.c ../sqlite-src-3460000/ext/intck/sqlite3intck.c ../sqlite-src-3460000/ext/rbu/test_rbu.c ../sqlite-src-3460000/ext/expert/sqlite3expert.c ../sqlite-src-3460000/ext/expert/test_expert.c ../sqlite-src-3460000/ext/misc/amatch.c ../sqlite-src-3460000/ext/misc/appendvfs.c ../sqlite-src-3460000/ext/misc/basexx.c ../sqlite-src-3460000/ext/misc/carray.c ../sqlite-src-3460000/ext/misc/cksumvfs.c ../sqlite-src-3460000/ext/misc/closure.c ../sqlite-src-3460000/ext/misc/csv.c ../sqlite-src-3460000/ext/misc/decimal.c ../sqlite-src-3460000/ext/misc/eval.c ../sqlite-src-3460000/ext/misc/explain.c ../sqlite-src-3460000/ext/misc/fileio.c ../sqlite-src-3460000/ext/misc/fuzzer.c ../sqlite-src-3460000/ext/fts5/fts5_tcl.c ../sqlite-src-3460000/ext/fts5/fts5_test_mi.c ../sqlite-src-3460000/ext/fts5/fts5_test_tok.c ../sqlite-src-3460000/ext/misc/ieee754.c ../sqlite-src-3460000/ext/misc/mmapwarm.c ../sqlite-src-3460000/ext/misc/nextchar.c ../sqlite-src-3460000/ext/misc/normalize.c ../sqlite-src-3460000/ext/misc/percentile.c ../sqlite-src-3460000/ext/misc/prefixes.c ../sqlite-src-3460000/ext/misc/qpvtab.c ../sqlite-src-3460000/ext/misc/randomjson.c ../sqlite-src-3460000/ext/misc/regexp.c ../sqlite-src-3460000/ext/misc/remember.c ../sqlite-src-3460000/ext/misc/series.c ../sqlite-src-3460000/ext/misc/spellfix.c ../sqlite-src-3460000/ext/misc/totype.c ../sqlite-src-3460000/ext/misc/unionvtab.c ../sqlite-src-3460000/ext/misc/wholenumber.c ../sqlite-src-3460000/ext/misc/zipfile.c ../sqlite-src-3460000/ext/userauth/userauth.c ../sqlite-src-3460000/ext/rtree/test_rtreedoc.c ../sqlite-src-3460000/src/tclsqlite.c sqlite3.c -L/usr/lib/x86_64-linux-gnu -ltcl8.6 -lpthread', DO NOT EDIT.
+// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/jnml/src/modernc.org/libz/include/windows/amd64 -I /home/jnml/src/modernc.org/libtcl8.6/include/windows/amd64 --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DSQLITE_HAVE_C99_MATH_FUNCS=(1) -Dmalloc_usable_size(x)=( (int) ( unsigned long long ) ( malloc_usable_size ( x ) ) ) -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -DSQLITE_OMIT_SEH -I. -I../sqlite-src-3460000/src -I../sqlite-src-3460000/ext/rtree -I../sqlite-src-3460000/ext/icu -I../sqlite-src-3460000/ext/fts3 -I../sqlite-src-3460000/ext/async -I../sqlite-src-3460000/ext/session -I../sqlite-src-3460000/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/usr/include/tcl8.6 -DSQLITE_THREADSAFE=1 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -DSQLITE_STATIC_RANDOMJSON -DSQLITE_STRICT_SUBTYPE=1 -o testfixture.exe.go ../sqlite-src-3460000/src/test1.c ../sqlite-src-3460000/src/test2.c ../sqlite-src-3460000/src/test3.c ../sqlite-src-3460000/src/test4.c ../sqlite-src-3460000/src/test5.c ../sqlite-src-3460000/src/test6.c ../sqlite-src-3460000/src/test8.c ../sqlite-src-3460000/src/test9.c ../sqlite-src-3460000/src/test_autoext.c ../sqlite-src-3460000/src/test_async.c ../sqlite-src-3460000/src/test_backup.c ../sqlite-src-3460000/src/test_bestindex.c ../sqlite-src-3460000/src/test_blob.c ../sqlite-src-3460000/src/test_btree.c ../sqlite-src-3460000/src/test_config.c ../sqlite-src-3460000/src/test_delete.c ../sqlite-src-3460000/src/test_demovfs.c ../sqlite-src-3460000/src/test_devsym.c ../sqlite-src-3460000/src/test_fs.c ../sqlite-src-3460000/src/test_func.c ../sqlite-src-3460000/src/test_hexio.c ../sqlite-src-3460000/src/test_init.c ../sqlite-src-3460000/src/test_intarray.c ../sqlite-src-3460000/src/test_journal.c ../sqlite-src-3460000/src/test_malloc.c ../sqlite-src-3460000/src/test_md5.c ../sqlite-src-3460000/src/test_multiplex.c ../sqlite-src-3460000/src/test_mutex.c ../sqlite-src-3460000/src/test_onefile.c ../sqlite-src-3460000/src/test_osinst.c ../sqlite-src-3460000/src/test_pcache.c ../sqlite-src-3460000/src/test_quota.c ../sqlite-src-3460000/src/test_rtree.c ../sqlite-src-3460000/src/test_schema.c ../sqlite-src-3460000/src/test_superlock.c ../sqlite-src-3460000/src/test_syscall.c ../sqlite-src-3460000/src/test_tclsh.c ../sqlite-src-3460000/src/test_tclvar.c ../sqlite-src-3460000/src/test_thread.c ../sqlite-src-3460000/src/test_vdbecov.c ../sqlite-src-3460000/src/test_vfs.c ../sqlite-src-3460000/src/test_windirent.c ../sqlite-src-3460000/src/test_window.c ../sqlite-src-3460000/src/test_wsd.c ../sqlite-src-3460000/ext/fts3/fts3_term.c ../sqlite-src-3460000/ext/fts3/fts3_test.c ../sqlite-src-3460000/ext/session/test_session.c ../sqlite-src-3460000/ext/recover/sqlite3recover.c ../sqlite-src-3460000/ext/recover/dbdata.c ../sqlite-src-3460000/ext/recover/test_recover.c ../sqlite-src-3460000/ext/intck/test_intck.c ../sqlite-src-3460000/ext/intck/sqlite3intck.c ../sqlite-src-3460000/ext/rbu/test_rbu.c ../sqlite-src-3460000/ext/expert/sqlite3expert.c ../sqlite-src-3460000/ext/expert/test_expert.c ../sqlite-src-3460000/ext/misc/amatch.c ../sqlite-src-3460000/ext/misc/appendvfs.c ../sqlite-src-3460000/ext/misc/basexx.c ../sqlite-src-3460000/ext/misc/carray.c ../sqlite-src-3460000/ext/misc/cksumvfs.c ../sqlite-src-3460000/ext/misc/closure.c ../sqlite-src-3460000/ext/misc/csv.c ../sqlite-src-3460000/ext/misc/decimal.c ../sqlite-src-3460000/ext/misc/eval.c ../sqlite-src-3460000/ext/misc/explain.c ../sqlite-src-3460000/ext/misc/fileio.c ../sqlite-src-3460000/ext/misc/fuzzer.c ../sqlite-src-3460000/ext/fts5/fts5_tcl.c ../sqlite-src-3460000/ext/fts5/fts5_test_mi.c ../sqlite-src-3460000/ext/fts5/fts5_test_tok.c ../sqlite-src-3460000/ext/misc/ieee754.c ../sqlite-src-3460000/ext/misc/mmapwarm.c ../sqlite-src-3460000/ext/misc/nextchar.c ../sqlite-src-3460000/ext/misc/normalize.c ../sqlite-src-3460000/ext/misc/percentile.c ../sqlite-src-3460000/ext/misc/prefixes.c ../sqlite-src-3460000/ext/misc/qpvtab.c ../sqlite-src-3460000/ext/misc/randomjson.c ../sqlite-src-3460000/ext/misc/regexp.c ../sqlite-src-3460000/ext/misc/remember.c ../sqlite-src-3460000/ext/misc/series.c ../sqlite-src-3460000/ext/misc/spellfix.c ../sqlite-src-3460000/ext/misc/totype.c ../sqlite-src-3460000/ext/misc/unionvtab.c ../sqlite-src-3460000/ext/misc/wholenumber.c ../sqlite-src-3460000/ext/misc/zipfile.c ../sqlite-src-3460000/ext/userauth/userauth.c ../sqlite-src-3460000/ext/rtree/test_rtreedoc.c ../sqlite-src-3460000/src/tclsqlite.c sqlite3.c -L/usr/lib/x86_64-linux-gnu -ltcl8.6 -lpthread', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 // +build windows
@@ -17306,36 +17306,6 @@ type Toff64_t = int64
 type Toff_t = int64
 
 type Tfpos_t = int64
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type T_onexit_t = uintptr
 
@@ -71392,36 +71362,6 @@ const m__CALL_REPORTFAULT1 = 0x2
 const m___INT_MAX__1 = 0x7fffffff
 const m___LONG_LONG_MAX__1 = 0x7fffffffffffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf1(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf1(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf1(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 // C documentation
 //
 //	/*
@@ -72298,36 +72238,6 @@ const m_TRANS_WRITE = 2
 const m_WRITE_LOCK = 2
 const m_get4byte = "sqlite3Get4byte"
 const m_put4byte = "sqlite3Put4byte"
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf2(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf2(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf2(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TBtree = struct {
 	Fdb             uintptr
@@ -73331,36 +73241,6 @@ const m_SQLITE_OPEN_CREATE1 = 0x00000004
 const m_SQLITE_OPEN_MAIN_DB1 = 0x00000100
 const m_SQLITE_OPEN_READWRITE1 = 0x00000002
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf3(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf3(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf3(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -73381,36 +73261,6 @@ func x_Sqlitetest4_Init(tls *libc.TLS, interp uintptr) (r int32) {
 const m_MEM_Static1 = 8192
 const m_MEM_Str1 = 2
 const m_MEM_Term1 = 512
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf4(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf4(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf4(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -73699,36 +73549,6 @@ const m_SQLITE_IOCAP_BATCH_ATOMIC2 = 16384
 const m_SQLITE_IOCAP_POWERSAFE_OVERWRITE1 = 4096
 const m_SQLITE_IOCAP_SAFE_APPEND1 = 512
 const m_SQLITE_IOCAP_SEQUENTIAL1 = 1024
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf5(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf5(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf5(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -74949,36 +74769,6 @@ const m_SQLITE_IOCAP_BATCH_ATOMIC3 = 0x00004000
 const m_SQLITE_IOCAP_POWERSAFE_OVERWRITE2 = 0x00001000
 const m_SQLITE_IOCAP_SAFE_APPEND2 = 0x00000200
 const m_SQLITE_IOCAP_SEQUENTIAL2 = 0x00000400
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf6(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf6(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf6(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -76655,36 +76445,6 @@ type Tsqlite3_index_orderby = struct {
 	Fdesc    uint8
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf7(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf7(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf7(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -76898,36 +76658,6 @@ func init() {
 const m_SQLITE_OS_UNIX = 0
 
 type Toff_t1 = int32
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf8(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf8(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf8(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type Tsqlite3_api_routines = struct {
 	Faggregate_context      uintptr
@@ -77514,36 +77244,6 @@ func x_Sqlitetest_autoext_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	return m_TCL_OK
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf9(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf9(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf9(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -77565,36 +77265,6 @@ func _swprintf9(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintp
 //	*/
 func x_Sqlitetestasync_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	return m_TCL_OK
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf10(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf10(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf10(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 func _backupTestCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc int32, objv uintptr) (r int32) {
@@ -77740,36 +77410,6 @@ func x_Sqlitetestbackup_Init(tls *libc.TLS, interp uintptr) (r int32) {
 const m_TCL_EVAL_GLOBAL2 = 131072
 
 type Toff_t2 = int64
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf11(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf11(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf11(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -78681,36 +78321,6 @@ func init() {
 
 const m_TCL_EVAL_GLOBAL3 = 0x020000
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf12(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf12(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf12(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 // C documentation
 //
 //	/*
@@ -79055,36 +78665,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(_test_blob_write)
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf13(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf13(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf13(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -79142,36 +78722,6 @@ const m_SQLITE_MAX_PAGE_COUNT1 = 4294967294
 const m_TCL_LINK_READ_ONLY2 = 128
 const m___INT_MAX__2 = 2147483647
 const m___LONG_LONG_MAX__2 = 9223372036854775807
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf14(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf14(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf14(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -79622,36 +79172,6 @@ const m_TCL_LINK_READ_ONLY3 = 0x80
 
 type Toff_t3 = int32
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf15(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf15(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf15(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -79674,36 +79194,6 @@ const m_SQLITE_MAX_PAGE_COUNT2 = 0xfffffffe
 const m_WRITECRASH_NAME = "writecrash"
 
 type Toff_t4 = int64
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf16(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf16(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf16(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
 ** Maximum pathname length supported by the devsym backend.
@@ -80266,36 +79756,6 @@ const m_fstat64 = "_fstat64"
 const m_lseek = "lseek64"
 const m_stat = "_stat64"
 const m_stat64 = "_stat64"
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf17(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf17(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf17(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type Tstat = struct {
 	Fst_dev   T_dev_t
@@ -81379,36 +80839,6 @@ const m___INT_MAX__5 = 0x7fffffff
 const m___LONG_LONG_MAX__5 = 0x7fffffffffffffff
 
 type Toff_t5 = int32
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf18(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf18(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf18(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 // C documentation
 //
@@ -82502,36 +81932,6 @@ const m_SQLITE_RESULT_SUBTYPE2 = 0x001000000
 
 type Toff_t6 = int64
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf19(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf19(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf19(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -83082,36 +82482,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_utf8_to_utf8)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_read_fts3varint)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_make_fts3record)
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf20(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf20(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf20(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /*
@@ -83744,36 +83114,6 @@ func x_sqlite3_intarray_bind(tls *libc.TLS, pIntArray uintptr, nElements int32, 
 
 type Toff_t7 = int32
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf21(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf21(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf21(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 // C documentation
 //
 //	/*
@@ -83904,36 +83244,6 @@ const m_SQLITE_OPEN_MAIN_DB2 = 256
 const m_SQLITE_OPEN_MAIN_JOURNAL2 = 2048
 
 type Toff_t8 = int64
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf22(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf22(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf22(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
 ** Maximum pathname length supported by the jt backend.
@@ -84825,36 +84135,6 @@ func x_jt_unregister(tls *libc.TLS) {
 const m_MALLOC_LOG_FRAMES = 10
 const m_SQLITE_OPEN_MAIN_DB3 = 0x00000100
 const m_SQLITE_OPEN_MAIN_JOURNAL3 = 0x00000800
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf23(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf23(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf23(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -86621,36 +85901,6 @@ func init() {
 const m_SIZE_MAX3 = "_UI64_MAX"
 
 type Toff_t9 = int32
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf24(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf24(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf24(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -88576,36 +87826,6 @@ func x_sqlite3_multiplex_shutdown(tls *libc.TLS, eForce int32) (r int32) {
 	return rc
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf25(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf25(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf25(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 // C documentation
 //
 //	/*
@@ -88807,36 +88027,6 @@ const m_SQLITE_OPEN_MAIN_JOURNAL5 = 0x00000800
 const m_SQLITE_OPEN_SUPER_JOURNAL3 = 0x00004000
 const m_SQLITE_OPEN_URI3 = 0x00000040
 const m_SQLITE_OPEN_WAL3 = 0x00080000
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf26(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf26(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf26(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type Tsqlite3_mutex = struct {
 	FpReal uintptr
@@ -91324,36 +90514,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_vlogRowid)
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf27(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf27(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf27(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -91971,36 +91131,6 @@ const m__S_IFMT1 = 0xF000
 const m__S_IFREG1 = 0x8000
 const m___INT_MAX__8 = 2147483647
 const m___LONG_LONG_MAX__8 = 9223372036854775807
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf28(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf28(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf28(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type Tquota_FILE = struct {
 	Ff         uintptr
@@ -94293,36 +93423,6 @@ const m_TCL_EVAL_GLOBAL5 = 0x020000
 const m___INT_MAX__9 = 0x7fffffff
 const m___LONG_LONG_MAX__9 = 0x7fffffffffffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf29(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf29(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf29(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 // C documentation
 //
 //	/*
@@ -94897,36 +93997,6 @@ type TBox = struct {
 }
 
 type Toff_t10 = int64
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf30(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf30(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf30(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -95569,36 +94639,6 @@ func x_sqlite3demo_superlock(tls *libc.TLS, zPath uintptr, zVfs uintptr, xBusy u
 
 type Toff_t11 = int32
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf31(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf31(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf31(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -95712,36 +94752,6 @@ const m_TCL_EVAL_GLOBAL7 = 0x020000
 
 type Toff_t12 = int64
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf32(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf32(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf32(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -95780,36 +94790,6 @@ func x_SqlitetestSyscall_Init(tls *libc.TLS, interp uintptr) (r int32) {
 }
 
 type Toff_t13 = int32
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf33(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf33(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf33(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 // C documentation
 //
@@ -95909,36 +94889,6 @@ const m_TCLVAR_VALUE_REGEXP = 114
 const m_TCL_EVAL_GLOBAL8 = 131072
 
 type Toff_t14 = int64
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf34(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf34(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf34(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -96553,36 +95503,6 @@ func init() {
 const m_TCL_EVAL_GLOBAL9 = 0x020000
 const m_TCL_THREAD_NOFLAGS1 = 0
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf35(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf35(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf35(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -97067,36 +95987,6 @@ func x_SqlitetestThread_Init(tls *libc.TLS, interp uintptr) (r int32) {
 
 const m_TCL_THREAD_NOFLAGS2 = 0000
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf36(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf36(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf36(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -97156,36 +96046,6 @@ const m_TESTVFS_SYNC_MASK = 512
 const m_TESTVFS_TRUNCATE_MASK = 8192
 const m_TESTVFS_UNLOCK_MASK = 131072
 const m_TESTVFS_WRITE_MASK = 4096
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf37(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf37(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf37(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * end block for C++
@@ -99165,36 +98025,6 @@ const m___LONG_LONG_MAX__10 = 9223372036854775807
 
 type Toff_t15 = int32
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf38(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf38(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf38(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 // C documentation
 //
 //	/*
@@ -99376,36 +98206,6 @@ const m___INT_MAX__11 = 0x7fffffff
 const m___LONG_LONG_MAX__11 = 0x7fffffffffffffff
 
 type Toff_t16 = int64
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf39(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf39(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf39(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TTestWindow = struct {
 	FxStep    uintptr
@@ -99790,36 +98590,6 @@ const m_TCL_EVAL_GLOBAL11 = 0x020000
 
 type Toff_t17 = int32
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf40(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf40(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf40(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 const m_SESSION_STREAM_TCL_VAR = "sqlite3session_streams"
 const m_SQLITE_CHANGESETAPPLY_FKNOACTION1 = 8
 const m_SQLITE_CHANGESETAPPLY_IGNORENOOP1 = 4
@@ -99827,36 +98597,6 @@ const m_SQLITE_CHANGESETAPPLY_INVERT1 = 2
 const m_SQLITE_CHANGESETAPPLY_NOSAVEPOINT1 = 1
 const m_SQLITE_CHANGESETSTART_INVERT1 = 2
 const m_TCL_EVAL_GLOBAL12 = 131072
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf41(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf41(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf41(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TTestSession = struct {
 	FpSession      uintptr
@@ -106238,36 +104978,6 @@ const m_TCL_EVAL_GLOBAL13 = 0x020000
 
 type Toff_t18 = int64
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf42(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf42(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf42(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -106657,36 +105367,6 @@ func x_TestRecover_Init(tls *libc.TLS, interp uintptr) (r int32) {
 
 type Toff_t19 = int32
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf43(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf43(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf43(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type TTestIntck = struct {
 	Fintck uintptr
 }
@@ -106966,36 +105646,6 @@ type Tsqlite3_intck = struct {
 	Frc             int32
 	FzErr           uintptr
 	FzTestSql       uintptr
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf44(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf44(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf44(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 /*
@@ -107789,36 +106439,6 @@ const m_SQLITE_RBU_STATE_ERROR = 5
 const m_SQLITE_RBU_STATE_MOVE = 2
 const m_SQLITE_RBU_STATE_OAL = 1
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf45(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf45(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf45(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type TTestRbu = struct {
 	FpRbu    uintptr
 	Finterp  uintptr
@@ -108341,36 +106961,6 @@ type Tsqlite3expert = struct {
 	Frc          int32
 	FhIdx        TIdxHash
 	FzCandidates uintptr
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf46(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf46(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf46(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 type TIdxColumn = struct {
@@ -110945,36 +109535,6 @@ type TIdxRemSlot = struct {
 const m_SQLITE_DETERMINISTIC5 = 0x000000800
 const m_SQLITE_DIRECTONLY2 = 0x000080000
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf47(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf47(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf47(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
  * end block for C++
  */
@@ -111227,36 +109787,6 @@ const m_AMATCH_COL_WORD = 0
 const m_AMATCH_MX_COST = 1000
 const m_AMATCH_MX_LANGID = 2147483647
 const m_AMATCH_MX_LENGTH = 50
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf48(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf48(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf48(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 // C documentation
 //
@@ -113928,36 +112458,6 @@ func x_sqlite3_base64_init(tls *libc.TLS, db uintptr, pzErr uintptr, pApi uintpt
 	return x_sqlite3_create_function(tls, db, __ccgo_ts+39897, int32(1), libc.Int32FromInt32(m_SQLITE_DETERMINISTIC6)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS1)|libc.Int32FromInt32(m_SQLITE_DIRECTONLY3)|libc.Int32FromInt32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_base64), uintptr(0), uintptr(0))
 }
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf49(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf49(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf49(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /* Classify c according to interval within USASCII set w.r.t. base85
  * Values of 1 and 3 are base85 numerals. Values of 0, 2, or 4 are not.
  */
@@ -115591,36 +114091,6 @@ const m_SQLITE_INNOCUOUS4 = 0x000200000
 const m_SQLITE_OPEN_MAIN_DB15 = 0x00000100
 const m_SQLITE_OPEN_WAL7 = 0x00080000
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf50(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf50(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf50(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 // C documentation
 //
 //	/*
@@ -116629,36 +115099,6 @@ func x_sqlite3_closure_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi ui
 const m_CSVTEST_FIDX = 1
 const m_CSV_INBUFSZ = 1024
 const m_CSV_MXERR = 200
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf51(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf51(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf51(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
 ** A macro to hint to the compiler that a function should not be
@@ -119283,36 +117723,6 @@ const m_dirent = "DIRENT"
 const m_diskfree_t = "_diskfree_t"
 const m_stat1 = "_stat"
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf52(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf52(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf52(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type T_diskfree_t = struct {
 	Ftotal_clusters      uint32
 	Favail_clusters      uint32
@@ -120250,36 +118660,6 @@ const m_FUZZER_NQUEUE = 20
 const m_SQLITE_DIRECTONLY8 = 0x000080000
 const m___INT_MAX__13 = 0x7fffffff
 const m___LONG_LONG_MAX__13 = 0x7fffffffffffffff
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf53(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf53(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf53(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 // C documentation
 //
@@ -121452,36 +119832,6 @@ const m_FTS5_TOKENIZE_DOCUMENT1 = 4
 const m_FTS5_TOKENIZE_PREFIX1 = 2
 const m_FTS5_TOKENIZE_QUERY1 = 1
 const m_FTS5_TOKEN_COLOCATED1 = 1
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf54(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf54(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf54(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 // C documentation
 //
@@ -129325,36 +127675,6 @@ const m_SQLITE_SPELLFIX_STACKALLOC_SZ = 1024
 const m___LONG_LONG_MAX__15 = 0x7fffffffffffffff
 const m___LONG_MAX__2 = 0x7fffffff
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf55(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf55(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf55(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 /*
 ** Character classes for ASCII characters:
 **
@@ -136639,36 +134959,6 @@ const m_Z_UNKNOWN = 2
 const m_z_off64_t = "z_off_t"
 const m_z_off_t = "long"
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf56(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf56(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf56(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type Tz_size_t = uint64
 
 type TByte = uint8
@@ -139260,36 +137550,6 @@ const m_TK_STAR2 = 108
 const m_TK_STRING2 = 117
 const m_TK_VARIABLE2 = 156
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf57(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf57(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf57(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type TBoxGeomCtx = struct {
 	Finterp  uintptr
 	FpScript uintptr
@@ -139712,36 +137972,6 @@ const m_TCL_EVAL_DIRECT2 = 262144
 const m_TCL_EVAL_GLOBAL14 = 131072
 const m___INT_MAX__14 = 2147483647
 const m___LONG_LONG_MAX__16 = 9223372036854775807
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf58(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf58(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf58(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 /*
  * Windows needs to know which symbols to export.  Unix does not.
@@ -146031,36 +144261,6 @@ type Tsqlite3_rebaser = struct {
 }
 
 type Toff_t20 = int64
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf59(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf59(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf59(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 type TBitvec = struct {
 	FiSize    Tu32

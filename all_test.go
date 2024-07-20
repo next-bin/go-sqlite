@@ -255,6 +255,9 @@ func TestTclTest(t *testing.T) {
 	case goos == "windows":
 		bin += ".exe"
 		src = filepath.Join("internal", "testfixture", "ccgo_windows.go")
+		if goarch == "386" {
+			src = filepath.Join("internal", "testfixture", "ccgo_windows_386.go")
+		}
 		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
 			t.Fatalf("%s\nFAIL: %v", out, err)
 		}
@@ -325,9 +328,9 @@ func TestTclTest(t *testing.T) {
 		if out, err = util.Shell(nil, bin, args...); err != nil {
 			switch err.Error() {
 			case "exit status 1":
-				t.Logf("fail: %v", err)
+				t.Logf("fail: %v\n%s", err, out)
 			default:
-				t.Errorf("fail: %v", err)
+				t.Errorf("fail: %v\n%s", err, out)
 			}
 		}
 		return nil

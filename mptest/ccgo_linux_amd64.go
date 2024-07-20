@@ -1,7 +1,6 @@
 // Code generated for linux/amd64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3460000 -ignore-unsupported-alignment -o mptest/ccgo_linux_amd64.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && amd64
-// +build linux,amd64
 
 package main
 
@@ -2295,7 +2294,7 @@ func stringAppend(tls *libc.TLS, p uintptr, z uintptr, n int32) {
 		(*String)(unsafe.Pointer(p)).Fz = zNew
 		(*String)(unsafe.Pointer(p)).FnAlloc = nAlloc
 	}
-	libc.Xmemcpy(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), z, uint64(uint64(n)))
+	libc.Xmemcpy(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), z, uint64(n))
 	*(*int32)(unsafe.Pointer(p + 8)) += n
 	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).Fz + uintptr((*String)(unsafe.Pointer(p)).Fn))) = 0
 }
@@ -2609,7 +2608,7 @@ func readFile(tls *libc.TLS, zFilename uintptr) (r uintptr) {
 	sz = libc.Xftell(tls, in)
 	libc.Xrewind(tls, in)
 	z = libsqlite3.Xsqlite3_malloc(tls, int32(sz+int64(1)))
-	sz = int64(libc.Xfread(tls, z, uint64(1), uint64(uint64(sz)), in))
+	sz = int64(libc.Xfread(tls, z, uint64(1), uint64(sz), in))
 	*(*int8)(unsafe.Pointer(z + uintptr(sz))) = 0
 	libc.Xfclose(tls, in)
 	return z
