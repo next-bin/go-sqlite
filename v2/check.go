@@ -860,8 +860,14 @@ func (n *BinaryExpr) check(c *ctx) Node {
 			c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
 			return n
 		default:
+			uy, ok := constant.Uint64Val(y)
+			if !ok {
+				c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+				break
+			}
+
 			n.typ = a
-			n.val = constant.BinaryOp(x, xlat[n.Op.Ch], y)
+			n.val = constant.Shift(x, xlat[n.Op.Ch], uint(uy))
 		}
 	case LOR, LAND:
 		if !isAnyBoolType(a) || !isAnyBoolType(b) {
