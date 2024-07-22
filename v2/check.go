@@ -565,8 +565,19 @@ func (n *Arguments) check(c *ctx) Node {
 
 	defer n.exit()
 
+	defer func() {
+		if n.guard == unchecked {
+			n.guard = checked
+			n.typ = Invalid
+		}
+	}()
+
 	var resolvedTo Node
 	var resolvedIn *Package
+	for i := range n.ExprList {
+		c.checkExpr(&n.ExprList[i].Expr)
+	}
+
 	x0 := c.checkExprOrType(&n.PrimaryExpr)
 more:
 	switch x := x0.(type) {
@@ -660,10 +671,6 @@ func (n *Arguments) checkFn(c *ctx, ft *FunctionType, resolvedIn *Package, fd *F
 		}
 
 		variadic = ft.Parameters.Types[len(ft.Parameters.Types)-1]
-	}
-
-	for i := range n.ExprList {
-		c.checkExpr(&n.ExprList[i].Expr)
 	}
 
 	if resolvedIn != nil && fd != nil {

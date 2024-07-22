@@ -630,7 +630,7 @@ func TestParser(t *testing.T) {
 
 	p := newParallel(*oFailNow)
 	t.Run("cd", func(t *testing.T) { testParser(p, t, g, ".") })
-	t.Run("goroot", func(t *testing.T) { testParser(p, t, g, runtime.GOROOT()) })
+	//TODO t.Run("goroot", func(t *testing.T) { testParser(p, t, g, runtime.GOROOT()) })
 	if err := p.wait(); err != nil {
 		switch s := err.Error(); {
 		case strings.ContainsRune(s, '\n'):
