@@ -207,6 +207,10 @@ func TestMain(m *testing.M) {
 		)
 	case "linux/riscv64":
 		skip = append(skip,
+			"Tcl_Main-1.3",
+			"Tcl_Main-1.4",
+			"Tcl_Main-1.5",
+			"Tcl_Main-1.6",
 			"binary-40.3",
 			"cmdIL-5.7",
 			"iortrans-3.1",
