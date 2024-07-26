@@ -26809,7 +26809,7 @@ func _ProcessCatches(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 	 * Start the check recursively from the first basic block, which is
 	 * outside any exception context
 	 */
-	if _ProcessCatchesInBasicBlock(tls, assemEnvPtr, (*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fhead_bb, libc.UintptrFromInt32(0), _BBCS_NONE, 0) != m_TCL_OK {
+	if _ProcessCatchesInBasicBlock(tls, assemEnvPtr, (*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fhead_bb, libc.UintptrFromInt32(0), int32(_BBCS_NONE), 0) != m_TCL_OK {
 		return int32(m_TCL_ERROR)
 	}
 	/*
@@ -27227,7 +27227,7 @@ func _StackFreshCatches(tls *libc.TLS, assemEnvPtr uintptr, bbPtr uintptr, catch
 			 * Create an exception range for a block that needs one.
 			 */
 			block = *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*8))
-			*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth)*4)) = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+			*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth)*4)) = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 			range1 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth)*4)))*28
 			(*TExceptionRange)(unsafe.Pointer(range1)).FnestingLevel = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth + catchDepth
 			if (*TExceptionRange)(unsafe.Pointer(range1)).FnestingLevel+int32(1) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
@@ -46067,7 +46067,7 @@ func _PathDirNameCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3557)
 		return int32(m_TCL_ERROR)
 	}
-	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), _TCL_PATH_DIRNAME)
+	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), int32(_TCL_PATH_DIRNAME))
 	if dirPtr == libc.UintptrFromInt32(0) {
 		return int32(m_TCL_ERROR)
 	}
@@ -46107,7 +46107,7 @@ func _PathExtensionCmd(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3557)
 		return int32(m_TCL_ERROR)
 	}
-	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), _TCL_PATH_EXTENSION)
+	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), int32(_TCL_PATH_EXTENSION))
 	if dirPtr == libc.UintptrFromInt32(0) {
 		return int32(m_TCL_ERROR)
 	}
@@ -46147,7 +46147,7 @@ func _PathRootNameCmd(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3557)
 		return int32(m_TCL_ERROR)
 	}
-	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), _TCL_PATH_ROOT)
+	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), int32(_TCL_PATH_ROOT))
 	if dirPtr == libc.UintptrFromInt32(0) {
 		return int32(m_TCL_ERROR)
 	}
@@ -46187,7 +46187,7 @@ func _PathTailCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc in
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3557)
 		return int32(m_TCL_ERROR)
 	}
-	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), _TCL_PATH_TAIL)
+	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), int32(_TCL_PATH_TAIL))
 	if dirPtr == libc.UintptrFromInt32(0) {
 		return int32(m_TCL_ERROR)
 	}
@@ -63502,7 +63502,7 @@ func XTclCompileCatchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * The reason for duplicating the script is that EVAL_STK would otherwise
 	 * begin by undeflowing the stack below the mark set by BEGIN_CATCH4.
 	 */
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TTcl_Token)(unsafe.Pointer(cmdTokenPtr)).Ftype1 == int32(m_TCL_TOKEN_SIMPLE_WORD) {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
@@ -63767,7 +63767,7 @@ func XTclCompileCatchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 			*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta6
 		}
 	}
-	XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
+	XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
 	/*
 	 * Emit the "error case" epilogue. Push the interpreter result and the
 	 * return code.
@@ -66906,7 +66906,7 @@ func XTclCompileDictMergeCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cm
 	/*
 	 * For each of the remaining dictionaries...
 	 */
-	outLoop = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	outLoop = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -68065,7 +68065,7 @@ func _CompileDictEachCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * Now we catch errors from here on so that we can finalize the search
 	 * started by Tcl_DictObjFirst above.
 	 */
-	catchRange = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	catchRange = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -68374,7 +68374,7 @@ func _CompileDictEachCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	/*
 	 * Set up the loop exception targets.
 	 */
-	loopRange = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
+	loopRange = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 		v108 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
@@ -69483,7 +69483,7 @@ func XTclCompileDictUpdateCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, c
 	v43 = *(*uintptr)(unsafe.Pointer(v44))
 	*(*uintptr)(unsafe.Pointer(v44))++
 	*(*uint8)(unsafe.Pointer(v43)) = uint8(uint32(infoIndex))
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -69659,7 +69659,7 @@ func XTclCompileDictUpdateCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, c
 	/*
 	 * Jump around the exceptional termination code.
 	 */
-	XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
+	XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
 	/*
 	 * Termination code for non-ok returns: stash the result and return
 	 * options in the stack, bring up the key list, finish the update code,
@@ -72289,7 +72289,7 @@ func XTclCompileDictWithCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 	/*
 	 * Now the body of the [dict with].
 	 */
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -72703,7 +72703,7 @@ func XTclCompileDictWithCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 			*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta69
 		}
 	}
-	XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
+	XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
 	/*
 	 * Now fold the results back into the dictionary in the exception case.
 	 */
@@ -73952,11 +73952,11 @@ func XTclCompileForCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr u
 	 *    A: cond -> result      : testCodeOffset
 	 *       if (result) goto B
 	 */
-	XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
+	XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
 	/*
 	 * Compile the loop body.
 	 */
-	bodyRange = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
+	bodyRange = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 		v3 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
@@ -73999,7 +73999,7 @@ func XTclCompileForCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr u
 	 * have a continueOffset (other than -1) connected to it; it won't trap
 	 * TCL_CONTINUE but rather just TCL_BREAK.
 	 */
-	nextRange = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
+	nextRange = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
 	(*(*TExceptionAux)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr + uintptr(nextRange)*56))).FsupportsContinue = 0
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
@@ -74576,7 +74576,7 @@ func _CompileEachloopCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	/*
 	 * Inline compile the loop body.
 	 */
-	range1 = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 		v41 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
@@ -76719,7 +76719,7 @@ func XTclCompileIfCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr ui
 				}
 				jumpIndex = (*(*TJumpFixupArray)(unsafe.Pointer(bp))).Fnext
 				(*(*TJumpFixupArray)(unsafe.Pointer(bp))).Fnext++
-				XTclEmitForwardJump(tls, envPtr, _TCL_FALSE_JUMP, (*(*TJumpFixupArray)(unsafe.Pointer(bp))).Ffixup+uintptr(jumpIndex)*16)
+				XTclEmitForwardJump(tls, envPtr, int32(_TCL_FALSE_JUMP), (*(*TJumpFixupArray)(unsafe.Pointer(bp))).Ffixup+uintptr(jumpIndex)*16)
 			}
 			code = m_TCL_OK
 		}
@@ -76761,7 +76761,7 @@ func XTclCompileIfCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr ui
 				XTclExpandJumpFixupArray(tls, bp+184)
 			}
 			(*(*TJumpFixupArray)(unsafe.Pointer(bp + 184))).Fnext++
-			XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, (*(*TJumpFixupArray)(unsafe.Pointer(bp + 184))).Ffixup+uintptr(jumpIndex)*16)
+			XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), (*(*TJumpFixupArray)(unsafe.Pointer(bp + 184))).Ffixup+uintptr(jumpIndex)*16)
 			/*
 			 * Fix the target of the jumpFalse after the test. Generate a 4
 			 * byte jump if the distance is > 120 bytes. This is conservative,
@@ -84369,7 +84369,7 @@ func XTclCompileNamespaceTailCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta9
 	}
-	XTclEmitForwardJump(tls, envPtr, _TCL_FALSE_JUMP, bp)
+	XTclEmitForwardJump(tls, envPtr, int32(_TCL_FALSE_JUMP), bp)
 	_objIndexCopy3 = XTclRegisterLiteral(tls, envPtr, __ccgo_ts+18553, int32(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)), 0)
 	if _objIndexCopy3 <= int32(255) {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -92911,7 +92911,7 @@ _370:
 	return m_TCL_OK
 _41:
 	;
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -97437,7 +97437,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 		}
 		if breakOffset == 0 {
 			/* Jump to the start (jump over the jump to end) */
-			XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+600)
+			XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+600)
 			/* Jump to the end (all BREAKs land here) */
 			breakOffset = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -97484,7 +97484,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			}
 		}
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).Fline = *(*int32)(unsafe.Pointer(bp))
-		catchRange = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+		catchRange = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
@@ -97566,7 +97566,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			}
 			*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta10
 		}
-		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+616)
+		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+616)
 		if -int32(1) < 0 {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -97731,13 +97731,13 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta17
 		}
 		/* RETURN */
-		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+632)
+		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+632)
 		/* BREAK */
-		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+648)
+		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+648)
 		/* CONTINUE */
-		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+664)
+		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+664)
 		/* OTHER */
-		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+680)
+		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+680)
 		if int32(1) < 0 {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -97914,7 +97914,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			}
 			*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta23
 		}
-		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+696)
+		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+696)
 		if int32(2) < 0 {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -98991,12 +98991,12 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 					contFixIndex = fixupCount
 					contFixCount = 0
 				}
-				XTclEmitForwardJump(tls, envPtr, _TCL_TRUE_JUMP, fixupArray+uintptr(contFixIndex+contFixCount)*16)
+				XTclEmitForwardJump(tls, envPtr, int32(_TCL_TRUE_JUMP), fixupArray+uintptr(contFixIndex+contFixCount)*16)
 				fixupCount++
 				contFixCount++
 				goto _1
 			}
-			XTclEmitForwardJump(tls, envPtr, _TCL_FALSE_JUMP, fixupArray+uintptr(fixupCount)*16)
+			XTclEmitForwardJump(tls, envPtr, int32(_TCL_FALSE_JUMP), fixupArray+uintptr(fixupCount)*16)
 			nextArmFixupIndex = fixupCount
 			fixupCount++
 		} else {
@@ -99062,7 +99062,7 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext = *(*uintptr)(unsafe.Pointer(bodyContLines + uintptr(i+int32(1))*8)) /* TIP #280 */
 		XTclCompileCmdWord(tls, interp, *(*uintptr)(unsafe.Pointer(bodyToken + uintptr(i+int32(1))*8)), int32(1), envPtr)
 		if !(foundDefault != 0) {
-			XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, fixupArray+uintptr(fixupCount)*16)
+			XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), fixupArray+uintptr(fixupCount)*16)
 			fixupCount++
 			*(*uint32)(unsafe.Pointer(fixupTargetArray + uintptr(nextArmFixupIndex)*4)) = uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))
 		}
@@ -101360,7 +101360,7 @@ func _IssueTryClausesInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 	 * on/trap clause; when none is present, this whole function is not called
 	 * (and it's never called when there's a finally clause).
 	 */
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -102849,7 +102849,7 @@ func _IssueTryClausesInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 					j++
 				}
 			}
-			range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+			range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
@@ -103870,7 +103870,7 @@ func _IssueTryClausesFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr u
 	 * Compile the body, trapping any error in it so that we can trap on it
 	 * (if any trap matches) and run a finally clause.
 	 */
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -105212,7 +105212,7 @@ func _IssueTryClausesFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr u
 		 * failed trap for the result from the main script.
 		 */
 		if *(*int32)(unsafe.Pointer(resultVars + uintptr(i)*4)) >= 0 || *(*uintptr)(unsafe.Pointer(handlerTokens + uintptr(i)*8)) != 0 {
-			range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+			range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
@@ -106823,7 +106823,7 @@ func _IssueTryClausesFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr u
 		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(afterBody) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(afterBody)) >> libc.Int32FromInt32(8))
 		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(afterBody) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(afterBody)))
 	}
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -107861,7 +107861,7 @@ func _IssueTryFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 	 * Note that this one is simple enough that we can issue it without
 	 * needing a local variable table, making it a universal compilation.
 	 */
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -108012,7 +108012,7 @@ func _IssueTryFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta4
 	}
-	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -109145,7 +109145,7 @@ func XTclCompileWhileCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * Create a ExceptionRange record for the loop body. This is used to
 	 * implement break and continue.
 	 */
-	range1 = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
+	range1 = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
 	/*
 	 * Jump to the evaluation of the condition. This code uses the "loop
 	 * rotation" optimisation (which eliminates one branch from the loop).
@@ -109160,7 +109160,7 @@ func XTclCompileWhileCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 *       goto B
 	 */
 	if loopMayEnd != 0 {
-		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
+		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
 		testCodeOffset = 0 /* Avoid compiler warning. */
 	} else {
 		/*
@@ -114890,12 +114890,12 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					newJump = XTclStackAlloc(tls, interp, int32(24))
 					(*TJumpList)(unsafe.Pointer(newJump)).Fnext = jumpPtr
 					jumpPtr = newJump
-					XTclEmitForwardJump(tls, envPtr, _TCL_FALSE_JUMP, jumpPtr)
+					XTclEmitForwardJump(tls, envPtr, int32(_TCL_FALSE_JUMP), jumpPtr)
 				case libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(13):
 					newJump = XTclStackAlloc(tls, interp, int32(24))
 					(*TJumpList)(unsafe.Pointer(newJump)).Fnext = jumpPtr
 					jumpPtr = newJump
-					XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, jumpPtr)
+					XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), jumpPtr)
 					if -int32(1) < 0 {
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 							(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -120740,7 +120740,7 @@ func XTclEmitInvoke(tls *libc.TLS, envPtr uintptr, opcode int32, va uintptr) {
 		}
 	}
 	if *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) || *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
-		loopRange = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
+		loopRange = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 			v11 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
@@ -121002,7 +121002,7 @@ _18:
 		}
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth--
 		(*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(loopRange)*28))).FnumCodeBytes = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64((*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(loopRange)*28))).FcodeOffset))
-		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+16)
+		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+16)
 		/*
 		 * Careful! When generating these stack unwinding sequences, the depth
 		 * of stack in the cases where they are taken is not the same as if
@@ -132409,8 +132409,8 @@ func _FillEncodingFileMap(tls *libc.TLS) {
 			if !(j < *(*int32)(unsafe.Pointer(bp + 4))) {
 				break
 			}
-			fileObj = XTclPathPart(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)) + uintptr(j)*8)), _TCL_PATH_TAIL)
-			encodingName = XTclPathPart(tls, libc.UintptrFromInt32(0), fileObj, _TCL_PATH_ROOT)
+			fileObj = XTclPathPart(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)) + uintptr(j)*8)), int32(_TCL_PATH_TAIL))
+			encodingName = XTclPathPart(tls, libc.UintptrFromInt32(0), fileObj, int32(_TCL_PATH_ROOT))
 			XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), map1, encodingName, *(*uintptr)(unsafe.Pointer(bp + 8)))
 			_objPtr = fileObj
 			v6 = _objPtr
@@ -164428,7 +164428,7 @@ func XTclFileLinkCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 				XTcl_PosixError(tls, interp)
 			} else {
 				if *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) == int32(m_ENOENT) {
-					dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(index)*8)), _TCL_PATH_DIRNAME)
+					dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(index)*8)), int32(_TCL_PATH_DIRNAME))
 					if dirPtr == libc.UintptrFromInt32(0) {
 						return int32(m_TCL_ERROR)
 					}
@@ -164654,7 +164654,7 @@ func XTclFileTemporaryCmd(tls *libc.TLS, clientData TClientData, interp uintptr,
 		 * separator in it.
 		 */
 		if libc.Xstrchr(tls, string1, int32('/')) != libc.UintptrFromInt32(0) || XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, string1, int32('\\')) != libc.UintptrFromInt32(0) {
-			tempDirObj = XTclPathPart(tls, interp, templateObj, _TCL_PATH_DIRNAME)
+			tempDirObj = XTclPathPart(tls, interp, templateObj, int32(_TCL_PATH_DIRNAME))
 			/*
 			 * Only allow creation of temporary files in the native filesystem
 			 * since they are frequently used for integration with external
@@ -164687,10 +164687,10 @@ func XTclFileTemporaryCmd(tls *libc.TLS, clientData TClientData, interp uintptr,
 		 * directory separator.
 		 */
 		if int32(*(*uint8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') && (XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || int32(*(*uint8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('\\')) {
-			tailObj = XTclPathPart(tls, interp, templateObj, _TCL_PATH_TAIL)
+			tailObj = XTclPathPart(tls, interp, templateObj, int32(_TCL_PATH_TAIL))
 			if tailObj != libc.UintptrFromInt32(0) {
-				tempBaseObj = XTclPathPart(tls, interp, tailObj, _TCL_PATH_ROOT)
-				tempExtObj = XTclPathPart(tls, interp, tailObj, _TCL_PATH_EXTENSION)
+				tempBaseObj = XTclPathPart(tls, interp, tailObj, int32(_TCL_PATH_ROOT))
+				tempExtObj = XTclPathPart(tls, interp, tailObj, int32(_TCL_PATH_EXTENSION))
 				v5 = tailObj
 				v4 = *(*int32)(unsafe.Pointer(v5))
 				*(*int32)(unsafe.Pointer(v5))--
@@ -188858,7 +188858,7 @@ func XTclChanCreateObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc
 	 */
 	modeObj = _DecodeEventMask(tls, *(*int32)(unsafe.Pointer(bp)))
 	/* assert modeObj.refCount == 1 */
-	result = _InvokeTclMethod(tls, rcPtr, _METH_INIT, modeObj, libc.UintptrFromInt32(0), bp+40)
+	result = _InvokeTclMethod(tls, rcPtr, int32(_METH_INIT), modeObj, libc.UintptrFromInt32(0), bp+40)
 	_objPtr = modeObj
 	v2 = _objPtr
 	v1 = *(*int32)(unsafe.Pointer(v2))
@@ -189349,7 +189349,7 @@ func _ReflectClose(tls *libc.TLS, clientData TClientData, interp uintptr) (r int
 	/*
 	 * Are we in the correct thread?
 	 */
-	result = _InvokeTclMethod(tls, rcPtr, _METH_FINAL, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp)
+	result = _InvokeTclMethod(tls, rcPtr, int32(_METH_FINAL), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp)
 	if result != m_TCL_OK && interp != libc.UintptrFromInt32(0) {
 		XTcl_SetChannelErrorInterp(tls, interp, *(*uintptr)(unsafe.Pointer(bp)))
 	}
@@ -189445,7 +189445,7 @@ func _ReflectInput(tls *libc.TLS, clientData TClientData, buf uintptr, toRead in
 	(*TTcl_Obj)(unsafe.Pointer(toReadObj)).FinternalRep.FlongValue = int64(toRead)
 	(*TTcl_Obj)(unsafe.Pointer(toReadObj)).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 	(*TTcl_Obj)(unsafe.Pointer(toReadObj)).FrefCount++
-	if _InvokeTclMethod(tls, rcPtr, _METH_READ, toReadObj, libc.UintptrFromInt32(0), bp+8) != m_TCL_OK {
+	if _InvokeTclMethod(tls, rcPtr, int32(_METH_READ), toReadObj, libc.UintptrFromInt32(0), bp+8) != m_TCL_OK {
 		code = _ErrnoReturn(tls, rcPtr, *(*uintptr)(unsafe.Pointer(bp + 8)))
 		if code < 0 {
 			*(*int32)(unsafe.Pointer(errorCodePtr)) = -code
@@ -189528,7 +189528,7 @@ func _ReflectOutput(tls *libc.TLS, clientData TClientData, buf uintptr, toWrite 
 	XTcl_Preserve(tls, (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Finterp)
 	bufObj = XTcl_NewByteArrayObj(tls, buf, toWrite)
 	(*TTcl_Obj)(unsafe.Pointer(bufObj)).FrefCount++
-	if _InvokeTclMethod(tls, rcPtr, _METH_WRITE, bufObj, libc.UintptrFromInt32(0), bp) != m_TCL_OK {
+	if _InvokeTclMethod(tls, rcPtr, int32(_METH_WRITE), bufObj, libc.UintptrFromInt32(0), bp) != m_TCL_OK {
 		code = _ErrnoReturn(tls, rcPtr, *(*uintptr)(unsafe.Pointer(bp)))
 		if code < 0 {
 			*(*int32)(unsafe.Pointer(errorCodePtr)) = -code
@@ -189642,7 +189642,7 @@ func _ReflectSeekWide(tls *libc.TLS, clientData TClientData, offset TTcl_WideInt
 	baseObj = XTcl_NewStringObj(tls, v1, -int32(1))
 	(*TTcl_Obj)(unsafe.Pointer(offObj)).FrefCount++
 	(*TTcl_Obj)(unsafe.Pointer(baseObj)).FrefCount++
-	if _InvokeTclMethod(tls, rcPtr, _METH_SEEK, offObj, baseObj, bp) != m_TCL_OK {
+	if _InvokeTclMethod(tls, rcPtr, int32(_METH_SEEK), offObj, baseObj, bp) != m_TCL_OK {
 		XTcl_SetChannelError(tls, (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fchan1, *(*uintptr)(unsafe.Pointer(bp)))
 		goto invalid
 	}
@@ -189741,7 +189741,7 @@ func _ReflectWatch(tls *libc.TLS, clientData TClientData, mask int32) {
 	(*TReflectedChannel)(unsafe.Pointer(rcPtr)).Finterest = mask
 	maskObj = _DecodeEventMask(tls, mask)
 	/* assert maskObj.refCount == 1 */
-	_InvokeTclMethod(tls, rcPtr, _METH_WATCH, maskObj, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
+	_InvokeTclMethod(tls, rcPtr, int32(_METH_WATCH), maskObj, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 	_objPtr = maskObj
 	v2 = _objPtr
 	v1 = *(*int32)(unsafe.Pointer(v2))
@@ -189783,7 +189783,7 @@ func _ReflectBlock(tls *libc.TLS, clientData TClientData, nonblocking int32) (r 
 	blockObj = XTcl_NewIntObj(tls, libc.BoolInt32(libc.BoolInt32(!(nonblocking != 0)) != 0))
 	(*TTcl_Obj)(unsafe.Pointer(blockObj)).FrefCount++
 	XTcl_Preserve(tls, rcPtr)
-	if _InvokeTclMethod(tls, rcPtr, _METH_BLOCKING, blockObj, libc.UintptrFromInt32(0), bp) != m_TCL_OK {
+	if _InvokeTclMethod(tls, rcPtr, int32(_METH_BLOCKING), blockObj, libc.UintptrFromInt32(0), bp) != m_TCL_OK {
 		XTcl_SetChannelError(tls, (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fchan1, *(*uintptr)(unsafe.Pointer(bp)))
 		errorNum = int32(m_EINVAL)
 	} else {
@@ -189839,7 +189839,7 @@ func _ReflectSetOption(tls *libc.TLS, clientData TClientData, interp uintptr, op
 	valueObj = XTcl_NewStringObj(tls, newValue, -int32(1))
 	(*TTcl_Obj)(unsafe.Pointer(optionObj)).FrefCount++
 	(*TTcl_Obj)(unsafe.Pointer(valueObj)).FrefCount++
-	result = _InvokeTclMethod(tls, rcPtr, _METH_CONFIGURE, optionObj, valueObj, bp)
+	result = _InvokeTclMethod(tls, rcPtr, int32(_METH_CONFIGURE), optionObj, valueObj, bp)
 	if result != m_TCL_OK {
 		_UnmarshallErrorResult(tls, interp, *(*uintptr)(unsafe.Pointer(bp)))
 	}
@@ -198408,7 +198408,7 @@ func XTcl_FSRemoveDirectory(tls *libc.TLS, pathPtr uintptr, recursive int32, err
 					 * The cwd is inside the directory, so we perform a 'cd
 					 * [file dirname $path]'.
 					 */
-					dirPtr = XTclPathPart(tls, libc.UintptrFromInt32(0), pathPtr, _TCL_PATH_DIRNAME)
+					dirPtr = XTclPathPart(tls, libc.UintptrFromInt32(0), pathPtr, int32(_TCL_PATH_DIRNAME))
 					XTcl_FSChdir(tls, dirPtr)
 					_objPtr = dirPtr
 					v2 = _objPtr
@@ -244822,7 +244822,7 @@ func _TimerCheckProc(tls *libc.TLS, data TClientData, flags int32) {
 			(*TThreadSpecificData11)(unsafe.Pointer(tsdPtr)).FtimerPending = int32(1)
 			timerEvPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
 			(*TTcl_Event)(unsafe.Pointer(timerEvPtr)).Fproc = __ccgo_fp(_TimerHandlerEventProc)
-			XTcl_QueueEvent(tls, timerEvPtr, _TCL_QUEUE_TAIL)
+			XTcl_QueueEvent(tls, timerEvPtr, int32(_TCL_QUEUE_TAIL))
 		}
 	}
 }
@@ -282411,7 +282411,7 @@ func XTclpMatchInDirectory(tls *libc.TLS, interp uintptr, resultPtr uintptr, pat
 	}
 	if pattern == libc.UintptrFromInt32(0) || int32(*(*uint8)(unsafe.Pointer(pattern))) == int32('\000') {
 		native = XTcl_FSGetNativePath(tls, pathPtr)
-		tailPtr = XTclPathPart(tls, interp, pathPtr, _TCL_PATH_TAIL)
+		tailPtr = XTclPathPart(tls, interp, pathPtr, int32(_TCL_PATH_TAIL))
 		nativeTail = XTcl_FSGetNativePath(tls, tailPtr)
 		matchResult = _NativeMatchType(tls, interp, native, nativeTail, types)
 		if matchResult == int32(1) {
@@ -282930,7 +282930,7 @@ func XTclpObjLink(tls *libc.TLS, pathPtr uintptr, _toPtr uintptr, linkAction int
 		 * to absolute relative to the cwd.
 		 */
 		if linkAction&int32(m_TCL_CREATE_SYMBOLIC_LINK3) != 0 && XTcl_FSGetPathType(tls, *(*uintptr)(unsafe.Pointer(bp))) == int32(_TCL_PATH_RELATIVE) {
-			dirPtr = XTclPathPart(tls, libc.UintptrFromInt32(0), pathPtr, _TCL_PATH_DIRNAME)
+			dirPtr = XTclPathPart(tls, libc.UintptrFromInt32(0), pathPtr, int32(_TCL_PATH_DIRNAME))
 			if dirPtr == libc.UintptrFromInt32(0) {
 				return libc.UintptrFromInt32(0)
 			}
@@ -288558,7 +288558,7 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 				fileEvPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(24)))
 				(*TFileHandlerEvent)(unsafe.Pointer(fileEvPtr)).Fheader.Fproc = __ccgo_fp(_FileHandlerEventProc)
 				(*TFileHandlerEvent)(unsafe.Pointer(fileEvPtr)).Ffd = (*TFileHandler)(unsafe.Pointer(filePtr)).Ffd
-				XTcl_QueueEvent(tls, fileEvPtr, _TCL_QUEUE_TAIL)
+				XTcl_QueueEvent(tls, fileEvPtr, int32(_TCL_QUEUE_TAIL))
 			}
 			(*TFileHandler)(unsafe.Pointer(filePtr)).FreadyMask = mask
 			goto _7
