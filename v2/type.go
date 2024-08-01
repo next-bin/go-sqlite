@@ -98,6 +98,11 @@ func (t typer) Type() Type {
 	}
 }
 
+// IsUncheckedType returns true when a type check of a Node was not performed.
+func (t typer) IsUncheckedType() bool {
+	return t.guard == unchecked
+}
+
 type guard byte
 
 func (g *guard) enter(c *ctx, n Node) bool {
