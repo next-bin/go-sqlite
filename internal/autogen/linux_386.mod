@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/adrg/xdg v0.5.0
-	modernc.org/ccgo/v4 v4.20.5
+	modernc.org/ccgo/v4 v4.20.6
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.55.7
 	modernc.org/libz v0.13.2
@@ -25,7 +25,7 @@ require (
 	modernc.org/cc/v3 v3.41.0 // indirect
 	modernc.org/cc/v4 v4.21.4 // indirect
 	modernc.org/ccgo/v3 v3.17.0 // indirect
-	modernc.org/gc/v2 v2.4.3 // indirect
+	modernc.org/gc/v2 v2.5.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.8.0 // indirect
 	modernc.org/opt v0.1.3 // indirect
