@@ -17,6 +17,7 @@ import (
 	"time"
 
 	_ "github.com/adrg/xdg"
+	_ "modernc.org/cc/v4"
 	_ "modernc.org/ccgo/v4/lib"
 	_ "modernc.org/fileutil/ccgo"
 	"modernc.org/libc"
@@ -204,6 +205,8 @@ func TestMain(m *testing.M) {
 	case "linux/ppc64le":
 		skip = append(skip,
 			"iortrans-3.1",
+			"unixInit-3.1",
+			"unixInit-3.2",
 		)
 	case "linux/riscv64":
 		skip = append(skip,

@@ -178,7 +178,9 @@ go work use \
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_linux --host=i686-w64-mingw32 --enable-64bit --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
 		case
 			target == "linux/amd64",
-			target == "linux/loong64":
+			target == "linux/arm64",
+			target == "linux/loong64",
+			target == "linux/ppc6464le":
 
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --enable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
 		default:
