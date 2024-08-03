@@ -14,6 +14,7 @@ import (
 	"strings"
 	"testing"
 
+	_ "modernc.org/cc/v4"
 	_ "modernc.org/ccgo/v4/lib"
 	util "modernc.org/fileutil/ccgo"
 )
