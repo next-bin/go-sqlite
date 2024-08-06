@@ -223,7 +223,6 @@ func main() {
 		util.MustShell(true, nil, "cp", filepath.Join(libRoot, "example64.go"), filepath.Join("internal", "example", fn))
 		util.MustShell(true, nil, "cp", filepath.Join(libRoot, "minigzip64.go"), filepath.Join("internal", "minigzip", fn))
 	}
-	util.Shell(nil, "sh", "-c", "./unconvert.sh")
 	util.Shell(nil, "git", "status")
 }
 

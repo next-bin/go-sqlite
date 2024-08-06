@@ -49,7 +49,6 @@ generate: download
 	GO_GENERATE_DIR=$(DIR) go run generator*.go 2> log-generate-errors | tee log-generate
 	cat log-generate-errors
 	go build -v ./...
-	# go install github.com/mdempsky/unconvert@latest
 	go build -v ./...  | tee -a log-generate
 	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
