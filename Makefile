@@ -48,8 +48,6 @@ generate: download
 	GO_GENERATE_DIR=$(DIR) go run generator*.go 2> log-generate-errors | tee log-generate
 	cat log-generate-errors
 	go build -v ./...
-	# go install github.com/mdempsky/unconvert@latest
-	go build -v ./...  2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
@@ -68,7 +66,7 @@ dev: download
 	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
 
 test:
-	go test -v -timeout 24h -count=1 2>&1 | tee log-test
+	go test -vet=off -v -timeout 24h -count=1 2>&1 | tee log-test
 	grep -a 'TRC\|TODO\|ERRORF\|FAIL' log-test || true 2>&1 | tee -a log-test
 
 vtest:

@@ -180,7 +180,8 @@ go work use \
 			target == "linux/amd64",
 			target == "linux/arm64",
 			target == "linux/loong64",
-			target == "linux/ppc6464le":
+			target == "linux/ppc6464le",
+			target == "linux/s390x":
 
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --enable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
 		default:
@@ -320,7 +321,6 @@ go work use \
 	default:
 		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
 	}
-	util.Shell(nil, "sh", "-c", "./unconvert.sh")
 	util.Shell(nil, "git", "status")
 }
 
