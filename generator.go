@@ -254,7 +254,8 @@ func main() {
 	if win {
 		fn = fmt.Sprintf("ccgo_%s.go", goos)
 	}
-	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
+	mustCopyFile(filepath.Join("include", "sqlite3.h"), filepath.Join(makeRoot, "sqlite3.h"), nil)
+	mustCopyFile(filepath.Join("include", "sqlite3ext.h"), filepath.Join(makeRoot, "sqlite3ext.h"), nil)
 	_, extractedArchivePath = filepath.Split(archive2Path)
 	extractedArchivePath = extractedArchivePath[:len(extractedArchivePath)-len(".zip")]
 	tempDir = os.Getenv("GO_GENERATE_DIR")
