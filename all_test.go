@@ -217,6 +217,8 @@ func TestMain(m *testing.M) {
 			"binary-40.3",
 			"cmdIL-5.7",
 			"iortrans-3.1",
+			"unixInit-3.1",
+			"unixInit-3.2",
 		)
 	case "linux/s390x":
 		skip = append(skip,

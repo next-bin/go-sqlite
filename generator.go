@@ -181,6 +181,7 @@ go work use \
 			target == "linux/arm64",
 			target == "linux/loong64",
 			target == "linux/ppc6464le",
+			target == "linux/riscv64",
 			target == "linux/s390x":
 
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --enable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
