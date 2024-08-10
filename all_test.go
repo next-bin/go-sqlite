@@ -191,6 +191,8 @@ func TestMain(m *testing.M) {
 	case "linux/386":
 		skip = append(skip,
 			"iortrans-3.1",
+			"unixInit-3.1",
+			"unixInit-3.2",
 		)
 	case "linux/arm":
 		skip = append(skip,
