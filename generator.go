@@ -14,6 +14,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/user"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -36,6 +37,7 @@ var (
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 	win    = os.Getenv("GO_GENERATE_WIN") == "1"
 	win32  = os.Getenv("GO_GENERATE_WIN32") == "1"
+	xdgConfigHome = xdg.ConfigHome
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -83,6 +85,11 @@ func main() {
 	case "freebsd/arm64", "openbsd/amd64", "darwin/amd64", "darwin/arm64":
 		sed = "gsed"
 	}
+	switch target {
+	case "darwin/arm64":
+		u, _ := user.Current()
+		xdgConfigHome = filepath.Join(u.HomeDir, ".config")
+	}
 	f, err := os.Open(archivePath)
 	if err != nil {
 		fail(1, "cannot open tar file: %v\n", err)
@@ -115,7 +122,7 @@ func main() {
 	if win || win32 {
 		makeRoot = filepath.Join(libRoot, "win")
 	}
-	xdgDir := filepath.Join(xdg.ConfigHome, "ccgo", "v4", "libtcl8.6", goos, goarch)
+	xdgDir := filepath.Join(xdgConfigHome, "ccgo", "v4", "libtcl8.6", goos, goarch)
 	os.MkdirAll(xdgDir, 0770)
 	fmt.Fprintf(os.Stderr, "dev %v\n", dev)
 	fmt.Fprintf(os.Stderr, "xdgDir %s\n", xdgDir)
