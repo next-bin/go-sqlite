@@ -1,4 +1,4 @@
-// Code generated for linux/amd64 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_linux_amd64.go -I /tmp/libsqlite3/sqlite-src-3460100 /tmp/libsqlite3/sqlite-src-3460100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/amd64 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_linux_amd64.go -I /tmp/libsqlite3/sqlite-src-3460000 /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && amd64
 
@@ -357,7 +357,7 @@ const SQLITE_SHM_LOCK = 2
 const SQLITE_SHM_NLOCK = 8
 const SQLITE_SHM_SHARED = 4
 const SQLITE_SHM_UNLOCK = 1
-const SQLITE_SOURCE_ID = "2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1"
+const SQLITE_SOURCE_ID = "2024-05-23 13:25:27 96c92aba00c8375bc32fafcdf12429c58bd8aabfcadab6683e35bbb9cdebalt1"
 const SQLITE_STATUS_MALLOC_COUNT = 9
 const SQLITE_STATUS_MALLOC_SIZE = 5
 const SQLITE_STATUS_MEMORY_USED = 0
@@ -434,8 +434,8 @@ const SQLITE_UTF16BE = 3
 const SQLITE_UTF16LE = 2
 const SQLITE_UTF16_ALIGNED = 8
 const SQLITE_UTF8 = 1
-const SQLITE_VERSION = "3.46.1"
-const SQLITE_VERSION_NUMBER = 3046001
+const SQLITE_VERSION = "3.46.0"
+const SQLITE_VERSION_NUMBER = 3046000
 const SQLITE_VTAB_CONSTRAINT_SUPPORT = 1
 const SQLITE_VTAB_DIRECTONLY = 3
 const SQLITE_VTAB_INNOCUOUS = 2

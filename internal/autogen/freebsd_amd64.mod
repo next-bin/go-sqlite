@@ -3,8 +3,8 @@ module modernc.org/libsqlite3
 go 1.20
 
 require (
-	golang.org/x/sys v0.24.0
-	modernc.org/ccgo/v4 v4.20.4
+	golang.org/x/sys v0.22.0
+	modernc.org/ccgo/v4 v4.19.2
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.55.3
 	modernc.org/libtcl8.6 v0.12.1
@@ -17,11 +17,10 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	golang.org/x/mod v0.19.0 // indirect
-	golang.org/x/sync v0.7.0 // indirect
-	golang.org/x/tools v0.23.0 // indirect
+	golang.org/x/mod v0.16.0 // indirect
+	golang.org/x/tools v0.19.0 // indirect
 	modernc.org/cc/v4 v4.21.4 // indirect
-	modernc.org/gc/v2 v2.5.0 // indirect
+	modernc.org/gc/v2 v2.4.1 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.8.0 // indirect
 	modernc.org/opt v0.1.3 // indirect

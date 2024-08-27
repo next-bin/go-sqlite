@@ -25,7 +25,7 @@ import (
 const (
 	archivePath  = "sqlite-amalgamation-" + versionTag + ".zip"
 	archive2Path = "sqlite-src-" + versionTag + ".zip"
-	versionTag   = "3460100"
+	versionTag   = "3460000"
 )
 
 var (
@@ -600,6 +600,7 @@ go work use \
 	util.Shell(nil, "rm", "-rf", filepath.Join("internal", "test"))
 	mustCopyDir(filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil, false)
 	mustCopyDir("internal/test", "internal/overlay/test", nil, true)
+	util.Shell(nil, "sh", "-c", "./unconvert.sh")
 	util.MustShell(true, nil, "go", "test", "-run", "@")
 	util.Shell(nil, "git", "status")
 }
