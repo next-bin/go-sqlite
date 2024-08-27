@@ -4,11 +4,11 @@ go 1.20
 
 require (
 	golang.org/x/sys v0.24.0
-	modernc.org/ccgo/v4 v4.20.7
+	modernc.org/ccgo/v4 v4.20.4
 	modernc.org/fileutil v1.3.0
-	modernc.org/libc v1.59.7
-	modernc.org/libtcl8.6 v0.16.2
-	modernc.org/libz v0.16.3
+	modernc.org/libc v1.55.3
+	modernc.org/libtcl8.6 v0.12.1
+	modernc.org/libz v0.13.2
 )
 
 require (
