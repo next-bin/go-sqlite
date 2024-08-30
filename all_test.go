@@ -199,7 +199,6 @@ func TestMain(m *testing.M) {
 			"chan-15.2",
 			"iortrans-3.1",
 			"unixInit-3.2",
-
 		)
 	case "linux/loong64":
 		skip = append(skip,
@@ -221,6 +220,7 @@ func TestMain(m *testing.M) {
 			"Tcl_Main-1.6",
 			"binary-40.3",
 			"cmdIL-5.7",
+			"http-4.15",
 			"iortrans-3.1",
 			"unixInit-3.1",
 			"unixInit-3.2",

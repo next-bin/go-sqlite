@@ -30,13 +30,13 @@ const (
 )
 
 var (
-	goarch = env("TARGET_GOARCH", env("GOARCH", runtime.GOARCH))
-	goos   = env("TARGET_GOOS", env("GOOS", runtime.GOOS))
-	target = fmt.Sprintf("%s/%s", goos, goarch)
-	sed    = "sed"
-	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
-	win    = os.Getenv("GO_GENERATE_WIN") == "1"
-	win32  = os.Getenv("GO_GENERATE_WIN32") == "1"
+	goarch        = env("TARGET_GOARCH", env("GOARCH", runtime.GOARCH))
+	goos          = env("TARGET_GOOS", env("GOOS", runtime.GOOS))
+	target        = fmt.Sprintf("%s/%s", goos, goarch)
+	sed           = "sed"
+	j             = fmt.Sprint(runtime.GOMAXPROCS(-1))
+	win           = os.Getenv("GO_GENERATE_WIN") == "1"
+	win32         = os.Getenv("GO_GENERATE_WIN32") == "1"
 	xdgConfigHome = xdg.ConfigHome
 )
 
