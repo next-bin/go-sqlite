@@ -222,6 +222,8 @@ func TestMain(m *testing.M) {
 			"cmdIL-5.7",
 			"http-4.15",
 			"iortrans-3.1",
+			"socket_inet-2.13",
+			"socket_inet6-2.13",
 			"unixInit-3.1",
 			"unixInit-3.2",
 		)
