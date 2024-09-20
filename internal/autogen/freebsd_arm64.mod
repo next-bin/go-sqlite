@@ -5,9 +5,9 @@ go 1.20
 require (
 	github.com/adrg/xdg v0.5.0
 	modernc.org/cc/v4 v4.22.0
-	modernc.org/ccgo/v4 v4.21.0
+	modernc.org/ccgo/v4 v4.22.1
 	modernc.org/fileutil v1.3.0
-	modernc.org/libc v1.60.1
+	modernc.org/libc v1.61.0
 	modernc.org/libz v0.16.4
 )
 
@@ -18,6 +18,7 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
+	golang.org/x/exp v0.0.0-20230315142452-642cacee5cc0 // indirect
 	golang.org/x/mod v0.19.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
