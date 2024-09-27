@@ -163,6 +163,8 @@ const m_MAC_OS_VERSION_14_1 = "__MAC_14_1"
 const m_MAC_OS_VERSION_14_2 = "__MAC_14_2"
 const m_MAC_OS_VERSION_14_3 = "__MAC_14_3"
 const m_MAC_OS_VERSION_14_4 = "__MAC_14_4"
+const m_MAC_OS_VERSION_14_5 = "__MAC_14_5"
+const m_MAC_OS_VERSION_15_0 = "__MAC_15_0"
 const m_MAC_OS_X_VERSION_10_0 = "__MAC_10_0"
 const m_MAC_OS_X_VERSION_10_1 = "__MAC_10_1"
 const m_MAC_OS_X_VERSION_10_10 = "__MAC_10_10"
@@ -662,7 +664,7 @@ const m___ATOMIC_RELAXED = 0
 const m___ATOMIC_RELEASE = 3
 const m___ATOMIC_SEQ_CST = 5
 const m___BIGGEST_ALIGNMENT__ = 16
-const m___BITINT_MAXWIDTH__ = 128
+const m___BITINT_MAXWIDTH__ = 8388608
 const m___BLOCKS__ = 1
 const m___BOOL_WIDTH__ = 8
 const m___BRIDGEOS_2_0 = 20000
@@ -690,6 +692,8 @@ const m___BRIDGEOS_8_1 = 80100
 const m___BRIDGEOS_8_2 = 80200
 const m___BRIDGEOS_8_3 = 80300
 const m___BRIDGEOS_8_4 = 80400
+const m___BRIDGEOS_8_5 = 80500
+const m___BRIDGEOS_9_0 = 90000
 const m___BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const m___CCGO__ = 1
 const m___CHAR_BIT__ = 8
@@ -751,10 +755,12 @@ const m___DRIVERKIT_23_1 = 230100
 const m___DRIVERKIT_23_2 = 230200
 const m___DRIVERKIT_23_3 = 230300
 const m___DRIVERKIT_23_4 = 230400
+const m___DRIVERKIT_23_5 = 230500
+const m___DRIVERKIT_24_0 = 240000
 const m___DYNAMIC__ = 1
 const m___ENABLE_LEGACY_MAC_AVAILABILITY = 1
-const m___ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ = 140000
-const m___ENVIRONMENT_OS_VERSION_MIN_REQUIRED__ = 140000
+const m___ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ = 150000
+const m___ENVIRONMENT_OS_VERSION_MIN_REQUIRED__ = 150000
 const m___FINITE_MATH_ONLY__ = 0
 const m___FLT16_DECIMAL_DIG__ = 5
 const m___FLT16_DENORM_MIN__ = 5.9604644775390625e-8
@@ -781,6 +787,16 @@ const m___FLT_MAX_EXP__ = 128
 const m___FLT_MAX__ = 3.40282347e+38
 const m___FLT_MIN__ = 1.17549435e-38
 const m___FLT_RADIX__ = 2
+const m___FPCLASS_NEGINF = 0x0004
+const m___FPCLASS_NEGNORMAL = 0x0008
+const m___FPCLASS_NEGSUBNORMAL = 0x0010
+const m___FPCLASS_NEGZERO = 0x0020
+const m___FPCLASS_POSINF = 0x0200
+const m___FPCLASS_POSNORMAL = 0x0100
+const m___FPCLASS_POSSUBNORMAL = 0x0080
+const m___FPCLASS_POSZERO = 0x0040
+const m___FPCLASS_QNAN = 0x0002
+const m___FPCLASS_SNAN = 0x0001
 const m___FUNCTION__ = "__func__"
 const m___FXSR__ = 1
 const m___GCC_ASM_FLAG_OUTPUTS__ = 1
@@ -804,7 +820,6 @@ const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const m___GNUC_MINOR__ = 2
 const m___GNUC_PATCHLEVEL__ = 1
 const m___GNUC_STDC_INLINE__ = 1
-const m___GNUC_VA_LIST = 1
 const m___GNUC__ = 4
 const m___GXX_ABI_VERSION = 1002
 const m___INT16_FMTd__ = "hd"
@@ -924,6 +939,8 @@ const m___IPHONE_17_1 = 170100
 const m___IPHONE_17_2 = 170200
 const m___IPHONE_17_3 = 170300
 const m___IPHONE_17_4 = 170400
+const m___IPHONE_17_5 = 170500
+const m___IPHONE_18_0 = 180000
 const m___IPHONE_2_0 = 20000
 const m___IPHONE_2_1 = 20100
 const m___IPHONE_2_2 = 20200
@@ -1032,7 +1049,9 @@ const m___MAC_14_1 = 140100
 const m___MAC_14_2 = 140200
 const m___MAC_14_3 = 140300
 const m___MAC_14_4 = 140400
-const m___MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_14_4"
+const m___MAC_14_5 = 140500
+const m___MAC_15_0 = 150000
+const m___MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_15_0"
 const m___MAC_OS_X_VERSION_MIN_REQUIRED = "__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__"
 const m___MMX__ = 1
 const m___NO_INLINE__ = 1
@@ -1165,6 +1184,8 @@ const m___TVOS_17_1 = 170100
 const m___TVOS_17_2 = 170200
 const m___TVOS_17_3 = 170300
 const m___TVOS_17_4 = 170400
+const m___TVOS_17_5 = 170500
+const m___TVOS_18_0 = 180000
 const m___TVOS_9_0 = 90000
 const m___TVOS_9_1 = 90100
 const m___TVOS_9_2 = 90200
@@ -1245,14 +1266,18 @@ const m___UINT_LEAST8_FMTu__ = "hhu"
 const m___UINT_LEAST8_FMTx__ = "hhx"
 const m___UINT_LEAST8_MAX__ = 255
 const m___USER_LABEL_PREFIX__ = "_"
-const m___VERSION__ = "Apple LLVM 15.0.0 (clang-1500.3.9.4)"
+const m___VERSION__ = "Apple LLVM 16.0.0 (clang-1600.0.26.3)"
 const m___VISIONOS_1_0 = 10000
 const m___VISIONOS_1_1 = 10100
+const m___VISIONOS_1_2 = 10200
+const m___VISIONOS_2_0 = 20000
 const m___WATCHOS_10_0 = 100000
 const m___WATCHOS_10_1 = 100100
 const m___WATCHOS_10_2 = 100200
 const m___WATCHOS_10_3 = 100300
 const m___WATCHOS_10_4 = 100400
+const m___WATCHOS_10_5 = 100500
+const m___WATCHOS_11_0 = 110000
 const m___WATCHOS_1_0 = 10000
 const m___WATCHOS_2_0 = 20000
 const m___WATCHOS_2_1 = 20100
@@ -1302,13 +1327,13 @@ const m___WINT_TYPE__ = "int"
 const m___WINT_WIDTH__ = 32
 const m___amd64 = 1
 const m___amd64__ = 1
-const m___apple_build_version__ = 15000309
+const m___apple_build_version__ = 16000026
 const m___clang__ = 1
 const m___clang_literal_encoding__ = "UTF-8"
-const m___clang_major__ = 15
+const m___clang_major__ = 16
 const m___clang_minor__ = 0
 const m___clang_patchlevel__ = 0
-const m___clang_version__ = "15.0.0 (clang-1500.3.9.4)"
+const m___clang_version__ = "16.0.0 (clang-1600.0.26.3)"
 const m___clang_wide_literal_encoding__ = "UTF-32"
 const m___code_model_small__ = 1
 const m___const = "const"
@@ -1732,9 +1757,9 @@ type Tfsblkcnt_t = uint32
 
 type Tfsfilcnt_t = uint32
 
-type Tva_list = uintptr
-
 type T__gnuc_va_list = uintptr
+
+type Tva_list = uintptr
 
 type T__darwin_nl_item = int32
 
@@ -2778,7 +2803,10 @@ type Trusage_info_v6 = struct {
 	Fri_penergy_nj                    Tuint64_t
 	Fri_secure_time_in_system         Tuint64_t
 	Fri_secure_ptime_in_system        Tuint64_t
-	Fri_reserved                      [12]Tuint64_t
+	Fri_neural_footprint              Tuint64_t
+	Fri_lifetime_max_neural_footprint Tuint64_t
+	Fri_interval_max_neural_footprint Tuint64_t
+	Fri_reserved                      [9]Tuint64_t
 }
 
 type Trusage_info_current = struct {
@@ -2827,7 +2855,10 @@ type Trusage_info_current = struct {
 	Fri_penergy_nj                    Tuint64_t
 	Fri_secure_time_in_system         Tuint64_t
 	Fri_secure_ptime_in_system        Tuint64_t
-	Fri_reserved                      [12]Tuint64_t
+	Fri_neural_footprint              Tuint64_t
+	Fri_lifetime_max_neural_footprint Tuint64_t
+	Fri_interval_max_neural_footprint Tuint64_t
+	Fri_reserved                      [9]Tuint64_t
 }
 
 type Trlimit = struct {
@@ -24827,6 +24858,7 @@ const m_F_ADDFILESIGS_INFO = 103
 const m_F_ADDFILESIGS_RETURN = 97
 const m_F_ADDFILESUPPL = 104
 const m_F_ADDSIGS = 59
+const m_F_ADDSIGS_MAIN_BINARY = 113
 const m_F_ALLOCATEALL = 0x00000004
 const m_F_ALLOCATECONTIG = 0x00000002
 const m_F_ALLOCATEPERSIST = 0x00000008
@@ -27029,6 +27061,75 @@ func x_gzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
 }
 
 /*===---- stdarg.h - Variable argument handling ----------------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*
+ * This header is designed to be included multiple times. If any of the __need_
+ * macros are defined, then only that subset of interfaces are provided. This
+ * can be useful for POSIX headers that need to not expose all of stdarg.h, but
+ * need to use some of its interfaces. Otherwise this header provides all of
+ * the expected interfaces.
+ *
+ * When clang modules are enabled, this header is a textual header to support
+ * the multiple include behavior. As such, it doesn't directly declare anything
+ * so that it doesn't add duplicate declarations to all of its includers'
+ * modules.
+ */
+/* GCC always defines __va_copy, but does not define va_copy unless in c99 mode
+ * or -ansi is not specified, since it was not part of C90.
+ */
+/*===---- __stdarg_header_macro.h ------------------------------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg___gnuc_va_list.h - Definition of __gnuc_va_list ---------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_list.h - Definition of va_list -----------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_arg.h - Definitions of va_start, va_arg, va_end-------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg___va_copy.h - Definition of __va_copy -------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_copy.h - Definition of va_copy------------------------===
  *
  * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
  * See https://llvm.org/LICENSE.txt for license information.
