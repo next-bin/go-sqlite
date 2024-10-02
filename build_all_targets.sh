@@ -1,5 +1,5 @@
 set -e
-for tag in none # dmesg libc.membrk libc.memgrind
+for tag in none dmesg # libc.membrk libc.memgrind
 do
 	echo "-tags=$tag"
 
@@ -26,10 +26,6 @@ do
 	echo "GOOS=freebsd GOARCH=arm64"
 	GOOS=freebsd GOARCH=arm64 go build -tags=$tag -v ./...
 	GOOS=freebsd GOARCH=arm64 go test -tags=$tag -c -o /dev/null
-
-	echo "GOOS=illumos GOARCH=amd64"
-	GOOS=illumos GOARCH=amd64 go build -tags=$tag -v ./...
-	GOOS=illumos GOARCH=amd64 go test -tags=$tag -c -o /dev/null
 
 	echo "GOOS=linux GOARCH=386"
 	GOOS=linux GOARCH=386 go build -tags=$tag -v ./...
@@ -62,18 +58,6 @@ do
 	echo "GOOS=linux GOARCH=s390x"
 	GOOS=linux GOARCH=s390x go build -tags=$tag -v ./...
 	GOOS=linux GOARCH=s390x go test -tags=$tag -c -o /dev/null
-
-	echo "GOOS=netbsd GOARCH=386"
-	GOOS=netbsd GOARCH=386 go build -tags=$tag -v ./...
-	GOOS=netbsd GOARCH=386 go test -tags=$tag -c -o /dev/null
-
-	echo "GOOS=netbsd GOARCH=amd64"
-	GOOS=netbsd GOARCH=amd64 go build -tags=$tag -v ./...
-	GOOS=netbsd GOARCH=amd64 go test -tags=$tag -c -o /dev/null
-
-	echo "GOOS=netbsd GOARCH=arm"
-	GOOS=netbsd GOARCH=arm go build -tags=$tag -v ./...
-	GOOS=netbsd GOARCH=arm go test -tags=$tag -c -o /dev/null
 
 	echo "GOOS=openbsd GOARCH=386"
 	GOOS=openbsd GOARCH=386 go build -tags=$tag -v ./...

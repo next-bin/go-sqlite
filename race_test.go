@@ -2,7 +2,14 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-//go:build !windows
+// 2024-10-02, from https://go.dev/doc/articles/race_detector
+//
+// The race detector requires cgo to be enabled, and on non-Darwin systems
+// requires an installed C compiler. The race detector supports linux/amd64,
+// linux/ppc64le, linux/arm64, linux/s390x, freebsd/amd64, netbsd/amd64,
+// darwin/amd64, darwin/arm64, and windows/amd64.
+
+//go:build (darwin && amd64) || (darwin && arm64) || (freebsd && amd64) || (linux && amd64) || (linux && arm64) || (linux && ppc64le) || (linux && s390x)
 
 package libsqlite3 // import "modernc.org/libsqlite3"
 
