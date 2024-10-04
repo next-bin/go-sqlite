@@ -1,4 +1,4 @@
-// Code generated for linux/386 by 'generator -DNDEBUG -I /tmp/libsqlite3-generate466790260/sqlite-src-3460100 -ignore-unsupported-alignment -o mptest/ccgo_linux_386.go /tmp/libsqlite3-generate466790260/sqlite-src-3460100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/386 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3460100 -ignore-unsupported-alignment -o mptest/ccgo_linux_386.go /tmp/libsqlite3/sqlite-src-3460100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && 386
 
