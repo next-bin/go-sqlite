@@ -498,7 +498,20 @@ func isKnownBadFile1(fn string, err error) bool {
 	return false
 }
 
+var notSupported = map[string]struct{}{
+	// Generics are not yet fully supported by this package.
+	"issue67683.go":       {}, // go/src/internal/types/testdata/fixedbugs/issue67683.go:12:15:
+	"typeAliases1.23b.go": {}, // go/src/internal/types/testdata/spec/typeAliases1.23b.go:10:15:
+	"issue68580.go":       {}, // go/test/fixedbugs/issue68580.go:9:15:
+	"issue68054.go":       {}, // go/test/fixedbugs/issue68054.go:9:17:
+}
+
 func isKnownBadFile0(fn string, pos token.Position) bool {
+	base := filepath.Base(fn)
+	if _, ok := notSupported[base]; ok {
+		return true
+	}
+
 	fs := token.NewFileSet()
 	ast, err := goparser.ParseFile(fs, fn, nil, goparser.ParseComments|goparser.DeclarationErrors)
 	if err != nil {
