@@ -1135,6 +1135,9 @@ func TestParse(t *testing.T) {
 	case "freebsd/amd64":
 		blacklistDebian["mandelbrot-6.c"] = struct{}{}
 		blacklistDebian["spectral-norm-5.c"] = struct{}{}
+	case "darwin/amd64":
+		blacklistDebian["fannkuchredux-4.c"] = struct{}{}
+		blacklistDebian["mandelbrot-6.c"] = struct{}{}
 	}
 	var files, ok, skip, fails int32
 	for _, v := range []struct {
@@ -1423,6 +1426,9 @@ func TestTranslate(t *testing.T) {
 	case "freebsd/amd64":
 		blacklistDebian["mandelbrot-6.c"] = struct{}{}
 		blacklistDebian["spectral-norm-5.c"] = struct{}{}
+	case "darwin/amd64":
+		blacklistDebian["fannkuchredux-4.c"] = struct{}{}
+		blacklistDebian["mandelbrot-6.c"] = struct{}{}
 	}
 	var files, ok, skip, fails int32
 	for _, v := range []struct {

@@ -294,6 +294,7 @@ var (
 			ULongLong:  {8, 8, 8},
 			UShort:     {2, 2, 2},
 			Void:       {1, 1, 1},
+			Float16:    {2, 2, 2},
 		},
 		{"darwin", "arm64"}: {
 			Bool:       {1, 1, 1},
@@ -316,6 +317,7 @@ var (
 			ULongLong:  {8, 8, 8},
 			UShort:     {2, 2, 2},
 			Void:       {1, 1, 1},
+			Float16:    {2, 2, 2},
 		},
 		// gcc (SUSE Linux) 7.5.0
 		{"linux", "s390x"}: {
