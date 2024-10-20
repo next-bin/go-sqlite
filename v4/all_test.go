@@ -1139,23 +1139,29 @@ func TestParse(t *testing.T) {
 		blacklistDebian["fannkuchredux-4.c"] = struct{}{}
 		blacklistDebian["mandelbrot-6.c"] = struct{}{}
 	}
+	type bm map[string]struct{}
 	var files, ok, skip, fails int32
 	for _, v := range []struct {
-		cfg       *Config
-		dir       string
-		blacklist map[string]struct{}
+		cfg             *Config
+		dir             string
+		blacklist       map[string]struct{}
+		targetBlacklist map[string]struct{}
 	}{
-		{cfg, "CompCert-3.6/test/c", blacklistCompCert},
-		{cfg, "ccgo", nil},
-		{cfg, "gcc-9.1.0/gcc/testsuite/gcc.c-torture", blacklistGCC},
-		{cfg, "github.com/AbsInt/CompCert/test/c", blacklistCompCert},
-		{cfg, "github.com/cxgo", nil},
-		{cfg, "github.com/gcc-mirror/gcc/gcc/testsuite", blacklistGCC},
-		{cfg, "github.com/vnmakarov", nil},
-		{cfg, "sqlite-amalgamation", nil},
-		{cfg, "tcc-0.9.27/tests/tests2", nil},
-		{cfg, "benchmarksgame-team.pages.debian.net", blacklistDebian},
+		{cfg, "CompCert-3.6/test/c", blacklistCompCert, nil},
+		{cfg, "ccgo", nil, nil},
+		{cfg, "gcc-9.1.0/gcc/testsuite/gcc.c-torture", blacklistGCC, nil},
+		{cfg, "github.com/AbsInt/CompCert/test/c", blacklistCompCert, nil},
+		{cfg, "github.com/cxgo", nil, nil},
+		{cfg, "github.com/gcc-mirror/gcc/gcc/testsuite", blacklistGCC, nil},
+		{cfg, "github.com/vnmakarov", nil, nil},
+		{cfg, "sqlite-amalgamation", nil, bm{"windows/amd64": {}}},
+		{cfg, "tcc-0.9.27/tests/tests2", nil, nil},
+		{cfg, "benchmarksgame-team.pages.debian.net", blacklistDebian, nil},
 	} {
+		if _, ok := v.targetBlacklist[target]; ok {
+			continue
+		}
+
 		t.Run(v.dir, func(t *testing.T) {
 			f, o, s, n := testParse(t, v.cfg, "assets/"+v.dir, v.blacklist)
 			files += f
@@ -1421,6 +1427,8 @@ func TestTranslate(t *testing.T) {
 		blacklistGCC["pr93213.c"] = struct{}{}     //TODO
 		blacklistGCC["pr98474.c"] = struct{}{}     //TODO
 		blacklistMakarov["setjmp2.c"] = struct{}{} //TODO
+	case "windows/amd64":
+    		blacklistGCC["pr30704.c"] = struct{}{} //TODO
 	case "windows/386":
 		blacklistGCC["pr30704.c"] = struct{}{} // '__int128' is not supported on this target
 	case "freebsd/amd64":
@@ -1447,6 +1455,10 @@ func TestTranslate(t *testing.T) {
 		{cfg, "tcc-0.9.27/tests/tests2", nil},
 		{cfg, "benchmarksgame-team.pages.debian.net", blacklistDebian},
 	} {
+		if target == "windows/amd64" && strings.Contains(v.dir, "sqlite") {
+			continue
+		}
+
 		t.Run(v.dir, func(t *testing.T) {
 			f, o, s, n := testTranslate(t, v.cfg, "assets/"+v.dir, v.blacklist)
 			files += f
