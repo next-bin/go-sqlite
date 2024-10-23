@@ -100,6 +100,8 @@ const m_MAC_OS_VERSION_14_1 = "__MAC_14_1"
 const m_MAC_OS_VERSION_14_2 = "__MAC_14_2"
 const m_MAC_OS_VERSION_14_3 = "__MAC_14_3"
 const m_MAC_OS_VERSION_14_4 = "__MAC_14_4"
+const m_MAC_OS_VERSION_14_5 = "__MAC_14_5"
+const m_MAC_OS_VERSION_15_0 = "__MAC_15_0"
 const m_MAC_OS_X_VERSION_10_0 = "__MAC_10_0"
 const m_MAC_OS_X_VERSION_10_1 = "__MAC_10_1"
 const m_MAC_OS_X_VERSION_10_10 = "__MAC_10_10"
@@ -371,6 +373,7 @@ const m___ARM_ARCH_ISA_A64 = 1
 const m___ARM_ARCH_PROFILE = 'A'
 const m___ARM_FEATURE_AES = 1
 const m___ARM_FEATURE_ATOMICS = 1
+const m___ARM_FEATURE_BTI = 1
 const m___ARM_FEATURE_CLZ = 1
 const m___ARM_FEATURE_COMPLEX = 1
 const m___ARM_FEATURE_CRC32 = 1
@@ -387,13 +390,12 @@ const m___ARM_FEATURE_IDIV = 1
 const m___ARM_FEATURE_JCVT = 1
 const m___ARM_FEATURE_LDREX = 0xF
 const m___ARM_FEATURE_NUMERIC_MAXMIN = 1
+const m___ARM_FEATURE_PAUTH = 1
 const m___ARM_FEATURE_QRDMX = 1
 const m___ARM_FEATURE_RCPC = 1
 const m___ARM_FEATURE_SHA2 = 1
 const m___ARM_FEATURE_SHA3 = 1
 const m___ARM_FEATURE_SHA512 = 1
-const m___ARM_FEATURE_SM3 = 1
-const m___ARM_FEATURE_SM4 = 1
 const m___ARM_FEATURE_UNALIGNED = 1
 const m___ARM_FP = 0xE
 const m___ARM_FP16_ARGS = 1
@@ -439,6 +441,8 @@ const m___BRIDGEOS_8_1 = 80100
 const m___BRIDGEOS_8_2 = 80200
 const m___BRIDGEOS_8_3 = 80300
 const m___BRIDGEOS_8_4 = 80400
+const m___BRIDGEOS_8_5 = 80500
+const m___BRIDGEOS_9_0 = 90000
 const m___BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const m___CCGO__ = 1
 const m___CHAR_BIT__ = 8
@@ -491,10 +495,12 @@ const m___DRIVERKIT_23_1 = 230100
 const m___DRIVERKIT_23_2 = 230200
 const m___DRIVERKIT_23_3 = 230300
 const m___DRIVERKIT_23_4 = 230400
+const m___DRIVERKIT_23_5 = 230500
+const m___DRIVERKIT_24_0 = 240000
 const m___DYNAMIC__ = 1
 const m___ENABLE_LEGACY_MAC_AVAILABILITY = 1
-const m___ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ = 140400
-const m___ENVIRONMENT_OS_VERSION_MIN_REQUIRED__ = 140400
+const m___ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ = 150000
+const m___ENVIRONMENT_OS_VERSION_MIN_REQUIRED__ = 150000
 const m___FINITE_MATH_ONLY__ = 0
 const m___FLT16_DECIMAL_DIG__ = 5
 const m___FLT16_DENORM_MIN__ = 5.9604644775390625e-8
@@ -521,9 +527,20 @@ const m___FLT_MAX_EXP__ = 128
 const m___FLT_MAX__ = 3.40282347e+38
 const m___FLT_MIN__ = 1.17549435e-38
 const m___FLT_RADIX__ = 2
+const m___FPCLASS_NEGINF = 0x0004
+const m___FPCLASS_NEGNORMAL = 0x0008
+const m___FPCLASS_NEGSUBNORMAL = 0x0010
+const m___FPCLASS_NEGZERO = 0x0020
+const m___FPCLASS_POSINF = 0x0200
+const m___FPCLASS_POSNORMAL = 0x0100
+const m___FPCLASS_POSSUBNORMAL = 0x0080
+const m___FPCLASS_POSZERO = 0x0040
+const m___FPCLASS_QNAN = 0x0002
+const m___FPCLASS_SNAN = 0x0001
 const m___FP_FAST_FMA = 1
 const m___FP_FAST_FMAF = 1
 const m___FUNCTION__ = "__func__"
+const m___GCC_ASM_FLAG_OUTPUTS__ = 1
 const m___GCC_ATOMIC_BOOL_LOCK_FREE = 2
 const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
 const m___GCC_ATOMIC_CHAR32_T_LOCK_FREE = 2
@@ -543,9 +560,9 @@ const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const m___GNUC_MINOR__ = 2
 const m___GNUC_PATCHLEVEL__ = 1
 const m___GNUC_STDC_INLINE__ = 1
-const m___GNUC_VA_LIST = 1
 const m___GNUC__ = 4
 const m___GXX_ABI_VERSION = 1002
+const m___HAVE_FUNCTION_MULTI_VERSIONING = 1
 const m___INT16_FMTd__ = "hd"
 const m___INT16_FMTi__ = "hi"
 const m___INT16_MAX__ = 32767
@@ -661,6 +678,8 @@ const m___IPHONE_17_1 = 170100
 const m___IPHONE_17_2 = 170200
 const m___IPHONE_17_3 = 170300
 const m___IPHONE_17_4 = 170400
+const m___IPHONE_17_5 = 170500
+const m___IPHONE_18_0 = 180000
 const m___IPHONE_2_0 = 20000
 const m___IPHONE_2_1 = 20100
 const m___IPHONE_2_2 = 20200
@@ -765,7 +784,9 @@ const m___MAC_14_1 = 140100
 const m___MAC_14_2 = 140200
 const m___MAC_14_3 = 140300
 const m___MAC_14_4 = 140400
-const m___MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_14_4"
+const m___MAC_14_5 = 140500
+const m___MAC_15_0 = 150000
+const m___MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_15_0"
 const m___MAC_OS_X_VERSION_MIN_REQUIRED = "__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__"
 const m___NO_MATH_ERRNO__ = 1
 const m___OBJC_BOOL_IS_BOOL = 1
@@ -887,6 +908,8 @@ const m___TVOS_17_1 = 170100
 const m___TVOS_17_2 = 170200
 const m___TVOS_17_3 = 170300
 const m___TVOS_17_4 = 170400
+const m___TVOS_17_5 = 170500
+const m___TVOS_18_0 = 180000
 const m___TVOS_9_0 = 90000
 const m___TVOS_9_1 = 90100
 const m___TVOS_9_2 = 90200
@@ -966,14 +989,18 @@ const m___UINT_LEAST8_FMTu__ = "hhu"
 const m___UINT_LEAST8_FMTx__ = "hhx"
 const m___UINT_LEAST8_MAX__ = 255
 const m___USER_LABEL_PREFIX__ = "_"
-const m___VERSION__ = "Apple LLVM 15.0.0 (clang-1500.3.9.4)"
+const m___VERSION__ = "Apple LLVM 16.0.0 (clang-1600.0.26.3)"
 const m___VISIONOS_1_0 = 10000
 const m___VISIONOS_1_1 = 10100
+const m___VISIONOS_1_2 = 10200
+const m___VISIONOS_2_0 = 20000
 const m___WATCHOS_10_0 = 100000
 const m___WATCHOS_10_1 = 100100
 const m___WATCHOS_10_2 = 100200
 const m___WATCHOS_10_3 = 100300
 const m___WATCHOS_10_4 = 100400
+const m___WATCHOS_10_5 = 100500
+const m___WATCHOS_11_0 = 110000
 const m___WATCHOS_1_0 = 10000
 const m___WATCHOS_2_0 = 20000
 const m___WATCHOS_2_1 = 20100
@@ -1022,15 +1049,15 @@ const m___WINT_MAX__ = 2147483647
 const m___WINT_TYPE__ = "int"
 const m___WINT_WIDTH__ = 32
 const m___aarch64__ = 1
-const m___apple_build_version__ = 15000309
+const m___apple_build_version__ = 16000026
 const m___arm64 = 1
 const m___arm64__ = 1
 const m___clang__ = 1
 const m___clang_literal_encoding__ = "UTF-8"
-const m___clang_major__ = 15
+const m___clang_major__ = 16
 const m___clang_minor__ = 0
 const m___clang_patchlevel__ = 0
-const m___clang_version__ = "15.0.0 (clang-1500.3.9.4)"
+const m___clang_version__ = "16.0.0 (clang-1600.0.26.3)"
 const m___clang_wide_literal_encoding__ = "UTF-32"
 const m___const = "const"
 const m___has_ptrcheck = 0
@@ -3150,6 +3177,7 @@ const m_F_ADDFILESIGS_INFO = 103
 const m_F_ADDFILESIGS_RETURN = 97
 const m_F_ADDFILESUPPL = 104
 const m_F_ADDSIGS = 59
+const m_F_ADDSIGS_MAIN_BINARY = 113
 const m_F_ALLOCATEALL = 0x00000004
 const m_F_ALLOCATECONTIG = 0x00000002
 const m_F_ALLOCATEPERSIST = 0x00000008
@@ -4226,6 +4254,7 @@ const m_SOL_SOCKET = 0xffff
 const m_SOMAXCONN = 128
 const m_SONPX_SETOPTSHUT = 0x000000001
 const m_SO_ACCEPTCONN = 0x0002
+const m_SO_BINDTODEVICE = 0x1134
 const m_SO_BROADCAST = 0x0020
 const m_SO_DEBUG = 0x0001
 const m_SO_DONTROUTE = 0x0010
@@ -5029,6 +5058,11 @@ type T__darwin_arm_exception_state64 = struct {
 	F__exception T__uint32_t
 }
 
+type T__darwin_arm_exception_state64_v2 = struct {
+	F__far T__uint64_t
+	F__esr T__uint64_t
+}
+
 type T__darwin_arm_thread_state = struct {
 	F__r    [13]T__uint32_t
 	F__sp   T__uint32_t
@@ -5213,62 +5247,6 @@ type Tsigstack = struct {
 
 type Tpthread_t = uintptr
 
-type Tuint64_t = uint64
-
-type Tint_least64_t = int64
-
-type Tuint_least64_t = uint64
-
-type Tint_fast64_t = int64
-
-type Tuint_fast64_t = uint64
-
-type Tuint32_t = uint32
-
-type Tint_least32_t = int32
-
-type Tuint_least32_t = uint32
-
-type Tint_fast32_t = int32
-
-type Tuint_fast32_t = uint32
-
-type Tuint16_t = uint16
-
-type Tint_least16_t = int16
-
-type Tuint_least16_t = uint16
-
-type Tint_fast16_t = int16
-
-type Tuint_fast16_t = uint16
-
-type Tuint8_t = uint8
-
-type Tint_least8_t = int8
-
-type Tuint_least8_t = uint8
-
-type Tint_fast8_t = int8
-
-type Tuint_fast8_t = uint8
-
-type Tintmax_t = int64
-
-type Tuintmax_t = uint64
-
-type T_OSUnalignedU16 = struct {
-	F__val Tuint16_t
-}
-
-type T_OSUnalignedU32 = struct {
-	F__val Tuint32_t
-}
-
-type T_OSUnalignedU64 = struct {
-	F__val Tuint64_t
-}
-
 type Tu_char = uint8
 
 type Tu_short = uint16
@@ -5426,6 +5404,10 @@ type Taccessx_descriptor = struct {
 	Fad_pad         [2]int32
 }
 
+type Tuint64_t = uint64
+
+type Tuint32_t = uint32
+
 type Tkauth_cred_t = uintptr
 
 type Tposix_cred_t = uintptr
@@ -5509,7 +5491,7 @@ type Ttm = struct {
 	Ftm_isdst  int32
 	Ftm_gmtoff int64
 	Ftm_zone   uintptr
-} //TODO "timezone" // time.h:103:13:
+} //TODO "timezone" // _time.h:103:13:
 
 type Tclockid_t = int32
 
@@ -5527,6 +5509,46 @@ type Tidtype_t = int32
 const _P_ALL = 0
 const _P_PID = 1
 const _P_PGID = 2
+
+type Tint_least64_t = int64
+
+type Tuint_least64_t = uint64
+
+type Tint_fast64_t = int64
+
+type Tuint_fast64_t = uint64
+
+type Tint_least32_t = int32
+
+type Tuint_least32_t = uint32
+
+type Tint_fast32_t = int32
+
+type Tuint_fast32_t = uint32
+
+type Tuint16_t = uint16
+
+type Tint_least16_t = int16
+
+type Tuint_least16_t = uint16
+
+type Tint_fast16_t = int16
+
+type Tuint_fast16_t = uint16
+
+type Tuint8_t = uint8
+
+type Tint_least8_t = int8
+
+type Tuint_least8_t = uint8
+
+type Tint_fast8_t = int8
+
+type Tuint_fast8_t = uint8
+
+type Tintmax_t = int64
+
+type Tuintmax_t = uint64
 
 type Trlim_t = uint64
 
@@ -5763,7 +5785,10 @@ type Trusage_info_v6 = struct {
 	Fri_penergy_nj                    Tuint64_t
 	Fri_secure_time_in_system         Tuint64_t
 	Fri_secure_ptime_in_system        Tuint64_t
-	Fri_reserved                      [12]Tuint64_t
+	Fri_neural_footprint              Tuint64_t
+	Fri_lifetime_max_neural_footprint Tuint64_t
+	Fri_interval_max_neural_footprint Tuint64_t
+	Fri_reserved                      [9]Tuint64_t
 }
 
 type Trusage_info_current = struct {
@@ -5812,7 +5837,10 @@ type Trusage_info_current = struct {
 	Fri_penergy_nj                    Tuint64_t
 	Fri_secure_time_in_system         Tuint64_t
 	Fri_secure_ptime_in_system        Tuint64_t
-	Fri_reserved                      [12]Tuint64_t
+	Fri_neural_footprint              Tuint64_t
+	Fri_lifetime_max_neural_footprint Tuint64_t
+	Fri_interval_max_neural_footprint Tuint64_t
+	Fri_reserved                      [9]Tuint64_t
 }
 
 type Trlimit = struct {
@@ -40120,6 +40148,29 @@ var _UUID_NULL12 = Tuuid_t{}
 /*
  * Unlike other ANSI header files, <assert.h> may usefully be included
  * multiple times, with and without NDEBUG defined.
+ */
+
+/*
+ * Copyright (c) 2023 Apple Inc. All rights reserved.
+ *
+ * @APPLE_LICENSE_HEADER_START@
+ *
+ * This file contains Original Code and/or Modifications of Original Code
+ * as defined in and that are subject to the Apple Public Source License
+ * Version 2.0 (the 'License'). You may not use this file except in
+ * compliance with the License. Please obtain a copy of the License at
+ * http://www.opensource.apple.com/apsl/ and read it before using this
+ * file.
+ *
+ * The Original Code and all software distributed under the License are
+ * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+ * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+ * INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ * Please see the License for the specific language governing rights and
+ * limitations under the License.
+ *
+ * @APPLE_LICENSE_HEADER_END@
  */
 
 /*
@@ -154946,6 +154997,29 @@ var _UUID_NULL32 = Tuuid_t{}
  */
 
 /*
+ * Copyright (c) 2023 Apple Inc. All rights reserved.
+ *
+ * @APPLE_LICENSE_HEADER_START@
+ *
+ * This file contains Original Code and/or Modifications of Original Code
+ * as defined in and that are subject to the Apple Public Source License
+ * Version 2.0 (the 'License'). You may not use this file except in
+ * compliance with the License. Please obtain a copy of the License at
+ * http://www.opensource.apple.com/apsl/ and read it before using this
+ * file.
+ *
+ * The Original Code and all software distributed under the License are
+ * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+ * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+ * INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ * Please see the License for the specific language governing rights and
+ * limitations under the License.
+ *
+ * @APPLE_LICENSE_HEADER_END@
+ */
+
+/*
  * Hack to determine whether we may expect IEEE floating point. The hack is
  * formally incorrect in that non-IEEE platforms might have the same precision
  * and range, but VAX, IBM, and Cray do not; are there any other floating
@@ -188292,6 +188366,29 @@ var _UUID_NULL40 = Tuuid_t{}
  */
 
 /*
+ * Copyright (c) 2023 Apple Inc. All rights reserved.
+ *
+ * @APPLE_LICENSE_HEADER_START@
+ *
+ * This file contains Original Code and/or Modifications of Original Code
+ * as defined in and that are subject to the Apple Public Source License
+ * Version 2.0 (the 'License'). You may not use this file except in
+ * compliance with the License. Please obtain a copy of the License at
+ * http://www.opensource.apple.com/apsl/ and read it before using this
+ * file.
+ *
+ * The Original Code and all software distributed under the License are
+ * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+ * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+ * INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ * Please see the License for the specific language governing rights and
+ * limitations under the License.
+ *
+ * @APPLE_LICENSE_HEADER_END@
+ */
+
+/*
  * For each channel handler registered in a call to Tcl_CreateChannelHandler,
  * there is one record of the following type. All of records for a specific
  * channel are chained together in a singly linked list which is stored in
@@ -206588,7 +206685,7 @@ func x_TclSockGetPort(tls *libc.TLS, interp uintptr, string1 uintptr, proto uint
 	bp := tls.Alloc(224)
 	defer tls.Free(224) /* Return port number */
 	var native, sp uintptr
-	var v1, v2 Tuint16_t
+	var v1, v2 T__uint16_t
 	var _ /* ds at bp+0 */ TTcl_DString
 	_, _, _, _ = native, sp, v1, v2
 	if x_Tcl_GetInt(tls, libc.UintptrFromInt32(0), string1, portPtr) != m_TCL_OK {
@@ -298773,7 +298870,7 @@ func x_Tcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintp
 	defer tls.Free(208) /* Data for the callback. */
 	var addrPtr, errorObj, fds, newfds, statePtr uintptr
 	var chosenport, howfar, my_errno, sock, status int32
-	var v2, v3, v5, v6 Tuint16_t
+	var v2, v3, v5, v6 T__uint16_t
 	var _ /* addrlist at bp+8 */ uintptr
 	var _ /* channelName at bp+16 */ [21]int8
 	var _ /* errorMsg at bp+40 */ uintptr
@@ -298995,6 +299092,7 @@ const m_ARM_DEBUG_STATE32 = 14
 const m_ARM_DEBUG_STATE64 = 15
 const m_ARM_EXCEPTION_STATE = 3
 const m_ARM_EXCEPTION_STATE64 = 7
+const m_ARM_EXCEPTION_STATE64_V2 = 10
 const m_ARM_NEON_STATE = 16
 const m_ARM_NEON_STATE64 = 17
 const m_ARM_PAGEIN_STATE = 27
@@ -299020,6 +299118,7 @@ const m_CPUFAMILY_ARM_9 = 0xe73283ae
 const m_CPUFAMILY_ARM_BLIZZARD_AVALANCHE = 0xda33d83d
 const m_CPUFAMILY_ARM_COLL = 0x2876f5b5
 const m_CPUFAMILY_ARM_CYCLONE = 0x37a09642
+const m_CPUFAMILY_ARM_DONAN = 0x6f5129ac
 const m_CPUFAMILY_ARM_EVEREST_SAWTOOTH = 0x8765edea
 const m_CPUFAMILY_ARM_FIRESTORM_ICESTORM = 0x1b588bb3
 const m_CPUFAMILY_ARM_HURRICANE = 0x67ceee93
@@ -299029,6 +299128,8 @@ const m_CPUFAMILY_ARM_LOBOS = 0x5f4dea93
 const m_CPUFAMILY_ARM_MONSOON_MISTRAL = 0xe81e7ef6
 const m_CPUFAMILY_ARM_PALMA = 0x72015832
 const m_CPUFAMILY_ARM_SWIFT = 0x1e2d6381
+const m_CPUFAMILY_ARM_TAHITI = 0x75d4acb9
+const m_CPUFAMILY_ARM_TUPAI = 0x204526d0
 const m_CPUFAMILY_ARM_TWISTER = 0x92fb37c8
 const m_CPUFAMILY_ARM_TYPHOON = 0x2c91a47e
 const m_CPUFAMILY_ARM_VORTEX_TEMPEST = 0x07d34b9f
@@ -299078,6 +299179,7 @@ const m_EXCEPTION_DEFAULT = 1
 const m_EXCEPTION_IDENTITY_PROTECTED = 4
 const m_EXCEPTION_STATE = 2
 const m_EXCEPTION_STATE_IDENTITY = 3
+const m_EXCEPTION_STATE_IDENTITY_PROTECTED = 5
 const m_EXC_ARITHMETIC = 3
 const m_EXC_ARM_BREAKPOINT = 1
 const m_EXC_ARM_DA_ALIGN = 0x101
@@ -299090,6 +299192,7 @@ const m_EXC_ARM_FP_OF = 3
 const m_EXC_ARM_FP_UF = 4
 const m_EXC_ARM_FP_UNDEFINED = 0
 const m_EXC_ARM_PAC_FAIL = 0x105
+const m_EXC_ARM_SME_DISALLOWED = 2
 const m_EXC_ARM_SP_ALIGN = 0x103
 const m_EXC_ARM_SWP = 0x104
 const m_EXC_ARM_UNDEFINED = 1
@@ -299129,7 +299232,7 @@ const m_HOST_LAST_SPECIAL_KERNEL_PORT = "HOST_IO_MAIN_PORT"
 const m_HOST_LOAD_INFO = 1
 const m_HOST_MACH_MSG_TRAP = 8
 const m_HOST_MAX_SPECIAL_KERNEL_PORT = 7
-const m_HOST_MAX_SPECIAL_PORT = "HOST_MANAGEDAPPDISTD_PORT"
+const m_HOST_MAX_SPECIAL_PORT = "HOST_DOUBLEAGENTD_PORT"
 const m_HOST_MIN_SPECIAL_PORT = "HOST_SECURITY_PORT"
 const m_HOST_NOTIFY_CALENDAR_CHANGE = 0
 const m_HOST_NOTIFY_CALENDAR_SET = 1
@@ -299416,6 +299519,7 @@ const m_MAP_MEM_ONLY = 0x010000
 const m_MAP_MEM_POSTED = 6
 const m_MAP_MEM_POSTED_COMBINED_REORDERED = 9
 const m_MAP_MEM_POSTED_REORDERED = 8
+const m_MAP_MEM_PROT_MASK = 0xFF
 const m_MAP_MEM_PURGABLE = 0x040000
 const m_MAP_MEM_PURGABLE_KERNEL_ONLY = 0x004000
 const m_MAP_MEM_RT = 7
@@ -299468,11 +299572,11 @@ const m_MPO_CONNECTION_PORT = 0x800
 const m_MPO_CONTEXT_AS_GUARD = 0x01
 const m_MPO_DENAP_RECEIVER = 0x40
 const m_MPO_ENFORCE_REPLY_PORT_SEMANTICS = 0x2000
+const m_MPO_EXCEPTION_PORT = 0x8000
 const m_MPO_FILTER_MSG = 0x100
 const m_MPO_IMMOVABLE_RECEIVE = 0x80
 const m_MPO_IMPORTANCE_RECEIVER = 0x08
 const m_MPO_INSERT_SEND_RIGHT = 0x10
-const m_MPO_PROVISIONAL_ID_PROT_OPTOUT = 0x8000
 const m_MPO_PROVISIONAL_REPLY_PORT = 0x4000
 const m_MPO_QLIMIT = 0x02
 const m_MPO_REPLY_PORT = 0x1000
@@ -299601,7 +299705,7 @@ const m_TASK_TRACE_MEMORY_INFO = 24
 const m_TASK_VM_INFO = 22
 const m_TASK_VM_INFO_PURGEABLE = 23
 const m_TASK_VM_INFO_PURGEABLE_ACCOUNT = 27
-const m_TASK_VM_INFO_REV6_COUNT = "TASK_VM_INFO_COUNT"
+const m_TASK_VM_INFO_REV7_COUNT = "TASK_VM_INFO_COUNT"
 const m_TASK_WAIT_STATE_INFO = 25
 const m_TF_64B_DATA = 0x00000002
 const m_TF_LP64 = 0x00000001
@@ -299633,6 +299737,7 @@ const m_THREAD_SCHED_RR_INFO = 11
 const m_THREAD_SCHED_TIMESHARE_INFO = 10
 const m_THREAD_STANDARD_POLICY = 1
 const m_THREAD_STANDARD_POLICY_COUNT = 0
+const m_THREAD_STATE_FLAVORS = 29
 const m_THREAD_STATE_FLAVOR_LIST = 0
 const m_THREAD_STATE_FLAVOR_LIST_10_13 = 130
 const m_THREAD_STATE_FLAVOR_LIST_10_15 = 131
@@ -300748,6 +300853,11 @@ type Tarm_exception_state64_t = struct {
 	F__exception T__uint32_t
 }
 
+type Tarm_exception_state64_v2_t = struct {
+	F__far T__uint64_t
+	F__esr T__uint64_t
+}
+
 type Tarm_debug_state32_t = struct {
 	F__bvr       [16]T__uint32_t
 	F__bcr       [16]T__uint32_t
@@ -301505,6 +301615,8 @@ type Ttask_vm_info = struct {
 	Flimit_bytes_remaining                      Tuint64_t
 	Fdecompressions                             Tinteger_t
 	Fledger_swapins                             Tint64_t
+	Fledger_tag_neural_nofootprint_total        Tint64_t
+	Fledger_tag_neural_nofootprint_peak         Tint64_t
 }
 
 type Ttask_vm_info_data_t = struct {
@@ -301554,6 +301666,8 @@ type Ttask_vm_info_data_t = struct {
 	Flimit_bytes_remaining                      Tuint64_t
 	Fdecompressions                             Tinteger_t
 	Fledger_swapins                             Tint64_t
+	Fledger_tag_neural_nofootprint_total        Tint64_t
+	Fledger_tag_neural_nofootprint_peak         Tint64_t
 }
 
 type Ttask_vm_info_t = uintptr
@@ -304782,7 +304896,64 @@ var _UUID_NULL91 = Tuuid_t{}
  */
 
 /*
- * Copyright (c) 2000, 2007, 2010 Apple Inc. All rights reserved.
+ * Copyright (c) 2000, 2007, 2010, 2023 Apple Inc. All rights reserved.
+ *
+ * @APPLE_LICENSE_HEADER_START@
+ *
+ * This file contains Original Code and/or Modifications of Original Code
+ * as defined in and that are subject to the Apple Public Source License
+ * Version 2.0 (the 'License'). You may not use this file except in
+ * compliance with the License. Please obtain a copy of the License at
+ * http://www.opensource.apple.com/apsl/ and read it before using this
+ * file.
+ *
+ * The Original Code and all software distributed under the License are
+ * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+ * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+ * INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ * Please see the License for the specific language governing rights and
+ * limitations under the License.
+ *
+ * @APPLE_LICENSE_HEADER_END@
+ */
+/*-
+ * Copyright (c) 1990, 1993
+ *	The Regents of the University of California.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. All advertising materials mentioning features or use of this software
+ *    must display the following acknowledgement:
+ *	This product includes software developed by the University of
+ *	California, Berkeley and its contributors.
+ * 4. Neither the name of the University nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ *	@(#)string.h	8.1 (Berkeley) 6/2/93
+ */
+
+/*
+ * Copyright (c) 2023 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  *
@@ -320230,6 +320401,7 @@ const m_VOL_CAP_INT_FLOCK = 0x00000200
 const m_VOL_CAP_INT_MANLOCK = 0x00001000
 const m_VOL_CAP_INT_NAMEDSTREAMS = 0x00002000
 const m_VOL_CAP_INT_NFSEXPORT = 0x00000004
+const m_VOL_CAP_INT_PUNCHHOLE = 0x00800000
 const m_VOL_CAP_INT_READDIRATTR = 0x00000008
 const m_VOL_CAP_INT_RENAME_EXCL = 0x00080000
 const m_VOL_CAP_INT_RENAME_OPENFAIL = 0x00100000
@@ -320546,6 +320718,18 @@ type Tvol_attributes_attr_t = struct {
 
 type Tvol_attributes_attr = Tvol_attributes_attr_t
 
+type T_OSUnalignedU16 = struct {
+	F__val Tuint16_t
+}
+
+type T_OSUnalignedU32 = struct {
+	F__val Tuint32_t
+}
+
+type T_OSUnalignedU64 = struct {
+	F__val Tuint64_t
+}
+
 const _OSUnknownByteOrder = 0
 const _OSLittleEndian = 1
 const _OSBigEndian = 2
@@ -320601,7 +320785,7 @@ func x_TclMacOSXGetFileAttribute(tls *libc.TLS, interp uintptr, objIndex int32, 
 	defer tls.Free(240) /* A pointer to return the object with. */
 	var finder, native, rsrcForkSize, v1, v2 uintptr
 	var result int32
-	var v3, v4, v6, v7 Tuint32_t
+	var v3, v4, v6, v7 T__uint32_t
 	var _ /* alist at bp+144 */ Tattrlist
 	var _ /* finfo at bp+168 */ Tfileinfobuf
 	var _ /* statBuf at bp+0 */ TTcl_StatBuf
@@ -320690,7 +320874,7 @@ func x_TclMacOSXSetFileAttribute(tls *libc.TLS, interp uintptr, objIndex int32, 
 	defer tls.Free(480) /* New owner for file. */
 	var fd, result, v12 int32
 	var finder, native, rsrcForkSize, v1, v11, v13, v2, p10, p9 uintptr
-	var v3, v4, v6, v7 Tuint32_t
+	var v3, v4, v6, v7 T__uint32_t
 	var _ /* alist at bp+144 */ Tattrlist
 	var _ /* ds at bp+224 */ TTcl_DString
 	var _ /* finfo at bp+168 */ Tfileinfobuf
@@ -320940,7 +321124,7 @@ func x_TclMacOSXMatchType(tls *libc.TLS, interp uintptr, pathName uintptr, fileN
 	bp := tls.Alloc(64)
 	defer tls.Free(64) /* Type description to match against. */
 	var finder uintptr
-	var v1, v2, v4, v5 Tuint32_t
+	var v1, v2, v4, v5 T__uint32_t
 	var _ /* alist at bp+0 */ Tattrlist
 	var _ /* finfo at bp+24 */ Tfileinfobuf
 	var _ /* osType at bp+60 */ TOSType
@@ -321191,6 +321375,13 @@ type Tos_unfair_lock = struct {
 type Tos_unfair_lock_s = Tos_unfair_lock
 
 type Tos_unfair_lock_t = uintptr
+
+type Tos_unfair_lock_flags_t = uint32
+
+type _os_unfair_lock_flags = int32
+
+const _OS_UNFAIR_LOCK_FLAG_NONE = 0
+const _OS_UNFAIR_LOCK_FLAG_ADAPTIVE_SPIN = 262144
 
 func x_TclMacOSXNotifierAddRunLoopMode(tls *libc.TLS, runLoopMode uintptr) {
 	x_Tcl_Panic(tls, __ccgo_ts+82619, 0)
@@ -321841,6 +322032,75 @@ var _UUID_NULL112 = Tuuid_t{}
 /* SPDX-License-Identifier: Unlicense */
 
 /*===---- stdarg.h - Variable argument handling ----------------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*
+ * This header is designed to be included multiple times. If any of the __need_
+ * macros are defined, then only that subset of interfaces are provided. This
+ * can be useful for POSIX headers that need to not expose all of stdarg.h, but
+ * need to use some of its interfaces. Otherwise this header provides all of
+ * the expected interfaces.
+ *
+ * When clang modules are enabled, this header is a textual header to support
+ * the multiple include behavior. As such, it doesn't directly declare anything
+ * so that it doesn't add duplicate declarations to all of its includers'
+ * modules.
+ */
+/* GCC always defines __va_copy, but does not define va_copy unless in c99 mode
+ * or -ansi is not specified, since it was not part of C90.
+ */
+/*===---- __stdarg_header_macro.h ------------------------------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg___gnuc_va_list.h - Definition of __gnuc_va_list ---------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_list.h - Definition of va_list -----------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_arg.h - Definitions of va_start, va_arg, va_end-------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg___va_copy.h - Definition of __va_copy -------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_copy.h - Definition of va_copy------------------------===
  *
  * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
  * See https://llvm.org/LICENSE.txt for license information.
@@ -322902,6 +323162,75 @@ var _UUID_NULL129 = Tuuid_t{}
 /* SPDX-License-Identifier: Unlicense */
 
 /*===---- stdarg.h - Variable argument handling ----------------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*
+ * This header is designed to be included multiple times. If any of the __need_
+ * macros are defined, then only that subset of interfaces are provided. This
+ * can be useful for POSIX headers that need to not expose all of stdarg.h, but
+ * need to use some of its interfaces. Otherwise this header provides all of
+ * the expected interfaces.
+ *
+ * When clang modules are enabled, this header is a textual header to support
+ * the multiple include behavior. As such, it doesn't directly declare anything
+ * so that it doesn't add duplicate declarations to all of its includers'
+ * modules.
+ */
+/* GCC always defines __va_copy, but does not define va_copy unless in c99 mode
+ * or -ansi is not specified, since it was not part of C90.
+ */
+/*===---- __stdarg_header_macro.h ------------------------------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg___gnuc_va_list.h - Definition of __gnuc_va_list ---------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_list.h - Definition of va_list -----------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_arg.h - Definitions of va_start, va_arg, va_end-------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg___va_copy.h - Definition of __va_copy -------------------===
+ *
+ * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+ * See https://llvm.org/LICENSE.txt for license information.
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ *
+ *===-----------------------------------------------------------------------===
+ */
+
+/*===---- __stdarg_va_copy.h - Definition of va_copy------------------------===
  *
  * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
  * See https://llvm.org/LICENSE.txt for license information.
@@ -326772,6 +327101,29 @@ var x_tclByteCodeType = TTcl_ObjType{
  */
 
 /*
+ * Copyright (c) 2023 Apple Inc. All rights reserved.
+ *
+ * @APPLE_LICENSE_HEADER_START@
+ *
+ * This file contains Original Code and/or Modifications of Original Code
+ * as defined in and that are subject to the Apple Public Source License
+ * Version 2.0 (the 'License'). You may not use this file except in
+ * compliance with the License. Please obtain a copy of the License at
+ * http://www.opensource.apple.com/apsl/ and read it before using this
+ * file.
+ *
+ * The Original Code and all software distributed under the License are
+ * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+ * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+ * INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ * Please see the License for the specific language governing rights and
+ * limitations under the License.
+ *
+ * @APPLE_LICENSE_HEADER_END@
+ */
+
+/*
  * The following table provides parsing information about each possible 8-bit
  * character. The table is designed to be referenced with either signed or
  * unsigned characters, so it has 384 entries. The first 128 entries
@@ -327282,6 +327634,29 @@ var x_tclIdentityEncoding TTcl_Encoding
 /*
  * Unlike other ANSI header files, <assert.h> may usefully be included
  * multiple times, with and without NDEBUG defined.
+ */
+
+/*
+ * Copyright (c) 2023 Apple Inc. All rights reserved.
+ *
+ * @APPLE_LICENSE_HEADER_START@
+ *
+ * This file contains Original Code and/or Modifications of Original Code
+ * as defined in and that are subject to the Apple Public Source License
+ * Version 2.0 (the 'License'). You may not use this file except in
+ * compliance with the License. Please obtain a copy of the License at
+ * http://www.opensource.apple.com/apsl/ and read it before using this
+ * file.
+ *
+ * The Original Code and all software distributed under the License are
+ * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+ * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+ * INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ * Please see the License for the specific language governing rights and
+ * limitations under the License.
+ *
+ * @APPLE_LICENSE_HEADER_END@
  */
 
 /*
