@@ -1038,17 +1038,17 @@ func BenchmarkNextPrimeUint16(b *testing.B) {
 }
 
 /*
-
 From: http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
 
-Counting bits set, Brian Kernighan's way
+# Counting bits set, Brian Kernighan's way
 
 unsigned int v; // count the number of bits set in v
 unsigned int c; // c accumulates the total bits set in v
 for (c = 0; v; c++)
-{
-  v &= v - 1; // clear the least significant bit set
-}
+
+	{
+	  v &= v - 1; // clear the least significant bit set
+	}
 
 Brian Kernighan's method goes through as many iterations as there are set bits.
 So if we have a 32-bit word with only the high bit set, then it will only go

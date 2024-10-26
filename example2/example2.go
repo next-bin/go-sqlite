@@ -4,19 +4,20 @@
 
 // blame: jnml, labs.nic.cz
 
+//go:build ignore
 // +build ignore
 
 package main
 
 import (
 	"bytes"
-	"modernc.org/mathutil"
 	"image"
 	"image/png"
 	"io/ioutil"
 	"log"
 	"math"
 	"math/rand"
+	"modernc.org/mathutil"
 )
 
 // $ go run example2.go # view rand.png and rnd.png by your favorite pic viewer

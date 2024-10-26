@@ -4,6 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
+//go:build ignore
 // +build ignore
 
 package main
@@ -17,10 +18,8 @@ import (
 )
 
 /*
-
 $ # Usage e.g.:
 $ go run example3.go -max 1024 > rand.dat # generate 1kB of "random" data
-
 */
 func main() {
 	r := rand.New(rand.NewSource(1))

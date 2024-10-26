@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+//go:build ignore
 // +build ignore
 
 // Let QRN be the number of quadratic residues of N.  Let Q be QRN/N.  From a

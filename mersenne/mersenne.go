@@ -6,17 +6,18 @@
 Package mersenne collects utilities related to Mersenne numbers[1] and/or some
 of their properties.
 
-Exponent
+# Exponent
 
 In this documentation the term 'exponent' refers to 'n' of a Mersenne number Mn
 equal to 2^n-1. This package supports only uint32 sized exponents. New()
 currently supports exponents only up to math.MaxInt32 (31 bits, up to 256 MB
 required to represent such Mn in memory as a big.Int).
 
-Links
+# Links
 
 Referenced from above:
- [1] http://en.wikipedia.org/wiki/Mersenne_number
+
+	[1] http://en.wikipedia.org/wiki/Mersenne_number
 */
 package mersenne // import "modernc.org/mathutil/mersenne"
 
@@ -33,7 +34,7 @@ var (
 	_2 = big.NewInt(2)
 )
 
-// Knowns list the exponent of currently (May 2021) known Mersenne primes
+// Knowns list the exponent of currently (October 2024) known Mersenne primes
 // exponents in order.  See also: http://oeis.org/A000043 for a partial list.
 var Knowns = []uint32{
 	2,  // #1
@@ -47,51 +48,52 @@ var Knowns = []uint32{
 	61, // #9
 	89, // #10
 
-	107,  // #11
-	127,  // #12
-	521,  // #13
-	607,  // #14
-	1279, // #15
-	2203, // #16
-	2281, // #17
-	3217, // #18
-	4253, // #19
-	4423, // #20
+	107,   // #11
+	127,   // #12
+	521,   // #13
+	607,   // #14
+	1_279, // #15
+	2_203, // #16
+	2_281, // #17
+	3_217, // #18
+	4_253, // #19
+	4_423, // #20
 
-	9689,   // #21
-	9941,   // #22
-	11213,  // #23
-	19937,  // #24
-	21701,  // #25
-	23209,  // #26
-	44497,  // #27
-	86243,  // #28
-	110503, // #29
-	132049, // #30
+	9_689,   // #21
+	9_941,   // #22
+	11_213,  // #23
+	19_937,  // #24
+	21_701,  // #25
+	23_209,  // #26
+	44_497,  // #27
+	86_243,  // #28
+	110_503, // #29
+	132_049, // #30
 
-	216091,   // #31
-	756839,   // #32
-	859433,   // #33
-	1257787,  // #34
-	1398269,  // #35
-	2976221,  // #36
-	3021377,  // #37
-	6972593,  // #38
-	13466917, // #39
-	20996011, // #40
+	216_091,    // #31
+	756_839,    // #32
+	859_433,    // #33
+	1_257_787,  // #34
+	1_398_269,  // #35
+	2_976_221,  // #36
+	3_021_377,  // #37
+	6_972_593,  // #38
+	13_466_917, // #39
+	20_996_011, // #40
 
-	24036583, // #41
-	25964951, // #42
-	30402457, // #43
-	32582657, // #44
-	37156667, // #45
-	42643801, // #46
-	43112609, // #47
-	57885161, // #48
-	74207281, // #49
-	77232917, // #50
+	24_036_583, // #41
+	25_964_951, // #42
+	30_402_457, // #43
+	32_582_657, // #44
+	37_156_667, // #45
+	42_643_801, // #46
+	43_112_609, // #47
+	57_885_161, // #48
+	74_207_281, // #49
+	77_232_917, // #50
 
-	82589933, // #51
+	82_589_933,  // #51
+	136_279_841, // #52
 }
 
 // Known maps the exponent of known Mersenne primes its ordinal number/rank.

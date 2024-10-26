@@ -4,6 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
+//go:build ignore
 // +build ignore
 
 package main
@@ -11,17 +12,15 @@ package main
 import (
 	"bufio"
 	"flag"
-	"modernc.org/mathutil"
 	"log"
 	"math"
+	"modernc.org/mathutil"
 	"os"
 )
 
 /*
-
 $ # Usage e.g.:
 $ go run example.go -max 1024 > mathutil.dat # generate 1kB of "random" data
-
 */
 func main() {
 	r, err := mathutil.NewFC32(math.MinInt32, math.MaxInt32, true)
