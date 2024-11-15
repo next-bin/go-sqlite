@@ -45,7 +45,6 @@ var (
 	goos        = runtime.GOOS
 	goarch      = runtime.GOARCH
 	target      = fmt.Sprintf("%s/%s", goos, goarch)
-	nogcc       = goos == "windows" && goarch == "arm64" // We have no 32b mingw-gcc binary targeting windows/amd64 bit yet.
 
 	oTrace = flag.Bool("trc", false, "Print tested paths.")
 )
@@ -590,10 +589,6 @@ func defaultCfg() *Config {
 }
 
 func TestCPPExpand(t *testing.T) {
-	if runtime.GOOS == "windows" && runtime.GOARCH == "arm64" {
-		t.Skip("TODO")
-	}
-
 	testCPPExpand(t, "testdata/cpp-expand/", nil, true)
 }
 
@@ -709,18 +704,10 @@ func testCPPExpand(t *testing.T, dir string, blacklist map[string]struct{}, fake
 }
 
 func TestPreprocess(t *testing.T) {
-	if runtime.GOOS == "windows" && runtime.GOARCH == "arm64" {
-		t.Skip("TODO")
-	}
-
 	testCPPExpand(t, "testdata/preprocess/", nil, true)
 }
 
 func TestTCCExpand(t *testing.T) {
-	if runtime.GOOS == "windows" && runtime.GOARCH == "arm64" {
-		t.Skip("TODO")
-	}
-
 	testCPPExpand(t, "testdata/tcc-0.9.27/tests/pp/", map[string]struct{}{
 		"11.c": {}, // https://gcc.gnu.org/onlinedocs/gcc/Variadic-Macros.html#Variadic-Macros
 		"16.c": {}, // We don't produce warnings on macro redefinition.
@@ -728,10 +715,6 @@ func TestTCCExpand(t *testing.T) {
 }
 
 func TestInclude(t *testing.T) {
-	if runtime.GOOS == "windows" && runtime.GOARCH == "arm64" {
-		t.Skip("TODO")
-	}
-
 	testCPPExpand(t, "testdata/include/", nil, false)
 }
 
@@ -1384,10 +1367,6 @@ func testTranslateBug(t *testing.T, dir string, blacklist map[string]struct{}) {
 }
 
 func TestTranslate(t *testing.T) {
-	if nogcc {
-		t.Skip()
-	}
-
 	cfg := defaultCfg()
 	cfg.SysIncludePaths = append(cfg.SysIncludePaths, "Include") // benchmarksgame
 	cfg.FS = cfs
