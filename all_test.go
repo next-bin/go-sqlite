@@ -517,6 +517,7 @@ func TestMain(m *testing.M) {
 			"winFCmd-1.23",
 			"winFCmd-1.27",
 			"winFCmd-1.3",
+			"winFCmd-1.38",
 			"winFCmd-1.4",
 			"winFCmd-6.1",
 			"winFCmd-6.13",
