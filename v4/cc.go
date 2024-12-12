@@ -93,6 +93,7 @@ typedef __PTRDIFF_TYPE__ __predefined_ptrdiff_t;
 #define __builtin_huge_vall(x) __builtin_huge_val(x)
 #endif
 
+__SIZE_TYPE__ __builtin_object_size(void *p, int i);
 __SIZE_TYPE__ __builtin_strcspn(const char *s, const char *reject);
 __SIZE_TYPE__ __builtin_strlen(const char *s);
 __SIZE_TYPE__ __builtin_strspn(const char *s, const char *accept);
@@ -101,8 +102,10 @@ __UINT32_TYPE__ __builtin_bswap32 (__UINT32_TYPE__ x);
 __UINT64_TYPE__ __builtin_bswap64 (__UINT64_TYPE__ x);
 char *__builtin_strcasestr(const char *haystack, const char *needle);
 char *__builtin_strcat(char *dest, const char *src);
+char *__builtin_strcat_chk(char *dest, const char *src, __SIZE_TYPE__ n);
 char *__builtin_strchr(const char *s, int c);
 char *__builtin_strcpy(char *dest, const char *src);
+char *__builtin_strcpy_chk(char *dest, const char *src, __SIZE_TYPE__ n);
 char *__builtin_strncat(char *dest, const char *src, __SIZE_TYPE__ n);
 char *__builtin_strncpy(char *dest, const char *src, __SIZE_TYPE__ n);
 char *__builtin_strpbrk(const char *s, const char *accept);
