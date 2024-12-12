@@ -100,6 +100,7 @@ __SIZE_TYPE__ __builtin_strspn(const char *s, const char *accept);
 __UINT16_TYPE__ __builtin_bswap16 (__UINT16_TYPE__ x);
 __UINT32_TYPE__ __builtin_bswap32 (__UINT32_TYPE__ x);
 __UINT64_TYPE__ __builtin_bswap64 (__UINT64_TYPE__ x);
+char *__builtin___strcpy_chk(char *dest, const char *src, __SIZE_TYPE__ n);
 char *__builtin_strcasestr(const char *haystack, const char *needle);
 char *__builtin_strcat(char *dest, const char *src);
 char *__builtin_strcat_chk(char *dest, const char *src, __SIZE_TYPE__ n);
