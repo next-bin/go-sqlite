@@ -1407,7 +1407,7 @@ func TestTranslate(t *testing.T) {
 		blacklistGCC["pr98474.c"] = struct{}{}     //TODO
 		blacklistMakarov["setjmp2.c"] = struct{}{} //TODO
 	case "windows/amd64":
-    		blacklistGCC["pr30704.c"] = struct{}{} //TODO
+		blacklistGCC["pr30704.c"] = struct{}{} //TODO
 	case "windows/386":
 		blacklistGCC["pr30704.c"] = struct{}{} // '__int128' is not supported on this target
 	case "freebsd/amd64":
