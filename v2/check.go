@@ -416,7 +416,7 @@ func (c *ctx) varDecl(n *VarDecl) (r []*Variable) {
 			if s.IsPackage() {
 				visibleFrom = 0
 			}
-			v := &Variable{Expr: expr, Ident: id.Ident, TypeNode: vs.Type}
+			v := &Variable{Expr: expr, Ident: id.Ident, TypeNode: vs.Type, lexicalScoper: newLexicalScoper(s)}
 			r = append(r, v)
 			s.add(c, id.Ident.Src(), visibleFrom, v)
 		}
@@ -1686,7 +1686,7 @@ func (n *FunctionDecl) checkBody(c *ctx) {
 	for _, v := range n.Signature.Parameters.ParameterList {
 		for _, w := range v.IdentifierList {
 			id := w.Ident
-			v := &Variable{Ident: id, isParamater: true}
+			v := &Variable{Ident: id, isParamater: true, lexicalScoper: newLexicalScoper(s)}
 			v.typ = types[0]
 			types = types[1:]
 			v.guard = checked
@@ -1699,7 +1699,7 @@ func (n *FunctionDecl) checkBody(c *ctx) {
 		for _, v := range x.ParameterList {
 			for _, w := range v.IdentifierList {
 				id := w.Ident
-				v := &Variable{Ident: id, isParamater: true}
+				v := &Variable{Ident: id, isParamater: true, lexicalScoper: newLexicalScoper(s)}
 				v.typ = types[0]
 				types = types[1:]
 				v.guard = checked
@@ -1914,7 +1914,7 @@ func (n *ShortVarDecl) check(c *ctx) {
 		switch et := expr.Type(); et.Kind() {
 		case InvalidKind:
 		default:
-			v := &Variable{Expr: expr, Ident: id, typer: newTyper(c.defaultType(et))}
+			v := &Variable{Expr: expr, Ident: id, typer: newTyper(c.defaultType(et)), lexicalScoper: newLexicalScoper(s)}
 			s.add(c, id.Src(), visibleFrom, v)
 		}
 	}

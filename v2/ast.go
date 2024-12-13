@@ -2093,6 +2093,7 @@ func (n *Constant) Tokens() []Token { return nodeTokens(n) }
 
 // Variable represents a Go variable.
 type Variable struct {
+	lexicalScoper
 	typer
 	valuer
 	Expr     Expression
