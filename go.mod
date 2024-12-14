@@ -6,7 +6,7 @@ toolchain go1.23.3
 
 require (
 	github.com/adrg/xdg v0.5.0
-	modernc.org/cc/v4 v4.23.1
+	modernc.org/cc/v4 v4.24.1
 	modernc.org/ccgo/v4 v4.23.2
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.61.4
