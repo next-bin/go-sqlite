@@ -8065,7 +8065,7 @@ func _TestcmdtokenCmd(tls *libc.TLS, dummy TClientData, interp uintptr, argc int
 	}
 	if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+1300) == 0 {
 		token = (*(*func(*libc.TLS, uintptr, uintptr, uintptr, TClientData, uintptr) TTcl_Command)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_CreateCommand})))(tls, interp, *(*uintptr)(unsafe.Pointer(argv + 2*8)), __ccgo_fp(_CmdProc1), __ccgo_ts+1416, libc.UintptrFromInt32(0))
-		libc.X__builtin___sprintf_chk(tls, bp+8, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8, int32(1))), __ccgo_ts+1666, libc.VaList(bp+48, token))
+		libc.X__builtin___sprintf_chk(tls, bp+8, 0, libc.X__builtin_object_size(tls, bp+8, int32(1)), __ccgo_ts+1666, libc.VaList(bp+48, token))
 		(*(*func(*libc.TLS, uintptr, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_SetResult})))(tls, interp, bp+8, libc.UintptrFromInt32(1))
 	} else {
 		if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+1669) == 0 {
@@ -8551,7 +8551,7 @@ func _TestdoubledigitsObjCmd(tls *libc.TLS, unused TClientData, interp uintptr, 
 		}
 		if v4 || v2 != 0 {
 			status = m_TCL_OK
-			libc.X__builtin___memcpy_chk(tls, bp, *(*uintptr)(unsafe.Pointer(objv + 1*8))+32, uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, 0)))
+			libc.X__builtin___memcpy_chk(tls, bp, *(*uintptr)(unsafe.Pointer(objv + 1*8))+32, uint64(8), libc.X__builtin_object_size(tls, bp, 0))
 		}
 	}
 	if status != m_TCL_OK || (*(*func(*libc.TLS, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetIntFromObj})))(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 2*8)), bp+8) != m_TCL_OK || (*(*func(*libc.TLS, uintptr, uintptr, uintptr, int32, uintptr, int32, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetIndexFromObjStruct})))(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 3*8)), uintptr(unsafe.Pointer(&_options)), int32(8), __ccgo_ts+2357, int32(m_TCL_EXACT), bp+12) != m_TCL_OK {
@@ -8781,10 +8781,10 @@ func _TestencodingObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc 
 		(*TTclEncoding)(unsafe.Pointer(encodingPtr)).Finterp = interp
 		string1 = (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetStringFromObj})))(tls, *(*uintptr)(unsafe.Pointer(objv + 3*8)), bp+4)
 		(*TTclEncoding)(unsafe.Pointer(encodingPtr)).FtoUtfCmd = (*(*func(*libc.TLS, uint32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_Alloc})))(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+libc.Int32FromInt32(1)))
-		libc.X__builtin___memcpy_chk(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).FtoUtfCmd, string1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).FtoUtfCmd, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).FtoUtfCmd, string1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+int32(1)), libc.X__builtin_object_size(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).FtoUtfCmd, 0))
 		string1 = (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetStringFromObj})))(tls, *(*uintptr)(unsafe.Pointer(objv + 4*8)), bp+4)
 		(*TTclEncoding)(unsafe.Pointer(encodingPtr)).FfromUtfCmd = (*(*func(*libc.TLS, uint32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_Alloc})))(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+libc.Int32FromInt32(1)))
-		libc.X__builtin___memcpy_chk(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).FfromUtfCmd, string1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).FfromUtfCmd, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).FfromUtfCmd, string1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+int32(1)), libc.X__builtin_object_size(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).FfromUtfCmd, 0))
 		string1 = (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetStringFromObj})))(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)), bp+4)
 		(*(*TTcl_EncodingType)(unsafe.Pointer(bp + 8))).FencodingName = string1
 		(*(*TTcl_EncodingType)(unsafe.Pointer(bp + 8))).FtoUtfProc = __ccgo_fp(_EncodingToUtfProc)
@@ -8822,7 +8822,7 @@ func _EncodingToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 	if len1 > dstLen {
 		len1 = dstLen
 	}
-	libc.X__builtin___memcpy_chk(tls, dst, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetStringResult})))(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).Finterp), libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+	libc.X__builtin___memcpy_chk(tls, dst, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetStringResult})))(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).Finterp), libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, dst, 0))
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_ResetResult})))(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).Finterp)
 	*(*int32)(unsafe.Pointer(srcReadPtr)) = srcLen
 	*(*int32)(unsafe.Pointer(dstWrotePtr)) = len1
@@ -8841,7 +8841,7 @@ func _EncodingFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, sr
 	if len1 > dstLen {
 		len1 = dstLen
 	}
-	libc.X__builtin___memcpy_chk(tls, dst, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetStringResult})))(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).Finterp), libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+	libc.X__builtin___memcpy_chk(tls, dst, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetStringResult})))(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).Finterp), libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, dst, 0))
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_ResetResult})))(tls, (*TTclEncoding)(unsafe.Pointer(encodingPtr)).Finterp)
 	*(*int32)(unsafe.Pointer(srcReadPtr)) = srcLen
 	*(*int32)(unsafe.Pointer(dstWrotePtr)) = len1
@@ -9201,7 +9201,7 @@ func _ExitProcOdd(tls *libc.TLS, clientData TClientData) {
 	var len1 int32
 	var _ /* buf at bp+0 */ [40]int8
 	_ = len1
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+3561, libc.VaList(bp+48, int32(int64(clientData))))
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+3561, libc.VaList(bp+48, int32(int64(clientData))))
 	len1 = libc.Int32FromUint64(libc.Xstrlen(tls, bp))
 	if len1 != int32(libc.Xwrite(tls, int32(1), bp, libc.Uint64FromInt32(len1))) {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_Panic})))(tls, __ccgo_ts+3569, 0)
@@ -9214,7 +9214,7 @@ func _ExitProcEven(tls *libc.TLS, clientData TClientData) {
 	var len1 int32
 	var _ /* buf at bp+0 */ [40]int8
 	_ = len1
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+3608, libc.VaList(bp+48, int32(int64(clientData))))
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+3608, libc.VaList(bp+48, int32(int64(clientData))))
 	len1 = libc.Int32FromUint64(libc.Xstrlen(tls, bp))
 	if len1 != int32(libc.Xwrite(tls, int32(1), bp, libc.Uint64FromInt32(len1))) {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_Panic})))(tls, __ccgo_ts+3617, 0)
@@ -9254,7 +9254,7 @@ func _TestexprlongCmd(tls *libc.TLS, clientData TClientData, interp uintptr, arg
 	if result != m_TCL_OK {
 		return result
 	}
-	libc.X__builtin___sprintf_chk(tls, bp+8, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8, int32(1))), __ccgo_ts+3687, libc.VaList(bp+48, *(*int64)(unsafe.Pointer(bp))))
+	libc.X__builtin___sprintf_chk(tls, bp+8, 0, libc.X__builtin_object_size(tls, bp+8, int32(1)), __ccgo_ts+3687, libc.VaList(bp+48, *(*int64)(unsafe.Pointer(bp))))
 	(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+48, bp+8, libc.UintptrFromInt32(0)))
 	return m_TCL_OK
 }
@@ -9292,7 +9292,7 @@ func _TestexprlongobjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, 
 	if result != m_TCL_OK {
 		return result
 	}
-	libc.X__builtin___sprintf_chk(tls, bp+8, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8, int32(1))), __ccgo_ts+3687, libc.VaList(bp+48, *(*int64)(unsafe.Pointer(bp))))
+	libc.X__builtin___sprintf_chk(tls, bp+8, 0, libc.X__builtin_object_size(tls, bp+8, int32(1)), __ccgo_ts+3687, libc.VaList(bp+48, *(*int64)(unsafe.Pointer(bp))))
 	(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+48, bp+8, libc.UintptrFromInt32(0)))
 	return m_TCL_OK
 }
@@ -10833,7 +10833,7 @@ endOfForLoop:
 		if objc > int32(2) && *(*int32)(unsafe.Pointer(bp + 4))&int32(m_REG_EXPECT) != 0 && indices != 0 {
 			varName = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetString})))(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)))
 			(*(*func(*libc.TLS, TTcl_RegExp, int32, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclIntStubs)(unsafe.Pointer(x_tclIntStubsPtr)).FtclRegExpRangeUniChar})))(tls, regExpr, -int32(1), bp+52, bp+56)
-			libc.X__builtin___sprintf_chk(tls, bp+60, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+60, int32(1))), __ccgo_ts+4683, libc.VaList(bp+192, *(*int32)(unsafe.Pointer(bp + 52)), *(*int32)(unsafe.Pointer(bp + 56))-int32(1)))
+			libc.X__builtin___sprintf_chk(tls, bp+60, 0, libc.X__builtin_object_size(tls, bp+60, int32(1)), __ccgo_ts+4683, libc.VaList(bp+192, *(*int32)(unsafe.Pointer(bp + 52)), *(*int32)(unsafe.Pointer(bp + 56))-int32(1)))
 			value = (*(*func(*libc.TLS, uintptr, uintptr, uintptr, uintptr, int32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_SetVar2})))(tls, interp, varName, libc.UintptrFromInt32(0), bp+60, 0)
 			if value == libc.UintptrFromInt32(0) {
 				(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+192, __ccgo_ts+4689, varName, __ccgo_ts+1694, libc.UintptrFromInt32(0)))
@@ -10843,7 +10843,7 @@ endOfForLoop:
 			if *(*int32)(unsafe.Pointer(bp + 4))&int32(m_TCL_REG_CANMATCH1) != 0 {
 				(*(*func(*libc.TLS, TTcl_RegExp, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_RegExpGetInfo})))(tls, regExpr, bp+16)
 				varName1 = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetString})))(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)))
-				libc.X__builtin___sprintf_chk(tls, bp+108, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+108, int32(1))), __ccgo_ts+4713, libc.VaList(bp+192, (*(*TTcl_RegExpInfo)(unsafe.Pointer(bp + 16))).FextendStart))
+				libc.X__builtin___sprintf_chk(tls, bp+108, 0, libc.X__builtin_object_size(tls, bp+108, int32(1)), __ccgo_ts+4713, libc.VaList(bp+192, (*(*TTcl_RegExpInfo)(unsafe.Pointer(bp + 16))).FextendStart))
 				value1 = (*(*func(*libc.TLS, uintptr, uintptr, uintptr, uintptr, int32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_SetVar2})))(tls, interp, varName1, libc.UintptrFromInt32(0), bp+108, 0)
 				if value1 == libc.UintptrFromInt32(0) {
 					(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+192, __ccgo_ts+4689, varName1, __ccgo_ts+1694, libc.UintptrFromInt32(0)))
@@ -11780,7 +11780,7 @@ func _GetTimesObjCmd(tls *libc.TLS, unused TClientData, interp uintptr, objc int
 		if !(i < int32(100000)) {
 			break
 		}
-		libc.X__builtin___sprintf_chk(tls, bp+40, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+40, int32(1))), __ccgo_ts+5623, libc.VaList(bp+72, int32(12345)))
+		libc.X__builtin___sprintf_chk(tls, bp+40, 0, libc.X__builtin_object_size(tls, bp+40, int32(1)), __ccgo_ts+5623, libc.VaList(bp+72, int32(12345)))
 		goto _14
 	_14:
 		;
@@ -11960,12 +11960,12 @@ func _TestpurebytesobjObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, o
 	   objPtr->internalRep.twoPtrValue.ptr1 = NULL;
 	   objPtr->internalRep.twoPtrValue.ptr2 = NULL;
 	*/
-	libc.X__builtin___memset_chk(tls, objPtr+32, 0, uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, objPtr+32, 0)))
+	libc.X__builtin___memset_chk(tls, objPtr+32, 0, uint64(16), libc.X__builtin_object_size(tls, objPtr+32, 0))
 	if objc == int32(2) {
 		s = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetString})))(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8)))
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*8)))).Flength
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = (*(*func(*libc.TLS, uint32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_Alloc})))(tls, libc.Uint32FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength+libc.Int32FromInt32(1)))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, s, libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, s, libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength))) = 0
 	}
 	(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, objPtr)
@@ -13211,9 +13211,9 @@ func _TestGetIndexFromObjStructObjCmd(tls *libc.TLS, dummy TClientData, interp u
 		return int32(m_TCL_ERROR)
 	}
 	if *(*int32)(unsafe.Pointer(bp + 64)) != *(*int32)(unsafe.Pointer(bp + 68)) {
-		libc.X__builtin___sprintf_chk(tls, bp+76, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+76, int32(1))), __ccgo_ts+5623, libc.VaList(bp+152, *(*int32)(unsafe.Pointer(bp + 64))))
+		libc.X__builtin___sprintf_chk(tls, bp+76, 0, libc.X__builtin_object_size(tls, bp+76, int32(1)), __ccgo_ts+5623, libc.VaList(bp+152, *(*int32)(unsafe.Pointer(bp + 64))))
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+152, __ccgo_ts+7384, bp+76, libc.UintptrFromInt32(0)))
-		libc.X__builtin___sprintf_chk(tls, bp+76, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+76, int32(1))), __ccgo_ts+5623, libc.VaList(bp+152, *(*int32)(unsafe.Pointer(bp + 68))))
+		libc.X__builtin___sprintf_chk(tls, bp+76, 0, libc.X__builtin_object_size(tls, bp+76, int32(1)), __ccgo_ts+5623, libc.VaList(bp+152, *(*int32)(unsafe.Pointer(bp + 68))))
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+152, __ccgo_ts+7420, bp+76, __ccgo_ts+7427, libc.UintptrFromInt32(0)))
 		return int32(m_TCL_ERROR)
 	}
@@ -13747,7 +13747,7 @@ func _TestUtfNextCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int3
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_ObjPrintf})))(tls, __ccgo_ts+7764, libc.VaList(bp+48, libc.Int32FromInt64(32)-libc.Int32FromInt32(4))))
 		return int32(m_TCL_ERROR)
 	}
-	libc.X__builtin___memcpy_chk(tls, bp+8+uintptr(1), bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8+uintptr(1), 0)))
+	libc.X__builtin___memcpy_chk(tls, bp+8+uintptr(1), bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))), libc.X__builtin_object_size(tls, bp+8+uintptr(1), 0))
 	v3 = libc.Int8FromUint8('\xA0')
 	(*(*[32]int8)(unsafe.Pointer(bp + 8)))[*(*int32)(unsafe.Pointer(bp))+int32(3)] = v3
 	v2 = v3
@@ -16395,7 +16395,7 @@ func _CheckIfVarUnset(tls *libc.TLS, interp uintptr, varPtr uintptr, varIndex in
 	defer tls.Free(80) /* Index of the test variable to check. */
 	var _ /* buf at bp+0 */ [56]int8
 	if *(*uintptr)(unsafe.Pointer(varPtr + uintptr(varIndex)*8)) == libc.UintptrFromInt32(0) {
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+9979, libc.VaList(bp+64, varIndex))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+9979, libc.VaList(bp+64, varIndex))
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_ResetResult})))(tls, interp)
 		(*(*func(*libc.TLS, uintptr, uintptr, int32))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendToObj})))(tls, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_GetObjResult})))(tls, interp), bp, -int32(1))
 		return int32(1)
@@ -16547,12 +16547,12 @@ func _RegisterCommand(tls *libc.TLS, interp uintptr, namespace uintptr, cmdTable
 	defer tls.Free(160) /* the command to register */
 	var _ /* buf at bp+0 */ [128]int8
 	if (*TCmdTable)(unsafe.Pointer(cmdTablePtr)).FexportIt != 0 {
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+10007, libc.VaList(bp+136, namespace, (*TCmdTable)(unsafe.Pointer(cmdTablePtr)).FcmdName))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+10007, libc.VaList(bp+136, namespace, (*TCmdTable)(unsafe.Pointer(cmdTablePtr)).FcmdName))
 		if (*(*func(*libc.TLS, uintptr, uintptr, int32, int32) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_EvalEx})))(tls, interp, bp, -int32(1), 0) != m_TCL_OK {
 			return int32(m_TCL_ERROR)
 		}
 	}
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+10049, libc.VaList(bp+136, namespace, (*TCmdTable)(unsafe.Pointer(cmdTablePtr)).FcmdName))
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+10049, libc.VaList(bp+136, namespace, (*TCmdTable)(unsafe.Pointer(cmdTablePtr)).FcmdName))
 	(*(*func(*libc.TLS, uintptr, uintptr, uintptr, TClientData, uintptr) TTcl_Command)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_CreateObjCommand})))(tls, interp, bp, (*TCmdTable)(unsafe.Pointer(cmdTablePtr)).Fproc, uintptr(0), uintptr(0))
 	return m_TCL_OK
 }
@@ -17026,7 +17026,7 @@ func _TestfilehandlerCmd(tls *libc.TLS, clientData TClientData, interp uintptr, 
 					(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+4088, __ccgo_ts+2259, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10401, libc.UintptrFromInt32(0)))
 					return int32(m_TCL_ERROR)
 				}
-				libc.X__builtin___sprintf_chk(tls, bp+4008, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+4008, int32(1))), __ccgo_ts+4683, libc.VaList(bp+4088, (*TPipe)(unsafe.Pointer(pipePtr)).FreadCount, (*TPipe)(unsafe.Pointer(pipePtr)).FwriteCount))
+				libc.X__builtin___sprintf_chk(tls, bp+4008, 0, libc.X__builtin_object_size(tls, bp+4008, int32(1)), __ccgo_ts+4683, libc.VaList(bp+4088, (*TPipe)(unsafe.Pointer(pipePtr)).FreadCount, (*TPipe)(unsafe.Pointer(pipePtr)).FwriteCount))
 				(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+4088, bp+4008, libc.UintptrFromInt32(0)))
 			} else {
 				if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+1300) == 0 {
@@ -17087,7 +17087,7 @@ func _TestfilehandlerCmd(tls *libc.TLS, clientData TClientData, interp uintptr, 
 								(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+4088, __ccgo_ts+2259, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10525, libc.UintptrFromInt32(0)))
 								return int32(m_TCL_ERROR)
 							}
-							libc.X__builtin___memset_chk(tls, bp+8, int32('a'), uint64(4000), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8, 0)))
+							libc.X__builtin___memset_chk(tls, bp+8, int32('a'), uint64(4000), libc.X__builtin_object_size(tls, bp+8, 0))
 							for libc.Xwrite(tls, int32(int64((*TPipe)(unsafe.Pointer(pipePtr)).FwriteFile))-int32(1), bp+8, uint64(4000)) > 0 {
 								/* Empty loop body. */
 							}
@@ -17097,7 +17097,7 @@ func _TestfilehandlerCmd(tls *libc.TLS, clientData TClientData, interp uintptr, 
 									(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+4088, __ccgo_ts+2259, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10550, libc.UintptrFromInt32(0)))
 									return int32(m_TCL_ERROR)
 								}
-								libc.X__builtin___memset_chk(tls, bp+8, int32('b'), uint64(10), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8, 0)))
+								libc.X__builtin___memset_chk(tls, bp+8, int32('b'), uint64(10), libc.X__builtin_object_size(tls, bp+8, 0))
 								(*(*func(*libc.TLS, uintptr, int64) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclIntStubs)(unsafe.Pointer(x_tclIntStubsPtr)).FtclFormatInt})))(tls, bp+4056, libc.Xwrite(tls, int32(int64((*TPipe)(unsafe.Pointer(pipePtr)).FwriteFile))-int32(1), bp+8, uint64(10)))
 								(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+4088, bp+4056, libc.UintptrFromInt32(0)))
 							} else {
@@ -17441,7 +17441,7 @@ func _TestalarmCmd(tls *libc.TLS, clientData TClientData, interp uintptr, argc i
 	 * I/O system calls.
 	 */
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = __ccgo_fp(_AlarmHandler)
-	libc.X__builtin___memset_chk(tls, bp+8+8, 0, uint64(4), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8+8, 0)))
+	libc.X__builtin___memset_chk(tls, bp+8+8, 0, uint64(4), libc.X__builtin_object_size(tls, bp+8+8, 0))
 	(*(*Tsigaction)(unsafe.Pointer(bp + 8))).Fsa_flags = int32(m_SA_RESTART1)
 	if libc.Xsigaction(tls, int32(m_SIGALRM), bp+8, libc.UintptrFromInt32(0)) < 0 {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_AppendResult})))(tls, interp, libc.VaList(bp+32, __ccgo_ts+10963, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_PosixError})))(tls, interp), libc.UintptrFromInt32(0)))
@@ -18076,7 +18076,7 @@ func _moresubs(tls *libc.TLS, v uintptr, wanted int32) {
 	if (*Tvars)(unsafe.Pointer(v)).Fsubs == v+88 {
 		p = x_TclpAlloc(tls, uint32(n*libc.Uint64FromInt64(8)))
 		if p != libc.UintptrFromInt32(0) {
-			libc.X__builtin___memcpy_chk(tls, p, (*Tvars)(unsafe.Pointer(v)).Fsubs, (*Tvars)(unsafe.Pointer(v)).Fnsubs*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+			libc.X__builtin___memcpy_chk(tls, p, (*Tvars)(unsafe.Pointer(v)).Fsubs, (*Tvars)(unsafe.Pointer(v)).Fnsubs*uint64(8), libc.X__builtin_object_size(tls, p, 0))
 		}
 	} else {
 		p = x_TclpRealloc(tls, (*Tvars)(unsafe.Pointer(v)).Fsubs, uint32(n*libc.Uint64FromInt64(8)))
@@ -20063,9 +20063,9 @@ func _stid(tls *libc.TLS, t uintptr, buf uintptr, bufsize Tsize_t) (r uintptr) {
 		return __ccgo_ts + 11280
 	}
 	if int32((*Tsubre)(unsafe.Pointer(t)).Fid) != 0 {
-		libc.X__builtin___sprintf_chk(tls, buf, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, int32(1))), __ccgo_ts+5623, libc.VaList(bp+8, int32((*Tsubre)(unsafe.Pointer(t)).Fid)))
+		libc.X__builtin___sprintf_chk(tls, buf, 0, libc.X__builtin_object_size(tls, buf, int32(1)), __ccgo_ts+5623, libc.VaList(bp+8, int32((*Tsubre)(unsafe.Pointer(t)).Fid)))
 	} else {
-		libc.X__builtin___sprintf_chk(tls, buf, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, int32(1))), __ccgo_ts+1666, libc.VaList(bp+8, t))
+		libc.X__builtin___sprintf_chk(tls, buf, 0, libc.X__builtin_object_size(tls, buf, int32(1)), __ccgo_ts+1666, libc.VaList(bp+8, t))
 	}
 	return buf
 }
@@ -21900,9 +21900,9 @@ func _setcolor(tls *libc.TLS, cm uintptr, c Tpchr, co Tpcolor) (r Tcolor) {
 				return int16(-libc.Int32FromInt32(1))
 			}
 			if bottom != 0 {
-				libc.X__builtin___memcpy_chk(tls, newt, t, libc.Uint64FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS))*libc.Uint64FromInt64(2), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newt, 0)))
+				libc.X__builtin___memcpy_chk(tls, newt, t, libc.Uint64FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS))*libc.Uint64FromInt64(2), libc.X__builtin_object_size(tls, newt, 0))
 			} else {
-				libc.X__builtin___memcpy_chk(tls, newt, t, libc.Uint64FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS))*libc.Uint64FromInt64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newt, 0)))
+				libc.X__builtin___memcpy_chk(tls, newt, t, libc.Uint64FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS))*libc.Uint64FromInt64(8), libc.X__builtin_object_size(tls, newt, 0))
 			}
 			t = newt
 			*(*uintptr)(unsafe.Pointer(lastt + uintptr(b)*8)) = t
@@ -21975,7 +21975,7 @@ func _newcolor(tls *libc.TLS, cm uintptr) (r Tcolor) {
 			if (*Tcolormap)(unsafe.Pointer(cm)).Fcd == cm+48 {
 				newCd = x_TclpAlloc(tls, uint32(n*libc.Uint64FromInt64(32)))
 				if newCd != libc.UintptrFromInt32(0) {
-					libc.X__builtin___memcpy_chk(tls, newCd, cm+48, (*Tcolormap)(unsafe.Pointer(cm)).Fncds*uint64(32), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newCd, 0)))
+					libc.X__builtin___memcpy_chk(tls, newCd, cm+48, (*Tcolormap)(unsafe.Pointer(cm)).Fncds*uint64(32), libc.X__builtin_object_size(tls, newCd, 0))
 				}
 			} else {
 				newCd = x_TclpRealloc(tls, (*Tcolormap)(unsafe.Pointer(cm)).Fcd, uint32(n*libc.Uint64FromInt64(32)))
@@ -22216,7 +22216,7 @@ func _subblock(tls *libc.TLS, v uintptr, start Tpchr, lp uintptr, rp uintptr) {
 				(*Tvars)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fv)).Ferr = v2
 				return
 			}
-			libc.X__builtin___memcpy_chk(tls, t, fillt, libc.Uint64FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS))*libc.Uint64FromInt64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, t, 0)))
+			libc.X__builtin___memcpy_chk(tls, t, fillt, libc.Uint64FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS))*libc.Uint64FromInt64(8), libc.X__builtin_object_size(tls, t, 0))
 			*(*uintptr)(unsafe.Pointer(lastt + uintptr(b)*8)) = t
 		}
 		goto _1
@@ -25241,10 +25241,10 @@ func _clonesuccessorstates(tls *libc.TLS, nfa uintptr, ssource uintptr, sclone u
 			 * visited at outer levels, or already merged into predecessor
 			 * states, as ones we shouldn't traverse back to.
 			 */
-			libc.X__builtin___memcpy_chk(tls, donemap, outerdonemap, libc.Uint64FromInt32(nstates)*uint64(1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, donemap, 0)))
+			libc.X__builtin___memcpy_chk(tls, donemap, outerdonemap, libc.Uint64FromInt32(nstates)*uint64(1), libc.X__builtin_object_size(tls, donemap, 0))
 		} else {
 			/* At outermost level, only spredecessor is off-limits */
-			libc.X__builtin___memset_chk(tls, donemap, 0, libc.Uint64FromInt32(nstates)*uint64(1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, donemap, 0)))
+			libc.X__builtin___memset_chk(tls, donemap, 0, libc.Uint64FromInt32(nstates)*uint64(1), libc.X__builtin_object_size(tls, donemap, 0))
 			*(*int8)(unsafe.Pointer(donemap + uintptr((*Tstate)(unsafe.Pointer(spredecessor)).Fno))) = int8(1)
 		}
 	}
@@ -31832,7 +31832,7 @@ func x_TclReExec(tls *libc.TLS, re uintptr, string1 uintptr, len1 Tsize_t, detai
 			v3 = (*Tvars1)(unsafe.Pointer(v)).Fnmatch
 		}
 		n = v3
-		libc.X__builtin___memcpy_chk(tls, pmatch, (*Tvars1)(unsafe.Pointer(v)).Fpmatch, n*uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, pmatch, 0)))
+		libc.X__builtin___memcpy_chk(tls, pmatch, (*Tvars1)(unsafe.Pointer(v)).Fpmatch, n*uint64(16), libc.X__builtin_object_size(tls, pmatch, 0))
 	}
 	/*
 	 * Clean up.
@@ -33916,7 +33916,7 @@ _6:
 	goto _5
 _5:
 	;
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+5623, libc.VaList(bp+96, (*Trerr)(unsafe.Pointer(r)).Fcode)) /* -1 for unknown */
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+5623, libc.VaList(bp+96, (*Trerr)(unsafe.Pointer(r)).Fcode)) /* -1 for unknown */
 	msg = bp
 	goto _4
 _2:
@@ -33938,7 +33938,7 @@ _2:
 	if (*Trerr)(unsafe.Pointer(r)).Fcode >= 0 {
 		msg = (*Trerr)(unsafe.Pointer(r)).Fname
 	} else { /* Unknown; tell him the number */
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+12928, libc.VaList(bp+96, libc.Uint32FromInt32(icode)))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+12928, libc.VaList(bp+96, libc.Uint32FromInt32(icode)))
 		msg = bp
 	}
 	goto _4
@@ -33960,7 +33960,7 @@ _3:
 	if (*Trerr)(unsafe.Pointer(r)).Fcode >= 0 {
 		msg = (*Trerr)(unsafe.Pointer(r)).Fexplain
 	} else { /* Unknown; say so */
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), uintptr(unsafe.Pointer(&_unk)), libc.VaList(bp+96, code))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), uintptr(unsafe.Pointer(&_unk)), libc.VaList(bp+96, code))
 		msg = bp
 	}
 	goto _4
@@ -33971,7 +33971,7 @@ _4:
 		if errbuf_size > len1 {
 			libc.X__builtin___strcpy_chk(tls, errbuf, msg, libc.X__builtin_object_size(tls, errbuf, int32(1)))
 		} else { /* Truncate to fit */
-			libc.X__builtin___strncpy_chk(tls, errbuf, msg, errbuf_size-uint64(1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, errbuf, int32(1))))
+			libc.X__builtin___strncpy_chk(tls, errbuf, msg, errbuf_size-uint64(1), libc.X__builtin_object_size(tls, errbuf, int32(1)))
 			*(*int8)(unsafe.Pointer(errbuf + uintptr(errbuf_size-uint64(1)))) = int8('\000')
 		}
 	}
@@ -37432,7 +37432,7 @@ func _MoveExceptionRangesToBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, savedE
 	(*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptionBase = savedExceptArrayNext
 	(*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptionCount = exceptionCount
 	(*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(exceptionCount)*libc.Uint64FromInt64(28)))
-	libc.X__builtin___memcpy_chk(tls, (*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr+uintptr(savedExceptArrayNext)*28, libc.Uint64FromInt32(exceptionCount)*uint64(28), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr+uintptr(savedExceptArrayNext)*28, libc.Uint64FromInt32(exceptionCount)*uint64(28), libc.X__builtin_object_size(tls, (*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions, 0))
 	i = 0
 	for {
 		if !(i < exceptionCount) {
@@ -38448,7 +38448,7 @@ func _MoveCodeForJumps(tls *libc.TLS, assemEnvPtr uintptr, mustMove int32) {
 		if !(bbPtr != libc.UintptrFromInt32(0)) {
 			break
 		}
-		libc.X__builtin___memmove_chk(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart+uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset), (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart+uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).ForiginalStartOffset), libc.Uint64FromInt32(topOffset-(*TBasicBlock)(unsafe.Pointer(bbPtr)).ForiginalStartOffset), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart+uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset), 0)))
+		libc.X__builtin___memmove_chk(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart+uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset), (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart+uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).ForiginalStartOffset), libc.Uint64FromInt32(topOffset-(*TBasicBlock)(unsafe.Pointer(bbPtr)).ForiginalStartOffset), libc.X__builtin_object_size(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart+uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset), 0))
 		topOffset = (*TBasicBlock)(unsafe.Pointer(bbPtr)).ForiginalStartOffset
 		*(*int32)(unsafe.Pointer(bbPtr + 12)) += (*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset - (*TBasicBlock)(unsafe.Pointer(bbPtr)).ForiginalStartOffset
 		goto _1
@@ -39482,7 +39482,7 @@ func _RestoreEmbeddedExceptionRanges(tls *libc.TLS, assemEnvPtr uintptr) {
 				range1 = (*TBasicBlock)(unsafe.Pointer(bbPtr)).FforeignExceptions + uintptr(i)*28
 				rangeIndex = x_TclCreateExceptRange(tls, (*TExceptionRange)(unsafe.Pointer(range1)).Ftype1, envPtr)
 				*(*int32)(unsafe.Pointer(range1 + 4)) += (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth + (*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchDepth
-				libc.X__builtin___memcpy_chk(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr+uintptr(rangeIndex)*28, range1, uint64(28), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr+uintptr(rangeIndex)*28, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr+uintptr(rangeIndex)*28, range1, uint64(28), libc.X__builtin_object_size(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr+uintptr(rangeIndex)*28, 0))
 				if (*TExceptionRange)(unsafe.Pointer(range1)).FnestingLevel >= (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 					(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth = (*TExceptionRange)(unsafe.Pointer(range1)).FnestingLevel + int32(1)
 				}
@@ -41177,7 +41177,7 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FeiVar)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FeiVar)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FeiVar)).Fbytes, __ccgo_ts+16592, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FeiVar)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FeiVar)).Fbytes, __ccgo_ts+16592, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FeiVar)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FeiVar)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FeiVar)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(12) - libc.Uint64FromInt32(1))
 	}
@@ -41200,7 +41200,7 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FupLiteral)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FupLiteral)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FupLiteral)).Fbytes, __ccgo_ts+16604, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FupLiteral)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FupLiteral)).Fbytes, __ccgo_ts+16604, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FupLiteral)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FupLiteral)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FupLiteral)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 	}
@@ -41220,7 +41220,7 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcallLiteral)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcallLiteral)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcallLiteral)).Fbytes, __ccgo_ts+16607, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcallLiteral)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcallLiteral)).Fbytes, __ccgo_ts+16607, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcallLiteral)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcallLiteral)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcallLiteral)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -41240,7 +41240,7 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FinnerLiteral)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FinnerLiteral)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FinnerLiteral)).Fbytes, __ccgo_ts+16612, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FinnerLiteral)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FinnerLiteral)).Fbytes, __ccgo_ts+16612, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FinnerLiteral)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FinnerLiteral)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FinnerLiteral)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -41263,7 +41263,7 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FecVar)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FecVar)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FecVar)).Fbytes, __ccgo_ts+16618, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FecVar)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FecVar)).Fbytes, __ccgo_ts+16618, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FecVar)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FecVar)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FecVar)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(12) - libc.Uint64FromInt32(1))
 	}
@@ -41501,7 +41501,7 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	if nsPtr == libc.UintptrFromInt32(0) {
 		x_Tcl_Panic(tls, __ccgo_ts+17056, 0)
 	}
-	libc.X__builtin___memcpy_chk(tls, bp+6, __ccgo_ts+17093, uint64(m_MATH_FUNC_PREFIX_LEN), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+6, 0)))
+	libc.X__builtin___memcpy_chk(tls, bp+6, __ccgo_ts+17093, uint64(m_MATH_FUNC_PREFIX_LEN), libc.X__builtin_object_size(tls, bp+6, 0))
 	builtinFuncPtr = uintptr(unsafe.Pointer(&_BuiltinFuncTable))
 	for {
 		if !((*TBuiltinFuncDef)(unsafe.Pointer(builtinFuncPtr)).Fname != libc.UintptrFromInt32(0)) {
@@ -41523,7 +41523,7 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 		x_Tcl_Panic(tls, __ccgo_ts+17125, 0)
 	}
 	x_Tcl_Export(tls, interp, nsPtr, __ccgo_ts+16426, int32(1))
-	libc.X__builtin___memcpy_chk(tls, bp+6, __ccgo_ts+17162, uint64(m_MATH_OP_PREFIX_LEN), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+6, 0)))
+	libc.X__builtin___memcpy_chk(tls, bp+6, __ccgo_ts+17162, uint64(m_MATH_OP_PREFIX_LEN), libc.X__builtin_object_size(tls, bp+6, 0))
 	opcmdInfoPtr = uintptr(unsafe.Pointer(&_mathOpCmds))
 	for {
 		if !((*TOpCmdInfo)(unsafe.Pointer(opcmdInfoPtr)).Fname != libc.UintptrFromInt32(0)) {
@@ -41681,7 +41681,7 @@ func x_Tcl_CallWhenDeleted(tls *libc.TLS, interp uintptr, proc uintptr, clientDa
 	iPtr = interp
 	assocDataCounterPtr = x_Tcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_assocDataCounterKey)), int32(4))
 	dPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
-	libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+4, int32(1))), __ccgo_ts+17335, libc.VaList(bp+72, *(*int32)(unsafe.Pointer(assocDataCounterPtr))))
+	libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.X__builtin_object_size(tls, bp+4, int32(1)), __ccgo_ts+17335, libc.VaList(bp+72, *(*int32)(unsafe.Pointer(assocDataCounterPtr))))
 	*(*int32)(unsafe.Pointer(assocDataCounterPtr))++
 	if (*TInterp)(unsafe.Pointer(iPtr)).FassocData == libc.UintptrFromInt32(0) {
 		(*TInterp)(unsafe.Pointer(iPtr)).FassocData = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(88)))
@@ -43101,7 +43101,7 @@ func x_TclInvokeObjectCommand(tls *libc.TLS, clientData TClientData, interp uint
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(length)+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(length))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = length
 		}
@@ -44100,7 +44100,7 @@ func x_Tcl_CreateMathFunc(tls *libc.TLS, interp uintptr, name uintptr, numArgs i
 	(*TOldMathFuncData)(unsafe.Pointer(data)).FnumArgs = numArgs
 	(*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(numArgs)*libc.Uint64FromInt64(4)))
 	if numArgs > 0 && argTypes != libc.UintptrFromInt32(0) {
-		libc.X__builtin___memcpy_chk(tls, (*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes, argTypes, libc.Uint64FromInt32(numArgs)*uint64(4), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes, argTypes, libc.Uint64FromInt32(numArgs)*uint64(4), libc.X__builtin_object_size(tls, (*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes, 0))
 	}
 	(*TOldMathFuncData)(unsafe.Pointer(data)).FclientData = clientData
 	x_Tcl_DStringInit(tls, bp)
@@ -44329,7 +44329,7 @@ func x_Tcl_GetMathFuncInfo(tls *libc.TLS, interp uintptr, name uintptr, numArgsP
 		(*TTcl_Obj)(unsafe.Pointer(cmdNameObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(cmdNameObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(16)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(cmdNameObj)).Fbytes, __ccgo_ts+18211, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(16)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(cmdNameObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(cmdNameObj)).Fbytes, __ccgo_ts+18211, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(16)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(cmdNameObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(cmdNameObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(16)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(cmdNameObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(16) - libc.Uint64FromInt32(1))
 	}
@@ -44684,7 +44684,7 @@ func x_Tcl_CancelEval(tls *libc.TLS, interp uintptr, resultObjPtr uintptr, clien
 	if resultObjPtr != libc.UintptrFromInt32(0) {
 		result = x_Tcl_GetStringFromObj(tls, resultObjPtr, cancelInfo+24)
 		(*TCancelInfo)(unsafe.Pointer(cancelInfo)).Fresult = x_Tcl_Realloc(tls, (*TCancelInfo)(unsafe.Pointer(cancelInfo)).Fresult, libc.Uint32FromInt32((*TCancelInfo)(unsafe.Pointer(cancelInfo)).Flength))
-		libc.X__builtin___memcpy_chk(tls, (*TCancelInfo)(unsafe.Pointer(cancelInfo)).Fresult, result, libc.Uint64FromInt32((*TCancelInfo)(unsafe.Pointer(cancelInfo)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TCancelInfo)(unsafe.Pointer(cancelInfo)).Fresult, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TCancelInfo)(unsafe.Pointer(cancelInfo)).Fresult, result, libc.Uint64FromInt32((*TCancelInfo)(unsafe.Pointer(cancelInfo)).Flength), libc.X__builtin_object_size(tls, (*TCancelInfo)(unsafe.Pointer(cancelInfo)).Fresult, 0))
 		v2 = resultObjPtr
 		v1 = *(*int32)(unsafe.Pointer(v2))
 		*(*int32)(unsafe.Pointer(v2))--
@@ -45312,7 +45312,7 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 			(*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes, __ccgo_ts+18540, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes, __ccgo_ts+18540, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(10) - libc.Uint64FromInt32(1))
 		}
@@ -45356,7 +45356,7 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 		;
 		i++
 	}
-	libc.X__builtin___memcpy_chk(tls, newObjv+uintptr(*(*int32)(unsafe.Pointer(bp)))*8, objv, uint64(8)*libc.Uint64FromInt32(objc), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newObjv+uintptr(*(*int32)(unsafe.Pointer(bp)))*8, 0)))
+	libc.X__builtin___memcpy_chk(tls, newObjv+uintptr(*(*int32)(unsafe.Pointer(bp)))*8, objv, uint64(8)*libc.Uint64FromInt32(objc), libc.X__builtin_object_size(tls, newObjv+uintptr(*(*int32)(unsafe.Pointer(bp)))*8, 0))
 	/*
 	 * Look up and invoke the handler (by recursive call to this function). If
 	 * there is no handler at all, instead of doing the recursive call we just
@@ -45511,7 +45511,7 @@ func _TEOV_RunEnterTraces(tls *libc.TLS, interp uintptr, cmdPtrPtr uintptr, comm
 				(*TTcl_Obj)(unsafe.Pointer(info)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer(info)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(info)).Fbytes, __ccgo_ts+18576, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(info)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(info)).Fbytes, __ccgo_ts+18576, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(info)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(info)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer(info)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(23) - libc.Uint64FromInt32(1))
 			}
@@ -45578,7 +45578,7 @@ func _TEOV_RunLeaveTraces(tls *libc.TLS, data uintptr, interp uintptr, result in
 				(*TTcl_Obj)(unsafe.Pointer(info)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer(info)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(info)).Fbytes, __ccgo_ts+18603, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(info)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(info)).Fbytes, __ccgo_ts+18603, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(info)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(info)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer(info)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(23) - libc.Uint64FromInt32(1))
 			}
@@ -45847,7 +45847,7 @@ func x_TclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, 
 				(*TTcl_Obj)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath)).Fbytes, __ccgo_ts+1372, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath)).Fbytes, __ccgo_ts+1372, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(1) - libc.Uint64FromInt32(1))
 			}
@@ -47087,7 +47087,7 @@ func _ProcessUnexpectedResult(tls *libc.TLS, interp uintptr, returnCode int32) {
 			x_Tcl_SetObjResult(tls, interp, x_Tcl_ObjPrintf(tls, __ccgo_ts+18759, libc.VaList(bp+32, returnCode)))
 		}
 	}
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+5623, libc.VaList(bp+32, returnCode))
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+5623, libc.VaList(bp+32, returnCode))
 	x_Tcl_SetErrorCode(tls, interp, libc.VaList(bp+32, __ccgo_ts+14426, __ccgo_ts+18789, bp, libc.UintptrFromInt32(0)))
 }
 
@@ -50172,7 +50172,7 @@ func x_Tcl_SetByteArrayObj(tls *libc.TLS, objPtr uintptr, bytes uintptr, length 
 	(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused = libc.Uint32FromInt32(length)
 	(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fallocated = libc.Uint32FromInt32(length)
 	if bytes != libc.UintptrFromInt32(0) && length > 0 {
-		libc.X__builtin___memcpy_chk(tls, byteArrayPtr+8, bytes, libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, byteArrayPtr+8, 0)))
+		libc.X__builtin___memcpy_chk(tls, byteArrayPtr+8, bytes, libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, byteArrayPtr+8, 0))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&x_tclByteArrayType))
 	(*(*struct {
@@ -50402,7 +50402,7 @@ func _DupByteArrayInternalRep(tls *libc.TLS, srcPtr uintptr, copyPtr uintptr) {
 	copyArrayPtr = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(uint64(libc.UintptrFromInt32(0)+8)))+length)
 	(*TByteArray)(unsafe.Pointer(copyArrayPtr)).Fused = length
 	(*TByteArray)(unsafe.Pointer(copyArrayPtr)).Fallocated = length
-	libc.X__builtin___memcpy_chk(tls, copyArrayPtr+8, srcArrayPtr+8, uint64(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, copyArrayPtr+8, 0)))
+	libc.X__builtin___memcpy_chk(tls, copyArrayPtr+8, srcArrayPtr+8, uint64(length), libc.X__builtin_object_size(tls, copyArrayPtr+8, 0))
 	(*(*struct {
 		Fptr1 uintptr
 		Fptr2 uintptr
@@ -50469,7 +50469,7 @@ func _UpdateStringOfByteArray(tls *libc.TLS, objPtr uintptr) {
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = dst
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = libc.Int32FromUint32(size)
 	if size == length {
-		libc.X__builtin___memcpy_chk(tls, dst, src, uint64(size), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+		libc.X__builtin___memcpy_chk(tls, dst, src, uint64(size), libc.X__builtin_object_size(tls, dst, 0))
 		*(*int8)(unsafe.Pointer(dst + uintptr(size))) = int8('\000')
 	} else {
 		i = uint32(0)
@@ -50578,7 +50578,7 @@ func x_TclAppendBytesToByteArray(tls *libc.TLS, objPtr uintptr, bytes uintptr, l
 		})(unsafe.Pointer(objPtr + 32))).Fptr1 = byteArrayPtr
 	}
 	if bytes != 0 {
-		libc.X__builtin___memcpy_chk(tls, byteArrayPtr+8+uintptr((*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused), bytes, libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, byteArrayPtr+8+uintptr((*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused), 0)))
+		libc.X__builtin___memcpy_chk(tls, byteArrayPtr+8+uintptr((*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused), bytes, libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, byteArrayPtr+8+uintptr((*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused), 0))
 	}
 	*(*uint32)(unsafe.Pointer(byteArrayPtr)) += libc.Uint32FromInt32(len1)
 	_isobjPtr = objPtr
@@ -50930,7 +50930,7 @@ func _BinaryFormatCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 	(*TTcl_Obj)(unsafe.Pointer(resultPtr)).Flength = 0
 	(*TTcl_Obj)(unsafe.Pointer(resultPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	buffer = x_Tcl_SetByteArrayLength(tls, resultPtr, *(*int32)(unsafe.Pointer(bp + 32)))
-	libc.X__builtin___memset_chk(tls, buffer, 0, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 32))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buffer, 0)))
+	libc.X__builtin___memset_chk(tls, buffer, 0, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 32))), libc.X__builtin_object_size(tls, buffer, 0))
 	/*
 	 * Pack the data into the result object. Note that we can skip the error
 	 * checking during this pass, since we have already parsed the string
@@ -50977,10 +50977,10 @@ func _BinaryFormatCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 				}
 			}
 			if *(*int32)(unsafe.Pointer(bp + 32)) >= *(*int32)(unsafe.Pointer(bp + 4)) {
-				libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0)))
+				libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0))
 			} else {
-				libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 32))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0)))
-				libc.X__builtin___memset_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 24))+uintptr(*(*int32)(unsafe.Pointer(bp + 32))), int32(pad), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))-*(*int32)(unsafe.Pointer(bp + 32))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 24))+uintptr(*(*int32)(unsafe.Pointer(bp + 32))), 0)))
+				libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 32))), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0))
+				libc.X__builtin___memset_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 24))+uintptr(*(*int32)(unsafe.Pointer(bp + 32))), int32(pad), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))-*(*int32)(unsafe.Pointer(bp + 32))), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 24))+uintptr(*(*int32)(unsafe.Pointer(bp + 32))), 0))
 			}
 			*(*uintptr)(unsafe.Pointer(bp + 24)) += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 		case int32('b'):
@@ -51309,7 +51309,7 @@ func _BinaryFormatCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 			if *(*int32)(unsafe.Pointer(bp + 4)) == -int32(2) {
 				*(*int32)(unsafe.Pointer(bp + 4)) = int32(1)
 			}
-			libc.X__builtin___memset_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0)))
+			libc.X__builtin___memset_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0))
 			*(*uintptr)(unsafe.Pointer(bp + 24)) += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 		case int32('X'):
 			if *(*uintptr)(unsafe.Pointer(bp + 24)) > maxPos {
@@ -52075,7 +52075,7 @@ func _CopyNumber(tls *libc.TLS, from uintptr, to uintptr, length uint32, type1 i
 	_, _, _, _, _, _ = fromPtr, fromPtr1, fromPtr2, toPtr, toPtr1, toPtr2
 	switch _NeedReversing(tls, type1) {
 	case 0:
-		libc.X__builtin___memcpy_chk(tls, to, from, uint64(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, to, 0)))
+		libc.X__builtin___memcpy_chk(tls, to, from, uint64(length), libc.X__builtin_object_size(tls, to, 0))
 	case int32(1):
 		fromPtr = from
 		toPtr = to
@@ -53073,7 +53073,7 @@ func _BinaryEncode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 			outindex++
 			if *(*int32)(unsafe.Pointer(bp)) > 0 && cursor != limit {
 				if outindex == *(*int32)(unsafe.Pointer(bp)) {
-					libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cursor, 0)))
+					libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, cursor, 0))
 					cursor += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 					outindex = 0
 				}
@@ -53087,7 +53087,7 @@ func _BinaryEncode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 			outindex++
 			if *(*int32)(unsafe.Pointer(bp)) > 0 && cursor != limit {
 				if outindex == *(*int32)(unsafe.Pointer(bp)) {
-					libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cursor, 0)))
+					libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, cursor, 0))
 					cursor += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 					outindex = 0
 				}
@@ -53102,7 +53102,7 @@ func _BinaryEncode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 				outindex++
 				if *(*int32)(unsafe.Pointer(bp)) > 0 && cursor != limit {
 					if outindex == *(*int32)(unsafe.Pointer(bp)) {
-						libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cursor, 0)))
+						libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, cursor, 0))
 						cursor += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 						outindex = 0
 					}
@@ -53117,7 +53117,7 @@ func _BinaryEncode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 				outindex++
 				if *(*int32)(unsafe.Pointer(bp)) > 0 && cursor != limit {
 					if outindex == *(*int32)(unsafe.Pointer(bp)) {
-						libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cursor, 0)))
+						libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, cursor, 0))
 						cursor += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 						outindex = 0
 					}
@@ -53133,7 +53133,7 @@ func _BinaryEncode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 				outindex++
 				if *(*int32)(unsafe.Pointer(bp)) > 0 && cursor != limit {
 					if outindex == *(*int32)(unsafe.Pointer(bp)) {
-						libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cursor, 0)))
+						libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, cursor, 0))
 						cursor += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 						outindex = 0
 					}
@@ -53148,7 +53148,7 @@ func _BinaryEncode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 				outindex++
 				if *(*int32)(unsafe.Pointer(bp)) > 0 && cursor != limit {
 					if outindex == *(*int32)(unsafe.Pointer(bp)) {
-						libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cursor, 0)))
+						libc.X__builtin___memcpy_chk(tls, cursor, wrapchar, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, cursor, 0))
 						cursor += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 						outindex = 0
 					}
@@ -54449,7 +54449,7 @@ func x_TclClockInit(tls *libc.TLS, interp uintptr) {
 	 * Install the commands.
 	 * TODO - Let Tcl_MakeEnsemble do this?
 	 */
-	libc.X__builtin___memcpy_chk(tls, bp, __ccgo_ts+21491, uint64(m_TCL_CLOCK_PREFIX_LEN), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, 0)))
+	libc.X__builtin___memcpy_chk(tls, bp, __ccgo_ts+21491, uint64(m_TCL_CLOCK_PREFIX_LEN), libc.X__builtin_object_size(tls, bp, 0))
 	clockCmdPtr = uintptr(unsafe.Pointer(&_clockCommands))
 	for {
 		if !((*TClockCommand)(unsafe.Pointer(clockCmdPtr)).Fname != libc.UintptrFromInt32(0)) {
@@ -55341,12 +55341,12 @@ func _ConvertUTCToLocalUsingC(tls *libc.TLS, interp uintptr, fields uintptr, cha
 	} else {
 		*(*int8)(unsafe.Pointer(bp + 8)) = int8('+')
 	}
-	libc.X__builtin___sprintf_chk(tls, bp+8+uintptr(1), 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8+uintptr(1), int32(1))), __ccgo_ts+21883, libc.VaList(bp+32, diff/int32(3600)))
+	libc.X__builtin___sprintf_chk(tls, bp+8+uintptr(1), 0, libc.X__builtin_object_size(tls, bp+8+uintptr(1), int32(1)), __ccgo_ts+21883, libc.VaList(bp+32, diff/int32(3600)))
 	diff %= int32(3600)
-	libc.X__builtin___sprintf_chk(tls, bp+8+uintptr(3), 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8+uintptr(3), int32(1))), __ccgo_ts+21883, libc.VaList(bp+32, diff/int32(60)))
+	libc.X__builtin___sprintf_chk(tls, bp+8+uintptr(3), 0, libc.X__builtin_object_size(tls, bp+8+uintptr(3), int32(1)), __ccgo_ts+21883, libc.VaList(bp+32, diff/int32(60)))
 	diff %= int32(60)
 	if diff > 0 {
-		libc.X__builtin___sprintf_chk(tls, bp+8+uintptr(5), 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8+uintptr(5), int32(1))), __ccgo_ts+21883, libc.VaList(bp+32, diff))
+		libc.X__builtin___sprintf_chk(tls, bp+8+uintptr(5), 0, libc.X__builtin_object_size(tls, bp+8+uintptr(5), int32(1)), __ccgo_ts+21883, libc.VaList(bp+32, diff))
 	}
 	(*TTclDateFields)(unsafe.Pointer(fields)).FtzName = x_Tcl_NewStringObj(tls, bp+8, -int32(1))
 	(*TTcl_Obj)(unsafe.Pointer((*TTclDateFields)(unsafe.Pointer(fields)).FtzName)).FrefCount++
@@ -56640,7 +56640,7 @@ func x_Tcl_CdObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32
 			(*TTcl_Obj)(unsafe.Pointer(dir)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(dir)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(dir)).Fbytes, __ccgo_ts+16414, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(dir)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(dir)).Fbytes, __ccgo_ts+16414, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(dir)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dir)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(dir)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(2) - libc.Uint64FromInt32(1))
 		}
@@ -57157,7 +57157,7 @@ func x_Tcl_ErrorObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 		(*TTcl_Obj)(unsafe.Pointer(options)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(options)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(21)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(options)).Fbytes, __ccgo_ts+22671, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(21)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(options)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(options)).Fbytes, __ccgo_ts+22671, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(21)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(options)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(options)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(21)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(options)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(21) - libc.Uint64FromInt32(1))
 	}
@@ -57177,7 +57177,7 @@ func x_Tcl_ErrorObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 			(*TTcl_Obj)(unsafe.Pointer(optName)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(optName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 		}
@@ -57200,7 +57200,7 @@ func x_Tcl_ErrorObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 			(*TTcl_Obj)(unsafe.Pointer(optName)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(optName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(optName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 		}
@@ -58731,7 +58731,7 @@ _8:
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, __ccgo_ts+23314, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, __ccgo_ts+23314, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(9) - libc.Uint64FromInt32(1))
 	}
@@ -58762,7 +58762,7 @@ _2:
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, __ccgo_ts+23323, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, __ccgo_ts+23323, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(9) - libc.Uint64FromInt32(1))
 	}
@@ -58784,7 +58784,7 @@ _3:
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, __ccgo_ts+23332, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, __ccgo_ts+23332, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(typeName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(15) - libc.Uint64FromInt32(1))
 	}
@@ -59002,7 +59002,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23380, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23380, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -59062,7 +59062,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23384, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23384, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -59122,7 +59122,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23388, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23388, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -59182,7 +59182,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23394, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23394, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -59242,7 +59242,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23398, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23398, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -59302,7 +59302,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+22924, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+22924, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -59362,7 +59362,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23402, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23402, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(7) - libc.Uint64FromInt32(1))
 	}
@@ -59422,7 +59422,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23409, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23409, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 	}
@@ -59482,7 +59482,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+22768, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+22768, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -59542,7 +59542,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+22854, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+22854, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -59602,7 +59602,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23417, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+23417, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -59663,7 +59663,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+6553, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+6553, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -59723,7 +59723,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(field)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(field)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(field)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(field)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -60245,7 +60245,7 @@ func _EachloopCmd(tls *libc.TLS, interp uintptr, collect int32, objc int32, objv
 	 * allocation for better performance.
 	 */
 	statePtr = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(88)+libc.Uint64FromInt32(int32(3)*numLists)*uint64(4)+libc.Uint64FromInt32(int32(2)*numLists)*(libc.Uint64FromInt64(8)+libc.Uint64FromInt64(8))))
-	libc.X__builtin___memset_chk(tls, statePtr, 0, uint64(88)+libc.Uint64FromInt32(int32(3)*numLists)*uint64(4)+libc.Uint64FromInt32(int32(2)*numLists)*(libc.Uint64FromInt64(8)+libc.Uint64FromInt64(8)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, statePtr, 0)))
+	libc.X__builtin___memset_chk(tls, statePtr, 0, uint64(88)+libc.Uint64FromInt32(int32(3)*numLists)*uint64(4)+libc.Uint64FromInt32(int32(2)*numLists)*(libc.Uint64FromInt64(8)+libc.Uint64FromInt64(8)), libc.X__builtin_object_size(tls, statePtr, 0))
 	(*TForeachState)(unsafe.Pointer(statePtr)).FvarvList = statePtr + libc.UintptrFromInt32(1)*88
 	(*TForeachState)(unsafe.Pointer(statePtr)).FargvList = (*TForeachState)(unsafe.Pointer(statePtr)).FvarvList + uintptr(numLists)*8
 	(*TForeachState)(unsafe.Pointer(statePtr)).FvCopyList = (*TForeachState)(unsafe.Pointer(statePtr)).FargvList + uintptr(numLists)*8
@@ -62120,7 +62120,7 @@ _10:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -62155,7 +62155,7 @@ _8:
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6415, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6415, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 		}
@@ -62181,7 +62181,7 @@ _8:
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6415, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6415, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 		}
@@ -62207,7 +62207,7 @@ _8:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+4915, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+4915, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -62238,7 +62238,7 @@ _3:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -62281,7 +62281,7 @@ _4:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -62307,7 +62307,7 @@ _4:
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6415, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6415, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 		}
@@ -62334,7 +62334,7 @@ _4:
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+22946, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+22946, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 		}
@@ -62370,7 +62370,7 @@ _4:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+4915, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+4915, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -62405,7 +62405,7 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6623, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -62430,7 +62430,7 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6415, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+6415, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -62455,7 +62455,7 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+22946, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+22946, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -62484,7 +62484,7 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+4915, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+4915, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -62539,7 +62539,7 @@ _7:
 				(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+16076, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+16076, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 			}
@@ -62611,7 +62611,7 @@ _7:
 					(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+23802, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, __ccgo_ts+23802, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 				}
@@ -67502,7 +67502,7 @@ func x_Tcl_SplitObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 						(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(len1)+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, stringPtr, libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, stringPtr, libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(len1))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = len1
 					}
@@ -67554,7 +67554,7 @@ func x_Tcl_SplitObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt64(int64(end)-int64(stringPtr))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, stringPtr, libc.Uint64FromInt64(int64(end)-int64(stringPtr)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, stringPtr, libc.Uint64FromInt64(int64(end)-int64(stringPtr)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(end)-int64(stringPtr)))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(end) - int64(stringPtr))
 				}
@@ -67606,7 +67606,7 @@ func x_Tcl_SplitObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 							} else {
 								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt64(int64(stringPtr)-int64(element))+libc.Uint32FromUint32(1))
-								libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, element, libc.Uint64FromInt64(int64(stringPtr)-int64(element)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+								libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, element, libc.Uint64FromInt64(int64(stringPtr)-int64(element)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 								*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(stringPtr)-int64(element)))) = int8('\000')
 								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(stringPtr) - int64(element))
 							}
@@ -67639,7 +67639,7 @@ func x_Tcl_SplitObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt64(int64(stringPtr)-int64(element))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, element, libc.Uint64FromInt64(int64(stringPtr)-int64(element)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, element, libc.Uint64FromInt64(int64(stringPtr)-int64(element)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(stringPtr)-int64(element)))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(stringPtr) - int64(element))
 				}
@@ -68335,7 +68335,7 @@ _16:
 					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt64(int64(p)-int64(string1))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes, string1, libc.Uint64FromInt64(int64(p)-int64(string1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes, string1, libc.Uint64FromInt64(int64(p)-int64(string1)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes + uintptr(int64(p)-int64(string1)))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Flength = int32(int64(p) - int64(string1))
 				}
@@ -69004,7 +69004,7 @@ func _StringReptCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32
 		if !(index < *(*int32)(unsafe.Pointer(bp))) {
 			break
 		}
-		libc.X__builtin___memcpy_chk(tls, string2+uintptr(*(*int32)(unsafe.Pointer(bp + 4))*index), string1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, string2+uintptr(*(*int32)(unsafe.Pointer(bp + 4))*index), 0)))
+		libc.X__builtin___memcpy_chk(tls, string2+uintptr(*(*int32)(unsafe.Pointer(bp + 4))*index), string1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, string2+uintptr(*(*int32)(unsafe.Pointer(bp + 4))*index), 0))
 		goto _3
 	_3:
 		;
@@ -71286,7 +71286,7 @@ func x_Tcl_ThrowObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 		(*TTcl_Obj)(unsafe.Pointer(options)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(options)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(32)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(options)).Fbytes, __ccgo_ts+27896, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(32)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(options)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(options)).Fbytes, __ccgo_ts+27896, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(32)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(options)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(options)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(32)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(options)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(32) - libc.Uint64FromInt32(1))
 	}
@@ -71393,7 +71393,7 @@ func x_Tcl_TimeObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes, __ccgo_ts+21465, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes, __ccgo_ts+21465, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(13) - libc.Uint64FromInt32(1))
 	}
@@ -71412,7 +71412,7 @@ func x_Tcl_TimeObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+27944, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+27944, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -71431,7 +71431,7 @@ func x_Tcl_TimeObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)])).Fbytes, __ccgo_ts+27948, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)])).Fbytes, __ccgo_ts+27948, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(10) - libc.Uint64FromInt32(1))
 	}
@@ -71891,7 +71891,7 @@ _3:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes, __ccgo_ts+28056, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes, __ccgo_ts+28056, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(15) - libc.Uint64FromInt32(1))
 		}
@@ -71973,7 +71973,7 @@ retRes:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 7*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 7*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 7*8)))).Fbytes, __ccgo_ts+28081, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 7*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 7*8)))).Fbytes, __ccgo_ts+28081, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 7*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 7*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 7*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(7) - libc.Uint64FromInt32(1))
 		}
@@ -71997,7 +71997,7 @@ retRes:
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes, __ccgo_ts+28088, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes, __ccgo_ts+28088, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 1*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -72016,7 +72016,7 @@ retRes:
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 3*8)))).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 3*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 3*8)))).Fbytes, __ccgo_ts+28094, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 3*8)))).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 3*8)))).Fbytes, __ccgo_ts+28094, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 3*8)))).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 3*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 3*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(2) - libc.Uint64FromInt32(1))
 	}
@@ -72035,7 +72035,7 @@ retRes:
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 5*8)))).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 5*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 5*8)))).Fbytes, __ccgo_ts+28096, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 5*8)))).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 5*8)))).Fbytes, __ccgo_ts+28096, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 5*8)))).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 5*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objs + 5*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -72387,7 +72387,7 @@ func _During(tls *libc.TLS, interp uintptr, resultCode int32, oldOptions uintptr
 		(*TTcl_Obj)(unsafe.Pointer(during)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(during)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(during)).Fbytes, __ccgo_ts+28542, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(during)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(during)).Fbytes, __ccgo_ts+28542, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(during)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(during)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(during)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 	}
@@ -72546,7 +72546,7 @@ func _TryPostBody(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r 
 						(*TTcl_Obj)(unsafe.Pointer(errorCodeName)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(errorCodeName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(errorCodeName)).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(errorCodeName)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(errorCodeName)).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(errorCodeName)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(errorCodeName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(errorCodeName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 					}
@@ -85561,7 +85561,7 @@ func _DupDictUpdateInfo(tls *libc.TLS, clientData TClientData) (r TClientData) {
 	dui1Ptr = clientData
 	len1 = uint32(libc.Uint64FromInt32(libc.Int32FromUint64(uint64(libc.UintptrFromInt32(0)+4))) + uint64(4)*libc.Uint64FromInt32((*TDictUpdateInfo)(unsafe.Pointer(dui1Ptr)).Flength))
 	dui2Ptr = x_Tcl_Alloc(tls, len1)
-	libc.X__builtin___memcpy_chk(tls, dui2Ptr, dui1Ptr, uint64(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dui2Ptr, 0)))
+	libc.X__builtin___memcpy_chk(tls, dui2Ptr, dui1Ptr, uint64(len1), libc.X__builtin_object_size(tls, dui2Ptr, 0))
 	return dui2Ptr
 }
 
@@ -88395,7 +88395,7 @@ func x_TclPushVarName(tls *libc.TLS, interp uintptr, varTokenPtr uintptr, envPtr
 						/*
 						 * Copy the remaining tokens.
 						 */
-						libc.X__builtin___memcpy_chk(tls, elemTokenPtr+uintptr(1)*24, varTokenPtr+uintptr(2)*24, libc.Uint64FromInt32(n-libc.Int32FromInt32(1))*uint64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, elemTokenPtr+uintptr(1)*24, 0)))
+						libc.X__builtin___memcpy_chk(tls, elemTokenPtr+uintptr(1)*24, varTokenPtr+uintptr(2)*24, libc.Uint64FromInt32(n-libc.Int32FromInt32(1))*uint64(24), libc.X__builtin_object_size(tls, elemTokenPtr+uintptr(1)*24, 0))
 					} else {
 						/*
 						 * Use the already available tokens.
@@ -105790,7 +105790,7 @@ func x_TclCompileStringLenCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, c
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	if x_TclWordKnownAtCompileTime(tls, tokenPtr, objPtr) != 0 {
 		len1 = x_Tcl_GetCharLength(tls, objPtr)
-		len1 = libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+5623, libc.VaList(bp+32, len1))
+		len1 = libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+5623, libc.VaList(bp+32, len1))
 		_objIndexCopy = x_TclRegisterLiteral(tls, envPtr, bp, len1, 0)
 		if _objIndexCopy <= int32(255) {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -110954,7 +110954,7 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 	contFixCount = 0
 	fixupArray = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(16)*libc.Uint64FromInt32(numBodyTokens)))
 	fixupTargetArray = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(4)*libc.Uint64FromInt32(numBodyTokens)))
-	libc.X__builtin___memset_chk(tls, fixupTargetArray, 0, libc.Uint64FromInt32(numBodyTokens)*uint64(4), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, fixupTargetArray, 0)))
+	libc.X__builtin___memset_chk(tls, fixupTargetArray, 0, libc.Uint64FromInt32(numBodyTokens)*uint64(4), libc.X__builtin_object_size(tls, fixupTargetArray, 0))
 	fixupCount = 0
 	foundDefault = 0
 	i = 0
@@ -112652,7 +112652,7 @@ func x_TclCompileThrowCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 			(*TTcl_Obj)(unsafe.Pointer(errPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(errPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(errPtr)).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(errPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(errPtr)).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(errPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(errPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(errPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 		}
@@ -113335,7 +113335,7 @@ func x_TclCompileTryCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr 
 	if numHandlers > 0 {
 		handlerTokens = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(8)*libc.Uint64FromInt32(numHandlers)))
 		matchClauses = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(8)*libc.Uint64FromInt32(numHandlers)))
-		libc.X__builtin___memset_chk(tls, matchClauses, 0, uint64(8)*libc.Uint64FromInt32(numHandlers), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, matchClauses, 0)))
+		libc.X__builtin___memset_chk(tls, matchClauses, 0, uint64(8)*libc.Uint64FromInt32(numHandlers), libc.X__builtin_object_size(tls, matchClauses, 0))
 		matchCodes = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(4)*libc.Uint64FromInt32(numHandlers)))
 		resultVarIndices = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(4)*libc.Uint64FromInt32(numHandlers)))
 		optionVarIndices = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(4)*libc.Uint64FromInt32(numHandlers)))
@@ -114326,7 +114326,7 @@ func _IssueTryClausesInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 			break
 		}
 		*(*int32)(unsafe.Pointer(noError + uintptr(i)*4)) = -int32(1)
-		libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+4, int32(1))), __ccgo_ts+5623, libc.VaList(bp+40, *(*int32)(unsafe.Pointer(matchCodes + uintptr(i)*4))))
+		libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.X__builtin_object_size(tls, bp+4, int32(1)), __ccgo_ts+5623, libc.VaList(bp+40, *(*int32)(unsafe.Pointer(matchCodes + uintptr(i)*4))))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			x_TclExpandCodeArray(tls, envPtr)
 		}
@@ -117073,7 +117073,7 @@ func _IssueTryClausesFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr u
 		if !(i < numHandlers) {
 			break
 		}
-		libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+4, int32(1))), __ccgo_ts+5623, libc.VaList(bp+40, *(*int32)(unsafe.Pointer(matchCodes + uintptr(i)*4))))
+		libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.X__builtin_object_size(tls, bp+4, int32(1)), __ccgo_ts+5623, libc.VaList(bp+40, *(*int32)(unsafe.Pointer(matchCodes + uintptr(i)*4))))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			x_TclExpandCodeArray(tls, envPtr)
 		}
@@ -125220,7 +125220,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(38)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+29659, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(38)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+29659, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(38)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(38)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(38) - libc.Uint64FromInt32(1))
 		}
@@ -125284,7 +125284,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 					(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(38)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+29659, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(38)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+29659, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(38)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(38)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(38) - libc.Uint64FromInt32(1))
 				}
@@ -125541,7 +125541,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 				}
 				(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 				if oldPtr == libc.UintptrFromInt32(0) {
-					libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr1, 0)))
+					libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr1, 0))
 				}
 				(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr1
 			}
@@ -125579,7 +125579,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30000, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30000, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(22) - libc.Uint64FromInt32(1))
 					}
@@ -125624,7 +125624,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 						} else {
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-							libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30022, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+							libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30022, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 							*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))))) = int8('\000')
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(22) - libc.Uint64FromInt32(1))
 						}
@@ -125804,7 +125804,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 						} else {
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-							libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30076, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+							libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30076, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 							*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))))) = int8('\000')
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(22) - libc.Uint64FromInt32(1))
 						}
@@ -125833,7 +125833,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 									(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 								} else {
 									(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(17)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-									libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30130, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(17)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+									libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30130, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(17)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 									*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(17)-libc.Uint64FromInt32(1))))) = int8('\000')
 									(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(17) - libc.Uint64FromInt32(1))
 								}
@@ -125858,7 +125858,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 						} else {
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-							libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30147, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+							libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30147, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 							*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))))) = int8('\000')
 							(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(23) - libc.Uint64FromInt32(1))
 						}
@@ -125953,7 +125953,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30076, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30076, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(22)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(22) - libc.Uint64FromInt32(1))
 					}
@@ -125986,7 +125986,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30219, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30219, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(46) - libc.Uint64FromInt32(1))
 					}
@@ -126053,7 +126053,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30147, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30147, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(23)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(23) - libc.Uint64FromInt32(1))
 					}
@@ -126079,7 +126079,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30274, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30274, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(46) - libc.Uint64FromInt32(1))
 					}
@@ -126104,7 +126104,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 					(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30219, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+30219, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(46)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(46) - libc.Uint64FromInt32(1))
 				}
@@ -126353,7 +126353,7 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 				}
 				(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 				if oldPtr == libc.UintptrFromInt32(0) {
-					libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+					libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr, 0))
 				}
 				(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr
 			}
@@ -126412,12 +126412,12 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated1
 					if oldPtr1 == libc.UintptrFromInt32(0) {
-						libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr1, 0)))
+						libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr1, 0))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr1
 				}
 				subExprTokenPtr = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr + uintptr((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*24
-				libc.X__builtin___memcpy_chk(tls, subExprTokenPtr, tokenPtr, libc.Uint64FromInt32(toCopy)*uint64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, subExprTokenPtr, 0)))
+				libc.X__builtin___memcpy_chk(tls, subExprTokenPtr, tokenPtr, libc.Uint64FromInt32(toCopy)*uint64(24), libc.X__builtin_object_size(tls, subExprTokenPtr, 0))
 				(*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).Ftype1 = int32(m_TCL_TOKEN_SUB_EXPR)
 				*(*int32)(unsafe.Pointer(parsePtr + 40)) += toCopy
 			} else {
@@ -126449,7 +126449,7 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated2
 					if oldPtr2 == libc.UintptrFromInt32(0) {
-						libc.X__builtin___memcpy_chk(tls, newPtr2, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr2, 0)))
+						libc.X__builtin___memcpy_chk(tls, newPtr2, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr2, 0))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr2
 				}
@@ -126458,7 +126458,7 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 				(*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).Ftype1 = int32(m_TCL_TOKEN_SUB_EXPR)
 				(*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).FnumComponents++
 				subExprTokenPtr += 24
-				libc.X__builtin___memcpy_chk(tls, subExprTokenPtr, tokenPtr, libc.Uint64FromInt32(toCopy)*uint64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, subExprTokenPtr, 0)))
+				libc.X__builtin___memcpy_chk(tls, subExprTokenPtr, tokenPtr, libc.Uint64FromInt32(toCopy)*uint64(24), libc.X__builtin_object_size(tls, subExprTokenPtr, 0))
 				*(*int32)(unsafe.Pointer(parsePtr + 40)) += toCopy + int32(1)
 			}
 			scanned = int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart+uintptr((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize)) - int64(start))
@@ -126524,7 +126524,7 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated3
 					if oldPtr3 == libc.UintptrFromInt32(0) {
-						libc.X__builtin___memcpy_chk(tls, newPtr3, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr3, 0)))
+						libc.X__builtin___memcpy_chk(tls, newPtr3, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr3, 0))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr3
 				}
@@ -126960,7 +126960,7 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 			(*TTcl_Obj)(unsafe.Pointer(literal)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt64(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes, start, libc.Uint64FromInt64(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes, start, libc.Uint64FromInt64(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes + uintptr(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start)))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(literal)).Flength = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(start))
 		}
@@ -127030,7 +127030,7 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 			}
 			scanned = v39
 		} else {
-			libc.X__builtin___memcpy_chk(tls, bp+12, start, libc.Uint64FromInt32(numBytes), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+12, 0)))
+			libc.X__builtin___memcpy_chk(tls, bp+12, start, libc.Uint64FromInt32(numBytes), libc.X__builtin_object_size(tls, bp+12, 0))
 			(*(*[3]int8)(unsafe.Pointer(bp + 12)))[numBytes] = int8('\000')
 			if libc.Int32FromUint8(libc.Uint8FromInt8(*(*int8)(unsafe.Pointer(bp + 12)))) < int32(0x80) {
 				*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(libc.Uint8FromInt8(*(*int8)(unsafe.Pointer(bp + 12))))
@@ -129235,7 +129235,7 @@ func x_TclInitCompileEnv(tls *libc.TLS, interp uintptr, envPtr uintptr, stringPt
 						(*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes, __ccgo_ts+1372, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes, __ccgo_ts+1372, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(1) - libc.Uint64FromInt32(1))
 					}
@@ -129258,7 +129258,7 @@ func x_TclInitCompileEnv(tls *libc.TLS, interp uintptr, envPtr uintptr, stringPt
 					(*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes, __ccgo_ts+1372, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes, __ccgo_ts+1372, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr)).Fpath)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(1) - libc.Uint64FromInt32(1))
 				}
@@ -131671,7 +131671,7 @@ func x_TclInitByteCodeObj(tls *libc.TLS, objPtr uintptr, envPtr uintptr) {
 	(*TByteCode)(unsafe.Pointer(codePtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth
 	p += uintptr(176)
 	(*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart = p
-	libc.X__builtin___memcpy_chk(tls, p, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart, codeBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+	libc.X__builtin___memcpy_chk(tls, p, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart, codeBytes, libc.X__builtin_object_size(tls, p, 0))
 	p += uintptr((libc.Int32FromUint64(codeBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align object array */
 	(*TByteCode)(unsafe.Pointer(codePtr)).FobjArrayPtr = p
 	i = 0
@@ -131696,14 +131696,14 @@ func x_TclInitByteCodeObj(tls *libc.TLS, objPtr uintptr, envPtr uintptr) {
 	p += uintptr((libc.Int32FromUint64(objArrayBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align exception range array */
 	if exceptArrayBytes > uint64(0) {
 		(*TByteCode)(unsafe.Pointer(codePtr)).FexceptArrayPtr = p
-		libc.X__builtin___memcpy_chk(tls, p, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr, exceptArrayBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+		libc.X__builtin___memcpy_chk(tls, p, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr, exceptArrayBytes, libc.X__builtin_object_size(tls, p, 0))
 	} else {
 		(*TByteCode)(unsafe.Pointer(codePtr)).FexceptArrayPtr = libc.UintptrFromInt32(0)
 	}
 	p += uintptr((libc.Int32FromUint64(exceptArrayBytes) + libc.Int32FromInt32(7)) & ^libc.Int32FromInt32(7)) /* align AuxData array */
 	if auxDataArrayBytes > uint64(0) {
 		(*TByteCode)(unsafe.Pointer(codePtr)).FauxDataArrayPtr = p
-		libc.X__builtin___memcpy_chk(tls, p, (*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayPtr, auxDataArrayBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+		libc.X__builtin___memcpy_chk(tls, p, (*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayPtr, auxDataArrayBytes, libc.X__builtin_object_size(tls, p, 0))
 	} else {
 		(*TByteCode)(unsafe.Pointer(codePtr)).FauxDataArrayPtr = libc.UintptrFromInt32(0)
 	}
@@ -131851,7 +131851,7 @@ func x_TclFindCompiledLocal(tls *libc.TLS, name uintptr, nameBytes int32, create
 		(*TCompiledLocal)(unsafe.Pointer(localPtr)).FdefValuePtr = libc.UintptrFromInt32(0)
 		(*TCompiledLocal)(unsafe.Pointer(localPtr)).FresolveInfo = libc.UintptrFromInt32(0)
 		if name != libc.UintptrFromInt32(0) {
-			libc.X__builtin___memcpy_chk(tls, localPtr+40, name, libc.Uint64FromInt32(nameBytes), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, localPtr+40, 0)))
+			libc.X__builtin___memcpy_chk(tls, localPtr+40, name, libc.Uint64FromInt32(nameBytes), libc.X__builtin_object_size(tls, localPtr+40, 0))
 		}
 		*(*int8)(unsafe.Pointer(localPtr + 40 + uintptr(nameBytes))) = int8('\000')
 		(*TProc)(unsafe.Pointer(procPtr)).FnumCompiledLocals++
@@ -131902,7 +131902,7 @@ func x_TclExpandCodeArray(tls *libc.TLS, envArgPtr uintptr) {
 		 * ckrealloc equivalent for ourselves.
 		 */
 		newPtr = x_Tcl_Alloc(tls, uint32(newBytes))
-		libc.X__builtin___memcpy_chk(tls, newPtr, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart, currBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+		libc.X__builtin___memcpy_chk(tls, newPtr, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart, currBytes, libc.X__builtin_object_size(tls, newPtr, 0))
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart = newPtr
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedCodeArray = int32(1)
 	}
@@ -131957,7 +131957,7 @@ func _EnterCmdStartData(tls *libc.TLS, envPtr uintptr, cmdIndex int32, srcOffset
 			 * ckrealloc equivalent for ourselves.
 			 */
 			newPtr = x_Tcl_Alloc(tls, uint32(newBytes))
-			libc.X__builtin___memcpy_chk(tls, newPtr, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcmdMapPtr, currBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+			libc.X__builtin___memcpy_chk(tls, newPtr, (*TCompileEnv)(unsafe.Pointer(envPtr)).FcmdMapPtr, currBytes, libc.X__builtin_object_size(tls, newPtr, 0))
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FcmdMapPtr = newPtr
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedCmdMap = int32(1)
 		}
@@ -132144,8 +132144,8 @@ func x_TclCreateExceptRange(tls *libc.TLS, type1 TExceptionRangeType, envPtr uin
 			 */
 			newPtr = x_Tcl_Alloc(tls, uint32(newBytes))
 			newPtr2 = x_Tcl_Alloc(tls, uint32(newBytes2))
-			libc.X__builtin___memcpy_chk(tls, newPtr, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr, currBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
-			libc.X__builtin___memcpy_chk(tls, newPtr2, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr, currBytes2, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr2, 0)))
+			libc.X__builtin___memcpy_chk(tls, newPtr, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr, currBytes, libc.X__builtin_object_size(tls, newPtr, 0))
+			libc.X__builtin___memcpy_chk(tls, newPtr2, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr, currBytes2, libc.X__builtin_object_size(tls, newPtr2, 0))
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr = newPtr
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr = newPtr2
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedExceptArray = int32(1)
@@ -132653,7 +132653,7 @@ func x_TclCreateAuxData(tls *libc.TLS, clientData TClientData, typePtr uintptr, 
 			 * code a ckrealloc equivalent for ourselves.
 			 */
 			newPtr = x_Tcl_Alloc(tls, uint32(newBytes))
-			libc.X__builtin___memcpy_chk(tls, newPtr, (*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayPtr, currBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+			libc.X__builtin___memcpy_chk(tls, newPtr, (*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayPtr, currBytes, libc.X__builtin_object_size(tls, newPtr, 0))
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayPtr = newPtr
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedAuxDataArray = int32(1)
 		}
@@ -132735,7 +132735,7 @@ func x_TclExpandJumpFixupArray(tls *libc.TLS, fixupArrayPtr uintptr) {
 		 * ckrealloc equivalent for ourselves.
 		 */
 		newPtr = x_Tcl_Alloc(tls, uint32(newBytes))
-		libc.X__builtin___memcpy_chk(tls, newPtr, (*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).Ffixup, currBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+		libc.X__builtin___memcpy_chk(tls, newPtr, (*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).Ffixup, currBytes, libc.X__builtin_object_size(tls, newPtr, 0))
 		(*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).Ffixup = newPtr
 		(*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).FmallocedArray = int32(1)
 	}
@@ -133003,7 +133003,7 @@ func x_TclFixupForwardJump(tls *libc.TLS, envPtr uintptr, jumpFixupPtr uintptr, 
 	jumpPc = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FcodeOffset)
 	numBytes = libc.Uint32FromInt64(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64(jumpPc) - int64(2))
 	p = jumpPc + uintptr(2)
-	libc.X__builtin___memmove_chk(tls, p+uintptr(3), p, uint64(numBytes), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p+uintptr(3), 0)))
+	libc.X__builtin___memmove_chk(tls, p+uintptr(3), p, uint64(numBytes), libc.X__builtin_object_size(tls, p+uintptr(3), 0))
 	*(*uintptr)(unsafe.Pointer(envPtr + 120)) += uintptr(3)
 	jumpDist += int32(3)
 	switch (*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FjumpType {
@@ -138303,7 +138303,7 @@ func _SetDictFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) {
 					(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 40)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, *(*uintptr)(unsafe.Pointer(bp + 32)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 40))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, *(*uintptr)(unsafe.Pointer(bp + 32)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 40))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes + uintptr(*(*int32)(unsafe.Pointer(bp + 40))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = *(*int32)(unsafe.Pointer(bp + 40))
 				}
@@ -138361,7 +138361,7 @@ func _SetDictFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) {
 					(*TTcl_Obj)(unsafe.Pointer(valuePtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(valuePtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 40)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(valuePtr)).Fbytes, *(*uintptr)(unsafe.Pointer(bp + 32)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 40))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(valuePtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(valuePtr)).Fbytes, *(*uintptr)(unsafe.Pointer(bp + 32)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 40))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(valuePtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(valuePtr)).Fbytes + uintptr(*(*int32)(unsafe.Pointer(bp + 40))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(valuePtr)).Flength = *(*int32)(unsafe.Pointer(bp + 40))
 				}
@@ -142854,8 +142854,8 @@ func _DisassembleByteCodeObj(tls *libc.TLS, interp uintptr, objPtr uintptr) (r u
 	/*
 	 * Print header lines describing the ByteCode.
 	 */
-	libc.X__builtin___sprintf_chk(tls, bp+16, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+16, int32(1))), __ccgo_ts+1666, libc.VaList(bp+64, codePtr))
-	libc.X__builtin___sprintf_chk(tls, bp+36, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+36, int32(1))), __ccgo_ts+1666, libc.VaList(bp+64, iPtr))
+	libc.X__builtin___sprintf_chk(tls, bp+16, 0, libc.X__builtin_object_size(tls, bp+16, int32(1)), __ccgo_ts+1666, libc.VaList(bp+64, codePtr))
+	libc.X__builtin___sprintf_chk(tls, bp+36, 0, libc.X__builtin_object_size(tls, bp+36, int32(1)), __ccgo_ts+1666, libc.VaList(bp+64, iPtr))
 	x_Tcl_AppendPrintfToObj(tls, bufferObj, __ccgo_ts+34506, libc.VaList(bp+64, bp+16, (*TByteCode)(unsafe.Pointer(codePtr)).FrefCount, (*TByteCode)(unsafe.Pointer(codePtr)).FcompileEpoch, bp+36, (*TInterp)(unsafe.Pointer(iPtr)).FcompileEpoch))
 	x_Tcl_AppendToObj(tls, bufferObj, __ccgo_ts+34565, -int32(1))
 	if (*TByteCode)(unsafe.Pointer(codePtr)).FnumSrcBytes < libc.Int32FromInt32(55) {
@@ -142877,7 +142877,7 @@ func _DisassembleByteCodeObj(tls *libc.TLS, interp uintptr, objPtr uintptr) (r u
 	if (*TByteCode)(unsafe.Pointer(codePtr)).FprocPtr != libc.UintptrFromInt32(0) {
 		procPtr = (*TByteCode)(unsafe.Pointer(codePtr)).FprocPtr
 		numCompiledLocals = (*TProc)(unsafe.Pointer(procPtr)).FnumCompiledLocals
-		libc.X__builtin___sprintf_chk(tls, bp+16, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+16, int32(1))), __ccgo_ts+1666, libc.VaList(bp+64, procPtr))
+		libc.X__builtin___sprintf_chk(tls, bp+16, 0, libc.X__builtin_object_size(tls, bp+16, int32(1)), __ccgo_ts+1666, libc.VaList(bp+64, procPtr))
 		x_Tcl_AppendPrintfToObj(tls, bufferObj, __ccgo_ts+34673, libc.VaList(bp+64, bp+16, (*TProc)(unsafe.Pointer(procPtr)).FrefCount, (*TProc)(unsafe.Pointer(procPtr)).FnumArgs, numCompiledLocals))
 		if numCompiledLocals > 0 {
 			localPtr = (*TProc)(unsafe.Pointer(procPtr)).FfirstLocalPtr
@@ -143219,7 +143219,7 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 		opnd = libc.Int32FromUint32(libc.Uint32FromInt32(libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes))))<<libc.Int32FromInt32(24) | libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16) | libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8) | libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(3))))))
 		numBytes += int32(4)
 		if libc.Int32FromUint8(opCode) == int32(m_INST_START_CMD) {
-			libc.X__builtin___sprintf_chk(tls, bp+uintptr(libc.Xstrlen(tls, bp)), 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+uintptr(libc.Xstrlen(tls, bp)), int32(1))), __ccgo_ts+35051, libc.VaList(bp+144, opnd))
+			libc.X__builtin___sprintf_chk(tls, bp+uintptr(libc.Xstrlen(tls, bp)), 0, libc.X__builtin_object_size(tls, bp+uintptr(libc.Xstrlen(tls, bp)), int32(1)), __ccgo_ts+35051, libc.VaList(bp+144, opnd))
 		}
 		x_Tcl_AppendPrintfToObj(tls, bufferObj, __ccgo_ts+35047, libc.VaList(bp+144, libc.Uint32FromInt32(opnd)))
 		goto _19
@@ -143227,7 +143227,7 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 		;
 		opnd = int32(*(*int8)(unsafe.Pointer(pc + uintptr(numBytes))))
 		numBytes++
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+35072, libc.VaList(bp+144, pcOffset+libc.Uint32FromInt32(opnd)))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+35072, libc.VaList(bp+144, pcOffset+libc.Uint32FromInt32(opnd)))
 		x_Tcl_AppendPrintfToObj(tls, bufferObj, __ccgo_ts+35042, libc.VaList(bp+144, opnd))
 		goto _19
 	_9:
@@ -143235,9 +143235,9 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 		opnd = libc.Int32FromUint32(uint32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes))))<<libc.Int32FromInt32(24) | libc.Uint32FromInt32(libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | libc.Uint32FromInt32(libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(3)))))
 		numBytes += int32(4)
 		if libc.Int32FromUint8(opCode) == int32(m_INST_START_CMD) {
-			libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+35078, libc.VaList(bp+144, pcOffset+libc.Uint32FromInt32(opnd)))
+			libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+35078, libc.VaList(bp+144, pcOffset+libc.Uint32FromInt32(opnd)))
 		} else {
-			libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+35072, libc.VaList(bp+144, pcOffset+libc.Uint32FromInt32(opnd)))
+			libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+35072, libc.VaList(bp+144, pcOffset+libc.Uint32FromInt32(opnd)))
 		}
 		x_Tcl_AppendPrintfToObj(tls, bufferObj, __ccgo_ts+35042, libc.VaList(bp+144, opnd))
 		goto _19
@@ -143304,9 +143304,9 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 				j++
 			}
 			if (*TCompiledLocal)(unsafe.Pointer(localPtr)).Fflags&int32(m_VAR_TEMPORARY3) != 0 {
-				libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+35167, libc.VaList(bp+144, libc.Uint32FromInt32(opnd)))
+				libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+35167, libc.VaList(bp+144, libc.Uint32FromInt32(opnd)))
 			} else {
-				libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+35179, 0)
+				libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+35179, 0)
 				suffixSrc = localPtr + 40
 			}
 		}
@@ -143556,14 +143556,14 @@ func _UpdateStringOfInstName(tls *libc.TLS, objPtr uintptr) {
 	_, _, _ = inst, len1, s
 	inst = int32((*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue)
 	if inst < 0 || inst > int32(m_LAST_INST_OPCODE) {
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+35310, libc.VaList(bp+32, inst))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+35310, libc.VaList(bp+32, inst))
 		s = bp
 	} else {
 		s = x_tclInstructionTable[(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue].Fname
 	}
 	len1 = libc.Int32FromUint64(libc.Xstrlen(tls, s))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(len1+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, s, libc.Uint64FromInt32(len1+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, s, libc.Uint64FromInt32(len1+int32(1)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = len1
 }
 
@@ -144249,7 +144249,7 @@ _1:
 			Fptr2 uintptr
 		})(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 2*8)) + 32))).Fptr1
 	}
-	libc.X__builtin___memset_chk(tls, bp+8, 0, uint64(112), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8, 0)))
+	libc.X__builtin___memset_chk(tls, bp+8, 0, uint64(112), libc.X__builtin_object_size(tls, bp+8, 0))
 	nsObjPtr = (*(*struct {
 		Fptr1 uintptr
 		Fptr2 uintptr
@@ -145148,13 +145148,13 @@ func x_TclInitEncodingSubsystem(tls *libc.TLS) {
 	 * code to duplicate the structure of a table encoding here.
 	 */
 	dataPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(280)))
-	libc.X__builtin___memset_chk(tls, dataPtr, 0, uint64(280), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr, 0)))
+	libc.X__builtin___memset_chk(tls, dataPtr, 0, uint64(280), libc.X__builtin_object_size(tls, dataPtr, 0))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).Ffallback = int32('?')
 	size = uint32(libc.Uint64FromInt32(256) * (libc.Uint64FromInt64(8) + libc.Uint64FromInt64(2)))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode = x_Tcl_Alloc(tls, size)
-	libc.X__builtin___memset_chk(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0, uint64(size), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0)))
+	libc.X__builtin___memset_chk(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0, uint64(size), libc.X__builtin_object_size(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode = x_Tcl_Alloc(tls, size)
-	libc.X__builtin___memset_chk(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0, uint64(size), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0)))
+	libc.X__builtin___memset_chk(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0, uint64(size), libc.X__builtin_object_size(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0))
 	*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode)) = (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode + libc.UintptrFromInt32(256)*8
 	*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode)) = (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode + libc.UintptrFromInt32(256)*8
 	i = uint16(1)
@@ -146266,9 +146266,9 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 			numPages = int32(256)
 		}
 	}
-	libc.X__builtin___memset_chk(tls, bp+224, 0, uint64(256), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+224, 0)))
+	libc.X__builtin___memset_chk(tls, bp+224, 0, uint64(256), libc.X__builtin_object_size(tls, bp+224, 0))
 	dataPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(280)))
-	libc.X__builtin___memset_chk(tls, dataPtr, 0, uint64(280), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr, 0)))
+	libc.X__builtin___memset_chk(tls, dataPtr, 0, uint64(280), libc.X__builtin_object_size(tls, dataPtr, 0))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).Ffallback = fallback
 	/*
 	 * Read the table that maps characters to Unicode. Performs a single
@@ -146277,7 +146277,7 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 	 */
 	size = uint32(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(8) + libc.Uint64FromInt32(numPages)*(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(2)))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode = x_Tcl_Alloc(tls, size)
-	libc.X__builtin___memset_chk(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0, uint64(size), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0)))
+	libc.X__builtin___memset_chk(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0, uint64(size), libc.X__builtin_object_size(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0))
 	pageMemPtr = (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode + libc.UintptrFromInt32(256)*8
 	if x_tclFreeObjList == libc.UintptrFromInt32(0) {
 		x_TclAllocateFreeObjects(tls)
@@ -146354,7 +146354,7 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 		}
 	}
 	if type1 == int32(m_ENCODING_DOUBLEBYTE) {
-		libc.X__builtin___memset_chk(tls, dataPtr+4, int32(1), uint64(256), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr+4, 0)))
+		libc.X__builtin___memset_chk(tls, dataPtr+4, int32(1), uint64(256), libc.X__builtin_object_size(tls, dataPtr+4, 0))
 	} else {
 		hi = int32(1)
 		for {
@@ -146395,7 +146395,7 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 	}
 	size = uint32(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(8) + libc.Uint64FromInt32(numPages)*(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(2)))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode = x_Tcl_Alloc(tls, size)
-	libc.X__builtin___memset_chk(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0, uint64(size), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0)))
+	libc.X__builtin___memset_chk(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0, uint64(size), libc.X__builtin_object_size(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0))
 	pageMemPtr = (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode + libc.UintptrFromInt32(256)*8
 	hi = 0
 	for {
@@ -146671,17 +146671,17 @@ func _LoadEscapeEncoding(tls *libc.TLS, name uintptr, chan1 TTcl_Channel) (r TTc
 				/* do nothing */
 			} else {
 				if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)))), __ccgo_ts+36354) == 0 {
-					libc.X__builtin___strncpy_chk(tls, bp+216, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)) + 1*8)), uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+216, int32(1))))
+					libc.X__builtin___strncpy_chk(tls, bp+216, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)) + 1*8)), uint64(16), libc.X__builtin_object_size(tls, bp+216, int32(1)))
 					(*(*[16]int8)(unsafe.Pointer(bp + 216)))[libc.Uint64FromInt64(16)-libc.Uint64FromInt32(1)] = int8('\000')
 				} else {
 					if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)))), __ccgo_ts+36359) == 0 {
-						libc.X__builtin___strncpy_chk(tls, bp+232, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)) + 1*8)), uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+232, int32(1))))
+						libc.X__builtin___strncpy_chk(tls, bp+232, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)) + 1*8)), uint64(16), libc.X__builtin_object_size(tls, bp+232, int32(1)))
 						(*(*[16]int8)(unsafe.Pointer(bp + 232)))[libc.Uint64FromInt64(16)-libc.Uint64FromInt32(1)] = int8('\000')
 					} else {
-						libc.X__builtin___strncpy_chk(tls, bp+528+4, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)) + 1*8)), uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+528+4, int32(1))))
+						libc.X__builtin___strncpy_chk(tls, bp+528+4, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)) + 1*8)), uint64(16), libc.X__builtin_object_size(tls, bp+528+4, int32(1)))
 						*(*int8)(unsafe.Pointer(bp + 528 + 4 + uintptr(libc.Uint64FromInt64(16)-libc.Uint64FromInt32(1)))) = int8('\000')
 						(*(*TEscapeSubTable)(unsafe.Pointer(bp + 528))).FsequenceLen = uint32(libc.Xstrlen(tls, bp+528+4))
-						libc.X__builtin___strncpy_chk(tls, bp+528+20, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)))), uint64(32), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+528+20, int32(1))))
+						libc.X__builtin___strncpy_chk(tls, bp+528+20, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 304)))), uint64(32), libc.X__builtin_object_size(tls, bp+528+20, int32(1)))
 						*(*int8)(unsafe.Pointer(bp + 528 + 20 + uintptr(libc.Uint64FromInt64(32)-libc.Uint64FromInt32(1)))) = int8('\000')
 						/*
 						 * To avoid infinite recursion in [encoding system iso2022-*]
@@ -146703,13 +146703,13 @@ func _LoadEscapeEncoding(tls *libc.TLS, name uintptr, chan1 TTcl_Channel) (r TTc
 	size = libc.Uint32FromInt32(libc.Int32FromUint64(uint64(libc.UintptrFromInt32(0)+304)) + (*TTcl_DString)(unsafe.Pointer(bp)).Flength)
 	dataPtr = x_Tcl_Alloc(tls, size)
 	(*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FinitLen = uint32(libc.Xstrlen(tls, bp+216))
-	libc.X__builtin___memcpy_chk(tls, dataPtr+8, bp+216, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FinitLen+uint32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr+8, 0)))
+	libc.X__builtin___memcpy_chk(tls, dataPtr+8, bp+216, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FinitLen+uint32(1)), libc.X__builtin_object_size(tls, dataPtr+8, 0))
 	(*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FfinalLen = uint32(libc.Xstrlen(tls, bp+232))
-	libc.X__builtin___memcpy_chk(tls, dataPtr+28, bp+232, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FfinalLen+uint32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr+28, 0)))
+	libc.X__builtin___memcpy_chk(tls, dataPtr+28, bp+232, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FfinalLen+uint32(1)), libc.X__builtin_object_size(tls, dataPtr+28, 0))
 	(*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FnumSubTables = libc.Int32FromUint64(libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength) / uint64(64))
-	libc.X__builtin___memcpy_chk(tls, dataPtr+304, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr+304, 0)))
+	libc.X__builtin___memcpy_chk(tls, dataPtr+304, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength), libc.X__builtin_object_size(tls, dataPtr+304, 0))
 	x_Tcl_DStringFree(tls, bp)
-	libc.X__builtin___memset_chk(tls, dataPtr+44, 0, uint64(256), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr+44, 0)))
+	libc.X__builtin___memset_chk(tls, dataPtr+44, 0, uint64(256), libc.X__builtin_object_size(tls, dataPtr+44, 0))
 	i = 0
 	for {
 		if !(i < (*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FnumSubTables) {
@@ -146778,7 +146778,7 @@ func _BinaryProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen int3
 	*(*int32)(unsafe.Pointer(srcReadPtr)) = srcLen
 	*(*int32)(unsafe.Pointer(dstWrotePtr)) = srcLen
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = srcLen
-	libc.X__builtin___memcpy_chk(tls, dst, src, libc.Uint64FromInt32(srcLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+	libc.X__builtin___memcpy_chk(tls, dst, src, libc.Uint64FromInt32(srcLen), libc.X__builtin_object_size(tls, dst, 0))
 	return result
 }
 
@@ -147781,7 +147781,7 @@ func _EscapeFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 			*(*int32)(unsafe.Pointer(dstWrotePtr)) = 0
 			return -int32(4)
 		}
-		libc.X__builtin___memcpy_chk(tls, dst, dataPtr+8, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FinitLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+		libc.X__builtin___memcpy_chk(tls, dst, dataPtr+8, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FinitLen), libc.X__builtin_object_size(tls, dst, 0))
 		dst += uintptr((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FinitLen)
 	} else {
 		state = int32(int64(*(*TTcl_EncodingState)(unsafe.Pointer(statePtr))))
@@ -147859,7 +147859,7 @@ func _EscapeFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 					result = -int32(4)
 					break
 				}
-				libc.X__builtin___memcpy_chk(tls, dst, subTablePtr+4, uint64((*TEscapeSubTable)(unsafe.Pointer(subTablePtr)).FsequenceLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+				libc.X__builtin___memcpy_chk(tls, dst, subTablePtr+4, uint64((*TEscapeSubTable)(unsafe.Pointer(subTablePtr)).FsequenceLen), libc.X__builtin_object_size(tls, dst, 0))
 				dst += uintptr((*TEscapeSubTable)(unsafe.Pointer(subTablePtr)).FsequenceLen)
 			}
 		}
@@ -147904,10 +147904,10 @@ func _EscapeFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 			result = -int32(4)
 		} else {
 			if state != 0 {
-				libc.X__builtin___memcpy_chk(tls, dst, dataPtr+304+4, uint64(len11), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+				libc.X__builtin___memcpy_chk(tls, dst, dataPtr+304+4, uint64(len11), libc.X__builtin_object_size(tls, dst, 0))
 				dst += uintptr(len11)
 			}
-			libc.X__builtin___memcpy_chk(tls, dst, dataPtr+28, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FfinalLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memcpy_chk(tls, dst, dataPtr+28, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FfinalLen), libc.X__builtin_object_size(tls, dst, 0))
 			dst += uintptr((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FfinalLen)
 			state &= ^libc.Int32FromInt32(m_TCL_ENCODING_END1)
 		}
@@ -148086,7 +148086,7 @@ func _InitializeEncodingSearchPath(tls *libc.TLS, valuePtr uintptr, lengthPtr ui
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, __ccgo_ts+22363, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, __ccgo_ts+22363, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(9) - libc.Uint64FromInt32(1))
 	}
@@ -148160,7 +148160,7 @@ func _InitializeEncodingSearchPath(tls *libc.TLS, valuePtr uintptr, lengthPtr ui
 	bytes = x_Tcl_GetStringFromObj(tls, searchPathObj, bp+4)
 	*(*int32)(unsafe.Pointer(lengthPtr)) = *(*int32)(unsafe.Pointer(bp + 4))
 	*(*uintptr)(unsafe.Pointer(valuePtr)) = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), 0)))
+	libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))+int32(1)), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), 0))
 	_objPtr3 = searchPathObj
 	v10 = _objPtr3
 	v9 = *(*int32)(unsafe.Pointer(v10))
@@ -150013,7 +150013,7 @@ func x_TclMakeEnsemble(tls *libc.TLS, interp uintptr, name uintptr, map1 uintptr
 				(*TTcl_Obj)(unsafe.Pointer(toObj)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer(toObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength)+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(toObj)).Fbytes, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(toObj)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(toObj)).Fbytes, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(toObj)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(toObj)).Fbytes + uintptr((*TTcl_DString)(unsafe.Pointer(bp)).Flength))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer(toObj)).Flength = (*TTcl_DString)(unsafe.Pointer(bp)).Flength
 			}
@@ -150592,7 +150592,7 @@ func x_TclSpellFix(tls *libc.TLS, interp uintptr, objv uintptr, objc int32, badI
 	} else {
 		tmp = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(3)*libc.Uint64FromInt64(8)))
 		store = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(size)*libc.Uint64FromInt64(8)))
-		libc.X__builtin___memcpy_chk(tls, store, (*TInterp)(unsafe.Pointer(iPtr)).FensembleRewrite.FsourceObjs, libc.Uint64FromInt32(size)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, store, 0)))
+		libc.X__builtin___memcpy_chk(tls, store, (*TInterp)(unsafe.Pointer(iPtr)).FensembleRewrite.FsourceObjs, libc.Uint64FromInt32(size)*uint64(8), libc.X__builtin_object_size(tls, store, 0))
 		/*
 		 * Awful casting abuse here! Note that the NULL in the first element
 		 * indicates that the initial objects are a raw array in the second
@@ -151715,7 +151715,7 @@ checkNextWord:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint32(numBytes))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, word, libc.Uint64FromInt32(libc.Int32FromUint32(numBytes)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, word, libc.Uint64FromInt32(libc.Int32FromUint32(numBytes)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes + uintptr(libc.Int32FromUint32(numBytes)))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = libc.Int32FromUint32(numBytes)
 		}
@@ -152644,7 +152644,7 @@ func x_TclSetupEnv(tls *libc.TLS, interp uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer(varNamePtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(varNamePtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(varNamePtr)).Fbytes, __ccgo_ts+37502, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(varNamePtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(varNamePtr)).Fbytes, __ccgo_ts+37502, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(varNamePtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(varNamePtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(varNamePtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -152801,15 +152801,15 @@ func x_TclSetEnv(tls *libc.TLS, name uintptr, value uintptr) {
 	 */
 	valueLength = uint32(libc.Xstrlen(tls, value))
 	p = x_Tcl_Alloc(tls, nameLength+valueLength+libc.Uint32FromInt32(2))
-	libc.X__builtin___memcpy_chk(tls, p, name, uint64(nameLength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+	libc.X__builtin___memcpy_chk(tls, p, name, uint64(nameLength), libc.X__builtin_object_size(tls, p, 0))
 	*(*int8)(unsafe.Pointer(p + uintptr(nameLength))) = int8('=')
-	libc.X__builtin___memcpy_chk(tls, p+uintptr(nameLength)+uintptr(1), value, uint64(valueLength+uint32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p+uintptr(nameLength)+uintptr(1), 0)))
+	libc.X__builtin___memcpy_chk(tls, p+uintptr(nameLength)+uintptr(1), value, uint64(valueLength+uint32(1)), libc.X__builtin_object_size(tls, p+uintptr(nameLength)+uintptr(1), 0))
 	p2 = x_Tcl_UtfToExternalDString(tls, libc.UintptrFromInt32(0), p, -int32(1), bp)
 	/*
 	 * Copy the native string to heap memory.
 	 */
 	p = x_Tcl_Realloc(tls, p, uint32(libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength)+libc.Uint64FromInt64(1)))
-	libc.X__builtin___memcpy_chk(tls, p, p2, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength)+uint64(1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+	libc.X__builtin___memcpy_chk(tls, p, p2, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength)+uint64(1), libc.X__builtin_object_size(tls, p, 0))
 	x_Tcl_DStringFree(tls, bp)
 	/*
 	 * Update the system environment.
@@ -153127,7 +153127,7 @@ func _ReplaceString(tls *libc.TLS, oldStr uintptr, newStr uintptr) {
 		growth = int32(5)
 		_env.Fcache = x_Tcl_Realloc(tls, _env.Fcache, uint32(libc.Uint64FromInt32(_env.FcacheSize+growth)*libc.Uint64FromInt64(8)))
 		*(*uintptr)(unsafe.Pointer(_env.Fcache + uintptr(_env.FcacheSize)*8)) = newStr
-		libc.X__builtin___memset_chk(tls, _env.Fcache+uintptr(_env.FcacheSize)*8+uintptr(1)*8, 0, libc.Uint64FromInt32(growth-libc.Int32FromInt32(1))*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, _env.Fcache+uintptr(_env.FcacheSize)*8+uintptr(1)*8, 0)))
+		libc.X__builtin___memset_chk(tls, _env.Fcache+uintptr(_env.FcacheSize)*8+uintptr(1)*8, 0, libc.Uint64FromInt32(growth-libc.Int32FromInt32(1))*uint64(8), libc.X__builtin_object_size(tls, _env.Fcache+uintptr(_env.FcacheSize)*8+uintptr(1)*8, 0))
 		_env.FcacheSize += growth
 	}
 }
@@ -153373,7 +153373,7 @@ func _HandleBgErrors(tls *libc.TLS, clientData TClientData) {
 			x_Tcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), copyObj, bp, bp+8)
 		}
 		tempObjv = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))+libc.Int32FromInt32(2))*libc.Uint64FromInt64(8)))
-		libc.X__builtin___memcpy_chk(tls, tempObjv, *(*uintptr)(unsafe.Pointer(bp + 8)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp)))*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, tempObjv, 0)))
+		libc.X__builtin___memcpy_chk(tls, tempObjv, *(*uintptr)(unsafe.Pointer(bp + 8)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp)))*uint64(8), libc.X__builtin_object_size(tls, tempObjv, 0))
 		*(*uintptr)(unsafe.Pointer(tempObjv + uintptr(*(*int32)(unsafe.Pointer(bp)))*8)) = (*TBgError)(unsafe.Pointer(errPtr)).FerrorMsg
 		*(*uintptr)(unsafe.Pointer(tempObjv + uintptr(*(*int32)(unsafe.Pointer(bp))+int32(1))*8)) = (*TBgError)(unsafe.Pointer(errPtr)).FreturnOpts
 		x_Tcl_AllowExceptions(tls, interp)
@@ -153449,7 +153449,7 @@ func _HandleBgErrors(tls *libc.TLS, clientData TClientData) {
 						(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 					}
@@ -153538,7 +153538,7 @@ func x_TclDefaultBgErrorHandlerObjCmd(tls *libc.TLS, dummy TClientData, interp u
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+37587, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+37587, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(7) - libc.Uint64FromInt32(1))
 	}
@@ -153574,7 +153574,7 @@ func x_TclDefaultBgErrorHandlerObjCmd(tls *libc.TLS, dummy TClientData, interp u
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+37625, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+37625, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -153627,7 +153627,7 @@ func x_TclDefaultBgErrorHandlerObjCmd(tls *libc.TLS, dummy TClientData, interp u
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).Fbytes, __ccgo_ts+37661, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).Fbytes, __ccgo_ts+37661, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 	}
@@ -153670,7 +153670,7 @@ _12:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(34)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes, __ccgo_ts+18688, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(34)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes, __ccgo_ts+18688, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(34)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(34)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(34) - libc.Uint64FromInt32(1))
 	}
@@ -153701,7 +153701,7 @@ _7:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(37)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes, __ccgo_ts+18722, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(37)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes, __ccgo_ts+18722, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(37)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(37)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(37) - libc.Uint64FromInt32(1))
 	}
@@ -153731,7 +153731,7 @@ _9:
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 	}
@@ -153762,7 +153762,7 @@ _9:
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 	}
@@ -153943,7 +153943,7 @@ func x_TclGetBgErrorHandler(tls *libc.TLS, interp uintptr) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(bgerrorObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(bgerrorObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(bgerrorObj)).Fbytes, __ccgo_ts+16793, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(bgerrorObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(bgerrorObj)).Fbytes, __ccgo_ts+16793, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(bgerrorObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(bgerrorObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(bgerrorObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(15) - libc.Uint64FromInt32(1))
 		}
@@ -155896,7 +155896,7 @@ newStackReady:
 	memStart = (*TExecStack)(unsafe.Pointer(esPtr)).FmarkerPtr + uintptr(_wordSkip(tls, (*TExecStack)(unsafe.Pointer(esPtr)).FmarkerPtr))*8
 	(*TExecStack)(unsafe.Pointer(esPtr)).FtosPtr = memStart - uintptr(1)*8
 	if move != 0 {
-		libc.X__builtin___memcpy_chk(tls, memStart, markerPtr+uintptr(_wordSkip(tls, markerPtr))*8, libc.Uint64FromInt32(moveWords)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, memStart, 0)))
+		libc.X__builtin___memcpy_chk(tls, memStart, markerPtr+uintptr(_wordSkip(tls, markerPtr))*8, libc.Uint64FromInt32(moveWords)*uint64(8), libc.X__builtin_object_size(tls, memStart, 0))
 		*(*uintptr)(unsafe.Pointer(esPtr + 32)) += uintptr(moveWords) * 8
 		(*TExecStack)(unsafe.Pointer(oldPtr)).FmarkerPtr = *(*uintptr)(unsafe.Pointer(markerPtr))
 		(*TExecStack)(unsafe.Pointer(oldPtr)).FtosPtr = markerPtr - uintptr(1)*8
@@ -158605,7 +158605,7 @@ _57:
 			}
 			bytes = v292
 			if bytes != libc.UintptrFromInt32(0) {
-				libc.X__builtin___memcpy_chk(tls, p, bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+				libc.X__builtin___memcpy_chk(tls, p, bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.X__builtin_object_size(tls, p, 0))
 				p += uintptr(*(*int32)(unsafe.Pointer(bp + 28)))
 			}
 			goto _291
@@ -158650,7 +158650,7 @@ _57:
 			}
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(currPtr)))).Fbytes != x_tclEmptyStringRep {
 				bytes = x_Tcl_GetByteArrayFromObj(tls, *(*uintptr)(unsafe.Pointer(currPtr)), bp+28)
-				libc.X__builtin___memcpy_chk(tls, p, bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+				libc.X__builtin___memcpy_chk(tls, p, bytes, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.X__builtin_object_size(tls, p, 0))
 				p += uintptr(*(*int32)(unsafe.Pointer(bp + 28)))
 			}
 			goto _293
@@ -159157,7 +159157,7 @@ _67:
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, __ccgo_ts+17093, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, __ccgo_ts+17093, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(18) - libc.Uint64FromInt32(1))
 	}
@@ -159261,7 +159261,7 @@ _68:
 		(*TTcl_Obj)(unsafe.Pointer(tmpPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(tmpPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpPtr)).Fbytes, __ccgo_ts+17093, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(tmpPtr)).Fbytes, __ccgo_ts+17093, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(tmpPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(tmpPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(18) - libc.Uint64FromInt32(1))
 	}
@@ -162058,7 +162058,7 @@ _135:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 		}
@@ -162078,7 +162078,7 @@ _135:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes = x_Tcl_Alloc(tls, uint32(libc.Xstrlen(tls, (*TNamespace)(unsafe.Pointer(currNsPtr)).FfullName))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, (*TNamespace)(unsafe.Pointer(currNsPtr)).FfullName, libc.Xstrlen(tls, (*TNamespace)(unsafe.Pointer(currNsPtr)).FfullName), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, (*TNamespace)(unsafe.Pointer(currNsPtr)).FfullName, libc.Xstrlen(tls, (*TNamespace)(unsafe.Pointer(currNsPtr)).FfullName), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes + uintptr(libc.Xstrlen(tls, (*TNamespace)(unsafe.Pointer(currNsPtr)).FfullName)))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = libc.Int32FromUint64(libc.Xstrlen(tls, (*TNamespace)(unsafe.Pointer(currNsPtr)).FfullName))
 		}
@@ -162909,7 +162909,7 @@ _146:
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes = x_Tcl_Alloc(tls, uint32(libc.Xstrlen(tls, (*TTcl_Namespace)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr)).FfullName))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, (*TTcl_Namespace)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr)).FfullName, libc.Xstrlen(tls, (*TTcl_Namespace)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr)).FfullName), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, (*TTcl_Namespace)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr)).FfullName, libc.Xstrlen(tls, (*TTcl_Namespace)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr)).FfullName), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes + uintptr(libc.Xstrlen(tls, (*TTcl_Namespace)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr)).FfullName)))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = libc.Int32FromUint64(libc.Xstrlen(tls, (*TTcl_Namespace)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr)).FfullName))
 	}
@@ -164748,7 +164748,7 @@ _162:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 28)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, s1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, s1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes + uintptr(*(*int32)(unsafe.Pointer(bp + 28))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = *(*int32)(unsafe.Pointer(bp + 28))
 		}
@@ -164896,7 +164896,7 @@ _163:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 28)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, s1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, s1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes + uintptr(*(*int32)(unsafe.Pointer(bp + 28))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = *(*int32)(unsafe.Pointer(bp + 28))
 		}
@@ -165044,7 +165044,7 @@ _164:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 28)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, s1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, s1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 28))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes + uintptr(*(*int32)(unsafe.Pointer(bp + 28))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength = *(*int32)(unsafe.Pointer(bp + 28))
 		}
@@ -165717,11 +165717,11 @@ _168:
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FtypePtr == uintptr(unsafe.Pointer(&x_tclByteArrayType)) && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes == libc.UintptrFromInt32(0) && ((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr == uintptr(unsafe.Pointer(&x_tclByteArrayType)) && (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes == libc.UintptrFromInt32(0)) {
 			bytes11 = x_Tcl_GetByteArrayFromObj(tls, *(*uintptr)(unsafe.Pointer(bp)), libc.UintptrFromInt32(0))
 			bytes21 = x_Tcl_GetByteArrayFromObj(tls, value3Ptr, libc.UintptrFromInt32(0))
-			libc.X__builtin___memcpy_chk(tls, bytes11+uintptr(*(*int32)(unsafe.Pointer(bp + 108))), bytes21, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 144))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bytes11+uintptr(*(*int32)(unsafe.Pointer(bp + 108))), 0)))
+			libc.X__builtin___memcpy_chk(tls, bytes11+uintptr(*(*int32)(unsafe.Pointer(bp + 108))), bytes21, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 144))), libc.X__builtin_object_size(tls, bytes11+uintptr(*(*int32)(unsafe.Pointer(bp + 108))), 0))
 		} else {
 			ustring1 = x_Tcl_GetUnicodeFromObj(tls, *(*uintptr)(unsafe.Pointer(bp)), libc.UintptrFromInt32(0))
 			ustring2 = x_Tcl_GetUnicodeFromObj(tls, value3Ptr, libc.UintptrFromInt32(0))
-			libc.X__builtin___memcpy_chk(tls, ustring1+uintptr(*(*int32)(unsafe.Pointer(bp + 108)))*2, ustring2, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 144)))*uint64(2), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, ustring1+uintptr(*(*int32)(unsafe.Pointer(bp + 108)))*2, 0)))
+			libc.X__builtin___memcpy_chk(tls, ustring1+uintptr(*(*int32)(unsafe.Pointer(bp + 108)))*2, ustring2, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 144)))*uint64(2), libc.X__builtin_object_size(tls, ustring1+uintptr(*(*int32)(unsafe.Pointer(bp + 108)))*2, 0))
 		}
 		x_Tcl_InvalidateStringRep(tls, *(*uintptr)(unsafe.Pointer(bp)))
 		v826 = value3Ptr
@@ -176355,7 +176355,7 @@ func _CopyRenameOneFile(tls *libc.TLS, interp uintptr, source uintptr, target ui
 			(*TTcl_Obj)(unsafe.Pointer(perm)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes, __ccgo_ts+40283, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes, __ccgo_ts+40283, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(perm)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 		}
@@ -176444,7 +176444,7 @@ func _CopyRenameOneFile(tls *libc.TLS, interp uintptr, source uintptr, target ui
 					(*TTcl_Obj)(unsafe.Pointer(cmdObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(cmdObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(21)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(cmdObj)).Fbytes, __ccgo_ts+40387, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(21)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(cmdObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(cmdObj)).Fbytes, __ccgo_ts+40387, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(21)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(cmdObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(cmdObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(21)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(cmdObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(21) - libc.Uint64FromInt32(1))
 				}
@@ -176465,7 +176465,7 @@ func _CopyRenameOneFile(tls *libc.TLS, interp uintptr, source uintptr, target ui
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+40004, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+40004, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 					}
@@ -176485,7 +176485,7 @@ func _CopyRenameOneFile(tls *libc.TLS, interp uintptr, source uintptr, target ui
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+40012, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+40012, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(9) - libc.Uint64FromInt32(1))
 					}
@@ -178111,7 +178111,7 @@ func x_Tcl_SplitPath(tls *libc.TLS, path uintptr, argcPtr uintptr, argvPtr uintp
 		}
 		x_Tcl_ListObjIndex(tls, libc.UintptrFromInt32(0), resultPtr, i, bp)
 		str = x_Tcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp)), bp+8)
-		libc.X__builtin___memcpy_chk(tls, p, str, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 8))+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+		libc.X__builtin___memcpy_chk(tls, p, str, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 8))+int32(1)), libc.X__builtin_object_size(tls, p, 0))
 		p += uintptr(*(*int32)(unsafe.Pointer(bp + 8)) + int32(1))
 		goto _4
 	_4:
@@ -178227,7 +178227,7 @@ func _SplitUnixPath(tls *libc.TLS, path uintptr) (r uintptr) {
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, __ccgo_ts+41019, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, __ccgo_ts+41019, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 				}
@@ -178346,7 +178346,7 @@ func _SplitWinPath(tls *libc.TLS, path uintptr) (r uintptr) {
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, __ccgo_ts+41019, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, __ccgo_ts+41019, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 				}
@@ -178414,7 +178414,7 @@ func x_Tcl_FSJoinToPath(tls *libc.TLS, _pathPtr uintptr, objc int32, objv uintpt
 		elemc = objc + int32(1)
 		elemv = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(elemc)*libc.Uint64FromInt64(8)))
 		*(*uintptr)(unsafe.Pointer(elemv)) = *(*uintptr)(unsafe.Pointer(bp))
-		libc.X__builtin___memcpy_chk(tls, elemv+uintptr(1)*8, objv, libc.Uint64FromInt32(objc)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, elemv+uintptr(1)*8, 0)))
+		libc.X__builtin___memcpy_chk(tls, elemv+uintptr(1)*8, objv, libc.Uint64FromInt32(objc)*uint64(8), libc.X__builtin_object_size(tls, elemv+uintptr(1)*8, 0))
 		ret = x_TclJoinPath(tls, elemc, elemv, 0)
 		x_TclpFree(tls, elemv)
 		return ret
@@ -179788,7 +179788,7 @@ func x_TclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintpt
 						(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes, __ccgo_ts+41734, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes, __ccgo_ts+41734, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(2) - libc.Uint64FromInt32(1))
 					}
@@ -179808,7 +179808,7 @@ func x_TclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintpt
 						(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes, __ccgo_ts+16528, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes, __ccgo_ts+16528, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 272)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(2) - libc.Uint64FromInt32(1))
 					}
@@ -181189,23 +181189,23 @@ func x_Tcl_HashStats(tls *libc.TLS, tablePtr uintptr) (r uintptr) {
 	 * Print out the histogram and a few other pieces of information.
 	 */
 	result = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromInt32(m_NUM_COUNTERS)*libc.Int32FromInt32(60)+libc.Int32FromInt32(300)))
-	libc.X__builtin___sprintf_chk(tls, result, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, result, int32(1))), __ccgo_ts+41903, libc.VaList(bp+8, (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries, (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumBuckets))
+	libc.X__builtin___sprintf_chk(tls, result, 0, libc.X__builtin_object_size(tls, result, int32(1)), __ccgo_ts+41903, libc.VaList(bp+8, (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries, (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumBuckets))
 	p = result + uintptr(libc.Xstrlen(tls, result))
 	i = 0
 	for {
 		if !(i < int32(m_NUM_COUNTERS)) {
 			break
 		}
-		libc.X__builtin___sprintf_chk(tls, p, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, int32(1))), __ccgo_ts+41936, libc.VaList(bp+8, i, count[i]))
+		libc.X__builtin___sprintf_chk(tls, p, 0, libc.X__builtin_object_size(tls, p, int32(1)), __ccgo_ts+41936, libc.VaList(bp+8, i, count[i]))
 		p += uintptr(libc.Xstrlen(tls, p))
 		goto _4
 	_4:
 		;
 		i++
 	}
-	libc.X__builtin___sprintf_chk(tls, p, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, int32(1))), __ccgo_ts+41975, libc.VaList(bp+8, int32(m_NUM_COUNTERS), overflow))
+	libc.X__builtin___sprintf_chk(tls, p, 0, libc.X__builtin_object_size(tls, p, int32(1)), __ccgo_ts+41975, libc.VaList(bp+8, int32(m_NUM_COUNTERS), overflow))
 	p += uintptr(libc.Xstrlen(tls, p))
-	libc.X__builtin___sprintf_chk(tls, p, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, int32(1))), __ccgo_ts+42022, libc.VaList(bp+8, average))
+	libc.X__builtin___sprintf_chk(tls, p, 0, libc.X__builtin_object_size(tls, p, int32(1)), __ccgo_ts+42022, libc.VaList(bp+8, average))
 	return result
 }
 
@@ -181369,8 +181369,8 @@ func _AllocStringEntry(tls *libc.TLS, tablePtr uintptr, keyPtr uintptr) (r uintp
 		allocsize = uint32(8)
 	}
 	hPtr = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(uint64(libc.UintptrFromInt32(0)+32)))+allocsize)
-	libc.X__builtin___memset_chk(tls, hPtr, 0, uint64(libc.Uint32FromInt32(libc.Int32FromUint64(uint64(libc.UintptrFromInt32(0)+32)))+allocsize), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, hPtr, 0)))
-	libc.X__builtin___memcpy_chk(tls, hPtr+32, string1, uint64(size), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, hPtr+32, 0)))
+	libc.X__builtin___memset_chk(tls, hPtr, 0, uint64(libc.Uint32FromInt32(libc.Int32FromUint64(uint64(libc.UintptrFromInt32(0)+32)))+allocsize), libc.X__builtin_object_size(tls, hPtr, 0))
+	libc.X__builtin___memcpy_chk(tls, hPtr+32, string1, uint64(size), libc.X__builtin_object_size(tls, hPtr+32, 0))
 	(*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData = uintptr(0)
 	return hPtr
 }
@@ -181781,7 +181781,7 @@ func x_Tcl_RecordAndEvalObj(tls *libc.TLS, interp uintptr, cmdPtr uintptr, flags
 			(*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FhistoryObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FhistoryObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FhistoryObj)).Fbytes, __ccgo_ts+42146, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FhistoryObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FhistoryObj)).Fbytes, __ccgo_ts+42146, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FhistoryObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FhistoryObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FhistoryObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(10) - libc.Uint64FromInt32(1))
 		}
@@ -181800,7 +181800,7 @@ func x_Tcl_RecordAndEvalObj(tls *libc.TLS, interp uintptr, cmdPtr uintptr, flags
 			(*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FaddObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FaddObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FaddObj)).Fbytes, __ccgo_ts+6903, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FaddObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FaddObj)).Fbytes, __ccgo_ts+6903, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FaddObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FaddObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer((*THistoryObjs)(unsafe.Pointer(histObjsPtr)).FaddObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 		}
@@ -182337,7 +182337,7 @@ func _UpdateStringOfIndex(tls *libc.TLS, objPtr uintptr) {
 	indexStr = v1
 	len1 = uint32(libc.Xstrlen(tls, indexStr))
 	buf = x_Tcl_Alloc(tls, len1+libc.Uint32FromInt32(1))
-	libc.X__builtin___memcpy_chk(tls, buf, indexStr, uint64(len1+uint32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
+	libc.X__builtin___memcpy_chk(tls, buf, indexStr, uint64(len1+uint32(1)), libc.X__builtin_object_size(tls, buf, 0))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = buf
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = libc.Int32FromUint32(len1)
 }
@@ -182368,7 +182368,7 @@ func _DupIndex(tls *libc.TLS, srcPtr uintptr, dupPtr uintptr) {
 		Fptr2 uintptr
 	})(unsafe.Pointer(srcPtr + 32))).Fptr1
 	dupIndexRep = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
-	libc.X__builtin___memcpy_chk(tls, dupIndexRep, srcIndexRep, uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dupIndexRep, 0)))
+	libc.X__builtin___memcpy_chk(tls, dupIndexRep, srcIndexRep, uint64(16), libc.X__builtin_object_size(tls, dupIndexRep, 0))
 	(*(*struct {
 		Fptr1 uintptr
 		Fptr2 uintptr
@@ -183212,7 +183212,7 @@ argsDone:
 		return m_TCL_OK
 	}
 	if objc > 0 {
-		libc.X__builtin___memcpy_chk(tls, leftovers+uintptr(nrem)*8, objv+uintptr(srcIndex)*8, libc.Uint64FromInt32(objc)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, leftovers+uintptr(nrem)*8, 0)))
+		libc.X__builtin___memcpy_chk(tls, leftovers+uintptr(nrem)*8, objv+uintptr(srcIndex)*8, libc.Uint64FromInt32(objc)*uint64(8), libc.X__builtin_object_size(tls, leftovers+uintptr(nrem)*8, 0))
 		nrem += objc
 	}
 	*(*uintptr)(unsafe.Pointer(leftovers + uintptr(nrem)*8)) = libc.UintptrFromInt32(0)
@@ -184022,7 +184022,7 @@ _5:
 		 */
 		i1 = 0
 		for {
-			libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+4, int32(1))), __ccgo_ts+45276, libc.VaList(bp+152, i1))
+			libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.X__builtin_object_size(tls, bp+4, int32(1)), __ccgo_ts+45276, libc.VaList(bp+152, i1))
 			if x_Tcl_GetCommandInfo(tls, interp, bp+4, bp+48) == 0 {
 				break
 			}
@@ -184914,7 +184914,7 @@ func _AliasCreate(tls *libc.TLS, interp uintptr, childInterp uintptr, parentInte
 			(*TTcl_Obj)(unsafe.Pointer(newToken)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(newToken)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(newToken)).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(newToken)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(newToken)).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(newToken)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(newToken)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(newToken)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 		}
@@ -185143,8 +185143,8 @@ func _AliasNRCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc int
 	(*TList)(unsafe.Pointer(listRep)).FelemCount = cmdc
 	cmdv = listRep + 16
 	prefv = aliasPtr + 48
-	libc.X__builtin___memcpy_chk(tls, cmdv, prefv, libc.Uint64FromInt32(prefc)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cmdv, 0)))
-	libc.X__builtin___memcpy_chk(tls, cmdv+uintptr(prefc)*8, objv+uintptr(1)*8, libc.Uint64FromInt32(objc-libc.Int32FromInt32(1))*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cmdv+uintptr(prefc)*8, 0)))
+	libc.X__builtin___memcpy_chk(tls, cmdv, prefv, libc.Uint64FromInt32(prefc)*uint64(8), libc.X__builtin_object_size(tls, cmdv, 0))
+	libc.X__builtin___memcpy_chk(tls, cmdv+uintptr(prefc)*8, objv+uintptr(1)*8, libc.Uint64FromInt32(objc-libc.Int32FromInt32(1))*uint64(8), libc.X__builtin_object_size(tls, cmdv+uintptr(prefc)*8, 0))
 	i = 0
 	for {
 		if !(i < cmdc) {
@@ -185204,8 +185204,8 @@ func _AliasObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc in
 	} else {
 		cmdv = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(libc.Uint64FromInt32(cmdc)*uint64(8)))
 	}
-	libc.X__builtin___memcpy_chk(tls, cmdv, prefv, libc.Uint64FromInt32(prefc)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cmdv, 0)))
-	libc.X__builtin___memcpy_chk(tls, cmdv+uintptr(prefc)*8, objv+uintptr(1)*8, libc.Uint64FromInt32(objc-libc.Int32FromInt32(1))*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cmdv+uintptr(prefc)*8, 0)))
+	libc.X__builtin___memcpy_chk(tls, cmdv, prefv, libc.Uint64FromInt32(prefc)*uint64(8), libc.X__builtin_object_size(tls, cmdv, 0))
+	libc.X__builtin___memcpy_chk(tls, cmdv+uintptr(prefc)*8, objv+uintptr(1)*8, libc.Uint64FromInt32(objc-libc.Int32FromInt32(1))*uint64(8), libc.X__builtin_object_size(tls, cmdv+uintptr(prefc)*8, 0))
 	x_Tcl_ResetResult(tls, targetInterp)
 	i = 0
 	for {
@@ -185810,7 +185810,7 @@ func _ChildCreate(tls *libc.TLS, interp uintptr, pathPtr uintptr, safe int32) (r
 			(*TTcl_Obj)(unsafe.Pointer(clockObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(clockObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(clockObj)).Fbytes, __ccgo_ts+21506, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(clockObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(clockObj)).Fbytes, __ccgo_ts+21506, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(clockObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(clockObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(clockObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 		}
@@ -187313,7 +187313,7 @@ func x_Tcl_LimitSetTime(tls *libc.TLS, interp uintptr, timeLimitPtr uintptr) {
 	var _ /* nextMoment at bp+0 */ TTcl_Time
 	_ = iPtr
 	iPtr = interp
-	libc.X__builtin___memcpy_chk(tls, iPtr+768+32, timeLimitPtr, uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, iPtr+768+32, 0)))
+	libc.X__builtin___memcpy_chk(tls, iPtr+768+32, timeLimitPtr, uint64(16), libc.X__builtin_object_size(tls, iPtr+768+32, 0))
 	if (*TInterp)(unsafe.Pointer(iPtr)).Flimit.FtimeEvent != libc.UintptrFromInt32(0) {
 		x_Tcl_DeleteTimerHandler(tls, (*TInterp)(unsafe.Pointer(iPtr)).Flimit.FtimeEvent)
 	}
@@ -187388,7 +187388,7 @@ func x_Tcl_LimitGetTime(tls *libc.TLS, interp uintptr, timeLimitPtr uintptr) {
 	var iPtr uintptr
 	_ = iPtr
 	iPtr = interp
-	libc.X__builtin___memcpy_chk(tls, timeLimitPtr, iPtr+768+32, uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, timeLimitPtr, 0)))
+	libc.X__builtin___memcpy_chk(tls, timeLimitPtr, iPtr+768+32, uint64(16), libc.X__builtin_object_size(tls, timeLimitPtr, 0))
 }
 
 /*
@@ -187651,7 +187651,7 @@ func x_TclInitLimitSupport(tls *libc.TLS, interp uintptr) {
 	(*TInterp)(unsafe.Pointer(iPtr)).Flimit.FcmdCount = 0
 	(*TInterp)(unsafe.Pointer(iPtr)).Flimit.FcmdHandlers = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).Flimit.FcmdGranularity = int32(1)
-	libc.X__builtin___memset_chk(tls, iPtr+768+32, 0, uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, iPtr+768+32, 0)))
+	libc.X__builtin___memset_chk(tls, iPtr+768+32, 0, uint64(16), libc.X__builtin_object_size(tls, iPtr+768+32, 0))
 	(*TInterp)(unsafe.Pointer(iPtr)).Flimit.FtimeHandlers = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).Flimit.FtimeEvent = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).Flimit.FtimeGranularity = int32(10)
@@ -187690,7 +187690,7 @@ func _InheritLimitsFromParent(tls *libc.TLS, childInterp uintptr, parentInterp u
 	}
 	if (*TInterp)(unsafe.Pointer(parentPtr)).Flimit.Factive&int32(m_TCL_LIMIT_TIME7) != 0 {
 		(*TInterp)(unsafe.Pointer(childPtr)).Flimit.Factive |= int32(m_TCL_LIMIT_TIME7)
-		libc.X__builtin___memcpy_chk(tls, childPtr+768+32, parentPtr+768+32, uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, childPtr+768+32, 0)))
+		libc.X__builtin___memcpy_chk(tls, childPtr+768+32, parentPtr+768+32, uint64(16), libc.X__builtin_object_size(tls, childPtr+768+32, 0))
 		(*TInterp)(unsafe.Pointer(childPtr)).Flimit.FtimeGranularity = (*TInterp)(unsafe.Pointer(parentPtr)).Flimit.FtimeGranularity
 	}
 }
@@ -192230,7 +192230,7 @@ func _Write(tls *libc.TLS, chanPtr uintptr, src uintptr, srcLen int32, encoding 
 			 * Here's some translated bytes left over from the last buffer
 			 * that we need to stick at the beginning of this buffer.
 			 */
-			libc.X__builtin___memcpy_chk(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), bp, libc.Uint64FromInt32(saved), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), 0)))
+			libc.X__builtin___memcpy_chk(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), bp, libc.Uint64FromInt32(saved), libc.X__builtin_object_size(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), 0))
 			*(*int32)(unsafe.Pointer(bufPtr + 4)) += saved
 			saved = 0
 		}
@@ -192288,7 +192288,7 @@ func _Write(tls *libc.TLS, chanPtr uintptr, src uintptr, srcLen int32, encoding 
 			 * beginning of the next buffer.
 			 */
 			saved = -((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FbufLength - (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded)
-			libc.X__builtin___memcpy_chk(tls, bp, dst+uintptr(dstLen), libc.Uint64FromInt32(saved), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, 0)))
+			libc.X__builtin___memcpy_chk(tls, bp, dst+uintptr(dstLen), libc.Uint64FromInt32(saved), libc.X__builtin_object_size(tls, bp, 0))
 			(*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded = (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FbufLength
 		}
 		if srcLen+saved == 0 && result == m_TCL_OK {
@@ -192638,7 +192638,7 @@ func x_Tcl_GetsObj(tls *libc.TLS, chan1 TTcl_Channel, objPtr uintptr) (r int32) 
 				(*(*TGetsState)(unsafe.Pointer(bp))).FrawRead -= *(*int32)(unsafe.Pointer(bp + 80))
 				(*(*TGetsState)(unsafe.Pointer(bp))).FbytesWrote--
 				(*(*TGetsState)(unsafe.Pointer(bp))).FcharsWrote--
-				libc.X__builtin___memmove_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 64)), *(*uintptr)(unsafe.Pointer(bp + 64))+uintptr(1), libc.Uint64FromInt64(int64(*(*uintptr)(unsafe.Pointer(bp + 72)))-int64(*(*uintptr)(unsafe.Pointer(bp + 64)))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 64)), 0)))
+				libc.X__builtin___memmove_chk(tls, *(*uintptr)(unsafe.Pointer(bp + 64)), *(*uintptr)(unsafe.Pointer(bp + 64))+uintptr(1), libc.Uint64FromInt64(int64(*(*uintptr)(unsafe.Pointer(bp + 72)))-int64(*(*uintptr)(unsafe.Pointer(bp + 64)))), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(bp + 64)), 0))
 				*(*uintptr)(unsafe.Pointer(bp + 72))--
 			}
 		}
@@ -192995,7 +192995,7 @@ func _TclGetsObjBinary(tls *libc.TLS, chan1 TTcl_Channel, objPtr uintptr) (r int
 		 */
 		rawLen = int32(int64(dstEnd) - int64(dst))
 		byteArray = x_Tcl_SetByteArrayLength(tls, objPtr, *(*int32)(unsafe.Pointer(bp))+rawLen)
-		libc.X__builtin___memcpy_chk(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), dst, libc.Uint64FromInt32(rawLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), 0)))
+		libc.X__builtin___memcpy_chk(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), dst, libc.Uint64FromInt32(rawLen), libc.X__builtin_object_size(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), 0))
 		*(*int32)(unsafe.Pointer(bp)) += rawLen
 	}
 	/*
@@ -193011,7 +193011,7 @@ gotEOL:
 	}
 	rawLen = int32(int64(eol) - int64(dst))
 	byteArray = x_Tcl_SetByteArrayLength(tls, objPtr, *(*int32)(unsafe.Pointer(bp))+rawLen)
-	libc.X__builtin___memcpy_chk(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), dst, libc.Uint64FromInt32(rawLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), 0)))
+	libc.X__builtin___memcpy_chk(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), dst, libc.Uint64FromInt32(rawLen), libc.X__builtin_object_size(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), 0))
 	*(*int32)(unsafe.Pointer(bp)) += rawLen
 	*(*int32)(unsafe.Pointer(bufPtr + 8)) += rawLen + skip
 	/*
@@ -193272,7 +193272,7 @@ _2:
 				(*TChannelState)(unsafe.Pointer(statePtr)).FinQueueTail = nextPtr
 			}
 			extra = rawLen - (*TGetsState)(unsafe.Pointer(gsPtr)).FrawRead
-			libc.X__builtin___memcpy_chk(tls, nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), raw+uintptr((*TGetsState)(unsafe.Pointer(gsPtr)).FrawRead), libc.Uint64FromInt32(extra), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), 0)))
+			libc.X__builtin___memcpy_chk(tls, nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), raw+uintptr((*TGetsState)(unsafe.Pointer(gsPtr)).FrawRead), libc.Uint64FromInt32(extra), libc.X__builtin_object_size(tls, nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), 0))
 			*(*int32)(unsafe.Pointer(nextPtr + 8)) -= extra
 			*(*int32)(unsafe.Pointer(bufPtr + 4)) -= extra
 		}
@@ -193412,7 +193412,7 @@ func _CommonGetsCleanup(tls *libc.TLS, chanPtr uintptr) {
 			}
 			extra = (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FbufLength - (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded
 			if extra > 0 {
-				libc.X__builtin___memcpy_chk(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), libc.Uint64FromInt32(extra), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), 0)))
+				libc.X__builtin___memcpy_chk(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), libc.Uint64FromInt32(extra), libc.X__builtin_object_size(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), 0))
 				*(*int32)(unsafe.Pointer(bufPtr + 4)) += extra
 				(*TChannelBuffer)(unsafe.Pointer(nextPtr)).FnextRemoved = int32(m_BUFFER_PADDING)
 			}
@@ -193513,7 +193513,7 @@ func x_Tcl_ReadRaw(tls *libc.TLS, chan1 TTcl_Channel, readBuf uintptr, bytesToRe
 		/*
 		 * Copy the current chunk into the read buffer.
 		 */
-		libc.X__builtin___memcpy_chk(tls, readBuf, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextRemoved), libc.Uint64FromInt32(toCopy), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, readBuf, 0)))
+		libc.X__builtin___memcpy_chk(tls, readBuf, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextRemoved), libc.Uint64FromInt32(toCopy), libc.X__builtin_object_size(tls, readBuf, 0))
 		*(*int32)(unsafe.Pointer(bufPtr + 8)) += toCopy
 		copied += toCopy
 		readBuf += uintptr(toCopy)
@@ -194155,7 +194155,7 @@ func _ReadChars(tls *libc.TLS, statePtr uintptr, objPtr uintptr, charsToRead int
 				x_Tcl_Panic(tls, __ccgo_ts+48828, 0)
 			}
 			*(*int32)(unsafe.Pointer(nextPtr + 8)) -= srcLen
-			libc.X__builtin___memcpy_chk(tls, nextPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(nextPtr)).FnextRemoved), src, libc.Uint64FromInt32(srcLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, nextPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(nextPtr)).FnextRemoved), 0)))
+			libc.X__builtin___memcpy_chk(tls, nextPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(nextPtr)).FnextRemoved), src, libc.Uint64FromInt32(srcLen), libc.X__builtin_object_size(tls, nextPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(nextPtr)).FnextRemoved), 0))
 			_RecycleBuffer(tls, statePtr, bufPtr, 0)
 			(*TChannelState)(unsafe.Pointer(statePtr)).FinQueueHead = nextPtr
 			x_Tcl_SetObjLength(tls, objPtr, *(*int32)(unsafe.Pointer(bp)))
@@ -194249,7 +194249,7 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 		fallthrough
 	case int32(_TCL_TRANSLATE_CR):
 		if dstStart != srcStart {
-			libc.X__builtin___memcpy_chk(tls, dstStart, srcStart, libc.Uint64FromInt32(srcLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dstStart, 0)))
+			libc.X__builtin___memcpy_chk(tls, dstStart, srcStart, libc.Uint64FromInt32(srcLen), libc.X__builtin_object_size(tls, dstStart, 0))
 		}
 		if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_CR) {
 			dst = dstStart
@@ -194282,7 +194282,7 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 				break
 			}
 			numBytes = int32(int64(crFound) - int64(src))
-			libc.X__builtin___memmove_chk(tls, dst1, src, libc.Uint64FromInt32(numBytes), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst1, 0)))
+			libc.X__builtin___memmove_chk(tls, dst1, src, libc.Uint64FromInt32(numBytes), libc.X__builtin_object_size(tls, dst1, 0))
 			dst1 += uintptr(numBytes)
 			dstLen -= numBytes
 			src += uintptr(numBytes)
@@ -194322,7 +194322,7 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 			}
 			lesser = v9
 		}
-		libc.X__builtin___memmove_chk(tls, dst1, src, libc.Uint64FromInt32(lesser), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst1, 0)))
+		libc.X__builtin___memmove_chk(tls, dst1, src, libc.Uint64FromInt32(lesser), libc.X__builtin_object_size(tls, dst1, 0))
 		srcLen = int32(int64(src+uintptr(lesser)) - int64(srcStart))
 		dstLen = int32(int64(dst1+uintptr(lesser)) - int64(dstStart))
 	case int32(_TCL_TRANSLATE_AUTO):
@@ -194348,7 +194348,7 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 				break
 			}
 			numBytes1 = int32(int64(crFound1) - int64(src1))
-			libc.X__builtin___memmove_chk(tls, dst2, src1, libc.Uint64FromInt32(numBytes1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst2, 0)))
+			libc.X__builtin___memmove_chk(tls, dst2, src1, libc.Uint64FromInt32(numBytes1), libc.X__builtin_object_size(tls, dst2, 0))
 			*(*int8)(unsafe.Pointer(dst2 + uintptr(numBytes1))) = int8('\n')
 			dst2 += uintptr(numBytes1 + int32(1))
 			dstLen -= numBytes1 + int32(1)
@@ -194369,7 +194369,7 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 			}
 			lesser1 = v12
 		}
-		libc.X__builtin___memmove_chk(tls, dst2, src1, libc.Uint64FromInt32(lesser1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst2, 0)))
+		libc.X__builtin___memmove_chk(tls, dst2, src1, libc.Uint64FromInt32(lesser1), libc.X__builtin_object_size(tls, dst2, 0))
 		srcLen = int32(int64(src1+uintptr(lesser1)) - int64(srcStart))
 		dstLen = int32(int64(dst2+uintptr(lesser1)) - int64(dstStart))
 	default:
@@ -194436,7 +194436,7 @@ func x_Tcl_Ungets(tls *libc.TLS, chan1 TTcl_Channel, str uintptr, len1 int32, at
 	*(*int32)(unsafe.Pointer(statePtr + 8)) &= ^(libc.Int32FromInt32(1)<<libc.Int32FromInt32(11) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(10) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(9) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(12))
 	*(*int32)(unsafe.Pointer(statePtr + 32)) &= ^libc.Int32FromInt32(m_TCL_ENCODING_END3)
 	bufPtr = _AllocChannelBuffer(tls, len1)
-	libc.X__builtin___memcpy_chk(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), str, libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), 0)))
+	libc.X__builtin___memcpy_chk(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), str, libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), 0))
 	*(*int32)(unsafe.Pointer(bufPtr + 4)) += len1
 	if (*TChannelState)(unsafe.Pointer(statePtr)).FinQueueHead == libc.UintptrFromInt32(0) {
 		(*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextPtr = libc.UintptrFromInt32(0)
@@ -195562,7 +195562,7 @@ func x_Tcl_GetChannelOption(tls *libc.TLS, interp uintptr, chan1 TTcl_Channel, o
 			if (*TChannelState)(unsafe.Pointer(statePtr)).FinEofChar == 0 {
 				x_Tcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+1372)
 			} else {
-				libc.X__builtin___sprintf_chk(tls, bp+128, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+128, int32(1))), __ccgo_ts+35353, libc.VaList(bp+144, (*TChannelState)(unsafe.Pointer(statePtr)).FinEofChar))
+				libc.X__builtin___sprintf_chk(tls, bp+128, 0, libc.X__builtin_object_size(tls, bp+128, int32(1)), __ccgo_ts+35353, libc.VaList(bp+144, (*TChannelState)(unsafe.Pointer(statePtr)).FinEofChar))
 				x_Tcl_DStringAppendElement(tls, dsPtr, bp+128)
 			}
 		}
@@ -195570,7 +195570,7 @@ func x_Tcl_GetChannelOption(tls *libc.TLS, interp uintptr, chan1 TTcl_Channel, o
 			if (*TChannelState)(unsafe.Pointer(statePtr)).FoutEofChar == 0 {
 				x_Tcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+1372)
 			} else {
-				libc.X__builtin___sprintf_chk(tls, bp+132, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+132, int32(1))), __ccgo_ts+35353, libc.VaList(bp+144, (*TChannelState)(unsafe.Pointer(statePtr)).FoutEofChar))
+				libc.X__builtin___sprintf_chk(tls, bp+132, 0, libc.X__builtin_object_size(tls, bp+132, int32(1)), __ccgo_ts+35353, libc.VaList(bp+144, (*TChannelState)(unsafe.Pointer(statePtr)).FoutEofChar))
 				x_Tcl_DStringAppendElement(tls, dsPtr, bp+132)
 			}
 		}
@@ -197129,7 +197129,7 @@ func _MBWrite(tls *libc.TLS, csPtr uintptr) (r int32) {
 		 */
 		bufPtr = _AllocChannelBuffer(tls, extra)
 		*(*int32)(unsafe.Pointer(tail + 4)) -= extra
-		libc.X__builtin___memcpy_chk(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), tail+24+uintptr((*TChannelBuffer)(unsafe.Pointer(tail)).FnextAdded), libc.Uint64FromInt32(extra), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), 0)))
+		libc.X__builtin___memcpy_chk(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), tail+24+uintptr((*TChannelBuffer)(unsafe.Pointer(tail)).FnextAdded), libc.Uint64FromInt32(extra), libc.X__builtin_object_size(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), 0))
 		*(*int32)(unsafe.Pointer(bufPtr + 4)) += extra
 		(*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextPtr = (*TChannelBuffer)(unsafe.Pointer(tail)).FnextPtr
 		(*TChannelBuffer)(unsafe.Pointer(tail)).FnextPtr = libc.UintptrFromInt32(0)
@@ -199391,7 +199391,7 @@ func x_Tcl_PutsObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 				(*TTcl_Obj)(unsafe.Pointer((*TThreadSpecificData4)(unsafe.Pointer(tsdPtr)).FstdoutObjPtr)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer((*TThreadSpecificData4)(unsafe.Pointer(tsdPtr)).FstdoutObjPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TThreadSpecificData4)(unsafe.Pointer(tsdPtr)).FstdoutObjPtr)).Fbytes, __ccgo_ts+47611, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TThreadSpecificData4)(unsafe.Pointer(tsdPtr)).FstdoutObjPtr)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TThreadSpecificData4)(unsafe.Pointer(tsdPtr)).FstdoutObjPtr)).Fbytes, __ccgo_ts+47611, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TThreadSpecificData4)(unsafe.Pointer(tsdPtr)).FstdoutObjPtr)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TThreadSpecificData4)(unsafe.Pointer(tsdPtr)).FstdoutObjPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer((*TThreadSpecificData4)(unsafe.Pointer(tsdPtr)).FstdoutObjPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(7) - libc.Uint64FromInt32(1))
 			}
@@ -200495,7 +200495,7 @@ func x_Tcl_OpenObjCmd(tls *libc.TLS, notUsed TClientData, interp uintptr, objc i
 					(*TTcl_Obj)(unsafe.Pointer(permObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(permObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(permObj)).Fbytes, __ccgo_ts+50362, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(permObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(permObj)).Fbytes, __ccgo_ts+50362, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(permObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(permObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(permObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 				}
@@ -200958,7 +200958,7 @@ _6:
 		acceptCallbackPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
 		len1 = uint32(libc.Xstrlen(tls, script) + uint64(1))
 		copyScript = x_Tcl_Alloc(tls, len1)
-		libc.X__builtin___memcpy_chk(tls, copyScript, script, uint64(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, copyScript, 0)))
+		libc.X__builtin___memcpy_chk(tls, copyScript, script, uint64(len1), libc.X__builtin_object_size(tls, copyScript, 0))
 		(*TAcceptCallback)(unsafe.Pointer(acceptCallbackPtr)).Fscript = copyScript
 		(*TAcceptCallback)(unsafe.Pointer(acceptCallbackPtr)).Finterp = interp
 		chan1 = x_Tcl_OpenTcpServer(tls, interp, *(*int32)(unsafe.Pointer(bp + 4)), host, __ccgo_fp(_AcceptCallbackProc), acceptCallbackPtr)
@@ -201759,7 +201759,7 @@ func x_TclChanCreateObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, obj
 				(*TTcl_Obj)(unsafe.Pointer(err)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer(err)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(err)).Fbytes, __ccgo_ts+51445, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(err)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(err)).Fbytes, __ccgo_ts+51445, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(err)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(err)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(15)-libc.Uint64FromInt32(1))))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer(err)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(15) - libc.Uint64FromInt32(1))
 			}
@@ -201827,7 +201827,7 @@ func x_TclChanCreateObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, obj
 		 * as the actual channel type.
 		 */
 		clonePtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(136)))
-		libc.X__builtin___memcpy_chk(tls, clonePtr, uintptr(unsafe.Pointer(&_tclRChannelType)), uint64(136), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, clonePtr, 0)))
+		libc.X__builtin___memcpy_chk(tls, clonePtr, uintptr(unsafe.Pointer(&_tclRChannelType)), uint64(136), libc.X__builtin_object_size(tls, clonePtr, 0))
 		if !(methods&(libc.Int32FromInt32(1)<<int32(_METH_CONFIGURE)) != 0) {
 			(*TTcl_ChannelType)(unsafe.Pointer(clonePtr)).FsetOptionProc = libc.UintptrFromInt32(0)
 		}
@@ -202296,7 +202296,7 @@ func _ReflectInput(tls *libc.TLS, clientData TClientData, buf uintptr, toRead in
 	}
 	*(*int32)(unsafe.Pointer(errorCodePtr)) = m_EOK
 	if *(*int32)(unsafe.Pointer(bp)) > 0 {
-		libc.X__builtin___memcpy_chk(tls, buf, bytev, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
+		libc.X__builtin___memcpy_chk(tls, buf, bytev, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))), libc.X__builtin_object_size(tls, buf, 0))
 	}
 	goto stop
 stop:
@@ -205188,7 +205188,7 @@ func _ResultAdd(tls *libc.TLS, rPtr uintptr, buf uintptr, toWrite Tsize_t) {
 	/*
 	 * Now copy data.
 	 */
-	libc.X__builtin___memcpy_chk(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf+uintptr((*TResultBuffer)(unsafe.Pointer(rPtr)).Fused), buf, toWrite, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf+uintptr((*TResultBuffer)(unsafe.Pointer(rPtr)).Fused), 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf+uintptr((*TResultBuffer)(unsafe.Pointer(rPtr)).Fused), buf, toWrite, libc.X__builtin_object_size(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf+uintptr((*TResultBuffer)(unsafe.Pointer(rPtr)).Fused), 0))
 	*(*Tsize_t)(unsafe.Pointer(rPtr + 16)) += toWrite
 }
 
@@ -205224,7 +205224,7 @@ func _ResultCopy(tls *libc.TLS, rPtr uintptr, buf uintptr, toRead Tsize_t) (r Ts
 			/*
 			 * We have just enough. Copy everything to the caller.
 			 */
-			libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, toRead, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
+			libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, toRead, libc.X__builtin_object_size(tls, buf, 0))
 			(*TResultBuffer)(unsafe.Pointer(rPtr)).Fused = uint64(0)
 			copied = libc.Int32FromUint64(toRead)
 		} else {
@@ -205233,8 +205233,8 @@ func _ResultCopy(tls *libc.TLS, rPtr uintptr, buf uintptr, toRead Tsize_t) (r Ts
 				 * The internal buffer contains more than requested. Copy the
 				 * requested subset to the caller, and shift the remaining bytes down.
 				 */
-				libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, toRead, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
-				libc.X__builtin___memmove_chk(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf+uintptr(toRead), (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused-toRead, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, 0)))
+				libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, toRead, libc.X__builtin_object_size(tls, buf, 0))
+				libc.X__builtin___memmove_chk(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf+uintptr(toRead), (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused-toRead, libc.X__builtin_object_size(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, 0))
 				*(*Tsize_t)(unsafe.Pointer(rPtr + 16)) -= toRead
 				copied = libc.Int32FromUint64(toRead)
 			} else {
@@ -205242,7 +205242,7 @@ func _ResultCopy(tls *libc.TLS, rPtr uintptr, buf uintptr, toRead Tsize_t) (r Ts
 				 * There is not enough in the buffer to satisfy the caller, so take
 				 * everything.
 				 */
-				libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
+				libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused, libc.X__builtin_object_size(tls, buf, 0))
 				toRead = (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused
 				(*TResultBuffer)(unsafe.Pointer(rPtr)).Fused = uint64(0)
 				copied = libc.Int32FromUint64(toRead)
@@ -206591,7 +206591,7 @@ func _ResultCopy1(tls *libc.TLS, r uintptr, buf uintptr, toRead Tsize_t) (r1 Tsi
 			/*
 			 * We have just enough. Copy everything to the caller.
 			 */
-			libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, toRead, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
+			libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, toRead, libc.X__builtin_object_size(tls, buf, 0))
 			(*TResultBuffer)(unsafe.Pointer(r)).Fused = uint64(0)
 		} else {
 			if (*TResultBuffer)(unsafe.Pointer(r)).Fused > toRead {
@@ -206599,15 +206599,15 @@ func _ResultCopy1(tls *libc.TLS, r uintptr, buf uintptr, toRead Tsize_t) (r1 Tsi
 				 * The internal buffer contains more than requested. Copy the
 				 * requested subset to the caller, and shift the remaining bytes down.
 				 */
-				libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, toRead, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
-				libc.X__builtin___memmove_chk(tls, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf+uintptr(toRead), (*TResultBuffer)(unsafe.Pointer(r)).Fused-toRead, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, 0)))
+				libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, toRead, libc.X__builtin_object_size(tls, buf, 0))
+				libc.X__builtin___memmove_chk(tls, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf+uintptr(toRead), (*TResultBuffer)(unsafe.Pointer(r)).Fused-toRead, libc.X__builtin_object_size(tls, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, 0))
 				*(*Tsize_t)(unsafe.Pointer(r + 16)) -= toRead
 			} else {
 				/*
 				 * There is not enough in the buffer to satisfy the caller, so take
 				 * everything.
 				 */
-				libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, (*TResultBuffer)(unsafe.Pointer(r)).Fused, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
+				libc.X__builtin___memcpy_chk(tls, buf, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf, (*TResultBuffer)(unsafe.Pointer(r)).Fused, libc.X__builtin_object_size(tls, buf, 0))
 				toRead = (*TResultBuffer)(unsafe.Pointer(r)).Fused
 				(*TResultBuffer)(unsafe.Pointer(r)).Fused = uint64(0)
 			}
@@ -206649,7 +206649,7 @@ func _ResultAdd1(tls *libc.TLS, r uintptr, buf uintptr, toWrite Tsize_t) {
 	/*
 	 * Now we may copy the data.
 	 */
-	libc.X__builtin___memcpy_chk(tls, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf+uintptr((*TResultBuffer)(unsafe.Pointer(r)).Fused), buf, toWrite, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf+uintptr((*TResultBuffer)(unsafe.Pointer(r)).Fused), 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf+uintptr((*TResultBuffer)(unsafe.Pointer(r)).Fused), buf, toWrite, libc.X__builtin_object_size(tls, (*TResultBuffer)(unsafe.Pointer(r)).Fbuf+uintptr((*TResultBuffer)(unsafe.Pointer(r)).Fused), 0))
 	*(*Tsize_t)(unsafe.Pointer(r + 16)) += toWrite
 }
 
@@ -206805,7 +206805,7 @@ func x_TclCreateSocketAddress(tls *libc.TLS, interp uintptr, addrlist uintptr, h
 		x_TclFormatInt(tls, bp+48, int64(port))
 		portstring = bp + 48
 	}
-	libc.X__builtin___memset_chk(tls, bp, 0, uint64(48), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, 0)))
+	libc.X__builtin___memset_chk(tls, bp, 0, uint64(48), libc.X__builtin_object_size(tls, bp, 0))
 	(*(*Taddrinfo)(unsafe.Pointer(bp))).Fai_family = m_AF_UNSPEC
 	/*
 	 * Magic variable to enforce a certain address family - to be superseded
@@ -210150,7 +210150,7 @@ mustCopyToTempAnyway:
 		(*TTcl_Obj)(unsafe.Pointer(perm)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes, __ccgo_ts+53545, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes, __ccgo_ts+53545, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(perm)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(perm)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -210824,7 +210824,7 @@ func x_Tcl_FSSplitPath(tls *libc.TLS, pathPtr uintptr, lenPtr uintptr) (r uintpt
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, __ccgo_ts+41019, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, __ccgo_ts+41019, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(nextElt)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(nextElt)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 				}
@@ -211565,7 +211565,7 @@ func x_Tcl_FSPathSeparator(tls *libc.TLS, pathPtr uintptr) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer(resultObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, __ccgo_ts+16528, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, __ccgo_ts+16528, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(resultObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(2) - libc.Uint64FromInt32(1))
 	}
@@ -212087,7 +212087,7 @@ func _LinkTraceProc(tls *libc.TLS, clientData TClientData, interp uintptr, name1
 		valueLength = libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(valueObj)).Flength + int32(1))
 		pp = (*TLink)(unsafe.Pointer(linkPtr)).Faddr
 		*(*uintptr)(unsafe.Pointer(pp)) = x_Tcl_Realloc(tls, *(*uintptr)(unsafe.Pointer(pp)), uint32(valueLength))
-		libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(pp)), value, valueLength, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(pp)), 0)))
+		libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(pp)), value, valueLength, libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(pp)), 0))
 	default:
 		return __ccgo_ts + 53754
 	}
@@ -212222,7 +212222,7 @@ _14:
 			(*TTcl_Obj)(unsafe.Pointer(resultObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, __ccgo_ts+54290, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, __ccgo_ts+54290, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(resultObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 		}
@@ -212252,7 +212252,7 @@ _19:
 		(*TTcl_Obj)(unsafe.Pointer(resultObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, __ccgo_ts+1429, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, __ccgo_ts+1429, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(resultObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(resultObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 	}
@@ -212986,7 +212986,7 @@ func x_Tcl_ListObjAppendElement(tls *libc.TLS, interp uintptr, listPtr uintptr, 
 			/*
 			 * Old internalrep to be freed, re-use refCounts.
 			 */
-			libc.X__builtin___memcpy_chk(tls, dst, src, libc.Uint64FromInt32(numElems)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memcpy_chk(tls, dst, src, libc.Uint64FromInt32(numElems)*uint64(8), libc.X__builtin_object_size(tls, dst, 0))
 			x_TclpFree(tls, listRepPtr)
 		}
 		listRepPtr = newPtr
@@ -213300,7 +213300,7 @@ func x_Tcl_ListObjReplace(tls *libc.TLS, interp uintptr, listPtr uintptr, first 
 		shift = objc - count /* numNewElems - numDeleted */
 		if numAfterLast > 0 && shift != 0 {
 			src = elemPtrs + uintptr(start)*8
-			libc.X__builtin___memmove_chk(tls, src+uintptr(shift)*8, src, libc.Uint64FromInt32(numAfterLast)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, src+uintptr(shift)*8, 0)))
+			libc.X__builtin___memmove_chk(tls, src+uintptr(shift)*8, src, libc.Uint64FromInt32(numAfterLast)*uint64(8), libc.X__builtin_object_size(tls, src+uintptr(shift)*8, 0))
 		}
 	} else {
 		/*
@@ -213388,7 +213388,7 @@ func x_Tcl_ListObjReplace(tls *libc.TLS, interp uintptr, listPtr uintptr, first 
 			 * The old struct will be removed; use its inherited refCounts.
 			 */
 			if first > 0 {
-				libc.X__builtin___memcpy_chk(tls, elemPtrs, oldPtrs, libc.Uint64FromInt32(first)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, elemPtrs, 0)))
+				libc.X__builtin___memcpy_chk(tls, elemPtrs, oldPtrs, libc.Uint64FromInt32(first)*uint64(8), libc.X__builtin_object_size(tls, elemPtrs, 0))
 			}
 			/*
 			 * "Delete" count elements starting at first.
@@ -213429,7 +213429,7 @@ func x_Tcl_ListObjReplace(tls *libc.TLS, interp uintptr, listPtr uintptr, first 
 			start = first + count
 			numAfterLast = numElems - start
 			if numAfterLast > 0 {
-				libc.X__builtin___memcpy_chk(tls, elemPtrs+uintptr(first)*8+uintptr(objc)*8, oldPtrs+uintptr(start)*8, libc.Uint64FromInt32(numAfterLast)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, elemPtrs+uintptr(first)*8+uintptr(objc)*8, 0)))
+				libc.X__builtin___memcpy_chk(tls, elemPtrs+uintptr(first)*8+uintptr(objc)*8, oldPtrs+uintptr(start)*8, libc.Uint64FromInt32(numAfterLast)*uint64(8), libc.X__builtin_object_size(tls, elemPtrs+uintptr(first)*8+uintptr(objc)*8, 0))
 			}
 			x_TclpFree(tls, oldListRepPtr)
 		}
@@ -214452,7 +214452,7 @@ func _SetListFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) {
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(elemPtrs)))).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(elemPtrs)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 80)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(elemPtrs)))).Fbytes, *(*uintptr)(unsafe.Pointer(bp + 72)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 80))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(elemPtrs)))).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(elemPtrs)))).Fbytes, *(*uintptr)(unsafe.Pointer(bp + 72)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 80))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(elemPtrs)))).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(elemPtrs)))).Fbytes + uintptr(*(*int32)(unsafe.Pointer(bp + 80))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(elemPtrs)))).Flength = *(*int32)(unsafe.Pointer(bp + 80))
 				}
@@ -214883,7 +214883,7 @@ func x_TclCreateLiteral(tls *libc.TLS, iPtr uintptr, bytes uintptr, length int32
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(length)+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bytes, libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bytes, libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(length))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = length
 		}
@@ -215252,7 +215252,7 @@ func _ExpandLocalLiteralArray(tls *libc.TLS, envPtr uintptr) {
 		 * code a ckrealloc equivalent for ourselves.
 		 */
 		newArrayPtr = x_Tcl_Alloc(tls, newSize)
-		libc.X__builtin___memcpy_chk(tls, newArrayPtr, currArrayPtr, currBytes, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newArrayPtr, 0)))
+		libc.X__builtin___memcpy_chk(tls, newArrayPtr, currArrayPtr, currBytes, libc.X__builtin_object_size(tls, newArrayPtr, 0))
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedLiteralArray = int32(1)
 	}
 	/*
@@ -215988,10 +215988,10 @@ func x_Tcl_LoadObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 		pkgPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(72)))
 		len1 = uint32(libc.Xstrlen(tls, fullFileName) + uint64(1))
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FfileName = x_Tcl_Alloc(tls, len1)
-		libc.X__builtin___memcpy_chk(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FfileName, fullFileName, uint64(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FfileName, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FfileName, fullFileName, uint64(len1), libc.X__builtin_object_size(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FfileName, 0))
 		len1 = libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(bp)).Flength) + uint32(1)
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FpackageName = x_Tcl_Alloc(tls, len1)
-		libc.X__builtin___memcpy_chk(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FpackageName, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, uint64(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FpackageName, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FpackageName, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, uint64(len1), libc.X__builtin_object_size(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FpackageName, 0))
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FloadHandle = *(*TTcl_LoadHandle)(unsafe.Pointer(bp + 1320))
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FinitProc = *(*uintptr)(unsafe.Pointer(bp + 1312))
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FsafeInitProc = x_Tcl_FindSymbol(tls, interp, *(*TTcl_LoadHandle)(unsafe.Pointer(bp + 1320)), (*TTcl_DString)(unsafe.Pointer(bp+648)).Fstring1)
@@ -217076,7 +217076,7 @@ func x_Tcl_MainEx(tls *libc.TLS, argc int32, argv uintptr, appInitProc uintptr, 
 					(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 				}
@@ -218578,7 +218578,7 @@ doCreate:
 	nsPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(448)))
 	nameLen = libc.Int32FromUint64(libc.Xstrlen(tls, *(*uintptr)(unsafe.Pointer(bp + 24))) + uint64(1))
 	(*TNamespace)(unsafe.Pointer(nsPtr)).Fname = x_Tcl_Alloc(tls, libc.Uint32FromInt32(nameLen))
-	libc.X__builtin___memcpy_chk(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).Fname, *(*uintptr)(unsafe.Pointer(bp + 24)), libc.Uint64FromInt32(nameLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).Fname, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).Fname, *(*uintptr)(unsafe.Pointer(bp + 24)), libc.Uint64FromInt32(nameLen), libc.X__builtin_object_size(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).Fname, 0))
 	(*TNamespace)(unsafe.Pointer(nsPtr)).FfullName = libc.UintptrFromInt32(0) /* Set below. */
 	(*TNamespace)(unsafe.Pointer(nsPtr)).FclientData = clientData
 	(*TNamespace)(unsafe.Pointer(nsPtr)).FdeleteProc = deleteProc
@@ -218660,7 +218660,7 @@ doCreate:
 	name = (*TTcl_DString)(unsafe.Pointer(namePtr)).Fstring1
 	nameLen = (*TTcl_DString)(unsafe.Pointer(namePtr)).Flength
 	(*TNamespace)(unsafe.Pointer(nsPtr)).FfullName = x_Tcl_Alloc(tls, libc.Uint32FromInt32(nameLen+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).FfullName, name, libc.Uint64FromInt32(nameLen+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).FfullName, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).FfullName, name, libc.Uint64FromInt32(nameLen+int32(1)), libc.X__builtin_object_size(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).FfullName, 0))
 	x_Tcl_DStringFree(tls, bp+32)
 	x_Tcl_DStringFree(tls, bp+248)
 	x_Tcl_DStringFree(tls, bp+472)
@@ -219218,7 +219218,7 @@ func x_Tcl_Export(tls *libc.TLS, interp uintptr, namespacePtr uintptr, pattern u
 	 */
 	len1 = libc.Int32FromUint64(libc.Xstrlen(tls, pattern))
 	patternCpy = x_Tcl_Alloc(tls, libc.Uint32FromInt32(len1+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, patternCpy, pattern, libc.Uint64FromInt32(len1+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, patternCpy, 0)))
+	libc.X__builtin___memcpy_chk(tls, patternCpy, pattern, libc.Uint64FromInt32(len1+int32(1)), libc.X__builtin_object_size(tls, patternCpy, 0))
 	*(*uintptr)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(nsPtr)).FexportArrayPtr + uintptr((*TNamespace)(unsafe.Pointer(nsPtr)).FnumExportPatterns)*8)) = patternCpy
 	(*TNamespace)(unsafe.Pointer(nsPtr)).FnumExportPatterns++
 	/*
@@ -219362,7 +219362,7 @@ func x_Tcl_Import(tls *libc.TLS, interp uintptr, namespacePtr uintptr, pattern u
 			(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0])).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0])).Fbytes, __ccgo_ts+55881, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0])).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0])).Fbytes, __ccgo_ts+55881, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0])).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(12) - libc.Uint64FromInt32(1))
 		}
@@ -220751,7 +220751,7 @@ func _NamespaceCodeCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, __ccgo_ts+29100, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, __ccgo_ts+29100, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(12) - libc.Uint64FromInt32(1))
 	}
@@ -220771,7 +220771,7 @@ func _NamespaceCodeCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, __ccgo_ts+29112, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, __ccgo_ts+29112, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 	}
@@ -220793,7 +220793,7 @@ func _NamespaceCodeCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 		}
@@ -222126,7 +222126,7 @@ func x_Tcl_GetNamespaceUnknownHandler(tls *libc.TLS, interp uintptr, nsPtr uintp
 			(*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes, __ccgo_ts+18540, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes, __ccgo_ts+18540, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(10) - libc.Uint64FromInt32(1))
 		}
@@ -224303,7 +224303,7 @@ func x_TclContinuationsEnter(tls *libc.TLS, objPtr uintptr, num int32, loc uintp
 		x_TclpFree(tls, (*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData)
 	}
 	(*TContLineLoc)(unsafe.Pointer(clLocPtr)).Fnum = num
-	libc.X__builtin___memcpy_chk(tls, clLocPtr+4, loc, libc.Uint64FromInt32(num)*uint64(4), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, clLocPtr+4, 0)))
+	libc.X__builtin___memcpy_chk(tls, clLocPtr+4, loc, libc.Uint64FromInt32(num)*uint64(4), libc.X__builtin_object_size(tls, clLocPtr+4, 0))
 	*(*int32)(unsafe.Pointer(clLocPtr + 4 + uintptr(num)*4)) = -int32(1) /* Sentinel */
 	(*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData = clLocPtr
 	return clLocPtr
@@ -225040,7 +225040,7 @@ func x_Tcl_DuplicateObj(tls *libc.TLS, objPtr uintptr) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(dupPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength)+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes, bytes, libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes, bytes, libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes + uintptr((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(dupPtr)).Flength = (*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength
 		}
@@ -225087,7 +225087,7 @@ func x_TclSetDuplicateObj(tls *libc.TLS, dupPtr uintptr, objPtr uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(dupPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength)+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes, bytes, libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes, bytes, libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dupPtr)).Fbytes + uintptr((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(dupPtr)).Flength = (*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength
 		}
@@ -225463,7 +225463,7 @@ badBoolean:
 			(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(33)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+57140, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(33)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, __ccgo_ts+57140, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(33)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(msg)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(33)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(msg)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(33) - libc.Uint64FromInt32(1))
 		}
@@ -225904,7 +225904,7 @@ func _UpdateStringOfDouble(tls *libc.TLS, objPtr uintptr) {
 	x_Tcl_PrintDouble(tls, libc.UintptrFromInt32(0), *(*float64)(unsafe.Pointer(&(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep)), bp)
 	len1 = libc.Int32FromUint64(libc.Xstrlen(tls, bp))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(len1+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bp, libc.Uint64FromInt32(len1+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bp, libc.Uint64FromInt32(len1+int32(1)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = len1
 }
 
@@ -226113,7 +226113,7 @@ func _UpdateStringOfInt(tls *libc.TLS, objPtr uintptr) {
 	_ = len1
 	len1 = x_TclFormatInt(tls, bp, (*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue)
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(len1+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bp, libc.Uint64FromInt32(len1+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bp, libc.Uint64FromInt32(len1+int32(1)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = len1
 }
 
@@ -226978,7 +226978,7 @@ func _GetBignumFromObj(tls *libc.TLS, interp uintptr, objPtr uintptr, copy1 int3
 						(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromInt32(0))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, x_tclEmptyStringRep, libc.Uint64FromInt32(libc.Int32FromInt32(0)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, x_tclEmptyStringRep, libc.Uint64FromInt32(libc.Int32FromInt32(0)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes)) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 					}
@@ -228056,7 +228056,7 @@ func x_Tcl_RepresentationCmd(tls *libc.TLS, clientData TClientData, interp uintp
 	 * internal representation 0x45671234:0x98765432, string representation
 	 * "1872361827361287"
 	 */
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+1666, libc.VaList(bp+64, *(*uintptr)(unsafe.Pointer(objv + 1*8))))
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+1666, libc.VaList(bp+64, *(*uintptr)(unsafe.Pointer(objv + 1*8))))
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*8)))).FtypePtr != 0 {
 		v1 = (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*8)))).FtypePtr)).Fname
 	} else {
@@ -228084,7 +228084,7 @@ func x_Tcl_RepresentationCmd(tls *libc.TLS, clientData TClientData, interp uintp
 		})(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*8)) + 32))).Fptr2 = libc.UintptrFromInt32(0)
 	}
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*8)))).FtypePtr != 0 {
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+57674, libc.VaList(bp+64, (*(*struct {
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+57674, libc.VaList(bp+64, (*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*8)) + 32))).Fptr1, (*(*struct {
@@ -228891,7 +228891,7 @@ func x_Tcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes i
 			}
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 			if oldPtr == libc.UintptrFromInt32(0) {
-				libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+				libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr, 0))
 			}
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr
 		}
@@ -229073,7 +229073,7 @@ func x_Tcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes i
 								}
 								(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated1
 								if oldPtr1 == libc.UintptrFromInt32(0) {
-									libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr1, 0)))
+									libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr1, 0))
 								}
 								(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr1
 							}
@@ -229616,7 +229616,7 @@ func x_TclParseBackslash(tls *libc.TLS, src uintptr, numBytes int32, readPtr uin
 		if v24 != 0 {
 			count = x_TclUtfToUCS4(tls, p, bp) + int32(1) /* +1 for '\' */
 		} else {
-			libc.X__builtin___memcpy_chk(tls, bp+16, p, libc.Uint64FromInt32(numBytes-int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+16, 0)))
+			libc.X__builtin___memcpy_chk(tls, bp+16, p, libc.Uint64FromInt32(numBytes-int32(1)), libc.X__builtin_object_size(tls, bp+16, 0))
 			(*(*[8]int8)(unsafe.Pointer(bp + 16)))[numBytes-int32(1)] = int8('\000')
 			count = x_TclUtfToUCS4(tls, bp+16, bp) + int32(1)
 		}
@@ -229793,7 +229793,7 @@ func _ParseTokens(tls *libc.TLS, src uintptr, numBytes int32, mask int32, flags 
 			}
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 			if oldPtr == libc.UintptrFromInt32(0) {
-				libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+				libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr, 0))
 			}
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr
 		}
@@ -229979,7 +229979,7 @@ func _ParseTokens(tls *libc.TLS, src uintptr, numBytes int32, mask int32, flags 
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated1
 		if oldPtr1 == libc.UintptrFromInt32(0) {
-			libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr1, 0)))
+			libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr1, 0))
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr1
 	}
@@ -230099,7 +230099,7 @@ func x_Tcl_ParseVarName(tls *libc.TLS, interp uintptr, start uintptr, numBytes i
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 		if oldPtr == libc.UintptrFromInt32(0) {
-			libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+			libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr, 0))
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr
 	}
@@ -230370,7 +230370,7 @@ func x_Tcl_ParseBraces(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 		if oldPtr == libc.UintptrFromInt32(0) {
-			libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+			libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr, 0))
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr
 	}
@@ -230461,7 +230461,7 @@ func x_Tcl_ParseBraces(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated1
 					if oldPtr1 == libc.UintptrFromInt32(0) {
-						libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr1, 0)))
+						libc.X__builtin___memcpy_chk(tls, newPtr1, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr1, 0))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr1
 				}
@@ -230777,7 +230777,7 @@ func x_TclSubstParse(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int3
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 					if oldPtr == libc.UintptrFromInt32(0) {
-						libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPtr, 0)))
+						libc.X__builtin___memcpy_chk(tls, newPtr, parsePtr+96, libc.Uint64FromInt32((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*libc.Uint64FromInt64(24), libc.X__builtin_object_size(tls, newPtr, 0))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr
 				}
@@ -231992,7 +231992,7 @@ standardPath:
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).Fbytes, __ccgo_ts+41734, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).Fbytes, __ccgo_ts+41734, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(2) - libc.Uint64FromInt32(1))
 				}
@@ -233191,7 +233191,7 @@ func x_Tcl_FSGetTranslatedStringPath(tls *libc.TLS, interp uintptr, pathPtr uint
 	if transPtr != libc.UintptrFromInt32(0) {
 		orig = x_Tcl_GetStringFromObj(tls, transPtr, bp)
 		result = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp))+libc.Int32FromInt32(1)))
-		libc.X__builtin___memcpy_chk(tls, result, orig, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, result, 0)))
+		libc.X__builtin___memcpy_chk(tls, result, orig, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))+int32(1)), libc.X__builtin_object_size(tls, result, 0))
 		v2 = transPtr
 		v1 = *(*int32)(unsafe.Pointer(v2))
 		*(*int32)(unsafe.Pointer(v2))--
@@ -234663,10 +234663,10 @@ func x_TclCleanupChildren(tls *libc.TLS, interp uintptr, numPids int32, pidPtr u
 		 */
 		if !(*(*int32)(unsafe.Pointer(bp))&libc.Int32FromInt32(0177) == libc.Int32FromInt32(0)) || *(*int32)(unsafe.Pointer(bp))>>int32(8)&int32(0x000000ff) != 0 {
 			result = int32(m_TCL_ERROR)
-			libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+4, int32(1))), __ccgo_ts+58490, libc.VaList(bp+64, resolvedPid))
+			libc.X__builtin___sprintf_chk(tls, bp+4, 0, libc.X__builtin_object_size(tls, bp+4, int32(1)), __ccgo_ts+58490, libc.VaList(bp+64, resolvedPid))
 			if *(*int32)(unsafe.Pointer(bp))&int32(0177) == 0 {
 				if interp != libc.UintptrFromInt32(0) {
-					libc.X__builtin___sprintf_chk(tls, bp+28, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+28, int32(1))), __ccgo_ts+58494, libc.VaList(bp+64, *(*int32)(unsafe.Pointer(bp))>>int32(8)&int32(0x000000ff)))
+					libc.X__builtin___sprintf_chk(tls, bp+28, 0, libc.X__builtin_object_size(tls, bp+28, int32(1)), __ccgo_ts+58494, libc.VaList(bp+64, *(*int32)(unsafe.Pointer(bp))>>int32(8)&int32(0x000000ff)))
 					x_Tcl_SetErrorCode(tls, interp, libc.VaList(bp+64, __ccgo_ts+58497, bp+4, bp+28, libc.UintptrFromInt32(0)))
 				}
 				abnormalExit = int32(1)
@@ -236416,7 +236416,7 @@ _2:
 	if availPtr == libc.UintptrFromInt32(0) {
 		availPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(24)))
 		(*TPkgAvail)(unsafe.Pointer(availPtr)).Fversion = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 56)))+libc.Uint32FromInt32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TPkgAvail)(unsafe.Pointer(availPtr)).Fversion, argv3, uint64(libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 56)))+libc.Uint32FromInt32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TPkgAvail)(unsafe.Pointer(availPtr)).Fversion, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TPkgAvail)(unsafe.Pointer(availPtr)).Fversion, argv3, uint64(libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 56)))+libc.Uint32FromInt32(1)), libc.X__builtin_object_size(tls, (*TPkgAvail)(unsafe.Pointer(availPtr)).Fversion, 0))
 		if prevPtr == libc.UintptrFromInt32(0) {
 			(*TPkgAvail)(unsafe.Pointer(availPtr)).FnextPtr = (*TPackage)(unsafe.Pointer(pkgPtr)).FavailPtr
 			(*TPackage)(unsafe.Pointer(pkgPtr)).FavailPtr = availPtr
@@ -236427,7 +236427,7 @@ _2:
 	}
 	argv4 = x_Tcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv + 4*8)), bp+56)
 	(*TPkgAvail)(unsafe.Pointer(availPtr)).Fscript = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 56)))+libc.Uint32FromInt32(1))
-	libc.X__builtin___memcpy_chk(tls, (*TPkgAvail)(unsafe.Pointer(availPtr)).Fscript, argv4, uint64(libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 56)))+libc.Uint32FromInt32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TPkgAvail)(unsafe.Pointer(availPtr)).Fscript, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TPkgAvail)(unsafe.Pointer(availPtr)).Fscript, argv4, uint64(libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 56)))+libc.Uint32FromInt32(1)), libc.X__builtin_object_size(tls, (*TPkgAvail)(unsafe.Pointer(availPtr)).Fscript, 0))
 	goto _13
 _3:
 	;
@@ -236694,7 +236694,7 @@ _7:
 				(*TInterp)(unsafe.Pointer(iPtr)).FpackageUnknown = libc.UintptrFromInt32(0)
 			} else {
 				(*TInterp)(unsafe.Pointer(iPtr)).FpackageUnknown = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 80)))+libc.Uint32FromInt32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TInterp)(unsafe.Pointer(iPtr)).FpackageUnknown, argv2, uint64(libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 80)))+libc.Uint32FromInt32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TInterp)(unsafe.Pointer(iPtr)).FpackageUnknown, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TInterp)(unsafe.Pointer(iPtr)).FpackageUnknown, argv2, uint64(libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 80)))+libc.Uint32FromInt32(1)), libc.X__builtin_object_size(tls, (*TInterp)(unsafe.Pointer(iPtr)).FpackageUnknown, 0))
 			}
 		} else {
 			x_Tcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+60031)
@@ -237428,7 +237428,7 @@ func _CheckRequirement(tls *libc.TLS, interp uintptr, string1 uintptr) (r int32)
 	 */
 	local__len = uint32(libc.Xstrlen(tls, string1) + libc.Uint64FromInt32(1))
 	buf = x_Tcl_Alloc(tls, local__len)
-	libc.X__builtin___memcpy_chk(tls, buf, string1, uint64(local__len), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
+	libc.X__builtin___memcpy_chk(tls, buf, string1, uint64(local__len), libc.X__builtin_object_size(tls, buf, 0))
 	dash = buf + uintptr(int64(dash)-int64(string1))
 	*(*int8)(unsafe.Pointer(dash)) = int8('\000') /* buf now <=> min part */
 	dash++                                        /* dash now <=> max part */
@@ -237622,7 +237622,7 @@ func _RequirementSatisfied(tls *libc.TLS, havei uintptr, req uintptr) (r int32) 
 	 */
 	local__len = uint32(libc.Xstrlen(tls, req) + libc.Uint64FromInt32(1))
 	buf = x_Tcl_Alloc(tls, local__len)
-	libc.X__builtin___memcpy_chk(tls, buf, req, uint64(local__len), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buf, 0)))
+	libc.X__builtin___memcpy_chk(tls, buf, req, uint64(local__len), libc.X__builtin_object_size(tls, buf, 0))
 	dash = buf + uintptr(int64(dash)-int64(req))
 	*(*int8)(unsafe.Pointer(dash)) = int8('\000') /* buf now <=> min part */
 	dash++                                        /* dash now <=> max part */
@@ -239678,7 +239678,7 @@ func x_TclCreateProc(tls *libc.TLS, interp uintptr, nsPtr uintptr, procName uint
 			} else {
 				(*TCompiledLocal)(unsafe.Pointer(localPtr)).FdefValuePtr = libc.UintptrFromInt32(0)
 			}
-			libc.X__builtin___memcpy_chk(tls, localPtr+40, argname, libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 32)))))).Flength+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, localPtr+40, 0)))
+			libc.X__builtin___memcpy_chk(tls, localPtr+40, argname, libc.Uint64FromInt32((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 32)))))).Flength+int32(1)), libc.X__builtin_object_size(tls, localPtr+40, 0))
 			if i == *(*int32)(unsafe.Pointer(bp))-int32(1) && (*TCompiledLocal)(unsafe.Pointer(localPtr)).FnameLength == int32(4) && int32(*(*int8)(unsafe.Pointer(localPtr + 40))) == int32('a') && libc.Xmemcmp(tls, localPtr+40, __ccgo_ts+23721, uint64(4)) == 0 {
 				*(*int32)(unsafe.Pointer(localPtr + 16)) |= int32(m_VAR_IS_ARGS1)
 			}
@@ -240663,7 +240663,7 @@ correctArgs:
 	;
 	if numArgs < localCt {
 		if !((*TNamespace)(unsafe.Pointer((*TCallFrame)(unsafe.Pointer(framePtr)).FnsPtr)).FcompiledVarResProc != 0) && !((*TInterp)(unsafe.Pointer(interp)).FresolverPtr != 0) {
-			libc.X__builtin___memset_chk(tls, varPtr, 0, libc.Uint64FromInt32(localCt-numArgs)*uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, varPtr, 0)))
+			libc.X__builtin___memset_chk(tls, varPtr, 0, libc.Uint64FromInt32(localCt-numArgs)*uint64(16), libc.X__builtin_object_size(tls, varPtr, 0))
 		} else {
 			_InitResolvedLocals(tls, interp, codePtr, varPtr, (*TCallFrame)(unsafe.Pointer(framePtr)).FnsPtr)
 		}
@@ -240693,7 +240693,7 @@ incorrectArgs:
 		(*TNRE_callback)(unsafe.Pointer(_callbackPtr)).FnextPtr = (*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FcallbackPtr
 		(*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FcallbackPtr = _callbackPtr
 	}
-	libc.X__builtin___memset_chk(tls, varPtr, 0, libc.Uint64FromInt64((int64((*TCallFrame)(unsafe.Pointer(framePtr)).FcompiledLocals+uintptr(localCt)*16)-int64(varPtr))/16)*uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, varPtr, 0)))
+	libc.X__builtin___memset_chk(tls, varPtr, 0, libc.Uint64FromInt64((int64((*TCallFrame)(unsafe.Pointer(framePtr)).FcompiledLocals+uintptr(localCt)*16)-int64(varPtr))/16)*uint64(16), libc.X__builtin_object_size(tls, varPtr, 0))
 	return _ProcWrongNumArgs(tls, interp, skip)
 }
 
@@ -241763,7 +241763,7 @@ func _SetLambdaFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) 
 			(*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 		}
@@ -241790,7 +241790,7 @@ func _SetLambdaFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) 
 				(*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes, __ccgo_ts+17562, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer(nsObjPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 			}
@@ -241893,7 +241893,7 @@ func x_TclNRApplyObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc i
 		return int32(m_TCL_ERROR)
 	}
 	extraPtr = x_TclStackAlloc(tls, interp, int32(168))
-	libc.X__builtin___memset_chk(tls, extraPtr, 0, uint64(112), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, extraPtr, 0)))
+	libc.X__builtin___memset_chk(tls, extraPtr, 0, uint64(112), libc.X__builtin_object_size(tls, extraPtr, 0))
 	(*TProc)(unsafe.Pointer(procPtr)).FcmdPtr = extraPtr
 	(*TApplyExtraData)(unsafe.Pointer(extraPtr)).Fcmd.FnsPtr = *(*uintptr)(unsafe.Pointer(bp))
 	/*
@@ -242854,7 +242854,7 @@ func x_TclRegError(tls *libc.TLS, interp uintptr, msg uintptr, status int32) {
 	}
 	p = v1
 	x_Tcl_SetObjResult(tls, interp, x_Tcl_ObjPrintf(tls, __ccgo_ts+65700, libc.VaList(bp+136, msg, bp, p)))
-	libc.X__builtin___sprintf_chk(tls, bp+100, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+100, int32(1))), __ccgo_ts+5623, libc.VaList(bp+136, status))
+	libc.X__builtin___sprintf_chk(tls, bp+100, 0, libc.X__builtin_object_size(tls, bp+100, int32(1)), __ccgo_ts+5623, libc.VaList(bp+136, status))
 	x_TclReError(tls, int32(m_REG_ITOA), bp+100, uint64(24))
 	x_Tcl_SetErrorCode(tls, interp, libc.VaList(bp+136, __ccgo_ts+26215, bp+100, bp, libc.UintptrFromInt32(0)))
 }
@@ -243121,7 +243121,7 @@ func _CompileRegexp(tls *libc.TLS, interp uintptr, string1 uintptr, length int32
 		i--
 	}
 	*(*uintptr)(unsafe.Pointer(tsdPtr + 8)) = x_Tcl_Alloc(tls, libc.Uint32FromInt32(length+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(tsdPtr + 8)), string1, libc.Uint64FromInt32(length+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(tsdPtr + 8)), 0)))
+	libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(tsdPtr + 8)), string1, libc.Uint64FromInt32(length+int32(1)), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(tsdPtr + 8)), 0))
 	*(*int32)(unsafe.Pointer(tsdPtr + 248)) = length
 	*(*uintptr)(unsafe.Pointer(tsdPtr + 368)) = regexpPtr
 	return regexpPtr
@@ -243318,7 +243318,7 @@ func x_Tcl_AddInterpResolvers(tls *libc.TLS, interp uintptr, name uintptr, cmdPr
 	resPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(40)))
 	len1 = uint32(libc.Xstrlen(tls, name) + uint64(1))
 	(*TResolverScheme)(unsafe.Pointer(resPtr)).Fname = x_Tcl_Alloc(tls, len1)
-	libc.X__builtin___memcpy_chk(tls, (*TResolverScheme)(unsafe.Pointer(resPtr)).Fname, name, uint64(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TResolverScheme)(unsafe.Pointer(resPtr)).Fname, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TResolverScheme)(unsafe.Pointer(resPtr)).Fname, name, uint64(len1), libc.X__builtin_object_size(tls, (*TResolverScheme)(unsafe.Pointer(resPtr)).Fname, 0))
 	(*TResolverScheme)(unsafe.Pointer(resPtr)).FcmdResProc = cmdProc
 	(*TResolverScheme)(unsafe.Pointer(resPtr)).FvarResProc = varProc
 	(*TResolverScheme)(unsafe.Pointer(resPtr)).FcompiledVarResProc = compiledVarProc
@@ -244108,7 +244108,7 @@ func x_Tcl_SetResult(tls *libc.TLS, interp uintptr, result uintptr, freeProc uin
 				(*TInterp)(unsafe.Pointer(iPtr)).Fresult = iPtr + 472
 				(*TInterp)(unsafe.Pointer(iPtr)).FfreeProc = uintptr(0)
 			}
-			libc.X__builtin___memcpy_chk(tls, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, result, libc.Uint64FromInt32(length+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, result, libc.Uint64FromInt32(length+int32(1)), libc.X__builtin_object_size(tls, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, 0))
 		} else {
 			(*TInterp)(unsafe.Pointer(iPtr)).Fresult = result
 			(*TInterp)(unsafe.Pointer(iPtr)).FfreeProc = freeProc
@@ -244275,7 +244275,7 @@ func x_Tcl_GetObjResult(tls *libc.TLS, interp uintptr) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(length)+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Fbytes, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Fbytes, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Fbytes + uintptr(length))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Flength = length
 		}
@@ -244900,7 +244900,7 @@ func _GetKeys(tls *libc.TLS) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*8)))).Fbytes, __ccgo_ts+37625, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*8)))).Fbytes, __ccgo_ts+37625, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 		}
@@ -244919,7 +244919,7 @@ func _GetKeys(tls *libc.TLS) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*8)))).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*8)))).Fbytes, __ccgo_ts+22703, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 		}
@@ -244938,7 +244938,7 @@ func _GetKeys(tls *libc.TLS) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*8)))).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*8)))).Fbytes, __ccgo_ts+22692, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 		}
@@ -244957,7 +244957,7 @@ func _GetKeys(tls *libc.TLS) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*8)))).Fbytes, __ccgo_ts+65753, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*8)))).Fbytes, __ccgo_ts+65753, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(11)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(11) - libc.Uint64FromInt32(1))
 		}
@@ -244976,7 +244976,7 @@ func _GetKeys(tls *libc.TLS) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*8)))).Fbytes, __ccgo_ts+65764, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*8)))).Fbytes, __ccgo_ts+65764, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(12)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(12) - libc.Uint64FromInt32(1))
 		}
@@ -244995,7 +244995,7 @@ func _GetKeys(tls *libc.TLS) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*8)))).Fbytes, __ccgo_ts+37587, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*8)))).Fbytes, __ccgo_ts+37587, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(7) - libc.Uint64FromInt32(1))
 		}
@@ -245014,7 +245014,7 @@ func _GetKeys(tls *libc.TLS) (r uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*8)))).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*8)))).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*8)))).Fbytes, __ccgo_ts+29124, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*8)))).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*8)))).Fbytes, __ccgo_ts+29124, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*8)))).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*8)))).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*8)))).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(9) - libc.Uint64FromInt32(1))
 		}
@@ -245761,7 +245761,7 @@ func _BuildCharSet(tls *libc.TLS, cset uintptr, format uintptr) (r uintptr) {
 	var _ /* ch at bp+0 */ TTcl_UniChar
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = end, nranges, offset, start, v1, v10, v11, v12, v13, v14, v15, v16, v17, v2, v3, v4, v5, v6, v7, v8, v9
 	*(*TTcl_UniChar)(unsafe.Pointer(bp)) = uint16(0)
-	libc.X__builtin___memset_chk(tls, cset, 0, uint64(32), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cset, 0)))
+	libc.X__builtin___memset_chk(tls, cset, 0, uint64(32), libc.X__builtin_object_size(tls, cset, 0))
 	if libc.Int32FromUint8(libc.Uint8FromInt8(*(*int8)(unsafe.Pointer(format)))) < int32(0x80) {
 		*(*TTcl_UniChar)(unsafe.Pointer(bp)) = uint16(libc.Uint8FromInt8(*(*int8)(unsafe.Pointer(format))))
 		v1 = libc.Int32FromInt32(1)
@@ -247501,7 +247501,7 @@ func x_Tcl_NewStringObj(tls *libc.TLS, bytes uintptr, length int32) (r uintptr) 
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(length)+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bytes, libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bytes, libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(length))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = length
 	}
@@ -248056,7 +248056,7 @@ func x_Tcl_SetStringObj(tls *libc.TLS, objPtr uintptr, bytes uintptr, length int
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(length)+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bytes, libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bytes, libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(length))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = length
 	}
@@ -248334,7 +248334,7 @@ func _SetUnicodeObj(tls *libc.TLS, objPtr uintptr, unicode uintptr, numChars int
 	})(unsafe.Pointer(objPtr + 32))).Fptr1 = stringPtr
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&x_tclStringType))
 	(*TString)(unsafe.Pointer(stringPtr)).FmaxChars = numChars
-	libc.X__builtin___memcpy_chk(tls, stringPtr+16, unicode, libc.Uint64FromInt32(numChars)*uint64(2), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, stringPtr+16, 0)))
+	libc.X__builtin___memcpy_chk(tls, stringPtr+16, unicode, libc.Uint64FromInt32(numChars)*uint64(2), libc.X__builtin_object_size(tls, stringPtr+16, 0))
 	*(*TTcl_UniChar)(unsafe.Pointer(stringPtr + 16 + uintptr(numChars)*2)) = uint16(0)
 	(*TString)(unsafe.Pointer(stringPtr)).FnumChars = numChars
 	(*TString)(unsafe.Pointer(stringPtr)).FhasUnicode = int32(1)
@@ -248714,7 +248714,7 @@ func _AppendUnicodeToUnicodeRep(tls *libc.TLS, objPtr uintptr, unicode uintptr, 
 	 * trailing null.
 	 */
 	if unicode != 0 {
-		libc.X__builtin___memmove_chk(tls, stringPtr+16+uintptr((*TString)(unsafe.Pointer(stringPtr)).FnumChars)*2, unicode, libc.Uint64FromInt32(appendNumChars)*uint64(2), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, stringPtr+16+uintptr((*TString)(unsafe.Pointer(stringPtr)).FnumChars)*2, 0)))
+		libc.X__builtin___memmove_chk(tls, stringPtr+16+uintptr((*TString)(unsafe.Pointer(stringPtr)).FnumChars)*2, unicode, libc.Uint64FromInt32(appendNumChars)*uint64(2), libc.X__builtin_object_size(tls, stringPtr+16+uintptr((*TString)(unsafe.Pointer(stringPtr)).FnumChars)*2, 0))
 	}
 	*(*TTcl_UniChar)(unsafe.Pointer(stringPtr + 16 + uintptr(numChars)*2)) = uint16(0)
 	(*TString)(unsafe.Pointer(stringPtr)).FnumChars = numChars
@@ -248870,7 +248870,7 @@ func _AppendUtfToUtfRep(tls *libc.TLS, objPtr uintptr, bytes uintptr, numBytes i
 	(*TString)(unsafe.Pointer(stringPtr)).FnumChars = -int32(1)
 	(*TString)(unsafe.Pointer(stringPtr)).FhasUnicode = 0
 	if bytes != 0 {
-		libc.X__builtin___memmove_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes+uintptr(oldLength), bytes, libc.Uint64FromInt32(numBytes), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes+uintptr(oldLength), 0)))
+		libc.X__builtin___memmove_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes+uintptr(oldLength), bytes, libc.Uint64FromInt32(numBytes), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes+uintptr(oldLength), 0))
 	}
 	*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(newLength))) = 0
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = newLength
@@ -249768,7 +249768,7 @@ func x_Tcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, f
 				*(*int8)(unsafe.Pointer(v59)) = int8('+')
 			}
 			if *(*int32)(unsafe.Pointer(bp + 16)) != 0 {
-				p += uintptr(libc.X__builtin___sprintf_chk(tls, p, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, int32(1))), __ccgo_ts+5623, libc.VaList(bp+160, *(*int32)(unsafe.Pointer(bp + 16)))))
+				p += uintptr(libc.X__builtin___sprintf_chk(tls, p, 0, libc.X__builtin_object_size(tls, p, int32(1)), __ccgo_ts+5623, libc.VaList(bp+160, *(*int32)(unsafe.Pointer(bp + 16)))))
 				if *(*int32)(unsafe.Pointer(bp + 16)) > length3 {
 					length3 = *(*int32)(unsafe.Pointer(bp + 16))
 				}
@@ -249777,7 +249777,7 @@ func x_Tcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, f
 				v60 = p
 				p++
 				*(*int8)(unsafe.Pointer(v60)) = int8('.')
-				p += uintptr(libc.X__builtin___sprintf_chk(tls, p, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, int32(1))), __ccgo_ts+5623, libc.VaList(bp+160, *(*int32)(unsafe.Pointer(bp + 20)))))
+				p += uintptr(libc.X__builtin___sprintf_chk(tls, p, 0, libc.X__builtin_object_size(tls, p, int32(1)), __ccgo_ts+5623, libc.VaList(bp+160, *(*int32)(unsafe.Pointer(bp + 20)))))
 				if *(*int32)(unsafe.Pointer(bp + 20)) > int32(m___INT_MAX__)-length3 {
 					msg = _overflow
 					errCode = __ccgo_ts + 39907
@@ -249816,7 +249816,7 @@ func x_Tcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, f
 				v62 = x_Tcl_GetString(tls, segment)
 			}
 			bytes2 = v62
-			if !(x_Tcl_AttemptSetObjLength(tls, segment, libc.X__builtin___sprintf_chk(tls, bytes2, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bytes2, int32(1))), bp+84, libc.VaList(bp+160, *(*float64)(unsafe.Pointer(bp + 144))))) != 0) {
+			if !(x_Tcl_AttemptSetObjLength(tls, segment, libc.X__builtin___sprintf_chk(tls, bytes2, 0, libc.X__builtin_object_size(tls, bytes2, int32(1)), bp+84, libc.VaList(bp+160, *(*float64)(unsafe.Pointer(bp + 144))))) != 0) {
 				msg = _overflow
 				errCode = __ccgo_ts + 39907
 				goto errorMsg
@@ -250609,7 +250609,7 @@ func _DupStringInternalRep(tls *libc.TLS, srcPtr uintptr, copyPtr uintptr) {
 			copyStringPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(libc.Int32FromUint64(uint64(libc.UintptrFromInt32(0)+16)))+libc.Uint64FromInt64(2)+libc.Uint64FromInt32(copyMaxChars)*libc.Uint64FromInt64(2)))
 		}
 		(*TString)(unsafe.Pointer(copyStringPtr)).FmaxChars = copyMaxChars
-		libc.X__builtin___memcpy_chk(tls, copyStringPtr+16, srcStringPtr+16, libc.Uint64FromInt32((*TString)(unsafe.Pointer(srcStringPtr)).FnumChars)*uint64(2), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, copyStringPtr+16, 0)))
+		libc.X__builtin___memcpy_chk(tls, copyStringPtr+16, srcStringPtr+16, libc.Uint64FromInt32((*TString)(unsafe.Pointer(srcStringPtr)).FnumChars)*uint64(2), libc.X__builtin_object_size(tls, copyStringPtr+16, 0))
 		*(*TTcl_UniChar)(unsafe.Pointer(copyStringPtr + 16 + uintptr((*TString)(unsafe.Pointer(srcStringPtr)).FnumChars)*2)) = uint16(0)
 	} else {
 		copyStringPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(libc.Int32FromUint64(uint64(libc.UintptrFromInt32(0)+16)))+libc.Uint64FromInt64(2)+libc.Uint64FromInt32(libc.Int32FromInt32(0))*libc.Uint64FromInt64(2)))
@@ -250730,7 +250730,7 @@ func _UpdateStringOfString(tls *libc.TLS, objPtr uintptr) {
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromInt32(0))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, x_tclEmptyStringRep, libc.Uint64FromInt32(libc.Int32FromInt32(0)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, x_tclEmptyStringRep, libc.Uint64FromInt32(libc.Int32FromInt32(0)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes)) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 		}
@@ -255907,7 +255907,7 @@ func x_TclFormatNaN(tls *libc.TLS, value float64, buffer uintptr) {
 	*(*int8)(unsafe.Pointer(v4)) = int8('N')
 	*(*TTcl_WideUInt)(unsafe.Pointer(bp)) &= libc.Uint64FromInt32(1)<<libc.Int32FromInt32(51) - libc.Uint64FromInt32(1)
 	if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) {
-		libc.X__builtin___sprintf_chk(tls, buffer, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, buffer, int32(1))), __ccgo_ts+67667, libc.VaList(bp+16, *(*TTcl_WideUInt)(unsafe.Pointer(bp))))
+		libc.X__builtin___sprintf_chk(tls, buffer, 0, libc.X__builtin_object_size(tls, buffer, int32(1)), __ccgo_ts+67667, libc.VaList(bp+16, *(*TTcl_WideUInt)(unsafe.Pointer(bp))))
 	} else {
 		*(*int8)(unsafe.Pointer(buffer)) = int8('\000')
 	}
@@ -256015,7 +256015,7 @@ func x_Tcl_GetThreadData(tls *libc.TLS, keyPtr uintptr, size int32) (r uintptr) 
 	_ = result
 	if *(*TTcl_ThreadDataKey)(unsafe.Pointer(keyPtr)) == libc.UintptrFromInt32(0) {
 		result = x_Tcl_Alloc(tls, libc.Uint32FromInt32(size))
-		libc.X__builtin___memset_chk(tls, result, 0, libc.Uint64FromInt32(size), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, result, 0)))
+		libc.X__builtin___memset_chk(tls, result, 0, libc.Uint64FromInt32(size), libc.X__builtin_object_size(tls, result, 0))
 		*(*TTcl_ThreadDataKey)(unsafe.Pointer(keyPtr)) = result
 		_RememberSyncObject(tls, keyPtr, uintptr(unsafe.Pointer(&_keyRecord)))
 	} else {
@@ -257792,7 +257792,7 @@ func x_TclCreateAbsoluteTimerHandler(tls *libc.TLS, timePtr uintptr, proc uintpt
 	/*
 	 * Fill in fields for the event.
 	 */
-	libc.X__builtin___memcpy_chk(tls, timerHandlerPtr, timePtr, uint64(16), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, timerHandlerPtr, 0)))
+	libc.X__builtin___memcpy_chk(tls, timerHandlerPtr, timePtr, uint64(16), libc.X__builtin_object_size(tls, timerHandlerPtr, 0))
 	(*TTimerHandler)(unsafe.Pointer(timerHandlerPtr)).Fproc = proc
 	(*TTimerHandler)(unsafe.Pointer(timerHandlerPtr)).FclientData = clientData
 	(*TThreadSpecificData11)(unsafe.Pointer(tsdPtr)).FlastTimerId++
@@ -259030,7 +259030,7 @@ func x_Tcl_TraceObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+6383, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+6383, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 				}
@@ -259051,7 +259051,7 @@ func x_Tcl_TraceObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 					} else {
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+6388, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+						libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+6388, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 						*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 						(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 					}
@@ -259072,7 +259072,7 @@ func x_Tcl_TraceObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 							(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 						} else {
 							(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-							libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+14236, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+							libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+14236, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 							*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 							(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 						}
@@ -259093,7 +259093,7 @@ func x_Tcl_TraceObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 								(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 							} else {
 								(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-								libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+35363, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+								libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+35363, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 								*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 								(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 							}
@@ -259118,7 +259118,7 @@ func x_Tcl_TraceObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 			p++
 		}
 		(*(*[6]uintptr)(unsafe.Pointer(bp + 16)))[0] = libc.UintptrFromInt32(0)
-		libc.X__builtin___memcpy_chk(tls, bp+16+uintptr(1)*8, objv, libc.Uint64FromInt32(objc)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+16+uintptr(1)*8, 0)))
+		libc.X__builtin___memcpy_chk(tls, bp+16+uintptr(1)*8, objv, libc.Uint64FromInt32(objc)*uint64(8), libc.X__builtin_object_size(tls, bp+16+uintptr(1)*8, 0))
 		(*(*[6]uintptr)(unsafe.Pointer(bp + 16)))[int32(4)] = opsList
 		if *(*int32)(unsafe.Pointer(bp)) == 3 {
 			code = (*(*func(*libc.TLS, uintptr, int32, int32, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{_traceSubCmds[libc.Int32FromInt32(2)]})))(tls, interp, 0, objc+int32(1), bp+16)
@@ -259318,7 +259318,7 @@ func _TraceExecutionObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, obj
 			if flags&(libc.Int32FromInt32(m_TCL_TRACE_ENTER_DURING_EXEC)|libc.Int32FromInt32(m_TCL_TRACE_LEAVE_DURING_EXEC)) != 0 {
 				flags |= libc.Int32FromInt32(m_TCL_TRACE_ENTER_EXEC) | libc.Int32FromInt32(m_TCL_TRACE_LEAVE_EXEC)
 			}
-			libc.X__builtin___memcpy_chk(tls, tcmdPtr+52, command, length+uint64(1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, tcmdPtr+52, 0)))
+			libc.X__builtin___memcpy_chk(tls, tcmdPtr+52, command, length+uint64(1), libc.X__builtin_object_size(tls, tcmdPtr+52, 0))
 			name = x_Tcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 3*8)))
 			if x_Tcl_TraceCommand(tls, interp, name, flags, __ccgo_fp(_TraceCommandProc), tcmdPtr) != m_TCL_OK {
 				x_TclpFree(tls, tcmdPtr)
@@ -259420,7 +259420,7 @@ func _TraceExecutionObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, obj
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+68180, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+68180, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 				}
@@ -259442,7 +259442,7 @@ func _TraceExecutionObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, obj
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+68186, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+68186, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 				}
@@ -259464,7 +259464,7 @@ func _TraceExecutionObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, obj
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+68192, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+68192, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(10) - libc.Uint64FromInt32(1))
 				}
@@ -259486,7 +259486,7 @@ func _TraceExecutionObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, obj
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+68202, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+68202, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(10) - libc.Uint64FromInt32(1))
 				}
@@ -259637,7 +259637,7 @@ func _TraceCommandObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc 
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).Flength = length
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FrefCount = int32(1)
 			flags |= int32(m_TCL_TRACE_DELETE3)
-			libc.X__builtin___memcpy_chk(tls, tcmdPtr+52, command, length+uint64(1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, tcmdPtr+52, 0)))
+			libc.X__builtin___memcpy_chk(tls, tcmdPtr+52, command, length+uint64(1), libc.X__builtin_object_size(tls, tcmdPtr+52, 0))
 			name = x_Tcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 3*8)))
 			if x_Tcl_TraceCommand(tls, interp, name, flags, __ccgo_fp(_TraceCommandProc), tcmdPtr) != m_TCL_OK {
 				x_TclpFree(tls, tcmdPtr)
@@ -259716,7 +259716,7 @@ func _TraceCommandObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc 
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+16088, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+16088, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(7) - libc.Uint64FromInt32(1))
 				}
@@ -259738,7 +259738,7 @@ func _TraceCommandObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc 
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+1307, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, __ccgo_ts+1307, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(7) - libc.Uint64FromInt32(1))
 				}
@@ -259889,7 +259889,7 @@ func _TraceVariableObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc
 			}
 			(*TCombinedTraceVarInfo)(unsafe.Pointer(ctvarPtr)).FtraceCmdInfo.Flength = length
 			flags |= libc.Int32FromInt32(m_TCL_TRACE_UNSETS9) | libc.Int32FromInt32(m_TCL_TRACE_RESULT_OBJECT1)
-			libc.X__builtin___memcpy_chk(tls, ctvarPtr+32+16, command, length+uint64(1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, ctvarPtr+32+16, 0)))
+			libc.X__builtin___memcpy_chk(tls, ctvarPtr+32+16, command, length+uint64(1), libc.X__builtin_object_size(tls, ctvarPtr+32+16, 0))
 			(*TCombinedTraceVarInfo)(unsafe.Pointer(ctvarPtr)).FtraceInfo.FtraceProc = __ccgo_fp(_TraceVarProc)
 			(*TCombinedTraceVarInfo)(unsafe.Pointer(ctvarPtr)).FtraceInfo.FclientData = ctvarPtr + 32
 			(*TCombinedTraceVarInfo)(unsafe.Pointer(ctvarPtr)).FtraceInfo.Fflags = flags
@@ -259966,7 +259966,7 @@ func _TraceVariableObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, __ccgo_ts+35363, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, __ccgo_ts+35363, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 				}
@@ -259988,7 +259988,7 @@ func _TraceVariableObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, __ccgo_ts+6383, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, __ccgo_ts+6383, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 				}
@@ -260010,7 +260010,7 @@ func _TraceVariableObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, __ccgo_ts+6388, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, __ccgo_ts+6388, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 				}
@@ -260032,7 +260032,7 @@ func _TraceVariableObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, __ccgo_ts+14236, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, __ccgo_ts+14236, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(opObjPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 				}
@@ -260675,7 +260675,7 @@ func _CallTraceFunction(tls *libc.TLS, interp uintptr, tracePtr uintptr, cmdPtr 
 	 * Copy the command characters into a new string.
 	 */
 	commandCopy = x_TclStackAlloc(tls, interp, numChars+int32(1))
-	libc.X__builtin___memcpy_chk(tls, commandCopy, command, libc.Uint64FromInt32(numChars), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, commandCopy, 0)))
+	libc.X__builtin___memcpy_chk(tls, commandCopy, command, libc.Uint64FromInt32(numChars), libc.X__builtin_object_size(tls, commandCopy, 0))
 	*(*int8)(unsafe.Pointer(commandCopy + uintptr(numChars))) = int8('\000')
 	/*
 	 * Call the trace function then free allocated storage.
@@ -260895,7 +260895,7 @@ func _TraceExecutionProc(tls *libc.TLS, clientData TClientData, interp uintptr, 
 			len1 = uint32(libc.Xstrlen(tls, command) + uint64(1))
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartLevel = level
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartCmd = x_Tcl_Alloc(tls, len1)
-			libc.X__builtin___memcpy_chk(tls, (*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartCmd, command, uint64(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartCmd, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartCmd, command, uint64(len1), libc.X__builtin_object_size(tls, (*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartCmd, 0))
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FrefCount++
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstepTrace = x_Tcl_CreateObjTrace(tls, interp, 0, (*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).Fflags&int32(m_TCL_TRACE_ANY_EXEC)>>int32(2), __ccgo_fp(_TraceExecutionProc), tcmdPtr, __ccgo_fp(_CommandObjTraceDeleted))
 		}
@@ -275324,7 +275324,7 @@ func x_Tcl_UtfToUpper(tls *libc.TLS, str uintptr) (r int32) {
 		 * char to dst if its size is <= the original char.
 		 */
 		if len1 < _UtfCount(tls, upChar) {
-			libc.X__builtin___memmove_chk(tls, dst, src, libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memmove_chk(tls, dst, src, libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, dst, 0))
 			dst += uintptr(len1)
 		} else {
 			dst += uintptr(x_TclUCS4ToUtf(tls, upChar, dst))
@@ -275375,7 +275375,7 @@ func x_Tcl_UtfToLower(tls *libc.TLS, str uintptr) (r int32) {
 		 * char to dst if its size is <= the original char.
 		 */
 		if len1 < _UtfCount(tls, lowChar) {
-			libc.X__builtin___memmove_chk(tls, dst, src, libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memmove_chk(tls, dst, src, libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, dst, 0))
 			dst += uintptr(len1)
 		} else {
 			dst += uintptr(x_TclUCS4ToUtf(tls, lowChar, dst))
@@ -275423,7 +275423,7 @@ func x_Tcl_UtfToTitle(tls *libc.TLS, str uintptr) (r int32) {
 		len1 = x_TclUtfToUCS4(tls, src, bp)
 		titleChar = _UCS4ToTitle(tls, *(*int32)(unsafe.Pointer(bp)))
 		if len1 < _UtfCount(tls, titleChar) {
-			libc.X__builtin___memmove_chk(tls, dst, src, libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memmove_chk(tls, dst, src, libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, dst, 0))
 			dst += uintptr(len1)
 		} else {
 			dst += uintptr(x_TclUCS4ToUtf(tls, titleChar, dst))
@@ -275438,7 +275438,7 @@ func x_Tcl_UtfToTitle(tls *libc.TLS, str uintptr) (r int32) {
 			lowChar = x_TclUCS4ToLower(tls, lowChar)
 		}
 		if len1 < _UtfCount(tls, lowChar) {
-			libc.X__builtin___memmove_chk(tls, dst, src, libc.Uint64FromInt32(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memmove_chk(tls, dst, src, libc.Uint64FromInt32(len1), libc.X__builtin_object_size(tls, dst, 0))
 			dst += uintptr(len1)
 		} else {
 			dst += uintptr(x_TclUCS4ToUtf(tls, lowChar, dst))
@@ -277510,7 +277510,7 @@ func x_Tcl_SplitList(tls *libc.TLS, interp uintptr, _list uintptr, argcPtr uintp
 		}
 		*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)) = p
 		if *(*int32)(unsafe.Pointer(bp + 28)) != 0 {
-			libc.X__builtin___memcpy_chk(tls, p, *(*uintptr)(unsafe.Pointer(bp + 16)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 24))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+			libc.X__builtin___memcpy_chk(tls, p, *(*uintptr)(unsafe.Pointer(bp + 16)), libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 24))), libc.X__builtin_object_size(tls, p, 0))
 			p += uintptr(*(*int32)(unsafe.Pointer(bp + 24)))
 			*(*int8)(unsafe.Pointer(p)) = 0
 			p++
@@ -277986,7 +277986,7 @@ func x_TclConvertElement(tls *libc.TLS, src uintptr, length int32, dst uintptr, 
 			}
 			return int32(int64(p) - int64(dst))
 		} else {
-			libc.X__builtin___memcpy_chk(tls, dst, src, libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memcpy_chk(tls, dst, src, libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, dst, 0))
 			return length
 		}
 	}
@@ -278006,7 +278006,7 @@ func x_TclConvertElement(tls *libc.TLS, src uintptr, length int32, dst uintptr, 
 				*(*int8)(unsafe.Pointer(v3)) = *(*int8)(unsafe.Pointer(v4))
 			}
 		} else {
-			libc.X__builtin___memcpy_chk(tls, p, src, libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+			libc.X__builtin___memcpy_chk(tls, p, src, libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, p, 0))
 			p += uintptr(length)
 		}
 		*(*int8)(unsafe.Pointer(p)) = int8('}')
@@ -278532,7 +278532,7 @@ func x_Tcl_Concat(tls *libc.TLS, argc int32, argv uintptr) (r uintptr) {
 			p++
 			*(*int8)(unsafe.Pointer(v3)) = int8(' ')
 		}
-		libc.X__builtin___memcpy_chk(tls, p, element, libc.Uint64FromInt32(elemLength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+		libc.X__builtin___memcpy_chk(tls, p, element, libc.Uint64FromInt32(elemLength), libc.X__builtin_object_size(tls, p, 0))
 		p += uintptr(elemLength)
 		needSpace = int32(1)
 		goto _2
@@ -279309,7 +279309,7 @@ func x_Tcl_DStringAppend(tls *libc.TLS, dsPtr uintptr, bytes uintptr, length int
 		(*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl = newSize * int32(2)
 		if (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 == dsPtr+16 {
 			newString = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl))
-			libc.X__builtin___memcpy_chk(tls, newString, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newString, 0)))
+			libc.X__builtin___memcpy_chk(tls, newString, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), libc.X__builtin_object_size(tls, newString, 0))
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 = newString
 		} else {
 			offset = -int32(1)
@@ -279326,7 +279326,7 @@ func x_Tcl_DStringAppend(tls *libc.TLS, dsPtr uintptr, bytes uintptr, length int
 	/*
 	 * Copy the new string into the buffer at the end of the old one.
 	 */
-	libc.X__builtin___memcpy_chk(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1+uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), bytes, libc.Uint64FromInt32(length), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1+uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1+uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), bytes, libc.Uint64FromInt32(length), libc.X__builtin_object_size(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1+uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), 0))
 	*(*int32)(unsafe.Pointer(dsPtr + 8)) += length
 	*(*int8)(unsafe.Pointer((*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 + uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength))) = int8('\000')
 	return (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1
@@ -279438,7 +279438,7 @@ func x_Tcl_DStringAppendElement(tls *libc.TLS, dsPtr uintptr, element uintptr) (
 		(*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl = newSize * int32(2)
 		if (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 == dsPtr+16 {
 			newString = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl))
-			libc.X__builtin___memcpy_chk(tls, newString, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newString, 0)))
+			libc.X__builtin___memcpy_chk(tls, newString, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), libc.X__builtin_object_size(tls, newString, 0))
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 = newString
 		} else {
 			offset = -int32(1)
@@ -279514,7 +279514,7 @@ func x_Tcl_DStringSetLength(tls *libc.TLS, dsPtr uintptr, length int32) {
 		}
 		if (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 == dsPtr+16 {
 			newString = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl))
-			libc.X__builtin___memcpy_chk(tls, newString, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newString, 0)))
+			libc.X__builtin___memcpy_chk(tls, newString, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), libc.X__builtin_object_size(tls, newString, 0))
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 = newString
 		} else {
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 = x_Tcl_Realloc(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl))
@@ -279659,7 +279659,7 @@ func x_Tcl_DStringGetResult(tls *libc.TLS, interp uintptr, dsPtr uintptr) {
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl = (*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength + int32(1)
 		} else {
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength+libc.Int32FromInt32(1)))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength+int32(1)), libc.X__builtin_object_size(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, 0))
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TInterp)(unsafe.Pointer(iPtr)).FfreeProc})))(tls, (*TInterp)(unsafe.Pointer(iPtr)).Fresult)
 		}
 		(*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl = (*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength + int32(1)
@@ -279672,7 +279672,7 @@ func x_Tcl_DStringGetResult(tls *libc.TLS, interp uintptr, dsPtr uintptr) {
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength+libc.Int32FromInt32(1)))
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl = (*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength + int32(1)
 		}
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, (*TInterp)(unsafe.Pointer(iPtr)).Fresult, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength+int32(1)), libc.X__builtin_object_size(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, 0))
 	}
 	(*TInterp)(unsafe.Pointer(iPtr)).Fresult = iPtr + 472
 	*(*int8)(unsafe.Pointer(iPtr + 472)) = 0
@@ -279735,7 +279735,7 @@ func x_TclDStringToObj(tls *libc.TLS, dsPtr uintptr) (r uintptr) {
 				(*TTcl_Obj)(unsafe.Pointer(result)).Flength = 0
 			} else {
 				(*TTcl_Obj)(unsafe.Pointer(result)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength)+libc.Uint32FromUint32(1))
-				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(result)).Fbytes, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(result)).Fbytes, 0)))
+				libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(result)).Fbytes, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(result)).Fbytes, 0))
 				*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(result)).Fbytes + uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength))) = int8('\000')
 				(*TTcl_Obj)(unsafe.Pointer(result)).Flength = (*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength
 			}
@@ -279872,9 +279872,9 @@ _3:
 		 * Remember to copy the terminating NUL too.
 		 */
 		if value < libc.Float64FromInt32(0) {
-			libc.X__builtin___memcpy_chk(tls, dst, __ccgo_ts+69056, uint64(5), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memcpy_chk(tls, dst, __ccgo_ts+69056, uint64(5), libc.X__builtin_object_size(tls, dst, 0))
 		} else {
-			libc.X__builtin___memcpy_chk(tls, dst, __ccgo_ts+69061, uint64(4), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, 0)))
+			libc.X__builtin___memcpy_chk(tls, dst, __ccgo_ts+69061, uint64(4), libc.X__builtin_object_size(tls, dst, 0))
 		}
 		return
 	}
@@ -279958,9 +279958,9 @@ _3:
 		 * preserve that behaviour when tcl_precision != 0
 		 */
 		if *(*int32)(unsafe.Pointer(precisionPtr)) == 0 {
-			libc.X__builtin___sprintf_chk(tls, dst, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, int32(1))), __ccgo_ts+69065, libc.VaList(bp+24, *(*int32)(unsafe.Pointer(bp))))
+			libc.X__builtin___sprintf_chk(tls, dst, 0, libc.X__builtin_object_size(tls, dst, int32(1)), __ccgo_ts+69065, libc.VaList(bp+24, *(*int32)(unsafe.Pointer(bp))))
 		} else {
-			libc.X__builtin___sprintf_chk(tls, dst, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dst, int32(1))), __ccgo_ts+69070, libc.VaList(bp+24, *(*int32)(unsafe.Pointer(bp))))
+			libc.X__builtin___sprintf_chk(tls, dst, 0, libc.X__builtin_object_size(tls, dst, int32(1)), __ccgo_ts+69070, libc.VaList(bp+24, *(*int32)(unsafe.Pointer(bp))))
 		}
 	} else {
 		/*
@@ -280419,7 +280419,7 @@ func _UpdateStringOfEndOffset(tls *libc.TLS, objPtr uintptr) {
 	var _ /* buffer at bp+0 */ [29]int8
 	_, _ = len1, v1
 	len1 = int32(3)
-	libc.X__builtin___memcpy_chk(tls, bp, __ccgo_ts+2424, uint64(4), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, 0)))
+	libc.X__builtin___memcpy_chk(tls, bp, __ccgo_ts+2424, uint64(4), libc.X__builtin_object_size(tls, bp, 0))
 	if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue != 0 {
 		v1 = len1
 		len1++
@@ -280427,7 +280427,7 @@ func _UpdateStringOfEndOffset(tls *libc.TLS, objPtr uintptr) {
 		len1 += x_TclFormatInt(tls, bp+uintptr(len1), libc.Int64FromUint64(-libc.Uint64FromInt64((*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue)))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(len1+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bp, libc.Uint64FromInt32(len1+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bp, libc.Uint64FromInt32(len1+int32(1)), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = len1
 }
 
@@ -280966,7 +280966,7 @@ func x_TclSetProcessGlobalValue(tls *libc.TLS, pgvPtr uintptr, newValue uintptr,
 	}
 	bytes = x_Tcl_GetStringFromObj(tls, newValue, pgvPtr+4)
 	(*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).FnumBytes+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue, bytes, libc.Uint64FromInt32((*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).FnumBytes+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue, bytes, libc.Uint64FromInt32((*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).FnumBytes+int32(1)), libc.X__builtin_object_size(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue, 0))
 	if (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fencoding != 0 {
 		x_Tcl_FreeEncoding(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fencoding)
 	}
@@ -281021,7 +281021,7 @@ func x_TclGetProcessGlobalValue(tls *libc.TLS, pgvPtr uintptr) (r uintptr) {
 			x_Tcl_DStringFree(tls, bp)
 			x_TclpFree(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue)
 			(*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue = x_Tcl_Alloc(tls, libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(bp+216)).Flength+libc.Int32FromInt32(1)))
-			libc.X__builtin___memcpy_chk(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue, (*TTcl_DString)(unsafe.Pointer(bp+216)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp+216)).Flength+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue, (*TTcl_DString)(unsafe.Pointer(bp+216)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp+216)).Flength+int32(1)), libc.X__builtin_object_size(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fvalue, 0))
 			x_Tcl_DStringFree(tls, bp+216)
 			x_Tcl_FreeEncoding(tls, (*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fencoding)
 			(*TProcessGlobalValue)(unsafe.Pointer(pgvPtr)).Fencoding = current
@@ -282024,7 +282024,7 @@ _3:
 				len2 = *(*int32)(unsafe.Pointer(bp + 4)) - i - int32(2)
 				*(*int32)(unsafe.Pointer(bp + 4)) = i
 				newPart2 = x_Tcl_Alloc(tls, libc.Uint32FromInt32(len2+libc.Int32FromInt32(1)))
-				libc.X__builtin___memcpy_chk(tls, newPart2, part2, libc.Uint64FromInt32(len2), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newPart2, 0)))
+				libc.X__builtin___memcpy_chk(tls, newPart2, part2, libc.Uint64FromInt32(len2), libc.X__builtin_object_size(tls, newPart2, 0))
 				*(*int8)(unsafe.Pointer(newPart2 + uintptr(len2))) = int8('\000')
 				part2 = newPart2
 				part2Ptr = x_Tcl_NewStringObj(tls, newPart2, -int32(1))
@@ -282063,7 +282063,7 @@ _3:
 					(*TTcl_Obj)(unsafe.Pointer(part1Ptr)).Flength = 0
 				} else {
 					(*TTcl_Obj)(unsafe.Pointer(part1Ptr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 4)))+libc.Uint32FromUint32(1))
-					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(part1Ptr)).Fbytes, part1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(part1Ptr)).Fbytes, 0)))
+					libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(part1Ptr)).Fbytes, part1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 4))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(part1Ptr)).Fbytes, 0))
 					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(part1Ptr)).Fbytes + uintptr(*(*int32)(unsafe.Pointer(bp + 4))))) = int8('\000')
 					(*TTcl_Obj)(unsafe.Pointer(part1Ptr)).Flength = *(*int32)(unsafe.Pointer(bp + 4))
 				}
@@ -287298,7 +287298,7 @@ func _DupParsedVarName(tls *libc.TLS, srcPtr uintptr, dupPtr uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer(arrayPtr)).FrefCount++
 		elemLen = uint32(libc.Xstrlen(tls, elem))
 		elemCopy = x_Tcl_Alloc(tls, elemLen+libc.Uint32FromInt32(1))
-		libc.X__builtin___memcpy_chk(tls, elemCopy, elem, uint64(elemLen), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, elemCopy, 0)))
+		libc.X__builtin___memcpy_chk(tls, elemCopy, elem, uint64(elemLen), libc.X__builtin_object_size(tls, elemCopy, 0))
 		*(*int8)(unsafe.Pointer(elemCopy + uintptr(elemLen))) = int8('\000')
 		elem = elemCopy
 	}
@@ -287346,12 +287346,12 @@ func _UpdateParsedVarName(tls *libc.TLS, objPtr uintptr) {
 	p = x_Tcl_Alloc(tls, libc.Uint32FromInt32(totalLen+libc.Int32FromInt32(1)))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = p
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = totalLen
-	libc.X__builtin___memcpy_chk(tls, p, part1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+	libc.X__builtin___memcpy_chk(tls, p, part1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp))), libc.X__builtin_object_size(tls, p, 0))
 	p += uintptr(*(*int32)(unsafe.Pointer(bp)))
 	v2 = p
 	p++
 	*(*int8)(unsafe.Pointer(v2)) = int8('(')
-	libc.X__builtin___memcpy_chk(tls, p, part2, libc.Uint64FromInt32(len2), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, p, 0)))
+	libc.X__builtin___memcpy_chk(tls, p, part2, libc.Uint64FromInt32(len2), libc.X__builtin_object_size(tls, p, 0))
 	p += uintptr(len2)
 	v3 = p
 	p++
@@ -288489,7 +288489,7 @@ func _ConvertError(tls *libc.TLS, interp uintptr, code int32, adler TuLong) {
 	case int32(m_Z_NEED_DICT):
 		codeStr = __ccgo_ts + 70668
 		codeStr2 = bp
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+58490, libc.VaList(bp+32, adler))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+58490, libc.VaList(bp+32, adler))
 		break
 		/*
 		 * These should _not_ happen! This function is for dealing with error
@@ -288509,7 +288509,7 @@ func _ConvertError(tls *libc.TLS, interp uintptr, code int32, adler TuLong) {
 	default:
 		codeStr = __ccgo_ts + 24761
 		codeStr2 = bp
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+5623, libc.VaList(bp+32, code))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+5623, libc.VaList(bp+32, code))
 		break
 	}
 	x_Tcl_SetObjResult(tls, interp, x_Tcl_NewStringObj(tls, libz.XzError(tls, code), -int32(1)))
@@ -288538,7 +288538,7 @@ func _ConvertErrorToList(tls *libc.TLS, code int32, adler TuLong) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[0])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[0])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[0])).Fbytes, __ccgo_ts+14426, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[0])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[0])).Fbytes, __ccgo_ts+14426, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[0])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[0])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[0])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -288557,7 +288557,7 @@ func _ConvertErrorToList(tls *libc.TLS, code int32, adler TuLong) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes, __ccgo_ts+70778, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes, __ccgo_ts+70778, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -288603,7 +288603,7 @@ _14:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70648, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70648, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(7)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(7) - libc.Uint64FromInt32(1))
 	}
@@ -288634,7 +288634,7 @@ _2:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70655, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70655, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(5)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(5) - libc.Uint64FromInt32(1))
 	}
@@ -288656,7 +288656,7 @@ _3:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70660, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70660, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -288678,7 +288678,7 @@ _4:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70664, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70664, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -288700,7 +288700,7 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+60213, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+60213, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 	}
@@ -288722,7 +288722,7 @@ _6:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+53327, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+53327, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(6)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(6) - libc.Uint64FromInt32(1))
 	}
@@ -288745,7 +288745,7 @@ _7:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70668, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+70668, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(10)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(10) - libc.Uint64FromInt32(1))
 	}
@@ -288782,7 +288782,7 @@ _10:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+24761, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, __ccgo_ts+24761, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 	}
@@ -289108,7 +289108,7 @@ func x_Tcl_ZlibStreamInit(tls *libc.TLS, interp uintptr, mode int32, format int3
 			wbits = libc.Int32FromInt32(m_MAX_WBITS) | libc.Int32FromInt32(16)
 			if dictObj != 0 {
 				gzHeaderPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(1360)))
-				libc.X__builtin___memset_chk(tls, gzHeaderPtr, 0, uint64(1360), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, gzHeaderPtr, 0)))
+				libc.X__builtin___memset_chk(tls, gzHeaderPtr, 0, uint64(1360), libc.X__builtin_object_size(tls, gzHeaderPtr, 0))
 				if _GenerateHeader(tls, interp, dictObj, gzHeaderPtr, libc.UintptrFromInt32(0)) != m_TCL_OK {
 					x_TclpFree(tls, gzHeaderPtr)
 					return int32(m_TCL_ERROR)
@@ -289132,7 +289132,7 @@ func x_Tcl_ZlibStreamInit(tls *libc.TLS, interp uintptr, mode int32, format int3
 		case int32(m_TCL_ZLIB_FORMAT_GZIP):
 			wbits = libc.Int32FromInt32(m_MAX_WBITS) | libc.Int32FromInt32(16)
 			gzHeaderPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(1360)))
-			libc.X__builtin___memset_chk(tls, gzHeaderPtr, 0, uint64(1360), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, gzHeaderPtr, 0)))
+			libc.X__builtin___memset_chk(tls, gzHeaderPtr, 0, uint64(1360), libc.X__builtin_object_size(tls, gzHeaderPtr, 0))
 			(*TGzipHeader)(unsafe.Pointer(gzHeaderPtr)).Fheader.Fname = gzHeaderPtr + 80
 			(*TGzipHeader)(unsafe.Pointer(gzHeaderPtr)).Fheader.Fname_max = libc.Uint32FromInt32(libc.Int32FromInt32(m_PATH_MAX) - libc.Int32FromInt32(1))
 			(*TGzipHeader)(unsafe.Pointer(gzHeaderPtr)).Fheader.Fcomment = gzHeaderPtr + 1104
@@ -289158,7 +289158,7 @@ func x_Tcl_ZlibStreamInit(tls *libc.TLS, interp uintptr, mode int32, format int3
 	(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FcompDictObj = libc.UintptrFromInt32(0)
 	(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).Fflags = 0
 	(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FgzHeaderPtr = gzHeaderPtr
-	libc.X__builtin___memset_chk(tls, zshPtr+8, 0, uint64(112), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, zshPtr+8, 0)))
+	libc.X__builtin___memset_chk(tls, zshPtr+8, 0, uint64(112), libc.X__builtin_object_size(tls, zshPtr+8, 0))
 	(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).Fstream.Fadler = uint64(1)
 	/*
 	 * No output buffer available yet
@@ -289415,7 +289415,7 @@ func x_Tcl_ZlibStreamReset(tls *libc.TLS, zshandle TTcl_ZlibStream) (r int32) {
 	}
 	(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos = 0
 	(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FstreamEnd = 0
-	libc.X__builtin___memset_chk(tls, zshPtr+8, 0, uint64(112), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, zshPtr+8, 0)))
+	libc.X__builtin___memset_chk(tls, zshPtr+8, 0, uint64(112), libc.X__builtin_object_size(tls, zshPtr+8, 0))
 	/*
 	 * No output buffer available yet.
 	 */
@@ -289932,7 +289932,7 @@ func x_Tcl_ZlibStreamGet(tls *libc.TLS, zshandle TTcl_ZlibStream, data uintptr, 
 			itemPtr = x_Tcl_GetByteArrayFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), bp+4)
 			if *(*int32)(unsafe.Pointer(bp + 4))-(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos >= count-dataPos {
 				len1 = libc.Uint32FromInt32(count - dataPos)
-				libc.X__builtin___memcpy_chk(tls, dataPtr+uintptr(dataPos), itemPtr+uintptr((*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos), uint64(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr+uintptr(dataPos), 0)))
+				libc.X__builtin___memcpy_chk(tls, dataPtr+uintptr(dataPos), itemPtr+uintptr((*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos), uint64(len1), libc.X__builtin_object_size(tls, dataPtr+uintptr(dataPos), 0))
 				p13 = zshPtr + 152
 				*(*int32)(unsafe.Pointer(p13)) = int32(uint32(*(*int32)(unsafe.Pointer(p13))) + len1)
 				dataPos = int32(uint32(dataPos) + len1)
@@ -289941,7 +289941,7 @@ func x_Tcl_ZlibStreamGet(tls *libc.TLS, zshandle TTcl_ZlibStream, data uintptr, 
 				}
 			} else {
 				len11 = libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 4)) - (*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos)
-				libc.X__builtin___memcpy_chk(tls, dataPtr+uintptr(dataPos), itemPtr+uintptr((*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos), uint64(len11), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, dataPtr+uintptr(dataPos), 0)))
+				libc.X__builtin___memcpy_chk(tls, dataPtr+uintptr(dataPos), itemPtr+uintptr((*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos), uint64(len11), libc.X__builtin_object_size(tls, dataPtr+uintptr(dataPos), 0))
 				dataPos = int32(uint32(dataPos) + len11)
 				(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos = 0
 			}
@@ -290004,7 +290004,7 @@ func x_Tcl_ZlibDeflate(tls *libc.TLS, interp uintptr, format int32, data uintptr
 			*(*int32)(unsafe.Pointer(bp + 4)) = int32(32)
 			if gzipHeaderDictObj != 0 {
 				headerPtr = bp + 120
-				libc.X__builtin___memset_chk(tls, headerPtr, 0, uint64(80), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, headerPtr, 0)))
+				libc.X__builtin___memset_chk(tls, headerPtr, 0, uint64(80), libc.X__builtin_object_size(tls, headerPtr, 0))
 				if _GenerateHeader(tls, interp, gzipHeaderDictObj, bp+120, bp+4) != m_TCL_OK {
 					return int32(m_TCL_ERROR)
 				}
@@ -290040,7 +290040,7 @@ func x_Tcl_ZlibDeflate(tls *libc.TLS, interp uintptr, format int32, data uintptr
 	 * to the deflate command.
 	 */
 	inData = x_Tcl_GetByteArrayFromObj(tls, data, bp)
-	libc.X__builtin___memset_chk(tls, bp+8, 0, uint64(112), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8, 0)))
+	libc.X__builtin___memset_chk(tls, bp+8, 0, uint64(112), libc.X__builtin_object_size(tls, bp+8, 0))
 	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Favail_in = libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp)))
 	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Fnext_in = inData
 	/*
@@ -290166,7 +290166,7 @@ func x_Tcl_ZlibInflate(tls *libc.TLS, interp uintptr, format int32, data uintptr
 	}
 	if gzipHeaderDictObj != 0 {
 		headerPtr = bp + 120
-		libc.X__builtin___memset_chk(tls, headerPtr, 0, uint64(80), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, headerPtr, 0)))
+		libc.X__builtin___memset_chk(tls, headerPtr, 0, uint64(80), libc.X__builtin_object_size(tls, headerPtr, 0))
 		nameBuf = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromInt32(m_PATH_MAX)))
 		(*(*Tgz_header)(unsafe.Pointer(bp + 120))).Fname = nameBuf
 		(*(*Tgz_header)(unsafe.Pointer(bp + 120))).Fname_max = libc.Uint32FromInt32(libc.Int32FromInt32(m_PATH_MAX) - libc.Int32FromInt32(1))
@@ -290202,7 +290202,7 @@ func x_Tcl_ZlibInflate(tls *libc.TLS, interp uintptr, format int32, data uintptr
 	(*TTcl_Obj)(unsafe.Pointer(obj)).Flength = 0
 	(*TTcl_Obj)(unsafe.Pointer(obj)).FtypePtr = libc.UintptrFromInt32(0)
 	outData = x_Tcl_SetByteArrayLength(tls, obj, bufferSize)
-	libc.X__builtin___memset_chk(tls, bp+8, 0, uint64(112), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+8, 0)))
+	libc.X__builtin___memset_chk(tls, bp+8, 0, uint64(112), libc.X__builtin_object_size(tls, bp+8, 0))
 	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Favail_in = libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp))) + uint32(1) /* +1 because zlib can "over-request"
 	 * input (but ignore it!) */
 	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Fnext_in = inData
@@ -291824,7 +291824,7 @@ func _ZlibTransformSetOption(tls *libc.TLS, instanceData TClientData, interp uin
 			(*TTcl_Obj)(unsafe.Pointer(compDictObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(compDictObj)).Fbytes = x_Tcl_Alloc(tls, uint32(libc.Xstrlen(tls, value))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(compDictObj)).Fbytes, value, libc.Xstrlen(tls, value), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(compDictObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(compDictObj)).Fbytes, value, libc.Xstrlen(tls, value), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(compDictObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(compDictObj)).Fbytes + uintptr(libc.Xstrlen(tls, value)))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(compDictObj)).Flength = libc.Int32FromUint64(libc.Xstrlen(tls, value))
 		}
@@ -291965,7 +291965,7 @@ func _ZlibTransformGetOption(tls *libc.TLS, instanceData TClientData, interp uin
 		} else {
 			crc = (*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Fadler
 		}
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+58490, libc.VaList(bp+24, crc))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+58490, libc.VaList(bp+24, crc))
 		if optionName == libc.UintptrFromInt32(0) {
 			x_Tcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+73032)
 			x_Tcl_DStringAppendElement(tls, dsPtr, bp)
@@ -292187,7 +292187,7 @@ func _ZlibStackChannelTransform(tls *libc.TLS, interp uintptr, mode int32, forma
 	if mode != int32(m_TCL_ZLIB_STREAM_DEFLATE) && mode != int32(m_TCL_ZLIB_STREAM_INFLATE) {
 		x_Tcl_Panic(tls, __ccgo_ts+73042, libc.VaList(bp+8, mode))
 	}
-	libc.X__builtin___memset_chk(tls, cd, 0, uint64(3016), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, cd, 0)))
+	libc.X__builtin___memset_chk(tls, cd, 0, uint64(3016), libc.X__builtin_object_size(tls, cd, 0))
 	(*TZlibChannelData)(unsafe.Pointer(cd)).Fmode = mode
 	(*TZlibChannelData)(unsafe.Pointer(cd)).Fformat = format
 	(*TZlibChannelData)(unsafe.Pointer(cd)).FreadAheadLimit = limit
@@ -293070,7 +293070,7 @@ func x_TclpOpenFileChannel(tls *libc.TLS, interp uintptr, pathPtr uintptr, mode 
 	 * inherit this fd.
 	 */
 	libc.Xfcntl(tls, fd, int32(m_F_SETFD), libc.VaList(bp+48, int32(m_FD_CLOEXEC)))
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+73356, libc.VaList(bp+48, fd))
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+73356, libc.VaList(bp+48, fd))
 	translation = libc.UintptrFromInt32(0)
 	channelTypePtr = uintptr(unsafe.Pointer(&_fileChannelType))
 	fsPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
@@ -293129,7 +293129,7 @@ func x_Tcl_MakeFileChannel(tls *libc.TLS, handle TClientData, mode int32) (r TTc
 		return x_TclpMakeTcpClientChannelMode(tls, uintptr(int64(fd)), mode)
 	} else {
 		channelTypePtr = uintptr(unsafe.Pointer(&_fileChannelType))
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+73356, libc.VaList(bp+72, fd))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+73356, libc.VaList(bp+72, fd))
 	}
 	fsPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
 	(*TFileState)(unsafe.Pointer(fsPtr)).Ffd = fd
@@ -294796,7 +294796,7 @@ func _SetPermissionsAttribute(tls *libc.TLS, interp uintptr, objIndex int32, fil
 			(*TTcl_Obj)(unsafe.Pointer(modeObj)).Flength = 0
 		} else {
 			(*TTcl_Obj)(unsafe.Pointer(modeObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(modeObj)).Fbytes, __ccgo_ts+50362, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(modeObj)).Fbytes, 0)))
+			libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(modeObj)).Fbytes, __ccgo_ts+50362, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(modeObj)).Fbytes, 0))
 			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(modeObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(3)-libc.Uint64FromInt32(1))))) = int8('\000')
 			(*TTcl_Obj)(unsafe.Pointer(modeObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(3) - libc.Uint64FromInt32(1))
 		}
@@ -294890,7 +294890,7 @@ func x_TclpObjListVolumes(tls *libc.TLS) (r uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer(resultPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(resultPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(resultPtr)).Fbytes, __ccgo_ts+16528, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(resultPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(resultPtr)).Fbytes, __ccgo_ts+16528, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(resultPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(resultPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(resultPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(2) - libc.Uint64FromInt32(1))
 	}
@@ -296497,7 +296497,7 @@ func x_TclNativeCreateNativeRep(tls *libc.TLS, pathPtr uintptr) (r TClientData) 
 		x_TclFreeObj(tls, _objPtr1)
 	}
 	nativePathPtr = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(bp + 216))))
-	libc.X__builtin___memcpy_chk(tls, nativePathPtr, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 216))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, nativePathPtr, 0)))
+	libc.X__builtin___memcpy_chk(tls, nativePathPtr, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(bp + 216))), libc.X__builtin_object_size(tls, nativePathPtr, 0))
 	x_Tcl_DStringFree(tls, bp)
 	return nativePathPtr
 }
@@ -296531,7 +296531,7 @@ func x_TclNativeDupInternalRep(tls *libc.TLS, clientData TClientData) (r TClient
 	 */
 	len1 = (libc.Xstrlen(tls, clientData) + uint64(1)) * uint64(1)
 	copy1 = x_Tcl_Alloc(tls, uint32(len1))
-	libc.X__builtin___memcpy_chk(tls, copy1, clientData, len1, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, copy1, 0)))
+	libc.X__builtin___memcpy_chk(tls, copy1, clientData, len1, libc.X__builtin_object_size(tls, copy1, 0))
 	return copy1
 }
 
@@ -297063,7 +297063,7 @@ func x_TclpCreateCommandChannel(tls *libc.TLS, readFile TTclFile, writeFile TTcl
 	 * "file%d" as the base name for pipes even though it would be more
 	 * natural to use "pipe%d".
 	 */
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+73356, libc.VaList(bp+48, channelId))
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+73356, libc.VaList(bp+48, channelId))
 	(*TPipeState)(unsafe.Pointer(statePtr)).Fchannel = x_Tcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_pipeChannelType)), bp, statePtr, mode)
 	return (*TPipeState)(unsafe.Pointer(statePtr)).Fchannel
 }
@@ -297696,7 +297696,7 @@ func _InitializeHostName(tls *libc.TLS, valuePtr uintptr, lengthPtr uintptr, enc
 	var _ /* u at bp+0 */ Tutsname
 	_, _, _, _ = dot, hp, native, node
 	native = libc.UintptrFromInt32(0)
-	libc.X__builtin___memset_chk(tls, bp, libc.Int32FromInt32(0), uint64(1280), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, 0)))
+	libc.X__builtin___memset_chk(tls, bp, libc.Int32FromInt32(0), uint64(1280), libc.X__builtin_object_size(tls, bp, 0))
 	if libc.Xuname(tls, bp) >= 0 { /* INTL: Native. */
 		hp = x_TclpGetHostByName(tls, bp+256) /* INTL: Native. */
 		if hp == libc.UintptrFromInt32(0) {
@@ -297708,7 +297708,7 @@ func _InitializeHostName(tls *libc.TLS, valuePtr uintptr, lengthPtr uintptr, enc
 			dot = libc.Xstrchr(tls, bp+256, int32('.'))
 			if dot != libc.UintptrFromInt32(0) {
 				node = x_Tcl_Alloc(tls, libc.Uint32FromInt64(int64(dot)-T__predefined_ptrdiff_t(bp+256)+libc.Int64FromInt32(1)))
-				libc.X__builtin___memcpy_chk(tls, node, bp+256, libc.Uint64FromInt64(int64(dot)-T__predefined_ptrdiff_t(bp+256)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, node, 0)))
+				libc.X__builtin___memcpy_chk(tls, node, bp+256, libc.Uint64FromInt64(int64(dot)-T__predefined_ptrdiff_t(bp+256)), libc.X__builtin_object_size(tls, node, 0))
 				*(*int8)(unsafe.Pointer(node + uintptr(int64(dot)-T__predefined_ptrdiff_t(bp+256)))) = int8('\000')
 				hp = x_TclpGetHostByName(tls, node)
 				x_TclpFree(tls, node)
@@ -297726,7 +297726,7 @@ func _InitializeHostName(tls *libc.TLS, valuePtr uintptr, lengthPtr uintptr, enc
 	*(*TTcl_Encoding)(unsafe.Pointer(encodingPtr)) = x_Tcl_GetEncoding(tls, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 	*(*int32)(unsafe.Pointer(lengthPtr)) = libc.Int32FromUint64(libc.Xstrlen(tls, native))
 	*(*uintptr)(unsafe.Pointer(valuePtr)) = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(lengthPtr))+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), native, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(lengthPtr))+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), 0)))
+	libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), native, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(lengthPtr))+int32(1)), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), 0))
 }
 
 /*
@@ -298771,7 +298771,7 @@ func x_Tcl_OpenTcpClient(tls *libc.TLS, interp uintptr, port int32, host uintptr
 	 * Allocate a new TcpState for this socket.
 	 */
 	statePtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(104)))
-	libc.X__builtin___memset_chk(tls, statePtr, 0, uint64(104), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, statePtr, 0)))
+	libc.X__builtin___memset_chk(tls, statePtr, 0, uint64(104), libc.X__builtin_object_size(tls, statePtr, 0))
 	if async != 0 {
 		v1 = libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
 	} else {
@@ -298789,7 +298789,7 @@ func x_Tcl_OpenTcpClient(tls *libc.TLS, interp uintptr, port int32, host uintptr
 		_TcpCloseProc(tls, statePtr, libc.UintptrFromInt32(0))
 		return libc.UintptrFromInt32(0)
 	}
-	libc.X__builtin___sprintf_chk(tls, bp+24, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+24, int32(1))), __ccgo_ts+74345, libc.VaList(bp+56, int64(statePtr)))
+	libc.X__builtin___sprintf_chk(tls, bp+24, 0, libc.X__builtin_object_size(tls, bp+24, int32(1)), __ccgo_ts+74345, libc.VaList(bp+56, int64(statePtr)))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Fchannel = x_Tcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_tcpChannelType)), bp+24, statePtr, libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(2))
 	if x_Tcl_SetChannelOption(tls, interp, (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel, __ccgo_ts+49080, __ccgo_ts+73412) == int32(m_TCL_ERROR) {
 		x_Tcl_Close(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel)
@@ -298844,10 +298844,10 @@ func x_TclpMakeTcpClientChannelMode(tls *libc.TLS, sock uintptr, mode int32) (r 
 	var _ /* channelName at bp+0 */ [21]int8
 	_ = statePtr
 	statePtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(104)))
-	libc.X__builtin___memset_chk(tls, statePtr, 0, uint64(104), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, statePtr, 0)))
+	libc.X__builtin___memset_chk(tls, statePtr, 0, uint64(104), libc.X__builtin_object_size(tls, statePtr, 0))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd = int32(int64(sock))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Fflags = 0
-	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+74345, libc.VaList(bp+32, int64(statePtr)))
+	libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+74345, libc.VaList(bp+32, int64(statePtr)))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Fchannel = x_Tcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_tcpChannelType)), bp, statePtr, mode)
 	if x_Tcl_SetChannelOption(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel, __ccgo_ts+49080, __ccgo_ts+73412) == int32(m_TCL_ERROR) {
 		x_Tcl_Close(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel)
@@ -298992,14 +298992,14 @@ func x_Tcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintp
 			 * Allocate a new TcpState for this socket.
 			 */
 			statePtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(104)))
-			libc.X__builtin___memset_chk(tls, statePtr, 0, uint64(104), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, statePtr, 0)))
+			libc.X__builtin___memset_chk(tls, statePtr, 0, uint64(104), libc.X__builtin_object_size(tls, statePtr, 0))
 			(*TTcpState)(unsafe.Pointer(statePtr)).FacceptProc = acceptProc
 			(*TTcpState)(unsafe.Pointer(statePtr)).FacceptProcData = acceptProcData
-			libc.X__builtin___sprintf_chk(tls, bp+16, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+16, int32(1))), __ccgo_ts+74345, libc.VaList(bp+200, int64(statePtr)))
+			libc.X__builtin___sprintf_chk(tls, bp+16, 0, libc.X__builtin_object_size(tls, bp+16, int32(1)), __ccgo_ts+74345, libc.VaList(bp+200, int64(statePtr)))
 			newfds = statePtr + 8
 		} else {
 			newfds = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(24)))
-			libc.X__builtin___memset_chk(tls, newfds, libc.Int32FromInt32(0), uint64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newfds, 0)))
+			libc.X__builtin___memset_chk(tls, newfds, libc.Int32FromInt32(0), uint64(24), libc.X__builtin_object_size(tls, newfds, 0))
 			(*TTcpFdList)(unsafe.Pointer(fds)).Fnext = newfds
 		}
 		(*TTcpFdList)(unsafe.Pointer(newfds)).Ffd = sock
@@ -299081,10 +299081,10 @@ func _TcpAccept(tls *libc.TLS, data uintptr, mask int32) {
 	 */
 	libc.Xfcntl(tls, newsock, int32(m_F_SETFD), libc.VaList(bp+1224, int32(m_FD_CLOEXEC)))
 	newSockState = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(104)))
-	libc.X__builtin___memset_chk(tls, newSockState, 0, uint64(104), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newSockState, 0)))
+	libc.X__builtin___memset_chk(tls, newSockState, 0, uint64(104), libc.X__builtin_object_size(tls, newSockState, 0))
 	(*TTcpState)(unsafe.Pointer(newSockState)).Fflags = 0
 	(*TTcpState)(unsafe.Pointer(newSockState)).Ffds.Ffd = newsock
-	libc.X__builtin___sprintf_chk(tls, bp+132, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+132, int32(1))), __ccgo_ts+74345, libc.VaList(bp+1224, int64(newSockState)))
+	libc.X__builtin___sprintf_chk(tls, bp+132, 0, libc.X__builtin_object_size(tls, bp+132, int32(1)), __ccgo_ts+74345, libc.VaList(bp+1224, int64(newSockState)))
 	(*TTcpState)(unsafe.Pointer(newSockState)).Fchannel = x_Tcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_tcpChannelType)), bp+132, newSockState, libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(2))
 	x_Tcl_SetChannelOption(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(newSockState)).Fchannel, __ccgo_ts+49080, __ccgo_ts+73412)
 	if (*TTcpState)(unsafe.Pointer((*TTcpFdList)(unsafe.Pointer(fds)).FstatePtr)).FacceptProc != libc.UintptrFromInt32(0) {
@@ -304120,7 +304120,7 @@ func x_TclpInitLibraryPath(tls *libc.TLS, valuePtr uintptr, lengthPtr uintptr, e
 		 * installLib variable computes the path as though the executable is
 		 * installed.
 		 */
-		libc.X__builtin___sprintf_chk(tls, bp+448, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+448, int32(1))), __ccgo_ts+75985, libc.VaList(bp+488, __ccgo_ts+17317))
+		libc.X__builtin___sprintf_chk(tls, bp+448, 0, libc.X__builtin_object_size(tls, bp+448, int32(1)), __ccgo_ts+75985, libc.VaList(bp+488, __ccgo_ts+17317))
 		/*
 		 * If TCL_LIBRARY is set, search there.
 		 */
@@ -304157,7 +304157,7 @@ func x_TclpInitLibraryPath(tls *libc.TLS, valuePtr uintptr, lengthPtr uintptr, e
 	*(*TTcl_Encoding)(unsafe.Pointer(encodingPtr)) = x_Tcl_GetEncoding(tls, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 	str = x_Tcl_GetStringFromObj(tls, pathPtr, lengthPtr)
 	*(*uintptr)(unsafe.Pointer(valuePtr)) = x_Tcl_Alloc(tls, libc.Uint32FromInt32(*(*int32)(unsafe.Pointer(lengthPtr))+libc.Int32FromInt32(1)))
-	libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), str, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(lengthPtr))+int32(1)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), 0)))
+	libc.X__builtin___memcpy_chk(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), str, libc.Uint64FromInt32(*(*int32)(unsafe.Pointer(lengthPtr))+int32(1)), libc.X__builtin_object_size(tls, *(*uintptr)(unsafe.Pointer(valuePtr)), 0))
 	_objPtr = pathPtr
 	v2 = _objPtr
 	v1 = *(*int32)(unsafe.Pointer(v2))
@@ -306417,7 +306417,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 	 * attached to the interpreter via an assocData entry; not very efficient,
 	 * but the best we can do without hacking the core more.
 	 */
-	libc.X__builtin___memset_chk(tls, fPtr, 0, uint64(112), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, fPtr, 0)))
+	libc.X__builtin___memset_chk(tls, fPtr, 0, uint64(112), libc.X__builtin_object_size(tls, fPtr, 0))
 	(*TInterp)(unsafe.Pointer(interp)).FobjectFoundation = fPtr
 	(*TFoundation)(unsafe.Pointer(fPtr)).Finterp = interp
 	(*TFoundation)(unsafe.Pointer(fPtr)).FooNs = x_Tcl_CreateNamespace(tls, interp, __ccgo_ts+78046, fPtr, libc.UintptrFromInt32(0))
@@ -306441,7 +306441,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FunknownMethodNameObj)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FunknownMethodNameObj)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FunknownMethodNameObj)).Fbytes, __ccgo_ts+1452, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FunknownMethodNameObj)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FunknownMethodNameObj)).Fbytes, __ccgo_ts+1452, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FunknownMethodNameObj)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FunknownMethodNameObj)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FunknownMethodNameObj)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 	}
@@ -306460,7 +306460,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FconstructorName)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FconstructorName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(14)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FconstructorName)).Fbytes, __ccgo_ts+78101, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(14)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FconstructorName)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FconstructorName)).Fbytes, __ccgo_ts+78101, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(14)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FconstructorName)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FconstructorName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(14)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FconstructorName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(14) - libc.Uint64FromInt32(1))
 	}
@@ -306479,7 +306479,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdestructorName)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdestructorName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdestructorName)).Fbytes, __ccgo_ts+78115, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdestructorName)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdestructorName)).Fbytes, __ccgo_ts+78115, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdestructorName)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdestructorName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdestructorName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(13) - libc.Uint64FromInt32(1))
 	}
@@ -306498,7 +306498,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FclonedName)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FclonedName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FclonedName)).Fbytes, __ccgo_ts+78128, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FclonedName)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FclonedName)).Fbytes, __ccgo_ts+78128, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FclonedName)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FclonedName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(9)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FclonedName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(9) - libc.Uint64FromInt32(1))
 	}
@@ -306517,7 +306517,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdefineName)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdefineName)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdefineName)).Fbytes, __ccgo_ts+78058, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdefineName)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdefineName)).Fbytes, __ccgo_ts+78058, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdefineName)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdefineName)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FdefineName)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(13) - libc.Uint64FromInt32(1))
 	}
@@ -306542,7 +306542,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 		(*TTcl_Obj)(unsafe.Pointer(namePtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(24)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes, __ccgo_ts+78137, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(24)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes, __ccgo_ts+78137, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(24)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(24)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(namePtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(24) - libc.Uint64FromInt32(1))
 	}
@@ -306682,7 +306682,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 		(*TTcl_Obj)(unsafe.Pointer(argsPtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(argsPtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(argsPtr)).Fbytes, __ccgo_ts+78194, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(argsPtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(argsPtr)).Fbytes, __ccgo_ts+78194, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(argsPtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(argsPtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(13)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(argsPtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(13) - libc.Uint64FromInt32(1))
 	}
@@ -306727,7 +306727,7 @@ func _InitFoundation(tls *libc.TLS, interp uintptr) (r int32) {
 		(*TTcl_Obj)(unsafe.Pointer(namePtr)).Flength = 0
 	} else {
 		(*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes = x_Tcl_Alloc(tls, libc.Uint32FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)))+libc.Uint32FromUint32(1))
-		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes, __ccgo_ts+76221, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes, __ccgo_ts+76221, libc.Uint64FromInt32(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes, 0))
 		*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(namePtr)).Fbytes + uintptr(libc.Int32FromUint64(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1))))) = int8('\000')
 		(*TTcl_Obj)(unsafe.Pointer(namePtr)).Flength = libc.Int32FromUint64(libc.Uint64FromInt64(4) - libc.Uint64FromInt32(1))
 	}
@@ -306932,7 +306932,7 @@ func _AllocObject(tls *libc.TLS, interp uintptr, nameStr uintptr, nsPtr uintptr,
 	_, _, _, _, _, _, _, _, _, _ = cmdPtr, creationEpoch, fPtr, oPtr, tracePtr, v1, v2, v3, v4, v5
 	fPtr = (*TInterp)(unsafe.Pointer(interp)).FobjectFoundation
 	oPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(152)))
-	libc.X__builtin___memset_chk(tls, oPtr, 0, uint64(152), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, oPtr, 0)))
+	libc.X__builtin___memset_chk(tls, oPtr, 0, uint64(152), libc.X__builtin_object_size(tls, oPtr, 0))
 	/*
 	 * Every object has a namespace; make one. Note that this also normally
 	 * computes the creation epoch value for the object, a sequence number
@@ -306959,7 +306959,7 @@ func _AllocObject(tls *libc.TLS, interp uintptr, nameStr uintptr, nsPtr uintptr,
 		v4 = (*TFoundation)(unsafe.Pointer(fPtr)).FtsdPtr
 		*(*int32)(unsafe.Pointer(v4))++
 		v3 = *(*int32)(unsafe.Pointer(v4))
-		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, int32(1))), __ccgo_ts+78280, libc.VaList(bp+48, v3))
+		libc.X__builtin___sprintf_chk(tls, bp, 0, libc.X__builtin_object_size(tls, bp, int32(1)), __ccgo_ts+78280, libc.VaList(bp+48, v3))
 		(*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr = x_Tcl_CreateNamespace(tls, interp, bp, oPtr, libc.UintptrFromInt32(0))
 		if (*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr != libc.UintptrFromInt32(0) {
 			creationEpoch = (*TThreadLocalData)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FtsdPtr)).FnsCount
@@ -308111,7 +308111,7 @@ func x_TclOOAllocClass(tls *libc.TLS, interp uintptr, useThisObj uintptr) (r uin
 	_, _ = clsPtr, fPtr
 	fPtr = (*TInterp)(unsafe.Pointer(interp)).FobjectFoundation
 	clsPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(264)))
-	libc.X__builtin___memset_chk(tls, clsPtr, 0, uint64(264), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, clsPtr, 0)))
+	libc.X__builtin___memset_chk(tls, clsPtr, 0, uint64(264), libc.X__builtin_object_size(tls, clsPtr, 0))
 	(*TClass)(unsafe.Pointer(clsPtr)).FthisPtr = useThisObj
 	/*
 	 * Configure the namespace path for the class's object.
@@ -308482,7 +308482,7 @@ func x_Tcl_CopyObjectInstance(tls *libc.TLS, interp uintptr, sourceObject TTcl_O
 		(*TObject)(unsafe.Pointer(o2Ptr)).Fmixins.Flist = v6
 		v7 = x_Tcl_Alloc(tls, uint32(len1))
 		(*TObject)(unsafe.Pointer(o2Ptr)).Fmixins.Flist = v7
-		libc.X__builtin___memcpy_chk(tls, v6, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, len1, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, v7, 0)))
+		libc.X__builtin___memcpy_chk(tls, v6, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, len1, libc.X__builtin_object_size(tls, v7, 0))
 	} else {
 		(*TObject)(unsafe.Pointer(o2Ptr)).Fmixins.Flist = libc.UintptrFromInt32(0)
 	}
@@ -308521,7 +308521,7 @@ func x_Tcl_CopyObjectInstance(tls *libc.TLS, interp uintptr, sourceObject TTcl_O
 		(*TObject)(unsafe.Pointer(o2Ptr)).Ffilters.Flist = v10
 		v11 = x_Tcl_Alloc(tls, uint32(len11))
 		(*TObject)(unsafe.Pointer(o2Ptr)).Ffilters.Flist = v11
-		libc.X__builtin___memcpy_chk(tls, v10, (*TObject)(unsafe.Pointer(oPtr)).Ffilters.Flist, len11, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, v11, 0)))
+		libc.X__builtin___memcpy_chk(tls, v10, (*TObject)(unsafe.Pointer(oPtr)).Ffilters.Flist, len11, libc.X__builtin_object_size(tls, v11, 0))
 	} else {
 		(*TObject)(unsafe.Pointer(o2Ptr)).Ffilters.Flist = libc.UintptrFromInt32(0)
 	}
@@ -308554,7 +308554,7 @@ func x_Tcl_CopyObjectInstance(tls *libc.TLS, interp uintptr, sourceObject TTcl_O
 		(*TObject)(unsafe.Pointer(o2Ptr)).Fvariables.Flist = v14
 		v15 = x_Tcl_Alloc(tls, uint32(len2))
 		(*TObject)(unsafe.Pointer(o2Ptr)).Fvariables.Flist = v15
-		libc.X__builtin___memcpy_chk(tls, v14, (*TObject)(unsafe.Pointer(oPtr)).Fvariables.Flist, len2, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, v15, 0)))
+		libc.X__builtin___memcpy_chk(tls, v14, (*TObject)(unsafe.Pointer(oPtr)).Fvariables.Flist, len2, libc.X__builtin_object_size(tls, v15, 0))
 	} else {
 		(*TObject)(unsafe.Pointer(o2Ptr)).Fvariables.Flist = libc.UintptrFromInt32(0)
 	}
@@ -308660,7 +308660,7 @@ func x_Tcl_CopyObjectInstance(tls *libc.TLS, interp uintptr, sourceObject TTcl_O
 		} else {
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Fsuperclasses.Flist = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*libc.Uint64FromInt32((*TClass)(unsafe.Pointer(clsPtr)).Fsuperclasses.Fnum)))
 		}
-		libc.X__builtin___memcpy_chk(tls, (*TClass)(unsafe.Pointer(cls2Ptr)).Fsuperclasses.Flist, (*TClass)(unsafe.Pointer(clsPtr)).Fsuperclasses.Flist, uint64(8)*libc.Uint64FromInt32((*TClass)(unsafe.Pointer(clsPtr)).Fsuperclasses.Fnum), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TClass)(unsafe.Pointer(cls2Ptr)).Fsuperclasses.Flist, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TClass)(unsafe.Pointer(cls2Ptr)).Fsuperclasses.Flist, (*TClass)(unsafe.Pointer(clsPtr)).Fsuperclasses.Flist, uint64(8)*libc.Uint64FromInt32((*TClass)(unsafe.Pointer(clsPtr)).Fsuperclasses.Fnum), libc.X__builtin_object_size(tls, (*TClass)(unsafe.Pointer(cls2Ptr)).Fsuperclasses.Flist, 0))
 		(*TClass)(unsafe.Pointer(cls2Ptr)).Fsuperclasses.Fnum = (*TClass)(unsafe.Pointer(clsPtr)).Fsuperclasses.Fnum
 		i = 0
 		for {
@@ -308696,7 +308696,7 @@ func x_Tcl_CopyObjectInstance(tls *libc.TLS, interp uintptr, sourceObject TTcl_O
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Ffilters.Flist = v23
 			v24 = x_Tcl_Alloc(tls, uint32(len3))
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Ffilters.Flist = v24
-			libc.X__builtin___memcpy_chk(tls, v23, (*TClass)(unsafe.Pointer(clsPtr)).Ffilters.Flist, len3, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, v24, 0)))
+			libc.X__builtin___memcpy_chk(tls, v23, (*TClass)(unsafe.Pointer(clsPtr)).Ffilters.Flist, len3, libc.X__builtin_object_size(tls, v24, 0))
 		} else {
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Ffilters.Flist = libc.UintptrFromInt32(0)
 		}
@@ -308729,7 +308729,7 @@ func x_Tcl_CopyObjectInstance(tls *libc.TLS, interp uintptr, sourceObject TTcl_O
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Fvariables.Flist = v27
 			v28 = x_Tcl_Alloc(tls, uint32(len4))
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Fvariables.Flist = v28
-			libc.X__builtin___memcpy_chk(tls, v27, (*TClass)(unsafe.Pointer(clsPtr)).Fvariables.Flist, len4, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, v28, 0)))
+			libc.X__builtin___memcpy_chk(tls, v27, (*TClass)(unsafe.Pointer(clsPtr)).Fvariables.Flist, len4, libc.X__builtin_object_size(tls, v28, 0))
 		} else {
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Fvariables.Flist = libc.UintptrFromInt32(0)
 		}
@@ -308785,7 +308785,7 @@ func x_Tcl_CopyObjectInstance(tls *libc.TLS, interp uintptr, sourceObject TTcl_O
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Fmixins.Flist = v32
 			v33 = x_Tcl_Alloc(tls, uint32(len5))
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Fmixins.Flist = v33
-			libc.X__builtin___memcpy_chk(tls, v32, (*TClass)(unsafe.Pointer(clsPtr)).Fmixins.Flist, len5, libc.Uint64FromInt32(libc.X__builtin_object_size(tls, v33, 0)))
+			libc.X__builtin___memcpy_chk(tls, v32, (*TClass)(unsafe.Pointer(clsPtr)).Fmixins.Flist, len5, libc.X__builtin_object_size(tls, v33, 0))
 		} else {
 			(*TClass)(unsafe.Pointer(cls2Ptr)).Fmixins.Flist = libc.UintptrFromInt32(0)
 		}
@@ -312060,7 +312060,7 @@ func _AddMethodToCallChain(tls *libc.TLS, mPtr uintptr, cbPtr uintptr, doneFilte
 	 */
 	if (*TCallChain)(unsafe.Pointer(callPtr)).FnumChain == int32(m_CALL_CHAIN_STATIC_SIZE) {
 		(*TCallChain)(unsafe.Pointer(callPtr)).Fchain = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(24)*libc.Uint64FromInt32((*TCallChain)(unsafe.Pointer(callPtr)).FnumChain+libc.Int32FromInt32(1))))
-		libc.X__builtin___memcpy_chk(tls, (*TCallChain)(unsafe.Pointer(callPtr)).Fchain, callPtr+32, uint64(24)*libc.Uint64FromInt32((*TCallChain)(unsafe.Pointer(callPtr)).FnumChain), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TCallChain)(unsafe.Pointer(callPtr)).Fchain, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TCallChain)(unsafe.Pointer(callPtr)).Fchain, callPtr+32, uint64(24)*libc.Uint64FromInt32((*TCallChain)(unsafe.Pointer(callPtr)).FnumChain), libc.X__builtin_object_size(tls, (*TCallChain)(unsafe.Pointer(callPtr)).Fchain, 0))
 	} else {
 		if (*TCallChain)(unsafe.Pointer(callPtr)).FnumChain > int32(m_CALL_CHAIN_STATIC_SIZE) {
 			(*TCallChain)(unsafe.Pointer(callPtr)).Fchain = x_Tcl_Realloc(tls, (*TCallChain)(unsafe.Pointer(callPtr)).Fchain, uint32(libc.Uint64FromInt64(24)*libc.Uint64FromInt32((*TCallChain)(unsafe.Pointer(callPtr)).FnumChain+libc.Int32FromInt32(1))))
@@ -312399,7 +312399,7 @@ func x_TclOOGetStereotypeCallChain(tls *libc.TLS, clsPtr uintptr, methodNameObj 
 	 * Synthesize a temporary stereotypical object so that we can use existing
 	 * machinery to produce the stereotypical call chain.
 	 */
-	libc.X__builtin___memset_chk(tls, bp+120, 0, uint64(152), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+120, 0)))
+	libc.X__builtin___memset_chk(tls, bp+120, 0, uint64(152), libc.X__builtin_object_size(tls, bp+120, 0))
 	(*(*TObject)(unsafe.Pointer(bp + 120))).FfPtr = fPtr
 	(*(*TObject)(unsafe.Pointer(bp + 120))).FselfCls = clsPtr
 	(*(*TObject)(unsafe.Pointer(bp + 120))).FrefCount = int32(1)
@@ -312431,7 +312431,7 @@ func x_TclOOGetStereotypeCallChain(tls *libc.TLS, clsPtr uintptr, methodNameObj 
 		hPtr = libc.UintptrFromInt32(0)
 	}
 	callPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(128)))
-	libc.X__builtin___memset_chk(tls, callPtr, 0, uint64(128), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, callPtr, 0)))
+	libc.X__builtin___memset_chk(tls, callPtr, 0, uint64(128), libc.X__builtin_object_size(tls, callPtr, 0))
 	(*TCallChain)(unsafe.Pointer(callPtr)).Fflags = flags & (libc.Int32FromInt32(m_PUBLIC_METHOD1) | libc.Int32FromInt32(m_PRIVATE_METHOD3) | libc.Int32FromInt32(m_FILTER_HANDLING5))
 	(*TCallChain)(unsafe.Pointer(callPtr)).Fepoch = (*TFoundation)(unsafe.Pointer(fPtr)).Fepoch
 	(*TCallChain)(unsafe.Pointer(callPtr)).FobjectCreationEpoch = (*TThreadLocalData)(unsafe.Pointer((*TFoundation)(unsafe.Pointer(fPtr)).FtsdPtr)).FnsCount
@@ -313269,7 +313269,7 @@ func x_TclOOObjectSetMixins(tls *libc.TLS, oPtr uintptr, numMixins int32, mixins
 			*(*int32)(unsafe.Pointer(oPtr + 92)) &= ^libc.Int32FromInt32(m_USE_CLASS_CACHE3)
 		}
 		(*TObject)(unsafe.Pointer(oPtr)).Fmixins.Fnum = numMixins
-		libc.X__builtin___memcpy_chk(tls, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, mixins, uint64(8)*libc.Uint64FromInt32(numMixins), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, mixins, uint64(8)*libc.Uint64FromInt32(numMixins), libc.X__builtin_object_size(tls, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, 0))
 		i = 0
 		for {
 			if !(i < (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Fnum) {
@@ -313361,7 +313361,7 @@ func x_TclOOClassSetMixins(tls *libc.TLS, interp uintptr, classPtr uintptr, numM
 			(*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*libc.Uint64FromInt32(numMixins)))
 		}
 		(*TClass)(unsafe.Pointer(classPtr)).Fmixins.Fnum = numMixins
-		libc.X__builtin___memcpy_chk(tls, (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist, mixins, uint64(8)*libc.Uint64FromInt32(numMixins), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist, 0)))
+		libc.X__builtin___memcpy_chk(tls, (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist, mixins, uint64(8)*libc.Uint64FromInt32(numMixins), libc.X__builtin_object_size(tls, (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist, 0))
 		i = 0
 		for {
 			if !(i < (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Fnum) {
@@ -313571,7 +313571,7 @@ func x_TclOOUnknownDefinition(tls *libc.TLS, clientData TClientData, interp uint
 		*(*uintptr)(unsafe.Pointer(newObjv)) = x_Tcl_NewStringObj(tls, matchedStr, -int32(1))
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(newObjv)))).FrefCount++
 		if objc > int32(2) {
-			libc.X__builtin___memcpy_chk(tls, newObjv+uintptr(1)*8, objv+uintptr(2)*8, uint64(8)*libc.Uint64FromInt32(objc-libc.Int32FromInt32(2)), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, newObjv+uintptr(1)*8, 0)))
+			libc.X__builtin___memcpy_chk(tls, newObjv+uintptr(1)*8, objv+uintptr(2)*8, uint64(8)*libc.Uint64FromInt32(objc-libc.Int32FromInt32(2)), libc.X__builtin_object_size(tls, newObjv+uintptr(1)*8, 0))
 		}
 		result = x_Tcl_EvalObjv(tls, interp, objc-int32(1), newObjv, 0)
 		_objPtr = *(*uintptr)(unsafe.Pointer(newObjv))
@@ -314447,7 +314447,7 @@ func x_TclOODefineExportObjCmd(tls *libc.TLS, clientData TClientData, interp uin
 		}
 		if *(*int32)(unsafe.Pointer(bp)) != 0 {
 			mPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(56)))
-			libc.X__builtin___memset_chk(tls, mPtr, 0, uint64(56), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, mPtr, 0)))
+			libc.X__builtin___memset_chk(tls, mPtr, 0, uint64(56), libc.X__builtin_object_size(tls, mPtr, 0))
 			(*TMethod)(unsafe.Pointer(mPtr)).FrefCount = int32(1)
 			(*TMethod)(unsafe.Pointer(mPtr)).FnamePtr = *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8))
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8)))).FrefCount++
@@ -314701,7 +314701,7 @@ func x_TclOODefineUnexportObjCmd(tls *libc.TLS, clientData TClientData, interp u
 		}
 		if *(*int32)(unsafe.Pointer(bp)) != 0 {
 			mPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(56)))
-			libc.X__builtin___memset_chk(tls, mPtr, 0, uint64(56), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, mPtr, 0)))
+			libc.X__builtin___memset_chk(tls, mPtr, 0, uint64(56), libc.X__builtin_object_size(tls, mPtr, 0))
 			(*TMethod)(unsafe.Pointer(mPtr)).FrefCount = int32(1)
 			(*TMethod)(unsafe.Pointer(mPtr)).FnamePtr = *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8))
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8)))).FrefCount++
@@ -318468,7 +318468,7 @@ func x_TclOONewProcInstanceMethod(tls *libc.TLS, interp uintptr, oPtr uintptr, f
 		return libc.UintptrFromInt32(0)
 	}
 	pmPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(80)))
-	libc.X__builtin___memset_chk(tls, pmPtr, 0, uint64(80), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, pmPtr, 0)))
+	libc.X__builtin___memset_chk(tls, pmPtr, 0, uint64(80), libc.X__builtin_object_size(tls, pmPtr, 0))
 	(*TProcedureMethod)(unsafe.Pointer(pmPtr)).Fversion = m_TCLOO_PROCEDURE_METHOD_VERSION
 	(*TProcedureMethod)(unsafe.Pointer(pmPtr)).Fflags = flags & int32(m_USE_DECLARER_NS1)
 	(*TProcedureMethod)(unsafe.Pointer(pmPtr)).FrefCount = int32(1)
@@ -318547,7 +318547,7 @@ func x_TclOONewProcMethod(tls *libc.TLS, interp uintptr, clsPtr uintptr, flags i
 		}
 	}
 	pmPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(80)))
-	libc.X__builtin___memset_chk(tls, pmPtr, 0, uint64(80), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, pmPtr, 0)))
+	libc.X__builtin___memset_chk(tls, pmPtr, 0, uint64(80), libc.X__builtin_object_size(tls, pmPtr, 0))
 	(*TProcedureMethod)(unsafe.Pointer(pmPtr)).Fversion = m_TCLOO_PROCEDURE_METHOD_VERSION
 	(*TProcedureMethod)(unsafe.Pointer(pmPtr)).Fflags = flags & int32(m_USE_DECLARER_NS1)
 	(*TProcedureMethod)(unsafe.Pointer(pmPtr)).FrefCount = int32(1)
@@ -318932,7 +318932,7 @@ func _PushMethodCallFrame(tls *libc.TLS, interp uintptr, contextPtr uintptr, pmP
 	 * Compile the body. This operation may fail.
 	 */
 	(*TPMFrameData)(unsafe.Pointer(fdPtr)).Fefi.Flength = int32(2)
-	libc.X__builtin___memset_chk(tls, fdPtr+24, 0, uint64(112), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, fdPtr+24, 0)))
+	libc.X__builtin___memset_chk(tls, fdPtr+24, 0, uint64(112), libc.X__builtin_object_size(tls, fdPtr+24, 0))
 	(*TPMFrameData)(unsafe.Pointer(fdPtr)).Fcmd.FnsPtr = nsPtr
 	(*TPMFrameData)(unsafe.Pointer(fdPtr)).Fcmd.FclientData = fdPtr + 136
 	(*TProc)(unsafe.Pointer((*TProcedureMethod)(unsafe.Pointer(pmPtr)).FprocPtr)).FcmdPtr = fdPtr + 24
@@ -319473,7 +319473,7 @@ func _CloneProcedureMethod(tls *libc.TLS, interp uintptr, clientData uintptr, ne
 	 * record.
 	 */
 	pm2Ptr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(80)))
-	libc.X__builtin___memcpy_chk(tls, pm2Ptr, pmPtr, uint64(80), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, pm2Ptr, 0)))
+	libc.X__builtin___memcpy_chk(tls, pm2Ptr, pmPtr, uint64(80), libc.X__builtin_object_size(tls, pm2Ptr, 0))
 	(*TProcedureMethod)(unsafe.Pointer(pm2Ptr)).FrefCount = int32(1)
 	(*TTcl_Obj)(unsafe.Pointer(argsObj)).FrefCount++
 	(*TTcl_Obj)(unsafe.Pointer(bodyObj)).FrefCount++
@@ -319767,8 +319767,8 @@ func _InitEnsembleRewrite(tls *libc.TLS, interp uintptr, objc int32, objv uintpt
 	_, _, _, _ = _callbackPtr, _objPtr, argObjs, len1
 	len1 = libc.Uint32FromInt32(rewriteLength + objc - toRewrite)
 	argObjs = x_TclStackAlloc(tls, interp, libc.Int32FromUint64(uint64(8)*uint64(len1)))
-	libc.X__builtin___memcpy_chk(tls, argObjs, rewriteObjs, libc.Uint64FromInt32(rewriteLength)*uint64(8), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, argObjs, 0)))
-	libc.X__builtin___memcpy_chk(tls, argObjs+uintptr(rewriteLength)*8, objv+uintptr(toRewrite)*8, uint64(8)*libc.Uint64FromInt32(objc-toRewrite), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, argObjs+uintptr(rewriteLength)*8, 0)))
+	libc.X__builtin___memcpy_chk(tls, argObjs, rewriteObjs, libc.Uint64FromInt32(rewriteLength)*uint64(8), libc.X__builtin_object_size(tls, argObjs, 0))
+	libc.X__builtin___memcpy_chk(tls, argObjs+uintptr(rewriteLength)*8, objv+uintptr(toRewrite)*8, uint64(8)*libc.Uint64FromInt32(objc-toRewrite), libc.X__builtin_object_size(tls, argObjs+uintptr(rewriteLength)*8, 0))
 	/*
 	 * Now plumb this into the core ensemble rewrite logging system so that
 	 * Tcl_WrongNumArgs() can rewrite its result appropriately. The rules for
@@ -320818,7 +320818,7 @@ func x_TclMacOSXGetFileAttribute(tls *libc.TLS, interp uintptr, objIndex int32, 
 		x_Tcl_SetObjResult(tls, interp, x_Tcl_ObjPrintf(tls, __ccgo_ts+82353, libc.VaList(bp+216, x_Tcl_PosixError(tls, interp))))
 		return int32(m_TCL_ERROR)
 	}
-	libc.X__builtin___memset_chk(tls, bp+144, 0, uint64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+144, 0)))
+	libc.X__builtin___memset_chk(tls, bp+144, 0, uint64(24), libc.X__builtin_object_size(tls, bp+144, 0))
 	(*(*Tattrlist)(unsafe.Pointer(bp + 144))).Fbitmapcount = uint16(m_ATTR_BIT_MAP_COUNT)
 	if objIndex == int32(_MACOSX_RSRCLENGTH_ATTRIBUTE) {
 		(*(*Tattrlist)(unsafe.Pointer(bp + 144))).Ffileattr = uint32(m_ATTR_FILE_RSRCLENGTH)
@@ -320911,7 +320911,7 @@ func x_TclMacOSXSetFileAttribute(tls *libc.TLS, interp uintptr, objIndex int32, 
 		x_Tcl_SetObjResult(tls, interp, x_Tcl_ObjPrintf(tls, __ccgo_ts+82353, libc.VaList(bp+448, x_Tcl_PosixError(tls, interp))))
 		return int32(m_TCL_ERROR)
 	}
-	libc.X__builtin___memset_chk(tls, bp+144, 0, uint64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+144, 0)))
+	libc.X__builtin___memset_chk(tls, bp+144, 0, uint64(24), libc.X__builtin_object_size(tls, bp+144, 0))
 	(*(*Tattrlist)(unsafe.Pointer(bp + 144))).Fbitmapcount = uint16(m_ATTR_BIT_MAP_COUNT)
 	if objIndex == int32(_MACOSX_RSRCLENGTH_ATTRIBUTE) {
 		(*(*Tattrlist)(unsafe.Pointer(bp + 144))).Ffileattr = uint32(m_ATTR_FILE_RSRCLENGTH)
@@ -321059,7 +321059,7 @@ func x_TclMacOSXCopyFileAttributes(tls *libc.TLS, src uintptr, dst uintptr, stat
 	if 0 != 0 {
 	} else {
 		rsrcForkSize = bp + 24 + 4
-		libc.X__builtin___memset_chk(tls, bp, 0, uint64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, 0)))
+		libc.X__builtin___memset_chk(tls, bp, 0, uint64(24), libc.X__builtin_object_size(tls, bp, 0))
 		(*(*Tattrlist)(unsafe.Pointer(bp))).Fbitmapcount = uint16(m_ATTR_BIT_MAP_COUNT)
 		(*(*Tattrlist)(unsafe.Pointer(bp))).Fcommonattr = uint32(m_ATTR_CMN_FNDRINFO)
 		if libc.Xgetattrlist(tls, src, bp, bp+24, uint64(36), uint32(0)) != 0 {
@@ -321138,7 +321138,7 @@ func x_TclMacOSXMatchType(tls *libc.TLS, interp uintptr, pathName uintptr, fileN
 	var _ /* osType at bp+60 */ TOSType
 	_, _, _, _, _ = finder, v1, v2, v4, v5
 	finder = bp + 24 + 4
-	libc.X__builtin___memset_chk(tls, bp, 0, uint64(24), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp, 0)))
+	libc.X__builtin___memset_chk(tls, bp, 0, uint64(24), libc.X__builtin_object_size(tls, bp, 0))
 	(*(*Tattrlist)(unsafe.Pointer(bp))).Fbitmapcount = uint16(m_ATTR_BIT_MAP_COUNT)
 	(*(*Tattrlist)(unsafe.Pointer(bp))).Fcommonattr = uint32(m_ATTR_CMN_FNDRINFO)
 	if libc.Xgetattrlist(tls, pathName, bp, bp+24, uint64(36), uint32(0)) != 0 {
@@ -321295,7 +321295,7 @@ func _SetOSTypeFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) 
 		result = int32(m_TCL_ERROR)
 	} else {
 		*(*[4]int8)(unsafe.Pointer(bp + 224)) = [4]int8{}
-		libc.X__builtin___memcpy_chk(tls, bp+224, (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp+8)).Flength), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, bp+224, 0)))
+		libc.X__builtin___memcpy_chk(tls, bp+224, (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1, libc.Uint64FromInt32((*TTcl_DString)(unsafe.Pointer(bp+8)).Flength), libc.X__builtin_object_size(tls, bp+224, 0))
 		osType = libc.Uint32FromInt8((*(*[4]int8)(unsafe.Pointer(bp + 224)))[0])<<int32(24) | libc.Uint32FromInt8((*(*[4]int8)(unsafe.Pointer(bp + 224)))[int32(1)])<<int32(16) | libc.Uint32FromInt8((*(*[4]int8)(unsafe.Pointer(bp + 224)))[int32(2)])<<int32(8) | libc.Uint32FromInt8((*(*[4]int8)(unsafe.Pointer(bp + 224)))[int32(3)])
 		if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr != libc.UintptrFromInt32(0) {
 			if (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr)).FfreeIntRepProc != libc.UintptrFromInt32(0) {
@@ -321350,7 +321350,7 @@ func _UpdateStringOfOSType(tls *libc.TLS, objPtr uintptr) {
 	x_Tcl_ExternalToUtfDString(tls, encoding, bp, -int32(1), bp+8)
 	len1 = libc.Uint32FromInt32((*TTcl_DString)(unsafe.Pointer(bp+8)).Flength) + uint32(1)
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = x_Tcl_Alloc(tls, len1)
-	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1, uint64(len1), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0)))
+	libc.X__builtin___memcpy_chk(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1, uint64(len1), libc.X__builtin_object_size(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, 0))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = (*TTcl_DString)(unsafe.Pointer(bp + 8)).Flength
 	x_Tcl_DStringFree(tls, bp+8)
 	x_Tcl_FreeEncoding(tls, encoding)
@@ -323120,7 +323120,7 @@ var _UUID_NULL127 = Tuuid_t{}
 //	/* init a new mp_int */
 func x_TclBN_mp_init(tls *libc.TLS, a uintptr) (r Tmp_err) {
 	/* allocate memory required and clear it */
-	(*Tmp_int)(unsafe.Pointer(a)).Fdp = libc.X__builtin___memset_chk(tls, x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(m_MP_PREC)*libc.Uint64FromInt64(4))), 0, libc.Uint64FromInt32(m_MP_PREC)*libc.Uint64FromInt64(4), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(m_MP_PREC)*libc.Uint64FromInt64(4))), 0)))
+	(*Tmp_int)(unsafe.Pointer(a)).Fdp = libc.X__builtin___memset_chk(tls, x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(m_MP_PREC)*libc.Uint64FromInt64(4))), 0, libc.Uint64FromInt32(m_MP_PREC)*libc.Uint64FromInt64(4), libc.X__builtin_object_size(tls, x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(m_MP_PREC)*libc.Uint64FromInt64(4))), 0))
 	if (*Tmp_int)(unsafe.Pointer(a)).Fdp == libc.UintptrFromInt32(0) {
 		return -int32(2)
 	}
@@ -323328,7 +323328,7 @@ func x_TclBN_mp_init_size(tls *libc.TLS, a uintptr, size int32) (r Tmp_err) {
 	}
 	size = v1
 	/* alloc mem */
-	(*Tmp_int)(unsafe.Pointer(a)).Fdp = libc.X__builtin___memset_chk(tls, x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(size)*libc.Uint64FromInt64(4))), 0, libc.Uint64FromInt32(size)*libc.Uint64FromInt64(4), libc.Uint64FromInt32(libc.X__builtin_object_size(tls, x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(size)*libc.Uint64FromInt64(4))), 0)))
+	(*Tmp_int)(unsafe.Pointer(a)).Fdp = libc.X__builtin___memset_chk(tls, x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(size)*libc.Uint64FromInt64(4))), 0, libc.Uint64FromInt32(size)*libc.Uint64FromInt64(4), libc.X__builtin_object_size(tls, x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(size)*libc.Uint64FromInt64(4))), 0))
 	if (*Tmp_int)(unsafe.Pointer(a)).Fdp == libc.UintptrFromInt32(0) {
 		return -int32(2)
 	}
@@ -326951,11 +326951,11 @@ var x_tclArraySearchType = TTcl_ObjType{
 }
 
 var x_tclBignumType = TTcl_ObjType{
-	Fname: __ccgo_ts + 56836,
+	Fname: __ccgo_ts + 56850,
 }
 
 var x_tclBooleanType = TTcl_ObjType{
-	Fname: __ccgo_ts + 56843,
+	Fname: __ccgo_ts + 56836,
 }
 
 /*
@@ -329175,4 +329175,4 @@ var x_tclpFileAttrStrings = [9]uintptr{
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "Tcltest\x00tcl_rcFileName\x00~/.tclshrc\x00reporting\x00simple\x00-appinitprocerror\x00-appinitprocdeleteinterp\x00-appinitprocclosestderr\x00-appinitprocsetrcfile\x008.5\x001.1.0\x008.6.13\x00gettimes\x00noop\x00testpurebytesobj\x00testsetbytearraylength\x00testbytestring\x00teststringbytes\x00testwrongnumargs\x00testfilesystem\x00testsimplefilesystem\x00testgetindexfromobjstruct\x00testasync\x00testbumpinterpepoch\x00testchannel\x00testchannelevent\x00testcmdtoken\x00testcmdinfo\x00testcmdtrace\x00testconcatobj\x00testcreatecommand\x00testdcall\x00testdel\x00testdelassocdata\x00testdoubledigits\x00testdstring\x00testencoding\x00testevalex\x00testevalobjv\x00testevent\x00testexithandler\x00testexprlong\x00testexprlongobj\x00testexprdouble\x00testexprdoubleobj\x00testexprparser\x00testexprstring\x00testfevent\x00testfilelink\x00testfile\x00testhashsystemhash\x00testgetassocdata\x00testgetint\x00testgetplatform\x00testgetvarfullname\x00testinterpdelete\x00testlink\x00testlocale\x00testpanic\x00testparseargs\x00testparser\x00testparsevar\x00testparsevarname\x00testregexp\x00testreturn\x00testsaveresult\x00testservicemode\x00testsetassocdata\x00testsetnoerr\x00testseterr\x00testset2\x00testseterrorcode\x00testsetobjerrorcode\x00testutfnext\x00testutfprev\x00testnumutfchars\x00testfindfirst\x00testfindlast\x00testsetplatform\x00teststaticpkg\x00testtranslatefilename\x00testupvar\x00T1\x00T2\x00testmainthread\x00testsetmainloop\x00testexitmainloop\x00T3\x00testnreunwind\x00testnrelevels\x00testinterpresolver\x00testapplylambda\x00argv\x00stderr\x00wrong # args\x00create\x00delete\x00mark\x00bad option \"\x00\": must be create, delete, int, or mark\x00\x00wrong # args: should be \"\x00 option cmdName\"\x00original\x00get\x00??\x00CmdProc1\x00 \x00CmdProc2\x00unknown\x00 CmdDelProc1\x00 CmdDelProc2\x00 unknown\x00 nativeObjectProc\x00 stringProc\x00modify\x00new_command_data\x00new_delete_data\x00\": must be create, delete, get, or modify\x00CmdProc1 \x00CmdProc2 \x00CmdDelProc1 \x00CmdDelProc2 \x00 option arg\"\x00%p\x00name\x00bad command token \"\x00\"\x00\": must be create or name\x00 option script\"\x00tracetest\x00deletetest\x00leveltest\x00resulttest\x00Delete wasn't called\x00doubletest\x00\": must be tracetest, deletetest, doubletest or resulttest\x00Error\x00Break\x00Continue\x00Return\x00OtherStatus\x00 option\"\x00test_ns_basic::createdcommand\x00create2\x00value:at:\x00delete2\x00\": must be create, delete, create2, or delete2\x00CreatedCommandProc could not get command info for test_ns_basic::createdcommand\x00CreatedCommandProc in \x00CreatedCommandProc2 could not get command info for test_ns_basic::createdcommand\x00CreatedCommandProc2 in \x00bogus interpreter argument!\x00wrong # arguments: should be \"\x00 data_key\"\x00shortest\x00Steele\x00e\x00f\x00fpval ndigits type ?shorten?\x00double\x00conversion type\x00bad value? %g\n\x00shorten\x00bad flag\x00-\x00+\x00append\x00element\x00end\x00free\x00gresult\x00staticsmall\x00short\x00staticlarge\x00first0 first1 first2 first3 first4 first5 first6 first7 first8 first9\nsecond0 second1 second2 second3 second4 second5 second6 second7 second8 second9\nthird0 third1 third2 third3 third4 third5 third6 third7 third8 third9\nfourth0 fourth1 fourth2 fourth3 fourth4 fourth5 fourth6 fourth7 fourth8 fourth9\nfifth0 fifth1 fifth2 fifth3 fifth4 fifth5 fifth6 fifth7 fifth8 fifth9\nsixth0 sixth1 sixth2 sixth3 sixth4 sixth5 sixth6 sixth7 sixth8 sixth9\nseventh0 seventh1 seventh2 seventh3 seventh4 seventh5 seventh6 seventh7 seventh8 seventh9\n\x00This is a malloc-ed string\x00special\x00This is a specially-allocated string\x00bad gresult option \"\x00\": must be staticsmall, staticlarge, free, or special\x00length\x00result\x00trunc\x00start\x00\": must be append, element, end, free, get, length, result, trunc, or start\x00option\x00global\x00bad value \"\x00\": must be global\x00script ?global?\x00global word ?word ...?\x00queue\x00head\x00tail\x00subcommand ?arg ...?\x00subcommand\x00name position script\x00position specifier\x00    (command bound to \"testevent\" callback)\x00    (return value from \"testevent\" callback)\x00 create|delete value\"\x00\": must be create or delete\x00odd %d\n\x00ExitProcOdd: unable to write to stdout\x00even %d\n\x00ExitProcEven: unable to write to stdout\x00 expression\"\x00This is a result\x00: %ld\x00expression\x00: \x00source ?target?\x00could not create link from \"\x00\" to \"\x00\": \x00could not read link \"\x00unix\x00mac\x00windows\x00 path\"\x00 option ?arg arg arg arg arg arg arg arg arg arg arg arg arg arg?\"\x00 intRO realRO boolRO stringRO wideRO charRO ucharRO shortRO ushortRO uintRO longRO ulongRO floatRO uwideRO\"\x00int\x00real\x00bool\x00string\x00wide\x00char\x00uchar\x00ushort\x00uint\x00long\x00ulong\x00float\x00uwide\x00set\x00 intValue realValue boolValue stringValue wideValue charValue ucharValue shortValue ushortValue uintValue longValue ulongValue floatValue uwideValue\"\x00update\x00\": should be create, delete, get, set, or update\x00ctype\x00numeric\x00time\x00collate\x00monetary\x00all\x00category ?locale?\x00T3: wrong type for arg 2\x00T3: wrong type for arg 1\x00script length\x00\n    (remainder of script: \"\x00\")\x00expr length\x00\n    (remainder of expr: \"\x00expand\x00word\x00text\x00backslash\x00command\x00variable\x00subexpr\x00operator\x00varName\x00script length append\x00-indices\x00-nocase\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00-xflags\x00--\x00switch\x00?-switch ...? exp string ?matchVar? ?subMatchVar ...?\x00%d %d\x00couldn't set variable \"\x00%ld\x00 data_key data_item\"\x00 platform\"\x00unsupported platform: should be one of unix, or windows\x00 prefix safe loaded\"\x00x\x00loaded\x00 level name ?name2? dest global\"\x00namespace\x00too many args\x00NONE\x00 option ?arg ...?\x00cmd\x00 cmd script\x00called \"testfevent code\" before \"testfevent create\"\x00share\x00%s\x00-force\x00mv\x00cp\x00rm\x00mkdir\x00cpdir\x00rmdir\x00name scope\x00::test_ns_var\x00alloc & free 100000 6 word items\n\x00   %.3f usec per alloc+free\n\x00alloc 5000 6 word items\n\x00   %.3f usec per alloc\n\x00free 5000 6 word items\n\x00   %.3f usec per free\n\x00Tcl_NewObj 5000 times\n\x00   %.3f usec per Tcl_NewObj\n\x00Tcl_DecrRefCount 5000 times\n\x00   %.3f usec per Tcl_DecrRefCount\n\x00TclGetStringFromObj of \"12345\" 100000 times\n\x0012345\x00   %.3f usec per TclGetStringFromObj of \"12345\"\n\x00Tcl_GetIntFromObj of \"12345\" 100000 times\n\x00   %.3f usec per Tcl_GetIntFromObj of \"12345\"\n\x00Tcl_GetInt of \"12345\" 100000 times\n\x00   %.3f usec per Tcl_GetInt of \"12345\"\n\x00sprintf of 12345 100000 times\n\x00%d\x00   %.3f usec per sprintf of 12345\n\x00hashtable lookup of \"gettimes\" 100000 times\n\x00   %.3f usec per hashtable lookup of \"gettimes\"\n\x00Tcl_SetVar of \"12345\" 100000 times\n\x00a\x00   %.3f usec per Tcl_SetVar of a to \"12345\"\n\x00Tcl_GetVar of a==\"12345\" 100000 times\n\x00   %.3f usec per Tcl_GetVar of a==\"12345\"\n\x00value\x00?string?\x00value length\x00bytearray\x00before get\x00before set\x00 varName ?newValue?\"\x00 varName elemName ?newValue?\"\x00dynamic\x00object\x00small\x00type script discard\x00small result\x00append result\x00free result\x00dynamic result\x00object result\x00called\x00notCalled\x00present\x00missing\x00same\x00different\x00Exit MainLoop\n\x00 subcommand ?additional args..?\"\x00splice\x00setchannelerror\x00setchannelerrorinterp\x00cut\x00 cut channelName\"\x00clearchannelhandlers\x00 clearchannelhandlers channelName\"\x00info\x00 info channelName\"\x00read\x00write\x00nonblocking\x00blocking\x00line\x00none\x00full\x00async_flush\x00eof\x00blocked\x00unblocked\x00auto\x00saw_cr\x00lf\x00cr\x00crlf\x00queued_cr\x00inputbuffered\x00channel name required\x00isshared\x00isstandard\x00mode\x00mthread\x00open\x00tclIO\x00outputbuffered\x00queuedcr\x001\x000\x00readable\x00refcount\x00type\x00writable\x00transform\x00 transform channelId -command cmd\"\x00-command\x00bad argument \"\x00\": should be \"-command\"\x00unstack\x00 unstack channel\"\x00\": should be cut, clearchannelhandlers, info, isshared, mode, open, readable, splice, writable, transform, unstack\x00 channelName cmd ?arg1? ?arg2?\"\x00add\x00 channelName add eventSpec script\"\x00bad event name \"\x00\": must be readable, writable, or none\x00 channelName delete index\"\x00bad event index: \x00: must be nonnegative\x00bad event index \x00: out of range\x00TestChannelEventCmd: damaged event script list\x00list\x00 channelName list\"\x00removeall\x00 channelName removeall\"\x00 channelName delete index event\"\x00bad command \x00, must be one of add, delete, list, set, or removeall\x00 ?newmode?\"\x00insufficient arguments\x00b\x00c\x00d\x00ee\x00ff\x00argument targetvalue ?flags?\x00dummy\x00index value comparison failed: got \x00 when \x00 expected\x00boolean\x00registered\x00failed\x00unregistered\x00lappend filesystemReport \x00stat\x00lstat\x00access\x00matchmounts\x00matchindirectory\x00chdir\x00loadfile\x00link\x00renamefile\x00copyfile\x00deletefile\x00createdirectory\x00copydirectory\x00removedirectory\x00fileattributestrings\x00fileattributesget\x00fileattributesset\x00utime\x00normalizepath\x00simplefs:/\x00read-only\x00r\x00string ?numBytes?\x00\"testutfnext\" can only handle %d bytes\x00Tcl_UtfNext is not supposed to read src[-1]\x00Tcl_UtfNext is not supposed to read src[end]\nDifferent result when src[end] is %#x\x00bytes ?offset?\x00non-zero initial size\x00 creation problem\x00unexpected maximal size\x00 lookup problem\x00 value problem\x00non-zero final size\x00OK\x00Tcl_ConcatObj is unsafe:\x00foo bar sum\x00eeny meeny\x00\n\t* (a) concatObj does not have refCount 0\x00\n\t* (a) concatObj is not a new obj \x00(no new refCount)\x00(refCount added)\x00(more than one refCount added!)\x00extremely unsafe behaviour by Tcl_ConcatObj()\x00\n\t* (b) concatObj does not have refCount 0\x00\n\t* (b) concatObj is not a new obj \x00(refCount removed?)\x00\n\t* (c) concatObj does not have refCount 0\x00\n\t* (c) concatObj is not a new obj \x00\n\t* (d) concatObj does not have refCount 0\x00\n\t* (d) concatObj is not a new obj \x00\n\t* (e) concatObj does not have refCount 0\x00\n\t* (e) concatObj is not a new obj \x00(failed to concat)\x00(corrupted input!)\x00\n\t* (f) concatObj does not have refCount 0\x00\n\t* (f) concatObj is not a new obj \x00\n\t* (g) concatObj does not have refCount 0\x00\n\t* (g) concatObj is not a new obj \x00-bool\x00booltest\x00Marks the end of the options\x00-help\x00Print summary of command-line options and abort\x00::ns2\x00y\x00(NULL)\x00ctx1\x00ctx2\x00Y\x00down\x00up\x00up|down ?interp?\x00provided interpreter not found\x00operation\x00testInterpResolver\x00could not remove the resolver scheme\x00set a 42\x00apply\x00TCLOBJTEST_VARPTR\x00testbignumobj\x00testbooleanobj\x00testdoubleobj\x00testintobj\x00testindexobj\x00testlistobj\x00testobj\x00teststringobj\x00mult10\x00div10\x00iseven\x00radixsize\x00option ?arg ...?\x00var value\x00error in mp_init\x00error in mp_read_radix\x00varIndex\x00error in mp_mul_d\x00error in mp_div_d\x00error in mp_mod_2d\x00option arg ?arg ...?\x00not\x00\": must be set, get, or not\x00\": must be set, get, mult10, or div10\x00check\x00token\x00index\x00set2\x00setlong\x00setmaxlong\x00ismaxlong\x00get2\x00inttoobigtest\x00\": must be set, get, get2, mult10, or div10\x00replace\x00option arg ?arg...?\x00varIndex start count ?element...?\x00assign\x00bug3598580\x00convert\x00no type \x00 found\x00duplicate\x00freeallvars\x00invalidateStringRep\x00newobj\x00objtype\x00types\x00\": must be assign, convert, duplicate, freeallvars, newobj, objcount, objtype, refcount, type, or types\x00appendstrings\x00length2\x00setlength\x00maxchars\x00range\x00getunicode\x00appendself\x00appendself2\x00index value out of range\x00bad variable index\x00variable %d is unset (NULL)\x00namespace eval %s { namespace export %s }\x00%s::%s\x00newName argsList bodyName\x00command \"\x00\" is not a Tcl procedure\x00procedure \"\x00\" does not have a Proc struct!\x00failed to create a procbody object for procedure \"\x00testchmod\x00testfilehandler\x00testfilewait\x00testfindexecutable\x00testfork\x00testgetopenfile\x00testgetdefenc\x00testsetdefenc\x00testalarm\x00testgotsig\x00 option ... \"\x00bad index \x00close\x00clear\x00 clear index\"\x00counts\x00 counts index\"\x00 create index readMode writeMode\"\x00couldn't open pipe: \x00off\x00disabled\x00bad read mode \"\x00empty\x00 empty index\"\x00fill\x00 fill index\"\x00fillpartial\x00 fillpartial index\"\x00oneevent\x00wait\x00 wait index readable|writable timeout\"\x00pipe \x00 doesn't exist\x00windowevent\x00\": must be close, clear, counts, create, empty, fill, fillpartial, oneevent, wait, or windowevent\x00 file readable|writable|both timeout\"\x00both\x00\": must be readable, writable, or both\x00couldn't get channel file\x00 argv0\"\x00 channelName forWriting\"\x00Tcl_GetOpenFile succeeded but FILE * NULL!\x00 defaultDir\"\x00Cannot fork\x00sigaction: \x00mode file ?file ...?\x00\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00oops\x00REG_%u\x00assemblecode\x00push\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00table\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00split\x00subst\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00pid\x00puts\x00pwd\x00seek\x00socket\x00source\x00tell\x00unload\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00ceil\x00cos\x00cosh\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00~\x00integer\x00!\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00TCL_PKG_PREFER_LATEST\x00TCL_INTERP_DEBUG_FRAME\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x00tcl_version\x008.6\x00tcl_precision\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00TZ\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00mtime\x00nativename\x00normalize\x00owned\x00pathtype\x00readlink\x00rootname\x00separator\x00size\x00tempfile\x00volumes\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not set access time for file \"%s\": %s\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00blocks\x00blksize\x00ctime\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00list ?joinString?\x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00is\x00last\x00map\x00match\x00repeat\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00-options\x00JumptableInfo\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00bytecode\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00subcommand ?arg?\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00s\x00t\x00u\x00v\x00w\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00-buffersize\x00-eofchar\x00-translation\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00tclrchannel\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00TCL_TEMPLOAD_NO_UNLINK\x00couldn't load library \"%s\": %s\x00rb\x00couldn't load from current filesystem\x000700\x00cannot unload: filesystem does not support unloading\x00wb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00invalidReal\x00xXbBoO\x00+-\x00NewListInternalRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00max size of Tcl literal array (%d literals) exceeded\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00argv0\x00argc\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00bignum\x00booleanString\x00cmdName\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00Tcl_SetLongObj\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00PATH\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00CIRCULARITY\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EAFNOSUPPORT\x00EALREADY\x00EBADF\x00EBADMSG\x00ECANCELED\x00EBADRPC\x00EBUSY\x00ECHILD\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EILSEQ\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00EMULTIHOP\x00ENAMETOOLONG\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOBUFS\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTBLK\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENXIO\x00EOPNOTSUPP\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROCLIM\x00EPROCUNAVAIL\x00EPROGMISMATCH\x00EPROGUNAVAIL\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMOTE\x00EROFS\x00ERPCMISMATCH\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUSERS\x00EXDEV\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad file number\x00not a data message\x00operation canceled\x00RPC structure is bad\x00file busy\x00no children\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00illegal byte sequence\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00multihop attempted\x00file name too long\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00no buffer space available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00block device required\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00no such device or address\x00operation not supported on socket\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00too many processes\x00bad procedure for program\x00program version wrong\x00RPC program not available\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00pathname hit remote file system\x00read-only file system\x00RPC version is wrong\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00too many users\x00cross-domain link\x00SIGABRT\x00SIGALRM\x00SIGBUS\x00SIGCHLD\x00SIGCONT\x00SIGEMT\x00SIGFPE\x00SIGHUP\x00SIGILL\x00SIGINT\x00SIGIO\x00SIGKILL\x00SIGPIPE\x00SIGPROF\x00SIGQUIT\x00SIGSEGV\x00SIGSTOP\x00SIGSYS\x00SIGTERM\x00SIGTRAP\x00SIGTSTP\x00SIGTTIN\x00SIGTTOU\x00SIGURG\x00SIGUSR1\x00SIGUSR2\x00SIGVTALRM\x00SIGWINCH\x00SIGXCPU\x00SIGXFSZ\x00SIGINFO\x00unknown signal\x00alarm clock\x00bus error\x00child status changed\x00continue after stop\x00EMT instruction\x00floating-point exception\x00hangup\x00illegal instruction\x00interrupt\x00input/output possible on file\x00kill signal\x00write on pipe with no readers\x00profiling alarm\x00quit signal\x00segmentation violation\x00stop\x00bad argument to system call\x00software termination signal\x00trace trap\x00stop signal from tty\x00background tty read\x00background tty write\x00urgent I/O condition\x00user-defined signal 1\x00user-defined signal 2\x00virtual time alarm\x00window changed\x00exceeded CPU time limit\x00exceeded file size limit\x00information request\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00procbody\x00lambdaExpr\x00levelReference\x00name args body\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%lx)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00(\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Merge called with negative argc (%d)\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00UPVAR\x00INVERTED\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00LOCAL_ELEMENT\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00define\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.3.1\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00TclpOpenFileChannel: invalid mode value\x00couldn't open \"\x00\": filename is invalid on this platform\x00file%d\x00TclGetDefaultStdChannel: Unexpected channel type\x00auto crlf\x00\"%s\" wasn't opened for writing\x00NOT_WRITABLE\x00\"%s\" wasn't opened for reading\x00NOT_READABLE\x00cannot get a FILE * for \"%s\"\x00FILE_FAILURE\x00\"%s\" cannot be used to get a FILE *\x00NO_DESCRIPTOR\x00-group\x00-owner\x00-readonly\x00-creator\x00-type\x00-hidden\x00-rsrclength\x00..\x00%0#5lo\x00could not set group for file \"%s\": group \"%s\" does not exist\x00SETGRP\x00NO_GROUP\x00could not set group for file \"%s\": %s\x00could not set owner for file \"%s\": user \"%s\" does not exist\x00SETOWN\x00NO_USER\x00could not set owner for file \"%s\": %s\x00unknown permission string format \"%s\"\x00PERMISSION\x00could not set permissions for file \"%s\": %s\x00_XXXXXX\x00TMPDIR\x00/var/tmp/\x00/tmp\x00could not set flags for file \"%s\": %s\x00:/bin:/usr/bin\x00couldn't read directory \"%s\": %s\x00couldn't create temporary file: %s\x00pipe creation failed: %s\x00?channelId?\x00::tcl::unsupported::noReverseDNS\x00-connecting\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%lx\x00couldn't open socket: \x00ansi-1251\x00cp1251\x00ansi_x3.4-1968\x00big5\x00cp1250\x00cp1252\x00cp1253\x00cp1254\x00cp1255\x00cp1256\x00cp1257\x00cp1258\x00cp437\x00cp737\x00cp775\x00cp850\x00cp852\x00cp855\x00cp857\x00cp860\x00cp861\x00cp862\x00cp863\x00cp864\x00cp865\x00cp866\x00cp869\x00cp874\x00cp932\x00cp936\x00cp949\x00cp950\x00dingbats\x00ebcdic\x00euc-cn\x00euc-jp\x00euc-kr\x00eucjp\x00euckr\x00euctw\x00gb12345\x00gb1988\x00gb2312\x00gb2312-1980\x00gb2312-raw\x00greek8\x00ibm1250\x00ibm1251\x00ibm1252\x00ibm1253\x00ibm1254\x00ibm1255\x00ibm1256\x00ibm1257\x00ibm1258\x00ibm437\x00ibm737\x00ibm775\x00ibm850\x00ibm852\x00ibm855\x00ibm857\x00ibm860\x00ibm861\x00ibm862\x00ibm863\x00ibm864\x00ibm865\x00ibm866\x00ibm869\x00ibm874\x00ibm932\x00ibm936\x00ibm949\x00ibm950\x00iso-2022\x00iso2022\x00iso-2022-jp\x00iso2022-jp\x00iso-2022-kr\x00iso2022-kr\x00iso-8859-1\x00iso-8859-10\x00iso8859-10\x00iso-8859-13\x00iso8859-13\x00iso-8859-14\x00iso8859-14\x00iso-8859-15\x00iso8859-15\x00iso-8859-16\x00iso8859-16\x00iso-8859-2\x00iso8859-2\x00iso-8859-3\x00iso8859-3\x00iso-8859-4\x00iso8859-4\x00iso-8859-5\x00iso8859-5\x00iso-8859-6\x00iso8859-6\x00iso-8859-7\x00iso8859-7\x00iso-8859-8\x00iso8859-8\x00iso-8859-9\x00iso8859-9\x00iso88591\x00iso885915\x00iso88592\x00iso88595\x00iso88596\x00iso88597\x00iso88598\x00iso88599\x00ja\x00ja_jp\x00ja_jp.euc\x00ja_jp.eucjp\x00ja_jp.jis\x00ja_jp.mscode\x00shiftjis\x00ja_jp.sjis\x00ja_jp.ujis\x00japan\x00japanese\x00japanese-sjis\x00japanese-ujis\x00japanese.euc\x00japanese.sjis\x00jis0201\x00jis0208\x00jis0212\x00jp_jp\x00ko\x00ko_kr\x00ko_kr.euc\x00ko_kw.euckw\x00koi8-r\x00koi8-u\x00korean\x00ksc5601\x00maccenteuro\x00macCentEuro\x00maccroatian\x00macCroatian\x00maccyrillic\x00macCyrillic\x00macdingbats\x00macDingbats\x00macgreek\x00macGreek\x00maciceland\x00macIceland\x00macjapan\x00macJapan\x00macroman\x00macRoman\x00macromania\x00macRomania\x00macthai\x00macThai\x00macturkish\x00macTurkish\x00macukraine\x00macUkraine\x00roman8\x00ru\x00ru_ru\x00ru_su\x00sjis\x00symbol\x00tis-620\x00tis620\x00turkish8\x00utf8\x00zh\x00zh_cn.gb2312\x00zh_cn.gbk\x00zh_cz.gb2312\x00zh_tw\x00euc-tw\x00zh_tw.big5\x00/dev/null\x00TCL_LIBRARY\x00lib/tcl%s\x00LC_ALL\x00LC_CTYPE\x00LANG\x00pathSeparator\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00name refers to an element in an array\x00refer to\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00dynamic loading is not currently available on this system\x00dynamic loading from memory is not available on this system\x00osType\x00invalid attribute: %s\x00could not read attributes of \"%s\": %s\x00could not set attributes of \"%s\": %s\x00setting nonzero rsrclength not supported\x00UNSUPPORTED\x00/..namedfork/rsrc\x00could not truncate resource fork of \"%s\": %s\x00expected Macintosh OS type but got \"%s\": \x00MAC_OSTYPE\x00TclMacOSXNotifierAddRunLoopMode: Tcl not built with CoreFoundation support\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x00interpreter uses an incompatible stubs mechanism\x00missing stub table pointer\x00epoch number mismatch\x00requires a later revision\x00Error loading \x00 (requested version \x00, actual version \x00): \x00"
+var __ccgo_ts1 = "Tcltest\x00tcl_rcFileName\x00~/.tclshrc\x00reporting\x00simple\x00-appinitprocerror\x00-appinitprocdeleteinterp\x00-appinitprocclosestderr\x00-appinitprocsetrcfile\x008.5\x001.1.0\x008.6.13\x00gettimes\x00noop\x00testpurebytesobj\x00testsetbytearraylength\x00testbytestring\x00teststringbytes\x00testwrongnumargs\x00testfilesystem\x00testsimplefilesystem\x00testgetindexfromobjstruct\x00testasync\x00testbumpinterpepoch\x00testchannel\x00testchannelevent\x00testcmdtoken\x00testcmdinfo\x00testcmdtrace\x00testconcatobj\x00testcreatecommand\x00testdcall\x00testdel\x00testdelassocdata\x00testdoubledigits\x00testdstring\x00testencoding\x00testevalex\x00testevalobjv\x00testevent\x00testexithandler\x00testexprlong\x00testexprlongobj\x00testexprdouble\x00testexprdoubleobj\x00testexprparser\x00testexprstring\x00testfevent\x00testfilelink\x00testfile\x00testhashsystemhash\x00testgetassocdata\x00testgetint\x00testgetplatform\x00testgetvarfullname\x00testinterpdelete\x00testlink\x00testlocale\x00testpanic\x00testparseargs\x00testparser\x00testparsevar\x00testparsevarname\x00testregexp\x00testreturn\x00testsaveresult\x00testservicemode\x00testsetassocdata\x00testsetnoerr\x00testseterr\x00testset2\x00testseterrorcode\x00testsetobjerrorcode\x00testutfnext\x00testutfprev\x00testnumutfchars\x00testfindfirst\x00testfindlast\x00testsetplatform\x00teststaticpkg\x00testtranslatefilename\x00testupvar\x00T1\x00T2\x00testmainthread\x00testsetmainloop\x00testexitmainloop\x00T3\x00testnreunwind\x00testnrelevels\x00testinterpresolver\x00testapplylambda\x00argv\x00stderr\x00wrong # args\x00create\x00delete\x00mark\x00bad option \"\x00\": must be create, delete, int, or mark\x00\x00wrong # args: should be \"\x00 option cmdName\"\x00original\x00get\x00??\x00CmdProc1\x00 \x00CmdProc2\x00unknown\x00 CmdDelProc1\x00 CmdDelProc2\x00 unknown\x00 nativeObjectProc\x00 stringProc\x00modify\x00new_command_data\x00new_delete_data\x00\": must be create, delete, get, or modify\x00CmdProc1 \x00CmdProc2 \x00CmdDelProc1 \x00CmdDelProc2 \x00 option arg\"\x00%p\x00name\x00bad command token \"\x00\"\x00\": must be create or name\x00 option script\"\x00tracetest\x00deletetest\x00leveltest\x00resulttest\x00Delete wasn't called\x00doubletest\x00\": must be tracetest, deletetest, doubletest or resulttest\x00Error\x00Break\x00Continue\x00Return\x00OtherStatus\x00 option\"\x00test_ns_basic::createdcommand\x00create2\x00value:at:\x00delete2\x00\": must be create, delete, create2, or delete2\x00CreatedCommandProc could not get command info for test_ns_basic::createdcommand\x00CreatedCommandProc in \x00CreatedCommandProc2 could not get command info for test_ns_basic::createdcommand\x00CreatedCommandProc2 in \x00bogus interpreter argument!\x00wrong # arguments: should be \"\x00 data_key\"\x00shortest\x00Steele\x00e\x00f\x00fpval ndigits type ?shorten?\x00double\x00conversion type\x00bad value? %g\n\x00shorten\x00bad flag\x00-\x00+\x00append\x00element\x00end\x00free\x00gresult\x00staticsmall\x00short\x00staticlarge\x00first0 first1 first2 first3 first4 first5 first6 first7 first8 first9\nsecond0 second1 second2 second3 second4 second5 second6 second7 second8 second9\nthird0 third1 third2 third3 third4 third5 third6 third7 third8 third9\nfourth0 fourth1 fourth2 fourth3 fourth4 fourth5 fourth6 fourth7 fourth8 fourth9\nfifth0 fifth1 fifth2 fifth3 fifth4 fifth5 fifth6 fifth7 fifth8 fifth9\nsixth0 sixth1 sixth2 sixth3 sixth4 sixth5 sixth6 sixth7 sixth8 sixth9\nseventh0 seventh1 seventh2 seventh3 seventh4 seventh5 seventh6 seventh7 seventh8 seventh9\n\x00This is a malloc-ed string\x00special\x00This is a specially-allocated string\x00bad gresult option \"\x00\": must be staticsmall, staticlarge, free, or special\x00length\x00result\x00trunc\x00start\x00\": must be append, element, end, free, get, length, result, trunc, or start\x00option\x00global\x00bad value \"\x00\": must be global\x00script ?global?\x00global word ?word ...?\x00queue\x00head\x00tail\x00subcommand ?arg ...?\x00subcommand\x00name position script\x00position specifier\x00    (command bound to \"testevent\" callback)\x00    (return value from \"testevent\" callback)\x00 create|delete value\"\x00\": must be create or delete\x00odd %d\n\x00ExitProcOdd: unable to write to stdout\x00even %d\n\x00ExitProcEven: unable to write to stdout\x00 expression\"\x00This is a result\x00: %ld\x00expression\x00: \x00source ?target?\x00could not create link from \"\x00\" to \"\x00\": \x00could not read link \"\x00unix\x00mac\x00windows\x00 path\"\x00 option ?arg arg arg arg arg arg arg arg arg arg arg arg arg arg?\"\x00 intRO realRO boolRO stringRO wideRO charRO ucharRO shortRO ushortRO uintRO longRO ulongRO floatRO uwideRO\"\x00int\x00real\x00bool\x00string\x00wide\x00char\x00uchar\x00ushort\x00uint\x00long\x00ulong\x00float\x00uwide\x00set\x00 intValue realValue boolValue stringValue wideValue charValue ucharValue shortValue ushortValue uintValue longValue ulongValue floatValue uwideValue\"\x00update\x00\": should be create, delete, get, set, or update\x00ctype\x00numeric\x00time\x00collate\x00monetary\x00all\x00category ?locale?\x00T3: wrong type for arg 2\x00T3: wrong type for arg 1\x00script length\x00\n    (remainder of script: \"\x00\")\x00expr length\x00\n    (remainder of expr: \"\x00expand\x00word\x00text\x00backslash\x00command\x00variable\x00subexpr\x00operator\x00varName\x00script length append\x00-indices\x00-nocase\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00-xflags\x00--\x00switch\x00?-switch ...? exp string ?matchVar? ?subMatchVar ...?\x00%d %d\x00couldn't set variable \"\x00%ld\x00 data_key data_item\"\x00 platform\"\x00unsupported platform: should be one of unix, or windows\x00 prefix safe loaded\"\x00x\x00loaded\x00 level name ?name2? dest global\"\x00namespace\x00too many args\x00NONE\x00 option ?arg ...?\x00cmd\x00 cmd script\x00called \"testfevent code\" before \"testfevent create\"\x00share\x00%s\x00-force\x00mv\x00cp\x00rm\x00mkdir\x00cpdir\x00rmdir\x00name scope\x00::test_ns_var\x00alloc & free 100000 6 word items\n\x00   %.3f usec per alloc+free\n\x00alloc 5000 6 word items\n\x00   %.3f usec per alloc\n\x00free 5000 6 word items\n\x00   %.3f usec per free\n\x00Tcl_NewObj 5000 times\n\x00   %.3f usec per Tcl_NewObj\n\x00Tcl_DecrRefCount 5000 times\n\x00   %.3f usec per Tcl_DecrRefCount\n\x00TclGetStringFromObj of \"12345\" 100000 times\n\x0012345\x00   %.3f usec per TclGetStringFromObj of \"12345\"\n\x00Tcl_GetIntFromObj of \"12345\" 100000 times\n\x00   %.3f usec per Tcl_GetIntFromObj of \"12345\"\n\x00Tcl_GetInt of \"12345\" 100000 times\n\x00   %.3f usec per Tcl_GetInt of \"12345\"\n\x00sprintf of 12345 100000 times\n\x00%d\x00   %.3f usec per sprintf of 12345\n\x00hashtable lookup of \"gettimes\" 100000 times\n\x00   %.3f usec per hashtable lookup of \"gettimes\"\n\x00Tcl_SetVar of \"12345\" 100000 times\n\x00a\x00   %.3f usec per Tcl_SetVar of a to \"12345\"\n\x00Tcl_GetVar of a==\"12345\" 100000 times\n\x00   %.3f usec per Tcl_GetVar of a==\"12345\"\n\x00value\x00?string?\x00value length\x00bytearray\x00before get\x00before set\x00 varName ?newValue?\"\x00 varName elemName ?newValue?\"\x00dynamic\x00object\x00small\x00type script discard\x00small result\x00append result\x00free result\x00dynamic result\x00object result\x00called\x00notCalled\x00present\x00missing\x00same\x00different\x00Exit MainLoop\n\x00 subcommand ?additional args..?\"\x00splice\x00setchannelerror\x00setchannelerrorinterp\x00cut\x00 cut channelName\"\x00clearchannelhandlers\x00 clearchannelhandlers channelName\"\x00info\x00 info channelName\"\x00read\x00write\x00nonblocking\x00blocking\x00line\x00none\x00full\x00async_flush\x00eof\x00blocked\x00unblocked\x00auto\x00saw_cr\x00lf\x00cr\x00crlf\x00queued_cr\x00inputbuffered\x00channel name required\x00isshared\x00isstandard\x00mode\x00mthread\x00open\x00tclIO\x00outputbuffered\x00queuedcr\x001\x000\x00readable\x00refcount\x00type\x00writable\x00transform\x00 transform channelId -command cmd\"\x00-command\x00bad argument \"\x00\": should be \"-command\"\x00unstack\x00 unstack channel\"\x00\": should be cut, clearchannelhandlers, info, isshared, mode, open, readable, splice, writable, transform, unstack\x00 channelName cmd ?arg1? ?arg2?\"\x00add\x00 channelName add eventSpec script\"\x00bad event name \"\x00\": must be readable, writable, or none\x00 channelName delete index\"\x00bad event index: \x00: must be nonnegative\x00bad event index \x00: out of range\x00TestChannelEventCmd: damaged event script list\x00list\x00 channelName list\"\x00removeall\x00 channelName removeall\"\x00 channelName delete index event\"\x00bad command \x00, must be one of add, delete, list, set, or removeall\x00 ?newmode?\"\x00insufficient arguments\x00b\x00c\x00d\x00ee\x00ff\x00argument targetvalue ?flags?\x00dummy\x00index value comparison failed: got \x00 when \x00 expected\x00boolean\x00registered\x00failed\x00unregistered\x00lappend filesystemReport \x00stat\x00lstat\x00access\x00matchmounts\x00matchindirectory\x00chdir\x00loadfile\x00link\x00renamefile\x00copyfile\x00deletefile\x00createdirectory\x00copydirectory\x00removedirectory\x00fileattributestrings\x00fileattributesget\x00fileattributesset\x00utime\x00normalizepath\x00simplefs:/\x00read-only\x00r\x00string ?numBytes?\x00\"testutfnext\" can only handle %d bytes\x00Tcl_UtfNext is not supposed to read src[-1]\x00Tcl_UtfNext is not supposed to read src[end]\nDifferent result when src[end] is %#x\x00bytes ?offset?\x00non-zero initial size\x00 creation problem\x00unexpected maximal size\x00 lookup problem\x00 value problem\x00non-zero final size\x00OK\x00Tcl_ConcatObj is unsafe:\x00foo bar sum\x00eeny meeny\x00\n\t* (a) concatObj does not have refCount 0\x00\n\t* (a) concatObj is not a new obj \x00(no new refCount)\x00(refCount added)\x00(more than one refCount added!)\x00extremely unsafe behaviour by Tcl_ConcatObj()\x00\n\t* (b) concatObj does not have refCount 0\x00\n\t* (b) concatObj is not a new obj \x00(refCount removed?)\x00\n\t* (c) concatObj does not have refCount 0\x00\n\t* (c) concatObj is not a new obj \x00\n\t* (d) concatObj does not have refCount 0\x00\n\t* (d) concatObj is not a new obj \x00\n\t* (e) concatObj does not have refCount 0\x00\n\t* (e) concatObj is not a new obj \x00(failed to concat)\x00(corrupted input!)\x00\n\t* (f) concatObj does not have refCount 0\x00\n\t* (f) concatObj is not a new obj \x00\n\t* (g) concatObj does not have refCount 0\x00\n\t* (g) concatObj is not a new obj \x00-bool\x00booltest\x00Marks the end of the options\x00-help\x00Print summary of command-line options and abort\x00::ns2\x00y\x00(NULL)\x00ctx1\x00ctx2\x00Y\x00down\x00up\x00up|down ?interp?\x00provided interpreter not found\x00operation\x00testInterpResolver\x00could not remove the resolver scheme\x00set a 42\x00apply\x00TCLOBJTEST_VARPTR\x00testbignumobj\x00testbooleanobj\x00testdoubleobj\x00testintobj\x00testindexobj\x00testlistobj\x00testobj\x00teststringobj\x00mult10\x00div10\x00iseven\x00radixsize\x00option ?arg ...?\x00var value\x00error in mp_init\x00error in mp_read_radix\x00varIndex\x00error in mp_mul_d\x00error in mp_div_d\x00error in mp_mod_2d\x00option arg ?arg ...?\x00not\x00\": must be set, get, or not\x00\": must be set, get, mult10, or div10\x00check\x00token\x00index\x00set2\x00setlong\x00setmaxlong\x00ismaxlong\x00get2\x00inttoobigtest\x00\": must be set, get, get2, mult10, or div10\x00replace\x00option arg ?arg...?\x00varIndex start count ?element...?\x00assign\x00bug3598580\x00convert\x00no type \x00 found\x00duplicate\x00freeallvars\x00invalidateStringRep\x00newobj\x00objtype\x00types\x00\": must be assign, convert, duplicate, freeallvars, newobj, objcount, objtype, refcount, type, or types\x00appendstrings\x00length2\x00setlength\x00maxchars\x00range\x00getunicode\x00appendself\x00appendself2\x00index value out of range\x00bad variable index\x00variable %d is unset (NULL)\x00namespace eval %s { namespace export %s }\x00%s::%s\x00newName argsList bodyName\x00command \"\x00\" is not a Tcl procedure\x00procedure \"\x00\" does not have a Proc struct!\x00failed to create a procbody object for procedure \"\x00testchmod\x00testfilehandler\x00testfilewait\x00testfindexecutable\x00testfork\x00testgetopenfile\x00testgetdefenc\x00testsetdefenc\x00testalarm\x00testgotsig\x00 option ... \"\x00bad index \x00close\x00clear\x00 clear index\"\x00counts\x00 counts index\"\x00 create index readMode writeMode\"\x00couldn't open pipe: \x00off\x00disabled\x00bad read mode \"\x00empty\x00 empty index\"\x00fill\x00 fill index\"\x00fillpartial\x00 fillpartial index\"\x00oneevent\x00wait\x00 wait index readable|writable timeout\"\x00pipe \x00 doesn't exist\x00windowevent\x00\": must be close, clear, counts, create, empty, fill, fillpartial, oneevent, wait, or windowevent\x00 file readable|writable|both timeout\"\x00both\x00\": must be readable, writable, or both\x00couldn't get channel file\x00 argv0\"\x00 channelName forWriting\"\x00Tcl_GetOpenFile succeeded but FILE * NULL!\x00 defaultDir\"\x00Cannot fork\x00sigaction: \x00mode file ?file ...?\x00\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00oops\x00REG_%u\x00assemblecode\x00push\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00table\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00split\x00subst\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00pid\x00puts\x00pwd\x00seek\x00socket\x00source\x00tell\x00unload\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00ceil\x00cos\x00cosh\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00~\x00integer\x00!\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00TCL_PKG_PREFER_LATEST\x00TCL_INTERP_DEBUG_FRAME\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x00tcl_version\x008.6\x00tcl_precision\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00TZ\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00mtime\x00nativename\x00normalize\x00owned\x00pathtype\x00readlink\x00rootname\x00separator\x00size\x00tempfile\x00volumes\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not set access time for file \"%s\": %s\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00blocks\x00blksize\x00ctime\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00list ?joinString?\x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00is\x00last\x00map\x00match\x00repeat\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00-options\x00JumptableInfo\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00bytecode\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00subcommand ?arg?\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00s\x00t\x00u\x00v\x00w\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00-buffersize\x00-eofchar\x00-translation\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00tclrchannel\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00TCL_TEMPLOAD_NO_UNLINK\x00couldn't load library \"%s\": %s\x00rb\x00couldn't load from current filesystem\x000700\x00cannot unload: filesystem does not support unloading\x00wb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00invalidReal\x00xXbBoO\x00+-\x00NewListInternalRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00max size of Tcl literal array (%d literals) exceeded\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00argv0\x00argc\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00booleanString\x00bignum\x00cmdName\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00Tcl_SetLongObj\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00PATH\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00CIRCULARITY\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EAFNOSUPPORT\x00EALREADY\x00EBADF\x00EBADMSG\x00ECANCELED\x00EBADRPC\x00EBUSY\x00ECHILD\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EILSEQ\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00EMULTIHOP\x00ENAMETOOLONG\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOBUFS\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTBLK\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENXIO\x00EOPNOTSUPP\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROCLIM\x00EPROCUNAVAIL\x00EPROGMISMATCH\x00EPROGUNAVAIL\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMOTE\x00EROFS\x00ERPCMISMATCH\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUSERS\x00EXDEV\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad file number\x00not a data message\x00operation canceled\x00RPC structure is bad\x00file busy\x00no children\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00illegal byte sequence\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00multihop attempted\x00file name too long\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00no buffer space available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00block device required\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00no such device or address\x00operation not supported on socket\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00too many processes\x00bad procedure for program\x00program version wrong\x00RPC program not available\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00pathname hit remote file system\x00read-only file system\x00RPC version is wrong\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00too many users\x00cross-domain link\x00SIGABRT\x00SIGALRM\x00SIGBUS\x00SIGCHLD\x00SIGCONT\x00SIGEMT\x00SIGFPE\x00SIGHUP\x00SIGILL\x00SIGINT\x00SIGIO\x00SIGKILL\x00SIGPIPE\x00SIGPROF\x00SIGQUIT\x00SIGSEGV\x00SIGSTOP\x00SIGSYS\x00SIGTERM\x00SIGTRAP\x00SIGTSTP\x00SIGTTIN\x00SIGTTOU\x00SIGURG\x00SIGUSR1\x00SIGUSR2\x00SIGVTALRM\x00SIGWINCH\x00SIGXCPU\x00SIGXFSZ\x00SIGINFO\x00unknown signal\x00alarm clock\x00bus error\x00child status changed\x00continue after stop\x00EMT instruction\x00floating-point exception\x00hangup\x00illegal instruction\x00interrupt\x00input/output possible on file\x00kill signal\x00write on pipe with no readers\x00profiling alarm\x00quit signal\x00segmentation violation\x00stop\x00bad argument to system call\x00software termination signal\x00trace trap\x00stop signal from tty\x00background tty read\x00background tty write\x00urgent I/O condition\x00user-defined signal 1\x00user-defined signal 2\x00virtual time alarm\x00window changed\x00exceeded CPU time limit\x00exceeded file size limit\x00information request\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00procbody\x00lambdaExpr\x00levelReference\x00name args body\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%lx)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00(\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Merge called with negative argc (%d)\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00UPVAR\x00INVERTED\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00LOCAL_ELEMENT\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00define\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.3.1\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00TclpOpenFileChannel: invalid mode value\x00couldn't open \"\x00\": filename is invalid on this platform\x00file%d\x00TclGetDefaultStdChannel: Unexpected channel type\x00auto crlf\x00\"%s\" wasn't opened for writing\x00NOT_WRITABLE\x00\"%s\" wasn't opened for reading\x00NOT_READABLE\x00cannot get a FILE * for \"%s\"\x00FILE_FAILURE\x00\"%s\" cannot be used to get a FILE *\x00NO_DESCRIPTOR\x00-group\x00-owner\x00-readonly\x00-creator\x00-type\x00-hidden\x00-rsrclength\x00..\x00%0#5lo\x00could not set group for file \"%s\": group \"%s\" does not exist\x00SETGRP\x00NO_GROUP\x00could not set group for file \"%s\": %s\x00could not set owner for file \"%s\": user \"%s\" does not exist\x00SETOWN\x00NO_USER\x00could not set owner for file \"%s\": %s\x00unknown permission string format \"%s\"\x00PERMISSION\x00could not set permissions for file \"%s\": %s\x00_XXXXXX\x00TMPDIR\x00/var/tmp/\x00/tmp\x00could not set flags for file \"%s\": %s\x00:/bin:/usr/bin\x00couldn't read directory \"%s\": %s\x00couldn't create temporary file: %s\x00pipe creation failed: %s\x00?channelId?\x00::tcl::unsupported::noReverseDNS\x00-connecting\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%lx\x00couldn't open socket: \x00ansi-1251\x00cp1251\x00ansi_x3.4-1968\x00big5\x00cp1250\x00cp1252\x00cp1253\x00cp1254\x00cp1255\x00cp1256\x00cp1257\x00cp1258\x00cp437\x00cp737\x00cp775\x00cp850\x00cp852\x00cp855\x00cp857\x00cp860\x00cp861\x00cp862\x00cp863\x00cp864\x00cp865\x00cp866\x00cp869\x00cp874\x00cp932\x00cp936\x00cp949\x00cp950\x00dingbats\x00ebcdic\x00euc-cn\x00euc-jp\x00euc-kr\x00eucjp\x00euckr\x00euctw\x00gb12345\x00gb1988\x00gb2312\x00gb2312-1980\x00gb2312-raw\x00greek8\x00ibm1250\x00ibm1251\x00ibm1252\x00ibm1253\x00ibm1254\x00ibm1255\x00ibm1256\x00ibm1257\x00ibm1258\x00ibm437\x00ibm737\x00ibm775\x00ibm850\x00ibm852\x00ibm855\x00ibm857\x00ibm860\x00ibm861\x00ibm862\x00ibm863\x00ibm864\x00ibm865\x00ibm866\x00ibm869\x00ibm874\x00ibm932\x00ibm936\x00ibm949\x00ibm950\x00iso-2022\x00iso2022\x00iso-2022-jp\x00iso2022-jp\x00iso-2022-kr\x00iso2022-kr\x00iso-8859-1\x00iso-8859-10\x00iso8859-10\x00iso-8859-13\x00iso8859-13\x00iso-8859-14\x00iso8859-14\x00iso-8859-15\x00iso8859-15\x00iso-8859-16\x00iso8859-16\x00iso-8859-2\x00iso8859-2\x00iso-8859-3\x00iso8859-3\x00iso-8859-4\x00iso8859-4\x00iso-8859-5\x00iso8859-5\x00iso-8859-6\x00iso8859-6\x00iso-8859-7\x00iso8859-7\x00iso-8859-8\x00iso8859-8\x00iso-8859-9\x00iso8859-9\x00iso88591\x00iso885915\x00iso88592\x00iso88595\x00iso88596\x00iso88597\x00iso88598\x00iso88599\x00ja\x00ja_jp\x00ja_jp.euc\x00ja_jp.eucjp\x00ja_jp.jis\x00ja_jp.mscode\x00shiftjis\x00ja_jp.sjis\x00ja_jp.ujis\x00japan\x00japanese\x00japanese-sjis\x00japanese-ujis\x00japanese.euc\x00japanese.sjis\x00jis0201\x00jis0208\x00jis0212\x00jp_jp\x00ko\x00ko_kr\x00ko_kr.euc\x00ko_kw.euckw\x00koi8-r\x00koi8-u\x00korean\x00ksc5601\x00maccenteuro\x00macCentEuro\x00maccroatian\x00macCroatian\x00maccyrillic\x00macCyrillic\x00macdingbats\x00macDingbats\x00macgreek\x00macGreek\x00maciceland\x00macIceland\x00macjapan\x00macJapan\x00macroman\x00macRoman\x00macromania\x00macRomania\x00macthai\x00macThai\x00macturkish\x00macTurkish\x00macukraine\x00macUkraine\x00roman8\x00ru\x00ru_ru\x00ru_su\x00sjis\x00symbol\x00tis-620\x00tis620\x00turkish8\x00utf8\x00zh\x00zh_cn.gb2312\x00zh_cn.gbk\x00zh_cz.gb2312\x00zh_tw\x00euc-tw\x00zh_tw.big5\x00/dev/null\x00TCL_LIBRARY\x00lib/tcl%s\x00LC_ALL\x00LC_CTYPE\x00LANG\x00pathSeparator\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00name refers to an element in an array\x00refer to\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00dynamic loading is not currently available on this system\x00dynamic loading from memory is not available on this system\x00osType\x00invalid attribute: %s\x00could not read attributes of \"%s\": %s\x00could not set attributes of \"%s\": %s\x00setting nonzero rsrclength not supported\x00UNSUPPORTED\x00/..namedfork/rsrc\x00could not truncate resource fork of \"%s\": %s\x00expected Macintosh OS type but got \"%s\": \x00MAC_OSTYPE\x00TclMacOSXNotifierAddRunLoopMode: Tcl not built with CoreFoundation support\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x00interpreter uses an incompatible stubs mechanism\x00missing stub table pointer\x00epoch number mismatch\x00requires a later revision\x00Error loading \x00 (requested version \x00, actual version \x00): \x00"
