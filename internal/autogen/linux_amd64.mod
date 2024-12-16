@@ -5,8 +5,8 @@ go 1.21
 toolchain go1.23.3
 
 require (
-	modernc.org/cc/v4 v4.23.1
-	modernc.org/ccgo/v4 v4.23.2
+	modernc.org/cc/v4 v4.24.1
+	modernc.org/ccgo/v4 v4.23.3
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.61.4
 )
