@@ -11,10 +11,8 @@ import (
 	"modernc.org/libc"
 )
 
-var (
-	_ reflect.Type
-	_ unsafe.Pointer
-)
+var _ reflect.Type
+var _ unsafe.Pointer
 
 const m_BASE = 65521
 const m_BC_BASE_MAX = 99
