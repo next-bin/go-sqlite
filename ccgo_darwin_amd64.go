@@ -11,10 +11,8 @@ import (
 	"modernc.org/libc"
 )
 
-var (
-	_ reflect.Type
-	_ unsafe.Pointer
-)
+var _ reflect.Type
+var _ unsafe.Pointer
 
 const m_ACCESSX_MAX_DESCRIPTORS = 100
 const m_BADSIG = "SIG_ERR"
