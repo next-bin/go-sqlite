@@ -12,93 +12,11 @@ import (
 	"modernc.org/libz"
 )
 
-var (
-	_ reflect.Type
-	_ unsafe.Pointer
-)
+var _ reflect.Type
+var _ unsafe.Pointer
 
-const m_BUFSIZ = 1024
-const m_CONST = "const"
-const m_CONST84 = "const"
-const m_CONST84_RETURN = "const"
-const m_CONST86 = "CONST84"
-const m_FILENAME_MAX = 4096
-const m_FOPEN_MAX = 1000
-const m_HAVE_BLKCNT_T = 1
-const m_HAVE_CAST_TO_UNION = 1
-const m_HAVE_DECL_GETHOSTBYADDR_R = 1
-const m_HAVE_DECL_GETHOSTBYNAME_R = 1
-const m_HAVE_FREEADDRINFO = 1
-const m_HAVE_GAI_STRERROR = 1
-const m_HAVE_GETADDRINFO = 1
-const m_HAVE_GETCWD = 1
-const m_HAVE_GETGRGID_R = 1
-const m_HAVE_GETGRGID_R_5 = 1
-const m_HAVE_GETGRNAM_R = 1
-const m_HAVE_GETGRNAM_R_5 = 1
-const m_HAVE_GETHOSTBYADDR_R = 1
-const m_HAVE_GETHOSTBYADDR_R_8 = 1
-const m_HAVE_GETHOSTBYNAME_R = 1
-const m_HAVE_GETHOSTBYNAME_R_6 = 1
-const m_HAVE_GETNAMEINFO = 1
-const m_HAVE_GETPWNAM_R = 1
-const m_HAVE_GETPWNAM_R_5 = 1
-const m_HAVE_GETPWUID_R = 1
-const m_HAVE_GETPWUID_R_5 = 1
-const m_HAVE_GMTIME_R = 1
-const m_HAVE_HIDDEN = 1
-const m_HAVE_INTPTR_T = 1
-const m_HAVE_INTTYPES_H = 1
-const m_HAVE_LANGINFO = 1
-const m_HAVE_LOCALTIME_R = 1
-const m_HAVE_MEMORY_H = 1
-const m_HAVE_MKSTEMP = 1
-const m_HAVE_MKSTEMPS = 1
-const m_HAVE_MKTIME = 1
-const m_HAVE_OPENDIR = 1
-const m_HAVE_PTHREAD_ATFORK = 1
-const m_HAVE_PTHREAD_ATTR_SETSTACKSIZE = 1
-const m_HAVE_SIGNED_CHAR = 1
-const m_HAVE_STDINT_H = 1
-const m_HAVE_STDLIB_H = 1
-const m_HAVE_STRINGS_H = 1
-const m_HAVE_STRING_H = 1
-const m_HAVE_STRTOL = 1
-const m_HAVE_STRUCT_ADDRINFO = 1
-const m_HAVE_STRUCT_IN6_ADDR = 1
-const m_HAVE_STRUCT_SOCKADDR_IN6 = 1
-const m_HAVE_STRUCT_SOCKADDR_STORAGE = 1
-const m_HAVE_STRUCT_STAT_ST_BLKSIZE = 1
-const m_HAVE_STRUCT_STAT_ST_BLOCKS = 1
-const m_HAVE_SYS_IOCTL_H = 1
-const m_HAVE_SYS_PARAM_H = 1
-const m_HAVE_SYS_STAT_H = 1
-const m_HAVE_SYS_TIME_H = 1
-const m_HAVE_SYS_TYPES_H = 1
-const m_HAVE_TIMEZONE_VAR = 1
-const m_HAVE_TM_GMTOFF = 1
-const m_HAVE_UINTPTR_T = 1
-const m_HAVE_UNISTD_H = 1
-const m_HAVE_WAITPID = 1
-const m_HAVE_ZLIB = 1
-const m_L_ctermid = 20
-const m_L_cuserid = 20
-const m_L_tmpnam = 20
-const m_MP_FIXED_CUTOFFS = 1
-const m_MP_NO_STDINT = 1
 const m_MP_PREC = 4
-const m_NDEBUG = 1
-const m_NO_UNION_WAIT = 1
 const m_NUM_STATIC_TOKENS = 20
-const m_PACKAGE_BUGREPORT = ""
-const m_PACKAGE_NAME = "tcl"
-const m_PACKAGE_STRING = "tcl 8.6"
-const m_PACKAGE_TARNAME = "tcl"
-const m_PACKAGE_VERSION = "8.6"
-const m_P_tmpdir = "/tmp"
-const m_STDC_HEADERS = 1
-const m_TCL_ALLOW_INLINE_COMPILATION = 0x20000
-const m_TCL_ALPHA_RELEASE = 0
 const m_TCL_APPEND_VALUE = 4
 const m_TCL_ARGV_CONSTANT = 15
 const m_TCL_ARGV_END = 23
@@ -109,50 +27,24 @@ const m_TCL_ARGV_HELP = 22
 const m_TCL_ARGV_INT = 16
 const m_TCL_ARGV_REST = 18
 const m_TCL_ARGV_STRING = 17
-const m_TCL_BETA_RELEASE = 1
 const m_TCL_BREAK = 3
-const m_TCL_BUILDTIME_LIBRARY = "/tmp/libtcl8.6/tcl8.6.13/library"
-const m_TCL_CANCEL_UNWIND = 0x100000
-const m_TCL_CFGVAL_ENCODING = "iso8859-1"
-const m_TCL_CFG_OPTIMIZED = 1
 const m_TCL_CHANNEL_THREAD_INSERT = 0
 const m_TCL_CHANNEL_THREAD_REMOVE = 1
 const m_TCL_CONTINUE = 4
-const m_TCL_CREATE_HARD_LINK = 0x02
-const m_TCL_CREATE_SYMBOLIC_LINK = 0x01
 const m_TCL_DONT_QUOTE_HASH = 8
 const m_TCL_DONT_USE_BRACES = 1
 const m_TCL_DSTRING_STATIC_SIZE = 200
-const m_TCL_ENCODING_CHAR_LIMIT = 0x10
-const m_TCL_ENCODING_END = 0x02
-const m_TCL_ENCODING_NO_TERMINATE = 0x08
-const m_TCL_ENCODING_START = 0x01
-const m_TCL_ENCODING_STOPONERROR = 0x04
-const m_TCL_ENSEMBLE_PREFIX = 0x02
 const m_TCL_ERROR = 1
-const m_TCL_EVAL_DIRECT = 0x040000
-const m_TCL_EVAL_GLOBAL = 0x020000
-const m_TCL_EVAL_INVOKE = 0x080000
-const m_TCL_EVAL_NOERR = 0x200000
 const m_TCL_EXACT = 1
 const m_TCL_FINAL_RELEASE = 2
 const m_TCL_GLOBAL_ONLY = 1
-const m_TCL_HASH_KEY_RANDOMIZE_HASH = 0x1
-const m_TCL_HASH_KEY_STORE_HASH = 1
-const m_TCL_HASH_KEY_SYSTEM_HASH = 0x2
 const m_TCL_HASH_KEY_TYPE_VERSION = 1
-const m_TCL_INTEGER_SPACE = 24
-const m_TCL_INTERP_DESTROYED = 0x100
-const m_TCL_LEAVE_ERR_MSG = 0x200
-const m_TCL_LIMIT_COMMANDS = 0x01
-const m_TCL_LIMIT_TIME = 0x02
 const m_TCL_LINK_BOOLEAN = 3
 const m_TCL_LINK_CHAR = 6
 const m_TCL_LINK_DOUBLE = 2
 const m_TCL_LINK_FLOAT = 13
 const m_TCL_LINK_INT = 1
 const m_TCL_LINK_LONG = 11
-const m_TCL_LINK_READ_ONLY = 0x80
 const m_TCL_LINK_SHORT = 8
 const m_TCL_LINK_STRING = 4
 const m_TCL_LINK_UCHAR = 7
@@ -162,17 +54,14 @@ const m_TCL_LINK_USHORT = 9
 const m_TCL_LINK_WIDE_INT = 5
 const m_TCL_LINK_WIDE_UINT = 14
 const m_TCL_LIST_ELEMENT = 8
-const m_TCL_LL_MODIFIER = "l"
 const m_TCL_LOAD_GLOBAL = 1
 const m_TCL_LOAD_LAZY = 2
-const m_TCL_LOCAL_APPINIT = "Tcl_AppInit"
 const m_TCL_MAJOR_VERSION = 8
 const m_TCL_MAX_PREC = 17
 const m_TCL_MINOR_VERSION = 6
 const m_TCL_MODE_BLOCKING = 0
 const m_TCL_MODE_NONBLOCKING = 1
 const m_TCL_NAMESPACE_ONLY = 2
-const m_TCL_NO_EVAL = 0x010000
 const m_TCL_OK = 0
 const m_TCL_ONE_WORD_KEYS = 1
 const m_TCL_PARSE_BAD_NUMBER = 9
@@ -182,42 +71,16 @@ const m_TCL_PARSE_MISSING_BRACKET = 4
 const m_TCL_PARSE_MISSING_PAREN = 5
 const m_TCL_PARSE_MISSING_QUOTE = 6
 const m_TCL_PARSE_MISSING_VAR_BRACE = 7
-const m_TCL_PARSE_PART1 = 0x400
 const m_TCL_PARSE_QUOTE_EXTRA = 1
 const m_TCL_PARSE_SUCCESS = 0
 const m_TCL_PARSE_SYNTAX = 8
-const m_TCL_PATCH_LEVEL = "8.6.13"
-const m_TCL_REG_ADVANCED = 000003
-const m_TCL_REG_ADVF = 000002
-const m_TCL_REG_BASIC = 000000
-const m_TCL_REG_CANMATCH = 001000
-const m_TCL_REG_EXPANDED = 000040
-const m_TCL_REG_EXTENDED = 000001
-const m_TCL_REG_NEWLINE = 000300
-const m_TCL_REG_NLANCH = 000200
-const m_TCL_REG_NLSTOP = 000100
-const m_TCL_REG_NOCASE = 000010
-const m_TCL_REG_NOSUB = 000020
-const m_TCL_REG_NOTBOL = 0001
-const m_TCL_REG_NOTEOL = 0002
-const m_TCL_REG_QUOTE = 000004
-const m_TCL_RELEASE_LEVEL = "TCL_FINAL_RELEASE"
 const m_TCL_RELEASE_SERIAL = 13
 const m_TCL_RESULT_SIZE = 200
 const m_TCL_RETURN = 2
 const m_TCL_SERVICE_ALL = 1
 const m_TCL_SERVICE_NONE = 0
-const m_TCL_SHLIB_EXT = ""
 const m_TCL_SMALL_HASH_TABLE = 4
 const m_TCL_STRING_KEYS = 0
-const m_TCL_SUBST_ALL = 007
-const m_TCL_SUBST_BACKSLASHES = 004
-const m_TCL_SUBST_COMMANDS = 001
-const m_TCL_SUBST_VARIABLES = 002
-const m_TCL_TEST = 1
-const m_TCL_THREADS = 1
-const m_TCL_THREAD_JOINABLE = 0001
-const m_TCL_THREAD_NOFLAGS = 0000
 const m_TCL_THREAD_STACK_DEFAULT = 0
 const m_TCL_TOKEN_BS = 8
 const m_TCL_TOKEN_COMMAND = 16
@@ -228,375 +91,27 @@ const m_TCL_TOKEN_SUB_EXPR = 64
 const m_TCL_TOKEN_TEXT = 4
 const m_TCL_TOKEN_VARIABLE = 32
 const m_TCL_TOKEN_WORD = 1
-const m_TCL_TOMMATH = 1
-const m_TCL_TRACE_ARRAY = 0x800
-const m_TCL_TRACE_DELETE = 0x4000
-const m_TCL_TRACE_DESTROYED = 0x80
-const m_TCL_TRACE_OLD_STYLE = 0x1000
-const m_TCL_TRACE_READS = 0x10
-const m_TCL_TRACE_RENAME = 0x2000
-const m_TCL_TRACE_RESULT_DYNAMIC = 0x8000
-const m_TCL_TRACE_RESULT_OBJECT = 0x10000
-const m_TCL_TRACE_UNSETS = 0x40
-const m_TCL_TRACE_WRITES = 0x20
-const m_TCL_UNLOAD_DLLS = 1
 const m_TCL_UTF_MAX = 3
-const m_TCL_VERSION = "8.6"
-const m_TCL_WIDE_INT_IS_LONG = 1
-const m_TCL_ZLIB_COMPRESS_BEST = 9
-const m_TCL_ZLIB_COMPRESS_FAST = 1
-const m_TCL_ZLIB_COMPRESS_NONE = 0
-const m_TCL_ZLIB_FINALIZE = 4
-const m_TCL_ZLIB_FLUSH = 2
 const m_TCL_ZLIB_FORMAT_AUTO = 8
 const m_TCL_ZLIB_FORMAT_GZIP = 4
 const m_TCL_ZLIB_FORMAT_RAW = 1
 const m_TCL_ZLIB_FORMAT_ZLIB = 2
-const m_TCL_ZLIB_FULLFLUSH = 3
-const m_TCL_ZLIB_NO_FLUSH = 0
 const m_TCL_ZLIB_STREAM_DEFLATE = 16
 const m_TCL_ZLIB_STREAM_INFLATE = 32
-const m_TIME_WITH_SYS_TIME = 1
-const m_TMP_MAX = 10000
-const m_Tcl_Ckalloc = "Tcl_Alloc"
-const m_Tcl_Ckfree = "Tcl_Free"
-const m_Tcl_Ckrealloc = "Tcl_Realloc"
-const m_Tcl_CreateChild = "Tcl_CreateSlave"
-const m_Tcl_DStringTrunc = "Tcl_DStringSetLength"
-const m_Tcl_GetChild = "Tcl_GetSlave"
-const m_Tcl_GetParent = "Tcl_GetMaster"
-const m_Tcl_LibraryInitProc = "Tcl_PackageInitProc"
-const m_Tcl_Return = "Tcl_SetResult"
-const m_Tcl_StaticLibrary = "Tcl_StaticPackage"
-const m_Tcl_ThreadCreateType = "void"
-const m_Tcl_TildeSubst = "Tcl_TranslateFileName"
-const m_USE_THREAD_ALLOC = 1
-const m_VOID = "void"
-const m_WORDS_BIGENDIAN = 1
-const m__GNU_SOURCE = 1
-const m__IOFBF = 0
-const m__IOLBF = 1
-const m__IONBF = 2
-const m__LARGEFILE64_SOURCE = 1
-const m__LP64 = 1
-const m__REENTRANT = 1
-const m__STDC_PREDEF_H = 1
-const m__THREAD_SAFE = 1
-const m___ARCH__ = 9
-const m___ATOMIC_ACQUIRE = 2
-const m___ATOMIC_ACQ_REL = 4
-const m___ATOMIC_CONSUME = 1
-const m___ATOMIC_RELAXED = 0
-const m___ATOMIC_RELEASE = 3
-const m___ATOMIC_SEQ_CST = 5
-const m___BIGGEST_ALIGNMENT__ = 8
-const m___BIG_ENDIAN = 4321
-const m___BYTE_ORDER = 4321
-const m___BYTE_ORDER__ = "__ORDER_BIG_ENDIAN__"
-const m___CCGO__ = 1
-const m___CHAR_BIT__ = 8
-const m___CHAR_UNSIGNED__ = 1
-const m___DBL_DECIMAL_DIG__ = 17
-const m___DBL_DIG__ = 15
-const m___DBL_HAS_DENORM__ = 1
-const m___DBL_HAS_INFINITY__ = 1
-const m___DBL_HAS_QUIET_NAN__ = 1
-const m___DBL_MANT_DIG__ = 53
-const m___DBL_MAX_10_EXP__ = 308
-const m___DBL_MAX_EXP__ = 1024
-const m___DEC128_EPSILON__ = 1e-33
-const m___DEC128_MANT_DIG__ = 34
-const m___DEC128_MAX_EXP__ = 6145
-const m___DEC128_MAX__ = "9.999999999999999999999999999999999E6144"
-const m___DEC128_MIN__ = 1e-6143
-const m___DEC128_SUBNORMAL_MIN__ = 0.000000000000000000000000000000001e-6143
-const m___DEC32_EPSILON__ = 1e-6
-const m___DEC32_MANT_DIG__ = 7
-const m___DEC32_MAX_EXP__ = 97
-const m___DEC32_MAX__ = 9.999999e96
-const m___DEC32_MIN__ = 1e-95
-const m___DEC32_SUBNORMAL_MIN__ = 0.000001e-95
-const m___DEC64_EPSILON__ = 1e-15
-const m___DEC64_MANT_DIG__ = 16
-const m___DEC64_MAX_EXP__ = 385
-const m___DEC64_MAX__ = "9.999999999999999E384"
-const m___DEC64_MIN__ = 1e-383
-const m___DEC64_SUBNORMAL_MIN__ = 0.000000000000001e-383
-const m___DECIMAL_DIG__ = 17
-const m___DEC_EVAL_METHOD__ = 2
-const m___ELF__ = 1
-const m___FINITE_MATH_ONLY__ = 0
-const m___FLOAT_WORD_ORDER__ = "__ORDER_BIG_ENDIAN__"
-const m___FLT32X_DECIMAL_DIG__ = 17
-const m___FLT32X_DENORM_MIN__ = 4.9406564584124654e-324
-const m___FLT32X_DIG__ = 15
-const m___FLT32X_EPSILON__ = 2.2204460492503131e-16
-const m___FLT32X_HAS_DENORM__ = 1
-const m___FLT32X_HAS_INFINITY__ = 1
-const m___FLT32X_HAS_QUIET_NAN__ = 1
-const m___FLT32X_MANT_DIG__ = 53
-const m___FLT32X_MAX_10_EXP__ = 308
-const m___FLT32X_MAX_EXP__ = 1024
-const m___FLT32X_MAX__ = 1.7976931348623157e+308
-const m___FLT32X_MIN__ = 2.2250738585072014e-308
-const m___FLT32X_NORM_MAX__ = 1.7976931348623157e+308
-const m___FLT32_DECIMAL_DIG__ = 9
-const m___FLT32_DENORM_MIN__ = 1.4012984643248171e-45
-const m___FLT32_DIG__ = 6
-const m___FLT32_EPSILON__ = 1.1920928955078125e-7
-const m___FLT32_HAS_DENORM__ = 1
-const m___FLT32_HAS_INFINITY__ = 1
-const m___FLT32_HAS_QUIET_NAN__ = 1
-const m___FLT32_MANT_DIG__ = 24
-const m___FLT32_MAX_10_EXP__ = 38
-const m___FLT32_MAX_EXP__ = 128
-const m___FLT32_MAX__ = 3.4028234663852886e+38
-const m___FLT32_MIN__ = 1.1754943508222875e-38
-const m___FLT32_NORM_MAX__ = 3.4028234663852886e+38
-const m___FLT64_DECIMAL_DIG__ = 17
-const m___FLT64_DENORM_MIN__ = 4.9406564584124654e-324
-const m___FLT64_DIG__ = 15
-const m___FLT64_EPSILON__ = 2.2204460492503131e-16
-const m___FLT64_HAS_DENORM__ = 1
-const m___FLT64_HAS_INFINITY__ = 1
-const m___FLT64_HAS_QUIET_NAN__ = 1
-const m___FLT64_MANT_DIG__ = 53
-const m___FLT64_MAX_10_EXP__ = 308
-const m___FLT64_MAX_EXP__ = 1024
-const m___FLT64_MAX__ = 1.7976931348623157e+308
-const m___FLT64_MIN__ = 2.2250738585072014e-308
-const m___FLT64_NORM_MAX__ = 1.7976931348623157e+308
-const m___FLT_DECIMAL_DIG__ = 9
-const m___FLT_DENORM_MIN__ = 1.4012984643248171e-45
-const m___FLT_DIG__ = 6
-const m___FLT_EPSILON__ = 1.1920928955078125e-7
-const m___FLT_EVAL_METHOD_TS_18661_3__ = 0
-const m___FLT_EVAL_METHOD__ = 0
-const m___FLT_HAS_DENORM__ = 1
-const m___FLT_HAS_INFINITY__ = 1
-const m___FLT_HAS_QUIET_NAN__ = 1
-const m___FLT_MANT_DIG__ = 24
-const m___FLT_MAX_10_EXP__ = 38
-const m___FLT_MAX_EXP__ = 128
-const m___FLT_MAX__ = 3.4028234663852886e+38
-const m___FLT_MIN__ = 1.1754943508222875e-38
-const m___FLT_NORM_MAX__ = 3.4028234663852886e+38
-const m___FLT_RADIX__ = 2
-const m___FP_FAST_FMA = 1
-const m___FP_FAST_FMAF = 1
-const m___FP_FAST_FMAF32 = 1
-const m___FP_FAST_FMAF32x = 1
-const m___FP_FAST_FMAF64 = 1
-const m___FP_FAST_FMAL = 1
-const m___FUNCTION__ = "__func__"
-const m___GCC_ATOMIC_BOOL_LOCK_FREE = 2
-const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
-const m___GCC_ATOMIC_CHAR32_T_LOCK_FREE = 2
-const m___GCC_ATOMIC_CHAR_LOCK_FREE = 2
-const m___GCC_ATOMIC_INT_LOCK_FREE = 2
-const m___GCC_ATOMIC_LLONG_LOCK_FREE = 2
-const m___GCC_ATOMIC_LONG_LOCK_FREE = 2
-const m___GCC_ATOMIC_POINTER_LOCK_FREE = 2
-const m___GCC_ATOMIC_SHORT_LOCK_FREE = 2
-const m___GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
-const m___GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
-const m___GCC_HAVE_DWARF2_CFI_ASM = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_16 = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
-const m___GCC_IEC_559 = 2
-const m___GCC_IEC_559_COMPLEX = 2
-const m___GNUC_MINOR__ = 2
-const m___GNUC_PATCHLEVEL__ = 1
-const m___GNUC_STDC_INLINE__ = 1
-const m___GNUC__ = 10
-const m___GXX_ABI_VERSION = 1014
-const m___HAVE_SPECULATION_SAFE_VALUE = 1
-const m___INT16_MAX__ = 0x7fff
-const m___INT32_MAX__ = 0x7fffffff
-const m___INT32_TYPE__ = "int"
-const m___INT64_MAX__ = 0x7fffffffffffffff
-const m___INT8_MAX__ = 0x7f
-const m___INTMAX_MAX__ = 0x7fffffffffffffff
-const m___INTMAX_WIDTH__ = 64
-const m___INTPTR_MAX__ = 0x7fffffffffffffff
-const m___INTPTR_WIDTH__ = 64
-const m___INT_FAST16_MAX__ = 0x7fffffffffffffff
-const m___INT_FAST16_WIDTH__ = 64
-const m___INT_FAST32_MAX__ = 0x7fffffffffffffff
-const m___INT_FAST32_WIDTH__ = 64
-const m___INT_FAST64_MAX__ = 0x7fffffffffffffff
-const m___INT_FAST64_WIDTH__ = 64
-const m___INT_FAST8_MAX__ = 0x7f
-const m___INT_FAST8_WIDTH__ = 8
-const m___INT_LEAST16_MAX__ = 0x7fff
-const m___INT_LEAST16_WIDTH__ = 16
-const m___INT_LEAST32_MAX__ = 0x7fffffff
-const m___INT_LEAST32_TYPE__ = "int"
-const m___INT_LEAST32_WIDTH__ = 32
-const m___INT_LEAST64_MAX__ = 0x7fffffffffffffff
-const m___INT_LEAST64_WIDTH__ = 64
-const m___INT_LEAST8_MAX__ = 0x7f
-const m___INT_LEAST8_WIDTH__ = 8
-const m___INT_MAX__ = 0x7fffffff
-const m___INT_WIDTH__ = 32
-const m___LDBL_DECIMAL_DIG__ = 17
-const m___LDBL_DENORM_MIN__ = 4.9406564584124654e-324
-const m___LDBL_DIG__ = 15
-const m___LDBL_EPSILON__ = 2.2204460492503131e-16
-const m___LDBL_HAS_DENORM__ = 1
-const m___LDBL_HAS_INFINITY__ = 1
-const m___LDBL_HAS_QUIET_NAN__ = 1
-const m___LDBL_MANT_DIG__ = 53
-const m___LDBL_MAX_10_EXP__ = 308
-const m___LDBL_MAX_EXP__ = 1024
-const m___LDBL_MAX__ = 1.7976931348623157e+308
-const m___LDBL_MIN__ = 2.2250738585072014e-308
-const m___LDBL_NORM_MAX__ = 1.7976931348623157e+308
-const m___LITTLE_ENDIAN = 1234
-const m___LONG_LONG_MAX__ = 0x7fffffffffffffff
-const m___LONG_LONG_WIDTH__ = 64
-const m___LONG_MAX = 0x7fffffffffffffff
-const m___LONG_MAX__ = 0x7fffffffffffffff
-const m___LONG_WIDTH__ = 64
-const m___LP64__ = 1
-const m___OPTIMIZE__ = 1
-const m___ORDER_BIG_ENDIAN__ = 4321
-const m___ORDER_LITTLE_ENDIAN__ = 1234
-const m___ORDER_PDP_ENDIAN__ = 3412
-const m___PIC__ = 2
-const m___PIE__ = 2
-const m___PRAGMA_REDEFINE_EXTNAME = 1
-const m___PRETTY_FUNCTION__ = "__func__"
-const m___PTRDIFF_MAX__ = 0x7fffffffffffffff
-const m___PTRDIFF_WIDTH__ = 64
-const m___SCHAR_MAX__ = 0x7f
-const m___SCHAR_WIDTH__ = 8
-const m___SHRT_MAX__ = 0x7fff
-const m___SHRT_WIDTH__ = 16
-const m___SIG_ATOMIC_MAX__ = 0x7fffffff
-const m___SIG_ATOMIC_TYPE__ = "int"
-const m___SIG_ATOMIC_WIDTH__ = 32
-const m___SIZEOF_DOUBLE__ = 8
-const m___SIZEOF_FLOAT__ = 4
-const m___SIZEOF_INT128__ = 16
-const m___SIZEOF_INT__ = 4
-const m___SIZEOF_LONG_DOUBLE__ = 8
-const m___SIZEOF_LONG_LONG__ = 8
-const m___SIZEOF_LONG__ = 8
-const m___SIZEOF_POINTER__ = 8
-const m___SIZEOF_PTRDIFF_T__ = 8
-const m___SIZEOF_SHORT__ = 2
-const m___SIZEOF_SIZE_T__ = 8
-const m___SIZEOF_WCHAR_T__ = 4
-const m___SIZEOF_WINT_T__ = 4
-const m___SIZE_MAX__ = 0xffffffffffffffff
-const m___SIZE_WIDTH__ = 64
-const m___STDC_HOSTED__ = 1
-const m___STDC_IEC_559_COMPLEX__ = 1
-const m___STDC_IEC_559__ = 1
-const m___STDC_ISO_10646__ = 201706
-const m___STDC_UTF_16__ = 1
-const m___STDC_UTF_32__ = 1
-const m___STDC_VERSION__ = 201710
-const m___STDC__ = 1
-const m___UINT16_MAX__ = 0xffff
-const m___UINT32_MAX__ = 0xffffffff
-const m___UINT64_MAX__ = 0xffffffffffffffff
-const m___UINT8_MAX__ = 0xff
-const m___UINTMAX_MAX__ = 0xffffffffffffffff
-const m___UINTPTR_MAX__ = 0xffffffffffffffff
-const m___UINT_FAST16_MAX__ = 0xffffffffffffffff
-const m___UINT_FAST32_MAX__ = 0xffffffffffffffff
-const m___UINT_FAST64_MAX__ = 0xffffffffffffffff
-const m___UINT_FAST8_MAX__ = 0xff
-const m___UINT_LEAST16_MAX__ = 0xffff
-const m___UINT_LEAST32_MAX__ = 0xffffffff
-const m___UINT_LEAST64_MAX__ = 0xffffffffffffffff
-const m___UINT_LEAST8_MAX__ = 0xff
-const m___USE_TIME_BITS64 = 1
-const m___VERSION__ = "10.2.1 20210110"
-const m___WCHAR_MAX__ = 0x7fffffff
-const m___WCHAR_TYPE__ = "int"
-const m___WCHAR_WIDTH__ = 32
-const m___WINT_MAX__ = 0xffffffff
-const m___WINT_MIN__ = 0
-const m___WINT_WIDTH__ = 32
-const m___gnu_linux__ = 1
-const m___inline = "inline"
-const m___linux = 1
-const m___linux__ = 1
-const m___pic__ = 2
-const m___pie__ = 2
-const m___restrict = "restrict"
-const m___restrict_arr = "restrict"
-const m___s390__ = 1
-const m___s390x__ = 1
-const m___unix = 1
-const m___unix__ = 1
-const m___zarch__ = 1
-const m_fgetpos64 = "fgetpos"
-const m_fopen64 = "fopen"
-const m_fpos64_t = "fpos_t"
-const m_freopen64 = "freopen"
-const m_fseeko64 = "fseeko"
-const m_fsetpos64 = "fsetpos"
-const m_ftello64 = "ftello"
-const m_linux = 1
-const m_off64_t = "off_t"
-const m_panic = "Tcl_Panic"
-const m_panicVA = "Tcl_PanicVA"
-const m_tmpfile64 = "tmpfile"
-const m_unix = 1
-
-type T__builtin_va_list = uintptr
-
-type T__predefined_size_t = uint64
-
-type T__predefined_wchar_t = int32
 
 type T__predefined_ptrdiff_t = int64
 
 type Tsize_t = uint64
 
-type Tssize_t = int64
-
 type Toff_t = int64
 
 type Tva_list = uintptr
-
-type T__isoc_va_list = uintptr
-
-type Tfpos_t = struct {
-	F__lldata [0]int64
-	F__align  [0]float64
-	F__opaque [16]uint8
-}
-
-type T_G_fpos64_t = Tfpos_t
-
-type Tcookie_io_functions_t = struct {
-	Fread   uintptr
-	Fwrite  uintptr
-	Fseek   uintptr
-	Fclose1 uintptr
-}
-
-type T_IO_cookie_io_functions_t = Tcookie_io_functions_t
 
 type TClientData = uintptr
 
 type TTcl_WideInt = int64
 
 type TTcl_WideUInt = uint64
-
-type TTcl_Interp = struct {
-	FresultDontUse    uintptr
-	FfreeProcDontUse  uintptr
-	FerrorLineDontUse int32
-}
 
 type TTcl_AsyncHandler = uintptr
 
@@ -653,10 +168,6 @@ type TTcl_RegExpInfo = struct {
 	Freserved    int64
 }
 
-type TTcl_Stat_ = uintptr
-
-type TTcl_OldStat_ = uintptr
-
 type TTcl_ValueType = int32
 
 const _TCL_INT = 0
@@ -669,28 +180,6 @@ type TTcl_Value = struct {
 	FintValue    int64
 	FdoubleValue float64
 	FwideValue   TTcl_WideInt
-}
-
-type TTcl_Obj1 = struct {
-	FrefCount    int32
-	Fbytes       uintptr
-	Flength      int32
-	FtypePtr     uintptr
-	FinternalRep struct {
-		FdoubleValue   [0]float64
-		FotherValuePtr [0]uintptr
-		FwideValue     [0]TTcl_WideInt
-		FtwoPtrValue   [0]struct {
-			Fptr1 uintptr
-			Fptr2 uintptr
-		}
-		FptrAndLongRep [0]struct {
-			Fptr   uintptr
-			Fvalue uint64
-		}
-		FlongValue   int64
-		F__ccgo_pad6 [8]byte
-	}
 }
 
 type TTcl_ObjType = struct {
@@ -739,23 +228,6 @@ type TTcl_Namespace = struct {
 	FclientData TClientData
 	FdeleteProc uintptr
 	FparentPtr  uintptr
-}
-
-type TTcl_CallFrame = struct {
-	FnsPtr   uintptr
-	Fdummy1  int32
-	Fdummy2  int32
-	Fdummy3  uintptr
-	Fdummy4  uintptr
-	Fdummy5  uintptr
-	Fdummy6  int32
-	Fdummy7  uintptr
-	Fdummy8  uintptr
-	Fdummy9  int32
-	Fdummy10 uintptr
-	Fdummy11 uintptr
-	Fdummy12 uintptr
-	Fdummy13 uintptr
 }
 
 type TTcl_CmdInfo = struct {
@@ -812,42 +284,6 @@ type TTcl_HashEntry = struct {
 	}
 }
 
-type TTcl_HashEntry1 = struct {
-	FnextPtr    uintptr
-	FtablePtr   uintptr
-	Fhash       uintptr
-	FclientData TClientData
-	Fkey        struct {
-		FobjPtr       [0]uintptr
-		Fwords        [0][1]int32
-		Fstring1      [0][1]uint8
-		FoneWordValue uintptr
-	}
-}
-
-type TTcl_HashKeyType1 = struct {
-	Fversion         int32
-	Fflags           int32
-	FhashKeyProc     uintptr
-	FcompareKeysProc uintptr
-	FallocEntryProc  uintptr
-	FfreeEntryProc   uintptr
-}
-
-type TTcl_HashTable1 = struct {
-	Fbuckets       uintptr
-	FstaticBuckets [4]uintptr
-	FnumBuckets    int32
-	FnumEntries    int32
-	FrebuildSize   int32
-	FdownShift     int32
-	Fmask          int32
-	FkeyType       int32
-	FfindProc      uintptr
-	FcreateProc    uintptr
-	FtypePtr       uintptr
-}
-
 type TTcl_HashSearch = struct {
 	FtablePtr     uintptr
 	FnextIndex    int32
@@ -858,11 +294,6 @@ type TTcl_DictSearch = struct {
 	Fnext          uintptr
 	Fepoch         int32
 	FdictionaryPtr TTcl_Dict
-}
-
-type TTcl_Event1 = struct {
-	Fproc    uintptr
-	FnextPtr uintptr
 }
 
 type TTcl_QueuePosition = int32
@@ -897,8 +328,6 @@ type TTcl_ChannelType = struct {
 }
 
 type TTcl_PathType = int32
-
-type _Tcl_PathType = int32
 
 const _TCL_PATH_ABSOLUTE = 0
 const _TCL_PATH_RELATIVE = 1
@@ -1804,184 +1233,16 @@ func main() {
 	libc.Start(x_main)
 }
 
-const m_AF_ALG = "PF_ALG"
-const m_AF_APPLETALK = "PF_APPLETALK"
-const m_AF_ASH = "PF_ASH"
-const m_AF_ATMPVC = "PF_ATMPVC"
-const m_AF_ATMSVC = "PF_ATMSVC"
-const m_AF_AX25 = "PF_AX25"
-const m_AF_BLUETOOTH = "PF_BLUETOOTH"
-const m_AF_BRIDGE = "PF_BRIDGE"
-const m_AF_CAIF = "PF_CAIF"
-const m_AF_CAN = "PF_CAN"
-const m_AF_DECnet = "PF_DECnet"
-const m_AF_ECONET = "PF_ECONET"
-const m_AF_FILE = "AF_LOCAL"
-const m_AF_IB = "PF_IB"
-const m_AF_IEEE802154 = "PF_IEEE802154"
-const m_AF_INET = "PF_INET"
-const m_AF_INET6 = "PF_INET6"
-const m_AF_IPX = "PF_IPX"
-const m_AF_IRDA = "PF_IRDA"
-const m_AF_ISDN = "PF_ISDN"
-const m_AF_IUCV = "PF_IUCV"
-const m_AF_KCM = "PF_KCM"
-const m_AF_KEY = "PF_KEY"
-const m_AF_LLC = "PF_LLC"
-const m_AF_LOCAL = "PF_LOCAL"
-const m_AF_MAX = "PF_MAX"
-const m_AF_MPLS = "PF_MPLS"
-const m_AF_NETBEUI = "PF_NETBEUI"
-const m_AF_NETLINK = "PF_NETLINK"
-const m_AF_NETROM = "PF_NETROM"
-const m_AF_NFC = "PF_NFC"
-const m_AF_PACKET = "PF_PACKET"
-const m_AF_PHONET = "PF_PHONET"
-const m_AF_PPPOX = "PF_PPPOX"
-const m_AF_QIPCRTR = "PF_QIPCRTR"
-const m_AF_RDS = "PF_RDS"
-const m_AF_ROSE = "PF_ROSE"
-const m_AF_ROUTE = "PF_ROUTE"
-const m_AF_RXRPC = "PF_RXRPC"
-const m_AF_SECURITY = "PF_SECURITY"
-const m_AF_SMC = "PF_SMC"
-const m_AF_SNA = "PF_SNA"
-const m_AF_TIPC = "PF_TIPC"
-const m_AF_UNIX = "AF_LOCAL"
-const m_AF_UNSPEC = "PF_UNSPEC"
-const m_AF_VSOCK = "PF_VSOCK"
-const m_AF_WANPIPE = "PF_WANPIPE"
-const m_AF_X25 = "PF_X25"
-const m_AF_XDP = "PF_XDP"
-const m_AI_ADDRCONFIG = 0x20
-const m_AI_ALL = 0x10
-const m_AI_CANONNAME = 0x02
-const m_AI_NUMERICHOST = 0x04
-const m_AI_NUMERICSERV = 0x400
-const m_AI_PASSIVE = 0x01
-const m_AI_V4MAPPED = 0x08
 const m_ALLOC_NOBJHIGH = 1200
-const m_ARG_MAX = 131072
-const m_AT_EACCESS = 0x200
-const m_AT_EMPTY_PATH = 0x1000
-const m_AT_NO_AUTOMOUNT = 0x800
-const m_AT_RECURSIVE = 0x8000
-const m_AT_REMOVEDIR = 0x200
-const m_AT_STATX_DONT_SYNC = 0x4000
-const m_AT_STATX_FORCE_SYNC = 0x2000
-const m_AT_STATX_SYNC_AS_STAT = 0x0000
-const m_AT_STATX_SYNC_TYPE = 0x6000
-const m_AT_SYMLINK_FOLLOW = 0x400
-const m_AT_SYMLINK_NOFOLLOW = 0x100
-const m_BC_BASE_MAX = 99
-const m_BC_DIM_MAX = 2048
-const m_BC_SCALE_MAX = 99
-const m_BC_STRING_MAX = 1000
-const m_BIG_ENDIAN = "__BIG_ENDIAN"
 const m_BUFFER_PADDING = 16
-const m_BUILD_tcl = 1
-const m_BUS_ADRALN = 1
-const m_BUS_ADRERR = 2
-const m_BUS_MCEERR_AO = 5
-const m_BUS_MCEERR_AR = 4
-const m_BUS_OBJERR = 3
-const m_BYTE_ORDER = "__BYTE_ORDER"
-const m_CANBSIZ = 255
-const m_CANCELED = 0x1000
-const m_CHARCLASS_NAME_MAX = 14
 const m_CHAR_BIT = 8
-const m_CHAR_MAX = 255
-const m_CHAR_MIN = 0
-const m_CLD_CONTINUED = 6
-const m_CLD_DUMPED = 3
-const m_CLD_EXITED = 1
-const m_CLD_KILLED = 2
-const m_CLD_STOPPED = 5
-const m_CLD_TRAPPED = 4
-const m_CLOCKS_PER_SEC = 1000000
-const m_CLOCK_BOOTTIME = 7
-const m_CLOCK_BOOTTIME_ALARM = 9
-const m_CLOCK_MONOTONIC = 1
-const m_CLOCK_MONOTONIC_COARSE = 6
-const m_CLOCK_MONOTONIC_RAW = 4
-const m_CLOCK_PROCESS_CPUTIME_ID = 2
-const m_CLOCK_REALTIME = 0
-const m_CLOCK_REALTIME_ALARM = 8
-const m_CLOCK_REALTIME_COARSE = 5
-const m_CLOCK_SGI_CYCLE = 10
-const m_CLOCK_TAI = 11
-const m_CLOCK_THREAD_CPUTIME_ID = 3
-const m_CLONE_CHILD_CLEARTID = 0x00200000
-const m_CLONE_CHILD_SETTID = 0x01000000
-const m_CLONE_DETACHED = 0x00400000
-const m_CLONE_FILES = 0x00000400
-const m_CLONE_FS = 0x00000200
-const m_CLONE_IO = 0x80000000
-const m_CLONE_NEWCGROUP = 0x02000000
-const m_CLONE_NEWIPC = 0x08000000
-const m_CLONE_NEWNET = 0x40000000
-const m_CLONE_NEWNS = 0x00020000
-const m_CLONE_NEWPID = 0x20000000
-const m_CLONE_NEWTIME = 0x00000080
-const m_CLONE_NEWUSER = 0x10000000
-const m_CLONE_NEWUTS = 0x04000000
-const m_CLONE_PARENT = 0x00008000
-const m_CLONE_PARENT_SETTID = 0x00100000
-const m_CLONE_PIDFD = 0x00001000
-const m_CLONE_PTRACE = 0x00002000
-const m_CLONE_SETTLS = 0x00080000
-const m_CLONE_SIGHAND = 0x00000800
-const m_CLONE_SYSVSEM = 0x00040000
-const m_CLONE_THREAD = 0x00010000
-const m_CLONE_UNTRACED = 0x00800000
-const m_CLONE_VFORK = 0x00004000
-const m_CLONE_VM = 0x00000100
-const m_CMD_COMPILES_EXPANDED = 0x08
-const m_CMD_DEAD = 0x40
-const m_CMD_HAS_EXEC_TRACES = 0x04
-const m_CMD_IS_DELETED = 0x01
-const m_CMD_REDEF_IN_PROGRESS = 0x10
-const m_CMD_TRACE_ACTIVE = 0x02
-const m_CMD_VIA_RESOLVER = 0x20
-const m_COLL_WEIGHTS_MAX = 2
-const m_CPU_SETSIZE = 1024
-const m_CSIGNAL = 0x000000ff
-const m_DBL_DECIMAL_DIG = 17
-const m_DBL_DIG = 15
-const m_DBL_EPSILON = 2.22044604925031308085e-16
-const m_DBL_HAS_SUBNORM = 1
 const m_DBL_MANT_DIG = 53
-const m_DBL_MAX = 1.79769313486231570815e+308
-const m_DBL_MAX_10_EXP = 308
 const m_DBL_MAX_EXP = 1024
-const m_DBL_MIN = 2.22507385850720138309e-308
-const m_DBL_TRUE_MIN = 4.94065645841246544177e-324
-const m_DECIMAL_DIG = 17
-const m_DELAYTIMER_MAX = 0x7fffffff
 const m_DELETED = 1
-const m_DEV_BSIZE = 512
 const m_DICT_PATH_CREATE = 5
 const m_DICT_PATH_EXISTS = 2
 const m_DICT_PATH_READ = 0
 const m_DICT_PATH_UPDATE = 1
-const m_DIGIT_BIT = "MP_DIGIT_BIT"
-const m_DN_ACCESS = 0x00000001
-const m_DN_ATTRIB = 0x00000020
-const m_DN_CREATE = 0x00000004
-const m_DN_DELETE = 0x00000008
-const m_DN_MODIFY = 0x00000002
-const m_DN_MULTISHOT = 0x80000000
-const m_DN_RENAME = 0x00000010
-const m_DONT_COMPILE_CMDS_INLINE = 0x20
-const m_DT_BLK = 6
-const m_DT_CHR = 2
-const m_DT_DIR = 4
-const m_DT_FIFO = 1
-const m_DT_LNK = 10
-const m_DT_REG = 8
-const m_DT_SOCK = 12
-const m_DT_UNKNOWN = 0
-const m_DT_WHT = 14
 const m_E2BIG = 7
 const m_EACCES = 13
 const m_EADDRINUSE = 98
@@ -2007,7 +1268,6 @@ const m_ECONNABORTED = 103
 const m_ECONNREFUSED = 111
 const m_ECONNRESET = 104
 const m_EDEADLK = 35
-const m_EDEADLOCK = "EDEADLK"
 const m_EDESTADDRREQ = 89
 const m_EDOM = 33
 const m_EDOTDOT = 73
@@ -2017,7 +1277,6 @@ const m_EFAULT = 14
 const m_EFBIG = 27
 const m_EHOSTDOWN = 112
 const m_EHOSTUNREACH = 113
-const m_EHWPOISON = 133
 const m_EIDRM = 43
 const m_EILSEQ = 84
 const m_EINPROGRESS = 115
@@ -2026,10 +1285,6 @@ const m_EINVAL = 22
 const m_EIO = 5
 const m_EISCONN = 106
 const m_EISDIR = 21
-const m_EISNAM = 120
-const m_EKEYEXPIRED = 127
-const m_EKEYREJECTED = 129
-const m_EKEYREVOKED = 128
 const m_EL2HLT = 51
 const m_EL2NSYNC = 45
 const m_EL3HLT = 46
@@ -2041,7 +1296,6 @@ const m_ELIBMAX = 82
 const m_ELIBSCN = 81
 const m_ELNRNG = 48
 const m_ELOOP = 40
-const m_EMEDIUMTYPE = 124
 const m_EMFILE = 24
 const m_EMLINK = 31
 const m_EMSGSIZE = 90
@@ -2059,10 +1313,8 @@ const m_ENODATA = 61
 const m_ENODEV = 19
 const m_ENOENT = 2
 const m_ENOEXEC = 8
-const m_ENOKEY = 126
 const m_ENOLCK = 37
 const m_ENOLINK = 67
-const m_ENOMEDIUM = 123
 const m_ENOMEM = 12
 const m_ENOMSG = 42
 const m_ENONET = 64
@@ -2079,11 +1331,8 @@ const m_ENOTEMPTY = 39
 const m_ENOTNAM = 118
 const m_ENOTRECOVERABLE = 131
 const m_ENOTSOCK = 88
-const m_ENOTSUP = "EOPNOTSUPP"
 const m_ENOTTY = 25
 const m_ENOTUNIQ = 76
-const m_ENSEMBLE_COMPILE = 0x4
-const m_ENSEMBLE_DEAD = 0x1
 const m_ENXIO = 6
 const m_EOPNOTSUPP = 95
 const m_EOVERFLOW = 75
@@ -2098,18 +1347,14 @@ const m_ERANGE = 34
 const m_EREMCHG = 78
 const m_EREMOTE = 66
 const m_EREMOTEIO = 121
-const m_ERESTART = 85
-const m_ERFKILL = 132
 const m_EROFS = 30
 const m_ERR_ALREADY_LOGGED = 4
-const m_ERR_LEGACY_COPY = 0x800
 const m_ESHUTDOWN = 108
 const m_ESOCKTNOSUPPORT = 94
 const m_ESPIPE = 29
 const m_ESRCH = 3
 const m_ESRMNT = 69
 const m_ESTALE = 116
-const m_ESTRPIPE = 86
 const m_ETIME = 62
 const m_ETIMEDOUT = 110
 const m_ETOOMANYREFS = 109
@@ -2117,632 +1362,40 @@ const m_ETXTBSY = 26
 const m_EUCLEAN = 117
 const m_EUNATCH = 49
 const m_EUSERS = 87
-const m_EWOULDBLOCK = "EAGAIN"
 const m_EXDEV = 18
 const m_EXFULL = 54
-const m_EXIT_FAILURE = 1
-const m_EXIT_SUCCESS = 0
-const m_EXPR_NEST_MAX = 32
-const m_FALLOC_FL_KEEP_SIZE = 1
-const m_FALLOC_FL_PUNCH_HOLE = 2
-const m_FAPPEND = "O_APPEND"
-const m_FASYNC = "O_ASYNC"
 const m_FD_CLOEXEC = 1
 const m_FD_SETSIZE = 1024
-const m_FFSYNC = "O_SYNC"
-const m_FILESIZEBITS = 64
-const m_FLT_DECIMAL_DIG = 9
-const m_FLT_DIG = 6
-const m_FLT_EPSILON = 1.1920928955078125e-07
-const m_FLT_EVAL_METHOD = 0
-const m_FLT_HAS_SUBNORM = 1
-const m_FLT_MANT_DIG = 24
-const m_FLT_MAX = 3.40282346638528859812e+38
-const m_FLT_MAX_10_EXP = 38
-const m_FLT_MAX_EXP = 128
-const m_FLT_MIN = 1.17549435082228750797e-38
 const m_FLT_RADIX = 2
-const m_FLT_TRUE_MIN = 1.40129846432481707092e-45
-const m_FNDELAY = "O_NDELAY"
-const m_FNONBLOCK = "O_NONBLOCK"
-const m_FPE_FLTDIV = 3
-const m_FPE_FLTINV = 7
-const m_FPE_FLTOVF = 4
-const m_FPE_FLTRES = 6
-const m_FPE_FLTSUB = 8
-const m_FPE_FLTUND = 5
-const m_FPE_INTDIV = 1
-const m_FPE_INTOVF = 2
-const m_FP_FAST_FMA = 1
-const m_FP_FAST_FMAF = 1
-const m_FP_FAST_FMAL = 1
-const m_FP_ILOGB0 = "FP_ILOGBNAN"
-const m_FP_INFINITE = 1
-const m_FP_NAN = 0
-const m_FP_NORMAL = 4
-const m_FP_SUBNORMAL = 3
-const m_FP_ZERO = 2
-const m_FRAME_IS_LAMBDA = 0x2
-const m_FRAME_IS_METHOD = 0x4
-const m_FRAME_IS_OO_DEFINE = 0x8
 const m_FRAME_IS_PROC = 1
-const m_F_ADD_SEALS = 1033
-const m_F_CANCELLK = 1029
-const m_F_DUPFD = 0
-const m_F_DUPFD_CLOEXEC = 1030
-const m_F_GETFD = 1
 const m_F_GETFL = 3
-const m_F_GETLEASE = 1025
-const m_F_GETLK = 5
-const m_F_GETLK64 = "F_GETLK"
-const m_F_GETOWN = 9
-const m_F_GETOWNER_UIDS = 17
-const m_F_GETOWN_EX = 16
-const m_F_GETPIPE_SZ = 1032
-const m_F_GETSIG = 11
-const m_F_GET_FILE_RW_HINT = 1037
-const m_F_GET_RW_HINT = 1035
-const m_F_GET_SEALS = 1034
-const m_F_LOCK = 1
-const m_F_NOTIFY = 1026
-const m_F_OFD_GETLK = 36
-const m_F_OFD_SETLK = 37
-const m_F_OFD_SETLKW = 38
 const m_F_OK = 0
-const m_F_OWNER_GID = 2
-const m_F_OWNER_PGRP = 2
-const m_F_OWNER_PID = 1
-const m_F_OWNER_TID = 0
-const m_F_RDLCK = 0
-const m_F_SEAL_FUTURE_WRITE = 0x0010
-const m_F_SEAL_GROW = 0x0004
-const m_F_SEAL_SEAL = 0x0001
-const m_F_SEAL_SHRINK = 0x0002
-const m_F_SEAL_WRITE = 0x0008
 const m_F_SETFD = 2
 const m_F_SETFL = 4
-const m_F_SETLEASE = 1024
-const m_F_SETLK = 6
-const m_F_SETLK64 = "F_SETLK"
-const m_F_SETLKW = 7
-const m_F_SETLKW64 = "F_SETLKW"
-const m_F_SETOWN = 8
-const m_F_SETOWN_EX = 15
-const m_F_SETPIPE_SZ = 1031
-const m_F_SETSIG = 10
-const m_F_SET_FILE_RW_HINT = 1038
-const m_F_SET_RW_HINT = 1036
-const m_F_TEST = 3
-const m_F_TLOCK = 2
-const m_F_ULOCK = 0
-const m_F_UNLCK = 2
-const m_F_WRLCK = 1
-const m_HOST_NAME_MAX = 255
-const m_HOST_NOT_FOUND = 1
-const m_HUGE = 3.40282346638528859812e+38
-const m_HUGE_VALF = "INFINITY"
-const m_ILL_BADSTK = 8
-const m_ILL_COPROC = 7
-const m_ILL_ILLADR = 3
-const m_ILL_ILLOPC = 1
-const m_ILL_ILLOPN = 2
-const m_ILL_ILLTRP = 4
-const m_ILL_PRVOPC = 5
-const m_ILL_PRVREG = 6
-const m_INET6_ADDRSTRLEN = 46
-const m_INET_ADDRSTRLEN = 16
-const m_INT16_MAX = 0x7fff
-const m_INT32_MAX = 0x7fffffff
-const m_INT64_MAX = 0x7fffffffffffffff
-const m_INT8_MAX = 0x7f
-const m_INTERP_ALTERNATE_WRONG_ARGS = 0x400
-const m_INTERP_DEBUG_FRAME = 0x10
-const m_INTERP_TRACE_IN_PROGRESS = 0x200
-const m_INTMAX_MAX = "INT64_MAX"
-const m_INTMAX_MIN = "INT64_MIN"
-const m_INTPTR_MAX = "INT64_MAX"
-const m_INTPTR_MIN = "INT64_MIN"
-const m_INT_FAST16_MAX = "INT32_MAX"
-const m_INT_FAST16_MIN = "INT32_MIN"
-const m_INT_FAST32_MAX = "INT32_MAX"
-const m_INT_FAST32_MIN = "INT32_MIN"
-const m_INT_FAST64_MAX = "INT64_MAX"
-const m_INT_FAST64_MIN = "INT64_MIN"
-const m_INT_FAST8_MAX = "INT8_MAX"
-const m_INT_FAST8_MIN = "INT8_MIN"
-const m_INT_LEAST16_MAX = "INT16_MAX"
-const m_INT_LEAST16_MIN = "INT16_MIN"
-const m_INT_LEAST32_MAX = "INT32_MAX"
-const m_INT_LEAST32_MIN = "INT32_MIN"
-const m_INT_LEAST64_MAX = "INT64_MAX"
-const m_INT_LEAST64_MIN = "INT64_MIN"
-const m_INT_LEAST8_MAX = "INT8_MAX"
-const m_INT_LEAST8_MIN = "INT8_MIN"
-const m_INT_MAX = 0x7fffffff
-const m_IN_CLASSA_MAX = 128
-const m_IN_CLASSA_NET = 0xff000000
-const m_IN_CLASSA_NSHIFT = 24
-const m_IN_CLASSB_MAX = 65536
-const m_IN_CLASSB_NET = 0xffff0000
-const m_IN_CLASSB_NSHIFT = 16
-const m_IN_CLASSC_NET = 0xffffff00
-const m_IN_CLASSC_NSHIFT = 8
-const m_IN_LOOPBACKNET = 127
-const m_IOV_MAX = 1024
-const m_IPPORT_RESERVED = 1024
-const m_IPPROTO_AH = 51
-const m_IPPROTO_BEETPH = 94
-const m_IPPROTO_COMP = 108
-const m_IPPROTO_DCCP = 33
-const m_IPPROTO_DSTOPTS = 60
-const m_IPPROTO_EGP = 8
-const m_IPPROTO_ENCAP = 98
-const m_IPPROTO_ESP = 50
-const m_IPPROTO_ETHERNET = 143
-const m_IPPROTO_FRAGMENT = 44
-const m_IPPROTO_GRE = 47
-const m_IPPROTO_HOPOPTS = 0
-const m_IPPROTO_ICMP = 1
-const m_IPPROTO_ICMPV6 = 58
-const m_IPPROTO_IDP = 22
-const m_IPPROTO_IGMP = 2
-const m_IPPROTO_IP = 0
-const m_IPPROTO_IPIP = 4
 const m_IPPROTO_IPV6 = 41
-const m_IPPROTO_MAX = 263
-const m_IPPROTO_MH = 135
-const m_IPPROTO_MPLS = 137
-const m_IPPROTO_MPTCP = 262
-const m_IPPROTO_MTP = 92
-const m_IPPROTO_NONE = 59
-const m_IPPROTO_PIM = 103
-const m_IPPROTO_PUP = 12
-const m_IPPROTO_RAW = 255
-const m_IPPROTO_ROUTING = 43
-const m_IPPROTO_RSVP = 46
-const m_IPPROTO_SCTP = 132
-const m_IPPROTO_TCP = 6
-const m_IPPROTO_TP = 29
-const m_IPPROTO_UDP = 17
-const m_IPPROTO_UDPLITE = 136
-const m_IPV6_2292DSTOPTS = 4
-const m_IPV6_2292HOPLIMIT = 8
-const m_IPV6_2292HOPOPTS = 3
-const m_IPV6_2292PKTINFO = 2
-const m_IPV6_2292PKTOPTIONS = 6
-const m_IPV6_2292RTHDR = 5
-const m_IPV6_ADDRFORM = 1
-const m_IPV6_ADDR_PREFERENCES = 72
-const m_IPV6_ADD_MEMBERSHIP = "IPV6_JOIN_GROUP"
-const m_IPV6_AUTHHDR = 10
-const m_IPV6_AUTOFLOWLABEL = 70
-const m_IPV6_CHECKSUM = 7
-const m_IPV6_DONTFRAG = 62
-const m_IPV6_DROP_MEMBERSHIP = "IPV6_LEAVE_GROUP"
-const m_IPV6_DSTOPTS = 59
-const m_IPV6_FREEBIND = 78
-const m_IPV6_HDRINCL = 36
-const m_IPV6_HOPLIMIT = 52
-const m_IPV6_HOPOPTS = 54
-const m_IPV6_IPSEC_POLICY = 34
-const m_IPV6_JOIN_ANYCAST = 27
-const m_IPV6_JOIN_GROUP = 20
-const m_IPV6_LEAVE_ANYCAST = 28
-const m_IPV6_LEAVE_GROUP = 21
-const m_IPV6_MINHOPCOUNT = 73
-const m_IPV6_MTU = 24
-const m_IPV6_MTU_DISCOVER = 23
-const m_IPV6_MULTICAST_ALL = 29
-const m_IPV6_MULTICAST_HOPS = 18
-const m_IPV6_MULTICAST_IF = 17
-const m_IPV6_MULTICAST_LOOP = 19
-const m_IPV6_NEXTHOP = 9
-const m_IPV6_ORIGDSTADDR = 74
-const m_IPV6_PATHMTU = 61
-const m_IPV6_PKTINFO = 50
-const m_IPV6_PMTUDISC_DO = 2
-const m_IPV6_PMTUDISC_DONT = 0
-const m_IPV6_PMTUDISC_INTERFACE = 4
-const m_IPV6_PMTUDISC_OMIT = 5
-const m_IPV6_PMTUDISC_PROBE = 3
-const m_IPV6_PMTUDISC_WANT = 1
-const m_IPV6_PREFER_SRC_CGA = 0x0008
-const m_IPV6_PREFER_SRC_COA = 0x0004
-const m_IPV6_PREFER_SRC_HOME = 0x0400
-const m_IPV6_PREFER_SRC_NONCGA = 0x0800
-const m_IPV6_PREFER_SRC_PUBLIC = 0x0002
-const m_IPV6_PREFER_SRC_PUBTMP_DEFAULT = 0x0100
-const m_IPV6_PREFER_SRC_TMP = 0x0001
-const m_IPV6_RECVDSTOPTS = 58
-const m_IPV6_RECVERR = 25
-const m_IPV6_RECVFRAGSIZE = 77
-const m_IPV6_RECVHOPLIMIT = 51
-const m_IPV6_RECVHOPOPTS = 53
-const m_IPV6_RECVORIGDSTADDR = "IPV6_ORIGDSTADDR"
-const m_IPV6_RECVPATHMTU = 60
-const m_IPV6_RECVPKTINFO = 49
-const m_IPV6_RECVRTHDR = 56
-const m_IPV6_RECVTCLASS = 66
-const m_IPV6_ROUTER_ALERT = 22
-const m_IPV6_ROUTER_ALERT_ISOLATE = 30
-const m_IPV6_RTHDR = 57
-const m_IPV6_RTHDRDSTOPTS = 55
-const m_IPV6_RTHDR_LOOSE = 0
-const m_IPV6_RTHDR_STRICT = 1
-const m_IPV6_RTHDR_TYPE_0 = 0
-const m_IPV6_RXDSTOPTS = "IPV6_DSTOPTS"
-const m_IPV6_RXHOPOPTS = "IPV6_HOPOPTS"
-const m_IPV6_TCLASS = 67
-const m_IPV6_TRANSPARENT = 75
-const m_IPV6_UNICAST_HOPS = 16
-const m_IPV6_UNICAST_IF = 76
 const m_IPV6_V6ONLY = 26
-const m_IPV6_XFRM_POLICY = 35
-const m_IP_ADD_MEMBERSHIP = 35
-const m_IP_ADD_SOURCE_MEMBERSHIP = 39
-const m_IP_BIND_ADDRESS_NO_PORT = 24
-const m_IP_BLOCK_SOURCE = 38
-const m_IP_CHECKSUM = 23
-const m_IP_DEFAULT_MULTICAST_LOOP = 1
-const m_IP_DEFAULT_MULTICAST_TTL = 1
-const m_IP_DROP_MEMBERSHIP = 36
-const m_IP_DROP_SOURCE_MEMBERSHIP = 40
-const m_IP_FREEBIND = 15
-const m_IP_HDRINCL = 3
-const m_IP_IPSEC_POLICY = 16
-const m_IP_MAX_MEMBERSHIPS = 20
-const m_IP_MINTTL = 21
-const m_IP_MSFILTER = 41
-const m_IP_MTU = 14
-const m_IP_MTU_DISCOVER = 10
-const m_IP_MULTICAST_ALL = 49
-const m_IP_MULTICAST_IF = 32
-const m_IP_MULTICAST_LOOP = 34
-const m_IP_MULTICAST_TTL = 33
-const m_IP_NODEFRAG = 22
-const m_IP_OPTIONS = 4
-const m_IP_ORIGDSTADDR = 20
-const m_IP_PASSSEC = 18
-const m_IP_PKTINFO = 8
-const m_IP_PKTOPTIONS = 9
-const m_IP_PMTUDISC = 10
-const m_IP_PMTUDISC_DO = 2
-const m_IP_PMTUDISC_DONT = 0
-const m_IP_PMTUDISC_INTERFACE = 4
-const m_IP_PMTUDISC_OMIT = 5
-const m_IP_PMTUDISC_PROBE = 3
-const m_IP_PMTUDISC_WANT = 1
-const m_IP_RECVERR = 11
-const m_IP_RECVERR_RFC4884 = 26
-const m_IP_RECVFRAGSIZE = 25
-const m_IP_RECVOPTS = 6
-const m_IP_RECVORIGDSTADDR = "IP_ORIGDSTADDR"
-const m_IP_RECVRETOPTS = "IP_RETOPTS"
-const m_IP_RECVTOS = 13
-const m_IP_RECVTTL = 12
-const m_IP_RETOPTS = 7
-const m_IP_ROUTER_ALERT = 5
-const m_IP_TOS = 1
-const m_IP_TRANSPARENT = 19
-const m_IP_TTL = 2
-const m_IP_UNBLOCK_SOURCE = 37
-const m_IP_UNICAST_IF = 50
-const m_IP_XFRM_POLICY = 17
-const m_ITIMER_PROF = 2
-const m_ITIMER_REAL = 0
-const m_ITIMER_VIRTUAL = 1
 const m_LC_ALL = 6
-const m_LC_ALL_MASK = 0x7fffffff
 const m_LC_COLLATE = 3
 const m_LC_CTYPE = 0
-const m_LC_MESSAGES = 5
 const m_LC_MONETARY = 4
 const m_LC_NUMERIC = 1
 const m_LC_TIME = 2
-const m_LDBL_DECIMAL_DIG = "DECIMAL_DIG"
-const m_LDBL_DIG = 15
-const m_LDBL_EPSILON = 2.22044604925031308085e-16
-const m_LDBL_HAS_SUBNORM = 1
-const m_LDBL_MANT_DIG = 53
-const m_LDBL_MAX = 1.79769313486231570815e+308
-const m_LDBL_MAX_10_EXP = 308
-const m_LDBL_MAX_EXP = 1024
-const m_LDBL_MIN = 2.22507385850720138309e-308
-const m_LDBL_TRUE_MIN = 4.94065645841246544177e-324
-const m_LINE_MAX = 4096
-const m_LITTLE_ENDIAN = "__LITTLE_ENDIAN"
-const m_LLONG_MAX = 0x7fffffffffffffff
-const m_LOCK_EX = 2
-const m_LOCK_NB = 4
-const m_LOCK_SH = 1
-const m_LOCK_UN = 8
-const m_LOGIN_NAME_MAX = 256
-const m_LONG_BIT = 64
-const m_LONG_MAX = "__LONG_MAX"
-const m_L_INCR = 1
-const m_L_SET = 0
-const m_L_XTND = 2
-const m_MATH_ERREXCEPT = 2
-const m_MATH_ERRNO = 1
-const m_MAXHOSTNAMELEN = 64
-const m_MAXNAMLEN = 255
 const m_MAXPATHLEN = 4096
-const m_MAXSYMLINKS = 20
-const m_MAX_HANDLE_SZ = 128
 const m_MAX_NESTING_DEPTH = 1000
-const m_MB_LEN_MAX = 4
-const m_MCAST_BLOCK_SOURCE = 43
-const m_MCAST_EXCLUDE = 0
-const m_MCAST_INCLUDE = 1
-const m_MCAST_JOIN_GROUP = 42
-const m_MCAST_JOIN_SOURCE_GROUP = 46
-const m_MCAST_LEAVE_GROUP = 45
-const m_MCAST_LEAVE_SOURCE_GROUP = 47
-const m_MCAST_MSFILTER = 48
-const m_MCAST_UNBLOCK_SOURCE = 44
-const m_MINSIGSTKSZ = 4096
-const m_MP_BIG_ENDIAN = 1
 const m_MP_DIGIT_BIT = 28
-const m_MP_DIGIT_MAX = "MP_MASK"
 const m_MP_EQ = 0
 const m_MP_GT = 1
-const m_MP_MSB_FIRST = 1
-const m_MP_NATIVE_ENDIAN = 0
 const m_MP_NEG = 1
 const m_MP_NO = 0
 const m_MP_OKAY = 0
-const m_MP_PRIME_2MSB_ON = 0x0008
-const m_MP_PRIME_BBS = 0x0001
-const m_MP_PRIME_SAFE = 0x0002
 const m_MP_YES = 1
 const m_MP_ZPOS = 0
-const m_MQ_PRIO_MAX = 32768
-const m_MSG_BATCH = 0x40000
-const m_MSG_CMSG_CLOEXEC = 0x40000000
-const m_MSG_CONFIRM = 0x0800
-const m_MSG_CTRUNC = 0x0008
-const m_MSG_DONTROUTE = 0x0004
-const m_MSG_DONTWAIT = 0x0040
-const m_MSG_EOR = 0x0080
-const m_MSG_ERRQUEUE = 0x2000
-const m_MSG_FASTOPEN = 0x20000000
-const m_MSG_FIN = 0x0200
-const m_MSG_MORE = 0x8000
-const m_MSG_NOSIGNAL = 0x4000
-const m_MSG_OOB = 0x0001
-const m_MSG_PEEK = 0x0002
-const m_MSG_PROXY = 0x0010
-const m_MSG_RST = 0x1000
-const m_MSG_SYN = 0x0400
-const m_MSG_TRUNC = 0x0020
-const m_MSG_WAITALL = 0x0100
-const m_MSG_WAITFORONE = 0x10000
-const m_MSG_ZEROCOPY = 0x4000000
-const m_M_1_PI = 0.31830988618379067154
-const m_M_2_PI = 0.63661977236758134308
-const m_M_2_SQRTPI = 1.12837916709551257390
-const m_M_E = 2.7182818284590452354
-const m_M_LN10 = 2.30258509299404568402
-const m_M_LN2 = 0.69314718055994530942
-const m_M_LOG10E = 0.43429448190325182765
-const m_M_LOG2E = 1.4426950408889634074
-const m_M_PI = 3.14159265358979323846
-const m_M_PI_2 = 1.57079632679489661923
-const m_M_PI_4 = 0.78539816339744830962
-const m_M_SQRT1_2 = 0.70710678118654752440
-const m_M_SQRT2 = 1.41421356237309504880
-const m_NAME_MAX = 255
-const m_NBBY = 8
-const m_NCARGS = 131072
-const m_NGROUPS = 32
-const m_NGROUPS_MAX = 32
-const m_NI_DGRAM = 0x10
-const m_NI_MAXHOST = 255
-const m_NI_MAXSERV = 32
-const m_NI_NAMEREQD = 0x08
-const m_NI_NOFQDN = 0x04
-const m_NI_NUMERICHOST = 0x01
-const m_NI_NUMERICSCOPE = 0x100
-const m_NI_NUMERICSERV = 0x02
-const m_NL_ARGMAX = 9
-const m_NL_LANGMAX = 32
-const m_NL_MSGMAX = 32767
-const m_NL_NMAX = 16
-const m_NL_SETMAX = 255
-const m_NL_TEXTMAX = 2048
-const m_NOFILE = 256
-const m_NO_ADDRESS = "NO_DATA"
-const m_NO_DATA = 4
-const m_NO_RECOVERY = 3
-const m_NRE_ENABLE_ASSERTS = 0
-const m_NRE_USE_SMALL_ALLOC = 1
-const m_NSIG = "_NSIG"
-const m_NS_DEAD = 0x02
-const m_NS_DYING = 0x01
-const m_NS_KILLED = 0x04
-const m_NS_SUPPRESS_COMPILATION = 0x08
-const m_NZERO = 20
-const m_O_APPEND = 02000
-const m_O_ASYNC = 020000
-const m_O_CLOEXEC = 02000000
-const m_O_CREAT = 0100
-const m_O_DIRECT = 040000
-const m_O_DIRECTORY = 0200000
-const m_O_DSYNC = 010000
-const m_O_EXCL = 0200
-const m_O_EXEC = "O_PATH"
-const m_O_LARGEFILE = 0100000
-const m_O_NDELAY = "O_NONBLOCK"
-const m_O_NOATIME = 01000000
-const m_O_NOCTTY = 0400
-const m_O_NOFOLLOW = 0400000
-const m_O_NONBLOCK = 04000
-const m_O_PATH = 010000000
 const m_O_RDONLY = 0
-const m_O_RDWR = 02
-const m_O_RSYNC = 04010000
-const m_O_SEARCH = "O_PATH"
-const m_O_SYNC = 04010000
-const m_O_TMPFILE = 020200000
-const m_O_TRUNC = 01000
-const m_O_TTY_INIT = 0
-const m_O_WRONLY = 01
-const m_PAGESIZE = 4096
-const m_PAGE_SIZE = "PAGESIZE"
-const m_PATH_MAX = 4096
-const m_PDP_ENDIAN = "__PDP_ENDIAN"
-const m_PF_ALG = 38
-const m_PF_APPLETALK = 5
-const m_PF_ASH = 18
-const m_PF_ATMPVC = 8
-const m_PF_ATMSVC = 20
-const m_PF_AX25 = 3
-const m_PF_BLUETOOTH = 31
-const m_PF_BRIDGE = 7
-const m_PF_CAIF = 37
-const m_PF_CAN = 29
-const m_PF_DECnet = 12
-const m_PF_ECONET = 19
-const m_PF_FILE = "PF_LOCAL"
-const m_PF_IB = 27
-const m_PF_IEEE802154 = 36
 const m_PF_INET = 2
 const m_PF_INET6 = 10
-const m_PF_IPX = 4
-const m_PF_IRDA = 23
-const m_PF_ISDN = 34
-const m_PF_IUCV = 32
-const m_PF_KCM = 41
-const m_PF_KEY = 15
-const m_PF_LLC = 26
-const m_PF_LOCAL = 1
-const m_PF_MAX = 45
-const m_PF_MPLS = 28
-const m_PF_NETBEUI = 13
-const m_PF_NETLINK = 16
-const m_PF_NETROM = 6
-const m_PF_NFC = 39
-const m_PF_PACKET = 17
-const m_PF_PHONET = 35
-const m_PF_PPPOX = 24
-const m_PF_QIPCRTR = 42
-const m_PF_RDS = 21
-const m_PF_ROSE = 11
-const m_PF_ROUTE = "PF_NETLINK"
-const m_PF_RXRPC = 33
-const m_PF_SECURITY = 14
-const m_PF_SMC = 43
-const m_PF_SNA = 22
-const m_PF_TIPC = 30
-const m_PF_UNIX = "PF_LOCAL"
 const m_PF_UNSPEC = 0
-const m_PF_VSOCK = 40
-const m_PF_WANPIPE = 25
-const m_PF_X25 = 9
-const m_PF_XDP = 44
-const m_PIPE_BUF = 4096
-const m_POLL_ERR = 4
-const m_POLL_HUP = 6
-const m_POLL_IN = 1
-const m_POLL_MSG = 3
-const m_POLL_OUT = 2
-const m_POLL_PRI = 5
-const m_POSIX_CLOSE_RESTART = 0
-const m_POSIX_FADV_DONTNEED = 6
-const m_POSIX_FADV_NOREUSE = 7
-const m_POSIX_FADV_NORMAL = 0
-const m_POSIX_FADV_RANDOM = 1
-const m_POSIX_FADV_SEQUENTIAL = 2
-const m_POSIX_FADV_WILLNEED = 3
-const m_PRIO_MAX = 20
-const m_PRIO_PGRP = 1
-const m_PRIO_PROCESS = 0
-const m_PRIO_USER = 2
-const m_PRIVATE_MP_PRIME_TAB_SIZE = 256
-const m_PRIX16 = "X"
-const m_PRIX32 = "X"
-const m_PRIX8 = "X"
-const m_PRIXFAST16 = "X"
-const m_PRIXFAST32 = "X"
-const m_PRIXFAST8 = "X"
-const m_PRIXLEAST16 = "X"
-const m_PRIXLEAST32 = "X"
-const m_PRIXLEAST8 = "X"
-const m_PRId16 = "d"
-const m_PRId32 = "d"
-const m_PRId8 = "d"
-const m_PRIdFAST16 = "d"
-const m_PRIdFAST32 = "d"
-const m_PRIdFAST8 = "d"
-const m_PRIdLEAST16 = "d"
-const m_PRIdLEAST32 = "d"
-const m_PRIdLEAST8 = "d"
-const m_PRIi16 = "i"
-const m_PRIi32 = "i"
-const m_PRIi8 = "i"
-const m_PRIiFAST16 = "i"
-const m_PRIiFAST32 = "i"
-const m_PRIiFAST8 = "i"
-const m_PRIiLEAST16 = "i"
-const m_PRIiLEAST32 = "i"
-const m_PRIiLEAST8 = "i"
-const m_PRIo16 = "o"
-const m_PRIo32 = "o"
-const m_PRIo8 = "o"
-const m_PRIoFAST16 = "o"
-const m_PRIoFAST32 = "o"
-const m_PRIoFAST8 = "o"
-const m_PRIoLEAST16 = "o"
-const m_PRIoLEAST32 = "o"
-const m_PRIoLEAST8 = "o"
-const m_PRIu16 = "u"
-const m_PRIu32 = "u"
-const m_PRIu8 = "u"
-const m_PRIuFAST16 = "u"
-const m_PRIuFAST32 = "u"
-const m_PRIuFAST8 = "u"
-const m_PRIuLEAST16 = "u"
-const m_PRIuLEAST32 = "u"
-const m_PRIuLEAST8 = "u"
-const m_PRIx16 = "x"
-const m_PRIx32 = "x"
-const m_PRIx8 = "x"
-const m_PRIxFAST16 = "x"
-const m_PRIxFAST32 = "x"
-const m_PRIxFAST8 = "x"
-const m_PRIxLEAST16 = "x"
-const m_PRIxLEAST32 = "x"
-const m_PRIxLEAST8 = "x"
-const m_PTHREAD_CANCEL_ASYNCHRONOUS = 1
-const m_PTHREAD_CANCEL_DEFERRED = 0
-const m_PTHREAD_CANCEL_DISABLE = 1
-const m_PTHREAD_CANCEL_ENABLE = 0
-const m_PTHREAD_CANCEL_MASKED = 2
 const m_PTHREAD_CREATE_DETACHED = 1
-const m_PTHREAD_CREATE_JOINABLE = 0
-const m_PTHREAD_DESTRUCTOR_ITERATIONS = 4
-const m_PTHREAD_EXPLICIT_SCHED = 1
-const m_PTHREAD_INHERIT_SCHED = 0
-const m_PTHREAD_KEYS_MAX = 128
-const m_PTHREAD_MUTEX_DEFAULT = 0
-const m_PTHREAD_MUTEX_ERRORCHECK = 2
-const m_PTHREAD_MUTEX_NORMAL = 0
-const m_PTHREAD_MUTEX_RECURSIVE = 1
-const m_PTHREAD_MUTEX_ROBUST = 1
-const m_PTHREAD_MUTEX_STALLED = 0
-const m_PTHREAD_ONCE_INIT = 0
-const m_PTHREAD_PRIO_INHERIT = 1
-const m_PTHREAD_PRIO_NONE = 0
-const m_PTHREAD_PRIO_PROTECT = 2
-const m_PTHREAD_PROCESS_PRIVATE = 0
-const m_PTHREAD_PROCESS_SHARED = 1
-const m_PTHREAD_SCOPE_PROCESS = 1
 const m_PTHREAD_SCOPE_SYSTEM = 0
-const m_PTHREAD_STACK_MIN = 2048
-const m_PTRDIFF_MAX = "INT64_MAX"
-const m_PTRDIFF_MIN = "INT64_MIN"
-const m_RAND_MAX = 0x7fffffff
-const m_RAND_SEED_INITIALIZED = 0x40
 const m_REG_ADVANCED = 3
 const m_REG_ADVF = 2
 const m_REG_ASSERT = 15
@@ -2751,7 +1404,6 @@ const m_REG_BADBR = 10
 const m_REG_BADOPT = 18
 const m_REG_BADPAT = 2
 const m_REG_BADRPT = 13
-const m_REG_BASIC = 000000
 const m_REG_BOSONLY = 1024
 const m_REG_DUMP = 2048
 const m_REG_EBRACE = 9
@@ -2779,178 +1431,33 @@ const m_REG_NEWLINE = 192
 const m_REG_NLANCH = 128
 const m_REG_NLSTOP = 64
 const m_REG_NOMATCH = 1
-const m_REG_NOSPEC = "REG_QUOTE"
 const m_REG_NOSUB = 16
 const m_REG_NOTBOL = 1
 const m_REG_NOTEOL = 2
 const m_REG_OKAY = 0
-const m_REG_PEND = 000400
 const m_REG_PROGRESS = 8192
 const m_REG_QUOTE = 4
 const m_REG_SMALL = 32
-const m_REG_STARTEND = 0004
-const m_REG_UBACKREF = 000001
-const m_REG_UBBS = 000100
-const m_REG_UBOUNDS = 000004
-const m_REG_UBRACES = 000010
-const m_REG_UBSALNUM = 000020
-const m_REG_UEMPTYMATCH = 004000
-const m_REG_UIMPOSSIBLE = 010000
-const m_REG_ULOCALE = 002000
-const m_REG_ULOOKAHEAD = 000002
-const m_REG_UNONPOSIX = 000200
-const m_REG_UPBOTCH = 000040
-const m_REG_USHORTEST = 020000
-const m_REG_UUNPORT = 001000
-const m_REG_UUNSPEC = 000400
-const m_RESOLVER_KEY = "testInterpResolver"
-const m_RE_DUP_MAX = 255
-const m_RLIM64_INFINITY = "RLIM_INFINITY"
-const m_RLIM64_SAVED_CUR = "RLIM_SAVED_CUR"
-const m_RLIM64_SAVED_MAX = "RLIM_SAVED_MAX"
-const m_RLIMIT_AS = 9
-const m_RLIMIT_CORE = 4
-const m_RLIMIT_CPU = 0
-const m_RLIMIT_DATA = 2
-const m_RLIMIT_FSIZE = 1
-const m_RLIMIT_LOCKS = 10
-const m_RLIMIT_MEMLOCK = 8
-const m_RLIMIT_MSGQUEUE = 12
-const m_RLIMIT_NICE = 13
-const m_RLIMIT_NLIMITS = 16
-const m_RLIMIT_NOFILE = 7
-const m_RLIMIT_NPROC = 6
-const m_RLIMIT_RSS = 5
-const m_RLIMIT_RTPRIO = 14
-const m_RLIMIT_RTTIME = 15
-const m_RLIMIT_SIGPENDING = 11
-const m_RLIMIT_STACK = 3
-const m_RLIM_NLIMITS = "RLIMIT_NLIMITS"
-const m_RLIM_SAVED_CUR = "RLIM_INFINITY"
-const m_RLIM_SAVED_MAX = "RLIM_INFINITY"
-const m_RUSAGE_SELF = 0
-const m_RUSAGE_THREAD = 1
-const m_RWF_WRITE_LIFE_NOT_SET = 0
-const m_RWH_WRITE_LIFE_EXTREME = 5
-const m_RWH_WRITE_LIFE_LONG = 4
-const m_RWH_WRITE_LIFE_MEDIUM = 3
-const m_RWH_WRITE_LIFE_NONE = 1
-const m_RWH_WRITE_LIFE_SHORT = 2
 const m_R_OK = 4
-const m_SAFE_INTERP = 0x80
-const m_SA_EXPOSE_TAGBITS = 0x00000800
-const m_SA_NOCLDSTOP = 1
-const m_SA_NOCLDWAIT = 2
-const m_SA_NODEFER = 0x40000000
-const m_SA_NOMASK = "SA_NODEFER"
-const m_SA_ONESHOT = "SA_RESETHAND"
-const m_SA_ONSTACK = 0x08000000
-const m_SA_RESETHAND = 0x80000000
-const m_SA_RESTART = 0x10000000
-const m_SA_RESTORER = 0x04000000
-const m_SA_SIGINFO = 4
-const m_SA_UNSUPPORTED = 0x00000400
 const m_SCHAR_MAX = 127
-const m_SCHED_BATCH = 3
-const m_SCHED_DEADLINE = 6
-const m_SCHED_FIFO = 1
-const m_SCHED_IDLE = 5
-const m_SCHED_OTHER = 0
-const m_SCHED_RESET_ON_FORK = 0x40000000
-const m_SCHED_RR = 2
-const m_SCM_CREDENTIALS = 0x02
-const m_SCM_RIGHTS = 0x01
-const m_SCM_TIMESTAMP = "SO_TIMESTAMP"
-const m_SCM_TIMESTAMPING = "SO_TIMESTAMPING"
-const m_SCM_TIMESTAMPING_OPT_STATS = 54
-const m_SCM_TIMESTAMPING_PKTINFO = 58
-const m_SCM_TIMESTAMPNS = "SO_TIMESTAMPNS"
-const m_SCM_TXTIME = "SO_TXTIME"
-const m_SCM_WIFI_STATUS = "SO_WIFI_STATUS"
-const m_SCNd16 = "hd"
-const m_SCNd32 = "d"
-const m_SCNd8 = "hhd"
-const m_SCNdFAST16 = "d"
-const m_SCNdFAST32 = "d"
-const m_SCNdFAST8 = "hhd"
-const m_SCNdLEAST16 = "hd"
-const m_SCNdLEAST32 = "d"
-const m_SCNdLEAST8 = "hhd"
-const m_SCNi16 = "hi"
-const m_SCNi32 = "i"
-const m_SCNi8 = "hhi"
-const m_SCNiFAST16 = "i"
-const m_SCNiFAST32 = "i"
-const m_SCNiFAST8 = "hhi"
-const m_SCNiLEAST16 = "hi"
-const m_SCNiLEAST32 = "i"
-const m_SCNiLEAST8 = "hhi"
-const m_SCNo16 = "ho"
-const m_SCNo32 = "o"
-const m_SCNo8 = "hho"
-const m_SCNoFAST16 = "o"
-const m_SCNoFAST32 = "o"
-const m_SCNoFAST8 = "hho"
-const m_SCNoLEAST16 = "ho"
-const m_SCNoLEAST32 = "o"
-const m_SCNoLEAST8 = "hho"
-const m_SCNu16 = "hu"
-const m_SCNu32 = "u"
-const m_SCNu8 = "hhu"
-const m_SCNuFAST16 = "u"
-const m_SCNuFAST32 = "u"
-const m_SCNuFAST8 = "hhu"
-const m_SCNuLEAST16 = "hu"
-const m_SCNuLEAST32 = "u"
-const m_SCNuLEAST8 = "hhu"
-const m_SCNx16 = "hx"
-const m_SCNx32 = "x"
-const m_SCNx8 = "hhx"
-const m_SCNxFAST16 = "x"
-const m_SCNxFAST32 = "x"
-const m_SCNxFAST8 = "hhx"
-const m_SCNxLEAST16 = "hx"
-const m_SCNxLEAST32 = "x"
-const m_SCNxLEAST8 = "hhx"
-const m_SEEK_DATA = 3
-const m_SEEK_HOLE = 4
-const m_SEGV_ACCERR = 2
-const m_SEGV_BNDERR = 3
-const m_SEGV_MAPERR = 1
-const m_SEGV_MTEAERR = 8
-const m_SEGV_MTESERR = 9
-const m_SEGV_PKUERR = 4
-const m_SELECT_MASK = "fd_set"
-const m_SEM_NSEMS_MAX = 256
-const m_SEM_VALUE_MAX = 0x7fffffff
-const m_SHRT_MAX = 0x7fff
 const m_SHUT_RD = 0
-const m_SHUT_RDWR = 2
 const m_SHUT_WR = 1
 const m_SIGABRT = 6
 const m_SIGALRM = 14
 const m_SIGBUS = 7
 const m_SIGCHLD = 17
 const m_SIGCONT = 18
-const m_SIGEV_NONE = 1
-const m_SIGEV_SIGNAL = 0
-const m_SIGEV_THREAD = 2
-const m_SIGEV_THREAD_ID = 4
 const m_SIGFPE = 8
 const m_SIGHUP = 1
 const m_SIGILL = 4
 const m_SIGINT = 2
 const m_SIGIO = 29
-const m_SIGIOT = "SIGABRT"
 const m_SIGKILL = 9
 const m_SIGPIPE = 13
-const m_SIGPOLL = "SIGIO"
 const m_SIGPROF = 27
 const m_SIGPWR = 30
 const m_SIGQUIT = 3
 const m_SIGSEGV = 11
-const m_SIGSTKFLT = 16
-const m_SIGSTKSZ = 10240
 const m_SIGSTOP = 19
 const m_SIGSYS = 31
 const m_SIGTERM = 15
@@ -2958,7 +1465,6 @@ const m_SIGTRAP = 5
 const m_SIGTSTP = 20
 const m_SIGTTIN = 21
 const m_SIGTTOU = 22
-const m_SIGUNUSED = "SIGSYS"
 const m_SIGURG = 23
 const m_SIGUSR1 = 10
 const m_SIGUSR2 = 12
@@ -2966,215 +1472,37 @@ const m_SIGVTALRM = 26
 const m_SIGWINCH = 28
 const m_SIGXCPU = 24
 const m_SIGXFSZ = 25
-const m_SIG_ATOMIC_MAX = "INT32_MAX"
-const m_SIG_ATOMIC_MIN = "INT32_MIN"
-const m_SIG_BLOCK = 0
-const m_SIG_SETMASK = 2
-const m_SIG_UNBLOCK = 1
-const m_SIZE_MAX = "UINT64_MAX"
-const m_SI_KERNEL = 128
-const m_SI_USER = 0
-const m_SOCK_CLOEXEC = 02000000
-const m_SOCK_DCCP = 6
-const m_SOCK_DGRAM = 2
-const m_SOCK_NONBLOCK = 04000
-const m_SOCK_PACKET = 10
-const m_SOCK_RAW = 3
-const m_SOCK_RDM = 4
-const m_SOCK_SEQPACKET = 5
 const m_SOCK_STREAM = 1
-const m_SOL_AAL = 265
-const m_SOL_ALG = 279
-const m_SOL_ATM = 264
-const m_SOL_BLUETOOTH = 274
-const m_SOL_CAIF = 278
-const m_SOL_DCCP = 269
-const m_SOL_DECNET = 261
-const m_SOL_ICMPV6 = 58
-const m_SOL_IP = 0
-const m_SOL_IPV6 = 41
-const m_SOL_IRDA = 266
-const m_SOL_IUCV = 277
-const m_SOL_KCM = 281
-const m_SOL_LLC = 268
-const m_SOL_NETBEUI = 267
-const m_SOL_NETLINK = 270
-const m_SOL_NFC = 280
-const m_SOL_PACKET = 263
-const m_SOL_PNPIPE = 275
-const m_SOL_PPPOL2TP = 273
-const m_SOL_RAW = 255
-const m_SOL_RDS = 276
-const m_SOL_RXRPC = 272
 const m_SOL_SOCKET = 1
-const m_SOL_TIPC = 271
-const m_SOL_TLS = 282
-const m_SOL_X25 = 262
-const m_SOL_XDP = 283
 const m_SOMAXCONN = 128
-const m_SO_ACCEPTCONN = 30
-const m_SO_ATTACH_BPF = 50
-const m_SO_ATTACH_FILTER = 26
-const m_SO_ATTACH_REUSEPORT_CBPF = 51
-const m_SO_ATTACH_REUSEPORT_EBPF = 52
-const m_SO_BINDTODEVICE = 25
-const m_SO_BINDTOIFINDEX = 62
-const m_SO_BPF_EXTENSIONS = 48
-const m_SO_BROADCAST = 6
-const m_SO_BSDCOMPAT = 14
-const m_SO_BUSY_POLL = 46
-const m_SO_BUSY_POLL_BUDGET = 70
-const m_SO_CNX_ADVICE = 53
-const m_SO_COOKIE = 57
-const m_SO_DEBUG = 1
-const m_SO_DETACH_BPF = "SO_DETACH_FILTER"
-const m_SO_DETACH_FILTER = 27
-const m_SO_DETACH_REUSEPORT_BPF = 68
-const m_SO_DOMAIN = 39
-const m_SO_DONTROUTE = 5
 const m_SO_ERROR = 4
-const m_SO_GET_FILTER = "SO_ATTACH_FILTER"
-const m_SO_INCOMING_CPU = 49
-const m_SO_INCOMING_NAPI_ID = 56
-const m_SO_KEEPALIVE = 9
-const m_SO_LINGER = 13
-const m_SO_LOCK_FILTER = 44
-const m_SO_MARK = 36
-const m_SO_MAX_PACING_RATE = 47
-const m_SO_MEMINFO = 55
-const m_SO_NOFCS = 43
-const m_SO_NO_CHECK = 11
-const m_SO_OOBINLINE = 10
-const m_SO_PASSCRED = 16
-const m_SO_PASSSEC = 34
-const m_SO_PEEK_OFF = 42
-const m_SO_PEERCRED = 17
-const m_SO_PEERGROUPS = 59
-const m_SO_PEERNAME = 28
-const m_SO_PEERSEC = 31
-const m_SO_PREFER_BUSY_POLL = 69
-const m_SO_PRIORITY = 12
-const m_SO_PROTOCOL = 38
 const m_SO_RCVBUF = 8
-const m_SO_RCVBUFFORCE = 33
-const m_SO_RCVLOWAT = 18
-const m_SO_RCVTIMEO = 20
 const m_SO_REUSEADDR = 2
-const m_SO_REUSEPORT = 15
-const m_SO_RXQ_OVFL = 40
-const m_SO_SECURITY_AUTHENTICATION = 22
-const m_SO_SECURITY_ENCRYPTION_NETWORK = 24
-const m_SO_SECURITY_ENCRYPTION_TRANSPORT = 23
-const m_SO_SELECT_ERR_QUEUE = 45
 const m_SO_SNDBUF = 7
-const m_SO_SNDBUFFORCE = 32
-const m_SO_SNDLOWAT = 19
-const m_SO_SNDTIMEO = 21
-const m_SO_TIMESTAMP = 29
-const m_SO_TIMESTAMPING = 37
-const m_SO_TIMESTAMPNS = 35
-const m_SO_TXTIME = 61
-const m_SO_TYPE = 3
-const m_SO_WIFI_STATUS = 41
-const m_SO_ZEROCOPY = 60
-const m_SPLICE_F_GIFT = 8
-const m_SPLICE_F_MORE = 4
-const m_SPLICE_F_MOVE = 1
-const m_SPLICE_F_NONBLOCK = 2
-const m_SSIZE_MAX = "LONG_MAX"
-const m_SS_DISABLE = 2
-const m_SS_FLAG_BITS = "SS_AUTODISARM"
-const m_SS_ONSTACK = 1
-const m_STATX_ALL = 0xfff
-const m_STATX_ATIME = 0x20
-const m_STATX_BASIC_STATS = 0x7ff
-const m_STATX_BLOCKS = 0x400
-const m_STATX_BTIME = 0x800
-const m_STATX_CTIME = 0x80
-const m_STATX_GID = 0x10
-const m_STATX_INO = 0x100
-const m_STATX_MODE = 2
-const m_STATX_MTIME = 0x40
-const m_STATX_NLINK = 4
-const m_STATX_SIZE = 0x200
-const m_STATX_TYPE = 1
-const m_STATX_UID = 8
-const m_STDERR_FILENO = 2
-const m_STDIN_FILENO = 0
-const m_STDOUT_FILENO = 1
-const m_SYMLOOP_MAX = 40
-const m_SYNC_FILE_RANGE_WAIT_AFTER = 4
-const m_SYNC_FILE_RANGE_WAIT_BEFORE = 1
-const m_SYNC_FILE_RANGE_WRITE = 2
 const m_SYNTHETIC_EVENT_TIME = 0
-const m_SYS_SECCOMP = 1
-const m_SYS_USER_DISPATCH = 2
-const m_S_IEXEC = "S_IXUSR"
-const m_S_IFBLK = 0060000
-const m_S_IFCHR = 0020000
-const m_S_IFDIR = 0040000
-const m_S_IFIFO = 0010000
-const m_S_IFLNK = 0120000
-const m_S_IFMT = 0170000
-const m_S_IFREG = 0100000
-const m_S_IFSOCK = 0140000
-const m_S_IREAD = "S_IRUSR"
-const m_S_IRGRP = 0040
-const m_S_IROTH = 0004
-const m_S_IRUSR = 0400
-const m_S_IRWXG = 0070
-const m_S_IRWXO = 0007
-const m_S_IRWXU = 0700
-const m_S_ISGID = 02000
-const m_S_ISUID = 04000
-const m_S_ISVTX = 01000
-const m_S_IWGRP = 0020
-const m_S_IWOTH = 0002
-const m_S_IWRITE = "S_IWUSR"
-const m_S_IWUSR = 0200
-const m_S_IXGRP = 0010
-const m_S_IXOTH = 0001
-const m_S_IXUSR = 0100
-const m_TCLOO_PATCHLEVEL = "TCLOO_VERSION"
-const m_TCLOO_VERSION = "1.1.0"
 const m_TCLTOMMATH_EPOCH = 0
 const m_TCLTOMMATH_REVISION = 0
-const m_TCL_ALLOW_EXCEPTIONS = 0x04
 const m_TCL_ALLOW_INLINE_COMPILATION1 = 131072
-const m_TCL_AVOID_RESOLVERS = 0x40000
 const m_TCL_CREATE_HARD_LINK1 = 2
-const m_TCL_CREATE_NS_IF_UNKNOWN = 0x800
 const m_TCL_CREATE_SYMBOLIC_LINK1 = 1
-const m_TCL_DD_CONVERSION_TYPE_MASK = 0x3
 const m_TCL_DD_E_FORMAT = 2
 const m_TCL_DD_F_FORMAT = 3
-const m_TCL_DD_NO_QUICK = 0x8
 const m_TCL_DD_SHORTEN_FLAG = 4
 const m_TCL_DD_SHORTEST = 4
-const m_TCL_DD_SHORTEST0 = 0x0
 const m_TCL_DD_STEELE = 5
-const m_TCL_DD_STEELE0 = 0x1
 const m_TCL_EACH_COLLECT = 1
 const m_TCL_EACH_KEEP_NONE = 0
 const m_TCL_EVAL_DIRECT1 = 262144
-const m_TCL_EVAL_DISCARD_RESULT = 0x40
-const m_TCL_EVAL_FILE = 0x02
 const m_TCL_EVAL_GLOBAL1 = 131072
-const m_TCL_EVAL_NORESOLVE = 0x20
-const m_TCL_EVAL_SOURCE_IN_FRAME = 0x10
-const m_TCL_FIND_ONLY_NS = 0x1000
 const m_TCL_GLOBMODE_DIR = 4
-const m_TCL_GLOBMODE_JOIN = 2
 const m_TCL_GLOBMODE_NO_COMPLAIN = 1
 const m_TCL_GLOBMODE_TAILS = 8
 const m_TCL_HASH_KEY_SYSTEM_HASH1 = 2
-const m_TCL_INDEX_AFTER = "INT_MAX"
 const m_TCL_INDEX_START = 0
 const m_TCL_LEAVE_ERR_MSG1 = 512
 const m_TCL_LINK_READ_ONLY1 = 128
 const m_TCL_LOCATION_BC = 2
 const m_TCL_LOCATION_EVAL = 0
-const m_TCL_LOCATION_LAST = 6
 const m_TCL_LOCATION_PREBC = 3
 const m_TCL_LOCATION_PROC = 5
 const m_TCL_LOCATION_SOURCE = 4
@@ -3184,9 +1512,7 @@ const m_TCL_NUMBER_DOUBLE = 4
 const m_TCL_NUMBER_LONG = 1
 const m_TCL_NUMBER_NAN = 5
 const m_TCL_NUMBER_WIDE = 2
-const m_TCL_OO_METADATA_VERSION_CURRENT = 1
 const m_TCL_OO_METHOD_VERSION_CURRENT = 1
-const m_TCL_OUT_LINE_COMPILE = "TCL_ERROR"
 const m_TCL_PARSE_BINARY_ONLY = 64
 const m_TCL_PARSE_DECIMAL_ONLY = 1
 const m_TCL_PARSE_HEXADECIMAL_ONLY = 4
@@ -3194,553 +1520,22 @@ const m_TCL_PARSE_INTEGER_ONLY = 8
 const m_TCL_PARSE_NO_WHITESPACE = 32
 const m_TCL_PARSE_OCTAL_ONLY = 2
 const m_TCL_PARSE_SCAN_PREFIXES = 16
-const m_TCL_PLATFORM_TRANSLATION = "TCL_TRANSLATE_LF"
-const m_TCL_REG_BOSONLY = 002000
 const m_TCL_REG_CANMATCH1 = 512
 const m_TCL_THREAD_NOFLAGS1 = 0
 const m_TCL_TRACE_ENTER_EXEC = 1
 const m_TCL_TRACE_LEAVE_EXEC = 2
-const m_TIMER_ABSTIME = 1
-const m_TIME_UTC = 1
-const m_TRAP_BRANCH = 3
-const m_TRAP_BRKPT = 1
-const m_TRAP_HWBKPT = 4
-const m_TRAP_TRACE = 2
-const m_TRAP_UNK = 5
-const m_TRY_AGAIN = 2
-const m_TTY_NAME_MAX = 32
-const m_TZNAME_MAX = 6
-const m_TclGetUCS4 = "Tcl_GetUniChar"
-const m_TclOSclosedir = "closedir"
-const m_TclOSopen = "open"
-const m_TclOSopendir = "opendir"
-const m_TclOSreaddir = "readdir"
-const m_TclOSrewinddir = "rewinddir"
-const m_TclOSseek = "lseek"
-const m_TclSetChildCancelFlags = "TclSetSlaveCancelFlags"
-const m_TclWideMUInt = "Tcl_WideUInt"
-const m_TclpExit = "exit"
 const m_UCHAR_MAX = 255
-const m_UINT16_MAX = 0xffff
-const m_UINT32_MAX = "0xffffffffu"
-const m_UINT64_MAX = "0xffffffffffffffffu"
-const m_UINT8_MAX = 0xff
-const m_UINTMAX_MAX = "UINT64_MAX"
-const m_UINTPTR_MAX = "UINT64_MAX"
-const m_UINT_FAST16_MAX = "UINT32_MAX"
-const m_UINT_FAST32_MAX = "UINT32_MAX"
-const m_UINT_FAST64_MAX = "UINT64_MAX"
-const m_UINT_FAST8_MAX = "UINT8_MAX"
-const m_UINT_LEAST16_MAX = "UINT16_MAX"
-const m_UINT_LEAST32_MAX = "UINT32_MAX"
-const m_UINT_LEAST64_MAX = "UINT64_MAX"
-const m_UINT_LEAST8_MAX = "UINT8_MAX"
-const m_UINT_MAX = 0xffffffff
-const m_USHRT_MAX = 0xffff
-const m_UTIME_NOW = 0x3fffffff
-const m_UTIME_OMIT = 0x3ffffffe
-const m_VAR_ARGUMENT = 0x100
-const m_VAR_ARRAY = 0x1
-const m_VAR_ARRAY_ELEMENT = 0x1000
 const m_VAR_DEAD_HASH = 8
-const m_VAR_IN_HASHTABLE = 0x4
-const m_VAR_IS_ARGS = 0x400
-const m_VAR_LINK = 0x2
-const m_VAR_NAMESPACE_VAR = 0x80
-const m_VAR_RESOLVED = 0x8000
-const m_VAR_SEARCH_ACTIVE = 0x4000
-const m_VAR_TEMPORARY = 0x200
-const m_VAR_TRACED_ARRAY = 0x800
-const m_VAR_TRACED_READ = 0x10
-const m_VAR_TRACED_UNSET = 0x40
-const m_VAR_TRACED_WRITE = 0x20
-const m_VAR_TRACE_ACTIVE = 0x2000
-const m_WAIT_STATUS_TYPE = "int"
-const m_WCONTINUED = 8
-const m_WEXITED = 4
-const m_WINT_MAX = "UINT32_MAX"
-const m_WINT_MIN = 0
 const m_WNOHANG = 1
-const m_WNOWAIT = 0x1000000
-const m_WORD_BIT = 32
-const m_WSTOPPED = 2
-const m_WUNTRACED = 2
 const m_W_OK = 2
 const m_X_OK = 1
-const m__CS_GNU_LIBC_VERSION = 2
-const m__CS_GNU_LIBPTHREAD_VERSION = 3
-const m__CS_PATH = 0
-const m__CS_POSIX_V5_WIDTH_RESTRICTED_ENVS = 4
-const m__CS_POSIX_V6_ILP32_OFF32_CFLAGS = 1116
-const m__CS_POSIX_V6_ILP32_OFF32_LDFLAGS = 1117
-const m__CS_POSIX_V6_ILP32_OFF32_LIBS = 1118
-const m__CS_POSIX_V6_ILP32_OFF32_LINTFLAGS = 1119
-const m__CS_POSIX_V6_ILP32_OFFBIG_CFLAGS = 1120
-const m__CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS = 1121
-const m__CS_POSIX_V6_ILP32_OFFBIG_LIBS = 1122
-const m__CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS = 1123
-const m__CS_POSIX_V6_LP64_OFF64_CFLAGS = 1124
-const m__CS_POSIX_V6_LP64_OFF64_LDFLAGS = 1125
-const m__CS_POSIX_V6_LP64_OFF64_LIBS = 1126
-const m__CS_POSIX_V6_LP64_OFF64_LINTFLAGS = 1127
-const m__CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS = 1128
-const m__CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS = 1129
-const m__CS_POSIX_V6_LPBIG_OFFBIG_LIBS = 1130
-const m__CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS = 1131
-const m__CS_POSIX_V6_WIDTH_RESTRICTED_ENVS = 1
-const m__CS_POSIX_V7_ILP32_OFF32_CFLAGS = 1132
-const m__CS_POSIX_V7_ILP32_OFF32_LDFLAGS = 1133
-const m__CS_POSIX_V7_ILP32_OFF32_LIBS = 1134
-const m__CS_POSIX_V7_ILP32_OFF32_LINTFLAGS = 1135
-const m__CS_POSIX_V7_ILP32_OFFBIG_CFLAGS = 1136
-const m__CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS = 1137
-const m__CS_POSIX_V7_ILP32_OFFBIG_LIBS = 1138
-const m__CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS = 1139
-const m__CS_POSIX_V7_LP64_OFF64_CFLAGS = 1140
-const m__CS_POSIX_V7_LP64_OFF64_LDFLAGS = 1141
-const m__CS_POSIX_V7_LP64_OFF64_LIBS = 1142
-const m__CS_POSIX_V7_LP64_OFF64_LINTFLAGS = 1143
-const m__CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS = 1144
-const m__CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS = 1145
-const m__CS_POSIX_V7_LPBIG_OFFBIG_LIBS = 1146
-const m__CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS = 1147
-const m__CS_POSIX_V7_THREADS_CFLAGS = 1150
-const m__CS_POSIX_V7_THREADS_LDFLAGS = 1151
-const m__CS_POSIX_V7_WIDTH_RESTRICTED_ENVS = 5
-const m__CS_V6_ENV = 1148
-const m__CS_V7_ENV = 1149
-const m__NSIG = 65
-const m__PC_2_SYMLINKS = 20
-const m__PC_ALLOC_SIZE_MIN = 18
-const m__PC_ASYNC_IO = 10
-const m__PC_CHOWN_RESTRICTED = 6
-const m__PC_FILESIZEBITS = 13
-const m__PC_LINK_MAX = 0
-const m__PC_MAX_CANON = 1
-const m__PC_MAX_INPUT = 2
-const m__PC_NAME_MAX = 3
-const m__PC_NO_TRUNC = 7
-const m__PC_PATH_MAX = 4
-const m__PC_PIPE_BUF = 5
-const m__PC_PRIO_IO = 11
-const m__PC_REC_INCR_XFER_SIZE = 14
-const m__PC_REC_MAX_XFER_SIZE = 15
-const m__PC_REC_MIN_XFER_SIZE = 16
-const m__PC_REC_XFER_ALIGN = 17
-const m__PC_SOCK_MAXBUF = 12
-const m__PC_SYMLINK_MAX = 19
-const m__PC_SYNC_IO = 9
-const m__PC_VDISABLE = 8
-const m__POSIX2_BC_BASE_MAX = 99
-const m__POSIX2_BC_DIM_MAX = 2048
-const m__POSIX2_BC_SCALE_MAX = 99
-const m__POSIX2_BC_STRING_MAX = 1000
-const m__POSIX2_CHARCLASS_NAME_MAX = 14
-const m__POSIX2_COLL_WEIGHTS_MAX = 2
-const m__POSIX2_C_BIND = "_POSIX_VERSION"
-const m__POSIX2_EXPR_NEST_MAX = 32
-const m__POSIX2_LINE_MAX = 2048
 const m__POSIX2_RE_DUP_MAX = 255
-const m__POSIX2_VERSION = "_POSIX_VERSION"
-const m__POSIX_ADVISORY_INFO = "_POSIX_VERSION"
-const m__POSIX_AIO_LISTIO_MAX = 2
-const m__POSIX_AIO_MAX = 1
-const m__POSIX_ARG_MAX = 4096
-const m__POSIX_ASYNCHRONOUS_IO = "_POSIX_VERSION"
-const m__POSIX_BARRIERS = "_POSIX_VERSION"
-const m__POSIX_CHILD_MAX = 25
-const m__POSIX_CHOWN_RESTRICTED = 1
-const m__POSIX_CLOCKRES_MIN = 20000000
-const m__POSIX_CLOCK_SELECTION = "_POSIX_VERSION"
-const m__POSIX_CPUTIME = "_POSIX_VERSION"
-const m__POSIX_DELAYTIMER_MAX = 32
-const m__POSIX_FSYNC = "_POSIX_VERSION"
-const m__POSIX_HOST_NAME_MAX = 255
-const m__POSIX_IPV6 = "_POSIX_VERSION"
-const m__POSIX_JOB_CONTROL = 1
-const m__POSIX_LINK_MAX = 8
-const m__POSIX_LOGIN_NAME_MAX = 9
-const m__POSIX_MAPPED_FILES = "_POSIX_VERSION"
-const m__POSIX_MAX_CANON = 255
-const m__POSIX_MAX_INPUT = 255
-const m__POSIX_MEMLOCK = "_POSIX_VERSION"
-const m__POSIX_MEMLOCK_RANGE = "_POSIX_VERSION"
-const m__POSIX_MEMORY_PROTECTION = "_POSIX_VERSION"
-const m__POSIX_MESSAGE_PASSING = "_POSIX_VERSION"
-const m__POSIX_MONOTONIC_CLOCK = "_POSIX_VERSION"
-const m__POSIX_MQ_OPEN_MAX = 8
-const m__POSIX_MQ_PRIO_MAX = 32
-const m__POSIX_NAME_MAX = 14
-const m__POSIX_NGROUPS_MAX = 8
-const m__POSIX_NO_TRUNC = 1
-const m__POSIX_OPEN_MAX = 20
-const m__POSIX_PATH_MAX = 256
-const m__POSIX_PIPE_BUF = 512
-const m__POSIX_RAW_SOCKETS = "_POSIX_VERSION"
-const m__POSIX_READER_WRITER_LOCKS = "_POSIX_VERSION"
-const m__POSIX_REALTIME_SIGNALS = "_POSIX_VERSION"
-const m__POSIX_REGEXP = 1
-const m__POSIX_RE_DUP_MAX = 255
-const m__POSIX_RTSIG_MAX = 8
-const m__POSIX_SAVED_IDS = 1
-const m__POSIX_SEMAPHORES = "_POSIX_VERSION"
-const m__POSIX_SEM_NSEMS_MAX = 256
-const m__POSIX_SEM_VALUE_MAX = 32767
-const m__POSIX_SHARED_MEMORY_OBJECTS = "_POSIX_VERSION"
-const m__POSIX_SHELL = 1
-const m__POSIX_SIGQUEUE_MAX = 32
-const m__POSIX_SPAWN = "_POSIX_VERSION"
-const m__POSIX_SPIN_LOCKS = "_POSIX_VERSION"
-const m__POSIX_SSIZE_MAX = 32767
-const m__POSIX_SS_REPL_MAX = 4
-const m__POSIX_STREAM_MAX = 8
-const m__POSIX_SYMLINK_MAX = 255
-const m__POSIX_SYMLOOP_MAX = 8
-const m__POSIX_THREADS = "_POSIX_VERSION"
-const m__POSIX_THREAD_ATTR_STACKADDR = "_POSIX_VERSION"
-const m__POSIX_THREAD_ATTR_STACKSIZE = "_POSIX_VERSION"
-const m__POSIX_THREAD_CPUTIME = "_POSIX_VERSION"
-const m__POSIX_THREAD_DESTRUCTOR_ITERATIONS = 4
-const m__POSIX_THREAD_KEYS_MAX = 128
-const m__POSIX_THREAD_PRIORITY_SCHEDULING = "_POSIX_VERSION"
-const m__POSIX_THREAD_PROCESS_SHARED = "_POSIX_VERSION"
-const m__POSIX_THREAD_SAFE_FUNCTIONS = "_POSIX_VERSION"
-const m__POSIX_THREAD_THREADS_MAX = 64
-const m__POSIX_TIMEOUTS = "_POSIX_VERSION"
-const m__POSIX_TIMERS = "_POSIX_VERSION"
-const m__POSIX_TIMER_MAX = 32
-const m__POSIX_TRACE_EVENT_NAME_MAX = 30
-const m__POSIX_TRACE_NAME_MAX = 8
-const m__POSIX_TRACE_SYS_MAX = 8
-const m__POSIX_TRACE_USER_EVENT_MAX = 32
-const m__POSIX_TTY_NAME_MAX = 9
-const m__POSIX_TZNAME_MAX = 6
-const m__POSIX_V6_LP64_OFF64 = 1
-const m__POSIX_V7_LP64_OFF64 = 1
-const m__POSIX_VDISABLE = 0
-const m__POSIX_VERSION = 200809
-const m__SC_2_CHAR_TERM = 95
-const m__SC_2_C_BIND = 47
-const m__SC_2_C_DEV = 48
-const m__SC_2_FORT_DEV = 49
-const m__SC_2_FORT_RUN = 50
-const m__SC_2_LOCALEDEF = 52
-const m__SC_2_PBS = 168
-const m__SC_2_PBS_ACCOUNTING = 169
-const m__SC_2_PBS_CHECKPOINT = 175
-const m__SC_2_PBS_LOCATE = 170
-const m__SC_2_PBS_MESSAGE = 171
-const m__SC_2_PBS_TRACK = 172
-const m__SC_2_SW_DEV = 51
-const m__SC_2_UPE = 97
-const m__SC_2_VERSION = 46
-const m__SC_ADVISORY_INFO = 132
-const m__SC_AIO_LISTIO_MAX = 23
-const m__SC_AIO_MAX = 24
-const m__SC_AIO_PRIO_DELTA_MAX = 25
-const m__SC_ARG_MAX = 0
-const m__SC_ASYNCHRONOUS_IO = 12
-const m__SC_ATEXIT_MAX = 87
-const m__SC_AVPHYS_PAGES = 86
-const m__SC_BARRIERS = 133
-const m__SC_BC_BASE_MAX = 36
-const m__SC_BC_DIM_MAX = 37
-const m__SC_BC_SCALE_MAX = 38
-const m__SC_BC_STRING_MAX = 39
-const m__SC_CHILD_MAX = 1
-const m__SC_CLK_TCK = 2
-const m__SC_CLOCK_SELECTION = 137
-const m__SC_COLL_WEIGHTS_MAX = 40
-const m__SC_CPUTIME = 138
-const m__SC_DELAYTIMER_MAX = 26
-const m__SC_EXPR_NEST_MAX = 42
-const m__SC_FSYNC = 15
 const m__SC_GETGR_R_SIZE_MAX = 69
 const m__SC_GETPW_R_SIZE_MAX = 70
-const m__SC_HOST_NAME_MAX = 180
-const m__SC_IOV_MAX = 60
-const m__SC_IPV6 = 235
-const m__SC_JOB_CONTROL = 7
-const m__SC_LINE_MAX = 43
-const m__SC_LOGIN_NAME_MAX = 71
-const m__SC_MAPPED_FILES = 16
-const m__SC_MEMLOCK = 17
-const m__SC_MEMLOCK_RANGE = 18
-const m__SC_MEMORY_PROTECTION = 19
-const m__SC_MESSAGE_PASSING = 20
-const m__SC_MINSIGSTKSZ = 249
-const m__SC_MONOTONIC_CLOCK = 149
-const m__SC_MQ_OPEN_MAX = 27
-const m__SC_MQ_PRIO_MAX = 28
-const m__SC_NGROUPS_MAX = 3
-const m__SC_NPROCESSORS_CONF = 83
-const m__SC_NPROCESSORS_ONLN = 84
-const m__SC_NZERO = 109
-const m__SC_OPEN_MAX = 4
-const m__SC_PAGESIZE = 30
-const m__SC_PAGE_SIZE = 30
-const m__SC_PASS_MAX = 88
-const m__SC_PHYS_PAGES = 85
-const m__SC_PRIORITIZED_IO = 13
-const m__SC_PRIORITY_SCHEDULING = 10
-const m__SC_RAW_SOCKETS = 236
-const m__SC_READER_WRITER_LOCKS = 153
-const m__SC_REALTIME_SIGNALS = 9
-const m__SC_REGEXP = 155
-const m__SC_RE_DUP_MAX = 44
-const m__SC_RTSIG_MAX = 31
-const m__SC_SAVED_IDS = 8
-const m__SC_SEMAPHORES = 21
-const m__SC_SEM_NSEMS_MAX = 32
-const m__SC_SEM_VALUE_MAX = 33
-const m__SC_SHARED_MEMORY_OBJECTS = 22
-const m__SC_SHELL = 157
-const m__SC_SIGQUEUE_MAX = 34
-const m__SC_SIGSTKSZ = 250
-const m__SC_SPAWN = 159
-const m__SC_SPIN_LOCKS = 154
-const m__SC_SPORADIC_SERVER = 160
-const m__SC_SS_REPL_MAX = 241
-const m__SC_STREAMS = 174
-const m__SC_STREAM_MAX = 5
-const m__SC_SYMLOOP_MAX = 173
-const m__SC_SYNCHRONIZED_IO = 14
-const m__SC_THREADS = 67
-const m__SC_THREAD_ATTR_STACKADDR = 77
-const m__SC_THREAD_ATTR_STACKSIZE = 78
-const m__SC_THREAD_CPUTIME = 139
-const m__SC_THREAD_DESTRUCTOR_ITERATIONS = 73
-const m__SC_THREAD_KEYS_MAX = 74
-const m__SC_THREAD_PRIORITY_SCHEDULING = 79
-const m__SC_THREAD_PRIO_INHERIT = 80
-const m__SC_THREAD_PRIO_PROTECT = 81
-const m__SC_THREAD_PROCESS_SHARED = 82
-const m__SC_THREAD_ROBUST_PRIO_INHERIT = 247
-const m__SC_THREAD_ROBUST_PRIO_PROTECT = 248
-const m__SC_THREAD_SAFE_FUNCTIONS = 68
-const m__SC_THREAD_SPORADIC_SERVER = 161
-const m__SC_THREAD_STACK_MIN = 75
-const m__SC_THREAD_THREADS_MAX = 76
-const m__SC_TIMEOUTS = 164
-const m__SC_TIMERS = 11
-const m__SC_TIMER_MAX = 35
-const m__SC_TRACE = 181
-const m__SC_TRACE_EVENT_FILTER = 182
-const m__SC_TRACE_EVENT_NAME_MAX = 242
-const m__SC_TRACE_INHERIT = 183
-const m__SC_TRACE_LOG = 184
-const m__SC_TRACE_NAME_MAX = 243
-const m__SC_TRACE_SYS_MAX = 244
-const m__SC_TRACE_USER_EVENT_MAX = 245
-const m__SC_TTY_NAME_MAX = 72
-const m__SC_TYPED_MEMORY_OBJECTS = 165
-const m__SC_TZNAME_MAX = 6
-const m__SC_UIO_MAXIOV = 60
-const m__SC_V6_ILP32_OFF32 = 176
-const m__SC_V6_ILP32_OFFBIG = 177
-const m__SC_V6_LP64_OFF64 = 178
-const m__SC_V6_LPBIG_OFFBIG = 179
-const m__SC_V7_ILP32_OFF32 = 237
-const m__SC_V7_ILP32_OFFBIG = 238
-const m__SC_V7_LP64_OFF64 = 239
-const m__SC_V7_LPBIG_OFFBIG = 240
-const m__SC_VERSION = 29
-const m__SC_XBS5_ILP32_OFF32 = 125
-const m__SC_XBS5_ILP32_OFFBIG = 126
-const m__SC_XBS5_LP64_OFF64 = 127
-const m__SC_XBS5_LPBIG_OFFBIG = 128
-const m__SC_XOPEN_CRYPT = 92
-const m__SC_XOPEN_ENH_I18N = 93
-const m__SC_XOPEN_LEGACY = 129
-const m__SC_XOPEN_REALTIME = 130
-const m__SC_XOPEN_REALTIME_THREADS = 131
-const m__SC_XOPEN_SHM = 94
-const m__SC_XOPEN_STREAMS = 246
-const m__SC_XOPEN_UNIX = 91
-const m__SC_XOPEN_VERSION = 89
-const m__SC_XOPEN_XCU_VERSION = 90
-const m__SC_XOPEN_XPG2 = 98
-const m__SC_XOPEN_XPG3 = 99
-const m__SC_XOPEN_XPG4 = 100
-const m__XOPEN_ENH_I18N = 1
-const m__XOPEN_IOV_MAX = 16
-const m__XOPEN_NAME_MAX = 255
-const m__XOPEN_PATH_MAX = 1024
-const m__XOPEN_UNIX = 1
-const m__XOPEN_VERSION = 700
-const m___PDP_ENDIAN = 3412
-const m___PRI64 = "l"
-const m___PRIPTR = "l"
-const m___REG_REGOFF_T = "long"
-const m___REG_WIDE_COMPILE = "TclReComp"
-const m___REG_WIDE_EXEC = "TclReExec"
-const m___REG_WIDE_T = "Tcl_UniChar"
-const m___UAPI_DEF_IN6_ADDR = 0
-const m___UAPI_DEF_IN6_ADDR_ALT = 0
-const m___UAPI_DEF_IN6_PKTINFO = 0
-const m___UAPI_DEF_IN_ADDR = 0
-const m___UAPI_DEF_IN_CLASS = 0
-const m___UAPI_DEF_IN_IPPROTO = 0
-const m___UAPI_DEF_IN_PKTINFO = 0
-const m___UAPI_DEF_IP6_MTUINFO = 0
-const m___UAPI_DEF_IPPROTO_V6 = 0
-const m___UAPI_DEF_IPV6_MREQ = 0
-const m___UAPI_DEF_IPV6_OPTIONS = 0
-const m___UAPI_DEF_IP_MREQ = 0
-const m___UAPI_DEF_SOCKADDR_IN = 0
-const m___UAPI_DEF_SOCKADDR_IN6 = 0
-const m___WALL = 0x40000000
-const m___WCLONE = 0x80000000
-const m___WNOTHREAD = 0x20000000
-const m___tm_gmtoff = "tm_gmtoff"
-const m___tm_zone = "tm_zone"
-const m___ucontext = "ucontext"
-const m_alloca = "__builtin_alloca"
-const m_alphasort64 = "alphasort"
-const m_blkcnt64_t = "blkcnt_t"
-const m_bn_reverse = "TclBN_reverse"
-const m_creat64 = "creat"
-const m_d_fileno = "d_ino"
-const m_dirent64 = "dirent"
-const m_fallocate64 = "fallocate"
-const m_flock64 = "flock"
-const m_fsblkcnt64_t = "fsblkcnt_t"
-const m_fsfilcnt64_t = "fsfilcnt_t"
-const m_fstat64 = "fstat"
-const m_fstatat64 = "fstatat"
-const m_ftruncate64 = "ftruncate"
-const m_getdents64 = "getdents"
-const m_getrlimit64 = "getrlimit"
-const m_ino64_t = "ino_t"
-const m_lockf64 = "lockf"
-const m_loff_t = "off_t"
-const m_lseek64 = "lseek"
-const m_lstat64 = "lstat"
-const m_math_errhandling = 2
-const m_mkostemp64 = "mkostemp"
-const m_mkostemps64 = "mkostemps"
-const m_mkstemp64 = "mkstemp"
-const m_mkstemps64 = "mkstemps"
-const m_mp_add = "TclBN_mp_add"
-const m_mp_add_d = "TclBN_mp_add_d"
-const m_mp_and = "TclBN_mp_and"
-const m_mp_clamp = "TclBN_mp_clamp"
-const m_mp_clear = "TclBN_mp_clear"
-const m_mp_clear_multi = "TclBN_mp_clear_multi"
-const m_mp_cmp = "TclBN_mp_cmp"
-const m_mp_cmp_d = "TclBN_mp_cmp_d"
-const m_mp_cmp_mag = "TclBN_mp_cmp_mag"
-const m_mp_cnt_lsb = "TclBN_mp_cnt_lsb"
-const m_mp_copy = "TclBN_mp_copy"
-const m_mp_count_bits = "TclBN_mp_count_bits"
-const m_mp_div = "TclBN_mp_div"
-const m_mp_div_2 = "TclBN_mp_div_2"
-const m_mp_div_2d = "TclBN_mp_div_2d"
-const m_mp_div_3 = "TclBN_mp_div_3"
-const m_mp_div_d = "TclBN_mp_div_d"
-const m_mp_exch = "TclBN_mp_exch"
-const m_mp_expt_d = "TclBN_mp_expt_d"
-const m_mp_expt_d_ex = "TclBN_mp_expt_d_ex"
-const m_mp_expt_u32 = "TclBN_mp_expt_d"
-const m_mp_get_mag_ull = "TclBN_mp_get_mag_ull"
-const m_mp_grow = "TclBN_mp_grow"
-const m_mp_init = "TclBN_mp_init"
-const m_mp_init_copy = "TclBN_mp_init_copy"
-const m_mp_init_multi = "TclBN_mp_init_multi"
-const m_mp_init_set = "TclBN_mp_init_set"
-const m_mp_init_set_int = "TclBN_mp_init_set_int"
-const m_mp_init_size = "TclBN_mp_init_size"
-const m_mp_lshd = "TclBN_mp_lshd"
-const m_mp_mod = "TclBN_mp_mod"
-const m_mp_mod_2d = "TclBN_mp_mod_2d"
-const m_mp_mul = "TclBN_mp_mul"
-const m_mp_mul_2 = "TclBN_mp_mul_2"
-const m_mp_mul_2d = "TclBN_mp_mul_2d"
-const m_mp_mul_d = "TclBN_mp_mul_d"
-const m_mp_neg = "TclBN_mp_neg"
-const m_mp_or = "TclBN_mp_or"
-const m_mp_radix_size = "TclBN_mp_radix_size"
-const m_mp_read_radix = "TclBN_mp_read_radix"
-const m_mp_rshd = "TclBN_mp_rshd"
-const m_mp_set = "TclBN_mp_set"
-const m_mp_set_ll = "TclBN_mp_set_ll"
-const m_mp_set_u64 = "TclBN_mp_set_ull"
-const m_mp_set_ull = "TclBN_mp_set_ull"
-const m_mp_shrink = "TclBN_mp_shrink"
-const m_mp_signed_rsh = "TclBN_mp_signed_rsh"
-const m_mp_sqr = "TclBN_mp_sqr"
-const m_mp_sqrt = "TclBN_mp_sqrt"
-const m_mp_sub = "TclBN_mp_sub"
-const m_mp_sub_d = "TclBN_mp_sub_d"
-const m_mp_tc_and = "TclBN_mp_and"
-const m_mp_tc_div_2d = "TclBN_mp_signed_rsh"
-const m_mp_tc_or = "TclBN_mp_or"
-const m_mp_tc_xor = "TclBN_mp_xor"
-const m_mp_to_radix = "TclBN_mp_to_radix"
-const m_mp_to_ubin = "TclBN_mp_to_ubin"
-const m_mp_to_unsigned_bin = "TclBN_mp_to_unsigned_bin"
-const m_mp_to_unsigned_bin_n = "TclBN_mp_to_unsigned_bin_n"
-const m_mp_toradix_n = "TclBN_mp_toradix_n"
-const m_mp_ubin_size = "TclBN_mp_unsigned_bin_size"
-const m_mp_xor = "TclBN_mp_xor"
-const m_mp_zero = "TclBN_mp_zero"
-const m_open64 = "open"
-const m_openat64 = "openat"
-const m_posix_fadvise64 = "posix_fadvise"
-const m_posix_fallocate64 = "posix_fallocate"
-const m_pread64 = "pread"
-const m_prlimit64 = "prlimit"
-const m_pwrite64 = "pwrite"
-const m_readdir64 = "readdir"
-const m_readdir64_r = "readdir_r"
-const m_regerror = "TclReError"
-const m_regfree = "TclReFree"
-const m_rlim64_t = "rlim_t"
-const m_rlimit64 = "rlimit"
-const m_s_mp_add = "TclBN_s_mp_add"
-const m_s_mp_balance_mul = "TclBN_mp_balance_mul"
-const m_s_mp_karatsuba_mul = "TclBN_mp_karatsuba_mul"
-const m_s_mp_karatsuba_sqr = "TclBN_mp_karatsuba_sqr"
-const m_s_mp_mul_digs = "TclBN_s_mp_mul_digs"
-const m_s_mp_mul_digs_fast = "TclBN_fast_s_mp_mul_digs"
-const m_s_mp_reverse = "TclBN_s_mp_reverse"
-const m_s_mp_sqr = "TclBN_s_mp_sqr"
-const m_s_mp_sqr_fast = "TclBN_fast_s_mp_sqr"
-const m_s_mp_sub = "TclBN_s_mp_sub"
-const m_s_mp_toom_mul = "TclBN_mp_toom_mul"
-const m_s_mp_toom_sqr = "TclBN_mp_toom_sqr"
-const m_scandir64 = "scandir"
-const m_setrlimit64 = "setrlimit"
-const m_stat64 = "stat"
-const m_truncate64 = "truncate"
-const m_versionsort64 = "versionsort"
 
 type Tmode_t = uint32
 
 type Tpid_t = int32
-
-type Tiovec = struct {
-	Fiov_base uintptr
-	Fiov_len  Tsize_t
-}
-
-type Tflock = struct {
-	Fl_type   int16
-	Fl_whence int16
-	Fl_start  Toff_t
-	Fl_len    Toff_t
-	Fl_pid    Tpid_t
-}
-
-type Tfile_handle = struct {
-	Fhandle_bytes uint32
-	Fhandle_type  int32
-}
-
-type Tf_owner_ex = struct {
-	Ftype1 int32
-	Fpid   Tpid_t
-}
 
 type Tuid_t = uint32
 
@@ -3758,8 +1553,6 @@ type Tpasswd = struct {
 
 type Ttime_t = int64
 
-type Tclock_t = int64
-
 type Ttimespec = struct {
 	Ftv_sec  Ttime_t
 	Ftv_nsec int64
@@ -3771,118 +1564,11 @@ type Tsigset_t = struct {
 	F__bits [16]uint64
 }
 
-type T__sigset_t = Tsigset_t
-
 type Tpthread_attr_t = struct {
 	F__u struct {
 		F__vi [0][14]int32
 		F__s  [0][7]uint64
 		F__i  [14]int32
-	}
-}
-
-type Tstack_t = struct {
-	Fss_sp    uintptr
-	Fss_flags int32
-	Fss_size  Tsize_t
-}
-
-type Tsigaltstack = Tstack_t
-
-type Tgreg_t = uint64
-
-type Tgregset_t = [27]uint64
-
-type T__psw_t = struct {
-	Fmask uint64
-	Faddr uint64
-}
-
-type Tfpreg_t = struct {
-	Ff [0]float32
-	Fd float64
-}
-
-type Tfpregset_t = struct {
-	Ffpc  uint32
-	Ffprs [16]Tfpreg_t
-}
-
-type Tmcontext_t = struct {
-	Fpsw    T__psw_t
-	Fgregs  [16]uint64
-	Faregs  [16]uint32
-	Ffpregs Tfpregset_t
-}
-
-type Tsigcontext = struct {
-	Foldmask [1]uint64
-	Fsregs   uintptr
-}
-
-type Tucontext_t = struct {
-	Fuc_flags    uint64
-	Fuc_link     uintptr
-	Fuc_stack    Tstack_t
-	Fuc_mcontext Tmcontext_t
-	Fuc_sigmask  Tsigset_t
-}
-
-type Tucontext = Tucontext_t
-
-type Tsigval = struct {
-	Fsival_ptr   [0]uintptr
-	Fsival_int   int32
-	F__ccgo_pad2 [4]byte
-}
-
-type Tsiginfo_t = struct {
-	Fsi_signo    int32
-	Fsi_errno    int32
-	Fsi_code     int32
-	F__si_fields struct {
-		F__si_common [0]struct {
-			F__first struct {
-				F__timer [0]struct {
-					Fsi_timerid int32
-					Fsi_overrun int32
-				}
-				F__piduid struct {
-					Fsi_pid Tpid_t
-					Fsi_uid Tuid_t
-				}
-			}
-			F__second struct {
-				F__sigchld [0]struct {
-					Fsi_status int32
-					Fsi_utime  Tclock_t
-					Fsi_stime  Tclock_t
-				}
-				Fsi_value    Tsigval
-				F__ccgo_pad2 [16]byte
-			}
-		}
-		F__sigfault [0]struct {
-			Fsi_addr     uintptr
-			Fsi_addr_lsb int16
-			F__first     struct {
-				Fsi_pkey    [0]uint32
-				F__addr_bnd struct {
-					Fsi_lower uintptr
-					Fsi_upper uintptr
-				}
-			}
-		}
-		F__sigpoll [0]struct {
-			Fsi_band int64
-			Fsi_fd   int32
-		}
-		F__sigsys [0]struct {
-			Fsi_call_addr uintptr
-			Fsi_syscall   int32
-			Fsi_arch      uint32
-		}
-		F__pad [112]uint8
 	}
 }
 
@@ -3896,24 +1582,6 @@ type Tsigaction = struct {
 	Fsa_restorer uintptr
 }
 
-type Tsigevent = struct {
-	Fsigev_value  Tsigval
-	Fsigev_signo  int32
-	Fsigev_notify int32
-	F__sev_fields struct {
-		Fsigev_notify_thread_id [0]Tpid_t
-		F__sev_thread           [0]struct {
-			Fsigev_notify_function   uintptr
-			Fsigev_notify_attributes uintptr
-		}
-		F__pad [48]uint8
-	}
-}
-
-type Tsig_t = uintptr
-
-type Tsighandler_t = uintptr
-
 type Tsig_atomic_t = int32
 
 type Tsuseconds_t = int64
@@ -3923,68 +1591,13 @@ type Ttimeval = struct {
 	Ftv_usec Tsuseconds_t
 }
 
-type Tfd_mask = uint64
-
 type Tfd_set = struct {
 	Ffds_bits [16]uint64
-}
-
-type Titimerval = struct {
-	Fit_interval Ttimeval
-	Fit_value    Ttimeval
-}
-
-type Ttimezone = struct {
-	Ftz_minuteswest int32
-	Ftz_dsttime     int32
-}
-
-type Tid_t = uint32
-
-type Trlim_t = uint64
-
-type Trlimit = struct {
-	Frlim_cur Trlim_t
-	Frlim_max Trlim_t
-}
-
-type Trusage = struct {
-	Fru_utime    Ttimeval
-	Fru_stime    Ttimeval
-	Fru_maxrss   int64
-	Fru_ixrss    int64
-	Fru_idrss    int64
-	Fru_isrss    int64
-	Fru_minflt   int64
-	Fru_majflt   int64
-	Fru_nswap    int64
-	Fru_inblock  int64
-	Fru_oublock  int64
-	Fru_msgsnd   int64
-	Fru_msgrcv   int64
-	Fru_nsignals int64
-	Fru_nvcsw    int64
-	Fru_nivcsw   int64
-	F__reserved  [16]int64
 }
 
 type Tuint16_t = uint16
 
 type Tuint32_t = uint32
-
-type Tuint64_t = uint64
-
-type Tregister_t = int64
-
-type Tint8_t = int8
-
-type Tint16_t = int16
-
-type Tint32_t = int32
-
-type Tint64_t = int64
-
-type Tu_int64_t = uint64
 
 type Tnlink_t = uint64
 
@@ -3996,39 +1609,7 @@ type Tblksize_t = int64
 
 type Tblkcnt_t = int64
 
-type Tfsblkcnt_t = uint64
-
-type Tfsfilcnt_t = uint64
-
-type Ttimer_t = uintptr
-
-type Tclockid_t = int32
-
-type Tkey_t = int32
-
-type Tuseconds_t = uint32
-
-type Tpthread_once_t = int32
-
 type Tpthread_key_t = uint32
-
-type Tpthread_spinlock_t = int32
-
-type Tpthread_mutexattr_t = struct {
-	F__attr uint32
-}
-
-type Tpthread_condattr_t = struct {
-	F__attr uint32
-}
-
-type Tpthread_barrierattr_t = struct {
-	F__attr uint32
-}
-
-type Tpthread_rwlockattr_t = struct {
-	F__attr [2]uint32
-}
 
 type Tpthread_mutex_t = struct {
 	F__u struct {
@@ -4045,66 +1626,6 @@ type Tpthread_cond_t = struct {
 		F__i  [12]int32
 	}
 }
-
-type Tpthread_rwlock_t = struct {
-	F__u struct {
-		F__vi [0][14]int32
-		F__p  [0][7]uintptr
-		F__i  [14]int32
-	}
-}
-
-type Tpthread_barrier_t = struct {
-	F__u struct {
-		F__vi [0][8]int32
-		F__p  [0][4]uintptr
-		F__i  [8]int32
-	}
-}
-
-type Tu_int8_t = uint8
-
-type Tu_int16_t = uint16
-
-type Tu_int32_t = uint32
-
-type Tcaddr_t = uintptr
-
-type Tu_char = uint8
-
-type Tu_short = uint16
-
-type Tushort = uint16
-
-type Tu_int = uint32
-
-type Tuint = uint32
-
-type Tu_long = uint64
-
-type Tulong = uint64
-
-type Tquad_t = int64
-
-type Tu_quad_t = uint64
-
-type Tdirent = struct {
-	Fd_ino    Tino_t
-	Fd_off    Toff_t
-	Fd_reclen uint16
-	Fd_type   uint8
-	Fd_name   [256]uint8
-}
-
-type TTcl_DirEntry = struct {
-	Fd_ino    Tino_t
-	Fd_off    Toff_t
-	Fd_reclen uint16
-	Fd_type   uint8
-	Fd_name   [256]uint8
-}
-
-type TTcl_SeekOffset = int64
 
 type Tstat = struct {
 	Fst_dev     Tdev_t
@@ -4123,38 +1644,6 @@ type Tstat = struct {
 	F__unused   [3]uint64
 }
 
-type Tstatx_timestamp = struct {
-	Ftv_sec  Tint64_t
-	Ftv_nsec Tuint32_t
-	F__pad   Tuint32_t
-}
-
-type Tstatx = struct {
-	Fstx_mask            Tuint32_t
-	Fstx_blksize         Tuint32_t
-	Fstx_attributes      Tuint64_t
-	Fstx_nlink           Tuint32_t
-	Fstx_uid             Tuint32_t
-	Fstx_gid             Tuint32_t
-	Fstx_mode            Tuint16_t
-	F__pad0              [1]Tuint16_t
-	Fstx_ino             Tuint64_t
-	Fstx_size            Tuint64_t
-	Fstx_blocks          Tuint64_t
-	Fstx_attributes_mask Tuint64_t
-	Fstx_atime           Tstatx_timestamp
-	Fstx_btime           Tstatx_timestamp
-	Fstx_ctime           Tstatx_timestamp
-	Fstx_mtime           Tstatx_timestamp
-	Fstx_rdev_major      Tuint32_t
-	Fstx_rdev_minor      Tuint32_t
-	Fstx_dev_major       Tuint32_t
-	Fstx_dev_minor       Tuint32_t
-	F__pad1              [14]Tuint64_t
-}
-
-type Tlocale_t = uintptr
-
 type Ttm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -4169,66 +1658,7 @@ type Ttm = struct {
 	Ftm_zone   uintptr
 }
 
-type Titimerspec = struct {
-	Fit_interval Ttimespec
-	Fit_value    Ttimespec
-}
-
-type Tidtype_t = int32
-
-const _P_ALL = 0
-const _P_PID = 1
-const _P_PGID = 2
-const _P_PIDFD = 3
-
-type Tuintptr_t = uint64
-
-type Tintptr_t = int64
-
-type Tintmax_t = int64
-
 type Tuint8_t = uint8
-
-type Tuintmax_t = uint64
-
-type Tint_fast8_t = int8
-
-type Tint_fast64_t = int64
-
-type Tint_least8_t = int8
-
-type Tint_least16_t = int16
-
-type Tint_least32_t = int32
-
-type Tint_least64_t = int64
-
-type Tuint_fast8_t = uint8
-
-type Tuint_fast64_t = uint64
-
-type Tuint_least8_t = uint8
-
-type Tuint_least16_t = uint16
-
-type Tuint_least32_t = uint32
-
-type Tuint_least64_t = uint64
-
-type Tint_fast16_t = int32
-
-type Tint_fast32_t = int32
-
-type Tuint_fast16_t = uint32
-
-type Tuint_fast32_t = uint32
-
-type Twchar_t = int32
-
-type Timaxdiv_t = struct {
-	Fquot Tintmax_t
-	Frem  Tintmax_t
-}
 
 type Tutimbuf = struct {
 	Factime  Ttime_t
@@ -4238,41 +1668,6 @@ type Tutimbuf = struct {
 type Tsocklen_t = uint32
 
 type Tsa_family_t = uint16
-
-type Tmsghdr = struct {
-	Fmsg_name       uintptr
-	Fmsg_namelen    Tsocklen_t
-	Fmsg_iov        uintptr
-	F__pad1         int32
-	Fmsg_iovlen     int32
-	Fmsg_control    uintptr
-	F__pad2         int32
-	Fmsg_controllen Tsocklen_t
-	Fmsg_flags      int32
-}
-
-type Tcmsghdr = struct {
-	F__pad1     int32
-	Fcmsg_len   Tsocklen_t
-	Fcmsg_level int32
-	Fcmsg_type  int32
-}
-
-type Tucred = struct {
-	Fpid Tpid_t
-	Fuid Tuid_t
-	Fgid Tgid_t
-}
-
-type Tmmsghdr = struct {
-	Fmsg_hdr Tmsghdr
-	Fmsg_len uint32
-}
-
-type Tlinger = struct {
-	Fl_onoff  int32
-	Fl_linger int32
-}
 
 type Tsockaddr = struct {
 	Fsa_family Tsa_family_t
@@ -4325,76 +1720,6 @@ type Tsockaddr_in6 = struct {
 	Fsin6_scope_id Tuint32_t
 }
 
-type Tipv6_mreq = struct {
-	Fipv6mr_multiaddr Tin6_addr
-	Fipv6mr_interface uint32
-}
-
-type Tip_opts = struct {
-	Fip_dst  Tin_addr
-	Fip_opts [40]uint8
-}
-
-type Tip_mreq = struct {
-	Fimr_multiaddr Tin_addr
-	Fimr_interface Tin_addr
-}
-
-type Tip_mreqn = struct {
-	Fimr_multiaddr Tin_addr
-	Fimr_address   Tin_addr
-	Fimr_ifindex   int32
-}
-
-type Tip_mreq_source = struct {
-	Fimr_multiaddr  Tin_addr
-	Fimr_interface  Tin_addr
-	Fimr_sourceaddr Tin_addr
-}
-
-type Tip_msfilter = struct {
-	Fimsf_multiaddr Tin_addr
-	Fimsf_interface Tin_addr
-	Fimsf_fmode     Tuint32_t
-	Fimsf_numsrc    Tuint32_t
-	Fimsf_slist     [1]Tin_addr
-}
-
-type Tgroup_req = struct {
-	Fgr_interface Tuint32_t
-	Fgr_group     Tsockaddr_storage
-}
-
-type Tgroup_source_req = struct {
-	Fgsr_interface Tuint32_t
-	Fgsr_group     Tsockaddr_storage
-	Fgsr_source    Tsockaddr_storage
-}
-
-type Tgroup_filter = struct {
-	Fgf_interface Tuint32_t
-	Fgf_group     Tsockaddr_storage
-	Fgf_fmode     Tuint32_t
-	Fgf_numsrc    Tuint32_t
-	Fgf_slist     [1]Tsockaddr_storage
-}
-
-type Tin_pktinfo = struct {
-	Fipi_ifindex  int32
-	Fipi_spec_dst Tin_addr
-	Fipi_addr     Tin_addr
-}
-
-type Tin6_pktinfo = struct {
-	Fipi6_addr    Tin6_addr
-	Fipi6_ifindex uint32
-}
-
-type Tip6_mtuinfo = struct {
-	Fip6m_addr Tsockaddr_in6
-	Fip6m_mtu  Tuint32_t
-}
-
 type Taddrinfo = struct {
 	Fai_flags     int32
 	Fai_family    int32
@@ -4404,13 +1729,6 @@ type Taddrinfo = struct {
 	Fai_addr      uintptr
 	Fai_canonname uintptr
 	Fai_next      uintptr
-}
-
-type Tnetent = struct {
-	Fn_name     uintptr
-	Fn_aliases  uintptr
-	Fn_addrtype int32
-	Fn_net      Tuint32_t
 }
 
 type Thostent = struct {
@@ -4426,36 +1744,6 @@ type Tservent = struct {
 	Fs_aliases uintptr
 	Fs_port    int32
 	Fs_proto   uintptr
-}
-
-type Tprotoent = struct {
-	Fp_name    uintptr
-	Fp_aliases uintptr
-	Fp_proto   int32
-}
-
-type Tsched_param = struct {
-	Fsched_priority int32
-	F__reserved1    int32
-	F__reserved2    [2]struct {
-		F__reserved1 Ttime_t
-		F__reserved2 int64
-	}
-	F__reserved3 int32
-}
-
-type Tcpu_set_t = struct {
-	F__bits [16]uint64
-}
-
-type T__ptcb = struct {
-	F__f    uintptr
-	F__x    uintptr
-	F__next uintptr
-}
-
-type Tcpu_set_t1 = struct {
-	F__bits [16]uint64
 }
 
 type Tgroup = struct {
@@ -4495,32 +1783,7 @@ type Tmp_int = struct {
 	Fdp    uintptr
 }
 
-type Tdiv_t = struct {
-	Fquot int32
-	Frem  int32
-}
-
-type Tldiv_t = struct {
-	Fquot int64
-	Frem  int64
-}
-
-type Tlldiv_t = struct {
-	Fquot int64
-	Frem  int64
-}
-
-type Tmax_align_t = struct {
-	F__ll int64
-	F__ld float64
-}
-
 type Tptrdiff_t = int64
-
-type TTcl_ResolvedVarInfo1 = struct {
-	FfetchProc  uintptr
-	FdeleteProc uintptr
-}
 
 type TTcl_ResolvedVarInfo = struct {
 	FfetchProc  uintptr
@@ -4574,13 +1837,6 @@ type TNamespace = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
-}
-
-type TNamespacePathEntry1 = struct {
-	FnsPtr        uintptr
-	FcreatorNsPtr uintptr
-	FprevPtr      uintptr
-	FnextPtr      uintptr
 }
 
 type TEnsembleConfig = struct {
@@ -4874,8 +2130,6 @@ type TResolverScheme = struct {
 	FnextPtr            uintptr
 }
 
-type _PkgPreferOptions = int32
-
 const _PKG_PREFER_LATEST = 0
 const _PKG_PREFER_STABLE = 1
 
@@ -4991,8 +2245,6 @@ const _TCL_PLATFORM_WINDOWS = 2
 
 type TTclEolTranslation = int32
 
-type _TclEolTranslation = int32
-
 const _TCL_TRANSLATE_AUTO = 0
 const _TCL_TRANSLATE_CR = 1
 const _TCL_TRANSLATE_LF = 2
@@ -5015,16 +2267,10 @@ type TTclFile = uintptr
 
 type TTcl_PathPart = int32
 
-type _Tcl_PathPart = int32
-
 const _TCL_PATH_DIRNAME = 0
 const _TCL_PATH_TAIL = 1
 const _TCL_PATH_EXTENSION = 2
 const _TCL_PATH_ROOT = 3
-
-type TTclCmdProcType = uintptr
-
-type TTclObjCmdProcType = uintptr
 
 type TProcessGlobalValue = struct {
 	Fepoch    int32
@@ -5036,10 +2282,7 @@ type TProcessGlobalValue = struct {
 	Fkey      TTcl_ThreadDataKey
 }
 
-type _CheckEmptyStringResult = int32
-
 const _TCL_EMPTYSTRING_UNKNOWN = -1
-const _TCL_EMPTYSTRING_NO = 0
 const _TCL_EMPTYSTRING_YES = 1
 
 type TForIterData = struct {
@@ -5361,26 +2604,11 @@ type TTclIntPlatStubs = struct {
 	FtclUnixOpenTemporaryFile        uintptr
 }
 
-type Tprivate_mp_word = uint64
-
 type Tmp_sign = int32
 
 type Tmp_ord = int32
 
-type Tmp_bool = int32
-
 type Tmp_err = int32
-
-type Tmp_order = int32
-
-type Tmp_endian = int32
-
-type Tmp_int1 = struct {
-	Fused  int32
-	Falloc int32
-	Fsign  Tmp_sign
-	Fdp    uintptr
-}
 
 type TTclTomMathStubs = struct {
 	Fmagic                       int32
@@ -5535,10 +2763,6 @@ type TTclOOStubs = struct {
 	FtclOOUnusedStubEntry          uintptr
 }
 
-type Tfloat_t = float32
-
-type Tdouble_t = float64
-
 type Tregoff_t = int64
 
 type Tregex_t = struct {
@@ -5569,33 +2793,6 @@ type TTclRegexp = struct {
 	Fmatches    uintptr
 	Fdetails    Trm_detail_t
 	FrefCount   int32
-}
-
-type Tlconv = struct {
-	Fdecimal_point      uintptr
-	Fthousands_sep      uintptr
-	Fgrouping           uintptr
-	Fint_curr_symbol    uintptr
-	Fcurrency_symbol    uintptr
-	Fmon_decimal_point  uintptr
-	Fmon_thousands_sep  uintptr
-	Fmon_grouping       uintptr
-	Fpositive_sign      uintptr
-	Fnegative_sign      uintptr
-	Fint_frac_digits    uint8
-	Ffrac_digits        uint8
-	Fp_cs_precedes      uint8
-	Fp_sep_by_space     uint8
-	Fn_cs_precedes      uint8
-	Fn_sep_by_space     uint8
-	Fp_sign_posn        uint8
-	Fn_sign_posn        uint8
-	Fint_p_cs_precedes  uint8
-	Fint_p_sep_by_space uint8
-	Fint_n_cs_precedes  uint8
-	Fint_n_sep_by_space uint8
-	Fint_p_sign_posn    uint8
-	Fint_n_sign_posn    uint8
 }
 
 type TChannelBuffer = struct {
@@ -13221,29 +10418,8 @@ type TExecEnv1 = struct {
 	Frewind       int32
 }
 
-const m_FRAME_IS_PROC1 = 0x1
 const m_MAX_STRINGS = 11
 const m_NUMBER_OF_OBJECT_VARS = 20
-const m_O_RDONLY1 = 00
-const m_STATIC_BUILD = 1
-const m_TCL_ALLOW_INLINE_COMPILATION2 = 0x20000
-const m_TCL_CREATE_HARD_LINK2 = 0x02
-const m_TCL_CREATE_SYMBOLIC_LINK2 = 0x01
-const m_TCL_DD_E_FORMAT1 = 0x2
-const m_TCL_DD_F_FORMAT1 = 0x3
-const m_TCL_DD_SHORTEN_FLAG1 = 0x4
-const m_TCL_DD_SHORTEST1 = 0x4
-const m_TCL_DD_STEELE1 = 0x5
-const m_TCL_EVAL_DIRECT2 = 0x040000
-const m_TCL_EVAL_GLOBAL2 = 0x020000
-const m_TCL_HASH_KEY_SYSTEM_HASH2 = 0x2
-const m_TCL_LEAVE_ERR_MSG2 = 0x200
-const m_TCL_LINK_READ_ONLY2 = 0x80
-const m_TCL_REG_CANMATCH2 = 001000
-const m_TCL_THREAD_NOFLAGS2 = 0000
-const m_VARPTR_KEY = "TCLOBJTEST_VARPTR"
-const m_VAR_DEAD_HASH1 = 0x8
-const m___LONG_MAX1 = 9223372036854775807
 
 type TString = struct {
 	FnumChars   int32
@@ -14766,7 +11942,6 @@ func _CheckIfVarUnset(tls *libc.TLS, interp uintptr, varPtr uintptr, varIndex in
 }
 
 const m_TCL_LEAVE_ERR_MSG3 = 512
-const m___LONG_MAX2 = 0x7fffffffffffffff
 
 /*
  * Local Variables:
@@ -15093,7 +12268,6 @@ const m_TCL_CANCEL_UNWIND1 = 1048576
 const m_TCL_EVAL_GLOBAL3 = 131072
 const m_TCL_THREAD_JOINABLE1 = 1
 const m_TCL_THREAD_NOFLAGS3 = 0
-const m_TP_Dying = 0x001
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -16220,12 +13394,6 @@ type TThreadSpecificData1 = struct {
 
 const m_MAX_PIPES = 10
 const m_O_NONBLOCK1 = 2048
-const m_SA_RESTART1 = 268435456
-const m_TCL_CANCEL_UNWIND2 = 0x100000
-const m_TCL_EVAL_GLOBAL4 = 0x020000
-const m_TCL_LEAVE_ERR_MSG4 = 0x200
-const m_TCL_THREAD_JOINABLE2 = 0001
-const m_TCL_THREAD_NOFLAGS4 = 0000
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -16921,35 +14089,22 @@ func _TestchmodCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32,
 }
 
 const m_ABSIZE = 10
-const m_AHEAD = 97
 const m_BACKR = 16
-const m_BACKREF = 98
-const m_BEHIND = 114
 const m_BYTBITS = 8
 const m_CAP = 8
-const m_CCLASS = 67
-const m_CH = "NOCELT"
 const m_CHRBITS = 16
 const m_CHR_MAX = 65535
 const m_CHR_MIN = 0
 const m_CMMAGIC = 2166
 const m_CNFA_NOPROGRESS = 1
-const m_COLLEL = 73
 const m_COMPATIBLE = 3
-const m_DISCARD = "void"
-const m_DUPMAX = "_POSIX2_RE_DUP_MAX"
 const m_DUPTRAVERSE_MAX_DEPTH = 15000
-const m_ECLASS = 69
-const m_EMPTY = 110
-const m_END = 88
-const m_EOS = 101
 const m_FREECOL = 1
 const m_GUTSMAGIC = 65241
 const m_HASLACONS = 1
 const m_INCOMPATIBLE = 1
 const m_INF = 3
 const m_INUSE = 64
-const m_LACON = 76
 const m_LONGER = 1
 const m_L_BBND = 5
 const m_L_BRACK = 6
@@ -16960,25 +14115,10 @@ const m_L_EBND = 4
 const m_L_ECL = 8
 const m_L_ERE = 1
 const m_L_Q = 3
-const m_MAX_COLOR = "SHRT_MAX"
 const m_MIXED = 4
-const m_NOPARMS = "void"
 const m_NOPROP = 3
-const m_NOSUB = "COLORLESS"
-const m_NOTREACHED = 0
-const m_NWBDRY = 87
-const m_O_NONBLOCK2 = 04000
-const m_PLAIN = 112
-const m_PREFER = 'P'
 const m_PSEUDO = 2
-const m_RANGE = 82
 const m_REG_CANCEL = 777
-const m_REG_EXPECT1 = 001000
-const m_REG_FTRACE1 = 0010
-const m_REG_MTRACE1 = 0020
-const m_REG_NOTBOL1 = 0001
-const m_REG_NOTEOL1 = 0002
-const m_REG_SMALL1 = 0040
 const m_REG_UBACKREF1 = 1
 const m_REG_UBBS1 = 64
 const m_REG_UBOUNDS1 = 4
@@ -16995,19 +14135,10 @@ const m_REG_UUNPORT1 = 512
 const m_REG_UUNSPEC1 = 256
 const m_REMAGIC = 65239
 const m_SATISFIED = 2
-const m_SA_RESTART2 = 0x10000000
-const m_SBEGIN = 65
-const m_SEND = 90
 const m_SHORTER = 2
 const m_SHRT_MAX1 = 32767
 const m_SOME = 2
-const m_WBDRY = 119
 const m_WHITE = 0
-const m_compile = "TclReComp"
-const m_exec = "TclReExec"
-const m_freechain = "outchain"
-const m_static_assert = "_Static_assert"
-const m_xxx = 1
 
 type Tchr = uint16
 
@@ -30948,56 +28079,18 @@ func _casecmp(tls *libc.TLS, x uintptr, y uintptr, len1 Tsize_t) (r int32) {
 	return 0
 }
 
-const m_BACKR1 = 020
-const m_CAP1 = 010
-const m_CHR_MAX1 = 0xFFFF
-const m_CHR_MIN1 = 0x0000
-const m_CMMAGIC1 = 0x876
 const m_FEWCOLORS = 15
 const m_FEWSTATES = 20
-const m_FREECOL1 = 01
-const m_GUTSMAGIC1 = 0xFED9
-const m_INUSE1 = 0100
 const m_LOCALDFAS = 40
 const m_LOCALMAT = 20
 const m_LOCKED = 4
-const m_LONGER1 = 01
-const m_MIXED1 = 04
 const m_NOPROGRESS = 8
-const m_NOPROP1 = 03
 const m_POSTSTATE = 2
-const m_PSEUDO1 = 02
-const m_REG_ADVANCED1 = 000003
-const m_REG_ADVF1 = 000002
-const m_REG_BOSONLY1 = 002000
-const m_REG_DUMP1 = 004000
-const m_REG_EXPANDED1 = 000040
 const m_REG_EXPECT2 = 512
-const m_REG_EXTENDED1 = 000001
-const m_REG_FAKE1 = 010000
 const m_REG_FTRACE2 = 8
-const m_REG_ICASE1 = 000010
-const m_REG_NEWLINE1 = 000300
-const m_REG_NLANCH1 = 000200
-const m_REG_NLSTOP1 = 000100
 const m_REG_NOTBOL2 = 1
 const m_REG_NOTEOL2 = 2
-const m_REG_PROGRESS1 = 020000
-const m_REG_QUOTE1 = 000004
 const m_REG_SMALL2 = 32
-const m_REG_UBBS2 = 000100
-const m_REG_UBOUNDS2 = 000004
-const m_REG_UBRACES2 = 000010
-const m_REG_UBSALNUM2 = 000020
-const m_REG_UEMPTYMATCH2 = 004000
-const m_REG_ULOCALE2 = 002000
-const m_REG_ULOOKAHEAD2 = 000002
-const m_REG_UNONPOSIX2 = 000200
-const m_REG_UPBOTCH2 = 000040
-const m_REG_USHORTEST2 = 020000
-const m_REG_UUNPORT2 = 001000
-const m_REG_UUNSPEC2 = 000400
-const m_SHRT_MAX2 = 0x7fff
 const m_STARTER = 1
 const m_WORK = 1
 
@@ -33056,19 +30149,6 @@ func _pickNextSS(tls *libc.TLS, v uintptr, d uintptr, cp uintptr, start uintptr)
 	return (*Tdfa)(unsafe.Pointer(d)).Fssets
 }
 
-const m_CNFA_NOPROGRESS1 = 01
-const m_HASLACONS1 = 01
-const m_REG_EXPECT3 = 001000
-const m_REG_FTRACE3 = 0010
-const m_REG_NOSUB1 = 000020
-const m_REG_NOTBOL3 = 0001
-const m_REG_NOTEOL3 = 0002
-const m_REG_SMALL3 = 0040
-const m_REG_UBACKREF2 = 000001
-const m_REG_UIMPOSSIBLE2 = 010000
-const m_REMAGIC1 = 0xFED7
-const m_SHORTER1 = 02
-
 /*
  * Magic for allocating a variable workspace. This default version is
  * stack-hungry.
@@ -33346,12 +30426,7 @@ const m_COMPILEENV_INIT_CMD_MAP_SIZE = 40
 const m_COMPILEENV_INIT_CODE_BYTES = 250
 const m_COMPILEENV_INIT_EXCEPT_RANGES = 5
 const m_COMPILEENV_INIT_NUM_OBJECTS = 60
-const m_CONSTRUCTOR = 0x08
-const m_DESTRUCTOR = 0x10
 const m_DESTRUCTOR_CALLED = 2
-const m_DONT_DELETE = 0x20000
-const m_FILTER_HANDLING = 0x2000
-const m_FORCE_UNKNOWN = 0x10000
 const m_INST_ADD = 53
 const m_INST_APPEND_ARRAY1 = 84
 const m_INST_APPEND_ARRAY4 = 85
@@ -33544,104 +30619,13 @@ const m_INST_YIELD = 148
 const m_INST_YIELD_TO_INVOKE = 181
 const m_JUMPFIXUP_INIT_ENTRIES = 10
 const m_LAST_INST_OPCODE = 189
-const m_LITERAL_CMD_NAME = 0x02
-const m_LITERAL_ON_HEAP = 0x01
-const m_LITERAL_UNSHARED = 0x04
-const m_MAX_INSTRUCTION_OPERANDS = 2
 const m_OBJECT_DESTRUCTING = 1
-const m_OO_UNKNOWN_METHOD = 0x04
-const m_OO_UNUSED_4 = 4
-const m_PRIVATE_METHOD = 0x02
-const m_PUBLIC_METHOD = 0x01
-const m_ROOT_CLASS = 0x8000
-const m_ROOT_OBJECT = 0x1000
 const m_TCLOO_PROCEDURE_METHOD_VERSION = 0
-const m_TCL_BYTECODE_PRECOMPILED = 0x0001
-const m_TCL_BYTECODE_RECOMPILE = 0x0004
-const m_TCL_BYTECODE_RESOLVE_VARS = 0x0002
 const m_TCL_EVAL_DIRECT3 = 262144
 const m_TCL_NO_ELEMENT = 2
 const m_TCL_NO_LARGE_INDEX = 1
-const m_TCL_OO_INTERNAL_H = 1
 const m_TCL_REG_ADVANCED1 = 3
 const m_TCL_REG_NOCASE1 = 8
-const m_USE_CLASS_CACHE = 0x4000
-const m_USE_DECLARER_NS = 0x80
-const m__TCLCOMPILATION = 1
-
-type TCompileEnv1 = struct {
-	FiPtr                    uintptr
-	Fsource                  uintptr
-	FnumSrcBytes             int32
-	FprocPtr                 uintptr
-	FnumCommands             int32
-	FexceptDepth             int32
-	FmaxExceptDepth          int32
-	FmaxStackDepth           int32
-	FcurrStackDepth          int32
-	FlocalLitTable           TLiteralTable
-	FcodeStart               uintptr
-	FcodeNext                uintptr
-	FcodeEnd                 uintptr
-	FmallocedCodeArray       int32
-	FliteralArrayPtr         uintptr
-	FliteralArrayNext        int32
-	FliteralArrayEnd         int32
-	FmallocedLiteralArray    int32
-	FexceptArrayPtr          uintptr
-	FexceptArrayNext         int32
-	FexceptArrayEnd          int32
-	FmallocedExceptArray     int32
-	FexceptAuxArrayPtr       uintptr
-	FcmdMapPtr               uintptr
-	FcmdMapEnd               int32
-	FmallocedCmdMap          int32
-	FauxDataArrayPtr         uintptr
-	FauxDataArrayNext        int32
-	FauxDataArrayEnd         int32
-	FmallocedAuxDataArray    int32
-	FstaticCodeSpace         [250]uint8
-	FstaticLiteralSpace      [60]TLiteralEntry
-	FstaticExceptArraySpace  [5]TExceptionRange
-	FstaticExAuxArraySpace   [5]TExceptionAux
-	FstaticCmdMapSpace       [40]TCmdLocation
-	FstaticAuxDataArraySpace [5]TAuxData
-	FextCmdMapPtr            uintptr
-	Fline                    int32
-	FatCmdStart              int32
-	FexpandCount             int32
-	FclNext                  uintptr
-}
-
-type TByteCode1 = struct {
-	FinterpHandle    TTclHandle
-	FcompileEpoch    int32
-	FnsPtr           uintptr
-	FnsEpoch         int32
-	FrefCount        int32
-	Fflags           uint32
-	Fsource          uintptr
-	FprocPtr         uintptr
-	FstructureSize   Tsize_t
-	FnumCommands     int32
-	FnumSrcBytes     int32
-	FnumCodeBytes    int32
-	FnumLitObjects   int32
-	FnumExceptRanges int32
-	FnumAuxDataItems int32
-	FnumCmdLocBytes  int32
-	FmaxExceptDepth  int32
-	FmaxStackDepth   int32
-	FcodeStart       uintptr
-	FobjArrayPtr     uintptr
-	FexceptArrayPtr  uintptr
-	FauxDataArrayPtr uintptr
-	FcodeDeltaStart  uintptr
-	FcodeLengthStart uintptr
-	FsrcDeltaStart   uintptr
-	FsrcLengthStart  uintptr
-	FlocalCachePtr   uintptr
-}
 
 type TExceptionRangeType = int32
 
@@ -33783,8 +30767,6 @@ type TByteCode = struct {
 
 type TInstOperandType = int32
 
-type _InstOperandType = int32
-
 const _OPERAND_NONE = 0
 const _OPERAND_INT1 = 1
 const _OPERAND_INT4 = 2
@@ -33809,8 +30791,6 @@ type TInstructionDesc = struct {
 }
 
 type TInstStringClassType = int32
-
-type _InstStringClassType = int32
 
 const _STR_CLASS_ALNUM = 0
 const _STR_CLASS_ALPHA = 1
@@ -33863,10 +30843,6 @@ type TForeachInfo = struct {
 	FloopCtTemp     int32
 }
 
-type TJumptableInfo = struct {
-	FhashTable TTcl_HashTable
-}
-
 type TDictUpdateInfo = struct {
 	Flength int32
 }
@@ -33878,17 +30854,6 @@ type TTclOpCmdClientData = struct {
 		Fidentity [0]int32
 		FnumArgs  int32
 	}
-}
-
-type TCallChain1 = struct {
-	FobjectCreationEpoch int32
-	FobjectEpoch         int32
-	Fepoch               int32
-	Fflags               int32
-	FrefCount            int32
-	FnumChain            int32
-	Fchain               uintptr
-	FstaticChain         [4]TMInvoke
 }
 
 type TClass1 = struct {
@@ -34154,47 +31119,6 @@ type TTclOOIntStubs = struct {
 	FtclOOClassSetMixins           uintptr
 }
 
-/* !END!: Do not edit above this line. */
-
-/*
- * Alternatives to Tcl_Preserve/Tcl_EventuallyFree/Tcl_Release.
- */
-
-/*
- * A convenience macro for iterating through the lists used in the internal
- * memory management of objects.
- * REQUIRES DECLARATION: int i;
- */
-
-/*
- * Convenience macros for iterating through hash tables. FOREACH_HASH_DECLS
- * sets up the declarations needed for the main macro, FOREACH_HASH, which
- * does the actual iteration. FOREACH_HASH_VALUE is a restricted version that
- * only iterates over values.
- */
-
-/*
- * Convenience macro for duplicating a list. Needs no external declaration,
- * but all arguments are used multiple times and so must have no side effects.
- */
-
-/*
- * Local Variables:
- * mode: c
- * c-basic-offset: 4
- * fill-column: 78
- * End:
- */
-
-/*
- * Structure that represents a range of instructions in the bytecode.
- */
-
-type TCodeRange = struct {
-	FstartOffset int32
-	FendOffset   int32
-}
-
 /*
  * State identified for a basic block's catch context.
  */
@@ -34244,12 +31168,6 @@ type TBasicBlock = struct {
 	FjtPtr                 uintptr
 	Fflags                 int32
 }
-
-/*
- * Flags that pertain to a basic block.
- */
-
-type _BasicBlockFlags = int32
 
 const _BB_VISITED = 1
 const /* Block has been visited in the current
@@ -38996,10 +35914,6 @@ type TBasicBlock1 = struct {
 	Fflags                 int32
 }
 
-const m_TCL_EVAL_DIRECT4 = 0x040000
-const m_TCL_REG_ADVANCED2 = 000003
-const m_TCL_REG_NOCASE2 = 000010
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -39324,20 +36238,16 @@ const m_CMD_IS_SAFE = 1
 const m_CMD_REDEF_IN_PROGRESS1 = 16
 const m_CMD_TRACE_ACTIVE1 = 2
 const m_CORO_STACK_INITIAL_SIZE = 200
-const m_DBL_MAX1 = 1.7976931348623157e+308
-const m_DTraceCmdReturn = "NULL"
 const m_ERR_LEGACY_COPY1 = 2048
 const m_INTERP_DEBUG_FRAME1 = 16
 const m_INTERP_STACK_INITIAL_SIZE = 2000
 const m_MATH_FUNC_PREFIX_LEN = 17
 const m_MATH_OP_PREFIX_LEN = 15
-const m_MAX_EXACT = 9.007199254740991e+15
 const m_NS_DYING1 = 1
 const m_RAND_IA = 16807
 const m_RAND_IM = 2147483647
 const m_RAND_IQ = 127773
 const m_RAND_IR = 2836
-const m_RAND_MASK = 123459876
 const m_RAND_SEED_INITIALIZED1 = 64
 const m_TCL_ALLOW_EXCEPTIONS1 = 4
 const m_TCL_CANCEL_UNWIND3 = 1048576
@@ -39358,7 +36268,6 @@ const m_TCL_TRACE_READS1 = 16
 const m_TCL_TRACE_RENAME1 = 8192
 const m_TCL_TRACE_UNSETS1 = 64
 const m_TCL_TRACE_WRITES1 = 32
-const m___LONG_MAX3 = 9223372036854775807
 
 /*
  * Determine whether we're using IEEE floating point
@@ -49293,41 +46202,8 @@ func x_TclInfoCoroutineCmd(tls *libc.TLS, dummy TClientData, interp uintptr, obj
 }
 
 const m_BINARY_SCAN_MAX_CACHE = 260
-const m_BINARY_SIGNED = 0
 const m_BINARY_UNSIGNED = 1
-const m_CANCELED2 = 0x1000
-const m_CMD_COMPILES_EXPANDED2 = 0x08
-const m_CMD_DEAD2 = 0x40
-const m_CMD_HAS_EXEC_TRACES2 = 0x04
-const m_CMD_IS_DELETED2 = 0x01
-const m_CMD_REDEF_IN_PROGRESS2 = 0x10
-const m_CMD_TRACE_ACTIVE2 = 0x02
-const m_DBL_MAX2 = 1.79769313486231570815e+308
-const m_ERR_LEGACY_COPY2 = 0x800
-const m_FLT_MAX1 = 3.4028234663852886e+38
-const m_INTERP_DEBUG_FRAME2 = 0x10
 const m_INT_MAX1 = 2147483647
-const m_NS_DYING2 = 0x01
-const m_RAND_SEED_INITIALIZED2 = 0x40
-const m_TCL_ALLOW_EXCEPTIONS2 = 0x04
-const m_TCL_CANCEL_UNWIND4 = 0x100000
-const m_TCL_CREATE_NS_IF_UNKNOWN2 = 0x800
-const m_TCL_EVAL_DIRECT6 = 0x040000
-const m_TCL_EVAL_FILE2 = 0x02
-const m_TCL_EVAL_GLOBAL6 = 0x020000
-const m_TCL_EVAL_INVOKE2 = 0x080000
-const m_TCL_EVAL_NOERR2 = 0x200000
-const m_TCL_EVAL_NORESOLVE2 = 0x20
-const m_TCL_EVAL_SOURCE_IN_FRAME2 = 0x10
-const m_TCL_LIMIT_COMMANDS2 = 0x01
-const m_TCL_LIMIT_TIME2 = 0x02
-const m_TCL_TRACE_DELETE2 = 0x4000
-const m_TCL_TRACE_DESTROYED2 = 0x80
-const m_TCL_TRACE_READS2 = 0x10
-const m_TCL_TRACE_RENAME2 = 0x2000
-const m_TCL_TRACE_UNSETS2 = 0x40
-const m_TCL_TRACE_WRITES2 = 0x20
-const m___LONG_MAX4 = 0x7fffffffffffffff
 
 /*
  * The following tables are used by the binary encoders
@@ -53475,12 +50351,6 @@ var _optStrings4 = [2]uintptr{
 	1: libc.UintptrFromInt32(0),
 }
 
-const m_FALSE = 0
-const m_FLT_MAX2 = 3.40282346638528859812e+38
-const m_INT_MAX2 = 0x7fffffff
-const m_TCL_LEAVE_ERR_MSG6 = 0x200
-const m_TRUE = 1
-
 /*
  * Local Variables:
  * mode: c
@@ -53712,11 +50582,6 @@ const m_ONE_CENTURY_GREGORIAN = 36524
 const m_ONE_YEAR = 365
 const m_SECONDS_PER_DAY = 86400
 const m_TCL_CLOCK_PREFIX_LEN = 14
-const m_UINT_MAX1 = 4294967295
-const m_WCHAR = "char"
-const m_wcscmp = "strcmp"
-const m_wcscpy = "strcpy"
-const m_wcslen = "strlen"
 
 /*
  * Local Variables:
@@ -53798,18 +50663,6 @@ var _daysInPriorMonths = [2][13]int32{
 		12: int32(366),
 	},
 }
-
-/*
- * Enumeration of the string literals used in [clock]
- */
-
-type TClockLiteral = int32
-
-/*
- * Enumeration of the string literals used in [clock]
- */
-
-type _ClockLiteral = int32
 
 const _LIT__NIL = 0
 const _LIT__DEFAULT_FORMAT = 1
@@ -55825,7 +52678,6 @@ const m_S_IFMT1 = 61440
 const m_S_IFREG1 = 32768
 const m_S_IFSOCK1 = 49152
 const m_TCL_LEAVE_ERR_MSG7 = 512
-const m_UINT_MAX2 = 0xffffffff
 
 /*
  * The state structure used by [foreach]. Note that the actual structure has
@@ -60708,18 +57560,9 @@ const m_SORTMODE_COMMAND = 3
 const m_SORTMODE_DICTIONARY = 4
 const m_SORTMODE_INTEGER = 1
 const m_SORTMODE_REAL = 2
-const m_S_IFBLK2 = 0060000
-const m_S_IFCHR2 = 0020000
-const m_S_IFDIR2 = 0040000
-const m_S_IFIFO2 = 0010000
-const m_S_IFLNK2 = 0120000
-const m_S_IFMT2 = 0170000
-const m_S_IFREG2 = 0100000
-const m_S_IFSOCK2 = 0140000
 const m_TCL_REG_ADVANCED3 = 3
 const m_TCL_REG_NOCASE3 = 8
 const m_TCL_REG_NOSUB1 = 16
-const m_UINT_MAX3 = 4294967295
 const m_VAR_ARGUMENT1 = 256
 
 /*
@@ -60756,8 +57599,6 @@ type TSortElement = struct {
  */
 
 type TSortStrCmpFn_t = uintptr
-
-type TSortMemCmpFn_t = uintptr
 
 /*
  * The "lsort" command needs to pass certain information down to the function
@@ -66513,19 +63354,16 @@ func _SelectObjFromSublist(tls *libc.TLS, objPtr uintptr, infoPtr uintptr) (r ui
 	return objPtr
 }
 
-const m_CONCAT_TRIM_SET = " \\f\\v\\r\\t\\n"
 const m_TCL_EVAL_DISCARD_RESULT1 = 64
 const m_TCL_REG_EXPANDED1 = 32
 const m_TCL_REG_NEWLINE1 = 192
 const m_TCL_REG_NLANCH1 = 128
 const m_TCL_REG_NLSTOP1 = 64
-const m_TCL_REG_NOSUB2 = 000020
 const m_TCL_REG_NOTBOL1 = 1
 const m_TCL_SUBST_ALL1 = 7
 const m_TCL_SUBST_BACKSLASHES1 = 4
 const m_TCL_SUBST_COMMANDS1 = 1
 const m_TCL_SUBST_VARIABLES1 = 2
-const m_VAR_ARGUMENT2 = 0x100
 
 /*
  *----------------------------------------------------------------------
@@ -73457,21 +70295,6 @@ func x_TclListLines(tls *libc.TLS, listObj uintptr, _line int32, n int32, lines 
 		i++
 	}
 }
-
-const m_INT_MAX4 = 0x7fffffff
-const m_TCL_EVAL_DISCARD_RESULT2 = 0x40
-const m_TCL_LEAVE_ERR_MSG8 = 0x200
-const m_TCL_REG_ADVANCED4 = 000003
-const m_TCL_REG_EXPANDED2 = 000040
-const m_TCL_REG_NEWLINE2 = 000300
-const m_TCL_REG_NLANCH2 = 000200
-const m_TCL_REG_NLSTOP2 = 000100
-const m_TCL_REG_NOCASE4 = 000010
-const m_TCL_REG_NOTBOL2 = 0001
-const m_TCL_SUBST_ALL2 = 007
-const m_TCL_SUBST_BACKSLASHES2 = 004
-const m_TCL_SUBST_COMMANDS2 = 001
-const m_TCL_SUBST_VARIABLES2 = 002
 
 /*
  * The structures below define the AuxData types defined in this file.
@@ -101400,7 +98223,6 @@ compileSelfNamespace:
 }
 
 const m_TCL_SUBST_ALL3 = 7
-const m_UINT_MAX4 = 0xffffffff
 
 func init() {
 	p := unsafe.Pointer(&x_tclJumptableInfoType)
@@ -125171,17 +121993,12 @@ func x_TclCompileDivOpCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 const m_BAREWORD = 3
 const m_BINARY = 64
 const m_INCOMPLETE = 4
-const m_INT_MAX6 = 0x7fffffff
 const m_INVALID = 5
 const m_LEAF = 192
 const m_LITERAL_CMD_NAME1 = 2
 const m_MINUS = 2
 const m_NODE_TYPE = 192
 const m_PLUS = 1
-const m_TCL_REG_ADVANCED6 = 000003
-const m_TCL_REG_NOCASE6 = 000010
-const m_TCL_SUBST_ALL4 = 007
-const m_UINT_MAX5 = 4294967295
 const m_UNARY = 128
 
 /*
@@ -125470,196 +122287,17 @@ type TOpNode = struct {
 	Fconstant   uint8
 }
 
-/*
- * The storage for the tree is dynamically allocated array of OpNodes. The
- * array is grown as parsing needs dictate according to a scheme similar to
- * Tcl's string growth algorithm, so that the resizing costs are O(N) and so
- * that we use at least half the memory allocated as expressions get large.
- *
- * Each OpNode in the tree represents an operator in the expression, either
- * unary or binary. When parsing is completed successfully, a binary operator
- * OpNode will have its left and right fields filled with "pointers" to its
- * left and right operands. A unary operator OpNode will have its right field
- * filled with a pointer to its single operand. When an operand is a
- * subexpression the "pointer" takes the form of the index -- a non-negative
- * integer -- into the OpNode storage array where the root of that
- * subexpression parse tree is found.
- *
- * Non-operator elements of the expression do not get stored in the OpNode
- * tree. They are stored in the other structures according to their type.
- * Literal values get appended to the literal list. Elements that denote forms
- * of quoting or substitution known to the Tcl parser get stored as
- * Tcl_Tokens. These non-operator elements of the expression are the leaves of
- * the completed parse tree. When an operand of an OpNode is one of these leaf
- * elements, the following negative integer codes are used to indicate which
- * kind of elements it is.
- */
-
-type _OperandTypes = int32
-
 const _OT_LITERAL = -3
 const /* Operand is a literal in the literal list */
 _OT_TOKENS = -2
 const /* Operand is sequence of Tcl_Tokens */
 _OT_EMPTY = -1
 
-/*
- * Readable macros to test whether a "pointer" value points to an operator.
- * They operate on the "non-negative integer -> operator; negative integer ->
- * a non-operator OperandType" distinction.
- */
-
-/*
- * Note that it is sufficient to store in the tree just the type of leaf
- * operand, without any explicit pointer to which leaf. This is true because
- * the traversals of the completed tree we perform are known to visit the
- * leaves in the same order as the original parse.
- *
- * In a completed parse tree, those OpNodes that are themselves (roots of
- * subexpression trees that are) operands of some operator store in their
- * p.parent field a "pointer" to the OpNode of that operator. The p.parent
- * field permits a traversal of the tree within a non-recursive routine
- * (ConvertTreeToTokens() and CompileExprTree()). This means that even
- * expression trees of great depth pose no risk of blowing the C stack.
- *
- * While the parse tree is being constructed, the same memory space is used to
- * hold the p.prev field which chains together a stack of incomplete trees
- * awaiting their right operands.
- *
- * The lexeme field is filled in with the lexeme of the operator that is
- * returned by the ParseLexeme() routine. Only lexemes for unary and binary
- * operators get stored in an OpNode. Other lexmes get different treatement.
- *
- * The precedence field provides a place to store the precedence of the
- * operator, so it need not be looked up again and again.
- *
- * The mark field is use to control the traversal of the tree, so that it can
- * be done non-recursively. The mark values are:
- */
-
-type _Marks = int32
-
 const _MARK_LEFT = 0
 const /* Next step of traversal is to visit left subtree */
 _MARK_RIGHT = 1
 const /* Next step of traversal is to visit right subtree */
 _MARK_PARENT = 2
-
-/*
- * The constant field is a boolean flag marking which subexpressions are
- * completely known at compile time, and are eligible for computing then
- * rather than waiting until run time.
- */
-
-/*
- * Each lexeme belongs to one of four categories, which determine its place in
- * the parse tree. We use the two high bits of the (unsigned char) value to
- * store a NODE_TYPE code.
- */
-
-/*
- * The four category values are LEAF, UNARY, and BINARY, explained below, and
- * "uncategorized", which is used either temporarily, until context determines
- * which of the other three categories is correct, or for lexemes like
- * INVALID, which aren't really lexemes at all, but indicators of a parsing
- * error. Note that the codes must be distinct to distinguish categories, but
- * need not take the form of a bit array.
- */
-
-/* Uncategorized lexemes */
-
-/* Leaf lexemes */
-
-/* For literal numbers */
-/* Script substitution; [foo] */
-/* For literal booleans */
-/* Braced string; {foo bar} */
-/* Variable substitution; $x */
-/* Quoted string; "foo $bar [soom]" */
-/* Used only for an empty argument list to a
- * function. Represents the empty string
- * within parens in the expression: rand() */
-
-/* Unary operator lexemes */
-
-/* This is a bit of "creative interpretation"
- * on the part of the parser. A function call
- * is parsed into the parse tree according to
- * the perspective that the function name is a
- * unary operator and its argument list,
- * enclosed in parens, is its operand. The
- * additional requirements not implied
- * generally by treatment as a unary operator
- * -- for example, the requirement that the
- * operand be enclosed in parens -- are hard
- * coded in the relevant portions of
- * ParseExpr(). We trade off the need to
- * include such exceptional handling in the
- * code against the need we would otherwise
- * have for more lexeme categories. */
-/* This lexeme isn't parsed from the
- * expression text at all. It represents the
- * start of the expression and sits at the
- * root of the parse tree where it serves as
- * the start/end point of traversals. */
-/* Another bit of creative interpretation,
- * where we treat "(" as a unary operator with
- * the sub-expression between it and its
- * matching ")" as its operand. See
- * CLOSE_PAREN below. */
-
-/* Binary operator lexemes */
-
-/* The "," operator is a low precedence binary
- * operator that separates the arguments in a
- * function call. The additional constraint
- * that this operator can only legally appear
- * at the right places within a function call
- * argument list are hard coded within
- * ParseExpr().  */
-/* These two lexemes make up the */
-/* ternary conditional operator, $x ? $y : $z.
- * We treat them as two binary operators to
- * avoid another lexeme category, and code the
- * additional constraints directly in
- * ParseExpr(). For instance, the right
- * operand of a "?" operator must be a ":"
- * operator. */
-/* Unlike the other binary operators, EXPON is
- * right associative and this distinction is
- * coded directly in ParseExpr(). */
-/* By categorizing the CLOSE_PAREN lexeme as a
- * BINARY operator, the normal parsing rules
- * for binary operators assure that a close
- * paren will not directly follow another
- * operator, and the machinery already in
- * place to connect operands to operators
- * according to precedence performs most of
- * the work of matching open and close parens
- * for us. In the end though, a close paren is
- * not really a binary operator, and some
- * special coding in ParseExpr() make sure we
- * never put an actual CLOSE_PAREN node in the
- * parse tree. The sub-expression between
- * parens becomes the single argument of the
- * matching OPEN_PAREN unary operator. */
-/* This lexeme represents the end of the
- * string being parsed. Treating it as a
- * binary operator follows the same logic as
- * the CLOSE_PAREN lexeme and END pairs with
- * START, in the same way that CLOSE_PAREN
- * pairs with OPEN_PAREN. */
-
-/*
- * When ParseExpr() builds the parse tree it must choose which operands to
- * connect to which operators.  This is done according to operator precedence.
- * The greater an operator's precedence the greater claim it has to link to an
- * available operand.  The Precedence enumeration lists the precedence values
- * used by Tcl expression operators, from lowest to highest claim.  Each
- * precedence level is commented with the operators that hold that precedence.
- */
-
-type _Precedence = int32
 
 const _PREC_END = 1
 const /* END */
@@ -129198,7 +125836,6 @@ const m_TCL_BYTECODE_RESOLVE_VARS1 = 2
 const m_TCL_EVAL_FILE3 = 2
 const m_TCL_LIMIT_COMMANDS3 = 1
 const m_TCL_LIMIT_TIME3 = 2
-const m_UINT_MAX6 = 0xffffffff
 const m_VAR_TEMPORARY1 = 512
 
 func init() {
@@ -134625,17 +131262,6 @@ func _EncodeCmdLocMap(tls *libc.TLS, envPtr uintptr, codePtr uintptr, startPtr u
 	return p
 }
 
-const m_ASSOC_KEY = "tclPackageAboutDict"
-const m_CMD_COMPILES_EXPANDED4 = 0x08
-const m_CMD_HAS_EXEC_TRACES4 = 0x04
-const m_CMD_VIA_RESOLVER2 = 0x20
-const m_DONT_COMPILE_CMDS_INLINE2 = 0x20
-const m_NS_SUPPRESS_COMPILATION2 = 0x08
-const m_TCL_EVAL_FILE4 = 0x02
-const m_TCL_LIMIT_COMMANDS4 = 0x01
-const m_TCL_LIMIT_TIME4 = 0x02
-const m_VAR_TEMPORARY2 = 0x200
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -134992,47 +131618,16 @@ func _ConfigDictDeleteProc(tls *libc.TLS, clientData TClientData, interp uintptr
 	}
 }
 
-const m_END_OF_TIME = 2037
 const m_EPOCH = 1970
-const m_START_OF_TIME = 1902
-const m_TM_YEAR_BASE = 1900
-const m_YYBISON = 1
-const m_YYBISON_VERSION = "3.1"
-const m_YYCOPY_NEEDED = 1
-const m_YYDEBUG = 0
 const m_YYEOF = 0
-const m_YYERRCODE = 256
-const m_YYERROR_VERBOSE = 0
 const m_YYFINAL = 2
 const m_YYINITDEPTH = 200
 const m_YYLAST = 81
-const m_YYLTYPE_IS_DECLARED = 1
-const m_YYLTYPE_IS_TRIVIAL = 1
-const m_YYMALLOC = "ckalloc"
 const m_YYMAXDEPTH = 10000
 const m_YYMAXUTOK = 274
-const m_YYNNTS = 16
-const m_YYNRULES = 56
-const m_YYNSTATES = 85
 const m_YYNTOKENS = 26
-const m_YYPULL = 1
-const m_YYPURE = 1
-const m_YYPUSH = 0
-const m_YYSIZE_T = "__SIZE_TYPE__"
-const m_YYSKELETON_NAME = "yacc.c"
-const m_YYSTACK_ALLOC = "YYMALLOC"
-const m_YYSTACK_ALLOC_MAXIMUM = "YYSIZE_MAXIMUM"
-const m_YYSTACK_FREE = "YYFREE"
-const m_YYSTYPE_IS_DECLARED = 1
-const m_YYSTYPE_IS_TRIVIAL = 1
 const m_YYTERROR = 1
 const m_YYUNDEFTOK = 2
-const m_YY_NULLPTR = 0
-const m_yydebug = "TclDatedebug"
-const m_yyerror = "TclDateerror"
-const m_yylex = "TclDatelex"
-const m_yynerrs = "TclDatenerrs"
-const m_yyparse = "TclDateparse"
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -135132,39 +131727,9 @@ type TTABLE = struct {
 	Fvalue Ttime_t
 }
 
-/*
- * The offset of tm_year of struct tm returned by localtime, gmtime, etc.
- * Posix requires 1900.
- */
-
-/*
- * An entry in the lexical lookup table.
- */
-
-type T_TABLE = TTABLE
-
-/*
- * Daylight-savings mode: on, off, or not yet known.
- */
-
-type TDSTMODE = int32
-
-/*
- * Daylight-savings mode: on, off, or not yet known.
- */
-
-type __DSTMODE = int32
-
 const _DSTon = 0
 const _DSToff = 1
 const _DSTmaybe = 2
-
-/* Enabling verbose error messages.  */
-
-/* Debug traces.  */
-
-/* Token type.  */
-type _yytokentype = int32
 
 const _tAGO = 258
 const _tDAY = 259
@@ -135175,7 +131740,6 @@ const _tMONTH = 263
 const _tMONTH_UNIT = 264
 const _tSTARDATE = 265
 const _tSEC_UNIT = 266
-const _tSNUMBER = 267
 const _tUNUMBER = 268
 const _tZONE = 269
 const _tEPOCH = 270
@@ -135183,13 +131747,6 @@ const _tDST = 271
 const _tISOBASE = 272
 const _tDAY_UNIT = 273
 const _tNEXT = 274
-
-/* Value type.  */
-
-type TYYSTYPE1 = struct {
-	FMeridian [0]__MERIDIAN
-	FNumber   Ttime_t
-}
 
 type TYYSTYPE = struct {
 	FMeridian [0]__MERIDIAN
@@ -135206,34 +131763,11 @@ type TYYLTYPE = struct {
 	Flast_column  int32
 }
 
-type TYYLTYPE1 = struct {
-	Ffirst_line   int32
-	Ffirst_column int32
-	Flast_line    int32
-	Flast_column  int32
-}
-
 type Tyytype_uint8 = uint8
 
 type Tyytype_int8 = int8
 
-type Tyytype_uint16 = uint16
-
 type Tyytype_int16 = int16
-
-/* Suppress unused-variable warnings by "using" E.  */
-
-/* Suppress an incorrect diagnostic about yylval being uninitialized.  */
-
-/* The parser invokes alloca or malloc; define the necessary symbols.  */
-
-/* A type that is properly aligned for any stack member.  */
-type Tyyalloc = struct {
-	Fyyvs_alloc  [0]TYYSTYPE
-	Fyyls_alloc  [0]TYYLTYPE
-	Fyyss_alloc  Tyytype_int16
-	F__ccgo_pad3 [14]byte
-}
 
 /* The size of the maximum gap between one aligned stack and the next.  */
 
@@ -138138,122 +134672,6 @@ func x_TclClockOldscanObjCmd(tls *libc.TLS, dummy uintptr, interp uintptr, objc 
 const m_INT_MAX7 = 2147483647
 const m_LOCAL_SIZE = 64
 const m_TCL_LEAVE_ERR_MSG9 = 512
-
-/* Epoch of the tcl environment
- * (if changed with tcl-env). */
-
-/*
- * Local Variables:
- * mode: c
- * c-basic-offset: 4
- * fill-column: 78
- * End:
- */
-/*
- * tclInt.h --
- *
- *	Declarations of things used internally by the Tcl interpreter.
- *
- * Copyright (c) 1987-1993 The Regents of the University of California.
- * Copyright (c) 1993-1997 Lucent Technologies.
- * Copyright (c) 1994-1998 Sun Microsystems, Inc.
- * Copyright (c) 1998-1999 by Scriptics Corporation.
- * Copyright (c) 2001, 2002 by Kevin B. Kenny.  All rights reserved.
- * Copyright (c) 2007 Daniel A. Steffen <das@users.sourceforge.net>
- * Copyright (c) 2006-2008 by Joe Mistachkin.  All rights reserved.
- * Copyright (c) 2008 by Miguel Sofer. All rights reserved.
- *
- * See the file "license.terms" for information on usage and redistribution of
- * this file, and for a DISCLAIMER OF ALL WARRANTIES.
- */
-
-/*
- * Local Variables:
- * mode: c
- * c-basic-offset: 4
- * fill-column: 78
- * End:
- */
-/* LibTomMath, multiple-precision integer library -- Tom St Denis */
-/* SPDX-License-Identifier: Unlicense */
-
-/* LibTomMath, multiple-precision integer library -- Tom St Denis */
-/* SPDX-License-Identifier: Unlicense */
-
-/* LibTomMath, multiple-precision integer library -- Tom St Denis */
-/* SPDX-License-Identifier: Unlicense */
-
-/* super class file for PK algos */
-
-/* default ... include all MPI */
-
-/* RSA only (does not support DH/DSA/ECC) */
-/* #define SC_RSA_1 */
-/* #define SC_RSA_1_WITH_TESTS */
-
-/* For reference.... On an Athlon64 optimizing for speed...
-
-   LTM's mpi.o with all functions [striped] is 142KiB in size.
-
-*/
-
-/* Works for RSA only, mpi.o is 68KiB */
-/* LibTomMath, multiple-precision integer library -- Tom St Denis */
-/* SPDX-License-Identifier: Unlicense */
-
-/* LibTomMath, multiple-precision integer library -- Tom St Denis */
-/* SPDX-License-Identifier: Unlicense */
-
-/* super class file for PK algos */
-
-/* default ... include all MPI */
-
-/* RSA only (does not support DH/DSA/ECC) */
-/* #define SC_RSA_1 */
-/* #define SC_RSA_1_WITH_TESTS */
-
-/* For reference.... On an Athlon64 optimizing for speed...
-
-   LTM's mpi.o with all functions [striped] is 142KiB in size.
-
-*/
-
-/* Works for RSA only, mpi.o is 68KiB */
-/* LibTomMath, multiple-precision integer library -- Tom St Denis */
-/* SPDX-License-Identifier: Unlicense */
-
-/* LibTomMath, multiple-precision integer library -- Tom St Denis */
-/* SPDX-License-Identifier: Unlicense */
-
-/* super class file for PK algos */
-
-/* default ... include all MPI */
-
-/* RSA only (does not support DH/DSA/ECC) */
-/* #define SC_RSA_1 */
-/* #define SC_RSA_1_WITH_TESTS */
-
-/* For reference.... On an Athlon64 optimizing for speed...
-
-   LTM's mpi.o with all functions [striped] is 142KiB in size.
-
-*/
-
-/* Works for RSA only, mpi.o is 68KiB */
-/* LibTomMath, multiple-precision integer library -- Tom St Denis */
-/* SPDX-License-Identifier: Unlicense */
-
-/*
- * Forward declaration.
- */
-type TDict1 = struct {
-	Ftable          TTcl_HashTable
-	FentryChainHead uintptr
-	FentryChainTail uintptr
-	Fepoch          int32
-	FrefCount       Tsize_t
-	Fchain          uintptr
-}
 
 /*
  * Table of dict subcommand names and implementations.
@@ -144185,11 +140603,6 @@ type TChainEntry1 = struct {
 	FnextPtr uintptr
 }
 
-const m_INT_MAX8 = 0x7fffffff
-const m_LITERAL_CMD_NAME2 = 0x02
-const m_LITERAL_UNSHARED2 = 0x04
-const m_TCL_BYTECODE_RESOLVE_VARS2 = 0x0002
-const m_TCL_LEAVE_ERR_MSG10 = 0x200
 const m_VAR_ARGUMENT3 = 256
 const m_VAR_ARRAY1 = 1
 const m_VAR_LINK1 = 2
@@ -146110,7 +142523,6 @@ var _types1 = [8]uintptr{
 }
 
 const m_ENCODING_DOUBLEBYTE = 1
-const m_ENCODING_ESCAPE = 3
 const m_ENCODING_MULTIBYTE = 2
 const m_ENCODING_SINGLEBYTE = 0
 const m_INT_MAX9 = 2147483647
@@ -146121,11 +142533,6 @@ const m_TCL_ENCODING_END1 = 2
 const m_TCL_ENCODING_NO_TERMINATE1 = 8
 const m_TCL_ENCODING_START1 = 1
 const m_TCL_ENCODING_STOPONERROR1 = 4
-const m_VAR_ARGUMENT4 = 0x100
-const m_VAR_ARRAY2 = 0x1
-const m_VAR_LINK2 = 0x2
-const m_VAR_RESOLVED2 = 0x8000
-const m_VAR_TEMPORARY4 = 0x200
 
 /*
  * The following data structure represents an encoding, which describes how to
@@ -149752,24 +146159,14 @@ const m_CMD_VIA_RESOLVER3 = 32
 const m_DONT_COMPILE_CMDS_INLINE3 = 32
 const m_ENSEMBLE_COMPILE1 = 4
 const m_ENSEMBLE_DEAD1 = 1
-const m_INT_MAX10 = 0x7fffffff
 const m_LITERAL_CMD_NAME3 = 2
 const m_LITERAL_UNSHARED3 = 4
 const m_NS_DYING3 = 1
 const m_NS_SUPPRESS_COMPILATION3 = 8
-const m_S_IFDIR4 = 0040000
-const m_S_IFMT4 = 0170000
-const m_TCL_BYTECODE_PRECOMPILED2 = 0x0001
 const m_TCL_CREATE_NS_IF_UNKNOWN3 = 2048
-const m_TCL_ENCODING_CHAR_LIMIT2 = 0x10
-const m_TCL_ENCODING_END2 = 0x02
-const m_TCL_ENCODING_NO_TERMINATE2 = 0x08
-const m_TCL_ENCODING_START2 = 0x01
-const m_TCL_ENCODING_STOPONERROR2 = 0x04
 const m_TCL_ENSEMBLE_PREFIX1 = 2
 const m_TCL_EVAL_INVOKE3 = 524288
 const m_TCL_LEAVE_ERR_MSG11 = 512
-const m_UINT_MAX7 = 4294967295
 
 /*
  * The lists of subcommands and options for the [namespace ensemble] command.
@@ -149781,8 +146178,6 @@ var _ensembleSubcommands = [4]uintptr{
 	2: __ccgo_ts + 23166,
 	3: libc.UintptrFromInt32(0),
 }
-
-type _EnsSubcmds = int32
 
 const _ENS_CONFIG = 0
 const _ENS_CREATE = 1
@@ -149797,8 +146192,6 @@ var _ensembleCreateOptions = [7]uintptr{
 	5: __ccgo_ts + 36798,
 	6: libc.UintptrFromInt32(0),
 }
-
-type _EnsCreateOpts = int32
 
 const _CRT_CMD = 0
 const _CRT_MAP = 1
@@ -149816,8 +146209,6 @@ var _ensembleConfigOptions = [7]uintptr{
 	5: __ccgo_ts + 36798,
 	6: libc.UintptrFromInt32(0),
 }
-
-type _EnsConfigOpts = int32
 
 const _CONF_MAP = 0
 const _CONF_NAMESPACE = 1
@@ -154306,24 +150697,10 @@ func x_TclCompileBasicMin2ArgCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr
 	return _CompileBasicNArgCommand(tls, interp, parsePtr, cmdPtr, envPtr)
 }
 
-const m_CMD_HAS_EXEC_TRACES6 = 0x04
-const m_CMD_VIA_RESOLVER4 = 0x20
-const m_DONT_COMPILE_CMDS_INLINE4 = 0x20
-const m_ENSEMBLE_COMPILE2 = 0x4
-const m_ENSEMBLE_DEAD2 = 0x1
-const m_NS_DYING4 = 0x01
-const m_NS_SUPPRESS_COMPILATION4 = 0x08
-const m_TCL_CREATE_NS_IF_UNKNOWN4 = 0x800
-const m_TCL_ENSEMBLE_PREFIX2 = 0x02
-const m_TCL_EVAL_INVOKE4 = 0x080000
-const m_TCL_LEAVE_ERR_MSG12 = 0x200
 const m_TCL_TRACE_ARRAY1 = 2048
 const m_TCL_TRACE_READS3 = 16
 const m_TCL_TRACE_UNSETS3 = 64
 const m_TCL_TRACE_WRITES3 = 32
-const m_UINT_MAX8 = 0xffffffff
-const m_techar = "char"
-const m_tenviron = "environ"
 
 /*
  * Local Variables:
@@ -154963,8 +151340,6 @@ func x_TclFinalizeEnvironment(tls *libc.TLS) {
 
 const m_TCL_EVAL_GLOBAL7 = 131072
 const m_TCL_LEAVE_ERR_MSG13 = 512
-const m_TCL_TRACE_ARRAY2 = 0x800
-const m_TCL_TRACE_READS4 = 0x10
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -155892,37 +152267,6 @@ func x_Tcl_CreateExitHandler(tls *libc.TLS, proc uintptr, clientData TClientData
 /*
  *----------------------------------------------------------------------
  *
- * TclCreateLateExitHandler --
- *
- *	Arrange for a given function to be invoked after all pre-thread
- *	cleanups.
- *
- * Results:
- *	None.
- *
- * Side effects:
- *	Proc will be invoked with clientData as argument when the application
- *	exits.
- *
- *----------------------------------------------------------------------
- */
-
-func x_TclCreateLateExitHandler(tls *libc.TLS, proc uintptr, clientData TClientData) {
-	/* Arbitrary value to pass to proc. */
-	var exitPtr uintptr
-	_ = exitPtr
-	exitPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(24)))
-	(*TExitHandler)(unsafe.Pointer(exitPtr)).Fproc = proc
-	(*TExitHandler)(unsafe.Pointer(exitPtr)).FclientData = clientData
-	x_Tcl_MutexLock(tls, uintptr(unsafe.Pointer(&_exitMutex)))
-	(*TExitHandler)(unsafe.Pointer(exitPtr)).FnextPtr = _firstLateExitPtr
-	_firstLateExitPtr = exitPtr
-	x_Tcl_MutexUnlock(tls, uintptr(unsafe.Pointer(&_exitMutex)))
-}
-
-/*
- *----------------------------------------------------------------------
- *
  * Tcl_DeleteExitHandler --
  *
  *	This function cancels an existing exit handler matching proc and
@@ -155952,54 +152296,6 @@ func x_Tcl_DeleteExitHandler(tls *libc.TLS, proc uintptr, clientData TClientData
 		if (*TExitHandler)(unsafe.Pointer(exitPtr)).Fproc == proc && (*TExitHandler)(unsafe.Pointer(exitPtr)).FclientData == clientData {
 			if prevPtr == libc.UintptrFromInt32(0) {
 				_firstExitPtr = (*TExitHandler)(unsafe.Pointer(exitPtr)).FnextPtr
-			} else {
-				(*TExitHandler)(unsafe.Pointer(prevPtr)).FnextPtr = (*TExitHandler)(unsafe.Pointer(exitPtr)).FnextPtr
-			}
-			x_TclpFree(tls, exitPtr)
-			break
-		}
-		goto _1
-	_1:
-		;
-		prevPtr = exitPtr
-		exitPtr = (*TExitHandler)(unsafe.Pointer(exitPtr)).FnextPtr
-	}
-	x_Tcl_MutexUnlock(tls, uintptr(unsafe.Pointer(&_exitMutex)))
-	return
-}
-
-/*
- *----------------------------------------------------------------------
- *
- * TclDeleteLateExitHandler --
- *
- *	This function cancels an existing late exit handler matching proc and
- *	clientData, if such a handler exits.
- *
- * Results:
- *	None.
- *
- * Side effects:
- *	If there is a late exit handler corresponding to proc and clientData
- *	then it is canceled; if no such handler exists then nothing happens.
- *
- *----------------------------------------------------------------------
- */
-
-func x_TclDeleteLateExitHandler(tls *libc.TLS, proc uintptr, clientData TClientData) {
-	/* Arbitrary value to pass to proc. */
-	var exitPtr, prevPtr uintptr
-	_, _ = exitPtr, prevPtr
-	x_Tcl_MutexLock(tls, uintptr(unsafe.Pointer(&_exitMutex)))
-	prevPtr = libc.UintptrFromInt32(0)
-	exitPtr = _firstLateExitPtr
-	for {
-		if !(exitPtr != libc.UintptrFromInt32(0)) {
-			break
-		}
-		if (*TExitHandler)(unsafe.Pointer(exitPtr)).Fproc == proc && (*TExitHandler)(unsafe.Pointer(exitPtr)).FclientData == clientData {
-			if prevPtr == libc.UintptrFromInt32(0) {
-				_firstLateExitPtr = (*TExitHandler)(unsafe.Pointer(exitPtr)).FnextPtr
 			} else {
 				(*TExitHandler)(unsafe.Pointer(prevPtr)).FnextPtr = (*TExitHandler)(unsafe.Pointer(exitPtr)).FnextPtr
 			}
@@ -156757,16 +153053,12 @@ const m_ASYNC_CHECK_COUNT_MASK = 63
 const m_CANCELED3 = 4096
 const m_CMD_IS_DELETED3 = 1
 const m_CONSTRUCTOR1 = 8
-const m_DBL_MAX3 = 1.7976931348623157e+308
 const m_DESTRUCTOR1 = 16
 const m_FILTER_HANDLING1 = 8192
 const m_FRAME_IS_METHOD1 = 4
 const m_INTERP_DEBUG_FRAME3 = 16
 const m_INT_MAX11 = 2147483647
 const m_LAST_BUILTIN_FUNC = 25
-const m_LITERAL_CMD_NAME4 = 0x02
-const m_LITERAL_UNSHARED4 = 0x04
-const m_LLONG_MAX1 = 9223372036854775807
 const m_NS_DYING5 = 1
 const m_SHRT_MAX3 = 32767
 const m_TCL_AVOID_RESOLVERS1 = 262144
@@ -156774,17 +153066,12 @@ const m_TCL_BYTECODE_PRECOMPILED3 = 1
 const m_TCL_BYTECODE_RECOMPILE1 = 4
 const m_TCL_CANCEL_UNWIND5 = 1048576
 const m_TCL_EVAL_DISCARD_RESULT3 = 64
-const m_TCL_EVAL_GLOBAL8 = 0x020000
 const m_TCL_EVAL_INVOKE5 = 524288
 const m_TCL_EVAL_NOERR3 = 2097152
 const m_TCL_EVAL_SOURCE_IN_FRAME3 = 16
 const m_TCL_LIMIT_COMMANDS5 = 1
 const m_TCL_LIMIT_TIME5 = 2
-const m_TCL_SUPPORT_84_BYTECODE = 1
 const m_TCL_TRACE_READS5 = 16
-const m_TCL_TRACE_UNSETS4 = 0x40
-const m_TCL_TRACE_WRITES4 = 0x20
-const m_UINT_MAX9 = 4294967295
 const m_VAR_ARRAY3 = 1
 const m_VAR_ARRAY_ELEMENT1 = 4096
 const m_VAR_DEAD_HASH2 = 8
@@ -156796,7 +153083,6 @@ const m_VAR_TRACED_ARRAY1 = 2048
 const m_VAR_TRACED_READ1 = 16
 const m_VAR_TRACED_UNSET1 = 64
 const m_VAR_TRACED_WRITE1 = 32
-const m___LONG_MAX5 = 9223372036854775807
 
 /*
  * Hack to determine whether we may expect IEEE floating point. The hack is
@@ -178373,43 +174659,12 @@ type TExecStack1 = struct {
 	FtosPtr    uintptr
 }
 
-const m_CANCELED4 = 0x1000
-const m_CMD_IS_DELETED4 = 0x01
-const m_DBL_MAX4 = 1.79769313486231570815e+308
-const m_FRAME_IS_METHOD2 = 0x4
-const m_INTERP_DEBUG_FRAME4 = 0x10
-const m_INT_MAX12 = 0x7fffffff
-const m_LLONG_MAX2 = 0x7fffffffffffffff
-const m_NS_DYING6 = 0x01
-const m_SHRT_MAX4 = 0x7fff
 const m_S_IFDIR5 = 16384
 const m_S_IFMT5 = 61440
-const m_TCL_AVOID_RESOLVERS2 = 0x40000
-const m_TCL_CANCEL_UNWIND6 = 0x100000
 const m_TCL_CREATE_HARD_LINK3 = 2
 const m_TCL_CREATE_SYMBOLIC_LINK3 = 1
 const m_TCL_EVAL_DIRECT7 = 262144
-const m_TCL_EVAL_DISCARD_RESULT4 = 0x40
 const m_TCL_EVAL_GLOBAL9 = 131072
-const m_TCL_EVAL_INVOKE6 = 0x080000
-const m_TCL_EVAL_NOERR4 = 0x200000
-const m_TCL_EVAL_SOURCE_IN_FRAME4 = 0x10
-const m_TCL_LIMIT_COMMANDS6 = 0x01
-const m_TCL_LIMIT_TIME6 = 0x02
-const m_TCL_TRACE_READS6 = 0x10
-const m_UINT_MAX10 = 0xffffffff
-const m_VAR_ARRAY4 = 0x1
-const m_VAR_ARRAY_ELEMENT2 = 0x1000
-const m_VAR_DEAD_HASH3 = 0x8
-const m_VAR_IN_HASHTABLE2 = 0x4
-const m_VAR_LINK4 = 0x2
-const m_VAR_NAMESPACE_VAR2 = 0x80
-const m_VAR_SEARCH_ACTIVE2 = 0x4000
-const m_VAR_TRACED_ARRAY2 = 0x800
-const m_VAR_TRACED_READ2 = 0x10
-const m_VAR_TRACED_UNSET2 = 0x40
-const m_VAR_TRACED_WRITE2 = 0x20
-const m___LONG_MAX6 = 0x7fffffffffffffff
 
 /*
  *---------------------------------------------------------------------------
@@ -180354,14 +176609,6 @@ makeTemporary:
 	x_Tcl_SetObjResult(tls, interp, x_Tcl_NewStringObj(tls, x_Tcl_GetChannelName(tls, chan1), -int32(1)))
 	return m_TCL_OK
 }
-
-const m_S_IFDIR6 = 0040000
-const m_S_IFMT6 = 0170000
-const m_TCL_CREATE_HARD_LINK4 = 0x02
-const m_TCL_CREATE_SYMBOLIC_LINK4 = 0x01
-const m_TCL_EVAL_DIRECT8 = 0x040000
-const m_TCL_EVAL_GLOBAL10 = 0x020000
-const m_TCL_LEAVE_ERR_MSG14 = 0x200
 
 /*
  * When there is no support for getting the block size of a file in a stat()
@@ -183438,7 +179685,6 @@ const m_NUM_COUNTERS = 10
 const m_REBUILD_MULTIPLIER = 3
 const m_TCL_HASH_KEY_RANDOMIZE_HASH1 = 1
 const m_TCL_HASH_KEY_SYSTEM_HASH3 = 2
-const m_UINT_MAX11 = 4294967295
 
 func init() {
 	p := unsafe.Pointer(&x_tclArrayHashKeyType)
@@ -184445,13 +180691,8 @@ func _RebuildTable(tls *libc.TLS, tablePtr uintptr) {
 	}
 }
 
-const m_HISTORY_OBJS_KEY = "::tcl::HistoryObjs"
-const m_INT_MAX14 = 0x7fffffff
 const m_TCL_EVAL_GLOBAL11 = 131072
-const m_TCL_HASH_KEY_RANDOMIZE_HASH2 = 0x1
-const m_TCL_HASH_KEY_SYSTEM_HASH4 = 0x2
 const m_TCL_NO_EVAL1 = 65536
-const m_UINT_MAX12 = 0xffffffff
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -184745,9 +180986,6 @@ func _DeleteHistoryObjs(tls *libc.TLS, clientData TClientData, interp uintptr) {
 
 const m_INTERP_ALTERNATE_WRONG_ARGS1 = 1024
 const m_NUM_SPACES = 20
-const m_TCL_EVAL_GLOBAL12 = 0x020000
-const m_TCL_NO_EVAL2 = 0x010000
-const m_UINT_MAX13 = 4294967295
 
 /*
  * The structure below defines the index Tcl object type by means of functions
@@ -186239,7 +182477,6 @@ var _returnCodes = [6]uintptr{
 }
 
 const m_CANCELED5 = 4096
-const m_INTERP_ALTERNATE_WRONG_ARGS2 = 0x400
 const m_INTERP_DEBUG_FRAME5 = 16
 const m_LIMIT_HANDLER_ACTIVE = 1
 const m_LIMIT_HANDLER_DELETED = 2
@@ -186390,19 +182627,6 @@ type TScriptLimitCallback = struct {
 type TScriptLimitCallbackKey = struct {
 	Finterp uintptr
 	Ftype1  int64
-}
-
-/*
- * TIP#143 limit handler internal representation.
- */
-
-type TLimitHandler1 = struct {
-	Fflags       int32
-	FhandlerProc uintptr
-	FclientData  TClientData
-	FdeleteProc  uintptr
-	FprevPtr     uintptr
-	FnextPtr     uintptr
 }
 
 /*
@@ -191136,24 +187360,12 @@ var _options15 = [5]uintptr{
 	4: libc.UintptrFromInt32(0),
 }
 
-const m_CANCELED6 = 0x1000
 const m_ENCODING_LINESIZE = 20
-const m_INTERP_DEBUG_FRAME6 = 0x10
-const m_SAFE_INTERP2 = 0x80
-const m_TCL_CANCEL_UNWIND8 = 0x100000
-const m_TCL_CREATE_NS_IF_UNKNOWN6 = 0x800
 const m_TCL_ENCODING_CHAR_LIMIT3 = 16
 const m_TCL_ENCODING_END3 = 2
 const m_TCL_ENCODING_NO_TERMINATE3 = 8
 const m_TCL_ENCODING_START3 = 1
-const m_TCL_EVAL_INVOKE8 = 0x080000
-const m_TCL_FIND_ONLY_NS2 = 0x1000
-const m_TCL_LEAVE_ERR_MSG16 = 0x200
-const m_TCL_LIMIT_COMMANDS8 = 0x01
-const m_TCL_LIMIT_TIME8 = 0x02
-const m_TCL_PLATFORM_TRANSLATION1 = 2
 const m_UTF_EXPANSION_FACTOR = 1024
-const m___LONG_MAX7 = 9223372036854775807
 
 /*
  * For each channel handler registered in a call to Tcl_CreateChannelHandler,
@@ -202207,14 +198419,7 @@ const m_INTERP_ALTERNATE_WRONG_ARGS3 = 1024
 const m_O_RDONLY2 = 0
 const m_O_RDWR1 = 2
 const m_O_WRONLY1 = 1
-const m_TCL_ENCODING_CHAR_LIMIT4 = 0x10
-const m_TCL_ENCODING_END4 = 0x02
-const m_TCL_ENCODING_NO_TERMINATE4 = 0x08
-const m_TCL_ENCODING_START4 = 0x01
-const m_TCL_EVAL_GLOBAL14 = 0x020000
 const m_TCL_LEAVE_ERR_MSG17 = 512
-const m_TCL_PLATFORM_TRANSLATION2 = "TCL_TRANSLATE_LF"
-const m___LONG_MAX8 = 0x7fffffffffffffff
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -204510,14 +200715,7 @@ var _extras = [3]uintptr{
 }
 
 const m_EOK = 0
-const m_INTERP_ALTERNATE_WRONG_ARGS4 = 0x400
-const m_O_RDONLY3 = 00
-const m_O_RDWR2 = 02
-const m_O_WRONLY2 = 01
-const m_RCMKEY = "ReflectedChannelMap"
 const m_TCL_EVAL_GLOBAL15 = 131072
-const m_TCL_LEAVE_ERR_MSG18 = 0x200
-const m_UINT_MAX14 = 0xffffffff
 
 /*
  * The C layer channel type/driver definition used by the reflection.
@@ -204561,21 +200759,6 @@ type TReflectedChannel = struct {
 }
 
 /*
- * Structure of the table maping from channel handles to reflected
- * channels. Each interpreter which has the handler command for one or more
- * reflected channels records them in such a table, so that 'chan postevent'
- * is able to find them even if the actual channel was moved to a different
- * interpreter and/or thread.
- *
- * The table is reachable via the standard interpreter AssocData, the key is
- * defined below.
- */
-
-type TReflectedChannelMap = struct {
-	Fmap1 TTcl_HashTable
-}
-
-/*
  * Event literals. ==================================================
  */
 
@@ -204584,8 +200767,6 @@ var _eventOptions = [3]uintptr{
 	1: __ccgo_ts + 6429,
 	2: libc.UintptrFromInt32(0),
 }
-
-type TEventOption = int32
 
 const _EVENT_READ = 0
 const _EVENT_WRITE = 1
@@ -204748,25 +200929,6 @@ type TForwardingEvent = struct {
 	Fop        TForwardedOperation
 	FrcPtr     uintptr
 	Fparam     uintptr
-}
-
-/*
- * Structure to manage the result of the forwarding. This is not the result of
- * the operation itself, but about the success of the forward event itself.
- * The event can be successful, even if the operation which was forwarded
- * failed. It is also there to manage the synchronization between the involved
- * threads.
- */
-
-type TForwardingResult1 = struct {
-	Fsrc     TTcl_ThreadId
-	Fdst     TTcl_ThreadId
-	Fdsti    uintptr
-	Fdone    TTcl_Condition
-	Fresult  int32
-	FevPtr   uintptr
-	FprevPtr uintptr
-	FnextPtr uintptr
 }
 
 type TThreadSpecificData7 = struct {
@@ -207644,8 +203806,6 @@ func _ForwardSetObjError(tls *libc.TLS, paramPtr uintptr, obj uintptr) {
 const m_FLUSH_DISCARD = 0
 const m_FLUSH_WRITE = 1
 const m_RB_INCREMENT = 512
-const m_RTMKEY = "ReflectedTransformMap"
-const m___LONG_MAX9 = 9223372036854775807
 
 /*
  * The C layer channel type/driver definition used by the reflection.
@@ -207707,21 +203867,6 @@ type TReflectedTransform = struct {
 	FeofPending    int32
 	Fdead          int32
 	Fresult        TResultBuffer
-}
-
-/*
- * Structure of the table mapping from transform handles to reflected
- * transform (channels). Each interpreter which has the handler command for
- * one or more reflected transforms records them in such a table, so that we
- * are able to find them during interpreter/thread cleanup even if the actual
- * channel they belong to was moved to a different interpreter and/or thread.
- *
- * The table is reachable via the standard interpreter AssocData, the key is
- * defined below.
- */
-
-type TReflectedTransformMap = struct {
-	Fmap1 TTcl_HashTable
 }
 
 /*
@@ -210506,7 +206651,6 @@ const m_TRANSMIT_DOWN = 1
 const m_TRANSMIT_IBUF = 3
 const m_TRANSMIT_NUM = 4
 const m_TRANSMIT_SELF = 2
-const m_UINT_MAX15 = 4294967295
 
 /*
  * Forward declarations of internal procedures. Third, helper procedures
@@ -210552,54 +206696,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_TransformBlockModeProc)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_TransformNotifyProc)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_TransformWideSeekProc)
-}
-
-/*
- * Possible values for 'flags' field in control structure, see below.
- */
-
-/*
- * Definition of the structure containing the information about the internal
- * input buffer.
- */
-
-type TResultBuffer1 = struct {
-	Fbuf       uintptr
-	Fallocated Tsize_t
-	Fused      Tsize_t
-}
-
-/*
- * Additional bytes to allocate during buffer expansion.
- */
-
-/*
- * Number of milliseconds to wait before firing an event to flush out
- * information waiting in buffers (fileevent support).
- */
-
-/*
- * Convenience macro to make some casts easier to use.
- */
-
-/*
- * Definition of a structure used by all transformations generated here to
- * maintain their local state.
- */
-
-type TTransformChannelData1 = struct {
-	Fself          TTcl_Channel
-	FreadIsFlushed int32
-	FeofPending    int32
-	Fflags         int32
-	FwatchMask     int32
-	Fmode          int32
-	Ftimer         TTcl_TimerToken
-	FmaxRead       int32
-	Finterp        uintptr
-	Fcommand       uintptr
-	Fresult        TResultBuffer
-	FrefCount      int32
 }
 
 func _PreserveData(tls *libc.TLS, dataPtr uintptr) {
@@ -211661,10 +207757,6 @@ func _ResultAdd1(tls *libc.TLS, r uintptr, buf uintptr, toWrite Tsize_t) {
 }
 
 const m_AI_PASSIVE1 = 1
-const m_SOCKET = "int"
-const m_TCL_EVAL_GLOBAL16 = 0x020000
-const m_UINT_MAX16 = 0xffffffff
-const m___LONG_MAX10 = 0x7fffffffffffffff
 
 /*
  * Local Variables:
@@ -211884,7 +207976,6 @@ func x_TclCreateSocketAddress(tls *libc.TLS, interp uintptr, addrlist uintptr, h
 	return int32(1)
 }
 
-const m_AI_PASSIVE2 = 0x01
 const m_O_APPEND1 = 1024
 const m_O_CREAT1 = 64
 const m_O_EXCL1 = 128
@@ -215479,95 +211570,6 @@ func x_Tcl_FSUnloadFile(tls *libc.TLS, interp uintptr, handle TTcl_LoadHandle) (
 }
 
 /*
- *----------------------------------------------------------------------
- *
- * TclFSUnloadTempFile --
- *
- *	This function is called when we loaded a library of code via an
- *	intermediate temporary file. This function ensures the library is
- *	correctly unloaded and the temporary file is correctly deleted.
- *
- * Results:
- *	None.
- *
- * Side effects:
- *	The effects of the 'unload' function called, and of course the
- *	temporary file will be deleted.
- *
- *----------------------------------------------------------------------
- */
-
-func x_TclFSUnloadTempFile(tls *libc.TLS, loadHandle TTcl_LoadHandle) {
-	/* loadHandle returned by a previous call to
-	 * Tcl_FSLoadFile(). The loadHandle is a token
-	 * that represents the loaded file. */
-	var _objPtr, tvdlPtr, v2 uintptr
-	var v1 int32
-	_, _, _, _ = _objPtr, tvdlPtr, v1, v2
-	tvdlPtr = loadHandle
-	/*
-	 * This test should never trigger, since we give the client data in the
-	 * function above.
-	 */
-	if tvdlPtr == libc.UintptrFromInt32(0) {
-		return
-	}
-	/*
-	 * Call the real 'unloadfile' proc we actually used. It is very important
-	 * that we call this first, so that the shared library is actually
-	 * unloaded by the OS. Otherwise, the following 'delete' may well fail
-	 * because the shared library is still in use.
-	 */
-	if (*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FunloadProcPtr != libc.UintptrFromInt32(0) {
-		(*(*func(*libc.TLS, TTcl_LoadHandle))(unsafe.Pointer(&struct{ uintptr }{(*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FunloadProcPtr})))(tls, (*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FloadHandle)
-	}
-	if (*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FdivertedFilesystem == libc.UintptrFromInt32(0) {
-		/*
-		 * It was the native filesystem, and we have a special function
-		 * available just for this purpose, which we know works even at this
-		 * late stage.
-		 */
-		x_TclpDeleteFile(tls, (*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FdivertedFileNativeRep)
-		_NativeFreeInternalRep(tls, (*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FdivertedFileNativeRep)
-	} else {
-		/*
-		 * Remove the temporary file we created. Note, we may crash here
-		 * because encodings have been taken down already.
-		 */
-		if (*(*func(*libc.TLS, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTcl_Filesystem)(unsafe.Pointer((*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FdivertedFilesystem)).FdeleteFileProc})))(tls, (*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FdivertedFile) != m_TCL_OK {
-			/*
-			 * The above may have failed because the filesystem, or something
-			 * it depends upon (e.g. encodings) have been taken down because
-			 * Tcl is exiting.
-			 *
-			 * We may need to work out how to delete this file more robustly
-			 * (or give the filesystem the information it needs to delete the
-			 * file more robustly).
-			 *
-			 * In particular, one problem might be that the filesystem cannot
-			 * extract the information it needs from the above path object
-			 * because Tcl's entire filesystem apparatus (the code in this
-			 * file) has been finalized, and it refuses to pass the internal
-			 * representation to the filesystem.
-			 */
-		}
-		/*
-		 * And free up the allocations. This will also of course remove a
-		 * refCount from the Tcl_Filesystem to which this file belongs, which
-		 * could then free up the filesystem if we are exiting.
-		 */
-		_objPtr = (*TFsDivertLoad)(unsafe.Pointer(tvdlPtr)).FdivertedFile
-		v2 = _objPtr
-		v1 = *(*int32)(unsafe.Pointer(v2))
-		*(*int32)(unsafe.Pointer(v2))--
-		if v1 <= int32(1) {
-			x_TclFreeObj(tls, _objPtr)
-		}
-	}
-	x_TclpFree(tls, tvdlPtr)
-}
-
-/*
  *---------------------------------------------------------------------------
  *
  * Tcl_FSLink --
@@ -216667,31 +212669,16 @@ type TFilesystemRecord1 = struct {
 	FprevPtr    uintptr
 }
 
-const m_FLT_MAX3 = 3.4028234663852886e+38
 const m_LINK_BEING_UPDATED = 2
 const m_LINK_READ_ONLY = 1
-const m_O_APPEND2 = 02000
-const m_O_CREAT2 = 0100
-const m_O_EXCL2 = 0200
-const m_O_NOCTTY2 = 0400
-const m_O_NONBLOCK4 = 04000
-const m_O_RDONLY5 = 00
-const m_O_RDWR4 = 02
-const m_O_TRUNC2 = 01000
-const m_O_WRONLY4 = 01
 const m_SHRT_MAX5 = 32767
-const m_S_IFDIR8 = 0040000
-const m_S_IFMT8 = 0170000
-const m_TCL_EVAL_FILE6 = 0x02
 const m_TCL_LEAVE_ERR_MSG19 = 512
 const m_TCL_LINK_READ_ONLY3 = 128
 const m_TCL_TRACE_DESTROYED3 = 128
 const m_TCL_TRACE_READS7 = 16
 const m_TCL_TRACE_UNSETS5 = 64
 const m_TCL_TRACE_WRITES5 = 32
-const m_UINT_MAX17 = 4294967295
 const m_USHRT_MAX1 = 65535
-const m___LONG_MAX11 = 9223372036854775807
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -217460,17 +213447,7 @@ _1:
 	return int32(m_TCL_ERROR)
 }
 
-const m_FLT_MAX4 = 3.40282346638528859812e+38
 const m_INT_MAX15 = 2147483647
-const m_SHRT_MAX6 = 0x7fff
-const m_TCL_LEAVE_ERR_MSG20 = 0x200
-const m_TCL_LINK_READ_ONLY4 = 0x80
-const m_TCL_TRACE_DESTROYED4 = 0x80
-const m_TCL_TRACE_READS8 = 0x10
-const m_TCL_TRACE_UNSETS6 = 0x40
-const m_TCL_TRACE_WRITES6 = 0x20
-const m_USHRT_MAX2 = 0xffff
-const m___LONG_MAX12 = 0x7fffffffffffffff
 
 func init() {
 	p := unsafe.Pointer(&x_tclListType)
@@ -219774,12 +215751,9 @@ func _UpdateStringOfList(tls *libc.TLS, listPtr uintptr) {
 	}
 }
 
-const m_INT_MAX16 = 0x7fffffff
 const m_LITERAL_CMD_NAME5 = 2
 const m_LITERAL_ON_HEAP1 = 1
 const m_LITERAL_UNSHARED5 = 4
-const m_TCL_BYTECODE_PRECOMPILED4 = 0x0001
-const m_TCL_BYTECODE_RECOMPILE2 = 0x0004
 
 /*
  *----------------------------------------------------------------------
@@ -220762,8 +216736,6 @@ func x_TclInvalidateCmdLiteral(tls *libc.TLS, interp uintptr, name uintptr, nsPt
 		x_TclReleaseLiteral(tls, interp, literalObjPtr)
 	}
 }
-
-const m_UINT_MAX18 = 0xffffffff
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -221859,9 +217831,7 @@ func x_TclFinalizeLoad(tls *libc.TLS) {
 	}
 }
 
-const m_TCHAR = "char"
 const m_TCL_EVAL_GLOBAL17 = 131072
-const m__tcscmp = "strcmp"
 
 /*
  * Local Variables:
@@ -222493,13 +218463,6 @@ done:
 	x_Tcl_Exit(tls, exitCode)
 }
 
-func x_Tcl_Main(tls *libc.TLS, argc int32, argv uintptr, appInitProc uintptr) {
-	/* Application-specific initialization
-	 * function to call after most initialization
-	 * but before starting to execute commands. */
-	x_Tcl_MainEx(tls, argc, argv, appInitProc, x_Tcl_CreateInterp(tls))
-}
-
 /*
  *---------------------------------------------------------------
  *
@@ -222836,16 +218799,12 @@ func _FreeMainInterp(tls *libc.TLS, clientData TClientData) {
 
 const m_CMD_VIA_RESOLVER5 = 32
 const m_ERR_LEGACY_COPY3 = 2048
-const m_LITERAL_CMD_NAME6 = 0x02
-const m_LITERAL_ON_HEAP2 = 0x01
-const m_LITERAL_UNSHARED6 = 0x04
 const m_NS_DEAD1 = 2
 const m_NS_DYING7 = 1
 const m_NS_KILLED1 = 4
 const m_NS_SUPPRESS_COMPILATION5 = 8
 const m_TCL_AVOID_RESOLVERS3 = 262144
 const m_TCL_CREATE_NS_IF_UNKNOWN7 = 2048
-const m_TCL_EVAL_GLOBAL18 = 0x020000
 const m_TCL_EVAL_NOERR5 = 2097152
 const m_TCL_FIND_ONLY_NS3 = 4096
 const m_TCL_LEAVE_ERR_MSG21 = 512
@@ -222855,280 +218814,6 @@ const m_VAR_TRACED_ARRAY3 = 2048
 const m_VAR_TRACED_READ3 = 16
 const m_VAR_TRACED_UNSET3 = 64
 const m_VAR_TRACED_WRITE3 = 32
-
-/*
- *----------------------------------------------------------------
- * Macros and flag values used by Tcl bytecode compilation and execution
- * modules inside the Tcl core but not used outside.
- *----------------------------------------------------------------
- */
-
-/*
- * Simplified form to access AuxData.
- *
- * ClientData TclFetchAuxData(CompileEng *envPtr, int index);
- */
-
-/*
- * Form of TclRegisterLiteral with flags == 0. In that case, it is safe to
- * cast away constness, and it is cleanest to do that here, all in one place.
- *
- * int TclRegisterNewLiteral(CompileEnv *envPtr, const char *bytes,
- *			     int length);
- */
-
-/*
- * Form of TclRegisterLiteral with flags == LITERAL_CMD_NAME. In that case, it
- * is safe to cast away constness, and it is cleanest to do that here, all in
- * one place.
- *
- * int TclRegisterNewNSLiteral(CompileEnv *envPtr, const char *bytes,
- *			       int length);
- */
-
-/*
- * Macro used to manually adjust the stack requirements; used in cases where
- * the stack effect cannot be computed from the opcode and its operands, but
- * is still known at compile time.
- *
- * void TclAdjustStackDepth(int delta, CompileEnv *envPtr);
- */
-
-/*
- * Macro used to update the stack requirements. It is called by the macros
- * TclEmitOpCode, TclEmitInst1 and TclEmitInst4.
- * Remark that the very last instruction of a bytecode always reduces the
- * stack level: INST_DONE or INST_POP, so that the maxStackdepth is always
- * updated.
- *
- * void TclUpdateStackReqs(unsigned char op, int i, CompileEnv *envPtr);
- */
-
-/*
- * Macros used to update the flag that indicates if we are at the start of a
- * command, based on whether the opcode is INST_START_COMMAND.
- *
- * void TclUpdateAtCmdStart(unsigned char op, CompileEnv *envPtr);
- */
-
-/*
- * Macro to emit an opcode byte into a CompileEnv's code array. The ANSI C
- * "prototype" for this macro is:
- *
- * void TclEmitOpcode(unsigned char op, CompileEnv *envPtr);
- */
-
-/*
- * Macros to emit an integer operand. The ANSI C "prototype" for these macros
- * are:
- *
- * void TclEmitInt1(int i, CompileEnv *envPtr);
- * void TclEmitInt4(int i, CompileEnv *envPtr);
- */
-
-/*
- * Macros to emit an instruction with signed or unsigned integer operands.
- * Four byte integers are stored in "big-endian" order with the high order
- * byte stored at the lowest address. The ANSI C "prototypes" for these macros
- * are:
- *
- * void TclEmitInstInt1(unsigned char op, int i, CompileEnv *envPtr);
- * void TclEmitInstInt4(unsigned char op, int i, CompileEnv *envPtr);
- */
-
-/*
- * Macro to push a Tcl object onto the Tcl evaluation stack. It emits the
- * object's one or four byte array index into the CompileEnv's code array.
- * These support, respectively, a maximum of 256 (2**8) and 2**32 objects in a
- * CompileEnv. The ANSI C "prototype" for this macro is:
- *
- * void	TclEmitPush(int objIndex, CompileEnv *envPtr);
- */
-
-/*
- * Macros to update a (signed or unsigned) integer starting at a pointer. The
- * two variants depend on the number of bytes. The ANSI C "prototypes" for
- * these macros are:
- *
- * void TclStoreInt1AtPtr(int i, unsigned char *p);
- * void TclStoreInt4AtPtr(int i, unsigned char *p);
- */
-
-/*
- * Macros to update instructions at a particular pc with a new op code and a
- * (signed or unsigned) int operand. The ANSI C "prototypes" for these macros
- * are:
- *
- * void TclUpdateInstInt1AtPc(unsigned char op, int i, unsigned char *pc);
- * void TclUpdateInstInt4AtPc(unsigned char op, int i, unsigned char *pc);
- */
-
-/*
- * Macro to fix up a forward jump to point to the current code-generation
- * position in the bytecode being created (the most common case). The ANSI C
- * "prototypes" for this macro is:
- *
- * int TclFixupForwardJumpToHere(CompileEnv *envPtr, JumpFixup *fixupPtr,
- *				 int threshold);
- */
-
-/*
- * Macros to get a signed integer (GET_INT{1,2}) or an unsigned int
- * (GET_UINT{1,2}) from a pointer. There are two variants for each return type
- * that depend on the number of bytes fetched. The ANSI C "prototypes" for
- * these macros are:
- *
- * int TclGetInt1AtPtr(unsigned char *p);
- * int TclGetInt4AtPtr(unsigned char *p);
- * unsigned int TclGetUInt1AtPtr(unsigned char *p);
- * unsigned int TclGetUInt4AtPtr(unsigned char *p);
- */
-
-/*
- * The TclGetInt1AtPtr macro is tricky because we want to do sign extension on
- * the 1-byte value. Unfortunately the "char" type isn't signed on all
- * platforms so sign-extension doesn't always happen automatically. Sometimes
- * we can explicitly declare the pointer to be signed, but other times we have
- * to explicitly sign-extend the value in software.
- */
-
-/*
- * Macros used to compute the minimum and maximum of two integers. The ANSI C
- * "prototypes" for these macros are:
- *
- * int TclMin(int i, int j);
- * int TclMax(int i, int j);
- */
-
-/*
- * Convenience macros for use when compiling bodies of commands. The ANSI C
- * "prototype" for these macros are:
- *
- * static void		BODY(Tcl_Token *tokenPtr, int word);
- */
-
-/*
- * Convenience macro for use when compiling tokens to be pushed. The ANSI C
- * "prototype" for this macro is:
- *
- * static void		CompileTokens(CompileEnv *envPtr, Tcl_Token *tokenPtr,
- *			    Tcl_Interp *interp);
- */
-
-/*
- * Convenience macros for use when pushing literals. The ANSI C "prototype" for
- * these macros are:
- *
- * static void		PushLiteral(CompileEnv *envPtr,
- *			    const char *string, int length);
- * static void		PushStringLiteral(CompileEnv *envPtr,
- *			    const char *string);
- */
-
-/*
- * Macro to advance to the next token; it is more mnemonic than the address
- * arithmetic that it replaces. The ANSI C "prototype" for this macro is:
- *
- * static Tcl_Token *	TokenAfter(Tcl_Token *tokenPtr);
- */
-
-/*
- * Macro to get the offset to the next instruction to be issued. The ANSI C
- * "prototype" for this macro is:
- *
- * static int	CurrentOffset(CompileEnv *envPtr);
- */
-
-/*
- * Note: the exceptDepth is a bit of a misnomer: TEBC only needs the
- * maximal depth of nested CATCH ranges in order to alloc runtime
- * memory. These macros should compute precisely that? OTOH, the nesting depth
- * of LOOP ranges is an interesting datum for debugging purposes, and that is
- * what we compute now.
- *
- * static int	ExceptionRangeStarts(CompileEnv *envPtr, int index);
- * static void	ExceptionRangeEnds(CompileEnv *envPtr, int index);
- * static void	ExceptionRangeTarget(CompileEnv *envPtr, int index, LABEL);
- */
-
-/*
- * Check if there is an LVT for compiled locals
- */
-
-/*
- * Macros for making it easier to deal with tokens and DStrings.
- */
-
-/*
- * Macro that encapsulates an efficiency trick that avoids a function call for
- * the simplest of compiles. The ANSI C "prototype" for this macro is:
- *
- * static void		CompileWord(CompileEnv *envPtr, Tcl_Token *tokenPtr,
- *			    Tcl_Interp *interp, int word);
- */
-
-/*
- * TIP #280: Remember the per-word line information of the current command. An
- * index is used instead of a pointer as recursive compilation may reallocate,
- * i.e. move, the array. This is also the reason to save the nuloc now, it may
- * change during the course of the function.
- *
- * Macro to encapsulate the variable definition and setup.
- */
-
-/*
- * Often want to issue one of two versions of an instruction based on whether
- * the argument will fit in a single byte or not. This makes it much clearer.
- */
-
-/*
- * How to get an anonymous local variable (used for holding temporary values
- * off the stack) or a local simple scalar.
- */
-
-/*
- * Flags bits used by TclPushVarName.
- */
-
-/*
- * DTrace probe macros (NOPs if DTrace support is not enabled).
- */
-
-/*
- * Define the following macros to enable debug logging of the DTrace proc,
- * cmd, and inst probes. Note that this does _not_ require a platform with
- * DTrace, it simply logs all probe output to /tmp/tclDTraceDebug-[pid].log.
- *
- * If the second macro is defined, logging to file starts immediately,
- * otherwise only after the first call to [tcl::dtrace]. Note that the debug
- * probe data is always computed, even when it is not logged to file.
- *
- * Defining the third macro enables debug logging of inst probes (disabled
- * by default due to the significant performance impact).
- */
-
-/*
-#define TCL_DTRACE_DEBUG 1
-#define TCL_DTRACE_DEBUG_LOG_ENABLED 1
-#define TCL_DTRACE_DEBUG_INST_PROBES 1
-*/
-
-/*
- * Local Variables:
- * mode: c
- * c-basic-offset: 4
- * fill-column: 78
- * End:
- */
-
-/*
- * Thread-local storage used to avoid having a global lock on data that is not
- * limited to a single interpreter.
- */
-
-type TThreadSpecificData11 = struct {
-	FnumNsCreated int64
-}
 
 var _dataKey8 TTcl_ThreadDataKey
 
@@ -228222,24 +223907,6 @@ type TTcl_Namespace1 = struct {
 	FparentPtr  uintptr
 }
 
-const m_CMD_VIA_RESOLVER6 = 0x20
-const m_ERR_LEGACY_COPY4 = 0x800
-const m_NS_DEAD2 = 0x02
-const m_NS_DYING8 = 0x01
-const m_NS_KILLED2 = 0x04
-const m_NS_SUPPRESS_COMPILATION6 = 0x08
-const m_TCL_AVOID_RESOLVERS4 = 0x40000
-const m_TCL_CREATE_NS_IF_UNKNOWN8 = 0x800
-const m_TCL_EVAL_NOERR6 = 0x200000
-const m_TCL_FIND_ONLY_NS4 = 0x1000
-const m_TCL_LEAVE_ERR_MSG22 = 0x200
-const m_TCL_TRACE_READS10 = 0x10
-const m_TCL_TRACE_UNSETS8 = 0x40
-const m_VAR_TRACED_ARRAY4 = 0x800
-const m_VAR_TRACED_READ4 = 0x10
-const m_VAR_TRACED_UNSET4 = 0x40
-const m_VAR_TRACED_WRITE4 = 0x20
-
 /*
  * For each event source (created with Tcl_CreateEventSource) there is a
  * structure of the following type:
@@ -229284,8 +224951,6 @@ func x_Tcl_ThreadAlert(tls *libc.TLS, threadId TTcl_ThreadId) {
 
 const m_CMD_IS_DELETED5 = 1
 const m_NS_DYING9 = 1
-const m_UINT_MAX19 = 4294967295
-const m___LONG_MAX13 = 9223372036854775807
 
 /*
  * Table of all object types.
@@ -233485,11 +229150,6 @@ func x_Tcl_RepresentationCmd(tls *libc.TLS, clientData TClientData, interp uintp
 	return m_TCL_OK
 }
 
-const m_CMD_IS_DELETED6 = 0x01
-const m_NS_DYING10 = 0x01
-const m_UINT_MAX20 = 0xffffffff
-const m___LONG_MAX14 = 0x7fffffffffffffff
-
 /*
  * Helper macros.
  */
@@ -234135,7 +229795,6 @@ const m_TYPE_NORMAL = 0
 const m_TYPE_QUOTE = 8
 const m_TYPE_SPACE = 1
 const m_TYPE_SUBS = 4
-const m_UINT_MAX21 = 4294967295
 
 /*
  *----------------------------------------------------------------------
@@ -236508,13 +232167,6 @@ func x_TclObjCommandComplete(tls *libc.TLS, objPtr uintptr) (r int32) {
 
 const m_TCLPATH_APPENDED = 1
 const m_TCLPATH_NEEDNORM = 4
-const m_TCL_EVAL_FILE8 = 0x02
-const m_TCL_LEAVE_ERR_MSG24 = 0x200
-const m_TCL_SUBST_ALL6 = 007
-const m_TCL_SUBST_BACKSLASHES4 = 004
-const m_TCL_SUBST_COMMANDS4 = 001
-const m_TCL_SUBST_VARIABLES4 = 002
-const m_UINT_MAX22 = 0xffffffff
 
 /*
  * Define the 'path' object type, which Tcl uses to represent file paths
@@ -241038,11 +236690,6 @@ error:
 	return libc.UintptrFromInt32(0)
 }
 
-const m_O_APPEND4 = 02000
-const m_O_CREAT4 = 0100
-const m_O_RDONLY7 = 00
-const m_O_TRUNC4 = 01000
-const m_O_WRONLY6 = 01
 const m_TCL_EVAL_GLOBAL19 = 131072
 
 /* Epoch of the tcl environment
@@ -243255,72 +238902,6 @@ func _RequirementSatisfied(tls *libc.TLS, havei uintptr, req uintptr) (r int32) 
 	x_TclpFree(tls, buf)
 	return satisfied
 }
-
-/*
- *----------------------------------------------------------------------
- *
- * Tcl_PkgInitStubsCheck --
- *
- *	This is a replacement routine for Tcl_InitStubs() that is called
- *	from code where -DUSE_TCL_STUBS has not been enabled.
- *
- * Results:
- *	Returns the version of a conforming stubs table, or NULL, if
- *	the table version doesn't satisfy the requested requirements,
- *	according to historical practice.
- *
- * Side effects:
- *	None.
- *
- *----------------------------------------------------------------------
- */
-
-func x_Tcl_PkgInitStubsCheck(tls *libc.TLS, interp uintptr, version uintptr, exact int32) (r uintptr) {
-	var actualVersion, p, v1 uintptr
-	var count int32
-	_, _, _, _ = actualVersion, count, p, v1
-	actualVersion = x_Tcl_PkgPresent(tls, interp, __ccgo_ts+17577, version, 0)
-	if exact != 0 && actualVersion != 0 {
-		p = version
-		count = 0
-		for *(*uint8)(unsafe.Pointer(p)) != 0 {
-			v1 = p
-			p++
-			count += libc.BoolInt32(!(libc.BoolInt32(uint32(*(*uint8)(unsafe.Pointer(v1)))-libc.Uint32FromUint8('0') < libc.Uint32FromInt32(10)) != 0))
-		}
-		if count == int32(1) {
-			if 0 != libc.Xstrncmp(tls, version, actualVersion, libc.Xstrlen(tls, version)) {
-				/* Construct error message */
-				x_Tcl_PkgPresent(tls, interp, __ccgo_ts+17577, version, int32(1))
-				return libc.UintptrFromInt32(0)
-			}
-		} else {
-			return x_Tcl_PkgPresent(tls, interp, __ccgo_ts+17577, version, int32(1))
-		}
-	}
-	return actualVersion
-}
-
-const m_CFG_64 = "0"
-const m_CFG_COMPILE_DEBUG = "0"
-const m_CFG_COMPILE_STATS = "0"
-const m_CFG_DEBUG = "0"
-const m_CFG_INSTALL_BINDIR = "/usr/local/bin"
-const m_CFG_INSTALL_DOCDIR = "/usr/local/man"
-const m_CFG_INSTALL_INCDIR = "/usr/local/include"
-const m_CFG_INSTALL_LIBDIR = "/usr/local/lib"
-const m_CFG_INSTALL_SCRDIR = "/usr/local/lib/tcl8.6"
-const m_CFG_MEMDEBUG = "0"
-const m_CFG_OPTIMIZED = "1"
-const m_CFG_PROFILED = "0"
-const m_CFG_RUNTIME_BINDIR = "/usr/local/bin"
-const m_CFG_RUNTIME_DLLFILE = "libtcl8.6.a"
-const m_CFG_RUNTIME_DOCDIR = "/usr/local/man"
-const m_CFG_RUNTIME_INCDIR = "/usr/local/include"
-const m_CFG_RUNTIME_LIBDIR = "/usr/local/lib"
-const m_CFG_RUNTIME_SCRDIR = "/usr/local/lib/tcl8.6"
-const m_CFG_THREADED = "1"
-const m_TCL_EVAL_GLOBAL20 = 0x020000
 
 /*
  * Local Variables:
@@ -247834,9 +243415,6 @@ type TInterp1 = struct {
 	FresetErrorStack   int32
 }
 
-const m_ERR_LEGACY_COPY6 = 0x800
-const m_FRAME_IS_LAMBDA2 = 0x2
-const m_FRAME_IS_PROC3 = 0x1
 const m_NUM_REGEXPS = 30
 const m_REG_ADVANCED2 = 3
 const m_REG_EXPECT4 = 512
@@ -247858,12 +243436,6 @@ const m_REG_UUNSPEC3 = 256
 const m_TCL_REG_ADVANCED7 = 3
 const m_TCL_REG_NOCASE7 = 8
 const m_TCL_REG_NOSUB3 = 16
-const m_VAR_ARGUMENT6 = 0x100
-const m_VAR_IN_HASHTABLE4 = 0x4
-const m_VAR_IS_ARGS2 = 0x400
-const m_VAR_LINK6 = 0x2
-const m_VAR_RESOLVED4 = 0x8000
-const m_VAR_TEMPORARY6 = 0x200
 
 /*
  * Local Variables:
@@ -248972,10 +244544,6 @@ type TTclRegexp1 = struct {
 	FrefCount   int32
 }
 
-const m_TCL_REG_ADVANCED8 = 000003
-const m_TCL_REG_NOCASE8 = 000010
-const m_TCL_REG_NOSUB4 = 000020
-
 /*
  *----------------------------------------------------------------------
  *
@@ -249342,24 +244910,6 @@ func x_Tcl_GetNamespaceResolvers(tls *libc.TLS, namespacePtr uintptr, resInfoPtr
 }
 
 const m_ERR_LEGACY_COPY7 = 2048
-const m_UINT_MAX23 = 4294967295
-
-/* Epoch of the tcl environment
- * (if changed with tcl-env). */
-
-/*
- * Local Variables:
- * mode: c
- * c-basic-offset: 4
- * fill-column: 78
- * End:
- */
-
-/*
- * Indices of the standard return options dictionary keys.
- */
-
-type _returnKeys = int32
 
 const _KEY_CODE = 0
 const _KEY_ERRORCODE = 1
@@ -251517,7 +247067,6 @@ func x_Tcl_TransferResult(tls *libc.TLS, sourceInterp uintptr, code int32, targe
 	x_Tcl_ResetResult(tls, sourceInterp)
 }
 
-const m_ERR_LEGACY_COPY8 = 0x800
 const m_SCAN_BIG = 2048
 const m_SCAN_LONGER = 1024
 const m_SCAN_NOSKIP = 1
@@ -251525,8 +247074,6 @@ const m_SCAN_SUPPRESS = 2
 const m_SCAN_UNSIGNED = 4
 const m_SCAN_WIDTH = 8
 const m_TCL_LEAVE_ERR_MSG25 = 512
-const m_UINT_MAX24 = 0xffffffff
-const m___LONG_MAX15 = 9223372036854775807
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -253094,12 +248641,8 @@ done:
 	return code
 }
 
-const m_COMPAT = 0
 const m_INT_MAX17 = 2147483647
 const m_MAX_FLOAT_SIZE = 320
-const m_TCL_LEAVE_ERR_MSG26 = 0x200
-const m_UINT_MAX25 = 4294967295
-const m___LONG_MAX16 = 0x7fffffffffffffff
 
 func init() {
 	p := unsafe.Pointer(&x_tclStringType)
@@ -256681,14 +252224,12 @@ func _FreeStringInternalRep(tls *libc.TLS, objPtr uintptr) {
 }
 
 const m_BLETCH = 16
-const m_DBL_MAX5 = 1.7976931348623157e+308
 const m_DIGIT_GROUP = 8
 const m_EXPONENT_BIAS = 1023
 const m_EXP_MASK = 2146435072
 const m_EXP_SHIFT = 20
 const m_FP_PRECISION = 53
 const m_HI_ORDER_SIG_MASK = 1048575
-const m_INT_MAX18 = 0x7fffffff
 const m_LOG10_2 = 0.3010299956639812
 const m_LOG10_3HALVES_PLUS_FUDGE = 0.1760912590558
 const m_MAXPOW = 22
@@ -256706,8 +252247,6 @@ const m_TCL_DD_SHORTEST01 = 0
 const m_TCL_DD_STEELE01 = 1
 const m_TEN_PMAX = 22
 const m_TWO_OVER_3LOG10 = 0.28952965460216784
-const m_UINT_MAX26 = 0xffffffff
-const m___LONG_MAX17 = 9223372036854775807
 
 /*
  * Define KILL_OCTAL to suppress interpretation of numbers with leading zero
@@ -261691,31 +257230,6 @@ func _Nokia770Twiddle(tls *libc.TLS, w TTcl_WideUInt) (r TTcl_WideUInt) {
 	return w>>libc.Int32FromInt32(32)&libc.Uint64FromUint32(0xFFFFFFFF) | w<<libc.Int32FromInt32(32)
 }
 
-/*
- *----------------------------------------------------------------------
- *
- * TclNokia770Doubles --
- *
- *	Transpose the two words of a number for Nokia 770 floating point
- *	handling.
- *
- *----------------------------------------------------------------------
- */
-
-func x_TclNokia770Doubles(tls *libc.TLS) (r int32) {
-	return _n770_fp
-}
-
-const m_DBL_MAX6 = 1.79769313486231570815e+308
-const m_TCL_DD_CONVERSION_TYPE_MASK2 = 0x3
-const m_TCL_DD_E_FORMAT3 = 0x2
-const m_TCL_DD_F_FORMAT3 = 0x3
-const m_TCL_DD_NO_QUICK2 = 0x8
-const m_TCL_DD_SHORTEN_FLAG3 = 0x4
-const m_TCL_DD_SHORTEST02 = 0x0
-const m_TCL_DD_STEELE02 = 0x1
-const m___LONG_MAX18 = 0x7fffffffffffffff
-
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
 
@@ -262154,8 +257668,6 @@ func x_Tcl_ExitThread(tls *libc.TLS, status int32) {
 
 const m_MAGIC = 239
 const m_NOBJALLOC = 800
-const m_NOBJHIGH = "ALLOC_NOBJHIGH"
-const m_RCHECK = 0
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -262711,57 +258223,6 @@ func x_TclThreadFreeObj(tls *libc.TLS, objPtr uintptr) {
 /*
  *----------------------------------------------------------------------
  *
- * Tcl_GetMemoryInfo --
- *
- *	Return a list-of-lists of memory stats.
- *
- * Results:
- *	None.
- *
- * Side effects:
- *	List appended to given dstring.
- *
- *----------------------------------------------------------------------
- */
-
-func x_Tcl_GetMemoryInfo(tls *libc.TLS, dsPtr uintptr) {
-	bp := tls.Alloc(272)
-	defer tls.Free(272)
-	var cachePtr uintptr
-	var n uint32
-	var _ /* buf at bp+0 */ [200]uint8
-	_, _ = cachePtr, n
-	x_Tcl_MutexLock(tls, _listLockPtr)
-	cachePtr = _firstCachePtr
-	for cachePtr != libc.UintptrFromInt32(0) {
-		x_Tcl_DStringStartSublist(tls, dsPtr)
-		if cachePtr == _sharedPtr {
-			x_Tcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+68973)
-		} else {
-			libc.Xsprintf(tls, bp, __ccgo_ts+68980, libc.VaList(bp+208, (*TCache)(unsafe.Pointer(cachePtr)).Fowner))
-			x_Tcl_DStringAppendElement(tls, dsPtr, bp)
-		}
-		n = uint32(0)
-		for {
-			if !(uint64(n) < libc.Uint64FromInt32(11) - (libc.Uint64FromInt64(16)+libc.Uint64FromInt32(8)+(libc.Uint64FromInt32(2)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1))) & ^(libc.Uint64FromInt32(2)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)) >> libc.Int32FromInt32(5)) {
-				break
-			}
-			libc.Xsprintf(tls, bp, __ccgo_ts+68989, libc.VaList(bp+208, _bucketInfo[n].FblockSize, (*(*TBucket)(unsafe.Pointer(cachePtr + 48 + uintptr(n)*64))).FnumFree, (*(*TBucket)(unsafe.Pointer(cachePtr + 48 + uintptr(n)*64))).FnumRemoves, (*(*TBucket)(unsafe.Pointer(cachePtr + 48 + uintptr(n)*64))).FnumInserts, (*(*TBucket)(unsafe.Pointer(cachePtr + 48 + uintptr(n)*64))).FtotalAssigned, (*(*TBucket)(unsafe.Pointer(cachePtr + 48 + uintptr(n)*64))).FnumLocks, (*(*TBucket)(unsafe.Pointer(cachePtr + 48 + uintptr(n)*64))).FnumWaits))
-			x_Tcl_DStringAppendElement(tls, dsPtr, bp)
-			goto _1
-		_1:
-			;
-			n++
-		}
-		x_Tcl_DStringEndSublist(tls, dsPtr)
-		cachePtr = (*TCache)(unsafe.Pointer(cachePtr)).FnextPtr
-	}
-	x_Tcl_MutexUnlock(tls, _listLockPtr)
-}
-
-/*
- *----------------------------------------------------------------------
- *
  * MoveObjs --
  *
  *	Move Tcl_Obj's between caches.
@@ -263226,16 +258687,6 @@ type TTSDTable = struct {
 }
 
 /*
- * The actual type of Tcl_ThreadDataKey.
- */
-
-type TTSDUnion = struct {
-	Fptr         [0]uintptr
-	Foffset      Tsig_atomic_t
-	F__ccgo_pad2 [4]byte
-}
-
-/*
  * Allocator and deallocator for a TSDTable structure.
  */
 
@@ -263501,16 +258952,8 @@ const m_MP_DEFAULT_KARATSUBA_MUL_CUTOFF = 80
 const m_MP_DEFAULT_KARATSUBA_SQR_CUTOFF = 120
 const m_MP_DEFAULT_TOOM_MUL_CUTOFF = 350
 const m_MP_DEFAULT_TOOM_SQR_CUTOFF = 400
-const m_MP_KARATSUBA_MUL_CUTOFF = "MP_DEFAULT_KARATSUBA_MUL_CUTOFF"
-const m_MP_KARATSUBA_SQR_CUTOFF = "MP_DEFAULT_KARATSUBA_SQR_CUTOFF"
-const m_MP_TOOM_MUL_CUTOFF = "MP_DEFAULT_TOOM_MUL_CUTOFF"
-const m_MP_TOOM_SQR_CUTOFF = "MP_DEFAULT_TOOM_SQR_CUTOFF"
-const m_TclBN_mp_div_ld = "TclBNMpDivLd"
-const m_TclStaticPackage = "Tcl_StaticPackage"
 
 type Tmp_word = uint64
-
-type Tmp_static_assert_prec_geq_min_prec = [1]uint8
 
 /* deprecated functions */
 
@@ -264625,7 +260068,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 5056)) = __ccgo_fp(x_Tcl_ZlibStreamSetCompressionDictionary)
 }
 
-const m_INT_MAX20 = 0x7fffffff
 const m_SLEEP_OFFLOAD_GETTIMEOFDAY = 20
 const m_TCL_EVAL_GLOBAL21 = 131072
 const m_TCL_LEAVE_ERR_MSG27 = 512
@@ -265866,7 +261308,6 @@ const m_CMD_HAS_EXEC_TRACES7 = 4
 const m_DONT_COMPILE_CMDS_INLINE5 = 32
 const m_INTERP_TRACE_IN_PROGRESS1 = 512
 const m_TCL_ALLOW_INLINE_COMPILATION3 = 131072
-const m_TCL_EVAL_GLOBAL22 = 0x020000
 const m_TCL_INTERP_DESTROYED1 = 256
 const m_TCL_TRACE_ANY_EXEC = 15
 const m_TCL_TRACE_ARRAY3 = 2048
@@ -269306,33 +264747,10 @@ func _TraceVarEx(tls *libc.TLS, interp uintptr, part1 uintptr, part2 uintptr, tr
 	return m_TCL_OK
 }
 
-const m_CMD_HAS_EXEC_TRACES8 = 0x04
-const m_DONT_COMPILE_CMDS_INLINE6 = 0x20
-const m_INTERP_TRACE_IN_PROGRESS2 = 0x200
 const m_INT_MAX21 = 2147483647
 const m_LINE_LENGTH = 128
 const m_OFFSET_BITS = 5
-const m_TCL_ALLOW_INLINE_COMPILATION4 = 0x20000
-const m_TCL_INTERP_DESTROYED2 = 0x100
-const m_TCL_LEAVE_ERR_MSG28 = 0x200
-const m_TCL_TRACE_ARRAY4 = 0x800
-const m_TCL_TRACE_DELETE4 = 0x4000
-const m_TCL_TRACE_DESTROYED6 = 0x80
-const m_TCL_TRACE_OLD_STYLE2 = 0x1000
-const m_TCL_TRACE_READS12 = 0x10
-const m_TCL_TRACE_RENAME4 = 0x2000
-const m_TCL_TRACE_RESULT_DYNAMIC2 = 0x8000
-const m_TCL_TRACE_RESULT_OBJECT2 = 0x10000
-const m_TCL_TRACE_UNSETS10 = 0x40
-const m_TCL_TRACE_WRITES8 = 0x20
 const m_UNICODE_SELF = 128
-const m_VAR_ARRAY6 = 0x1
-const m_VAR_IN_HASHTABLE6 = 0x4
-const m_VAR_TRACED_ARRAY6 = 0x800
-const m_VAR_TRACED_READ6 = 0x10
-const m_VAR_TRACED_UNSET6 = 0x40
-const m_VAR_TRACED_WRITE6 = 0x20
-const m_VAR_TRACE_ACTIVE2 = 0x2000
 
 /*
  * Local Variables:
@@ -280991,7 +276409,6 @@ var _groups = [208]int32{
 	207: int32(8834),
 }
 
-const _UNASSIGNED = 0
 const _UPPERCASE_LETTER = 1
 const _LOWERCASE_LETTER = 2
 const _TITLECASE_LETTER = 3
@@ -281009,7 +276426,6 @@ const _PARAGRAPH_SEPARATOR = 14
 const _CONTROL = 15
 const _FORMAT = 16
 const _PRIVATE_USE = 17
-const _SURROGATE = 18
 const _CONNECTOR_PUNCTUATION = 19
 const _DASH_PUNCTUATION = 20
 const _OPEN_PUNCTUATION = 21
@@ -283791,27 +279207,16 @@ func x_TclUCS4ToUtf(tls *libc.TLS, ch int32, buf uintptr) (r int32) {
 	return x_Tcl_UniCharToUtf(tls, ch, buf)
 }
 
-const m_COMPAT1 = 1
-const m_CONCAT_TRIM_SET1 = " \f\v\r\t\n"
 const m_CONVERT_ANY = 16
 const m_CONVERT_BRACE = 2
 const m_CONVERT_ESCAPE = 4
 const m_CONVERT_NONE = 0
-const m_DBL_MAX7 = 1.7976931348623157e+308
 const m_TCL_DD_E_FORMAT4 = 2
 const m_TCL_DD_SHORTEST2 = 4
 const m_TCL_TRACE_DESTROYED7 = 128
 const m_TCL_TRACE_READS13 = 16
 const m_TCL_TRACE_UNSETS11 = 64
 const m_TCL_TRACE_WRITES9 = 32
-const m_TYPE_BRACE1 = 0x40
-const m_TYPE_CLOSE_BRACK1 = 0x20
-const m_TYPE_CLOSE_PAREN1 = 0x10
-const m_TYPE_COMMAND_END1 = 0x2
-const m_TYPE_QUOTE1 = 0x8
-const m_TYPE_SPACE1 = 0x1
-const m_TYPE_SUBS1 = 0x4
-const m_UINT_MAX27 = 4294967295
 
 /*
  * The absolute pathname of the executable in which this Tcl library is
@@ -288641,19 +284046,10 @@ invalidGlob:
 	return int32(m_TCL_ERROR)
 }
 
-const m_CONSTRUCTOR2 = 0x08
-const m_DBL_MAX8 = 1.79769313486231570815e+308
-const m_DESTRUCTOR2 = 0x10
-const m_FILTER_HANDLING2 = 0x2000
 const m_FRAME_IS_METHOD3 = 4
 const m_FRAME_IS_PROC4 = 1
-const m_INT_MAX22 = 0x7fffffff
 const m_TCL_AVOID_RESOLVERS5 = 262144
-const m_TCL_DD_E_FORMAT5 = 0x2
-const m_TCL_DD_SHORTEST3 = 0x4
 const m_TCL_LEAVE_ERR_MSG29 = 512
-const m_TCL_TRACE_DESTROYED8 = 0x80
-const m_UINT_MAX28 = 0xffffffff
 const m_VAR_ARRAY7 = 1
 const m_VAR_ARRAY_ELEMENT3 = 4096
 const m_VAR_DEAD_HASH4 = 8
@@ -295503,8 +290899,6 @@ const m_ASYNC = 1
 const m_BUFFER_SIZE_LIMIT = 65535
 const m_DEFAULT_BUFFER_SIZE = 4096
 const m_DICT_TO_SET = 1
-const m_FRAME_IS_METHOD4 = 0x4
-const m_FRAME_IS_PROC5 = 0x1
 const m_IN_HEADER = 2
 const m_MAX_BUFFER_SIZE = 65536
 const m_MAX_COMMENT_LEN = 256
@@ -295514,84 +290908,23 @@ const m_MIN_NONSTREAM_BUFFER_SIZE = 16
 const m_OUT_HEADER = 4
 const m_STREAM_DECOMPRESS = 8
 const m_STREAM_DONE = 16
-const m_TCL_AVOID_RESOLVERS6 = 0x40000
-const m_TCL_TRACE_READS14 = 0x10
-const m_TCL_TRACE_UNSETS12 = 0x40
-const m_TCL_TRACE_WRITES10 = 0x20
-const m_TCL_ZLIB_VERSION = "2.0.1"
-const m_VAR_ARRAY8 = 0x1
-const m_VAR_ARRAY_ELEMENT4 = 0x1000
-const m_VAR_DEAD_HASH5 = 0x8
-const m_VAR_IN_HASHTABLE8 = 0x4
-const m_VAR_LINK8 = 0x2
-const m_VAR_NAMESPACE_VAR4 = 0x80
-const m_VAR_SEARCH_ACTIVE4 = 0x4000
-const m_VAR_TRACED_ARRAY8 = 0x800
-const m_VAR_TRACED_READ8 = 0x10
-const m_VAR_TRACED_UNSET8 = 0x40
-const m_VAR_TRACED_WRITE8 = 0x20
-const m_VAR_TRACE_ACTIVE4 = 0x2000
-const m_WBITS_ZLIB = "MAX_WBITS"
-const m_ZEXTERN = "extern"
-const m_ZLIB_VERNUM = 0x1310
-const m_ZLIB_VERSION = "1.3.1"
-const m_ZLIB_VER_MAJOR = 1
-const m_ZLIB_VER_MINOR = 3
-const m_ZLIB_VER_REVISION = 1
-const m_ZLIB_VER_SUBREVISION = 0
-const m_Z_ASCII = "Z_TEXT"
-const m_Z_BEST_COMPRESSION = 9
-const m_Z_BEST_SPEED = 1
-const m_Z_BINARY = 0
-const m_Z_BLOCK = 5
 const m_Z_DEFAULT_STRATEGY = 0
 const m_Z_DEFLATED = 8
-const m_Z_FILTERED = 1
 const m_Z_FINISH = 4
-const m_Z_FIXED = 4
 const m_Z_FULL_FLUSH = 3
-const m_Z_HUFFMAN_ONLY = 2
 const m_Z_NEED_DICT = 2
-const m_Z_NO_COMPRESSION = 0
 const m_Z_NO_FLUSH = 0
 const m_Z_NULL = 0
 const m_Z_OK = 0
-const m_Z_PARTIAL_FLUSH = 1
-const m_Z_RLE = 3
 const m_Z_STREAM_END = 1
 const m_Z_SYNC_FLUSH = 2
-const m_Z_TEXT = 1
-const m_Z_TREES = 6
-const m_Z_U4 = "unsigned"
 const m_Z_UNKNOWN = 2
-const m_z_off64_t = "z_off_t"
-const m_z_off_t = "off_t"
-
-type Tz_size_t = uint64
-
-type TByte = uint8
 
 type TuInt = uint32
 
 type TuLong = uint64
 
-type TBytef = uint8
-
-type Tcharf = uint8
-
-type Tintf = int32
-
-type TuIntf = uint32
-
-type TuLongf = uint64
-
-type Tvoidpc = uintptr
-
 type Tvoidpf = uintptr
-
-type Tvoidp = uintptr
-
-type Tz_crc_t = uint32
 
 type Talloc_func = uintptr
 
@@ -295614,8 +290947,6 @@ type Tz_stream = struct {
 	Freserved  TuLong
 }
 
-type Tz_stream_s = Tz_stream
-
 type Tz_streamp = uintptr
 
 type Tgz_header = struct {
@@ -295632,22 +290963,6 @@ type Tgz_header = struct {
 	Fcomm_max  TuInt
 	Fhcrc      int32
 	Fdone      int32
-}
-
-type Tgz_header_s = Tgz_header
-
-type Tgz_headerp = uintptr
-
-type Tin_func = uintptr
-
-type Tout_func = uintptr
-
-type TgzFile = uintptr
-
-type TgzFile_s = struct {
-	Fhave uint32
-	Fnext uintptr
-	Fpos  Toff_t
 }
 
 /*
@@ -299975,8 +295290,6 @@ func x_TclZlibInit(tls *libc.TLS, interp uintptr) (r int32) {
 	return x_Tcl_PkgProvideEx(tls, interp, __ccgo_ts+71938, __ccgo_ts+74432, libc.UintptrFromInt32(0))
 }
 
-const m_TCL_LEAVE_ERR_MSG30 = 0x200
-
 /*
  *----------------------------------------------------------------------
  *
@@ -301045,11 +296358,6 @@ func _FileTruncateProc(tls *libc.TLS, instanceData TClientData, length TTcl_Wide
 	return 0
 }
 
-const m_INT_MAX24 = 0x7fffffff
-const m_O_RDONLY9 = 00
-const m_O_RDWR6 = 02
-const m_O_WRONLY8 = 01
-
 /*
  * Local Variables:
  * mode: c
@@ -301131,7 +296439,6 @@ const m_O_CREAT5 = 64
 const m_O_RDONLY10 = 0
 const m_O_TRUNC5 = 512
 const m_O_WRONLY9 = 1
-const m_Realpath = "realpath"
 const m_S_IFBLK3 = 24576
 const m_S_IFCHR3 = 8192
 const m_S_IFDIR9 = 16384
@@ -301146,13 +296453,7 @@ const m_S_ISGID1 = 1024
 const m_S_ISUID1 = 2048
 const m_S_IWUSR1 = 128
 const m_S_IXUSR1 = 64
-const m_TCL_TEMPORARY_FILE_DIRECTORY = "/tmp"
 const m_haveRealpath = 1
-
-const _UNIX_GROUP_ATTRIBUTE = 0
-const _UNIX_OWNER_ATTRIBUTE = 1
-const _UNIX_PERMISSIONS_ATTRIBUTE = 2
-const _UNIX_INVALID_ATTRIBUTE = 3
 
 func init() {
 	p := unsafe.Pointer(&x_tclpFileAttrProcs)
@@ -302937,21 +298238,10 @@ func _DefaultTempDir(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 75300
 }
 
-const m_O_CREAT6 = 0100
-const m_O_RDONLY11 = 00
-const m_O_TRUNC6 = 01000
-const m_O_WRONLY10 = 01
 const m_S_IFREG3 = 32768
 const m_S_IFSOCK3 = 49152
-const m_S_IRUSR2 = 0400
-const m_S_IRWXG2 = 0070
-const m_S_IRWXO2 = 0007
-const m_S_IRWXU2 = 0700
-const m_S_ISGID2 = 02000
-const m_S_ISUID2 = 04000
 const m_S_IWGRP1 = 16
 const m_S_IWOTH1 = 2
-const m_S_IXUSR2 = 0100
 const m_TCL_CREATE_HARD_LINK5 = 2
 const m_TCL_CREATE_SYMBOLIC_LINK5 = 1
 
@@ -303588,45 +298878,6 @@ func x_TclpGetCwd(tls *libc.TLS, interp uintptr, bufferPtr uintptr) (r uintptr) 
 }
 
 /*
- *---------------------------------------------------------------------------
- *
- * TclpReadlink --
- *
- *	This function replaces the library version of readlink().
- *
- * Results:
- *	The result is a pointer to a string specifying the contents of the
- *	symbolic link given by 'path', or NULL if the symbolic link could not
- *	be read. Storage for the result string is allocated in bufferPtr; the
- *	caller must call Tcl_DStringFree() when the result is no longer
- *	needed.
- *
- * Side effects:
- *	See readlink() documentation.
- *
- *---------------------------------------------------------------------------
- */
-
-func x_TclpReadlink(tls *libc.TLS, path uintptr, linkPtr uintptr) (r uintptr) {
-	bp := tls.Alloc(4320)
-	defer tls.Free(4320) /* Uninitialized or free DString filled with
-	 * contents of link (UTF-8). */
-	var length int32
-	var native uintptr
-	var _ /* ds at bp+4096 */ TTcl_DString
-	var _ /* link at bp+0 */ [4096]uint8
-	_, _ = length, native
-	native = x_Tcl_UtfToExternalDString(tls, libc.UintptrFromInt32(0), path, -int32(1), bp+4096)
-	length = int32(libc.Xreadlink(tls, native, bp, uint64(4096))) /* INTL: Native. */
-	x_Tcl_DStringFree(tls, bp+4096)
-	if length < 0 {
-		return libc.UintptrFromInt32(0)
-	}
-	x_Tcl_ExternalToUtfDString(tls, libc.UintptrFromInt32(0), bp, length, linkPtr)
-	return (*TTcl_DString)(unsafe.Pointer(linkPtr)).Fstring1
-}
-
-/*
  *----------------------------------------------------------------------
  *
  * TclpObjStat --
@@ -303989,19 +299240,6 @@ func x_TclpUtime(tls *libc.TLS, pathPtr uintptr, tval uintptr) (r int32) {
 
 const m_O_APPEND5 = 1024
 const m_O_WRONLY11 = 1
-const m_S_IFBLK4 = 0060000
-const m_S_IFCHR4 = 0020000
-const m_S_IFDIR10 = 0040000
-const m_S_IFIFO4 = 0010000
-const m_S_IFLNK4 = 0120000
-const m_S_IFMT10 = 0170000
-const m_S_IFREG4 = 0100000
-const m_S_IFSOCK4 = 0140000
-const m_S_IWGRP2 = 0020
-const m_S_IWOTH2 = 0002
-const m_S_IWUSR2 = 0200
-const m_TCL_CREATE_HARD_LINK6 = 0x02
-const m_TCL_CREATE_SYMBOLIC_LINK6 = 0x01
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -304324,115 +299562,6 @@ func x_TclpCloseFile(tls *libc.TLS, file TTclFile) (r int32) {
 	}
 	x_Tcl_DeleteFileHandler(tls, fd)
 	return libc.Xclose(tls, fd)
-}
-
-/*
- *----------------------------------------------------------------------
- *
- * RestoreSignals --
- *
- *	This function is invoked in a forked child process just before
- *	exec-ing a new program to restore all signals to their default
- *	settings.
- *
- * Results:
- *	None.
- *
- * Side effects:
- *	Signal settings get changed.
- *
- *----------------------------------------------------------------------
- */
-
-func _RestoreSignals(tls *libc.TLS) {
-	libc.Xsignal(tls, int32(m_SIGABRT), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGALRM), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGFPE), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGHUP), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGILL), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGINT), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGPIPE), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGQUIT), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGSEGV), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGTERM), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGUSR1), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGUSR2), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGCHLD), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGCONT), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGTSTP), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGTTIN), libc.UintptrFromInt32(0))
-	libc.Xsignal(tls, int32(m_SIGTTOU), libc.UintptrFromInt32(0))
-}
-
-/*
- *----------------------------------------------------------------------
- *
- * SetupStdFile --
- *
- *	Set up stdio file handles for the child process, using the current
- *	standard channels if no other files are specified. If no standard
- *	channel is defined, or if no file is associated with the channel, then
- *	the corresponding standard fd is closed.
- *
- * Results:
- *	Returns 1 on success, or 0 on failure.
- *
- * Side effects:
- *	Replaces stdio fds.
- *
- *----------------------------------------------------------------------
- */
-
-func _SetupStdFile(tls *libc.TLS, file TTclFile, type1 int32) (r int32) {
-	bp := tls.Alloc(16)
-	defer tls.Free(16) /* One of TCL_STDIN, TCL_STDOUT, TCL_STDERR */
-	var channel TTcl_Channel
-	var direction, fd, targetFd int32
-	_, _, _, _ = channel, direction, fd, targetFd
-	targetFd = 0  /* Initializations here needed only to */
-	direction = 0 /* prevent warnings about using uninitialized
-	 * variables. */
-	switch type1 {
-	case libc.Int32FromInt32(1) << libc.Int32FromInt32(1):
-		targetFd = 0
-		direction = libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
-	case libc.Int32FromInt32(1) << libc.Int32FromInt32(2):
-		targetFd = int32(1)
-		direction = libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
-	case libc.Int32FromInt32(1) << libc.Int32FromInt32(3):
-		targetFd = int32(2)
-		direction = libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
-		break
-	}
-	if !(file != 0) {
-		channel = x_Tcl_GetStdChannel(tls, type1)
-		if channel != 0 {
-			file = x_TclpMakeFile(tls, channel, direction)
-		}
-	}
-	if file != 0 {
-		fd = int32(int64(file)) - int32(1)
-		if fd != targetFd {
-			if libc.Xdup2(tls, fd, targetFd) == -int32(1) {
-				return 0
-			}
-			/*
-			 * Must clear the close-on-exec flag for the target FD, since some
-			 * systems (e.g. Ultrix) do not clear the CLOEXEC flag on the
-			 * target FD.
-			 */
-			libc.Xfcntl(tls, targetFd, int32(m_F_SETFD), libc.VaList(bp+8, 0))
-		} else {
-			/*
-			 * Since we aren't dup'ing the file, we need to explicitly clear
-			 * the close-on-exec flag.
-			 */
-			libc.Xfcntl(tls, fd, int32(m_F_SETFD), libc.VaList(bp+8, 0))
-		}
-	} else {
-		libc.Xclose(tls, targetFd)
-	}
-	return int32(1)
 }
 
 /*
@@ -305006,11 +300135,7 @@ func x_TclpFinalizePipes(tls *libc.TLS) {
 
 const m_NI_NUMERICHOST1 = 1
 const m_NI_NUMERICSERV1 = 2
-const m_O_APPEND6 = 02000
-const m_O_WRONLY12 = 01
 const m_SOCKET_BUFSIZE = 4096
-const m_SOCK_TEMPLATE = "sock%lx"
-const m_SUPPRESS_RDNS_VAR = "::tcl::unsupported::noReverseDNS"
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -305068,22 +300193,6 @@ type TTcpFdList = struct {
 	FstatePtr uintptr
 	Ffd       int32
 	Fnext     uintptr
-}
-
-type TTcpState1 = struct {
-	Fchannel        TTcl_Channel
-	Ffds            TTcpFdList
-	Fflags          int32
-	Finterest       int32
-	FacceptProc     uintptr
-	FacceptProcData uintptr
-	Faddrlist       uintptr
-	Faddr           uintptr
-	Fmyaddrlist     uintptr
-	Fmyaddr         uintptr
-	Ffilehandlers   int32
-	FconnectError   int32
-	FcachedBlocking int32
 }
 
 /*
@@ -306525,9 +301634,6 @@ func _TcpAccept(tls *libc.TLS, data uintptr, mask int32) {
 	}
 }
 
-const m_NI_NUMERICHOST2 = 0x01
-const m_NI_NUMERICSERV2 = 0x02
-
 /*
  * TclpGetDate is coded to return a pointer to a 'struct tm'. For thread
  * safety, this structure must be in thread-specific data. The 'tmKey'
@@ -306535,11 +301641,6 @@ const m_NI_NUMERICSERV2 = 0x02
  */
 
 var _tmKey1 TTcl_ThreadDataKey
-
-type TThreadSpecificData16 = struct {
-	Fgmtime_buf    Ttm
-	Flocaltime_buf Ttm
-}
 
 /*
  * If we fall back on the thread-unsafe versions of gmtime and localtime, use
@@ -306906,75 +302007,9 @@ func _CleanupMemory(tls *libc.TLS, ignored TClientData) {
 	x_TclpFree(tls, _lastTZ)
 }
 
-const m_ABDAY_1 = 0x20000
-const m_ABDAY_2 = 0x20001
-const m_ABDAY_3 = 0x20002
-const m_ABDAY_4 = 0x20003
-const m_ABDAY_5 = 0x20004
-const m_ABDAY_6 = 0x20005
-const m_ABDAY_7 = 0x20006
-const m_ABMON_1 = 0x2000E
-const m_ABMON_10 = 0x20017
-const m_ABMON_11 = 0x20018
-const m_ABMON_12 = 0x20019
-const m_ABMON_2 = 0x2000F
-const m_ABMON_3 = 0x20010
-const m_ABMON_4 = 0x20011
-const m_ABMON_5 = 0x20012
-const m_ABMON_6 = 0x20013
-const m_ABMON_7 = 0x20014
-const m_ABMON_8 = 0x20015
-const m_ABMON_9 = 0x20016
-const m_ALT_DIGITS = 0x2002F
-const m_AM_STR = 0x20026
 const m_CODESET = 14
-const m_CRNCYSTR = 0x4000F
-const m_DAY_1 = 0x20007
-const m_DAY_2 = 0x20008
-const m_DAY_3 = 0x20009
-const m_DAY_4 = 0x2000A
-const m_DAY_5 = 0x2000B
-const m_DAY_6 = 0x2000C
-const m_DAY_7 = 0x2000D
-const m_D_FMT = 0x20029
-const m_D_T_FMT = 0x20028
-const m_ERA = 0x2002C
-const m_ERA_D_FMT = 0x2002E
-const m_ERA_D_T_FMT = 0x20030
-const m_ERA_T_FMT = 0x20031
-const m_LIBRARY_SIZE = 32
-const m_MON_1 = 0x2001A
-const m_MON_10 = 0x20023
-const m_MON_11 = 0x20024
-const m_MON_12 = 0x20025
-const m_MON_2 = 0x2001B
-const m_MON_3 = 0x2001C
-const m_MON_4 = 0x2001D
-const m_MON_5 = 0x2001E
-const m_MON_6 = 0x2001F
-const m_MON_7 = 0x20020
-const m_MON_8 = 0x20021
-const m_MON_9 = 0x20022
-const m_NL_CAT_LOCALE = 1
-const m_NL_SETD = 1
-const m_NOEXPR = 0x50001
-const m_NOSTR = 0x50003
 const m_O_RDONLY12 = 0
 const m_O_WRONLY13 = 1
-const m_PM_STR = 0x20027
-const m_RADIXCHAR = 0x10000
-const m_TCL_DEFAULT_ENCODING = "iso8859-1"
-const m_TCL_LIBRARY = "/usr/local/lib/tcl8.6"
-const m_TCL_PACKAGE_PATH = "{/usr/local/lib} "
-const m_THOUSEP = 0x10001
-const m_T_FMT = 0x2002A
-const m_T_FMT_AMPM = 0x2002B
-const m_YESEXPR = 0x50000
-const m_YESSTR = 0x50002
-
-type Tnl_item = int32
-
-type Tnl_catd = uintptr
 
 /*
  * Tcl tries to use standard and homebrew methods to guess the right encoding
@@ -308185,24 +303220,7 @@ done:
 	return result
 }
 
-const m_O_RDONLY13 = 00
-const m_O_WRONLY14 = 01
 const m_TCL_THREAD_JOINABLE3 = 1
-
-/* Epoch of the tcl environment
- * (if changed with tcl-env). */
-
-/*
- * Local Variables:
- * mode: c
- * c-basic-offset: 4
- * fill-column: 78
- * End:
- */
-
-type TThreadSpecificData17 = struct {
-	Fnabuf [16]uint8
-}
 
 var _dataKey13 TTcl_ThreadDataKey
 
@@ -308864,10 +303882,7 @@ func x_TclpThreadGetGlobalTSD(tls *libc.TLS, tsdKeyPtr uintptr) (r uintptr) {
 	return libc.Xpthread_getspecific(tls, *(*Tpthread_key_t)(unsafe.Pointer(ptkeyPtr)))
 }
 
-const m_NEED_GR_CLEANER = 1
-const m_NEED_PW_CLEANER = 1
 const m_O_NONBLOCK5 = 2048
-const m_TCL_THREAD_JOINABLE4 = 0001
 
 /* Epoch of the tcl environment
  * (if changed with tcl-env). */
@@ -309261,40 +304276,6 @@ func x_TclpGetHostByName(tls *libc.TLS, name uintptr) (r uintptr) {
 /*
  *---------------------------------------------------------------------------
  *
- * TclpGetHostByAddr --
- *
- *      Thread-safe wrappers for gethostbyaddr(). See "man gethostbyaddr" for
- *      more details.
- *
- * Results:
- *      Pointer to struct hostent on success or NULL on error.
- *
- * Side effects:
- *      None.
- *
- *---------------------------------------------------------------------------
- */
-
-func x_TclpGetHostByAddr(tls *libc.TLS, addr uintptr, length int32, type1 int32) (r uintptr) {
-	bp := tls.Alloc(16)
-	defer tls.Free(16)
-	var tsdPtr, v1 uintptr
-	var _ /* hePtr at bp+0 */ uintptr
-	var _ /* local_errno at bp+8 */ int32
-	_, _ = tsdPtr, v1
-	tsdPtr = x_Tcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_dataKey14)), int32(2192))
-	if libc.Xgethostbyaddr_r(tls, addr, libc.Uint32FromInt32(length), type1, tsdPtr+112, tsdPtr+144, uint64(2048), bp, bp+8) == 0 {
-		v1 = tsdPtr + 112
-	} else {
-		v1 = libc.UintptrFromInt32(0)
-	}
-	return v1
-	return libc.UintptrFromInt32(0) /* Not reached. */
-}
-
-/*
- *---------------------------------------------------------------------------
- *
  * CopyGrp --
  *
  *      Copies string fields of the group structure to the private buffer,
@@ -309413,10 +304394,8 @@ func x_TclWinCPUID(tls *libc.TLS, index uint32, regsPtr uintptr) (r int32) {
 }
 
 const m_AT_FORK_INIT_VALUE = 0
-const m_O_NONBLOCK6 = 04000
 const m_POLL_DONE = 2
 const m_POLL_WANT = 1
-const m_RESET_ATFORK_MUTEX = 1
 const m_TCL_THREAD_JOINABLE5 = 1
 
 /* Epoch of the tcl environment
@@ -310650,7 +305629,6 @@ const m_PUBLIC_METHOD1 = 1
 const m_ROOT_CLASS1 = 32768
 const m_ROOT_OBJECT1 = 4096
 const m_TCL_CREATE_NS_IF_UNKNOWN9 = 2048
-const m_TCL_THREAD_JOINABLE6 = 0001
 const m_TCL_TRACE_DELETE5 = 16384
 const m_TCL_TRACE_RENAME5 = 8192
 const m_USE_CLASS_CACHE1 = 16384
@@ -314530,21 +309508,9 @@ func x_Tcl_ObjectSetMethodNameMapper(tls *libc.TLS, object TTcl_Object, mapMetho
 	(*TObject)(unsafe.Pointer(object)).FmapMethodNameProc = mapMethodNameProc
 }
 
-const m_CMD_IS_DELETED8 = 0x01
-const m_DONT_DELETE2 = 0x20000
-const m_FILTER_HANDLING4 = 0x2000
-const m_FORCE_UNKNOWN2 = 0x10000
 const m_FRAME_IS_METHOD5 = 4
-const m_NS_SUPPRESS_COMPILATION8 = 0x08
-const m_PRIVATE_METHOD2 = 0x02
-const m_ROOT_CLASS2 = 0x8000
-const m_ROOT_OBJECT2 = 0x1000
-const m_TCL_CREATE_NS_IF_UNKNOWN10 = 0x800
 const m_TCL_EVAL_NOERR7 = 2097152
 const m_TCL_LEAVE_ERR_MSG31 = 512
-const m_TCL_TRACE_DELETE6 = 0x4000
-const m_TCL_TRACE_RENAME6 = 0x2000
-const m_USE_CLASS_CACHE2 = 0x4000
 const m_VAR_IN_HASHTABLE9 = 4
 const m_VAR_NAMESPACE_VAR5 = 128
 
@@ -315924,18 +310890,13 @@ const m_DEFINITE_PROTECTED = 1048576
 const m_DEFINITE_PUBLIC = 2097152
 const m_FILTER_HANDLING5 = 8192
 const m_FORCE_UNKNOWN3 = 65536
-const m_FRAME_IS_METHOD6 = 0x4
 const m_IN_LIST = 1
 const m_NO_IMPLEMENTATION = 2
 const m_OBJECT_MIXIN = 16777216
 const m_OO_UNKNOWN_METHOD1 = 4
 const m_PRIVATE_METHOD3 = 2
-const m_TCL_EVAL_NOERR8 = 0x200000
-const m_TCL_LEAVE_ERR_MSG32 = 0x200
 const m_TRAVERSED_MIXIN = 8388608
 const m_USE_CLASS_CACHE3 = 16384
-const m_VAR_IN_HASHTABLE10 = 0x4
-const m_VAR_NAMESPACE_VAR6 = 0x80
 
 /* !END!: Do not edit above this line. */
 
@@ -316116,10 +311077,6 @@ func _StashCallChain(tls *libc.TLS, objPtr uintptr, callPtr uintptr) {
 		Fptr1 uintptr
 		Fptr2 uintptr
 	})(unsafe.Pointer(objPtr + 32))).Fptr1 = callPtr
-}
-
-func x_TclOOStashContext(tls *libc.TLS, objPtr uintptr, contextPtr uintptr) {
-	_StashCallChain(tls, objPtr, (*TCallContext)(unsafe.Pointer(contextPtr)).FcallPtr)
 }
 
 /*
@@ -317690,16 +312647,9 @@ func x_TclOORenderCallChain(tls *libc.TLS, interp uintptr, callPtr uintptr) (r u
 	return resultObj
 }
 
-const m_CONSTRUCTOR4 = 0x08
-const m_DESTRUCTOR4 = 0x10
 const m_DONT_DELETE3 = 131072
-const m_FILTER_HANDLING6 = 0x2000
-const m_FORCE_UNKNOWN4 = 0x10000
 const m_FRAME_IS_OO_DEFINE1 = 8
 const m_OBJNAME_LENGTH_IN_ERRORINFO_LIMIT = 30
-const m_OO_UNKNOWN_METHOD2 = 0x04
-const m_PRIVATE_METHOD4 = 0x02
-const m_PUBLIC_PATTERN = "[a-z]*"
 const m_ROOT_CLASS3 = 32768
 const m_ROOT_OBJECT3 = 4096
 const m_TCL_EVAL_INVOKE9 = 524288
@@ -320867,13 +315817,7 @@ func _ObjVarsSet(tls *libc.TLS, clientData TClientData, interp uintptr, context 
 	return m_TCL_OK
 }
 
-const m_DONT_DELETE4 = 0x20000
-const m_FRAME_IS_OO_DEFINE2 = 0x8
 const m_PRIVATE_METHOD5 = 2
-const m_ROOT_CLASS4 = 0x8000
-const m_ROOT_OBJECT4 = 0x1000
-const m_TCL_EVAL_INVOKE10 = 0x080000
-const m_USE_CLASS_CACHE4 = 0x4000
 const m_VAR_ARGUMENT7 = 256
 const m_VAR_NAMESPACE_VAR7 = 128
 
@@ -322943,8 +317887,6 @@ const m_DESTRUCTOR5 = 16
 const m_FRAME_IS_METHOD7 = 4
 const m_FRAME_IS_PROC6 = 1
 const m_LIMIT = 60
-const m_TCL_BYTECODE_PRECOMPILED6 = 0x0001
-const m_TCL_BYTECODE_RESOLVE_VARS4 = 0x0002
 const m_TCL_EVAL_NOERR9 = 2097152
 const m_USE_CLASS_CACHE5 = 16384
 const m_USE_DECLARER_NS1 = 128
@@ -324973,19 +319915,6 @@ type TCmdFrame1 = struct {
 	Flen1   int32
 	Flitarg uintptr
 }
-
-const m_CONSTRUCTOR6 = 0x08
-const m_DESTRUCTOR6 = 0x10
-const m_FRAME_IS_METHOD8 = 0x4
-const m_FRAME_IS_PROC7 = 0x1
-const m_PRIVATE_METHOD6 = 0x02
-const m_PUBLIC_METHOD2 = 0x01
-const m_TCL_EVAL_NOERR10 = 0x200000
-const m_USE_CLASS_CACHE6 = 0x4000
-const m_USE_DECLARER_NS2 = 0x80
-const m_VAR_ARGUMENT8 = 0x100
-const m_VAR_IN_HASHTABLE12 = 0x4
-const m_VAR_NAMESPACE_VAR8 = 0x80
 
 /* !BEGIN!: Do not edit below this line. */
 
