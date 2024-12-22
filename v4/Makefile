@@ -45,7 +45,7 @@ cpu:
 
 edit:
 	@touch log
-	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile cc.go & fi
+	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile go.mod builder.json all_test.go cc.go & fi
 
 editor: # ast.go
 	gofmt -l -s -w *.go
