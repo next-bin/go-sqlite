@@ -1,3 +1,3 @@
 module modernc.org/opt
 
-go 1.13
+go 1.21
