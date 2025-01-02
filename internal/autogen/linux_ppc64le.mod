@@ -6,7 +6,7 @@ toolchain go1.23.3
 
 require (
 	modernc.org/cc/v4 v4.24.3
-	modernc.org/ccgo/v4 v4.23.6
+	modernc.org/ccgo/v4 v4.23.7
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.61.6
 )
@@ -26,7 +26,7 @@ require (
 	lukechampine.com/uint128 v1.2.0 // indirect
 	modernc.org/cc/v3 v3.41.0 // indirect
 	modernc.org/ccgo/v3 v3.17.0 // indirect
-	modernc.org/gc/v2 v2.6.0 // indirect
+	modernc.org/gc/v2 v2.6.1 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.8.0 // indirect
 	modernc.org/opt v0.1.4 // indirect
