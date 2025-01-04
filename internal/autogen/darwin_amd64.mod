@@ -6,8 +6,8 @@ toolchain go1.23.3
 
 require (
 	github.com/adrg/xdg v0.5.0
-	modernc.org/cc/v4 v4.24.3
-	modernc.org/ccgo/v4 v4.23.7
+	modernc.org/cc/v4 v4.24.4
+	modernc.org/ccgo/v4 v4.23.10
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.61.6
 	modernc.org/libz v0.16.11
@@ -32,7 +32,7 @@ require (
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.8.0 // indirect
 	modernc.org/opt v0.1.4 // indirect
-	modernc.org/sortutil v1.2.0 // indirect
+	modernc.org/sortutil v1.2.1 // indirect
 	modernc.org/strutil v1.2.1 // indirect
 	modernc.org/token v1.1.0 // indirect
 )
