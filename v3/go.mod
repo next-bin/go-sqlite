@@ -10,6 +10,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0
 	golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67
 	golang.org/x/tools v0.28.0
+	modernc.org/ebnfutil v1.1.0
 	modernc.org/mathutil v1.7.0
 	modernc.org/strutil v1.2.0
 	modernc.org/token v1.1.0
@@ -19,4 +20,5 @@ require (
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/mod v0.22.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
+	modernc.org/ebnf v1.1.0 // indirect
 )

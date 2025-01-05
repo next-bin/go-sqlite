@@ -18,6 +18,7 @@ import (
 	"time"
 
 	"github.com/pmezard/go-difflib/difflib"
+	"modernc.org/ebnfutil"
 )
 
 const (
@@ -67,6 +68,13 @@ func TestSpecEBNF(t *testing.T) {
 	for k := range g.leftRecursive {
 		t.Logf("left recursive: %v", k)
 	}
+
+	g2, err := ebnfutil.Parse("spec", strings.NewReader(s))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	t.Logf("\n%s", g2)
 }
 
 func TestPEGEBNF(t *testing.T) {
