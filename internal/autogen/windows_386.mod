@@ -6,9 +6,9 @@ toolchain go1.23.3
 
 require (
 	modernc.org/cc/v4 v4.24.4
-	modernc.org/ccgo/v4 v4.23.12
+	modernc.org/ccgo/v4 v4.23.13
 	modernc.org/fileutil v1.3.0
-	modernc.org/libc v1.61.7
+	modernc.org/libc v1.61.8
 )
 
 require (
