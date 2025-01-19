@@ -8,7 +8,7 @@ require (
 	modernc.org/cc/v4 v4.24.4
 	modernc.org/ccgo/v4 v4.23.13
 	modernc.org/fileutil v1.3.0
-	modernc.org/libc v1.61.8
+	modernc.org/libc v1.61.9
 )
 
 require (
@@ -28,7 +28,7 @@ require (
 	modernc.org/ccgo/v3 v3.17.0 // indirect
 	modernc.org/gc/v2 v2.6.1 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
-	modernc.org/memory v1.8.1 // indirect
+	modernc.org/memory v1.8.2 // indirect
 	modernc.org/opt v0.1.4 // indirect
 	modernc.org/sortutil v1.2.1 // indirect
 	modernc.org/strutil v1.2.1 // indirect
