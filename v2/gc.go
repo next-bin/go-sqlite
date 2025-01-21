@@ -39,7 +39,7 @@ func ParseSourceFile(cfg *ParseSourceFileConfig, name string, buf []byte) (r *So
 	case PACKAGE:
 		r = &SourceFile{Scope: &Scope{}, packageScope: cfg.packageScope, PackageClause: &PackageClause{Package: p.must(PACKAGE), PackageName: p.must(IDENTIFIER), Semicolon: p.must(';')}, ImportDecls: p.importDecls()}
 	default:
-		p.err(errorf("TODO %v", p.s.Tok.Ch.str()))
+		p.err("%s", errorf("TODO %v", p.s.Tok.Ch.str()))
 		p.shift()
 	}
 	if err := p.s.errs.Err(); err != nil {
@@ -62,7 +62,7 @@ func ParseSourceFile(cfg *ParseSourceFileConfig, name string, buf []byte) (r *So
 	case EOF:
 		r.EOF = p.shift()
 	default:
-		p.err(errorf("TODO %v", p.s.Tok.Ch.str()))
+		p.err("%s", errorf("TODO %v", p.s.Tok.Ch.str()))
 		return nil, p.Err()
 	}
 
