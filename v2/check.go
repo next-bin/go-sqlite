@@ -174,7 +174,7 @@ func (c *ctx) packageLoader(pkg *Package, src *SourceFile, importPath Token) (r 
 	key := packagesKey{pkg, src, pth}
 	if err != nil {
 		c.packages[key] = nil
-		c.err(importPath, errorf("%s", err))
+		c.err(importPath, "%s", errorf("%s", err))
 		return nil
 	}
 
@@ -186,7 +186,7 @@ func (c *ctx) packageLoader(pkg *Package, src *SourceFile, importPath Token) (r 
 	p, err := c.checker.PackageLoader(pkg, src, pth)
 	if err != nil {
 		c.packages[key] = nil
-		c.err(importPath, errorf("%s", err))
+		c.err(importPath, "%s", errorf("%s", err))
 		return nil
 	}
 
@@ -202,7 +202,7 @@ func (c *ctx) symbolResolver(scope *Scope, pkg *Package, ident Token, passFileSc
 	}
 	var err error
 	if r, err = c.checker.SymbolResolver(scope, fileScope, pkg, ident); err != nil {
-		c.err(ident, errorf("%s", err))
+		c.err(ident, "%s", errorf("%s", err))
 		return nil
 	}
 
@@ -215,7 +215,7 @@ func (c *ctx) symbol(expr Expression) Node {
 		case *QualifiedIdent:
 			return x
 		default:
-			c.err(expr, errorf("TODO %T", x))
+			c.err(expr, "%s", errorf("TODO %T", x))
 			return nil
 		}
 	}
@@ -271,11 +271,11 @@ func (c *ctx) checkType(n Node) Type {
 		case *InterfaceTypeNode:
 			return y.Type()
 		default:
-			c.err(n, errorf("TODO %T", y))
+			c.err(n, "%s", errorf("TODO %T", y))
 			return Invalid
 		}
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 		return Invalid
 	}
 }
@@ -287,7 +287,7 @@ func (c *ctx) checkExpr(p *Expression) (constant.Value, Type) {
 		*p = x
 		return x.Value(), x.Type()
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 		return unknown, Invalid
 	}
 }
@@ -303,15 +303,15 @@ func (c *ctx) exprToType(n Expression) Node {
 			case *Ident:
 				return &PointerTypeNode{Star: x.Op, BaseType: z}
 			default:
-				c.err(n, errorf("TODO %T %s %T", x, x.Op.Ch.str(), z))
+				c.err(n, "%s", errorf("TODO %T %s %T", x, x.Op.Ch.str(), z))
 				return Invalid
 			}
 		default:
-			c.err(n, errorf("TODO %T %s", x, x.Op.Ch.str()))
+			c.err(n, "%s", errorf("TODO %T %s", x, x.Op.Ch.str()))
 			return Invalid
 		}
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 		return Invalid
 	}
 }
@@ -367,7 +367,7 @@ func (n *SourceFile) collectTLDs(c *ctx) {
 
 					c.pkg.Scope.add(c, fmt.Sprintf("%s.%s", t.Name.Ident.Src(), x.MethodName.Src()), 0, x)
 				default:
-					c.err(x, errorf("TODO %T", t))
+					c.err(x, "%s", errorf("TODO %T", t))
 				}
 			case *TypeNameNode:
 				if rx.Name.PackageName.IsValid() {
@@ -379,7 +379,7 @@ func (n *SourceFile) collectTLDs(c *ctx) {
 			case Token:
 				c.pkg.Scope.add(c, fmt.Sprintf("%s.%s", rx.Src(), x.MethodName.Src()), 0, x)
 			default:
-				c.err(x, errorf("TODO %T", rx))
+				c.err(x, "%s", errorf("TODO %T", rx))
 			}
 		case *TypeDecl:
 			for _, ts := range x.TypeSpecs {
@@ -389,7 +389,7 @@ func (n *SourceFile) collectTLDs(c *ctx) {
 				case *TypeDef:
 					c.pkg.Scope.add(c, y.Ident.Src(), 0, ts)
 				default:
-					c.err(y, errorf("TODO %T", y))
+					c.err(y, "%s", errorf("TODO %T", y))
 				}
 			}
 		case *VarDecl:
@@ -519,14 +519,14 @@ func (n *Package) checkFunctionBodies(c *ctx) {
 		case *FunctionDecl:
 			x.checkBody(c)
 		case *MethodDecl:
-			c.err(x, errorf("TODO %T", x))
+			c.err(x, "%s", errorf("TODO %T", x))
 		}
 		for _, v := range blanks {
 			switch x := v.(type) {
 			case checker:
 				x.check(c)
 			default:
-				c.err(x, errorf("TODO %T", x))
+				c.err(x, "%s", errorf("TODO %T", x))
 			}
 		}
 	}
@@ -545,7 +545,7 @@ func (n *Package) checkDeclarations(c *ctx) {
 		case *Package:
 			// nop
 		default:
-			c.err(x, errorf("TODO %T", x))
+			c.err(x, "%s", errorf("TODO %T", x))
 		}
 	}
 	for _, v := range n.Blanks {
@@ -553,7 +553,7 @@ func (n *Package) checkDeclarations(c *ctx) {
 		case checker:
 			x.check(c)
 		default:
-			c.err(x, errorf("TODO %T", x))
+			c.err(x, "%s", errorf("TODO %T", x))
 		}
 	}
 }
@@ -588,7 +588,7 @@ more:
 		resolvedTo = x.ResolvedTo()
 	case *ParenType:
 		if len(n.ExprList) != 1 {
-			c.err(n, errorf("TODO %T", x))
+			c.err(n, "%s", errorf("TODO %T", x))
 			return n
 		}
 
@@ -608,14 +608,14 @@ more:
 				return n.checkFn(c, ft, nil, nil)
 			}
 
-			c.err(n, errorf("TODO %T, %s", x.Type(), x.Type()))
+			c.err(n, "%s", errorf("TODO %T, %s", x.Type(), x.Type()))
 			return n
 		default:
-			c.err(n, errorf("TODO %q", x.Op.Src()))
+			c.err(n, "%s", errorf("TODO %q", x.Op.Src()))
 			return n
 		}
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 		return n
 	}
 
@@ -626,7 +626,7 @@ more:
 		PredefinedType:
 
 		if len(n.ExprList) != 1 {
-			c.err(n, errorf("TODO %T", x))
+			c.err(n, "%s", errorf("TODO %T", x))
 			return n
 		}
 
@@ -640,17 +640,17 @@ more:
 			return n.checkFn(c, ft, nil, nil)
 		}
 
-		c.err(n, errorf("TODO %T, %s", x.Type(), x.Type()))
+		c.err(n, "%s", errorf("TODO %T, %s", x.Type(), x.Type()))
 		return n
 	case *Selector:
 		if ft, ok := x.Type().(*FunctionType); ok {
 			return n.checkFn(c, ft, nil, nil)
 		}
 
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 		return n
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 		return n
 	}
 }
@@ -666,7 +666,7 @@ func (n *Arguments) checkFn(c *ctx, ft *FunctionType, resolvedIn *Package, fd *F
 	if len(ft.Parameters.Types) != len(n.ExprList) {
 		if !ft.IsVariadic || len(n.ExprList) < len(ft.Parameters.Types) {
 			// trc("%v: %v %v %v '%s'", n.LParen.Position(), ft.IsVariadic, len(n.ExprList), len(ft.Parameters.Types), n.Source(false))
-			c.err(n, errorf("TODO %T", n))
+			c.err(n, "%s", errorf("TODO %T", n))
 			return n
 		}
 
@@ -681,10 +681,10 @@ func (n *Arguments) checkFn(c *ctx, ft *FunctionType, resolvedIn *Package, fd *F
 				return n
 			case "Add":
 				if !c.isAssignable(n.ExprList[0].Expr, n.ExprList[0].Expr.Type(), ft.Parameters.Types[0]) {
-					c.err(n, errorf("TODO %T", n))
+					c.err(n, "%s", errorf("TODO %T", n))
 				}
 				if !isAnyIntegerType(n.ExprList[1].Expr.Type()) {
-					c.err(n, errorf("TODO %T", n))
+					c.err(n, "%s", errorf("TODO %T", n))
 				}
 				return n
 			}
@@ -698,7 +698,7 @@ func (n *Arguments) checkFn(c *ctx, ft *FunctionType, resolvedIn *Package, fd *F
 			pt = ft.Parameters.Types[i]
 		}
 		if !c.isAssignable(exprItem, et, pt) {
-			c.err(exprItem.Expr, errorf("TODO %v -> %v", et, pt))
+			c.err(exprItem.Expr, "%s", errorf("TODO %v -> %v", et, pt))
 			continue
 		}
 
@@ -742,7 +742,7 @@ func (c *ctx) isAssignable(n Node, expr, to Type) bool {
 		}
 	}
 
-	c.err(n, errorf("TODO %s -> %s", expr, to))
+	c.err(n, "%s", errorf("TODO %s -> %s", expr, to))
 	return false
 }
 
@@ -807,7 +807,7 @@ func (c *ctx) isIdentical(n Node, t, u Type) bool {
 		}
 	}
 
-	c.err(n, errorf("TODO %s -> %s", t, u))
+	c.err(n, "%s", errorf("TODO %s -> %s", t, u))
 	return false
 }
 
@@ -818,7 +818,7 @@ func (n *BasicLit) check(c *ctx) Node {
 
 	defer n.exit()
 
-	c.err(n, errorf("internal error: %T %T %T", n, n.Type(), n.Value()))
+	c.err(n, "%s", errorf("internal error: %T %T %T", n, n.Type(), n.Value()))
 	return n
 }
 
@@ -845,10 +845,10 @@ func (n *BinaryExpr) check(c *ctx) Node {
 			}
 
 			trc("y %T %v, b %s", y, y.Kind(), b)
-			c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+			c.err(n.Op, "%s", errorf("TODO %v", n.Op.Ch.str()))
 			return n
 		default:
-			c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+			c.err(n.Op, "%s", errorf("TODO %v", n.Op.Ch.str()))
 			return n
 		}
 
@@ -857,12 +857,12 @@ func (n *BinaryExpr) check(c *ctx) Node {
 		// the shift expression were replaced by its left operand alone.
 		switch {
 		case y.Kind() == constant.Unknown && x.Kind() != constant.Unknown:
-			c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+			c.err(n.Op, "%s", errorf("TODO %v", n.Op.Ch.str()))
 			return n
 		default:
 			uy, ok := constant.Uint64Val(y)
 			if !ok {
-				c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+				c.err(n.Op, "%s", errorf("TODO %v", n.Op.Ch.str()))
 				break
 			}
 
@@ -871,7 +871,7 @@ func (n *BinaryExpr) check(c *ctx) Node {
 		}
 	case LOR, LAND:
 		if !isAnyBoolType(a) || !isAnyBoolType(b) {
-			c.err(n.Op, errorf("TODO %v %v", a, b))
+			c.err(n.Op, "%s", errorf("TODO %v %v", a, b))
 			break
 		}
 
@@ -884,7 +884,7 @@ func (n *BinaryExpr) check(c *ctx) Node {
 		}
 	case EQ, NE:
 		if !c.isComparable(n, a, b) {
-			c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+			c.err(n.Op, "%s", errorf("TODO %v", n.Op.Ch.str()))
 			break
 		}
 
@@ -894,7 +894,7 @@ func (n *BinaryExpr) check(c *ctx) Node {
 		}
 	case '<', LE, '>', GE:
 		if !c.isOrdered(n, a, b) {
-			c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+			c.err(n.Op, "%s", errorf("TODO %v", n.Op.Ch.str()))
 			break
 		}
 
@@ -904,7 +904,7 @@ func (n *BinaryExpr) check(c *ctx) Node {
 		}
 	default:
 		if !isAnyArithmeticType(a) || !isAnyArithmeticType(b) {
-			c.err(n.Op, errorf("TODO %v %v", a, b))
+			c.err(n.Op, "%s", errorf("TODO %v %v", a, b))
 			break
 		}
 
@@ -917,7 +917,7 @@ func (n *BinaryExpr) check(c *ctx) Node {
 		switch {
 		case x.Kind() == constant.Unknown && y.Kind() == constant.Unknown:
 			if a.Kind() != b.Kind() {
-				c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+				c.err(n.Op, "%s", errorf("TODO %v", n.Op.Ch.str()))
 				break
 			}
 
@@ -938,7 +938,7 @@ func (n *BinaryExpr) check(c *ctx) Node {
 			case constant.Complex:
 				n.typ = UntypedComplexType
 			default:
-				c.err(n.Op, errorf("TODO %v", n.Op.Ch.str()))
+				c.err(n.Op, "%s", errorf("TODO %v", n.Op.Ch.str()))
 			}
 		}
 	}
@@ -990,7 +990,7 @@ func (c *ctx) isComparable(n Node, t, u Type) bool {
 		return true
 	}
 
-	c.err(n, errorf("TODO %v %v", t, u))
+	c.err(n, "%s", errorf("TODO %v %v", t, u))
 	return false
 }
 
@@ -1007,7 +1007,7 @@ func (c *ctx) isOrdered(n Node, t, u Type) bool {
 		return true
 	}
 
-	c.err(n, errorf("TODO %v %v", t, u))
+	c.err(n, "%s", errorf("TODO %v %v", t, u))
 	return false
 }
 
@@ -1030,7 +1030,7 @@ func (n *LiteralValue) check(c *ctx, t Type) {
 	case *StructType:
 		n.checkStruct(c, x)
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 }
 
@@ -1038,7 +1038,7 @@ func (n *LiteralValue) checkStruct(c *ctx, strct *StructType) {
 	var ix int
 	for _, ke := range n.ElementList {
 		if ix >= len(strct.Fields) {
-			c.err(n, errorf("TODO %v/%v", ix, len(strct.Fields)))
+			c.err(n, "%s", errorf("TODO %v/%v", ix, len(strct.Fields)))
 			return
 		}
 
@@ -1061,7 +1061,7 @@ func (n *KeyedElement) checkStructElem(c *ctx, strct *StructType, f *Field, ix *
 	case *Ident:
 		f = strct.FieldByName(x.Token.Src())
 		if f == nil {
-			c.err(n.Key, errorf("TODO %T", x))
+			c.err(n.Key, "%s", errorf("TODO %T", x))
 			return
 		}
 
@@ -1070,7 +1070,7 @@ func (n *KeyedElement) checkStructElem(c *ctx, strct *StructType, f *Field, ix *
 		x.guard = checked
 		*ix = f.Index()
 	default:
-		c.err(n.Key, errorf("TODO %T", x))
+		c.err(n.Key, "%s", errorf("TODO %T", x))
 	}
 	switch x := n.Element.(type) {
 	case Expression:
@@ -1079,7 +1079,7 @@ func (n *KeyedElement) checkStructElem(c *ctx, strct *StructType, f *Field, ix *
 			n.Element = x
 		}
 		if !c.isAssignable(n.Element, elemType, f.Type()) {
-			c.err(n.Element, errorf("TODO %T", x))
+			c.err(n.Element, "%s", errorf("TODO %T", x))
 			break
 		}
 
@@ -1087,7 +1087,7 @@ func (n *KeyedElement) checkStructElem(c *ctx, strct *StructType, f *Field, ix *
 			c.convertValue(n.Element, elemVal, f.Type())
 		}
 	default:
-		c.err(n.Element, errorf("TODO %T", x))
+		c.err(n.Element, "%s", errorf("TODO %T", x))
 	}
 }
 
@@ -1120,21 +1120,21 @@ func (n *KeyedElement) checkArrayElem(c *ctx, arr *ArrayType, arrElem Type, ix *
 		case constant.Int:
 			i64, ok := constant.Int64Val(keyVal)
 			if !ok {
-				c.err(n.Key, errorf("TODO"))
+				c.err(n.Key, "%s", errorf("TODO"))
 				break
 			}
 
 			if i64 >= arr.Len {
-				c.err(n.Key, errorf("TODO"))
+				c.err(n.Key, "%s", errorf("TODO"))
 				return
 			}
 
 			*ix = i64
 		default:
-			c.err(n.Key, errorf("TODO %v", keyVal.Kind()))
+			c.err(n.Key, "%s", errorf("TODO %v", keyVal.Kind()))
 		}
 	default:
-		c.err(n.Key, errorf("TODO %T", x))
+		c.err(n.Key, "%s", errorf("TODO %T", x))
 	}
 	switch x := n.Element.(type) {
 	case Expression:
@@ -1143,7 +1143,7 @@ func (n *KeyedElement) checkArrayElem(c *ctx, arr *ArrayType, arrElem Type, ix *
 			n.Element = x
 		}
 		if !c.isAssignable(n.Element, elemType, arrElem) {
-			c.err(n.Element, errorf("TODO %T", x))
+			c.err(n.Element, "%s", errorf("TODO %T", x))
 			break
 		}
 
@@ -1153,7 +1153,7 @@ func (n *KeyedElement) checkArrayElem(c *ctx, arr *ArrayType, arrElem Type, ix *
 	case *LiteralValue:
 		x.check(c, arrElem)
 	default:
-		c.err(n.Element, errorf("TODO %T", x))
+		c.err(n.Element, "%s", errorf("TODO %T", x))
 	}
 }
 
@@ -1201,10 +1201,10 @@ func (n *FunctionLit) check(c *ctx) Node {
 
 	defer n.exit()
 
-	c.err(n, errorf("TODO %T", n))
+	c.err(n, "%s", errorf("TODO %T", n))
 	return n
 
-	//TODO c.err(n, errorf("TODO %T", n))
+	//TODO c.err(n, "%s", errorf("TODO %T", n))
 }
 
 func (n *GenericOperand) check(c *ctx) Node {
@@ -1214,10 +1214,10 @@ func (n *GenericOperand) check(c *ctx) Node {
 
 	defer n.exit()
 
-	c.err(n, errorf("TODO %T", n))
+	c.err(n, "%s", errorf("TODO %T", n))
 	return n
 
-	//TODO c.err(n, errorf("TODO %T", n))
+	//TODO c.err(n, "%s", errorf("TODO %T", n))
 }
 
 func (n *Ident) check(c *ctx) Node {
@@ -1242,7 +1242,7 @@ func (n *Ident) check(c *ctx) Node {
 	case *Constant:
 		n.typ = c.checkType(x)
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 	return n
 }
@@ -1266,15 +1266,15 @@ func (n *Index) check(c *ctx) Node {
 			case *ArrayType:
 				return n.checkArray(c, z, v, xt)
 			default:
-				c.err(n, errorf("TODO %T", z))
+				c.err(n, "%s", errorf("TODO %T", z))
 			}
 		default:
-			c.err(n, errorf("TODO %T", y))
+			c.err(n, "%s", errorf("TODO %T", y))
 		}
 	case *ArrayType:
 		return n.checkArray(c, x, v, xt)
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 	return n
 }
@@ -1283,24 +1283,24 @@ func (n *Index) checkArray(c *ctx, at *ArrayType, xv constant.Value, xt Type) No
 	n.typ = at.Elem
 	if xv.Kind() == constant.Unknown {
 		if !isAnyIntegerType(xt) {
-			c.err(n, errorf("TODO %T", n))
+			c.err(n, "%s", errorf("TODO %T", n))
 		}
 		return n
 	}
 
 	if !isAnyArithmeticType(xt) {
-		c.err(n, errorf("TODO %T", xv))
+		c.err(n, "%s", errorf("TODO %T", xv))
 		return n
 	}
 
 	u64, ok := constant.Uint64Val(xv)
 	if !ok {
-		c.err(n, errorf("TODO %T", xv))
+		c.err(n, "%s", errorf("TODO %T", xv))
 		return n
 	}
 
 	if u64 >= uint64(at.Len) {
-		c.err(n, errorf("TODO %T", xv))
+		c.err(n, "%s", errorf("TODO %T", xv))
 	}
 	return n
 }
@@ -1312,10 +1312,10 @@ func (n *MethodExpr) check(c *ctx) Node {
 
 	defer n.exit()
 
-	c.err(n, errorf("TODO %T", n))
+	c.err(n, "%s", errorf("TODO %T", n))
 	return n
 
-	//TODO c.err(n, errorf("TODO %T", n))
+	//TODO c.err(n, "%s", errorf("TODO %T", n))
 }
 
 func (n *ParenExpr) check(c *ctx) Node {
@@ -1335,14 +1335,14 @@ func (n *ParenExpr) check(c *ctx) Node {
 		case *Variable:
 			n.typ = y.Type()
 		default:
-			c.err(n, errorf("TODO %T %T", x, y))
+			c.err(n, "%s", errorf("TODO %T %T", x, y))
 		}
 	case *BinaryExpr:
 		n.typ = x.Type()
 	case *UnaryExpr:
 		n.typ = x.Type()
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 	return n
 }
@@ -1365,7 +1365,7 @@ func (n *QualifiedIdent) check(c *ctx) Node {
 			c.checkExpr(&r)
 			return r
 		default:
-			c.err(n, errorf("TODO %T", x))
+			c.err(n, "%s", errorf("TODO %T", x))
 		}
 	default:
 		n.resolvedIn = c.pkg
@@ -1384,7 +1384,7 @@ func (n *QualifiedIdent) check(c *ctx) Node {
 	case *Variable:
 		n.typ = c.checkType(x)
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 	return n
 
@@ -1414,7 +1414,7 @@ func (n *Selector) check(c *ctx) Node {
 		}
 	}
 
-	c.err(n.Dot, errorf("TODO %T %v", t, t))
+	c.err(n.Dot, "%s", errorf("TODO %T %v", t, t))
 	return n
 }
 
@@ -1425,10 +1425,10 @@ func (n *SliceExpr) check(c *ctx) Node {
 
 	defer n.exit()
 
-	c.err(n, errorf("TODO %T", n))
+	c.err(n, "%s", errorf("TODO %T", n))
 	return n
 
-	//TODO c.err(n, errorf("TODO %T", n))
+	//TODO c.err(n, "%s", errorf("TODO %T", n))
 }
 
 func (n *TypeAssertion) check(c *ctx) Node {
@@ -1438,10 +1438,10 @@ func (n *TypeAssertion) check(c *ctx) Node {
 
 	defer n.exit()
 
-	c.err(n, errorf("TODO %T", n))
+	c.err(n, "%s", errorf("TODO %T", n))
 	return n
 
-	//TODO c.err(n, errorf("TODO %T", n))
+	//TODO c.err(n, "%s", errorf("TODO %T", n))
 }
 
 func (n *TypeSwitchGuard) check(c *ctx) Node {
@@ -1451,10 +1451,10 @@ func (n *TypeSwitchGuard) check(c *ctx) Node {
 
 	defer n.exit()
 
-	c.err(n, errorf("TODO %T", n))
+	c.err(n, "%s", errorf("TODO %T", n))
 	return n
 
-	//TODO c.err(n, errorf("TODO %T", n))
+	//TODO c.err(n, "%s", errorf("TODO %T", n))
 }
 
 func (n *UnaryExpr) check(c *ctx) Node {
@@ -1483,7 +1483,7 @@ func (n *UnaryExpr) check(c *ctx) Node {
 
 		// ok
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 		return n
 	}
 
@@ -1497,13 +1497,13 @@ func (n *UnaryExpr) check(c *ctx) Node {
 			c.checkType(r)
 			return r
 		default:
-			c.err(n, errorf("TODO %T", x))
+			c.err(n, "%s", errorf("TODO %T", x))
 			return n
 		}
 	case *Variable:
 		// ok
 	default:
-		c.err(n.Expr, errorf("TODO %T", x))
+		c.err(n.Expr, "%s", errorf("TODO %T", x))
 		return n
 	}
 
@@ -1520,7 +1520,7 @@ func (n *UnaryExpr) check(c *ctx) Node {
 		n.typ = newPointer(c.pkg, t)
 	case '-', '+':
 		if !isAnyArithmeticType(t) {
-			c.err(n, errorf("TODO %s %v", n.Op.Ch.str(), t))
+			c.err(n, "%s", errorf("TODO %s %v", n.Op.Ch.str(), t))
 			break
 		}
 
@@ -1530,14 +1530,14 @@ func (n *UnaryExpr) check(c *ctx) Node {
 
 		w := constant.UnaryOp(xlat[n.Op.Ch], v, 0) //TODO prec
 		if w.Kind() == constant.Unknown {
-			c.err(n, errorf("TODO %s", n.Op.Ch.str()))
+			c.err(n, "%s", errorf("TODO %s", n.Op.Ch.str()))
 			break
 		}
 
 		n.val = w
 	case '^':
 		if !isAnyIntegerType(t) {
-			c.err(n, errorf("TODO %T", n))
+			c.err(n, "%s", errorf("TODO %T", n))
 		}
 
 		if v.Kind() == constant.Unknown {
@@ -1546,7 +1546,7 @@ func (n *UnaryExpr) check(c *ctx) Node {
 
 		w := constant.UnaryOp(xlat[n.Op.Ch], v, 0)
 		if w.Kind() == constant.Unknown {
-			c.err(n, errorf("TODO %s", n.Op.Ch.str()))
+			c.err(n, "%s", errorf("TODO %s", n.Op.Ch.str()))
 			break
 		}
 
@@ -1556,11 +1556,11 @@ func (n *UnaryExpr) check(c *ctx) Node {
 		case *PointerType:
 			n.typ = x.Elem
 		default:
-			c.err(n, errorf("TODO %T", x))
+			c.err(n, "%s", errorf("TODO %T", x))
 		}
 	case '!':
 		if !isAnyBoolType(t) {
-			c.err(n, errorf("TODO %T", n))
+			c.err(n, "%s", errorf("TODO %T", n))
 		}
 
 		if v.Kind() == constant.Unknown {
@@ -1569,13 +1569,13 @@ func (n *UnaryExpr) check(c *ctx) Node {
 
 		w := constant.UnaryOp(xlat[n.Op.Ch], v, 0)
 		if w.Kind() == constant.Unknown {
-			c.err(n, errorf("TODO %s", n.Op.Ch.str()))
+			c.err(n, "%s", errorf("TODO %s", n.Op.Ch.str()))
 			break
 		}
 
 		n.val = w
 	default:
-		c.err(n, errorf("TODO %T %s", n, n.Op.Ch.str()))
+		c.err(n, "%s", errorf("TODO %T %s", n, n.Op.Ch.str()))
 	}
 	return n
 }
@@ -1595,13 +1595,13 @@ func (n *Variable) check(c *ctx) Node {
 	}
 	switch {
 	case n.TypeNode == nil && n.Expr == nil:
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 	case n.TypeNode == nil && n.Expr != nil:
 		n.typ = c.defaultType(n.Expr.Type())
 	case n.TypeNode != nil && n.Expr == nil:
 		// nop
 	default: //case n.Type != nil && n.Expr != nil:
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 	}
 	return n
 }
@@ -1626,7 +1626,7 @@ func (n *Signature) check(c *ctx) Node {
 	case *Parameters:
 		r.Result = tuple(c, x.ParameterList)
 	default:
-		c.err(x, errorf("TODO %T", x))
+		c.err(x, "%s", errorf("TODO %T", x))
 	}
 	n.typ = r
 	return n
@@ -1712,7 +1712,7 @@ func (n *FunctionDecl) checkBody(c *ctx) {
 
 		// ok
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 	body.check(c)
 }
@@ -1724,10 +1724,10 @@ func (n *MethodDecl) check(c *ctx) Node {
 
 	defer n.exit()
 
-	c.err(n, errorf("TODO %T", n))
+	c.err(n, "%s", errorf("TODO %T", n))
 	return n
 
-	//TODO c.err(n, errorf("TODO %T", n))
+	//TODO c.err(n, "%s", errorf("TODO %T", n))
 }
 
 func (n *Block) check(c *ctx) {
@@ -1787,13 +1787,13 @@ func (c *ctx) checkStatement(n Node) {
 				y.LexicalScope().add(c, y.Ident.Src(), y.Ident.Offset(), ts)
 				c.checkType(y)
 			default:
-				c.err(y, errorf("TODO %T", y))
+				c.err(y, "%s", errorf("TODO %T", y))
 			}
 		}
 	case *EmptyStmt:
 		// nop
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 }
 
@@ -1823,42 +1823,42 @@ func (n *ExprSwitchCase) check(c *ctx, t Type) {
 		for i := range n.ExprList {
 			_, et := c.checkExpr(&n.ExprList[i].Expr)
 			if !c.isAssignable(n.ExprList[i].Expr, et, t) {
-				c.err(n, errorf("TODO %T", n))
+				c.err(n, "%s", errorf("TODO %T", n))
 			}
 		}
 	case DEFAULT:
 		// nop
 	default:
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 	}
 }
 
 func (n *FallthroughStmt) check(c *ctx) {
 	if !c.fallthroughOk {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 		return
 	}
 }
 
 func (n *ContinueStmt) check(c *ctx) {
 	if !c.continueOk {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 		return
 	}
 
 	if n.Label.IsValid() {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 	}
 }
 
 func (n *BreakStmt) check(c *ctx) {
 	if !c.breakOk {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 		return
 	}
 
 	if n.Label.IsValid() {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 	}
 }
 
@@ -1870,13 +1870,13 @@ func (n *DeferStmt) check(c *ctx) {
 	case *Arguments:
 		// ok
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 }
 
 func (n *IncDecStmt) check(c *ctx) {
 	if _, t := c.checkExpr(&n.Expr); !isAnyArithmeticType(t) {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 	}
 }
 
@@ -1887,12 +1887,12 @@ func (n *ForStmt) check(c *ctx) {
 		c.checkStatement(fc.InitStmt)
 		if fc.Condition != nil {
 			if _, t := c.checkExpr(&fc.Condition); !isAnyBoolType(t) {
-				c.err(n, errorf("TODO %T", n))
+				c.err(n, "%s", errorf("TODO %T", n))
 			}
 		}
 		c.checkStatement(fc.PostStmt)
 	case n.RangeClause != nil:
-		c.err(n.RangeClause, errorf("TODO %T", n))
+		c.err(n.RangeClause, "%s", errorf("TODO %T", n))
 	}
 	n.Block.check(c.inFor())
 }
@@ -1902,7 +1902,7 @@ func (n *ShortVarDecl) check(c *ctx) {
 		c.checkExpr(&n.ExprList[i].Expr)
 	}
 	if g, e := len(n.IdentifierList), len(n.ExprList); g != e {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 		return
 	}
 
@@ -1936,7 +1936,7 @@ func (n *Assignment) check(c *ctx) {
 		c.checkExpr(&n.RExprList[i].Expr)
 	}
 	if g, e := len(n.LExprList), len(n.RExprList); g != e {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 		return
 	}
 
@@ -1947,7 +1947,7 @@ func (n *Assignment) check(c *ctx) {
 
 		expr := n.RExprList[i].Expr
 		if !c.isAssignable(expr, expr.Type(), v.Expr.Type()) {
-			c.err(expr, errorf("TODO %v -> %v", expr.Type(), v.Expr.Type()))
+			c.err(expr, "%s", errorf("TODO %v -> %v", expr.Type(), v.Expr.Type()))
 		}
 	}
 }
@@ -1955,7 +1955,7 @@ func (n *Assignment) check(c *ctx) {
 func (n *IfStmt) check(c *ctx) {
 	c.checkStatement(n.SimpleStmt)
 	if _, t := c.checkExpr(&n.Expr); !isAnyBoolType(t) {
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 	}
 	n.Block.check(c)
 	switch x := n.ElsePart.(type) {
@@ -1966,7 +1966,7 @@ func (n *IfStmt) check(c *ctx) {
 	case *Block:
 		x.check(c)
 	default:
-		c.err(n, errorf("TODO %T", x))
+		c.err(n, "%s", errorf("TODO %T", x))
 	}
 }
 
@@ -2004,7 +2004,7 @@ func (n *ReturnStmt) check(c *ctx) {
 		}
 
 		if g, e := et, ft.Result.Types[i]; !c.isAssignable(v.Expr, g, e) {
-			c.err(n, errorf("TODO %T", n))
+			c.err(n, "%s", errorf("TODO %T", n))
 		}
 	}
 }

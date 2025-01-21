@@ -277,7 +277,7 @@ func (c *ctx) convertValue(n Node, v constant.Value, to Type) (r constant.Value)
 			return v
 		}
 	}
-	c.err(n, errorf("TODO %v %v -> %v", v, v.Kind(), to.Kind()))
+	c.err(n, "%s", errorf("TODO %v %v -> %v", v, v.Kind(), to.Kind()))
 	return unknown
 }
 
@@ -292,24 +292,24 @@ func (c *ctx) convertType(n Node, from, to Type) {
 		case Pointer, UnsafePointer, Uintptr:
 			// ok
 		default:
-			c.err(n, errorf("cannot convert %s to %s", from, to))
+			c.err(n, "%s", errorf("cannot convert %s to %s", from, to))
 		}
 	case UntypedInt, UntypedFloat, UntypedComplex:
 		switch {
 		case isArithmeticType(to):
 			// ok
 		default:
-			c.err(n, errorf("cannot convert %s to %s", from, to))
+			c.err(n, "%s", errorf("cannot convert %s to %s", from, to))
 		}
 	case Pointer, Uintptr:
 		switch to.Kind() {
 		case UnsafePointer:
 			// ok
 		default:
-			c.err(n, errorf("cannot convert %s to %s", from, to))
+			c.err(n, "%s", errorf("cannot convert %s to %s", from, to))
 		}
 	default:
-		c.err(n, errorf("TODO %v -> %v", from.Kind(), to.Kind()))
+		c.err(n, "%s", errorf("TODO %v -> %v", from.Kind(), to.Kind()))
 	}
 }
 
@@ -339,7 +339,7 @@ func (c *ctx) singleType(n Node, t Type) Type {
 	switch x := t.(type) {
 	case *TupleType:
 		if len(x.Types) != 1 {
-			c.err(n, errorf("expected a single expression"))
+			c.err(n, "%s", errorf("expected a single expression"))
 			return Invalid
 		}
 

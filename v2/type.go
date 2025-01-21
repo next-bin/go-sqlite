@@ -383,7 +383,7 @@ func (n *InterfaceTypeNode) check(c *ctx) Node {
 	t := &InterfaceType{}
 	for _, v := range n.InterfaceElems {
 		_ = v
-		c.err(n, errorf("TODO %T", n))
+		c.err(n, "%s", errorf("TODO %T", n))
 	}
 	n.typ = t
 	return n
@@ -526,7 +526,7 @@ func (n *StructTypeNode) check(c *ctx) Node {
 				}
 			}
 		default:
-			c.err(v, errorf("TODO %T", x))
+			c.err(v, "%s", errorf("TODO %T", x))
 		}
 	}
 	for i, v := range t.Fields {
