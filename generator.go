@@ -80,7 +80,7 @@ func main() {
 	}
 
 	switch target {
-	case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "darwin/amd64", "darwin/arm64":
+	case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "darwin/amd64", "darwin/arm64", "netbsd/amd64":
 		sed = "gsed"
 	}
 
@@ -169,6 +169,7 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-ignore-unsupported-alignment",
+			"-ignore-link-errors",
 
 			"-DHAVE_USLEEP",
 			"-DLONGDOUBLE_TYPE=double",
@@ -237,7 +238,7 @@ func main() {
 			config = append(config, "-DSQLITE_OS_UNIX=1")
 		}
 		switch target {
-		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64":
+		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "netbsd/amd64":
 			config = append(config, "-ltcl8.6")
 		}
 		config = append(config, "-eval-all-macros")
@@ -385,11 +386,12 @@ go work use \
 			"--prefix-undefined=_",
 			"-extended-errors",
 			"-ignore-unsupported-alignment",
+			"-ignore-link-errors",
 			"-I", ilibz,
 			"-I", ilibtcl,
 		)
 		switch target {
-		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64":
+		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "netbsd/amd64":
 			args = append(args, "-ltcl8.6")
 		}
 		switch {
@@ -506,6 +508,7 @@ go work use \
 				os.Args[0],
 				"-DNDEBUG",
 				"-ignore-unsupported-alignment",
+				"-ignore-link-errors",
 				"-o", filepath.Join("speedtest1", fn),
 				"-I", makeRoot,
 				filepath.Join(makeRoot, "test", "speedtest1.c"),
@@ -573,6 +576,7 @@ go work use \
 				"-DNDEBUG",
 				"-I", makeRoot,
 				"-ignore-unsupported-alignment",
+				"-ignore-link-errors",
 				"-o", filepath.Join("mptest", fn),
 				filepath.Join(makeRoot, "mptest", "mptest.c"),
 				"-lsqlite3",
