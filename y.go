@@ -1943,7 +1943,7 @@ func (y *y) xerrors() error {
 		y.fset.AddFile(y.opts.XErrorsName, -1, n),
 		y.opts.XErrorsSrc,
 		func(pos token.Position, msg string) {
-			y.errp(pos, msg)
+			y.errp(pos, "%s", msg)
 		},
 		0, // Ignore comments
 	)
