@@ -143,7 +143,7 @@ func main() {
 	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.55.3 modernc.org/libz@v0.13.2 modernc.org/libtcl8.6@v0.12.1")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.61.11 modernc.org/libz@v0.16.14 modernc.org/libtcl8.6@v0.16.5")
 		config := []string{os.Args[0]}
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
@@ -255,6 +255,7 @@ func main() {
 	if win {
 		fn = fmt.Sprintf("ccgo_%s.go", goos)
 	}
+	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
 	mustCopyFile(filepath.Join("include", "sqlite3.h"), filepath.Join(makeRoot, "sqlite3.h"), nil)
 	mustCopyFile(filepath.Join("include", "sqlite3ext.h"), filepath.Join(makeRoot, "sqlite3ext.h"), nil)
 	_, extractedArchivePath = filepath.Split(archive2Path)
@@ -295,9 +296,9 @@ func main() {
 		util.MustShell(true, nil, "sh", "-c", `
 go mod init example.com/libsqlite3
 go get \
-	modernc.org/libc@v1.55.3 \
-	modernc.org/libtcl8.6@v0.12.1 \
-	modernc.org/libz@v0.13.2 \
+	modernc.org/libc@v1.61.11 \
+	modernc.org/libtcl8.6@v0.16.5 \
+	modernc.org/libz@v0.16.14 \
 `)
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", `
