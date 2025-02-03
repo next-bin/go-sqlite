@@ -44,11 +44,6 @@ var (
 )
 
 func TestMain(m *testing.M) {
-	switch runtime.GOARCH {
-	case "386", "arm", "s390x":
-		// OOM
-		skip = append(skip, "cmdIL-5.7")
-	}
 	switch target {
 	case "freebsd/amd64":
 		skip = append(skip,
@@ -193,12 +188,12 @@ func TestMain(m *testing.M) {
 	case "linux/386":
 		skip = append(skip,
 			"iortrans-3.1",
-			"socket_inet6-2.2",
 			"unixInit-3.1",
 			"unixInit-3.2",
 		)
 	case "linux/arm":
 		skip = append(skip,
+			"cmdIL-5.7",
 			"chan-15.2",
 			"iortrans-3.1",
 			"unixInit-3.2",
@@ -232,6 +227,7 @@ func TestMain(m *testing.M) {
 		)
 	case "linux/s390x":
 		skip = append(skip,
+			"cmdIL-5.7",
 			"iortrans-3.1",
 			"unixInit-3.1",
 			"unixInit-3.2",
@@ -653,6 +649,7 @@ func TestMain(m *testing.M) {
 			"clock-40.1",
 			"clock-42.1",
 			"clock-49.2",
+			"cmdIL-5.7",
 			"cmdMZ-6.6",
 			"cmdinfo-4.*",
 			"cmdinfo-5.*",
