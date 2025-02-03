@@ -1,4 +1,4 @@
-// Code generated for linux/ppc64le by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_linux_ppc64le.go -I /tmp/libsqlite3/sqlite-src-3460100 /tmp/libsqlite3/sqlite-src-3460100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/ppc64le by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_ppc64le.go -I /tmp/libsqlite3/sqlite-src-3460100 /tmp/libsqlite3/sqlite-src-3460100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && ppc64le
 
@@ -12,1023 +12,44 @@ import (
 	"modernc.org/libsqlite3"
 )
 
-var (
-	_ reflect.Type
-	_ unsafe.Pointer
-)
+var _ reflect.Type
+var _ unsafe.Pointer
 
-const BIG_ENDIAN = "__BIG_ENDIAN"
-const BUFSIZ = 8192
-const BYTE_ORDER = "__BYTE_ORDER"
-const EXIT_FAILURE = 1
-const EXIT_SUCCESS = 0
-const FD_SETSIZE = "__FD_SETSIZE"
-const FILENAME_MAX = 4096
-const FTS5_TOKENIZE_AUX = 0x0008
-const FTS5_TOKENIZE_DOCUMENT = 0x0004
-const FTS5_TOKENIZE_PREFIX = 0x0002
-const FTS5_TOKENIZE_QUERY = 0x0001
-const FTS5_TOKEN_COLOCATED = 0x0001
-const FULLY_WITHIN = 2
-const F_LOCK = 1
-const F_OK = 0
-const F_TEST = 3
-const F_TLOCK = 2
-const F_ULOCK = 0
-const LITTLE_ENDIAN = "__LITTLE_ENDIAN"
-const L_INCR = "SEEK_CUR"
-const L_SET = "SEEK_SET"
-const L_XTND = "SEEK_END"
-const L_ctermid = 9
-const L_tmpnam = 20
 const NAMEWIDTH = 60
-const NDEBUG = 1
-const NFDBITS = "__NFDBITS"
-const NOT_WITHIN = 0
-const PARTLY_WITHIN = 1
-const PDP_ENDIAN = "__PDP_ENDIAN"
-const P_tmpdir = "/tmp"
-const RAND_MAX = 2147483647
-const R_OK = 4
-const SEEK_CUR = 1
-const SEEK_END = 2
-const SEEK_SET = 0
-const SQLITE3_TEXT = 3
-const SQLITE_ABORT = 4
-const SQLITE_ACCESS_EXISTS = 0
-const SQLITE_ACCESS_READ = 2
-const SQLITE_ACCESS_READWRITE = 1
-const SQLITE_ALTER_TABLE = 26
-const SQLITE_ANALYZE = 28
-const SQLITE_ANY = 5
-const SQLITE_ATTACH = 24
-const SQLITE_AUTH = 23
 const SQLITE_BLOB = 4
-const SQLITE_BUSY = 5
-const SQLITE_CANTOPEN = 14
-const SQLITE_CHECKPOINT_FULL = 1
-const SQLITE_CHECKPOINT_PASSIVE = 0
-const SQLITE_CHECKPOINT_RESTART = 2
-const SQLITE_CHECKPOINT_TRUNCATE = 3
-const SQLITE_CONFIG_COVERING_INDEX_SCAN = 20
-const SQLITE_CONFIG_GETMALLOC = 5
-const SQLITE_CONFIG_GETMUTEX = 11
-const SQLITE_CONFIG_GETPCACHE = 15
-const SQLITE_CONFIG_GETPCACHE2 = 19
 const SQLITE_CONFIG_HEAP = 8
-const SQLITE_CONFIG_LOG = 16
 const SQLITE_CONFIG_LOOKASIDE = 13
-const SQLITE_CONFIG_MALLOC = 4
-const SQLITE_CONFIG_MEMDB_MAXSIZE = 29
 const SQLITE_CONFIG_MEMSTATUS = 9
-const SQLITE_CONFIG_MMAP_SIZE = 22
 const SQLITE_CONFIG_MULTITHREAD = 2
-const SQLITE_CONFIG_MUTEX = 10
 const SQLITE_CONFIG_PAGECACHE = 7
-const SQLITE_CONFIG_PCACHE = 14
-const SQLITE_CONFIG_PCACHE2 = 18
-const SQLITE_CONFIG_PCACHE_HDRSZ = 24
-const SQLITE_CONFIG_PMASZ = 25
-const SQLITE_CONFIG_ROWID_IN_VIEW = 30
-const SQLITE_CONFIG_SCRATCH = 6
 const SQLITE_CONFIG_SERIALIZED = 3
 const SQLITE_CONFIG_SINGLETHREAD = 1
-const SQLITE_CONFIG_SMALL_MALLOC = 27
-const SQLITE_CONFIG_SORTERREF_SIZE = 28
-const SQLITE_CONFIG_SQLLOG = 21
-const SQLITE_CONFIG_STMTJRNL_SPILL = 26
-const SQLITE_CONFIG_URI = 17
-const SQLITE_CONFIG_WIN32_HEAPSIZE = 23
-const SQLITE_CONSTRAINT = 19
-const SQLITE_COPY = 0
-const SQLITE_CORRUPT = 11
-const SQLITE_CREATE_INDEX = 1
-const SQLITE_CREATE_TABLE = 2
-const SQLITE_CREATE_TEMP_INDEX = 3
-const SQLITE_CREATE_TEMP_TABLE = 4
-const SQLITE_CREATE_TEMP_TRIGGER = 5
-const SQLITE_CREATE_TEMP_VIEW = 6
-const SQLITE_CREATE_TRIGGER = 7
-const SQLITE_CREATE_VIEW = 8
-const SQLITE_CREATE_VTABLE = 29
-const SQLITE_DBCONFIG_DEFENSIVE = 1010
-const SQLITE_DBCONFIG_DQS_DDL = 1014
-const SQLITE_DBCONFIG_DQS_DML = 1013
-const SQLITE_DBCONFIG_ENABLE_FKEY = 1002
-const SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER = 1004
-const SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION = 1005
-const SQLITE_DBCONFIG_ENABLE_QPSG = 1007
-const SQLITE_DBCONFIG_ENABLE_TRIGGER = 1003
-const SQLITE_DBCONFIG_ENABLE_VIEW = 1015
-const SQLITE_DBCONFIG_LEGACY_ALTER_TABLE = 1012
-const SQLITE_DBCONFIG_LEGACY_FILE_FORMAT = 1016
 const SQLITE_DBCONFIG_LOOKASIDE = 1001
-const SQLITE_DBCONFIG_MAINDBNAME = 1000
-const SQLITE_DBCONFIG_MAX = 1019
-const SQLITE_DBCONFIG_NO_CKPT_ON_CLOSE = 1006
-const SQLITE_DBCONFIG_RESET_DATABASE = 1009
-const SQLITE_DBCONFIG_REVERSE_SCANORDER = 1019
 const SQLITE_DBCONFIG_STMT_SCANSTATUS = 1018
-const SQLITE_DBCONFIG_TRIGGER_EQP = 1008
-const SQLITE_DBCONFIG_TRUSTED_SCHEMA = 1017
-const SQLITE_DBCONFIG_WRITABLE_SCHEMA = 1011
 const SQLITE_DBSTATUS_CACHE_HIT = 7
 const SQLITE_DBSTATUS_CACHE_MISS = 8
-const SQLITE_DBSTATUS_CACHE_SPILL = 12
 const SQLITE_DBSTATUS_CACHE_USED = 1
-const SQLITE_DBSTATUS_CACHE_USED_SHARED = 11
 const SQLITE_DBSTATUS_CACHE_WRITE = 9
-const SQLITE_DBSTATUS_DEFERRED_FKS = 10
 const SQLITE_DBSTATUS_LOOKASIDE_HIT = 4
 const SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL = 6
 const SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE = 5
 const SQLITE_DBSTATUS_LOOKASIDE_USED = 0
-const SQLITE_DBSTATUS_MAX = 12
 const SQLITE_DBSTATUS_SCHEMA_USED = 2
 const SQLITE_DBSTATUS_STMT_USED = 3
-const SQLITE_DELETE = 9
-const SQLITE_DENY = 1
-const SQLITE_DESERIALIZE_FREEONCLOSE = 1
-const SQLITE_DESERIALIZE_READONLY = 4
-const SQLITE_DESERIALIZE_RESIZEABLE = 2
-const SQLITE_DETACH = 25
-const SQLITE_DETERMINISTIC = 0x000000800
-const SQLITE_DIRECTONLY = 0x000080000
-const SQLITE_DONE = 101
-const SQLITE_DROP_INDEX = 10
-const SQLITE_DROP_TABLE = 11
-const SQLITE_DROP_TEMP_INDEX = 12
-const SQLITE_DROP_TEMP_TABLE = 13
-const SQLITE_DROP_TEMP_TRIGGER = 14
-const SQLITE_DROP_TEMP_VIEW = 15
-const SQLITE_DROP_TRIGGER = 16
-const SQLITE_DROP_VIEW = 17
-const SQLITE_DROP_VTABLE = 30
-const SQLITE_EMPTY = 16
-const SQLITE_ERROR = 1
-const SQLITE_EXTERN = "extern"
-const SQLITE_FAIL = 3
-const SQLITE_FCNTL_BEGIN_ATOMIC_WRITE = 31
-const SQLITE_FCNTL_BUSYHANDLER = 15
-const SQLITE_FCNTL_CHUNK_SIZE = 6
-const SQLITE_FCNTL_CKPT_DONE = 37
-const SQLITE_FCNTL_CKPT_START = 39
-const SQLITE_FCNTL_CKSM_FILE = 41
-const SQLITE_FCNTL_COMMIT_ATOMIC_WRITE = 32
-const SQLITE_FCNTL_COMMIT_PHASETWO = 22
-const SQLITE_FCNTL_DATA_VERSION = 35
-const SQLITE_FCNTL_EXTERNAL_READER = 40
-const SQLITE_FCNTL_FILE_POINTER = 7
-const SQLITE_FCNTL_GET_LOCKPROXYFILE = 2
-const SQLITE_FCNTL_HAS_MOVED = 20
-const SQLITE_FCNTL_JOURNAL_POINTER = 28
-const SQLITE_FCNTL_LAST_ERRNO = 4
-const SQLITE_FCNTL_LOCKSTATE = 1
-const SQLITE_FCNTL_LOCK_TIMEOUT = 34
-const SQLITE_FCNTL_MMAP_SIZE = 18
-const SQLITE_FCNTL_OVERWRITE = 11
-const SQLITE_FCNTL_PDB = 30
-const SQLITE_FCNTL_PERSIST_WAL = 10
-const SQLITE_FCNTL_POWERSAFE_OVERWRITE = 13
-const SQLITE_FCNTL_PRAGMA = 14
-const SQLITE_FCNTL_RBU = 26
 const SQLITE_FCNTL_RESERVE_BYTES = 38
-const SQLITE_FCNTL_RESET_CACHE = 42
-const SQLITE_FCNTL_ROLLBACK_ATOMIC_WRITE = 33
-const SQLITE_FCNTL_SET_LOCKPROXYFILE = 3
-const SQLITE_FCNTL_SIZE_HINT = 5
-const SQLITE_FCNTL_SIZE_LIMIT = 36
-const SQLITE_FCNTL_SYNC = 21
-const SQLITE_FCNTL_SYNC_OMITTED = 8
-const SQLITE_FCNTL_TEMPFILENAME = 16
-const SQLITE_FCNTL_TRACE = 19
-const SQLITE_FCNTL_VFSNAME = 12
-const SQLITE_FCNTL_VFS_POINTER = 27
-const SQLITE_FCNTL_WAL_BLOCK = 24
-const SQLITE_FCNTL_WIN32_AV_RETRY = 9
-const SQLITE_FCNTL_WIN32_GET_HANDLE = 29
-const SQLITE_FCNTL_WIN32_SET_HANDLE = 23
-const SQLITE_FCNTL_ZIPVFS = 25
 const SQLITE_FLOAT = 2
-const SQLITE_FORMAT = 24
-const SQLITE_FULL = 13
-const SQLITE_FUNCTION = 31
-const SQLITE_GET_LOCKPROXYFILE = "SQLITE_FCNTL_GET_LOCKPROXYFILE"
-const SQLITE_IGNORE = 2
-const SQLITE_INDEX_CONSTRAINT_EQ = 2
-const SQLITE_INDEX_CONSTRAINT_FUNCTION = 150
-const SQLITE_INDEX_CONSTRAINT_GE = 32
-const SQLITE_INDEX_CONSTRAINT_GLOB = 66
-const SQLITE_INDEX_CONSTRAINT_GT = 4
-const SQLITE_INDEX_CONSTRAINT_IS = 72
-const SQLITE_INDEX_CONSTRAINT_ISNOT = 69
-const SQLITE_INDEX_CONSTRAINT_ISNOTNULL = 70
-const SQLITE_INDEX_CONSTRAINT_ISNULL = 71
-const SQLITE_INDEX_CONSTRAINT_LE = 8
-const SQLITE_INDEX_CONSTRAINT_LIKE = 65
-const SQLITE_INDEX_CONSTRAINT_LIMIT = 73
-const SQLITE_INDEX_CONSTRAINT_LT = 16
-const SQLITE_INDEX_CONSTRAINT_MATCH = 64
-const SQLITE_INDEX_CONSTRAINT_NE = 68
-const SQLITE_INDEX_CONSTRAINT_OFFSET = 74
-const SQLITE_INDEX_CONSTRAINT_REGEXP = 67
-const SQLITE_INDEX_SCAN_UNIQUE = 1
-const SQLITE_INNOCUOUS = 0x000200000
-const SQLITE_INSERT = 18
-const SQLITE_INTEGER = 1
-const SQLITE_INTERNAL = 2
-const SQLITE_INTERRUPT = 9
-const SQLITE_IOCAP_ATOMIC = 0x00000001
-const SQLITE_IOCAP_ATOMIC16K = 0x00000040
-const SQLITE_IOCAP_ATOMIC1K = 0x00000004
-const SQLITE_IOCAP_ATOMIC2K = 0x00000008
-const SQLITE_IOCAP_ATOMIC32K = 0x00000080
-const SQLITE_IOCAP_ATOMIC4K = 0x00000010
-const SQLITE_IOCAP_ATOMIC512 = 0x00000002
-const SQLITE_IOCAP_ATOMIC64K = 0x00000100
-const SQLITE_IOCAP_ATOMIC8K = 0x00000020
-const SQLITE_IOCAP_BATCH_ATOMIC = 0x00004000
-const SQLITE_IOCAP_IMMUTABLE = 0x00002000
-const SQLITE_IOCAP_POWERSAFE_OVERWRITE = 0x00001000
-const SQLITE_IOCAP_SAFE_APPEND = 0x00000200
-const SQLITE_IOCAP_SEQUENTIAL = 0x00000400
-const SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN = 0x00000800
-const SQLITE_IOERR = 10
-const SQLITE_LAST_ERRNO = "SQLITE_FCNTL_LAST_ERRNO"
-const SQLITE_LIMIT_ATTACHED = 7
-const SQLITE_LIMIT_COLUMN = 2
-const SQLITE_LIMIT_COMPOUND_SELECT = 4
-const SQLITE_LIMIT_EXPR_DEPTH = 3
-const SQLITE_LIMIT_FUNCTION_ARG = 6
-const SQLITE_LIMIT_LENGTH = 0
-const SQLITE_LIMIT_LIKE_PATTERN_LENGTH = 8
-const SQLITE_LIMIT_SQL_LENGTH = 1
-const SQLITE_LIMIT_TRIGGER_DEPTH = 10
-const SQLITE_LIMIT_VARIABLE_NUMBER = 9
-const SQLITE_LIMIT_VDBE_OP = 5
-const SQLITE_LIMIT_WORKER_THREADS = 11
-const SQLITE_LOCKED = 6
-const SQLITE_LOCK_EXCLUSIVE = 4
-const SQLITE_LOCK_NONE = 0
-const SQLITE_LOCK_PENDING = 3
-const SQLITE_LOCK_RESERVED = 2
-const SQLITE_LOCK_SHARED = 1
-const SQLITE_MISMATCH = 20
-const SQLITE_MISUSE = 21
-const SQLITE_MUTEX_FAST = 0
-const SQLITE_MUTEX_RECURSIVE = 1
-const SQLITE_MUTEX_STATIC_APP1 = 8
-const SQLITE_MUTEX_STATIC_APP2 = 9
-const SQLITE_MUTEX_STATIC_APP3 = 10
-const SQLITE_MUTEX_STATIC_LRU = 6
-const SQLITE_MUTEX_STATIC_LRU2 = 7
-const SQLITE_MUTEX_STATIC_MAIN = 2
-const SQLITE_MUTEX_STATIC_MASTER = 2
-const SQLITE_MUTEX_STATIC_MEM = 3
-const SQLITE_MUTEX_STATIC_MEM2 = 4
-const SQLITE_MUTEX_STATIC_OPEN = 4
-const SQLITE_MUTEX_STATIC_PMEM = 7
-const SQLITE_MUTEX_STATIC_PRNG = 5
-const SQLITE_MUTEX_STATIC_VFS1 = 11
-const SQLITE_MUTEX_STATIC_VFS2 = 12
-const SQLITE_MUTEX_STATIC_VFS3 = 13
-const SQLITE_NOLFS = 22
-const SQLITE_NOMEM = 7
-const SQLITE_NOTADB = 26
-const SQLITE_NOTFOUND = 12
-const SQLITE_NOTICE = 27
-const SQLITE_NULL = 5
 const SQLITE_OK = 0
-const SQLITE_OPEN_AUTOPROXY = 0x00000020
 const SQLITE_OPEN_CREATE = 4
-const SQLITE_OPEN_DELETEONCLOSE = 0x00000008
-const SQLITE_OPEN_EXCLUSIVE = 0x00000010
-const SQLITE_OPEN_EXRESCODE = 0x02000000
-const SQLITE_OPEN_FULLMUTEX = 0x00010000
-const SQLITE_OPEN_MAIN_DB = 0x00000100
-const SQLITE_OPEN_MAIN_JOURNAL = 0x00000800
-const SQLITE_OPEN_MASTER_JOURNAL = 0x00004000
-const SQLITE_OPEN_MEMORY = 0x00000080
-const SQLITE_OPEN_NOFOLLOW = 0x01000000
 const SQLITE_OPEN_NOMUTEX = 32768
-const SQLITE_OPEN_PRIVATECACHE = 0x00040000
-const SQLITE_OPEN_READONLY = 0x00000001
 const SQLITE_OPEN_READWRITE = 2
-const SQLITE_OPEN_SHAREDCACHE = 0x00020000
-const SQLITE_OPEN_SUBJOURNAL = 0x00002000
-const SQLITE_OPEN_SUPER_JOURNAL = 0x00004000
-const SQLITE_OPEN_TEMP_DB = 0x00000200
-const SQLITE_OPEN_TEMP_JOURNAL = 0x00001000
-const SQLITE_OPEN_TRANSIENT_DB = 0x00000400
-const SQLITE_OPEN_URI = 0x00000040
-const SQLITE_OPEN_WAL = 0x00080000
-const SQLITE_PERM = 3
-const SQLITE_PRAGMA = 19
-const SQLITE_PREPARE_NORMALIZE = 0x02
-const SQLITE_PREPARE_NO_VTAB = 0x04
-const SQLITE_PREPARE_PERSISTENT = 0x01
-const SQLITE_PROTOCOL = 15
-const SQLITE_RANGE = 25
-const SQLITE_READ = 20
-const SQLITE_READONLY = 8
-const SQLITE_RECURSIVE = 33
-const SQLITE_REINDEX = 27
-const SQLITE_REPLACE = 5
-const SQLITE_RESULT_SUBTYPE = 0x001000000
-const SQLITE_ROLLBACK = 1
 const SQLITE_ROW = 100
-const SQLITE_SAVEPOINT = 32
-const SQLITE_SCANSTAT_COMPLEX = 0x0001
-const SQLITE_SCANSTAT_EST = 2
-const SQLITE_SCANSTAT_EXPLAIN = 4
-const SQLITE_SCANSTAT_NAME = 3
-const SQLITE_SCANSTAT_NCYCLE = 7
-const SQLITE_SCANSTAT_NLOOP = 0
-const SQLITE_SCANSTAT_NVISIT = 1
-const SQLITE_SCANSTAT_PARENTID = 6
-const SQLITE_SCANSTAT_SELECTID = 5
-const SQLITE_SCHEMA = 17
-const SQLITE_SELECT = 21
-const SQLITE_SERIALIZE_NOCOPY = 0x001
-const SQLITE_SET_LOCKPROXYFILE = "SQLITE_FCNTL_SET_LOCKPROXYFILE"
-const SQLITE_SHM_EXCLUSIVE = 8
-const SQLITE_SHM_LOCK = 2
-const SQLITE_SHM_NLOCK = 8
-const SQLITE_SHM_SHARED = 4
-const SQLITE_SHM_UNLOCK = 1
-const SQLITE_SOURCE_ID = "2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1"
 const SQLITE_STATUS_MALLOC_COUNT = 9
 const SQLITE_STATUS_MALLOC_SIZE = 5
 const SQLITE_STATUS_MEMORY_USED = 0
 const SQLITE_STATUS_PAGECACHE_OVERFLOW = 2
 const SQLITE_STATUS_PAGECACHE_SIZE = 7
-const SQLITE_STATUS_PAGECACHE_USED = 1
-const SQLITE_STATUS_PARSER_STACK = 6
-const SQLITE_STATUS_SCRATCH_OVERFLOW = 4
-const SQLITE_STATUS_SCRATCH_SIZE = 8
-const SQLITE_STATUS_SCRATCH_USED = 3
-const SQLITE_STDCALL = "SQLITE_APICALL"
-const SQLITE_STMTSTATUS_AUTOINDEX = 3
-const SQLITE_STMTSTATUS_FILTER_HIT = 8
-const SQLITE_STMTSTATUS_FILTER_MISS = 7
-const SQLITE_STMTSTATUS_FULLSCAN_STEP = 1
-const SQLITE_STMTSTATUS_MEMUSED = 99
-const SQLITE_STMTSTATUS_REPREPARE = 5
-const SQLITE_STMTSTATUS_RUN = 6
-const SQLITE_STMTSTATUS_SORT = 2
-const SQLITE_STMTSTATUS_VM_STEP = 4
-const SQLITE_SUBTYPE = 0x000100000
-const SQLITE_SYNC_DATAONLY = 0x00010
-const SQLITE_SYNC_FULL = 0x00003
-const SQLITE_SYNC_NORMAL = 0x00002
-const SQLITE_TESTCTRL_ALWAYS = 13
-const SQLITE_TESTCTRL_ASSERT = 12
-const SQLITE_TESTCTRL_BENIGN_MALLOC_HOOKS = 10
-const SQLITE_TESTCTRL_BITVEC_TEST = 8
-const SQLITE_TESTCTRL_BYTEORDER = 22
-const SQLITE_TESTCTRL_EXPLAIN_STMT = 19
-const SQLITE_TESTCTRL_EXTRA_SCHEMA_CHECKS = 29
-const SQLITE_TESTCTRL_FAULT_INSTALL = 9
-const SQLITE_TESTCTRL_FIRST = 5
-const SQLITE_TESTCTRL_FK_NO_ACTION = 7
-const SQLITE_TESTCTRL_IMPOSTER = 25
-const SQLITE_TESTCTRL_INTERNAL_FUNCTIONS = 17
-const SQLITE_TESTCTRL_ISINIT = 23
-const SQLITE_TESTCTRL_ISKEYWORD = 16
-const SQLITE_TESTCTRL_JSON_SELFCHECK = 14
-const SQLITE_TESTCTRL_LAST = 34
-const SQLITE_TESTCTRL_LOCALTIME_FAULT = 18
-const SQLITE_TESTCTRL_LOGEST = 33
-const SQLITE_TESTCTRL_NEVER_CORRUPT = 20
-const SQLITE_TESTCTRL_ONCE_RESET_THRESHOLD = 19
-const SQLITE_TESTCTRL_OPTIMIZATIONS = 15
-const SQLITE_TESTCTRL_PARSER_COVERAGE = 26
-const SQLITE_TESTCTRL_PENDING_BYTE = 11
-const SQLITE_TESTCTRL_PRNG_RESET = 7
-const SQLITE_TESTCTRL_PRNG_RESTORE = 6
-const SQLITE_TESTCTRL_PRNG_SAVE = 5
-const SQLITE_TESTCTRL_PRNG_SEED = 28
-const SQLITE_TESTCTRL_RESERVE = 14
-const SQLITE_TESTCTRL_RESULT_INTREAL = 27
-const SQLITE_TESTCTRL_SCRATCHMALLOC = 17
-const SQLITE_TESTCTRL_SEEK_COUNT = 30
-const SQLITE_TESTCTRL_SORTER_MMAP = 24
-const SQLITE_TESTCTRL_TRACEFLAGS = 31
-const SQLITE_TESTCTRL_TUNE = 32
 const SQLITE_TESTCTRL_USELONGDOUBLE = 34
-const SQLITE_TESTCTRL_VDBE_COVERAGE = 21
-const SQLITE_TEXT = 3
-const SQLITE_TOOBIG = 18
-const SQLITE_TRACE_CLOSE = 0x08
-const SQLITE_TRACE_PROFILE = 0x02
-const SQLITE_TRACE_ROW = 0x04
-const SQLITE_TRACE_STMT = 0x01
-const SQLITE_TRANSACTION = 22
-const SQLITE_TXN_NONE = 0
-const SQLITE_TXN_READ = 1
-const SQLITE_TXN_WRITE = 2
-const SQLITE_UPDATE = 23
-const SQLITE_UTF16 = 4
-const SQLITE_UTF16BE = 3
-const SQLITE_UTF16LE = 2
-const SQLITE_UTF16_ALIGNED = 8
 const SQLITE_UTF8 = 1
-const SQLITE_VERSION = "3.46.1"
-const SQLITE_VERSION_NUMBER = 3046001
-const SQLITE_VTAB_CONSTRAINT_SUPPORT = 1
-const SQLITE_VTAB_DIRECTONLY = 3
-const SQLITE_VTAB_INNOCUOUS = 2
-const SQLITE_VTAB_USES_ALL_SCHEMAS = 4
-const SQLITE_WARNING = 28
-const SQLITE_WIN32_DATA_DIRECTORY_TYPE = 1
-const SQLITE_WIN32_TEMP_DIRECTORY_TYPE = 2
-const STDERR_FILENO = 2
-const STDIN_FILENO = 0
-const STDOUT_FILENO = 1
-const TMP_MAX = 238328
-const WCONTINUED = 8
-const WEXITED = 4
-const WNOHANG = 1
-const WNOWAIT = 0x01000000
-const WSTOPPED = 2
-const WUNTRACED = 2
-const W_OK = 2
-const X_OK = 1
-const _ALLOCA_H = 1
-const _ARCH_PPC = 1
-const _ARCH_PPC64 = 1
-const _ARCH_PPCGR = 1
-const _ARCH_PPCSQ = 1
-const _ARCH_PWR4 = 1
-const _ARCH_PWR5 = 1
-const _ARCH_PWR5X = 1
-const _ARCH_PWR6 = 1
-const _ARCH_PWR7 = 1
-const _ARCH_PWR8 = 1
-const _ASSERT_H = 1
-const _BITS_BYTESWAP_H = 1
-const _BITS_ENDIANNESS_H = 1
-const _BITS_ENDIAN_H = 1
-const _BITS_POSIX_OPT_H = 1
-const _BITS_PTHREADTYPES_ARCH_H = 1
-const _BITS_PTHREADTYPES_COMMON_H = 1
-const _BITS_STDINT_INTN_H = 1
-const _BITS_STDIO_LIM_H = 1
-const _BITS_TIME64_H = 1
-const _BITS_TYPESIZES_H = 1
-const _BITS_TYPES_H = 1
-const _BITS_TYPES_LOCALE_T_H = 1
-const _BITS_TYPES___LOCALE_T_H = 1
-const _BITS_UINTN_IDENTITY_H = 1
-const _CALL_ELF = 2
-const _CALL_LINUX = 1
-const _CS_POSIX_V5_WIDTH_RESTRICTED_ENVS = "_CS_V5_WIDTH_RESTRICTED_ENVS"
-const _CS_POSIX_V6_WIDTH_RESTRICTED_ENVS = "_CS_V6_WIDTH_RESTRICTED_ENVS"
-const _CS_POSIX_V7_WIDTH_RESTRICTED_ENVS = "_CS_V7_WIDTH_RESTRICTED_ENVS"
-const _CTYPE_H = 1
-const _ENDIAN_H = 1
-const _FEATURES_H = 1
-const _GETOPT_CORE_H = 1
-const _GETOPT_POSIX_H = 1
-const _IOFBF = 0
-const _IOLBF = 1
-const _IONBF = 2
-const _IO_EOF_SEEN = 0x0010
-const _IO_ERR_SEEN = 0x0020
-const _IO_USER_LOCK = 0x8000
-const _LFS64_ASYNCHRONOUS_IO = 1
-const _LFS64_LARGEFILE = 1
-const _LFS64_STDIO = 1
-const _LFS_ASYNCHRONOUS_IO = 1
-const _LFS_LARGEFILE = 1
-const _LITTLE_ENDIAN = 1
-const _LP64 = 1
-const _POSIX2_CHAR_TERM = 200809
-const _POSIX2_C_BIND = "__POSIX2_THIS_VERSION"
-const _POSIX2_C_DEV = "__POSIX2_THIS_VERSION"
-const _POSIX2_C_VERSION = "__POSIX2_THIS_VERSION"
-const _POSIX2_LOCALEDEF = "__POSIX2_THIS_VERSION"
-const _POSIX2_SW_DEV = "__POSIX2_THIS_VERSION"
-const _POSIX2_VERSION = "__POSIX2_THIS_VERSION"
-const _POSIX_ADVISORY_INFO = 200809
-const _POSIX_ASYNCHRONOUS_IO = 200809
-const _POSIX_ASYNC_IO = 1
-const _POSIX_BARRIERS = 200809
-const _POSIX_CHOWN_RESTRICTED = 0
-const _POSIX_CLOCK_SELECTION = 200809
-const _POSIX_CPUTIME = 0
-const _POSIX_FSYNC = 200809
-const _POSIX_IPV6 = 200809
-const _POSIX_JOB_CONTROL = 1
-const _POSIX_MAPPED_FILES = 200809
-const _POSIX_MEMLOCK = 200809
-const _POSIX_MEMLOCK_RANGE = 200809
-const _POSIX_MEMORY_PROTECTION = 200809
-const _POSIX_MESSAGE_PASSING = 200809
-const _POSIX_MONOTONIC_CLOCK = 0
-const _POSIX_NO_TRUNC = 1
-const _POSIX_PRIORITIZED_IO = 200809
-const _POSIX_PRIORITY_SCHEDULING = 200809
-const _POSIX_RAW_SOCKETS = 200809
-const _POSIX_READER_WRITER_LOCKS = 200809
-const _POSIX_REALTIME_SIGNALS = 200809
-const _POSIX_REENTRANT_FUNCTIONS = 1
-const _POSIX_REGEXP = 1
-const _POSIX_SAVED_IDS = 1
-const _POSIX_SEMAPHORES = 200809
-const _POSIX_SHARED_MEMORY_OBJECTS = 200809
-const _POSIX_SHELL = 1
-const _POSIX_SPAWN = 200809
-const _POSIX_SPIN_LOCKS = 200809
-const _POSIX_SYNCHRONIZED_IO = 200809
-const _POSIX_THREADS = 200809
-const _POSIX_THREAD_ATTR_STACKADDR = 200809
-const _POSIX_THREAD_ATTR_STACKSIZE = 200809
-const _POSIX_THREAD_CPUTIME = 0
-const _POSIX_THREAD_PRIORITY_SCHEDULING = 200809
-const _POSIX_THREAD_PRIO_INHERIT = 200809
-const _POSIX_THREAD_PRIO_PROTECT = 200809
-const _POSIX_THREAD_PROCESS_SHARED = 200809
-const _POSIX_THREAD_ROBUST_PRIO_INHERIT = 200809
-const _POSIX_THREAD_SAFE_FUNCTIONS = 200809
-const _POSIX_TIMEOUTS = 200809
-const _POSIX_TIMERS = 200809
-const _POSIX_V6_LP64_OFF64 = 1
-const _POSIX_V7_LP64_OFF64 = 1
-const _POSIX_VERSION = 200809
-const _SC_PAGE_SIZE = "_SC_PAGESIZE"
-const _STDC_PREDEF_H = 1
-const _STDIO_H = 1
-const _STDLIB_H = 1
-const _STRINGS_H = 1
-const _STRING_H = 1
-const _STRUCT_TIMESPEC = 1
-const _SYS_CDEFS_H = 1
-const _SYS_SELECT_H = 1
-const _SYS_TYPES_H = 1
-const _THREAD_MUTEX_INTERNAL_H = 1
-const _THREAD_SHARED_TYPES_H = 1
-const _UNISTD_H = 1
-const _XBS5_LP64_OFF64 = 1
-const _XOPEN_ENH_I18N = 1
-const _XOPEN_LEGACY = 1
-const _XOPEN_REALTIME = 1
-const _XOPEN_REALTIME_THREADS = 1
-const _XOPEN_SHM = 1
-const _XOPEN_UNIX = 1
-const _XOPEN_VERSION = 700
-const _XOPEN_XCU_VERSION = 4
-const _XOPEN_XPG2 = 1
-const _XOPEN_XPG3 = 1
-const _XOPEN_XPG4 = 1
-const __ALTIVEC__ = 1
-const __APPLE_ALTIVEC__ = 1
-const __ASSERT_VOID_CAST = "void"
-const __ATOMIC_ACQUIRE = 2
-const __ATOMIC_ACQ_REL = 4
-const __ATOMIC_CONSUME = 1
-const __ATOMIC_RELAXED = 0
-const __ATOMIC_RELEASE = 3
-const __ATOMIC_SEQ_CST = 5
-const __BIGGEST_ALIGNMENT__ = 16
-const __BIG_ENDIAN = 4321
-const __BIT_TYPES_DEFINED__ = 1
-const __BLKCNT64_T_TYPE = "__SQUAD_TYPE"
-const __BLKCNT_T_TYPE = "__SLONGWORD_TYPE"
-const __BLKSIZE_T_TYPE = "__SLONGWORD_TYPE"
-const __BUILTIN_CPU_SUPPORTS__ = 1
-const __BYTE_ORDER = "__LITTLE_ENDIAN"
-const __BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
-const __CCGO__ = 1
-const __CHAR_BIT__ = 8
-const __CHAR_UNSIGNED__ = 1
-const __CLOCKID_T_TYPE = "__S32_TYPE"
-const __CLOCK_T_TYPE = "__SLONGWORD_TYPE"
-const __CMODEL_MEDIUM__ = 1
-const __CPU_MASK_TYPE = "__ULONGWORD_TYPE"
-const __CRYPTO__ = 1
-const __DADDR_T_TYPE = "__S32_TYPE"
-const __DBL_DECIMAL_DIG__ = 17
-const __DBL_DIG__ = 15
-const __DBL_HAS_DENORM__ = 1
-const __DBL_HAS_INFINITY__ = 1
-const __DBL_HAS_QUIET_NAN__ = 1
-const __DBL_MANT_DIG__ = 53
-const __DBL_MAX_10_EXP__ = 308
-const __DBL_MAX_EXP__ = 1024
-const __DEC128_EPSILON__ = 1e-33
-const __DEC128_MANT_DIG__ = 34
-const __DEC128_MAX_EXP__ = 6145
-const __DEC128_MAX__ = "9.999999999999999999999999999999999E6144"
-const __DEC128_MIN__ = 1e-6143
-const __DEC128_SUBNORMAL_MIN__ = 0.000000000000000000000000000000001e-6143
-const __DEC32_EPSILON__ = 1e-6
-const __DEC32_MANT_DIG__ = 7
-const __DEC32_MAX_EXP__ = 97
-const __DEC32_MAX__ = 9.999999e96
-const __DEC32_MIN__ = 1e-95
-const __DEC32_SUBNORMAL_MIN__ = 0.000001e-95
-const __DEC64_EPSILON__ = 1e-15
-const __DEC64_MANT_DIG__ = 16
-const __DEC64_MAX_EXP__ = 385
-const __DEC64_MAX__ = "9.999999999999999E384"
-const __DEC64_MIN__ = 1e-383
-const __DEC64_SUBNORMAL_MIN__ = 0.000000000000001e-383
-const __DECIMAL_DIG__ = 17
-const __DEC_EVAL_METHOD__ = 2
-const __DEV_T_TYPE = "__UQUAD_TYPE"
-const __ELF__ = 1
-const __ENUM_IDTYPE_T = 1
-const __FD_SETSIZE = 1024
-const __FILE_defined = 1
-const __FINITE_MATH_ONLY__ = 0
-const __FLOAT128_TYPE__ = 1
-const __FLOAT128__ = 1
-const __FLOAT_WORD_ORDER = "__BYTE_ORDER"
-const __FLOAT_WORD_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
-const __FLT128_DECIMAL_DIG__ = 36
-const __FLT128_DENORM_MIN__ = 6.47517511943802511092443895822764655e-4966
-const __FLT128_DIG__ = 33
-const __FLT128_EPSILON__ = 1.92592994438723585305597794258492732e-34
-const __FLT128_HAS_DENORM__ = 1
-const __FLT128_HAS_INFINITY__ = 1
-const __FLT128_HAS_QUIET_NAN__ = 1
-const __FLT128_MANT_DIG__ = 113
-const __FLT128_MAX_10_EXP__ = 4932
-const __FLT128_MAX_EXP__ = 16384
-const __FLT128_MAX__ = "1.18973149535723176508575932662800702e+4932"
-const __FLT128_MIN__ = 3.36210314311209350626267781732175260e-4932
-const __FLT128_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
-const __FLT32X_DECIMAL_DIG__ = 17
-const __FLT32X_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
-const __FLT32X_DIG__ = 15
-const __FLT32X_EPSILON__ = 2.22044604925031308084726333618164062e-16
-const __FLT32X_HAS_DENORM__ = 1
-const __FLT32X_HAS_INFINITY__ = 1
-const __FLT32X_HAS_QUIET_NAN__ = 1
-const __FLT32X_MANT_DIG__ = 53
-const __FLT32X_MAX_10_EXP__ = 308
-const __FLT32X_MAX_EXP__ = 1024
-const __FLT32X_MAX__ = 1.79769313486231570814527423731704357e+308
-const __FLT32X_MIN__ = 2.22507385850720138309023271733240406e-308
-const __FLT32X_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
-const __FLT32_DECIMAL_DIG__ = 9
-const __FLT32_DENORM_MIN__ = 1.40129846432481707092372958328991613e-45
-const __FLT32_DIG__ = 6
-const __FLT32_EPSILON__ = 1.19209289550781250000000000000000000e-7
-const __FLT32_HAS_DENORM__ = 1
-const __FLT32_HAS_INFINITY__ = 1
-const __FLT32_HAS_QUIET_NAN__ = 1
-const __FLT32_MANT_DIG__ = 24
-const __FLT32_MAX_10_EXP__ = 38
-const __FLT32_MAX_EXP__ = 128
-const __FLT32_MAX__ = 3.40282346638528859811704183484516925e+38
-const __FLT32_MIN__ = 1.17549435082228750796873653722224568e-38
-const __FLT32_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
-const __FLT64X_DECIMAL_DIG__ = 36
-const __FLT64X_DENORM_MIN__ = 6.47517511943802511092443895822764655e-4966
-const __FLT64X_DIG__ = 33
-const __FLT64X_EPSILON__ = 1.92592994438723585305597794258492732e-34
-const __FLT64X_HAS_DENORM__ = 1
-const __FLT64X_HAS_INFINITY__ = 1
-const __FLT64X_HAS_QUIET_NAN__ = 1
-const __FLT64X_MANT_DIG__ = 113
-const __FLT64X_MAX_10_EXP__ = 4932
-const __FLT64X_MAX_EXP__ = 16384
-const __FLT64X_MAX__ = "1.18973149535723176508575932662800702e+4932"
-const __FLT64X_MIN__ = 3.36210314311209350626267781732175260e-4932
-const __FLT64X_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
-const __FLT64_DECIMAL_DIG__ = 17
-const __FLT64_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
-const __FLT64_DIG__ = 15
-const __FLT64_EPSILON__ = 2.22044604925031308084726333618164062e-16
-const __FLT64_HAS_DENORM__ = 1
-const __FLT64_HAS_INFINITY__ = 1
-const __FLT64_HAS_QUIET_NAN__ = 1
-const __FLT64_MANT_DIG__ = 53
-const __FLT64_MAX_10_EXP__ = 308
-const __FLT64_MAX_EXP__ = 1024
-const __FLT64_MAX__ = 1.79769313486231570814527423731704357e+308
-const __FLT64_MIN__ = 2.22507385850720138309023271733240406e-308
-const __FLT64_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
-const __FLT_DECIMAL_DIG__ = 9
-const __FLT_DENORM_MIN__ = 1.40129846432481707092372958328991613e-45
-const __FLT_DIG__ = 6
-const __FLT_EPSILON__ = 1.19209289550781250000000000000000000e-7
-const __FLT_EVAL_METHOD_TS_18661_3__ = 0
-const __FLT_EVAL_METHOD__ = 0
-const __FLT_HAS_DENORM__ = 1
-const __FLT_HAS_INFINITY__ = 1
-const __FLT_HAS_QUIET_NAN__ = 1
-const __FLT_MANT_DIG__ = 24
-const __FLT_MAX_10_EXP__ = 38
-const __FLT_MAX_EXP__ = 128
-const __FLT_MAX__ = 3.40282346638528859811704183484516925e+38
-const __FLT_MIN__ = 1.17549435082228750796873653722224568e-38
-const __FLT_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
-const __FLT_RADIX__ = 2
-const __FP_FAST_FMA = 1
-const __FP_FAST_FMAF = 1
-const __FP_FAST_FMAF32 = 1
-const __FP_FAST_FMAF32x = 1
-const __FP_FAST_FMAF64 = 1
-const __FP_FAST_FMAL = 1
-const __FSBLKCNT64_T_TYPE = "__UQUAD_TYPE"
-const __FSBLKCNT_T_TYPE = "__ULONGWORD_TYPE"
-const __FSFILCNT64_T_TYPE = "__UQUAD_TYPE"
-const __FSFILCNT_T_TYPE = "__ULONGWORD_TYPE"
-const __FSWORD_T_TYPE = "__SWORD_TYPE"
-const __FUNCTION__ = "__func__"
-const __GCC_ATOMIC_BOOL_LOCK_FREE = 2
-const __GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
-const __GCC_ATOMIC_CHAR32_T_LOCK_FREE = 2
-const __GCC_ATOMIC_CHAR_LOCK_FREE = 2
-const __GCC_ATOMIC_INT_LOCK_FREE = 2
-const __GCC_ATOMIC_LLONG_LOCK_FREE = 2
-const __GCC_ATOMIC_LONG_LOCK_FREE = 2
-const __GCC_ATOMIC_POINTER_LOCK_FREE = 2
-const __GCC_ATOMIC_SHORT_LOCK_FREE = 2
-const __GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
-const __GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
-const __GCC_HAVE_DWARF2_CFI_ASM = 1
-const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
-const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_16 = 1
-const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
-const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
-const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
-const __GCC_IEC_559 = 2
-const __GCC_IEC_559_COMPLEX = 2
-const __GID_T_TYPE = "__U32_TYPE"
-const __GLIBC_MINOR__ = 31
-const __GLIBC__ = 2
-const __GNUC_MINOR__ = 2
-const __GNUC_PATCHLEVEL__ = 1
-const __GNUC_STDC_INLINE__ = 1
-const __GNUC__ = 10
-const __GXX_ABI_VERSION = 1014
-const __HAVE_BSWAP__ = 1
-const __HAVE_DISTINCT_FLOAT128 = 0
-const __HAVE_DISTINCT_FLOAT128X = "__HAVE_FLOAT128X"
-const __HAVE_DISTINCT_FLOAT16 = "__HAVE_FLOAT16"
-const __HAVE_DISTINCT_FLOAT32 = 0
-const __HAVE_DISTINCT_FLOAT32X = 0
-const __HAVE_DISTINCT_FLOAT64 = 0
-const __HAVE_DISTINCT_FLOAT64X = 0
-const __HAVE_FLOAT128 = 0
-const __HAVE_FLOAT128X = 0
-const __HAVE_FLOAT16 = 0
-const __HAVE_FLOAT32 = 1
-const __HAVE_FLOAT32X = 1
-const __HAVE_FLOAT64 = 1
-const __HAVE_FLOAT64X = "__HAVE_FLOAT128"
-const __HAVE_FLOAT64X_LONG_DOUBLE = 0
-const __HAVE_FLOATN_NOT_TYPEDEF = 1
-const __HAVE_GENERIC_SELECTION = 1
-const __HAVE_SPECULATION_SAFE_VALUE = 1
-const __HTM__ = 1
-const __ID_T_TYPE = "__U32_TYPE"
-const __ILP32_OFF32_CFLAGS = "-m32"
-const __ILP32_OFF32_LDFLAGS = "-m32"
-const __ILP32_OFFBIG_CFLAGS = "-m32 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
-const __ILP32_OFFBIG_LDFLAGS = "-m32"
-const __INO64_T_TYPE = "__UQUAD_TYPE"
-const __INO_T_MATCHES_INO64_T = 1
-const __INO_T_TYPE = "__ULONGWORD_TYPE"
-const __INT16_MAX__ = 0x7fff
-const __INT32_MAX__ = 0x7fffffff
-const __INT32_TYPE__ = "int"
-const __INT64_MAX__ = 0x7fffffffffffffff
-const __INT8_MAX__ = 0x7f
-const __INTMAX_MAX__ = 0x7fffffffffffffff
-const __INTMAX_WIDTH__ = 64
-const __INTPTR_MAX__ = 0x7fffffffffffffff
-const __INTPTR_WIDTH__ = 64
-const __INT_FAST16_MAX__ = 0x7fffffffffffffff
-const __INT_FAST16_WIDTH__ = 64
-const __INT_FAST32_MAX__ = 0x7fffffffffffffff
-const __INT_FAST32_WIDTH__ = 64
-const __INT_FAST64_MAX__ = 0x7fffffffffffffff
-const __INT_FAST64_WIDTH__ = 64
-const __INT_FAST8_MAX__ = 0x7f
-const __INT_FAST8_WIDTH__ = 8
-const __INT_LEAST16_MAX__ = 0x7fff
-const __INT_LEAST16_WIDTH__ = 16
-const __INT_LEAST32_MAX__ = 0x7fffffff
-const __INT_LEAST32_TYPE__ = "int"
-const __INT_LEAST32_WIDTH__ = 32
-const __INT_LEAST64_MAX__ = 0x7fffffffffffffff
-const __INT_LEAST64_WIDTH__ = 64
-const __INT_LEAST8_MAX__ = 0x7f
-const __INT_LEAST8_WIDTH__ = 8
-const __INT_MAX__ = 0x7fffffff
-const __INT_WIDTH__ = 32
-const __KEY_T_TYPE = "__S32_TYPE"
-const __LDBL_COMPAT = 1
-const __LDBL_DECIMAL_DIG__ = 17
-const __LDBL_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
-const __LDBL_DIG__ = 15
-const __LDBL_EPSILON__ = 2.22044604925031308084726333618164062e-16
-const __LDBL_HAS_DENORM__ = 1
-const __LDBL_HAS_INFINITY__ = 1
-const __LDBL_HAS_QUIET_NAN__ = 1
-const __LDBL_MANT_DIG__ = 53
-const __LDBL_MAX_10_EXP__ = 308
-const __LDBL_MAX_EXP__ = 1024
-const __LDBL_MAX__ = 1.79769313486231570814527423731704357e+308
-const __LDBL_MIN__ = 2.22507385850720138309023271733240406e-308
-const __LDBL_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
-const __LITTLE_ENDIAN = 1234
-const __LITTLE_ENDIAN__ = 1
-const __LONG_DOUBLE_MATH_OPTIONAL = 1
-const __LONG_DOUBLE_USES_FLOAT128 = 0
-const __LONG_LONG_MAX__ = 0x7fffffffffffffff
-const __LONG_LONG_WIDTH__ = 64
-const __LONG_MAX__ = 0x7fffffffffffffff
-const __LONG_WIDTH__ = 64
-const __LP64_OFF64_CFLAGS = "-m64"
-const __LP64_OFF64_LDFLAGS = "-m64"
-const __LP64__ = 1
-const __MODE_T_TYPE = "__U32_TYPE"
-const __NLINK_T_TYPE = "__UWORD_TYPE"
-const __NO_INLINE__ = 1
-const __NO_LONG_DOUBLE_MATH = 1
-const __OFF64_T_TYPE = "__SQUAD_TYPE"
-const __OFF_T_MATCHES_OFF64_T = 1
-const __OFF_T_TYPE = "__SLONGWORD_TYPE"
-const __ORDER_BIG_ENDIAN__ = 4321
-const __ORDER_LITTLE_ENDIAN__ = 1234
-const __ORDER_PDP_ENDIAN__ = 3412
-const __PDP_ENDIAN = 3412
-const __PIC__ = 2
-const __PID_T_TYPE = "__S32_TYPE"
-const __PIE__ = 2
-const __POSIX2_THIS_VERSION = 200809
-const __POWER8_VECTOR__ = 1
-const __PPC64__ = 1
-const __PPC__ = 1
-const __PRAGMA_REDEFINE_EXTNAME = 1
-const __PRETTY_FUNCTION__ = "__func__"
-const __PTHREAD_MUTEX_HAVE_PREV = 1
-const __PTRDIFF_MAX__ = 0x7fffffffffffffff
-const __PTRDIFF_WIDTH__ = 64
-const __QUAD_MEMORY_ATOMIC__ = 1
-const __RECIPF__ = 1
-const __RECIP_PRECISION__ = 1
-const __RECIP__ = 1
-const __RLIM64_T_TYPE = "__UQUAD_TYPE"
-const __RLIM_T_MATCHES_RLIM64_T = 1
-const __RLIM_T_TYPE = "__ULONGWORD_TYPE"
-const __RSQRTEF__ = 1
-const __RSQRTE__ = 1
-const __S32_TYPE = "int"
-const __SCHAR_MAX__ = 0x7f
-const __SCHAR_WIDTH__ = 8
-const __SHRT_MAX__ = 0x7fff
-const __SHRT_WIDTH__ = 16
-const __SIG_ATOMIC_MAX__ = 0x7fffffff
-const __SIG_ATOMIC_TYPE__ = "int"
-const __SIG_ATOMIC_WIDTH__ = 32
-const __SIZEOF_DOUBLE__ = 8
-const __SIZEOF_FLOAT__ = 4
-const __SIZEOF_INT128__ = 16
-const __SIZEOF_INT__ = 4
-const __SIZEOF_LONG_DOUBLE__ = 8
-const __SIZEOF_LONG_LONG__ = 8
-const __SIZEOF_LONG__ = 8
-const __SIZEOF_POINTER__ = 8
-const __SIZEOF_PTHREAD_ATTR_T = 56
-const __SIZEOF_PTHREAD_BARRIERATTR_T = 4
-const __SIZEOF_PTHREAD_BARRIER_T = 32
-const __SIZEOF_PTHREAD_CONDATTR_T = 4
-const __SIZEOF_PTHREAD_COND_T = 48
-const __SIZEOF_PTHREAD_MUTEXATTR_T = 4
-const __SIZEOF_PTHREAD_MUTEX_T = 40
-const __SIZEOF_PTHREAD_RWLOCKATTR_T = 8
-const __SIZEOF_PTHREAD_RWLOCK_T = 56
-const __SIZEOF_PTRDIFF_T__ = 8
-const __SIZEOF_SHORT__ = 2
-const __SIZEOF_SIZE_T__ = 8
-const __SIZEOF_WCHAR_T__ = 4
-const __SIZEOF_WINT_T__ = 4
-const __SIZE_MAX__ = 0xffffffffffffffff
-const __SIZE_WIDTH__ = 64
-const __SLONG32_TYPE = "int"
-const __SSIZE_T_TYPE = "__SWORD_TYPE"
-const __STATFS_MATCHES_STATFS64 = 1
-const __STDC_HOSTED__ = 1
-const __STDC_IEC_559_COMPLEX__ = 1
-const __STDC_IEC_559__ = 1
-const __STDC_ISO_10646__ = 201706
-const __STDC_UTF_16__ = 1
-const __STDC_UTF_32__ = 1
-const __STDC_VERSION__ = 201710
-const __STDC__ = 1
-const __STRUCT_PARM_ALIGN__ = 16
-const __SUSECONDS_T_TYPE = "__SLONGWORD_TYPE"
-const __SYSCALL_SLONG_TYPE = "__SLONGWORD_TYPE"
-const __SYSCALL_ULONG_TYPE = "__ULONGWORD_TYPE"
-const __TIME64_T_TYPE = "__TIME_T_TYPE"
-const __TIMESIZE = "__WORDSIZE"
-const __TIME_T_TYPE = "__SLONGWORD_TYPE"
-const __TM_FENCE__ = 1
-const __UID_T_TYPE = "__U32_TYPE"
-const __UINT16_MAX__ = 0xffff
-const __UINT32_MAX__ = 0xffffffff
-const __UINT64_MAX__ = 0xffffffffffffffff
-const __UINT8_MAX__ = 0xff
-const __UINTMAX_MAX__ = 0xffffffffffffffff
-const __UINTPTR_MAX__ = 0xffffffffffffffff
-const __UINT_FAST16_MAX__ = 0xffffffffffffffff
-const __UINT_FAST32_MAX__ = 0xffffffffffffffff
-const __UINT_FAST64_MAX__ = 0xffffffffffffffff
-const __UINT_FAST8_MAX__ = 0xff
-const __UINT_LEAST16_MAX__ = 0xffff
-const __UINT_LEAST32_MAX__ = 0xffffffff
-const __UINT_LEAST64_MAX__ = 0xffffffffffffffff
-const __UINT_LEAST8_MAX__ = 0xff
-const __USECONDS_T_TYPE = "__U32_TYPE"
-const __USE_POSIX_IMPLICITLY = 1
-const __VEC_ELEMENT_REG_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
-const __VEC__ = 10206
-const __VERSION__ = "10.2.1 20210110"
-const __VSX__ = 1
-const __WALL = 0x40000000
-const __WCHAR_MAX__ = 0x7fffffff
-const __WCHAR_TYPE__ = "int"
-const __WCHAR_WIDTH__ = 32
-const __WCLONE = 0x80000000
-const __WCOREFLAG = 0x80
-const __WINT_MAX__ = 0xffffffff
-const __WINT_MIN__ = 0
-const __WINT_WIDTH__ = 32
-const __WNOTHREAD = 0x20000000
-const __WORDSIZE = 64
-const __WORDSIZE_TIME64_COMPAT32 = 1
-const __W_CONTINUED = 0xffff
-const ____FILE_defined = 1
-const _____fpos64_t_defined = 1
-const _____fpos_t_defined = 1
-const ____mbstate_t_defined = 1
-const __builtin_copysignq = "__builtin_copysignf128"
-const __builtin_fabsq = "__builtin_fabsf128"
-const __builtin_huge_valq = "__builtin_huge_valf128"
-const __builtin_infq = "__builtin_inff128"
-const __builtin_nanq = "__builtin_nanf128"
-const __builtin_nansq = "__builtin_nansf128"
-const __builtin_vsx_vperm = "__builtin_vec_perm"
-const __builtin_vsx_xvmaddadp = "__builtin_vsx_xvmadddp"
-const __builtin_vsx_xvmaddasp = "__builtin_vsx_xvmaddsp"
-const __builtin_vsx_xvmaddmdp = "__builtin_vsx_xvmadddp"
-const __builtin_vsx_xvmaddmsp = "__builtin_vsx_xvmaddsp"
-const __builtin_vsx_xvmsubadp = "__builtin_vsx_xvmsubdp"
-const __builtin_vsx_xvmsubasp = "__builtin_vsx_xvmsubsp"
-const __builtin_vsx_xvmsubmdp = "__builtin_vsx_xvmsubdp"
-const __builtin_vsx_xvmsubmsp = "__builtin_vsx_xvmsubsp"
-const __builtin_vsx_xvnmaddadp = "__builtin_vsx_xvnmadddp"
-const __builtin_vsx_xvnmaddasp = "__builtin_vsx_xvnmaddsp"
-const __builtin_vsx_xvnmaddmdp = "__builtin_vsx_xvnmadddp"
-const __builtin_vsx_xvnmaddmsp = "__builtin_vsx_xvnmaddsp"
-const __builtin_vsx_xvnmsubadp = "__builtin_vsx_xvnmsubdp"
-const __builtin_vsx_xvnmsubasp = "__builtin_vsx_xvnmsubsp"
-const __builtin_vsx_xvnmsubmdp = "__builtin_vsx_xvnmsubdp"
-const __builtin_vsx_xvnmsubmsp = "__builtin_vsx_xvnmsubsp"
-const __builtin_vsx_xxland = "__builtin_vec_and"
-const __builtin_vsx_xxlandc = "__builtin_vec_andc"
-const __builtin_vsx_xxlnor = "__builtin_vec_nor"
-const __builtin_vsx_xxlor = "__builtin_vec_or"
-const __builtin_vsx_xxlxor = "__builtin_vec_xor"
-const __builtin_vsx_xxsel = "__builtin_vec_sel"
-const __clock_t_defined = 1
-const __clockid_t_defined = 1
-const __float128 = "__ieee128"
-const __glibc_c99_flexarr_available = 1
-const __gnu_linux__ = 1
-const __have_pthread_attr_t = 1
-const __ldiv_t_defined = 1
-const __linux = 1
-const __linux__ = 1
-const __lldiv_t_defined = 1
-const __pic__ = 2
-const __pie__ = 2
-const __powerpc64__ = 1
-const __powerpc__ = 1
-const __sigset_t_defined = 1
-const __struct_FILE_defined = 1
-const __time_t_defined = 1
-const __timer_t_defined = 1
-const __timeval_defined = 1
-const __unix = 1
-const __unix__ = 1
-const linux = 1
-const unix = 1
-
-type __builtin_va_list = uintptr
-
-type __predefined_size_t = uint64
-
-type __predefined_wchar_t = int32
-
-type __predefined_ptrdiff_t = int64
 
 // C documentation
 //
@@ -1039,73 +60,9 @@ type __predefined_ptrdiff_t = int64
 //	*/
 var zHelp = [2685]uint8{'U', 's', 'a', 'g', 'e', ':', ' ', '%', 's', ' ', '[', '-', '-', 'o', 'p', 't', 'i', 'o', 'n', 's', ']', ' ', 'D', 'A', 'T', 'A', 'B', 'A', 'S', 'E', 10, 'O', 'p', 't', 'i', 'o', 'n', 's', ':', 10, ' ', ' ', '-', '-', 'a', 'u', 't', 'o', 'v', 'a', 'c', 'u', 'u', 'm', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', 'n', 'a', 'b', 'l', 'e', ' ', 'A', 'U', 'T', 'O', 'V', 'A', 'C', 'U', 'U', 'M', ' ', 'm', 'o', 'd', 'e', 10, ' ', ' ', '-', '-', 'b', 'i', 'g', '-', 't', 'r', 'a', 'n', 's', 'a', 'c', 't', 'i', 'o', 'n', 's', ' ', ' ', 'A', 'd', 'd', ' ', 'B', 'E', 'G', 'I', 'N', '/', 'E', 'N', 'D', ' ', 'a', 'r', 'o', 'u', 'n', 'd', ' ', 'a', 'l', 'l', ' ', 'l', 'a', 'r', 'g', 'e', ' ', 't', 'e', 's', 't', 's', 10, ' ', ' ', '-', '-', 'c', 'a', 'c', 'h', 'e', 's', 'i', 'z', 'e', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 'P', 'R', 'A', 'G', 'M', 'A', ' ', 'c', 'a', 'c', 'h', 'e', '_', 's', 'i', 'z', 'e', '=', 'N', '.', ' ', 'N', 'o', 't', 'e', ':', ' ', 'N', ' ', 'i', 's', ' ', 'p', 'a', 'g', 'e', 's', ',', ' ', 'n', 'o', 't', ' ', 'b', 'y', 't', 'e', 's', 10, ' ', ' ', '-', '-', 'c', 'h', 'e', 'c', 'k', 'p', 'o', 'i', 'n', 't', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'u', 'n', ' ', 'P', 'R', 'A', 'G', 'M', 'A', ' ', 'w', 'a', 'l', '_', 'c', 'h', 'e', 'c', 'k', 'p', 'o', 'i', 'n', 't', ' ', 'a', 'f', 't', 'e', 'r', ' ', 'e', 'a', 'c', 'h', ' ', 't', 'e', 's', 't', ' ', 'c', 'a', 's', 'e', 10, ' ', ' ', '-', '-', 'e', 'x', 'c', 'l', 'u', 's', 'i', 'v', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', 'n', 'a', 'b', 'l', 'e', ' ', 'l', 'o', 'c', 'k', 'i', 'n', 'g', '_', 'm', 'o', 'd', 'e', '=', 'E', 'X', 'C', 'L', 'U', 'S', 'I', 'V', 'E', 10, ' ', ' ', '-', '-', 'e', 'x', 'p', 'l', 'a', 'i', 'n', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'L', 'i', 'k', 'e', ' ', '-', '-', 's', 'q', 'l', 'o', 'n', 'l', 'y', ' ', 'b', 'u', 't', ' ', 'w', 'i', 't', 'h', ' ', 'a', 'd', 'd', 'e', 'd', ' ', 'E', 'X', 'P', 'L', 'A', 'I', 'N', ' ', 'k', 'e', 'y', 'w', 'o', 'r', 'd', 's', 10, ' ', ' ', '-', '-', 'f', 'u', 'l', 'l', 'f', 's', 'y', 'n', 'c', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', 'n', 'a', 'b', 'l', 'e', ' ', 'f', 'u', 'l', 'l', 'f', 's', 'y', 'n', 'c', '=', 'T', 'R', 'U', 'E', 10, ' ', ' ', '-', '-', 'h', 'e', 'a', 'p', ' ', 'S', 'Z', ' ', 'M', 'I', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'M', 'e', 'm', 'o', 'r', 'y', ' ', 'a', 'l', 'l', 'o', 'c', 'a', 't', 'o', 'r', ' ', 'u', 's', 'e', 's', ' ', 'S', 'Z', ' ', 'b', 'y', 't', 'e', 's', ' ', '&', ' ', 'm', 'i', 'n', ' ', 'a', 'l', 'l', 'o', 'c', 'a', 't', 'i', 'o', 'n', ' ', 'M', 'I', 'N', 10, ' ', ' ', '-', '-', 'i', 'n', 'c', 'r', 'v', 'a', 'c', 'u', 'u', 'm', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'E', 'n', 'a', 'b', 'l', 'e', ' ', 'i', 'n', 'c', 'r', 'e', 'm', 'e', 'n', 'a', 't', 'a', 'l', ' ', 'v', 'a', 'c', 'u', 'u', 'm', ' ', 'm', 'o', 'd', 'e', 10, ' ', ' ', '-', '-', 'j', 'o', 'u', 'r', 'n', 'a', 'l', ' ', 'M', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'h', 'e', ' ', 'j', 'o', 'u', 'r', 'n', 'a', 'l', '_', 'm', 'o', 'd', 'e', ' ', 't', 'o', ' ', 'M', 10, ' ', ' ', '-', '-', 'k', 'e', 'y', ' ', 'K', 'E', 'Y', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'h', 'e', ' ', 'e', 'n', 'c', 'r', 'y', 'p', 't', 'i', 'o', 'n', ' ', 'k', 'e', 'y', ' ', 't', 'o', ' ', 'K', 'E', 'Y', 10, ' ', ' ', '-', '-', 'l', 'o', 'o', 'k', 'a', 's', 'i', 'd', 'e', ' ', 'N', ' ', 'S', 'Z', ' ', ' ', ' ', ' ', 'C', 'o', 'n', 'f', 'i', 'g', 'u', 'r', 'e', ' ', 'l', 'o', 'o', 'k', 'a', 's', 'i', 'd', 'e', ' ', 'f', 'o', 'r', ' ', 'N', ' ', 's', 'l', 'o', 't', 's', ' ', 'o', 'f', ' ', 'S', 'Z', ' ', 'b', 'y', 't', 'e', 's', ' ', 'e', 'a', 'c', 'h', 10, ' ', ' ', '-', '-', 'm', 'e', 'm', 'd', 'b', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'a', 'n', ' ', 'i', 'n', '-', 'm', 'e', 'm', 'o', 'r', 'y', ' ', 'd', 'a', 't', 'a', 'b', 'a', 's', 'e', 10, ' ', ' ', '-', '-', 'm', 'm', 'a', 'p', ' ', 'S', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'M', 'M', 'A', 'P', ' ', 't', 'h', 'e', ' ', 'f', 'i', 'r', 's', 't', ' ', 'S', 'Z', ' ', 'b', 'y', 't', 'e', 's', ' ', 'o', 'f', ' ', 't', 'h', 'e', ' ', 'd', 'a', 't', 'a', 'b', 'a', 's', 'e', ' ', 'f', 'i', 'l', 'e', 10, ' ', ' ', '-', '-', 'm', 'u', 'l', 't', 'i', 't', 'h', 'r', 'e', 'a', 'd', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 'm', 'u', 'l', 't', 'i', 't', 'h', 'r', 'e', 'a', 'd', 'e', 'd', ' ', 'm', 'o', 'd', 'e', 10, ' ', ' ', '-', '-', 'n', 'o', 'l', 'o', 'n', 'g', 'd', 'o', 'u', 'b', 'l', 'e', ' ', ' ', ' ', ' ', ' ', ' ', 'D', 'i', 's', 'a', 'b', 'l', 'e', ' ', 't', 'h', 'e', ' ', 'u', 's', 'e', ' ', 'o', 'f', ' ', 'l', 'o', 'n', 'g', ' ', 'd', 'o', 'u', 'b', 'l', 'e', 10, ' ', ' ', '-', '-', 'n', 'o', 'm', 'e', 'm', 's', 't', 'a', 't', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'D', 'i', 's', 'a', 'b', 'l', 'e', ' ', 'm', 'e', 'm', 'o', 'r', 'y', ' ', 's', 't', 'a', 't', 'i', 's', 't', 'i', 'c', 's', 10, ' ', ' ', '-', '-', 'n', 'o', 'm', 'u', 't', 'e', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'O', 'p', 'e', 'n', ' ', 'd', 'b', ' ', 'w', 'i', 't', 'h', ' ', 'S', 'Q', 'L', 'I', 'T', 'E', '_', 'O', 'P', 'E', 'N', '_', 'N', 'O', 'M', 'U', 'T', 'E', 'X', 10, ' ', ' ', '-', '-', 'n', 'o', 's', 'y', 'n', 'c', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 'P', 'R', 'A', 'G', 'M', 'A', ' ', 's', 'y', 'n', 'c', 'h', 'r', 'o', 'n', 'o', 'u', 's', '=', 'O', 'F', 'F', 10, ' ', ' ', '-', '-', 'n', 'o', 't', 'n', 'u', 'l', 'l', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'A', 'd', 'd', ' ', 'N', 'O', 'T', ' ', 'N', 'U', 'L', 'L', ' ', 'c', 'o', 'n', 's', 't', 'r', 'a', 'i', 'n', 't', 's', ' ', 't', 'o', ' ', 't', 'a', 'b', 'l', 'e', ' ', 'c', 'o', 'l', 'u', 'm', 'n', 's', 10, ' ', ' ', '-', '-', 'o', 'u', 't', 'p', 'u', 't', ' ', 'F', 'I', 'L', 'E', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 't', 'o', 'r', 'e', ' ', 'S', 'Q', 'L', ' ', 'o', 'u', 't', 'p', 'u', 't', ' ', 'i', 'n', ' ', 'F', 'I', 'L', 'E', 10, ' ', ' ', '-', '-', 'p', 'a', 'g', 'e', 's', 'i', 'z', 'e', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'h', 'e', ' ', 'p', 'a', 'g', 'e', ' ', 's', 'i', 'z', 'e', ' ', 't', 'o', ' ', 'N', 10, ' ', ' ', '-', '-', 'p', 'c', 'a', 'c', 'h', 'e', ' ', 'N', ' ', 'S', 'Z', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'o', 'n', 'f', 'i', 'g', 'u', 'r', 'e', ' ', 'N', ' ', 'p', 'a', 'g', 'e', 's', ' ', 'o', 'f', ' ', 'p', 'a', 'g', 'e', 'c', 'a', 'c', 'h', 'e', ' ', 'e', 'a', 'c', 'h', ' ', 'o', 'f', ' ', 's', 'i', 'z', 'e', ' ', 'S', 'Z', ' ', 'b', 'y', 't', 'e', 's', 10, ' ', ' ', '-', '-', 'p', 'r', 'i', 'm', 'a', 'r', 'y', 'k', 'e', 'y', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'P', 'R', 'I', 'M', 'A', 'R', 'Y', ' ', 'K', 'E', 'Y', ' ', 'i', 'n', 's', 't', 'e', 'a', 'd', ' ', 'o', 'f', ' ', 'U', 'N', 'I', 'Q', 'U', 'E', ' ', 'w', 'h', 'e', 'r', 'e', ' ', 'a', 'p', 'p', 'r', 'o', 'p', 'r', 'i', 'a', 't', 'e', 10, ' ', ' ', '-', '-', 'r', 'e', 'p', 'e', 'a', 't', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'e', 'p', 'e', 'a', 't', ' ', 'e', 'a', 'c', 'h', ' ', 'S', 'E', 'L', 'E', 'C', 'T', ' ', 'N', ' ', 't', 'i', 'm', 'e', 's', ' ', '(', 'd', 'e', 'f', 'a', 'u', 'l', 't', ':', ' ', '1', ')', 10, ' ', ' ', '-', '-', 'r', 'e', 'p', 'r', 'e', 'p', 'a', 'r', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'e', 'p', 'r', 'e', 'p', 'a', 'r', 'e', ' ', 'e', 'a', 'c', 'h', ' ', 's', 't', 'a', 't', 'e', 'm', 'e', 'n', 't', ' ', 'u', 'p', 'o', 'n', ' ', 'e', 'v', 'e', 'r', 'y', ' ', 'i', 'n', 'v', 'o', 'c', 'a', 't', 'i', 'o', 'n', 10, ' ', ' ', '-', '-', 'r', 'e', 's', 'e', 'r', 'v', 'e', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'e', 's', 'e', 'r', 'v', 'e', ' ', 'N', ' ', 'b', 'y', 't', 'e', 's', ' ', 'o', 'n', ' ', 'e', 'a', 'c', 'h', ' ', 'd', 'a', 't', 'a', 'b', 'a', 's', 'e', ' ', 'p', 'a', 'g', 'e', 10, ' ', ' ', '-', '-', 's', 'c', 'r', 'i', 'p', 't', ' ', 'F', 'I', 'L', 'E', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'r', 'i', 't', 'e', ' ', 'a', 'n', ' ', 'S', 'Q', 'L', ' ', 's', 'c', 'r', 'i', 'p', 't', ' ', 'f', 'o', 'r', ' ', 't', 'h', 'e', ' ', 't', 'e', 's', 't', ' ', 'i', 'n', 't', 'o', ' ', 'F', 'I', 'L', 'E', 10, ' ', ' ', '-', '-', 's', 'e', 'r', 'i', 'a', 'l', 'i', 'z', 'e', 'd', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 's', 'e', 'r', 'i', 'a', 'l', 'i', 'z', 'e', 'd', ' ', 't', 'h', 'r', 'e', 'a', 'd', 'i', 'n', 'g', ' ', 'm', 'o', 'd', 'e', 10, ' ', ' ', '-', '-', 's', 'i', 'n', 'g', 'l', 'e', 't', 'h', 'r', 'e', 'a', 'd', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 's', 'i', 'n', 'g', 'l', 'e', '-', 't', 'h', 'r', 'e', 'a', 'd', 'e', 'd', ' ', 'm', 'o', 'd', 'e', ' ', '-', ' ', 'd', 'i', 's', 'a', 'b', 'l', 'e', 's', ' ', 'a', 'l', 'l', ' ', 'm', 'u', 't', 'e', 'x', 'i', 'n', 'g', 10, ' ', ' ', '-', '-', 's', 'q', 'l', 'o', 'n', 'l', 'y', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'N', 'o', '-', 'o', 'p', '.', ' ', ' ', 'O', 'n', 'l', 'y', ' ', 's', 'h', 'o', 'w', ' ', 't', 'h', 'e', ' ', 'S', 'Q', 'L', ' ', 't', 'h', 'a', 't', ' ', 'w', 'o', 'u', 'l', 'd', ' ', 'h', 'a', 'v', 'e', ' ', 'b', 'e', 'e', 'n', ' ', 'r', 'u', 'n', '.', 10, ' ', ' ', '-', '-', 's', 'h', 'r', 'i', 'n', 'k', '-', 'm', 'e', 'm', 'o', 'r', 'y', ' ', ' ', ' ', ' ', ' ', 'I', 'n', 'v', 'o', 'k', 'e', ' ', 's', 'q', 'l', 'i', 't', 'e', '3', '_', 'd', 'b', '_', 'r', 'e', 'l', 'e', 'a', 's', 'e', '_', 'm', 'e', 'm', 'o', 'r', 'y', '(', ')', ' ', 'f', 'r', 'e', 'q', 'u', 'e', 'n', 't', 'l', 'y', '.', 10, ' ', ' ', '-', '-', 's', 'i', 'z', 'e', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'e', 'l', 'a', 't', 'i', 'v', 'e', ' ', 't', 'e', 's', 't', ' ', 's', 'i', 'z', 'e', '.', ' ', ' ', 'D', 'e', 'f', 'a', 'u', 'l', 't', '=', '1', '0', '0', 10, ' ', ' ', '-', '-', 's', 't', 'r', 'i', 'c', 't', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'S', 'T', 'R', 'I', 'C', 'T', ' ', 't', 'a', 'b', 'l', 'e', ' ', 'w', 'h', 'e', 'r', 'e', ' ', 'a', 'p', 'p', 'r', 'o', 'p', 'r', 'i', 'a', 't', 'e', 10, ' ', ' ', '-', '-', 's', 't', 'a', 't', 's', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'h', 'o', 'w', ' ', 's', 't', 'a', 't', 'i', 's', 't', 'i', 'c', 's', ' ', 'a', 't', ' ', 't', 'h', 'e', ' ', 'e', 'n', 'd', 10, ' ', ' ', '-', '-', 's', 't', 'm', 't', 's', 'c', 'a', 'n', 's', 't', 'a', 't', 'u', 's', ' ', ' ', ' ', ' ', 'A', 'c', 't', 'i', 'v', 'a', 't', 'e', ' ', 'S', 'Q', 'L', 'I', 'T', 'E', '_', 'D', 'B', 'C', 'O', 'N', 'F', 'I', 'G', '_', 'S', 'T', 'M', 'T', '_', 'S', 'C', 'A', 'N', 'S', 'T', 'A', 'T', 'U', 'S', 10, ' ', ' ', '-', '-', 't', 'e', 'm', 'p', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'N', ' ', 'f', 'r', 'o', 'm', ' ', '0', ' ', 't', 'o', ' ', '9', '.', ' ', ' ', '0', ':', ' ', 'n', 'o', ' ', 't', 'e', 'm', 'p', ' ', 't', 'a', 'b', 'l', 'e', '.', ' ', '9', ':', ' ', 'a', 'l', 'l', ' ', 't', 'e', 'm', 'p', ' ', 't', 'a', 'b', 'l', 'e', 's', 10, ' ', ' ', '-', '-', 't', 'e', 's', 't', 's', 'e', 't', ' ', 'T', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'u', 'n', ' ', 't', 'e', 's', 't', '-', 's', 'e', 't', ' ', 'T', ' ', '(', 'm', 'a', 'i', 'n', ',', ' ', 'c', 't', 'e', ',', ' ', 'r', 't', 'r', 'e', 'e', ',', ' ', 'o', 'r', 'm', ',', ' ', 'f', 'p', ',', ' ', 'd', 'e', 'b', 'u', 'g', ')', 10, ' ', ' ', '-', '-', 't', 'r', 'a', 'c', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'T', 'u', 'r', 'n', ' ', 'o', 'n', ' ', 'S', 'Q', 'L', ' ', 't', 'r', 'a', 'c', 'i', 'n', 'g', 10, ' ', ' ', '-', '-', 't', 'h', 'r', 'e', 'a', 'd', 's', ' ', 'N', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'u', 'p', ' ', 't', 'o', ' ', 'N', ' ', 't', 'h', 'r', 'e', 'a', 'd', 's', ' ', 'f', 'o', 'r', ' ', 's', 'o', 'r', 't', 'i', 'n', 'g', 10, ' ', ' ', '-', '-', 'u', 't', 'f', '1', '6', 'b', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'e', 'x', 't', ' ', 'e', 'n', 'c', 'o', 'd', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'U', 'T', 'F', '-', '1', '6', 'B', 'E', 10, ' ', ' ', '-', '-', 'u', 't', 'f', '1', '6', 'l', 'e', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'e', 't', ' ', 't', 'e', 'x', 't', ' ', 'e', 'n', 'c', 'o', 'd', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'U', 'T', 'F', '-', '1', '6', 'L', 'E', 10, ' ', ' ', '-', '-', 'v', 'e', 'r', 'i', 'f', 'y', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'u', 'n', ' ', 'a', 'd', 'd', 'i', 't', 'i', 'o', 'n', 'a', 'l', ' ', 'v', 'e', 'r', 'i', 'f', 'i', 'c', 'a', 't', 'i', 'o', 'n', ' ', 's', 't', 'e', 'p', 's', 10, ' ', ' ', '-', '-', 'v', 'f', 's', ' ', 'N', 'A', 'M', 'E', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 't', 'h', 'e', ' ', 'g', 'i', 'v', 'e', 'n', ' ', '(', 'p', 'r', 'e', 'i', 'n', 's', 't', 'a', 'l', 'l', 'e', 'd', ')', ' ', 'V', 'F', 'S', 10, ' ', ' ', '-', '-', 'w', 'i', 't', 'h', 'o', 'u', 't', '-', 'r', 'o', 'w', 'i', 'd', ' ', ' ', ' ', ' ', ' ', 'U', 's', 'e', ' ', 'W', 'I', 'T', 'H', 'O', 'U', 'T', ' ', 'R', 'O', 'W', 'I', 'D', ' ', 'w', 'h', 'e', 'r', 'e', ' ', 'a', 'p', 'p', 'r', 'o', 'p', 'r', 'i', 'a', 't', 'e', 10}
 
-type __gnuc_va_list = uintptr
-
 type va_list = uintptr
 
-type sqlite_int64 = int64
-
-type sqlite_uint64 = uint64
-
 type sqlite3_int64 = int64
-
-type sqlite3_uint64 = uint64
-
-type sqlite3_callback = uintptr
-
-type sqlite3_file = struct {
-	FpMethods uintptr
-}
-
-type sqlite3_file1 = struct {
-	FpMethods uintptr
-}
-
-type sqlite3_io_methods = struct {
-	FiVersion               int32
-	FxClose                 uintptr
-	FxRead                  uintptr
-	FxWrite                 uintptr
-	FxTruncate              uintptr
-	FxSync                  uintptr
-	FxFileSize              uintptr
-	FxLock                  uintptr
-	FxUnlock                uintptr
-	FxCheckReservedLock     uintptr
-	FxFileControl           uintptr
-	FxSectorSize            uintptr
-	FxDeviceCharacteristics uintptr
-	FxShmMap                uintptr
-	FxShmLock               uintptr
-	FxShmBarrier            uintptr
-	FxShmUnmap              uintptr
-	FxFetch                 uintptr
-	FxUnfetch               uintptr
-}
-
-type sqlite3_io_methods1 = struct {
-	FiVersion               int32
-	FxClose                 uintptr
-	FxRead                  uintptr
-	FxWrite                 uintptr
-	FxTruncate              uintptr
-	FxSync                  uintptr
-	FxFileSize              uintptr
-	FxLock                  uintptr
-	FxUnlock                uintptr
-	FxCheckReservedLock     uintptr
-	FxFileControl           uintptr
-	FxSectorSize            uintptr
-	FxDeviceCharacteristics uintptr
-	FxShmMap                uintptr
-	FxShmLock               uintptr
-	FxShmBarrier            uintptr
-	FxShmUnmap              uintptr
-	FxFetch                 uintptr
-	FxUnfetch               uintptr
-}
-
-type sqlite3_filename = uintptr
 
 type sqlite3_vfs = struct {
 	FiVersion          int32
@@ -1132,1290 +89,6 @@ type sqlite3_vfs = struct {
 	FxNextSystemCall   uintptr
 }
 
-type sqlite3_syscall_ptr = uintptr
-
-type sqlite3_vfs1 = struct {
-	FiVersion          int32
-	FszOsFile          int32
-	FmxPathname        int32
-	FpNext             uintptr
-	FzName             uintptr
-	FpAppData          uintptr
-	FxOpen             uintptr
-	FxDelete           uintptr
-	FxAccess           uintptr
-	FxFullPathname     uintptr
-	FxDlOpen           uintptr
-	FxDlError          uintptr
-	FxDlSym            uintptr
-	FxDlClose          uintptr
-	FxRandomness       uintptr
-	FxSleep            uintptr
-	FxCurrentTime      uintptr
-	FxGetLastError     uintptr
-	FxCurrentTimeInt64 uintptr
-	FxSetSystemCall    uintptr
-	FxGetSystemCall    uintptr
-	FxNextSystemCall   uintptr
-}
-
-type sqlite3_mem_methods = struct {
-	FxMalloc   uintptr
-	FxFree     uintptr
-	FxRealloc  uintptr
-	FxSize     uintptr
-	FxRoundup  uintptr
-	FxInit     uintptr
-	FxShutdown uintptr
-	FpAppData  uintptr
-}
-
-type sqlite3_mem_methods1 = struct {
-	FxMalloc   uintptr
-	FxFree     uintptr
-	FxRealloc  uintptr
-	FxSize     uintptr
-	FxRoundup  uintptr
-	FxInit     uintptr
-	FxShutdown uintptr
-	FpAppData  uintptr
-}
-
-type sqlite3_destructor_type = uintptr
-
-type sqlite3_vtab = struct {
-	FpModule uintptr
-	FnRef    int32
-	FzErrMsg uintptr
-}
-
-type sqlite3_index_info = struct {
-	FnConstraint      int32
-	FaConstraint      uintptr
-	FnOrderBy         int32
-	FaOrderBy         uintptr
-	FaConstraintUsage uintptr
-	FidxNum           int32
-	FidxStr           uintptr
-	FneedToFreeIdxStr int32
-	ForderByConsumed  int32
-	FestimatedCost    float64
-	FestimatedRows    sqlite3_int64
-	FidxFlags         int32
-	FcolUsed          sqlite3_uint64
-}
-
-type sqlite3_vtab_cursor = struct {
-	FpVtab uintptr
-}
-
-type sqlite3_module = struct {
-	FiVersion      int32
-	FxCreate       uintptr
-	FxConnect      uintptr
-	FxBestIndex    uintptr
-	FxDisconnect   uintptr
-	FxDestroy      uintptr
-	FxOpen         uintptr
-	FxClose        uintptr
-	FxFilter       uintptr
-	FxNext         uintptr
-	FxEof          uintptr
-	FxColumn       uintptr
-	FxRowid        uintptr
-	FxUpdate       uintptr
-	FxBegin        uintptr
-	FxSync         uintptr
-	FxCommit       uintptr
-	FxRollback     uintptr
-	FxFindFunction uintptr
-	FxRename       uintptr
-	FxSavepoint    uintptr
-	FxRelease      uintptr
-	FxRollbackTo   uintptr
-	FxShadowName   uintptr
-	FxIntegrity    uintptr
-}
-
-type sqlite3_module1 = struct {
-	FiVersion      int32
-	FxCreate       uintptr
-	FxConnect      uintptr
-	FxBestIndex    uintptr
-	FxDisconnect   uintptr
-	FxDestroy      uintptr
-	FxOpen         uintptr
-	FxClose        uintptr
-	FxFilter       uintptr
-	FxNext         uintptr
-	FxEof          uintptr
-	FxColumn       uintptr
-	FxRowid        uintptr
-	FxUpdate       uintptr
-	FxBegin        uintptr
-	FxSync         uintptr
-	FxCommit       uintptr
-	FxRollback     uintptr
-	FxFindFunction uintptr
-	FxRename       uintptr
-	FxSavepoint    uintptr
-	FxRelease      uintptr
-	FxRollbackTo   uintptr
-	FxShadowName   uintptr
-	FxIntegrity    uintptr
-}
-
-type sqlite3_index_info1 = struct {
-	FnConstraint      int32
-	FaConstraint      uintptr
-	FnOrderBy         int32
-	FaOrderBy         uintptr
-	FaConstraintUsage uintptr
-	FidxNum           int32
-	FidxStr           uintptr
-	FneedToFreeIdxStr int32
-	ForderByConsumed  int32
-	FestimatedCost    float64
-	FestimatedRows    sqlite3_int64
-	FidxFlags         int32
-	FcolUsed          sqlite3_uint64
-}
-
-type sqlite3_vtab1 = struct {
-	FpModule uintptr
-	FnRef    int32
-	FzErrMsg uintptr
-}
-
-type sqlite3_vtab_cursor1 = struct {
-	FpVtab uintptr
-}
-
-type sqlite3_mutex_methods = struct {
-	FxMutexInit    uintptr
-	FxMutexEnd     uintptr
-	FxMutexAlloc   uintptr
-	FxMutexFree    uintptr
-	FxMutexEnter   uintptr
-	FxMutexTry     uintptr
-	FxMutexLeave   uintptr
-	FxMutexHeld    uintptr
-	FxMutexNotheld uintptr
-}
-
-type sqlite3_mutex_methods1 = struct {
-	FxMutexInit    uintptr
-	FxMutexEnd     uintptr
-	FxMutexAlloc   uintptr
-	FxMutexFree    uintptr
-	FxMutexEnter   uintptr
-	FxMutexTry     uintptr
-	FxMutexLeave   uintptr
-	FxMutexHeld    uintptr
-	FxMutexNotheld uintptr
-}
-
-type sqlite3_pcache_page = struct {
-	FpBuf   uintptr
-	FpExtra uintptr
-}
-
-type sqlite3_pcache_page1 = struct {
-	FpBuf   uintptr
-	FpExtra uintptr
-}
-
-type sqlite3_pcache_methods2 = struct {
-	FiVersion   int32
-	FpArg       uintptr
-	FxInit      uintptr
-	FxShutdown  uintptr
-	FxCreate    uintptr
-	FxCachesize uintptr
-	FxPagecount uintptr
-	FxFetch     uintptr
-	FxUnpin     uintptr
-	FxRekey     uintptr
-	FxTruncate  uintptr
-	FxDestroy   uintptr
-	FxShrink    uintptr
-}
-
-type sqlite3_pcache_methods21 = struct {
-	FiVersion   int32
-	FpArg       uintptr
-	FxInit      uintptr
-	FxShutdown  uintptr
-	FxCreate    uintptr
-	FxCachesize uintptr
-	FxPagecount uintptr
-	FxFetch     uintptr
-	FxUnpin     uintptr
-	FxRekey     uintptr
-	FxTruncate  uintptr
-	FxDestroy   uintptr
-	FxShrink    uintptr
-}
-
-type sqlite3_pcache_methods = struct {
-	FpArg       uintptr
-	FxInit      uintptr
-	FxShutdown  uintptr
-	FxCreate    uintptr
-	FxCachesize uintptr
-	FxPagecount uintptr
-	FxFetch     uintptr
-	FxUnpin     uintptr
-	FxRekey     uintptr
-	FxTruncate  uintptr
-	FxDestroy   uintptr
-}
-
-type sqlite3_pcache_methods1 = struct {
-	FpArg       uintptr
-	FxInit      uintptr
-	FxShutdown  uintptr
-	FxCreate    uintptr
-	FxCachesize uintptr
-	FxPagecount uintptr
-	FxFetch     uintptr
-	FxUnpin     uintptr
-	FxRekey     uintptr
-	FxTruncate  uintptr
-	FxDestroy   uintptr
-}
-
-type sqlite3_snapshot = struct {
-	Fhidden [48]uint8
-}
-
-type sqlite3_rtree_geometry = struct {
-	FpContext uintptr
-	FnParam   int32
-	FaParam   uintptr
-	FpUser    uintptr
-	FxDelUser uintptr
-}
-
-type sqlite3_rtree_query_info = struct {
-	FpContext      uintptr
-	FnParam        int32
-	FaParam        uintptr
-	FpUser         uintptr
-	FxDelUser      uintptr
-	FaCoord        uintptr
-	FanQueue       uintptr
-	FnCoord        int32
-	FiLevel        int32
-	FmxLevel       int32
-	FiRowid        sqlite3_int64
-	FrParentScore  sqlite3_rtree_dbl
-	FeParentWithin int32
-	FeWithin       int32
-	FrScore        sqlite3_rtree_dbl
-	FapSqlParam    uintptr
-}
-
-type sqlite3_rtree_dbl = float64
-
-type sqlite3_rtree_geometry1 = struct {
-	FpContext uintptr
-	FnParam   int32
-	FaParam   uintptr
-	FpUser    uintptr
-	FxDelUser uintptr
-}
-
-type sqlite3_rtree_query_info1 = struct {
-	FpContext      uintptr
-	FnParam        int32
-	FaParam        uintptr
-	FpUser         uintptr
-	FxDelUser      uintptr
-	FaCoord        uintptr
-	FanQueue       uintptr
-	FnCoord        int32
-	FiLevel        int32
-	FmxLevel       int32
-	FiRowid        sqlite3_int64
-	FrParentScore  sqlite3_rtree_dbl
-	FeParentWithin int32
-	FeWithin       int32
-	FrScore        sqlite3_rtree_dbl
-	FapSqlParam    uintptr
-}
-
-type Fts5ExtensionApi = struct {
-	FiVersion           int32
-	FxUserData          uintptr
-	FxColumnCount       uintptr
-	FxRowCount          uintptr
-	FxColumnTotalSize   uintptr
-	FxTokenize          uintptr
-	FxPhraseCount       uintptr
-	FxPhraseSize        uintptr
-	FxInstCount         uintptr
-	FxInst              uintptr
-	FxRowid             uintptr
-	FxColumnText        uintptr
-	FxColumnSize        uintptr
-	FxQueryPhrase       uintptr
-	FxSetAuxdata        uintptr
-	FxGetAuxdata        uintptr
-	FxPhraseFirst       uintptr
-	FxPhraseNext        uintptr
-	FxPhraseFirstColumn uintptr
-	FxPhraseNextColumn  uintptr
-	FxQueryToken        uintptr
-	FxInstToken         uintptr
-}
-
-type Fts5PhraseIter = struct {
-	Fa uintptr
-	Fb uintptr
-}
-
-type fts5_extension_function = uintptr
-
-type Fts5PhraseIter1 = struct {
-	Fa uintptr
-	Fb uintptr
-}
-
-type Fts5ExtensionApi1 = struct {
-	FiVersion           int32
-	FxUserData          uintptr
-	FxColumnCount       uintptr
-	FxRowCount          uintptr
-	FxColumnTotalSize   uintptr
-	FxTokenize          uintptr
-	FxPhraseCount       uintptr
-	FxPhraseSize        uintptr
-	FxInstCount         uintptr
-	FxInst              uintptr
-	FxRowid             uintptr
-	FxColumnText        uintptr
-	FxColumnSize        uintptr
-	FxQueryPhrase       uintptr
-	FxSetAuxdata        uintptr
-	FxGetAuxdata        uintptr
-	FxPhraseFirst       uintptr
-	FxPhraseNext        uintptr
-	FxPhraseFirstColumn uintptr
-	FxPhraseNextColumn  uintptr
-	FxQueryToken        uintptr
-	FxInstToken         uintptr
-}
-
-type fts5_tokenizer = struct {
-	FxCreate   uintptr
-	FxDelete   uintptr
-	FxTokenize uintptr
-}
-
-type fts5_tokenizer1 = struct {
-	FxCreate   uintptr
-	FxDelete   uintptr
-	FxTokenize uintptr
-}
-
-type fts5_api = struct {
-	FiVersion         int32
-	FxCreateTokenizer uintptr
-	FxFindTokenizer   uintptr
-	FxCreateFunction  uintptr
-}
-
-type fts5_api1 = struct {
-	FiVersion         int32
-	FxCreateTokenizer uintptr
-	FxFindTokenizer   uintptr
-	FxCreateFunction  uintptr
-}
-
-type size_t = uint64
-
-type __u_char = uint8
-
-type __u_short = uint16
-
-type __u_int = uint32
-
-type __u_long = uint64
-
-type __int8_t = int8
-
-type __uint8_t = uint8
-
-type __int16_t = int16
-
-type __uint16_t = uint16
-
-type __int32_t = int32
-
-type __uint32_t = uint32
-
-type __int64_t = int64
-
-type __uint64_t = uint64
-
-type __int_least8_t = int8
-
-type __uint_least8_t = uint8
-
-type __int_least16_t = int16
-
-type __uint_least16_t = uint16
-
-type __int_least32_t = int32
-
-type __uint_least32_t = uint32
-
-type __int_least64_t = int64
-
-type __uint_least64_t = uint64
-
-type __quad_t = int64
-
-type __u_quad_t = uint64
-
-type __intmax_t = int64
-
-type __uintmax_t = uint64
-
-type __dev_t = uint64
-
-type __uid_t = uint32
-
-type __gid_t = uint32
-
-type __ino_t = uint64
-
-type __ino64_t = uint64
-
-type __mode_t = uint32
-
-type __nlink_t = uint64
-
-type __off_t = int64
-
-type __off64_t = int64
-
-type __pid_t = int32
-
-type __fsid_t = struct {
-	F__val [2]int32
-}
-
-type __clock_t = int64
-
-type __rlim_t = uint64
-
-type __rlim64_t = uint64
-
-type __id_t = uint32
-
-type __time_t = int64
-
-type __useconds_t = uint32
-
-type __suseconds_t = int64
-
-type __daddr_t = int32
-
-type __key_t = int32
-
-type __clockid_t = int32
-
-type __timer_t = uintptr
-
-type __blksize_t = int64
-
-type __blkcnt_t = int64
-
-type __blkcnt64_t = int64
-
-type __fsblkcnt_t = uint64
-
-type __fsblkcnt64_t = uint64
-
-type __fsfilcnt_t = uint64
-
-type __fsfilcnt64_t = uint64
-
-type __fsword_t = int64
-
-type __ssize_t = int64
-
-type __syscall_slong_t = int64
-
-type __syscall_ulong_t = uint64
-
-type __loff_t = int64
-
-type __caddr_t = uintptr
-
-type __intptr_t = int64
-
-type __socklen_t = uint32
-
-type __sig_atomic_t = int32
-
-type __mbstate_t = struct {
-	F__count int32
-	F__value struct {
-		F__wchb [0][4]uint8
-		F__wch  uint32
-	}
-}
-
-type __fpos_t = struct {
-	F__pos   __off_t
-	F__state __mbstate_t
-}
-
-type _G_fpos_t = __fpos_t
-
-type __fpos64_t = struct {
-	F__pos   __off64_t
-	F__state __mbstate_t
-}
-
-type _G_fpos64_t = __fpos64_t
-
-type _IO_FILE = struct {
-	F_flags          int32
-	F_IO_read_ptr    uintptr
-	F_IO_read_end    uintptr
-	F_IO_read_base   uintptr
-	F_IO_write_base  uintptr
-	F_IO_write_ptr   uintptr
-	F_IO_write_end   uintptr
-	F_IO_buf_base    uintptr
-	F_IO_buf_end     uintptr
-	F_IO_save_base   uintptr
-	F_IO_backup_base uintptr
-	F_IO_save_end    uintptr
-	F_markers        uintptr
-	F_chain          uintptr
-	F_fileno         int32
-	F_flags2         int32
-	F_old_offset     __off_t
-	F_cur_column     uint16
-	F_vtable_offset  int8
-	F_shortbuf       [1]uint8
-	F_lock           uintptr
-	F_offset         __off64_t
-	F_codecvt        uintptr
-	F_wide_data      uintptr
-	F_freeres_list   uintptr
-	F_freeres_buf    uintptr
-	F__pad5          size_t
-	F_mode           int32
-	F_unused2        [20]uint8
-}
-
-type __FILE = struct {
-	F_flags          int32
-	F_IO_read_ptr    uintptr
-	F_IO_read_end    uintptr
-	F_IO_read_base   uintptr
-	F_IO_write_base  uintptr
-	F_IO_write_ptr   uintptr
-	F_IO_write_end   uintptr
-	F_IO_buf_base    uintptr
-	F_IO_buf_end     uintptr
-	F_IO_save_base   uintptr
-	F_IO_backup_base uintptr
-	F_IO_save_end    uintptr
-	F_markers        uintptr
-	F_chain          uintptr
-	F_fileno         int32
-	F_flags2         int32
-	F_old_offset     __off_t
-	F_cur_column     uint16
-	F_vtable_offset  int8
-	F_shortbuf       [1]uint8
-	F_lock           uintptr
-	F_offset         __off64_t
-	F_codecvt        uintptr
-	F_wide_data      uintptr
-	F_freeres_list   uintptr
-	F_freeres_buf    uintptr
-	F__pad5          size_t
-	F_mode           int32
-	F_unused2        [20]uint8
-}
-
-type FILE = struct {
-	F_flags          int32
-	F_IO_read_ptr    uintptr
-	F_IO_read_end    uintptr
-	F_IO_read_base   uintptr
-	F_IO_write_base  uintptr
-	F_IO_write_ptr   uintptr
-	F_IO_write_end   uintptr
-	F_IO_buf_base    uintptr
-	F_IO_buf_end     uintptr
-	F_IO_save_base   uintptr
-	F_IO_backup_base uintptr
-	F_IO_save_end    uintptr
-	F_markers        uintptr
-	F_chain          uintptr
-	F_fileno         int32
-	F_flags2         int32
-	F_old_offset     __off_t
-	F_cur_column     uint16
-	F_vtable_offset  int8
-	F_shortbuf       [1]uint8
-	F_lock           uintptr
-	F_offset         __off64_t
-	F_codecvt        uintptr
-	F_wide_data      uintptr
-	F_freeres_list   uintptr
-	F_freeres_buf    uintptr
-	F__pad5          size_t
-	F_mode           int32
-	F_unused2        [20]uint8
-}
-
-type _IO_lock_t = struct{}
-
-type off_t = int64
-
-type ssize_t = int64
-
-type fpos_t = struct {
-	F__pos   __off_t
-	F__state __mbstate_t
-}
-
-type wchar_t = int32
-
-type idtype_t = int32
-
-const P_ALL = 0
-const P_PID = 1
-const P_PGID = 2
-
-type div_t = struct {
-	Fquot int32
-	Frem  int32
-}
-
-type ldiv_t = struct {
-	Fquot int64
-	Frem  int64
-}
-
-type lldiv_t = struct {
-	Fquot int64
-	Frem  int64
-}
-
-type u_char = uint8
-
-type u_short = uint16
-
-type u_int = uint32
-
-type u_long = uint64
-
-type quad_t = int64
-
-type u_quad_t = uint64
-
-type fsid_t = struct {
-	F__val [2]int32
-}
-
-type loff_t = int64
-
-type ino_t = uint64
-
-type dev_t = uint64
-
-type gid_t = uint32
-
-type mode_t = uint32
-
-type nlink_t = uint64
-
-type uid_t = uint32
-
-type pid_t = int32
-
-type id_t = uint32
-
-type daddr_t = int32
-
-type caddr_t = uintptr
-
-type key_t = int32
-
-type clock_t = int64
-
-type clockid_t = int32
-
-type time_t = int64
-
-type timer_t = uintptr
-
-type ulong = uint64
-
-type ushort = uint16
-
-type uint1 = uint32
-
-type int8_t = int8
-
-type int16_t = int16
-
-type int32_t = int32
-
-type int64_t = int64
-
-type u_int8_t = uint8
-
-type u_int16_t = uint16
-
-type u_int32_t = uint32
-
-type u_int64_t = uint64
-
-type register_t = int32
-
-type __sigset_t = struct {
-	F__val [16]uint64
-}
-
-type sigset_t = struct {
-	F__val [16]uint64
-}
-
-type timeval = struct {
-	Ftv_sec  __time_t
-	Ftv_usec __suseconds_t
-}
-
-type timespec = struct {
-	Ftv_sec  __time_t
-	Ftv_nsec __syscall_slong_t
-}
-
-type suseconds_t = int64
-
-type __fd_mask = int64
-
-type fd_set = struct {
-	F__fds_bits [16]__fd_mask
-}
-
-type fd_mask = int64
-
-type blksize_t = int64
-
-type blkcnt_t = int64
-
-type fsblkcnt_t = uint64
-
-type fsfilcnt_t = uint64
-
-type __pthread_list_t = struct {
-	F__prev uintptr
-	F__next uintptr
-}
-
-type __pthread_internal_list = __pthread_list_t
-
-type __pthread_slist_t = struct {
-	F__next uintptr
-}
-
-type __pthread_internal_slist = __pthread_slist_t
-
-type __pthread_mutex_s = struct {
-	F__lock    int32
-	F__count   uint32
-	F__owner   int32
-	F__nusers  uint32
-	F__kind    int32
-	F__spins   int16
-	F__elision int16
-	F__list    __pthread_list_t
-}
-
-type __pthread_rwlock_arch_t = struct {
-	F__readers       uint32
-	F__writers       uint32
-	F__wrphase_futex uint32
-	F__writers_futex uint32
-	F__pad3          uint32
-	F__pad4          uint32
-	F__cur_writer    int32
-	F__shared        int32
-	F__rwelision     uint8
-	F__pad1          [7]uint8
-	F__pad2          uint64
-	F__flags         uint32
-}
-
-type __pthread_cond_s = struct {
-	F__ccgo0_0 struct {
-		F__wseq32 [0]struct {
-			F__low  uint32
-			F__high uint32
-		}
-		F__wseq uint64
-	}
-	F__ccgo1_8 struct {
-		F__g1_start32 [0]struct {
-			F__low  uint32
-			F__high uint32
-		}
-		F__g1_start uint64
-	}
-	F__g_refs       [2]uint32
-	F__g_size       [2]uint32
-	F__g1_orig_size uint32
-	F__wrefs        uint32
-	F__g_signals    [2]uint32
-}
-
-type pthread_t = uint64
-
-type pthread_mutexattr_t = struct {
-	F__align [0]int32
-	F__size  [4]uint8
-}
-
-type pthread_condattr_t = struct {
-	F__align [0]int32
-	F__size  [4]uint8
-}
-
-type pthread_key_t = uint32
-
-type pthread_once_t = int32
-
-type pthread_attr_t1 = struct {
-	F__align [0]int64
-	F__size  [56]uint8
-}
-
-type pthread_attr_t = struct {
-	F__align [0]int64
-	F__size  [56]uint8
-}
-
-type pthread_mutex_t = struct {
-	F__size  [0][40]uint8
-	F__align [0]int64
-	F__data  __pthread_mutex_s
-}
-
-type pthread_cond_t = struct {
-	F__size  [0][48]uint8
-	F__align [0]int64
-	F__data  __pthread_cond_s
-}
-
-type pthread_rwlock_t = struct {
-	F__size  [0][56]uint8
-	F__align [0]int64
-	F__data  __pthread_rwlock_arch_t
-}
-
-type pthread_rwlockattr_t = struct {
-	F__align [0]int64
-	F__size  [8]uint8
-}
-
-type pthread_spinlock_t = int32
-
-type pthread_barrier_t = struct {
-	F__align [0]int64
-	F__size  [32]uint8
-}
-
-type pthread_barrierattr_t = struct {
-	F__align [0]int32
-	F__size  [4]uint8
-}
-
-type random_data = struct {
-	Ffptr      uintptr
-	Frptr      uintptr
-	Fstate     uintptr
-	Frand_type int32
-	Frand_deg  int32
-	Frand_sep  int32
-	Fend_ptr   uintptr
-}
-
-type drand48_data = struct {
-	F__x     [3]uint16
-	F__old_x [3]uint16
-	F__c     uint16
-	F__init  uint16
-	F__a     uint64
-}
-
-type __compar_fn_t = uintptr
-
-type __locale_struct = struct {
-	F__locales       [13]uintptr
-	F__ctype_b       uintptr
-	F__ctype_tolower uintptr
-	F__ctype_toupper uintptr
-	F__names         [13]uintptr
-}
-
-type __locale_t = uintptr
-
-type locale_t = uintptr
-
-const _ISupper = 256
-const _ISlower = 512
-const _ISalpha = 1024
-const _ISdigit = 2048
-const _ISxdigit = 4096
-const _ISspace = 8192
-const _ISprint = 16384
-const _ISgraph = 32768
-const _ISblank = 1
-const _IScntrl = 2
-const _ISpunct = 4
-const _ISalnum = 8
-
-type useconds_t = uint32
-
-type intptr_t = int64
-
-type socklen_t = uint32
-
-const _PC_LINK_MAX = 0
-const _PC_MAX_CANON = 1
-const _PC_MAX_INPUT = 2
-const _PC_NAME_MAX = 3
-const _PC_PATH_MAX = 4
-const _PC_PIPE_BUF = 5
-const _PC_CHOWN_RESTRICTED = 6
-const _PC_NO_TRUNC = 7
-const _PC_VDISABLE = 8
-const _PC_SYNC_IO = 9
-const _PC_ASYNC_IO = 10
-const _PC_PRIO_IO = 11
-const _PC_SOCK_MAXBUF = 12
-const _PC_FILESIZEBITS = 13
-const _PC_REC_INCR_XFER_SIZE = 14
-const _PC_REC_MAX_XFER_SIZE = 15
-const _PC_REC_MIN_XFER_SIZE = 16
-const _PC_REC_XFER_ALIGN = 17
-const _PC_ALLOC_SIZE_MIN = 18
-const _PC_SYMLINK_MAX = 19
-const _PC_2_SYMLINKS = 20
-const _SC_ARG_MAX = 0
-const _SC_CHILD_MAX = 1
-const _SC_CLK_TCK = 2
-const _SC_NGROUPS_MAX = 3
-const _SC_OPEN_MAX = 4
-const _SC_STREAM_MAX = 5
-const _SC_TZNAME_MAX = 6
-const _SC_JOB_CONTROL = 7
-const _SC_SAVED_IDS = 8
-const _SC_REALTIME_SIGNALS = 9
-const _SC_PRIORITY_SCHEDULING = 10
-const _SC_TIMERS = 11
-const _SC_ASYNCHRONOUS_IO = 12
-const _SC_PRIORITIZED_IO = 13
-const _SC_SYNCHRONIZED_IO = 14
-const _SC_FSYNC = 15
-const _SC_MAPPED_FILES = 16
-const _SC_MEMLOCK = 17
-const _SC_MEMLOCK_RANGE = 18
-const _SC_MEMORY_PROTECTION = 19
-const _SC_MESSAGE_PASSING = 20
-const _SC_SEMAPHORES = 21
-const _SC_SHARED_MEMORY_OBJECTS = 22
-const _SC_AIO_LISTIO_MAX = 23
-const _SC_AIO_MAX = 24
-const _SC_AIO_PRIO_DELTA_MAX = 25
-const _SC_DELAYTIMER_MAX = 26
-const _SC_MQ_OPEN_MAX = 27
-const _SC_MQ_PRIO_MAX = 28
-const _SC_VERSION = 29
-const _SC_PAGESIZE = 30
-const _SC_RTSIG_MAX = 31
-const _SC_SEM_NSEMS_MAX = 32
-const _SC_SEM_VALUE_MAX = 33
-const _SC_SIGQUEUE_MAX = 34
-const _SC_TIMER_MAX = 35
-const _SC_BC_BASE_MAX = 36
-const _SC_BC_DIM_MAX = 37
-const _SC_BC_SCALE_MAX = 38
-const _SC_BC_STRING_MAX = 39
-const _SC_COLL_WEIGHTS_MAX = 40
-const _SC_EQUIV_CLASS_MAX = 41
-const _SC_EXPR_NEST_MAX = 42
-const _SC_LINE_MAX = 43
-const _SC_RE_DUP_MAX = 44
-const _SC_CHARCLASS_NAME_MAX = 45
-const _SC_2_VERSION = 46
-const _SC_2_C_BIND = 47
-const _SC_2_C_DEV = 48
-const _SC_2_FORT_DEV = 49
-const _SC_2_FORT_RUN = 50
-const _SC_2_SW_DEV = 51
-const _SC_2_LOCALEDEF = 52
-const _SC_PII = 53
-const _SC_PII_XTI = 54
-const _SC_PII_SOCKET = 55
-const _SC_PII_INTERNET = 56
-const _SC_PII_OSI = 57
-const _SC_POLL = 58
-const _SC_SELECT = 59
-const _SC_UIO_MAXIOV = 60
-const _SC_IOV_MAX = 60
-const _SC_PII_INTERNET_STREAM = 61
-const _SC_PII_INTERNET_DGRAM = 62
-const _SC_PII_OSI_COTS = 63
-const _SC_PII_OSI_CLTS = 64
-const _SC_PII_OSI_M = 65
-const _SC_T_IOV_MAX = 66
-const _SC_THREADS = 67
-const _SC_THREAD_SAFE_FUNCTIONS = 68
-const _SC_GETGR_R_SIZE_MAX = 69
-const _SC_GETPW_R_SIZE_MAX = 70
-const _SC_LOGIN_NAME_MAX = 71
-const _SC_TTY_NAME_MAX = 72
-const _SC_THREAD_DESTRUCTOR_ITERATIONS = 73
-const _SC_THREAD_KEYS_MAX = 74
-const _SC_THREAD_STACK_MIN = 75
-const _SC_THREAD_THREADS_MAX = 76
-const _SC_THREAD_ATTR_STACKADDR = 77
-const _SC_THREAD_ATTR_STACKSIZE = 78
-const _SC_THREAD_PRIORITY_SCHEDULING = 79
-const _SC_THREAD_PRIO_INHERIT = 80
-const _SC_THREAD_PRIO_PROTECT = 81
-const _SC_THREAD_PROCESS_SHARED = 82
-const _SC_NPROCESSORS_CONF = 83
-const _SC_NPROCESSORS_ONLN = 84
-const _SC_PHYS_PAGES = 85
-const _SC_AVPHYS_PAGES = 86
-const _SC_ATEXIT_MAX = 87
-const _SC_PASS_MAX = 88
-const _SC_XOPEN_VERSION = 89
-const _SC_XOPEN_XCU_VERSION = 90
-const _SC_XOPEN_UNIX = 91
-const _SC_XOPEN_CRYPT = 92
-const _SC_XOPEN_ENH_I18N = 93
-const _SC_XOPEN_SHM = 94
-const _SC_2_CHAR_TERM = 95
-const _SC_2_C_VERSION = 96
-const _SC_2_UPE = 97
-const _SC_XOPEN_XPG2 = 98
-const _SC_XOPEN_XPG3 = 99
-const _SC_XOPEN_XPG4 = 100
-const _SC_CHAR_BIT = 101
-const _SC_CHAR_MAX = 102
-const _SC_CHAR_MIN = 103
-const _SC_INT_MAX = 104
-const _SC_INT_MIN = 105
-const _SC_LONG_BIT = 106
-const _SC_WORD_BIT = 107
-const _SC_MB_LEN_MAX = 108
-const _SC_NZERO = 109
-const _SC_SSIZE_MAX = 110
-const _SC_SCHAR_MAX = 111
-const _SC_SCHAR_MIN = 112
-const _SC_SHRT_MAX = 113
-const _SC_SHRT_MIN = 114
-const _SC_UCHAR_MAX = 115
-const _SC_UINT_MAX = 116
-const _SC_ULONG_MAX = 117
-const _SC_USHRT_MAX = 118
-const _SC_NL_ARGMAX = 119
-const _SC_NL_LANGMAX = 120
-const _SC_NL_MSGMAX = 121
-const _SC_NL_NMAX = 122
-const _SC_NL_SETMAX = 123
-const _SC_NL_TEXTMAX = 124
-const _SC_XBS5_ILP32_OFF32 = 125
-const _SC_XBS5_ILP32_OFFBIG = 126
-const _SC_XBS5_LP64_OFF64 = 127
-const _SC_XBS5_LPBIG_OFFBIG = 128
-const _SC_XOPEN_LEGACY = 129
-const _SC_XOPEN_REALTIME = 130
-const _SC_XOPEN_REALTIME_THREADS = 131
-const _SC_ADVISORY_INFO = 132
-const _SC_BARRIERS = 133
-const _SC_BASE = 134
-const _SC_C_LANG_SUPPORT = 135
-const _SC_C_LANG_SUPPORT_R = 136
-const _SC_CLOCK_SELECTION = 137
-const _SC_CPUTIME = 138
-const _SC_THREAD_CPUTIME = 139
-const _SC_DEVICE_IO = 140
-const _SC_DEVICE_SPECIFIC = 141
-const _SC_DEVICE_SPECIFIC_R = 142
-const _SC_FD_MGMT = 143
-const _SC_FIFO = 144
-const _SC_PIPE = 145
-const _SC_FILE_ATTRIBUTES = 146
-const _SC_FILE_LOCKING = 147
-const _SC_FILE_SYSTEM = 148
-const _SC_MONOTONIC_CLOCK = 149
-const _SC_MULTI_PROCESS = 150
-const _SC_SINGLE_PROCESS = 151
-const _SC_NETWORKING = 152
-const _SC_READER_WRITER_LOCKS = 153
-const _SC_SPIN_LOCKS = 154
-const _SC_REGEXP = 155
-const _SC_REGEX_VERSION = 156
-const _SC_SHELL = 157
-const _SC_SIGNALS = 158
-const _SC_SPAWN = 159
-const _SC_SPORADIC_SERVER = 160
-const _SC_THREAD_SPORADIC_SERVER = 161
-const _SC_SYSTEM_DATABASE = 162
-const _SC_SYSTEM_DATABASE_R = 163
-const _SC_TIMEOUTS = 164
-const _SC_TYPED_MEMORY_OBJECTS = 165
-const _SC_USER_GROUPS = 166
-const _SC_USER_GROUPS_R = 167
-const _SC_2_PBS = 168
-const _SC_2_PBS_ACCOUNTING = 169
-const _SC_2_PBS_LOCATE = 170
-const _SC_2_PBS_MESSAGE = 171
-const _SC_2_PBS_TRACK = 172
-const _SC_SYMLOOP_MAX = 173
-const _SC_STREAMS = 174
-const _SC_2_PBS_CHECKPOINT = 175
-const _SC_V6_ILP32_OFF32 = 176
-const _SC_V6_ILP32_OFFBIG = 177
-const _SC_V6_LP64_OFF64 = 178
-const _SC_V6_LPBIG_OFFBIG = 179
-const _SC_HOST_NAME_MAX = 180
-const _SC_TRACE = 181
-const _SC_TRACE_EVENT_FILTER = 182
-const _SC_TRACE_INHERIT = 183
-const _SC_TRACE_LOG = 184
-const _SC_LEVEL1_ICACHE_SIZE = 185
-const _SC_LEVEL1_ICACHE_ASSOC = 186
-const _SC_LEVEL1_ICACHE_LINESIZE = 187
-const _SC_LEVEL1_DCACHE_SIZE = 188
-const _SC_LEVEL1_DCACHE_ASSOC = 189
-const _SC_LEVEL1_DCACHE_LINESIZE = 190
-const _SC_LEVEL2_CACHE_SIZE = 191
-const _SC_LEVEL2_CACHE_ASSOC = 192
-const _SC_LEVEL2_CACHE_LINESIZE = 193
-const _SC_LEVEL3_CACHE_SIZE = 194
-const _SC_LEVEL3_CACHE_ASSOC = 195
-const _SC_LEVEL3_CACHE_LINESIZE = 196
-const _SC_LEVEL4_CACHE_SIZE = 197
-const _SC_LEVEL4_CACHE_ASSOC = 198
-const _SC_LEVEL4_CACHE_LINESIZE = 199
-const _SC_IPV6 = 235
-const _SC_RAW_SOCKETS = 236
-const _SC_V7_ILP32_OFF32 = 237
-const _SC_V7_ILP32_OFFBIG = 238
-const _SC_V7_LP64_OFF64 = 239
-const _SC_V7_LPBIG_OFFBIG = 240
-const _SC_SS_REPL_MAX = 241
-const _SC_TRACE_EVENT_NAME_MAX = 242
-const _SC_TRACE_NAME_MAX = 243
-const _SC_TRACE_SYS_MAX = 244
-const _SC_TRACE_USER_EVENT_MAX = 245
-const _SC_XOPEN_STREAMS = 246
-const _SC_THREAD_ROBUST_PRIO_INHERIT = 247
-const _SC_THREAD_ROBUST_PRIO_PROTECT = 248
-const _CS_PATH = 0
-const _CS_V6_WIDTH_RESTRICTED_ENVS = 1
-const _CS_GNU_LIBC_VERSION = 2
-const _CS_GNU_LIBPTHREAD_VERSION = 3
-const _CS_V5_WIDTH_RESTRICTED_ENVS = 4
-const _CS_V7_WIDTH_RESTRICTED_ENVS = 5
-const _CS_LFS_CFLAGS = 1000
-const _CS_LFS_LDFLAGS = 1001
-const _CS_LFS_LIBS = 1002
-const _CS_LFS_LINTFLAGS = 1003
-const _CS_LFS64_CFLAGS = 1004
-const _CS_LFS64_LDFLAGS = 1005
-const _CS_LFS64_LIBS = 1006
-const _CS_LFS64_LINTFLAGS = 1007
-const _CS_XBS5_ILP32_OFF32_CFLAGS = 1100
-const _CS_XBS5_ILP32_OFF32_LDFLAGS = 1101
-const _CS_XBS5_ILP32_OFF32_LIBS = 1102
-const _CS_XBS5_ILP32_OFF32_LINTFLAGS = 1103
-const _CS_XBS5_ILP32_OFFBIG_CFLAGS = 1104
-const _CS_XBS5_ILP32_OFFBIG_LDFLAGS = 1105
-const _CS_XBS5_ILP32_OFFBIG_LIBS = 1106
-const _CS_XBS5_ILP32_OFFBIG_LINTFLAGS = 1107
-const _CS_XBS5_LP64_OFF64_CFLAGS = 1108
-const _CS_XBS5_LP64_OFF64_LDFLAGS = 1109
-const _CS_XBS5_LP64_OFF64_LIBS = 1110
-const _CS_XBS5_LP64_OFF64_LINTFLAGS = 1111
-const _CS_XBS5_LPBIG_OFFBIG_CFLAGS = 1112
-const _CS_XBS5_LPBIG_OFFBIG_LDFLAGS = 1113
-const _CS_XBS5_LPBIG_OFFBIG_LIBS = 1114
-const _CS_XBS5_LPBIG_OFFBIG_LINTFLAGS = 1115
-const _CS_POSIX_V6_ILP32_OFF32_CFLAGS = 1116
-const _CS_POSIX_V6_ILP32_OFF32_LDFLAGS = 1117
-const _CS_POSIX_V6_ILP32_OFF32_LIBS = 1118
-const _CS_POSIX_V6_ILP32_OFF32_LINTFLAGS = 1119
-const _CS_POSIX_V6_ILP32_OFFBIG_CFLAGS = 1120
-const _CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS = 1121
-const _CS_POSIX_V6_ILP32_OFFBIG_LIBS = 1122
-const _CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS = 1123
-const _CS_POSIX_V6_LP64_OFF64_CFLAGS = 1124
-const _CS_POSIX_V6_LP64_OFF64_LDFLAGS = 1125
-const _CS_POSIX_V6_LP64_OFF64_LIBS = 1126
-const _CS_POSIX_V6_LP64_OFF64_LINTFLAGS = 1127
-const _CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS = 1128
-const _CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS = 1129
-const _CS_POSIX_V6_LPBIG_OFFBIG_LIBS = 1130
-const _CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS = 1131
-const _CS_POSIX_V7_ILP32_OFF32_CFLAGS = 1132
-const _CS_POSIX_V7_ILP32_OFF32_LDFLAGS = 1133
-const _CS_POSIX_V7_ILP32_OFF32_LIBS = 1134
-const _CS_POSIX_V7_ILP32_OFF32_LINTFLAGS = 1135
-const _CS_POSIX_V7_ILP32_OFFBIG_CFLAGS = 1136
-const _CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS = 1137
-const _CS_POSIX_V7_ILP32_OFFBIG_LIBS = 1138
-const _CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS = 1139
-const _CS_POSIX_V7_LP64_OFF64_CFLAGS = 1140
-const _CS_POSIX_V7_LP64_OFF64_LDFLAGS = 1141
-const _CS_POSIX_V7_LP64_OFF64_LIBS = 1142
-const _CS_POSIX_V7_LP64_OFF64_LINTFLAGS = 1143
-const _CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS = 1144
-const _CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS = 1145
-const _CS_POSIX_V7_LPBIG_OFFBIG_LIBS = 1146
-const _CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS = 1147
-const _CS_V6_ENV = 1148
-const _CS_V7_ENV = 1149
-
-/* Define some macros helping to catch buffer overflows.  */
-
-/* System-specific extensions.  */
-/* System-specific extensions of <unistd.h>, Linux version.
-   Copyright (C) 2019-2020 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
 type u64 = uint64
 
 // C documentation
@@ -2424,14 +97,6 @@ type u64 = uint64
 //	** State structure for a Hash hash in progress
 //	*/
 type HashContext = struct {
-	FisInit uint8
-	Fi      uint8
-	Fj      uint8
-	Fs      [256]uint8
-	Fr      [32]uint8
-}
-
-type HashContext1 = struct {
 	FisInit uint8
 	Fi      uint8
 	Fj      uint8
@@ -2555,7 +220,7 @@ func HashUpdate(tls *libc.TLS, aData uintptr, nData uint32) {
 		if !(k < nData) {
 			break
 		}
-		j = uint8(int32(j) + (int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))) + int32(*(*uint8)(unsafe.Pointer(aData + uintptr(k))))))
+		j = uint8(int32(j) + (libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))) + libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(aData + uintptr(k))))))
 		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j)))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i))) = t
@@ -2588,10 +253,10 @@ func HashFinal(tls *libc.TLS) {
 		}
 		i++
 		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))
-		j = uint8(int32(j) + int32(t))
+		j = uint8(int32(j) + libc.Int32FromUint8(t))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j)))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j))) = t
-		t = uint8(int32(t) + int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))))
+		t = uint8(int32(t) + libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(k))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(t)))
 		goto _1
 	_1:
@@ -2610,14 +275,14 @@ func HashFinal(tls *libc.TLS) {
 //	** is not a hex digit.
 //	*/
 func hexDigitValue(tls *libc.TLS, c uint8) (r int32) {
-	if int32(c) >= int32('0') && int32(c) <= int32('9') {
-		return int32(c) - int32('0')
+	if libc.Int32FromUint8(c) >= int32('0') && libc.Int32FromUint8(c) <= int32('9') {
+		return libc.Int32FromUint8(c) - int32('0')
 	}
-	if int32(c) >= int32('a') && int32(c) <= int32('f') {
-		return int32(c) - int32('a') + int32(10)
+	if libc.Int32FromUint8(c) >= int32('a') && libc.Int32FromUint8(c) <= int32('f') {
+		return libc.Int32FromUint8(c) - int32('a') + int32(10)
 	}
-	if int32(c) >= int32('A') && int32(c) <= int32('F') {
-		return int32(c) - int32('A') + int32(10)
+	if libc.Int32FromUint8(c) >= int32('A') && libc.Int32FromUint8(c) <= int32('F') {
+		return libc.Int32FromUint8(c) - int32('A') + int32(10)
 	}
 	return -int32(1)
 }
@@ -2637,15 +302,15 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 	_, _, _, _, _, _ = i, isNeg, v, x, v1, v3
 	v = 0
 	isNeg = 0
-	if int32(*(*uint8)(unsafe.Pointer(zArg))) == int32('-') {
+	if libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(zArg))) == int32('-') {
 		isNeg = int32(1)
 		zArg++
 	} else {
-		if int32(*(*uint8)(unsafe.Pointer(zArg))) == int32('+') {
+		if libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(zArg))) == int32('+') {
 			zArg++
 		}
 	}
-	if int32(*(*uint8)(unsafe.Pointer(zArg))) == int32('0') && int32(*(*uint8)(unsafe.Pointer(zArg + 1))) == int32('x') {
+	if libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(zArg))) == int32('0') && libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(zArg + 1))) == int32('x') {
 		zArg += uintptr(2)
 		for {
 			v1 = hexDigitValue(tls, *(*uint8)(unsafe.Pointer(zArg)))
@@ -2657,14 +322,14 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 			zArg++
 		}
 	} else {
-		for int32(*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(libc.X__ctype_b_loc(tls))) + uintptr(int32(*(*uint8)(unsafe.Pointer(zArg))))*2)))&int32(uint16(_ISdigit)) != 0 {
-			v = v*int64(10) + int64(*(*uint8)(unsafe.Pointer(zArg))) - int64('0')
+		for libc.BoolInt32(uint32(*(*uint8)(unsafe.Pointer(zArg)))-uint32('0') < uint32(10)) != 0 {
+			v = v*int64(10) + libc.Int64FromUint8(*(*uint8)(unsafe.Pointer(zArg))) - int64('0')
 			zArg++
 		}
 	}
 	i = 0
 	for {
-		if !(uint64(i) < libc.Uint64FromInt64(144)/libc.Uint64FromInt64(16)) {
+		if !(libc.Uint64FromInt32(i) < libc.Uint64FromInt64(144)/libc.Uint64FromInt64(16)) {
 			break
 		}
 		if libsqlite3.Xsqlite3_stricmp(tls, aMult[i].FzSuffix, zArg) == 0 {
@@ -2810,7 +475,7 @@ func speedtest1_numbername(tls *libc.TLS, n uint32, zOut uintptr, nOut int32) (r
 	if n >= uint32(1000000000) {
 		i += speedtest1_numbername(tls, n/uint32(1000000000), zOut+uintptr(i), nOut-i)
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+255, 0)
-		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += libc.Int32FromUint64(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(1000000000)
 	}
 	if n >= uint32(1000000) {
@@ -2821,7 +486,7 @@ func speedtest1_numbername(tls *libc.TLS, n uint32, zOut uintptr, nOut int32) (r
 		}
 		i += speedtest1_numbername(tls, n/uint32(1000000), zOut+uintptr(i), nOut-i)
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+264, 0)
-		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += libc.Int32FromUint64(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(1000000)
 	}
 	if n >= uint32(1000) {
@@ -2832,7 +497,7 @@ func speedtest1_numbername(tls *libc.TLS, n uint32, zOut uintptr, nOut int32) (r
 		}
 		i += speedtest1_numbername(tls, n/uint32(1000), zOut+uintptr(i), nOut-i)
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+273, 0)
-		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += libc.Int32FromUint64(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(1000)
 	}
 	if n >= uint32(100) {
@@ -2842,7 +507,7 @@ func speedtest1_numbername(tls *libc.TLS, n uint32, zOut uintptr, nOut int32) (r
 			*(*uint8)(unsafe.Pointer(zOut + uintptr(v3))) = uint8(' ')
 		}
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+283, libc.VaList(bp+8, ones[n/uint32(100)]))
-		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += libc.Int32FromUint64(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(100)
 	}
 	if n >= uint32(20) {
@@ -2852,7 +517,7 @@ func speedtest1_numbername(tls *libc.TLS, n uint32, zOut uintptr, nOut int32) (r
 			*(*uint8)(unsafe.Pointer(zOut + uintptr(v4))) = uint8(' ')
 		}
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+294, libc.VaList(bp+8, tens[n/uint32(10)]))
-		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += libc.Int32FromUint64(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(10)
 	}
 	if n > uint32(0) {
@@ -2862,11 +527,11 @@ func speedtest1_numbername(tls *libc.TLS, n uint32, zOut uintptr, nOut int32) (r
 			*(*uint8)(unsafe.Pointer(zOut + uintptr(v5))) = uint8(' ')
 		}
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+294, libc.VaList(bp+8, ones[n]))
-		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += libc.Int32FromUint64(libc.Xstrlen(tls, zOut+uintptr(i)))
 	}
 	if i == 0 {
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+71, 0)
-		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += libc.Int32FromUint64(libc.Xstrlen(tls, zOut+uintptr(i)))
 	}
 	return i
 }
@@ -2919,12 +584,12 @@ func speedtest1_begin_test(tls *libc.TLS, iTestNum int32, zTestName uintptr, va 
 	var n int32
 	var zName uintptr
 	_, _, _ = ap, n, zName
-	n = int32(libc.Xstrlen(tls, zTestName))
+	n = libc.Int32FromUint64(libc.Xstrlen(tls, zTestName))
 	iTestNumber = iTestNum
 	ap = va
 	zName = libsqlite3.Xsqlite3_vmprintf(tls, zTestName, ap)
 	_ = ap
-	n = int32(libc.Xstrlen(tls, zName))
+	n = libc.Int32FromUint64(libc.Xstrlen(tls, zName))
 	if n > int32(NAMEWIDTH) {
 		*(*uint8)(unsafe.Pointer(zName + 60)) = uint8(0)
 		n = int32(NAMEWIDTH)
@@ -2957,7 +622,6 @@ func speedtest1_end_test(tls *libc.TLS) {
 	if g.FdoCheckpoint != 0 {
 		speedtest1_exec(tls, __ccgo_ts+354, 0)
 	}
-	_ = libc.Int32FromInt32(0)
 	if g.FpScript != 0 {
 		libc.Xfprintf(tls, g.FpScript, __ccgo_ts+377, libc.VaList(bp+8, iTestNumber))
 	}
@@ -2992,7 +656,7 @@ func speedtest1_final(tls *libc.TLS) {
 			if !(i < int32(24)) {
 				break
 			}
-			libc.Xprintf(tls, __ccgo_ts+459, libc.VaList(bp+8, int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(i))))))
+			libc.Xprintf(tls, __ccgo_ts+459, libc.VaList(bp+8, libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(i))))))
 			goto _1
 		_1:
 			;
@@ -3011,10 +675,22 @@ func speedtest1_final(tls *libc.TLS) {
 func printSql(tls *libc.TLS, zSql uintptr) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	var n int32
-	_ = n
-	n = int32(libc.Xstrlen(tls, zSql))
-	for n > 0 && (int32(*(*uint8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';') || int32(*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(libc.X__ctype_b_loc(tls))) + uintptr(int32(*(*uint8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))*2)))&int32(uint16(_ISspace)) != 0) {
+	var n, v1, v2 int32
+	var v4, v5 bool
+	_, _, _, _, _ = n, v1, v2, v4, v5
+	n = libc.Int32FromUint64(libc.Xstrlen(tls, zSql))
+	for {
+		if v5 = n > 0; v5 {
+			if v4 = libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';'); !v4 {
+				v1 = libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(zSql + uintptr(n-int32(1)))))
+				v2 = libc.BoolInt32(v1 == int32(' ') || libc.Uint32FromInt32(v1)-uint32('\t') < uint32(5))
+				goto _3
+			_3:
+			}
+		}
+		if !(v5 && (v4 || v2 != 0)) {
+			break
+		}
 		n--
 	}
 	if g.FbExplain != 0 {
@@ -3155,7 +831,6 @@ func speedtest1_run(tls *libc.TLS) {
 	if g.FbSqlOnly != 0 {
 		return
 	}
-	_ = libc.Int32FromInt32(0)
 	g.FnResult = 0
 	if g.FpScript != 0 {
 		z = libsqlite3.Xsqlite3_expanded_sql(tls, g.FpStmt)
@@ -3173,7 +848,7 @@ func speedtest1_run(tls *libc.TLS) {
 			if z1 == uintptr(0) {
 				z1 = __ccgo_ts + 562
 			}
-			len1 = int32(libc.Xstrlen(tls, z1))
+			len1 = libc.Int32FromUint64(libc.Xstrlen(tls, z1))
 			if g.FbVerify != 0 {
 				eType = libsqlite3.Xsqlite3_column_type(tls, g.FpStmt, i)
 				(*(*[2]uint8)(unsafe.Pointer(bp)))[0] = uint8('\n')
@@ -3197,29 +872,29 @@ func speedtest1_run(tls *libc.TLS) {
 							if !(iBlob < nBlob) {
 								break
 							}
-							(*(*[2]uint8)(unsafe.Pointer(bp + 2)))[0] = *(*uint8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4))))
-							(*(*[2]uint8)(unsafe.Pointer(bp + 2)))[int32(1)] = *(*uint8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15))))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 2)))[0] = *(*uint8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4))))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 2)))[int32(1)] = *(*uint8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15))))
 							HashUpdate(tls, bp+2, uint32(2))
 							goto _2
 						_2:
 							;
 							iBlob++
 						}
-						g.FnResByte += uint64(nBlob*int32(2) + int32(2))
+						g.FnResByte += libc.Uint64FromInt32(nBlob*int32(2) + int32(2))
 					} else {
-						HashUpdate(tls, z1, uint32(len1))
-						g.FnResByte += uint64(len1 + int32(2))
+						HashUpdate(tls, z1, libc.Uint32FromInt32(len1))
+						g.FnResByte += libc.Uint64FromInt32(len1 + int32(2))
 					}
 				}
 			}
-			if uint64(g.FnResult+len1) < libc.Uint64FromInt64(3000)-libc.Uint64FromInt32(2) {
+			if libc.Uint64FromInt32(g.FnResult+len1) < libc.Uint64FromInt64(3000)-libc.Uint64FromInt32(2) {
 				if g.FnResult > 0 {
 					v4 = uintptr(unsafe.Pointer(&g)) + 128
 					v3 = *(*int32)(unsafe.Pointer(v4))
 					*(*int32)(unsafe.Pointer(v4))++
 					*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 132 + uintptr(v3))) = uint8(' ')
 				}
-				libc.Xmemcpy(tls, uintptr(unsafe.Pointer(&g))+132+uintptr(g.FnResult), z1, uint64(len1+int32(1)))
+				libc.Xmemcpy(tls, uintptr(unsafe.Pointer(&g))+132+uintptr(g.FnResult), z1, libc.Uint64FromInt32(len1+int32(1)))
 				g.FnResult += len1
 			}
 			goto _1
@@ -3244,10 +919,22 @@ func speedtest1_run(tls *libc.TLS) {
 func traceCallback(tls *libc.TLS, NotUsed uintptr, zSql uintptr) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	var n int32
-	_ = n
-	n = int32(libc.Xstrlen(tls, zSql))
-	for n > 0 && (int32(*(*uint8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';') || int32(*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(libc.X__ctype_b_loc(tls))) + uintptr(int32(*(*uint8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))*2)))&int32(uint16(_ISspace)) != 0) {
+	var n, v1, v2 int32
+	var v4, v5 bool
+	_, _, _, _, _ = n, v1, v2, v4, v5
+	n = libc.Int32FromUint64(libc.Xstrlen(tls, zSql))
+	for {
+		if v5 = n > 0; v5 {
+			if v4 = libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';'); !v4 {
+				v1 = libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(zSql + uintptr(n-int32(1)))))
+				v2 = libc.BoolInt32(v1 == int32(' ') || libc.Uint32FromInt32(v1)-uint32('\t') < uint32(5))
+				goto _3
+			_3:
+			}
+		}
+		if !(v5 && (v4 || v2 != 0)) {
+			break
+		}
 		n--
 	}
 	libc.Xfprintf(tls, libc.Xstderr, __ccgo_ts+473, libc.VaList(bp+8, n, zSql))
@@ -3258,7 +945,7 @@ func traceCallback(tls *libc.TLS, NotUsed uintptr, zSql uintptr) {
 //	/* Substitute random() function that gives the same random
 //	** sequence on each run, for repeatability. */
 func randomFunc(tls *libc.TLS, context uintptr, NotUsed int32, NotUsed2 uintptr) {
-	libsqlite3.Xsqlite3_result_int64(tls, context, int64(speedtest1_random(tls)))
+	libsqlite3.Xsqlite3_result_int64(tls, context, libc.Int64FromUint32(speedtest1_random(tls)))
 }
 
 // C documentation
@@ -3306,7 +993,7 @@ func testset_main(tls *libc.TLS) {
 	n = v1
 	sz = v1
 	(*(*[2000]uint8)(unsafe.Pointer(bp)))[0] = uint8(0)
-	maxb = int32(roundup_allones(tls, uint32(sz)))
+	maxb = libc.Int32FromUint32(roundup_allones(tls, libc.Uint32FromInt32(sz)))
 	speedtest1_begin_test(tls, int32(100), __ccgo_ts+590, libc.VaList(bp+2008, n))
 	speedtest1_exec(tls, __ccgo_ts+626, 0)
 	speedtest1_exec(tls, __ccgo_ts+632, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.FzNN, g.FzNN, g.FzNN))
@@ -3316,9 +1003,9 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, libc.Uint32FromInt32(i), libc.Uint32FromInt32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
-		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(1), int64(x1))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(1), libc.Int64FromUint32(x1))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), i)
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -3339,10 +1026,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, libc.Uint32FromInt32(i), libc.Uint32FromInt32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), i)
-		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(2), int64(x1))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(2), libc.Int64FromUint32(x1))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _3
@@ -3362,10 +1049,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, libc.Uint32FromInt32(i), libc.Uint32FromInt32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), i)
-		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(1), int64(x1))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(1), libc.Int64FromUint32(x1))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _4
@@ -3385,11 +1072,11 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
-			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
+			x1 = speedtest1_random(tls) % libc.Uint32FromInt32(maxb)
+			x2 = speedtest1_random(tls)%uint32(10) + libc.Uint32FromInt32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), libc.Int32FromUint32(x2))
 		speedtest1_run(tls)
 		goto _5
 	_5:
@@ -3408,9 +1095,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % libc.Uint32FromInt32(maxb)
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[0] = uint8('%')
-			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, libc.Uint32FromInt32(i), bp+uintptr(1), libc.Int32FromUint64(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[len1] = uint8('%')
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[len1+int32(1)] = uint8(0)
 		}
@@ -3433,9 +1120,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % libc.Uint32FromInt32(maxb)
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[0] = uint8('%')
-			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, libc.Uint32FromInt32(i), bp+uintptr(1), libc.Int32FromUint64(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[len1] = uint8('%')
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[len1+int32(1)] = uint8(0)
 		}
@@ -3458,9 +1145,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
+			x1 = speedtest1_random(tls) % libc.Uint32FromInt32(maxb)
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[0] = uint8('%')
-			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, libc.Uint32FromInt32(i), bp+uintptr(1), libc.Int32FromUint64(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[len1] = uint8('%')
 			(*(*[2000]uint8)(unsafe.Pointer(bp)))[len1+int32(1)] = uint8(0)
 		}
@@ -3492,11 +1179,11 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
-			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
+			x1 = speedtest1_random(tls) % libc.Uint32FromInt32(maxb)
+			x2 = speedtest1_random(tls)%uint32(10) + libc.Uint32FromInt32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), libc.Int32FromUint32(x2))
 		speedtest1_run(tls)
 		goto _9
 	_9:
@@ -3515,11 +1202,11 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(maxb)
-			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
+			x1 = speedtest1_random(tls) % libc.Uint32FromInt32(maxb)
+			x2 = speedtest1_random(tls)%uint32(10) + libc.Uint32FromInt32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), libc.Int32FromUint32(x2))
 		speedtest1_run(tls)
 		goto _10
 	_10:
@@ -3538,8 +1225,8 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.FnRepeat == 0 {
-			x1 = swizzle(tls, uint32(i), uint32(maxb))
-			len1 = speedtest1_numbername(tls, x1, bp, int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(1)))
+			x1 = swizzle(tls, libc.Uint32FromInt32(i), libc.Uint32FromInt32(maxb))
+			len1 = speedtest1_numbername(tls, x1, bp, libc.Int32FromUint64(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(1)))
 		}
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(1), bp, len1, libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -3580,10 +1267,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls) % uint32(maxb)
-		x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		x1 = speedtest1_random(tls) % libc.Uint32FromInt32(maxb)
+		x2 = speedtest1_random(tls)%uint32(10) + libc.Uint32FromInt32(sz/int32(5000)) + x1
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), libc.Int32FromUint32(x2))
 		speedtest1_run(tls)
 		goto _12
 	_12:
@@ -3601,8 +1288,8 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
+		x1 = speedtest1_random(tls)%libc.Uint32FromInt32(sz) + uint32(1)
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
 		speedtest1_run(tls)
 		goto _13
 	_13:
@@ -3626,10 +1313,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(maxb) + uint32(1)
-		x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		x1 = speedtest1_random(tls)%libc.Uint32FromInt32(maxb) + uint32(1)
+		x2 = speedtest1_random(tls)%uint32(10) + libc.Uint32FromInt32(sz/int32(5000)) + x1
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), libc.Int32FromUint32(x2))
 		speedtest1_run(tls)
 		goto _14
 	_14:
@@ -3647,8 +1334,8 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
+		x1 = speedtest1_random(tls)%libc.Uint32FromInt32(sz) + uint32(1)
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
 		speedtest1_run(tls)
 		goto _15
 	_15:
@@ -3675,10 +1362,10 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
+		x1 = speedtest1_random(tls)%libc.Uint32FromInt32(sz) + uint32(1)
 		x2 = speedtest1_random(tls)%uint32(10) + x1 + uint32(4)
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), int32(x2))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), libc.Int32FromUint32(x2))
 		speedtest1_run(tls)
 		goto _16
 	_16:
@@ -3696,7 +1383,7 @@ func testset_main(tls *libc.TLS) {
 	n = v17
 	sz = v17
 	(*(*[2000]uint8)(unsafe.Pointer(bp)))[0] = uint8(0)
-	maxb = int32(roundup_allones(tls, uint32(sz/int32(3))))
+	maxb = libc.Int32FromUint32(roundup_allones(tls, libc.Uint32FromInt32(sz/int32(3))))
 	speedtest1_begin_test(tls, int32(400), __ccgo_ts+3501, libc.VaList(bp+2008, n))
 	speedtest1_exec(tls, __ccgo_ts+626, 0)
 	speedtest1_exec(tls, __ccgo_ts+3526, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.FzNN))
@@ -3706,9 +1393,9 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
-		speedtest1_numbername(tls, uint32(i), bp, int32(2000))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int64(x1)))
+		x1 = swizzle(tls, libc.Uint32FromInt32(i), libc.Uint32FromInt32(maxb))
+		speedtest1_numbername(tls, libc.Uint32FromInt32(i), bp, int32(2000))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(libc.Int64FromUint32(x1)))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _18
@@ -3734,8 +1421,8 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(int64(x1)))
+		x1 = swizzle(tls, libc.Uint32FromInt32(i), libc.Uint32FromInt32(maxb))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(libc.Int64FromUint32(x1)))
 		speedtest1_run(tls)
 		goto _19
 	_19:
@@ -3750,7 +1437,7 @@ func testset_main(tls *libc.TLS) {
 	n = v20
 	sz = v20
 	(*(*[2000]uint8)(unsafe.Pointer(bp)))[0] = uint8(0)
-	maxb = int32(roundup_allones(tls, uint32(sz/int32(3))))
+	maxb = libc.Int32FromUint32(roundup_allones(tls, libc.Uint32FromInt32(sz/int32(3))))
 	speedtest1_begin_test(tls, int32(500), __ccgo_ts+3681, libc.VaList(bp+2008, n))
 	speedtest1_exec(tls, __ccgo_ts+626, 0)
 	if libsqlite3.Xsqlite3_libversion_number(tls) >= int32(3008002) {
@@ -3765,7 +1452,7 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, libc.Uint32FromInt32(i), libc.Uint32FromInt32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(2), i)
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(1), bp, -int32(1), libc.UintptrFromInt32(0))
@@ -3788,7 +1475,7 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		x1 = swizzle(tls, libc.Uint32FromInt32(i), libc.Uint32FromInt32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(1), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -3875,8 +1562,8 @@ func speedtest1_random_ascii_fp(tls *libc.TLS, zFP uintptr) {
 	defer tls.Free(32)
 	var x, y, z int32
 	_, _, _ = x, y, z
-	x = int32(speedtest1_random(tls))
-	y = int32(speedtest1_random(tls))
+	x = libc.Int32FromUint32(speedtest1_random(tls))
+	y = libc.Int32FromUint32(speedtest1_random(tls))
 	z = y % int32(10)
 	if z < 0 {
 		z = -z
@@ -3985,7 +1672,7 @@ func testset_orm(tls *libc.TLS) {
 	var i, j, len1, n, nRow, x1, v1 uint32
 	var _ /* zNum at bp+0 */ [2000]uint8
 	_, _, _, _, _, _, _ = i, j, len1, n, nRow, x1, v1 /* A number name */
-	v1 = uint32(g.FszTest * libc.Int32FromInt32(250))
+	v1 = libc.Uint32FromInt32(g.FszTest * libc.Int32FromInt32(250))
 	n = v1
 	nRow = v1
 	speedtest1_begin_test(tls, int32(100), __ccgo_ts+7292, libc.VaList(bp+2008, n))
@@ -3998,24 +1685,24 @@ func testset_orm(tls *libc.TLS) {
 		}
 		x1 = speedtest1_random(tls)
 		speedtest1_numbername(tls, x1%uint32(1000), bp, int32(2000))
-		len1 = uint32(int32(libc.Xstrlen(tls, bp)))
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(i^uint32(0xf)))
+		len1 = libc.Uint32FromInt32(libc.Int32FromUint64(libc.Xstrlen(tls, bp)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(i^uint32(0xf)))
 		j = uint32(0)
 		for {
 			if !(zType[j] != 0) {
 				break
 			}
-			switch int32(zType[j]) {
+			switch libc.Int32FromUint8(zType[j]) {
 			case int32('I'):
 				fallthrough
 			case int32('T'):
-				libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, int32(j+uint32(2)), int64(x1))
+				libsqlite3.Xsqlite3_bind_int64(tls, g.FpStmt, libc.Int32FromUint32(j+uint32(2)), libc.Int64FromUint32(x1))
 			case int32('F'):
-				libsqlite3.Xsqlite3_bind_double(tls, g.FpStmt, int32(j+uint32(2)), float64(x1))
+				libsqlite3.Xsqlite3_bind_double(tls, g.FpStmt, libc.Int32FromUint32(j+uint32(2)), float64(x1))
 			case int32('V'):
 				fallthrough
 			case int32('B'):
-				libsqlite3.Xsqlite3_bind_text64(tls, g.FpStmt, int32(j+uint32(2)), bp, uint64(len1), libc.UintptrFromInt32(0), uint8(SQLITE_UTF8))
+				libsqlite3.Xsqlite3_bind_text64(tls, g.FpStmt, libc.Int32FromUint32(j+uint32(2)), bp, uint64(len1), libc.UintptrFromInt32(0), uint8(SQLITE_UTF8))
 				break
 			}
 			goto _3
@@ -4031,7 +1718,7 @@ func testset_orm(tls *libc.TLS) {
 	}
 	speedtest1_exec(tls, __ccgo_ts+1703, 0)
 	speedtest1_end_test(tls)
-	n = uint32(g.FszTest * int32(250))
+	n = libc.Uint32FromInt32(g.FszTest * int32(250))
 	speedtest1_begin_test(tls, int32(110), __ccgo_ts+14449, libc.VaList(bp+2008, n))
 	speedtest1_prepare(tls, __ccgo_ts+14472, 0)
 	i = uint32(0)
@@ -4040,7 +1727,7 @@ func testset_orm(tls *libc.TLS) {
 			break
 		}
 		x1 = speedtest1_random(tls) % nRow
-		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), int32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), libc.Int32FromUint32(x1))
 		speedtest1_run(tls)
 		goto _4
 	_4:
@@ -4076,8 +1763,8 @@ func testset_trigger(tls *libc.TLS) {
 			if !(ii < NROW) {
 				break
 			}
-			x1 = int32(speedtest1_random(tls) % uint32(NROW))
-			speedtest1_numbername(tls, uint32(x1), bp, int32(2000))
+			x1 = libc.Int32FromUint32(speedtest1_random(tls) % libc.Uint32FromInt32(NROW))
+			speedtest1_numbername(tls, libc.Uint32FromInt32(x1), bp, int32(2000))
 			libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), x1)
 			libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 			speedtest1_run(tls)
@@ -4219,7 +1906,7 @@ func testset_trigger(tls *libc.TLS) {
 		if !(jj < NROW2) {
 			break
 		}
-		speedtest1_numbername(tls, uint32(jj), bp, int32(2000))
+		speedtest1_numbername(tls, libc.Uint32FromInt32(jj), bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), jj)
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -4241,7 +1928,7 @@ func testset_trigger(tls *libc.TLS) {
 		if !(jj <= NROW2*int32(2)) {
 			break
 		}
-		speedtest1_numbername(tls, uint32(jj*int32(2)), bp, int32(2000))
+		speedtest1_numbername(tls, libc.Uint32FromInt32(jj*int32(2)), bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), jj*int32(2))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(3), jj)
@@ -4285,7 +1972,7 @@ func testset_trigger(tls *libc.TLS) {
 		if !(jj < NROW2) {
 			break
 		}
-		speedtest1_numbername(tls, uint32(jj), bp, int32(2000))
+		speedtest1_numbername(tls, libc.Uint32FromInt32(jj), bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), jj)
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
@@ -4302,7 +1989,7 @@ func testset_trigger(tls *libc.TLS) {
 		if !(jj <= NROW2*int32(2)) {
 			break
 		}
-		speedtest1_numbername(tls, uint32(jj*int32(2)), bp, int32(2000))
+		speedtest1_numbername(tls, libc.Uint32FromInt32(jj*int32(2)), bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), jj*int32(2))
 		libsqlite3.Xsqlite3_bind_text(tls, g.FpStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(3), jj)
@@ -4342,7 +2029,7 @@ func testset_debug1(tls *libc.TLS) {
 	var i, n, x1, x2 uint32
 	var _ /* zNum at bp+0 */ [2000]uint8
 	_, _, _, _ = i, n, x1, x2 /* A number name */
-	n = uint32(g.FszTest)
+	n = libc.Uint32FromInt32(g.FszTest)
 	i = uint32(1)
 	for {
 		if !(i <= n) {
@@ -4430,48 +2117,6 @@ func testset_parsenumber(tls *libc.TLS) {
 	speedtest1_end_test(tls)
 }
 
-/* Copyright (C) 1991-2020 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-/*
- *	POSIX Standard: 2.6 Primitive System Data Types	<sys/types.h>
- */
-
-/* Copyright (C) 1991-2020 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-/*
- *	POSIX Standard: 2.10 Symbolic Constants		<unistd.h>
- */
-
 // C documentation
 //
 //	/*
@@ -4492,11 +2137,11 @@ func displayLinuxIoStats(tls *libc.TLS, out uintptr) {
 	for libc.Xfgets(tls, bp, int32(200), in) != uintptr(0) {
 		i = 0
 		for {
-			if !(uint64(i) < libc.Uint64FromInt64(112)/libc.Uint64FromInt64(16)) {
+			if !(libc.Uint64FromInt32(i) < libc.Uint64FromInt64(112)/libc.Uint64FromInt64(16)) {
 				break
 			}
-			n = int32(libc.Xstrlen(tls, aTrans[i].FzPattern))
-			if libc.Xstrncmp(tls, aTrans[i].FzPattern, bp, uint64(n)) == 0 {
+			n = libc.Int32FromUint64(libc.Xstrlen(tls, aTrans[i].FzPattern))
+			if libc.Xstrncmp(tls, aTrans[i].FzPattern, bp, libc.Uint64FromInt32(n)) == 0 {
 				libc.Xfprintf(tls, out, __ccgo_ts+19762, libc.VaList(bp+208, aTrans[i].FzDesc, bp+uintptr(n)))
 				break
 			}
@@ -4603,8 +2248,8 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			break
 		}
 		z = *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))
-		if int32(*(*uint8)(unsafe.Pointer(z))) == int32('-') {
-			for cond := true; cond; cond = int32(*(*uint8)(unsafe.Pointer(z))) == int32('-') {
+		if libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(z))) == int32('-') {
+			for cond := true; cond; cond = libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(z))) == int32('-') {
 				z++
 			}
 			if libc.Xstrcmp(tls, z, __ccgo_ts+19844) == 0 {
@@ -4785,10 +2430,10 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 																																						fatal_error(tls, __ccgo_ts+19882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																					}
 																																					i++
-																																					if int32(*(*uint8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) < int32('0') || int32(*(*uint8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) > int32('9') || int32(*(*uint8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)) + 1))) != 0 {
+																																					if libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) < int32('0') || libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) > int32('9') || libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)) + 1))) != 0 {
 																																						fatal_error(tls, __ccgo_ts+20261, 0)
 																																					}
-																																					g.FeTemp = int32(*(*uint8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) - int32('0')
+																																					g.FeTemp = libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) - int32('0')
 																																				} else {
 																																					if libc.Xstrcmp(tls, z, __ccgo_ts+20314) == 0 {
 																																						if i >= argc-int32(1) {
@@ -4925,7 +2570,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		i++
 	}
 	if nHeap > 0 {
-		pHeap = libc.Xmalloc(tls, uint64(nHeap))
+		pHeap = libc.Xmalloc(tls, libc.Uint64FromInt32(nHeap))
 		if pHeap == uintptr(0) {
 			fatal_error(tls, __ccgo_ts+20534, libc.VaList(bp+16, nHeap))
 		}
@@ -4936,7 +2581,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	}
 	if doPCache != 0 {
 		if nPCache > 0 && szPCache > 0 {
-			pPCache = libc.Xmalloc(tls, uint64(int64(nPCache)*int64(szPCache)))
+			pPCache = libc.Xmalloc(tls, libc.Uint64FromInt64(int64(nPCache)*int64(szPCache)))
 			if pPCache == uintptr(0) {
 				fatal_error(tls, __ccgo_ts+20595, libc.VaList(bp+16, int64(nPCache)*int64(szPCache)))
 			}
@@ -4973,7 +2618,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		fatal_error(tls, __ccgo_ts+20671, libc.VaList(bp+16, zDbName))
 	}
 	if nLook > 0 && szLook > 0 {
-		pLook = libc.Xmalloc(tls, uint64(nLook*szLook))
+		pLook = libc.Xmalloc(tls, libc.Uint64FromInt32(nLook*szLook))
 		rc = libsqlite3.Xsqlite3_db_config(tls, g.Fdb, int32(SQLITE_DBCONFIG_LOOKASIDE), libc.VaList(bp+16, pLook, szLook, nLook))
 		if rc != 0 {
 			fatal_error(tls, __ccgo_ts+20702, libc.VaList(bp+16, rc))
