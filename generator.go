@@ -139,6 +139,7 @@ func main() {
 
 	fixWin(tempDir)
 	cwd := util.MustAbsCwd(true)
+	ilibc := filepath.Join(cwd, "..", "libc", "include", goos, goarch)
 	ilibz := filepath.Join(cwd, "..", "libz", "include", goos, goarch)
 	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
@@ -195,8 +196,8 @@ func main() {
 			"-DSQLITE_SOUNDEX",
 			"-DSQLITE_THREADSAFE=1",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
-			"-Dpread64=pread",
-			"-Dpwrite64=pwrite",
+			"-D_LARGEFILE64_SOURCE",
+			"-I", ilibc,
 			"-I", ilibz,
 			"-I", ilibtcl,
 
@@ -337,8 +338,7 @@ go work use \
 			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
 			"-DSQLITE_SOUNDEX",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
-			"-Dpread64=pread",
-			"-Dpwrite64=pwrite",
+			"-D_LARGEFILE64_SOURCE",
 		)
 		switch target {
 		case
@@ -361,6 +361,9 @@ go work use \
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=i686-w64-mingw32 --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		default:
 			config = append(config, "-DSQLITE_OS_UNIX=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
+			config = append(config, "-I" + ilibc)
+			config = append(config, "-I" + ilibz)
+			config = append(config, "-I" + ilibtcl)
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-load-extension", strings.Join(config, " ")))
 			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
 			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
@@ -388,8 +391,6 @@ go work use \
 			"-extended-errors",
 			"-ignore-unsupported-alignment",
 			"-ignore-link-errors",
-			"-I", ilibz,
-			"-I", ilibtcl,
 		)
 		switch target {
 		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "netbsd/amd64":
