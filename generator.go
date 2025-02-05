@@ -55,6 +55,7 @@ func main() {
 	if !win && !win32 && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
 		defer func() {
 			util.MustShell(true, nil, "make", "windows", "windows_386")
+			util.MustCopyFile(true, "internal/autogen/windows_386.mod", "go.mod", nil)
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
 			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
 		}()
@@ -63,7 +64,7 @@ func main() {
 	switch {
 	case win:
 		if target != "linux/amd64" {
-			fail(1, "cross compiling for windows is supported only on linux/amd64 (+Wine)")
+			fail(1, "cross compiling for windows is supported only on linux/amd64")
 		}
 
 		goos = "windows"
@@ -71,7 +72,7 @@ func main() {
 		xgcc = strings.TrimSpace(string(util.MustShell(true, nil, "which", "x86_64-w64-mingw32-gcc")))
 	case win32:
 		if target != "linux/amd64" {
-			fail(1, "cross compiling for windows is supported only on linux/amd64 (+Wine)")
+			fail(1, "cross compiling for windows is supported only on linux/amd64")
 		}
 
 		goos = "windows"
@@ -361,9 +362,9 @@ go work use \
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=i686-w64-mingw32 --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		default:
 			config = append(config, "-DSQLITE_OS_UNIX=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
-			config = append(config, "-I" + ilibc)
-			config = append(config, "-I" + ilibz)
-			config = append(config, "-I" + ilibtcl)
+			config = append(config, "-I"+ilibc)
+			config = append(config, "-I"+ilibz)
+			config = append(config, "-I"+ilibtcl)
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-load-extension", strings.Join(config, " ")))
 			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
 			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
