@@ -1,4 +1,4 @@
-// Code generated for windows/386 by 'generator -mlong-double-64 --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -ignore-link-errors -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/windows/386 -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/include/windows/386 -extended-errors -o sqlite3.go sqlite3.c --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows -DSQLITE_HAVE_C99_MATH_FUNCS=(1) -DSQLITE_OS_WIN=1 -DSQLITE_OMIT_SEH -map gcc=i686-w64-mingw32-gcc -eval-all-macros', DO NOT EDIT.
+// Code generated for windows/386 by 'generator -mlong-double-64 --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -ignore-link-errors -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -D_LARGEFILE64_SOURCE -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/include/windows/386 -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/windows/386 -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/include/windows/386 -extended-errors -o sqlite3.go sqlite3.c --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows -DSQLITE_HAVE_C99_MATH_FUNCS=(1) -DSQLITE_OS_WIN=1 -DSQLITE_OMIT_SEH -map gcc=i686-w64-mingw32-gcc -eval-all-macros', DO NOT EDIT.
 
 //go:build windows && 386
 
@@ -20959,6 +20959,7 @@ const _IOREAD = 1
 const _IORW = 128
 const _IOSTRG = 64
 const _IOWRT = 2
+const _LARGEFILE64_SOURCE = 1
 const _LARGEFILE_SOURCE = 1
 const _LARGE_FILE = 1
 const _LEADBYTE = 32768
@@ -21666,7 +21667,6 @@ const pcache1 = 0
 const pclose = 0
 const percent_rankFinalizeFunc = 0
 const popen = 0
-const pread64 = 0
 const psh1 = 1024
 const psh10 = 1033
 const psh11 = 1034
@@ -21686,7 +21686,6 @@ const psh9 = 1032
 const pshHelp = 1038
 const put4byte = 0
 const putVarint = 0
-const pwrite64 = 0
 const rad1 = 1056
 const rad10 = 1065
 const rad11 = 1066
