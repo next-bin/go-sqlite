@@ -238,7 +238,7 @@ func (r *renderGo) transitions(l *lex.L, state *lexer.NfaState) {
 		case *lexer.RuneEdge:
 			s = fmt.Sprintf("%s == %s", l.YYC, q(uint32(edge.Rune)))
 		case *lexer.RangesEdge:
-			s = fmt.Sprintf(r.rangesEdgeString(edge, l))
+			s = fmt.Sprint(r.rangesEdgeString(edge, l))
 		}
 		a = append(a, s)
 		m[s] = edge0.Target().Index
