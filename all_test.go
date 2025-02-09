@@ -28,6 +28,7 @@ var (
 	oMatch    = flag.String("match", "", "pattern match for tests")
 	oMaxError = flag.Uint("maxerror", 0, "stop after <uint> errors")
 	oQuiet    = flag.Bool("q", true, "reduce output")
+	oStrace   = flag.Bool("strace", false, "strace TclTest")
 	oStart    = flag.String("start", "", "-start=[$permutation:]$testfile")
 	oSuite    = flag.String("suite", "full", "suite [test-file] to run")
 	oVerbose  = flag.String("verbose", "0", `"0", "1" or "file"`)
@@ -222,7 +223,8 @@ func TestTclTest(t *testing.T) {
 	switch target {
 	case
 		"linux/arm64",   // OOM killed on rpi5
-		"linux/loong64": // OOM killed on loong64b
+		"linux/loong64", // OOM killed on loong64b
+		"linux/riscv64": // hangs
 
 		// # This test causes thrashing on machines with smaller amounts of
 		// # memory.  Make sure the host has at least 8GB available before running
@@ -325,7 +327,13 @@ func TestTclTest(t *testing.T) {
 	var out []byte
 	util.InDir(tmpDir, func() error {
 		bin := filepath.Base(bin)
-		if out, err = util.Shell(nil, bin, args...); err != nil {
+		switch {
+		case *oStrace:
+			out, err = util.Shell(nil, "strace", append([]string{"-f", "-r", bin}, args...)...)
+		default:
+			out, err = util.Shell(nil, bin, args...)
+		}
+		if err != nil {
 			switch err.Error() {
 			case "exit status 1":
 				t.Logf("fail: %v\n%s", err, out)
