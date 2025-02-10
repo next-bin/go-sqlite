@@ -576,6 +576,7 @@ func TestMain(m *testing.M) {
 			"env-5.5",
 			"env-9.0",
 			"event-11.*",
+			"exit-1.1",
 			"fCmd-10.3.1",
 			"fCmd-10.5",
 			"fCmd-10.6",
