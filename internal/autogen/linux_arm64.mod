@@ -1,13 +1,13 @@
 module modernc.org/libsqlite3
 
-go 1.21
+go 1.22
 
 require (
-	golang.org/x/sys v0.28.0
+	golang.org/x/sys v0.30.0
 	modernc.org/ccgo/v4 v4.23.16
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.61.13
-	modernc.org/libtcl8.6 v0.16.5
+	modernc.org/libtcl8.6 v0.16.6
 	modernc.org/libz v0.16.14
 )
 
