@@ -29,14 +29,15 @@ const (
 )
 
 var (
-	goarch = env("TARGET_GOARCH", env("GOARCH", runtime.GOARCH))
-	goos   = env("TARGET_GOOS", env("GOOS", runtime.GOOS))
-	target = fmt.Sprintf("%s/%s", goos, goarch)
-	sed    = "sed"
-	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
-	win    = os.Getenv("GO_GENERATE_WIN") == "1"
-	win32  = os.Getenv("GO_GENERATE_WIN32") == "1"
-	xgcc   string
+	goarch    = env("TARGET_GOARCH", env("GOARCH", runtime.GOARCH))
+	goos      = env("TARGET_GOOS", env("GOOS", runtime.GOOS))
+	target    = fmt.Sprintf("%s/%s", goos, goarch)
+	sed       = "sed"
+	j         = fmt.Sprint(runtime.GOMAXPROCS(-1))
+	win       = os.Getenv("GO_GENERATE_WIN") == "1"
+	win32     = os.Getenv("GO_GENERATE_WIN32") == "1"
+	xgcc      string
+	withTclsh = os.Getenv("MODERNC_ORG_SQLITE_WITH_TCLSH")
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -365,7 +366,11 @@ go work use \
 			config = append(config, "-I"+ilibc)
 			config = append(config, "-I"+ilibz)
 			config = append(config, "-I"+ilibtcl)
-			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-load-extension", strings.Join(config, " ")))
+			s := ""
+			if withTclsh != "" {
+				s = fmt.Sprintf("--with-tclsh=%s", withTclsh)
+			}
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure %s --disable-shared --disable-load-extension", strings.Join(config, " "), s))
 			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
 			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
 		}
