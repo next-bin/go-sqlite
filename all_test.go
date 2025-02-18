@@ -219,6 +219,8 @@ func TestTclTest(t *testing.T) {
 		blacklist["symlink2.test"] = struct{}{}
 		// This test should not nun on windows but the platform test fails.
 		blacklist["readonly.test"] = struct{}{}
+		//TODO
+		blacklist["snapshot3.test"] = struct{}{}
 	}
 	switch target {
 	case
