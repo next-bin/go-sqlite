@@ -64,6 +64,7 @@ func TestMain(m *testing.M) {
 			"chan-io-54.2",
 			"chan-io-57.1",
 			"chan-io-57.2",
+			"cmdIL-5.7",
 			"encoding-28.0",
 			"event-11.5",
 			"io-29.34",
@@ -129,6 +130,7 @@ func TestMain(m *testing.M) {
 			"chan-io-54.2",
 			"chan-io-57.1",
 			"chan-io-57.2",
+			"cmdIL-5.7",
 			"encoding-28.0",
 			"event-11.5",
 			"io-29.34",
@@ -182,11 +184,13 @@ func TestMain(m *testing.M) {
 		)
 	case "linux/arm64":
 		skip = append(skip,
+			"cmdIL-5.7",
 			"iortrans-3.1",
 			"unixInit-3.2",
 		)
 	case "linux/386":
 		skip = append(skip,
+			"cmdIL-5.7",
 			"iortrans-3.1",
 			"unixInit-3.1",
 			"unixInit-3.2",
@@ -200,12 +204,14 @@ func TestMain(m *testing.M) {
 		)
 	case "linux/loong64":
 		skip = append(skip,
+			"cmdIL-5.7",
 			"iortrans-3.1",
 			"unixInit-3.1",
 			"unixInit-3.2",
 		)
 	case "linux/ppc64le":
 		skip = append(skip,
+			"cmdIL-5.7",
 			"iortrans-3.1",
 			"unixInit-3.1",
 			"unixInit-3.2",
@@ -259,6 +265,7 @@ func TestMain(m *testing.M) {
 			"chan-io-54.2",
 			"chan-io-57.1",
 			"chan-io-57.2",
+			"cmdIL-5.7",
 			"event-11.5",
 			"fCmd-9.4.b",
 			"file",
@@ -327,6 +334,7 @@ func TestMain(m *testing.M) {
 			"chan-io-54.2",
 			"chan-io-57.1",
 			"chan-io-57.2",
+			"cmdIL-5.7",
 			"cmdMZ-6.5a",
 			"event-11.5",
 			"io-29.34",
@@ -399,6 +407,7 @@ func TestMain(m *testing.M) {
 			"chan-io-57.1",
 			"chan-io-57.2",
 			"cmdAH-20.5",
+			"cmdIL-5.7",
 			"cmdMZ-6.5a",
 			"event-11.5",
 			"io-29.34",
@@ -459,6 +468,7 @@ func TestMain(m *testing.M) {
 			"chan-io-50.*",
 			"chan-io-51.*",
 			"chan-io-53.*",
+			"cmdIL-5.7",
 			"clock-38.2",
 			"clock-40.1",
 			"clock-42.1",
@@ -557,6 +567,7 @@ func TestMain(m *testing.M) {
 			"chan-io-28.*",
 			"chan-io-29.*",
 			"chan-io-39.*",
+			"cmdIL-5.7",
 			"clock-38.2",
 			"clock-40.1",
 			"clock-42.1",

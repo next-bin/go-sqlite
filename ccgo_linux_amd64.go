@@ -61297,7 +61297,7 @@ func XTclNRTryObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).Fbytes = libc.UintptrFromInt32(0)
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).FinternalRep.FlongValue = int64(*(*int32)(unsafe.Pointer(bp + 4)))
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType)) /* returnCode */
-		if (*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(2)] == libc.UintptrFromInt32(0) {                                               /* errorCodePrefix */
+		if (*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(2)] == libc.UintptrFromInt32(0) {                                              /* errorCodePrefix */
 			if v27 = libc.Bool(libc.UintptrFromInt32(0) == libc.UintptrFromInt32(0)); !v27 {
 				cachePtr2 = (*TInterp)(unsafe.Pointer(libc.UintptrFromInt32(0))).FallocCache
 			}
