@@ -500,10 +500,15 @@ func isKnownBadFile1(fn string, err error) bool {
 
 var notSupported = map[string]struct{}{
 	// Generics are not yet fully supported by this package.
+	"a.go":                {}, // go/test/fixedbugs/issue68526.dir/a/a.go:9:15: syntax error (asm_amd64.s:1700:goexit: asm_amd64.s:1700:goexit: all_test.go:645:1)
 	"issue67683.go":       {}, // go/src/internal/types/testdata/fixedbugs/issue67683.go:12:15:
-	"typeAliases1.23b.go": {}, // go/src/internal/types/testdata/spec/typeAliases1.23b.go:10:15:
-	"issue68580.go":       {}, // go/test/fixedbugs/issue68580.go:9:15:
 	"issue68054.go":       {}, // go/test/fixedbugs/issue68054.go:9:17:
+	"issue68580.go":       {}, // go/test/fixedbugs/issue68580.go:9:15:
+	"issue69576.go":       {}, // go/src/internal/types/testdata/fixedbugs/issue69576.go:9:15: syntax error (asm_amd64.s:1700:goexit: asm_amd64.s:1700:goexit: all_test.go:645:1)
+	"issue70417.go":       {}, // go/src/internal/types/testdata/fixedbugs/issue70417.go:20:16: syntax error (asm_amd64.s:1700:goexit: asm_amd64.s:1700:goexit: all_test.go:645:1)
+	"issue71198.go":       {}, // go/src/internal/types/testdata/fixedbugs/issue71198.go:9:15: syntax error (asm_amd64.s:1700:goexit: asm_amd64.s:1700:goexit: all_test.go:645:1)
+	"receivers.go":        {}, // go/src/internal/types/testdata/spec/receivers.go:12:15: syntax error (asm_amd64.s:1700:goexit: asm_amd64.s:1700:goexit: all_test.go:645:1)
+	"typeAliases1.23b.go": {}, // go/src/internal/types/testdata/spec/typeAliases1.23b.go:10:15:
 }
 
 func isKnownBadFile0(fn string, pos token.Position) bool {
