@@ -344,8 +344,7 @@ go work use \
 		)
 		switch target {
 		case
-			"linux/amd64",
-			"linux/loong64":
+			"linux/amd64":
 			config = append(config, "-DSQLITE_THREADSAFE=1")
 		default:
 			config = append(config, "-DSQLITE_MUTEX_NOOP")
