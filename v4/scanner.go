@@ -684,9 +684,11 @@ func (s *scanner) universalCharacterName() bool {
 	// '\\' already consumed
 	switch s.rune() {
 	case 'u':
+		s.shift()
 		s.hexQuad()
 		return true
 	case 'U':
+		s.shift()
 		if s.hexQuad() {
 			s.hexQuad()
 		}
@@ -818,7 +820,7 @@ func (s *scanner) ppnumber() Token {
 			switch {
 			case c >= '0' && c <= '9':
 				s.shift()
-			case unicode.IsLetter(c):
+			case unicode.IsLetter(c) || c == '_':
 				s.shift()
 			default:
 				return s.newToken(rune(PPNUMBER))

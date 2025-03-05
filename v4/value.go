@@ -653,6 +653,10 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 				// nop
 			case Int64Value:
 				if y < 0 {
+					if c.cfg.IgnoreNegativeShiftAmounts {
+						return n.Value()
+					}
+
 					c.errors.add(fmt.Errorf("%v: negative shift amount: %v << %v", position(n), x, y))
 					break
 				}
@@ -669,6 +673,10 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 				// nop
 			case Int64Value:
 				if y < 0 {
+					if c.cfg.IgnoreNegativeShiftAmounts {
+						return n.Value()
+					}
+
 					c.errors.add(fmt.Errorf("%v: negative shift amount: %v << %v", position(n), x, y))
 					break
 				}
@@ -692,6 +700,10 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 				// nop
 			case Int64Value:
 				if y < 0 {
+					if c.cfg.IgnoreNegativeShiftAmounts {
+						return n.Value()
+					}
+
 					c.errors.add(fmt.Errorf("%v: negative shift amount: %v >> %v", position(n), x, y))
 					break
 				}
@@ -708,6 +720,10 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 				// nop
 			case Int64Value:
 				if y < 0 {
+					if c.cfg.IgnoreNegativeShiftAmounts {
+						return n.Value()
+					}
+
 					c.errors.add(fmt.Errorf("%v: negative shift amount: %v >> %v", position(n), x, y))
 					break
 				}
