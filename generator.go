@@ -25,7 +25,7 @@ import (
 const (
 	archivePath  = "sqlite-amalgamation-" + versionTag + ".zip"
 	archive2Path = "sqlite-src-" + versionTag + ".zip"
-	versionTag   = "3490000"
+	versionTag   = "3490100"
 )
 
 var (
@@ -132,6 +132,8 @@ func main() {
 
 	// https://gitlab.com/cznic/sqlite/-/issues/173
 	util.MustShell(true, nil, "patch", filepath.Join(libRoot, "sqlite3.c"), filepath.Join("internal", "sqlite_issue173.patch"))
+	// https://gitlab.com/cznic/libsqlite3/-/issues/1
+	util.MustShell(true, nil, "patch", filepath.Join(libRoot, "sqlite3.c"), filepath.Join("internal", "issue1.patch"))
 
 	// https://gitlab.com/cznic/sqlite/-/issues/180
 	// We do not have long double, the field is already zero, skip the C-racy test altogether.
@@ -292,6 +294,8 @@ func main() {
 	util.MustShell(true, nil, "unzip", archive2Path, "-d", tempDir)
 	// https://gitlab.com/cznic/sqlite/-/issues/173
 	util.MustShell(true, nil, "patch", filepath.Join(makeRoot, "src", "os_unix.c"), filepath.Join("internal", "sqlite_issue173.patch2"))
+	// https://gitlab.com/cznic/libsqlite3/-/issues/1
+	util.MustShell(true, nil, "patch", filepath.Join(makeRoot, "src", "pcache1.c"), filepath.Join("internal", "issue1.patch2"))
 	mustCopyDir(makeRoot, filepath.Join("internal", "overlay", "generator"), nil, false)
 	fixWin(tempDir)
 	mustCopyFile("LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
