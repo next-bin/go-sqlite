@@ -1,4 +1,4 @@
-// Code generated for linux/riscv64 by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_riscv64.go -I /tmp/libsqlite3/sqlite-src-3490000 /tmp/libsqlite3/sqlite-src-3490000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/riscv64 by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_riscv64.go -I /tmp/libsqlite3/sqlite-src-3490100 /tmp/libsqlite3/sqlite-src-3490100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && riscv64
 
