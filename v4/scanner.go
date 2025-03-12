@@ -793,9 +793,11 @@ func (s *scanner) newToken(c rune) Token {
 	case s.joinedLines:
 		s.joinedLines = false
 		tok := newToken(s.s, c, s.sep, s.src, s.off-s.src)
+		sep := bytes.ReplaceAll(tok.Sep(), []byte("\\\n"), nil)
+		src := bytes.ReplaceAll(tok.Src(), []byte("\\\n"), nil)
 		tok.Set(
-			bytes.ReplaceAll(tok.Sep(), []byte("\\\n"), nil),
-			bytes.ReplaceAll(tok.Src(), []byte("\\\n"), nil),
+			bytes.ReplaceAll(sep, []byte("\\\r\n"), nil),
+			bytes.ReplaceAll(src, []byte("\\\r\n"), nil),
 		)
 		return tok
 	default:
