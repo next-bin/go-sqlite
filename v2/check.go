@@ -1914,7 +1914,7 @@ func (n *ShortVarDecl) check(c *ctx) {
 		switch et := expr.Type(); et.Kind() {
 		case InvalidKind:
 		default:
-			v := &Variable{Expr: expr, Ident: id, typer: newTyper(c.defaultType(et)), lexicalScoper: newLexicalScoper(s)}
+			v := &Variable{Expr: expr, Ident: id, typer: newTyper(c, n, c.defaultType(et)), lexicalScoper: newLexicalScoper(s)}
 			s.add(c, id.Src(), visibleFrom, v)
 		}
 	}

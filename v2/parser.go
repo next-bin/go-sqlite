@@ -2099,7 +2099,7 @@ func (p *parser) primaryExpression() (r Node) {
 		case STRING_LIT:
 			typ = UntypedStringType
 		}
-		lit := &BasicLit{typer: newTyper(typ), valuer: newValuer(v), Token: tok}
+		lit := &BasicLit{typer: newTyper(nil, nil, typ), valuer: newValuer(v), Token: tok}
 		lit.guard = checked
 		r = lit
 	//                Conversion case '(', '*', '[', ARROW, CHAN, FUNC, IDENTIFIER, INTERFACE, MAP, STRUCT:

@@ -36,7 +36,7 @@ var (
 )
 
 var (
-	invalidExpr = &invalidExprType{typer: newTyper(Invalid)}
+	invalidExpr = &invalidExprType{typer: newTyper(nil, nil, Invalid)}
 	unknown     = constant.MakeUnknown()
 )
 

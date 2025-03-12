@@ -75,11 +75,13 @@ const (
 )
 
 type typer struct {
+	*ctx
 	guard
+	n   Node
 	typ Type
 }
 
-func newTyper(t Type) typer { return typer{typ: t} }
+func newTyper(c *ctx, n Node, t Type) typer { return typer{typ: t} }
 
 // Type returns the type of a node or Invalid if the type is
 // unknown/undetermined.
@@ -90,12 +92,16 @@ func (t typer) Type() Type {
 
 	switch t.guard {
 	case unchecked:
-		panic(todo("missed type check"))
+		if t.ctx != nil {
+			t.ctx.err(t.n, "missed type check")
+		}
 	case checking:
-		panic(todo("internal error: guard == %s", t.guard))
-	default:
-		return Invalid
+		if t.ctx != nil {
+			t.ctx.err(t.n, "recursive type")
+		}
 	}
+	t.typ = Invalid
+	return t.typ
 }
 
 // IsUncheckedType returns true when a type check of a Node was not performed.
@@ -461,7 +467,9 @@ type Field struct {
 }
 
 // NewField returns a newly created struct field.
-func NewField(name string, typ Type) *Field { return &Field{typer: newTyper(typ), Name: name} }
+func NewField(name string, typ Type) *Field {
+	return &Field{typer: newTyper(nil, nil, typ), Name: name}
+}
 
 // Index returns n's zero-base index.
 func (n *Field) Index() int { return n.index }
@@ -518,9 +526,9 @@ func (n *StructTypeNode) check(c *ctx) Node {
 				if ef.Star.IsValid() {
 					ft = newPointer(c.pkg, ft)
 				}
-				t.Fields = append(t.Fields, &Field{typer: newTyper(ft), Name: ef.TypeName.Name.Ident.Src()})
+				t.Fields = append(t.Fields, &Field{typer: newTyper(c, n, ft), Name: ef.TypeName.Name.Ident.Src()})
 			default:
-				ft := newTyper(c.checkType(x.Type))
+				ft := newTyper(c, n, c.checkType(x.Type))
 				for _, id := range x.IdentifierList {
 					t.Fields = append(t.Fields, &Field{typer: ft, Name: id.Ident.Src()})
 				}

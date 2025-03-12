@@ -1,8 +1,8 @@
 package p
 
 func f() {
-	"x"+
-	"x"
-	;
+	"x" +
+		"x"
+
 	"y"
 }
