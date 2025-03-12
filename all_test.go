@@ -89,6 +89,7 @@ func TestMain(m *testing.M) {
 			"iortrans-3.1",
 			"tcltest-21.11",
 			"tcltest-21.5",
+			"unixFCmd-20.1",
 			"unixInit-1.2",
 			"unixInit-3.1",
 			"unixInit-3.2",
