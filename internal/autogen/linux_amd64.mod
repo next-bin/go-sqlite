@@ -2,12 +2,10 @@ module modernc.org/libtcl8.6
 
 go 1.23
 
-toolchain go1.23.5
-
 require (
 	github.com/adrg/xdg v0.5.0
-	modernc.org/cc/v4 v4.24.4
-	modernc.org/ccgo/v4 v4.23.18
+	modernc.org/cc/v4 v4.25.1
+	modernc.org/ccgo/v4 v4.24.0
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.61.13
 	modernc.org/libz v0.16.15
