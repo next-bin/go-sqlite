@@ -286348,7 +286348,7 @@ func _FileSeekProc(tls *libc.TLS, instanceData TClientData, offset int64, mode i
 	/*
 	 * Save our current place in case we need to roll-back the seek.
 	 */
-	oldLoc = libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, libc.Int64FromInt32(0), int32(m_SEEK_CUR))
+	oldLoc = int64(libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, libc.Int64FromInt32(0), int32(m_SEEK_CUR)))
 	if oldLoc == int64(-libc.Int32FromInt32(1)) {
 		/*
 		 * Bad things are happening. Error out...
@@ -286356,7 +286356,7 @@ func _FileSeekProc(tls *libc.TLS, instanceData TClientData, offset int64, mode i
 		*(*int32)(unsafe.Pointer(errorCodePtr)) = *(*int32)(unsafe.Pointer(libc.X__error(tls)))
 		return -int32(1)
 	}
-	newLoc = libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, offset, mode)
+	newLoc = int64(libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, offset, mode))
 	/*
 	 * Check for expressability in our return type, and roll-back otherwise.
 	 */
@@ -286402,7 +286402,7 @@ func _FileWideSeekProc(tls *libc.TLS, instanceData TClientData, offset TTcl_Wide
 	var v1 int32
 	_, _, _ = fsPtr, newLoc, v1
 	fsPtr = instanceData
-	newLoc = libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, offset, mode)
+	newLoc = int64(libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, offset, mode))
 	if newLoc == int64(-int32(1)) {
 		v1 = *(*int32)(unsafe.Pointer(libc.X__error(tls)))
 	} else {
