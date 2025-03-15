@@ -39610,7 +39610,7 @@ func _BinaryFormatCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 					if offset%int32(2) != 0 {
 						v56 = *(*uintptr)(unsafe.Pointer(bp + 24))
 						*(*uintptr)(unsafe.Pointer(bp + 24))++
-						*(*uint8)(unsafe.Pointer(v56)) = uint8(libc.Uint8FromInt32(value))
+						*(*uint8)(unsafe.Pointer(v56)) = libc.Uint8FromInt32(value)
 						value = 0
 					}
 					goto _45
