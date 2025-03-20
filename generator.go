@@ -209,10 +209,8 @@ func main() {
 			"-o", result,
 			"sqlite3.c",
 		)
-		switch target {
-		case
-			"linux/amd64",
-			"linux/loong64":
+		switch goos {
+		case "linux":
 			// nop
 		default:
 			config = append(config, "-DSQLITE_MUTEX_NOOP")
