@@ -53997,7 +53997,7 @@ func _toBase85(tls *libc.TLS, pIn uintptr, nbIn int32, pOut uintptr, pSep uintpt
 		nco = int32(5)
 		qbv = uint32(*(*Tu8)(unsafe.Pointer(pIn)))<<int32(24) | libc.Uint32FromInt32(libc.Int32FromUint8(*(*Tu8)(unsafe.Pointer(pIn + 1)))<<libc.Int32FromInt32(16)) | libc.Uint32FromInt32(libc.Int32FromUint8(*(*Tu8)(unsafe.Pointer(pIn + 2)))<<libc.Int32FromInt32(8)) | uint32(*(*Tu8)(unsafe.Pointer(pIn + 3)))
 		for nco > 0 {
-			nqv = uint32(qbv / libc.Uint32FromUint32(85))
+			nqv = qbv / libc.Uint32FromUint32(85)
 			dv = uint8(qbv - uint32(85)*nqv)
 			qbv = nqv
 			nco--
@@ -57159,9 +57159,9 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 		(*TCsvTable)(unsafe.Pointer(pNew)).FiStart = 0
 	} else {
 		if (*TCsvTable)(unsafe.Pointer(pNew)).FzData != 0 {
-			(*TCsvTable)(unsafe.Pointer(pNew)).FiStart = int32(libc.Int32FromUint32((*(*TCsvReader)(unsafe.Pointer(bp + 4))).FiIn))
+			(*TCsvTable)(unsafe.Pointer(pNew)).FiStart = libc.Int32FromUint32((*(*TCsvReader)(unsafe.Pointer(bp + 4))).FiIn)
 		} else {
-			(*TCsvTable)(unsafe.Pointer(pNew)).FiStart = int32(libc.Int32FromUint32(libc.Uint32FromInt32(libc.Xftell(tls, (*(*TCsvReader)(unsafe.Pointer(bp + 4))).Fin)) - (*(*TCsvReader)(unsafe.Pointer(bp + 4))).FnIn + (*(*TCsvReader)(unsafe.Pointer(bp + 4))).FiIn))
+			(*TCsvTable)(unsafe.Pointer(pNew)).FiStart = libc.Int32FromUint32(libc.Uint32FromInt32(libc.Xftell(tls, (*(*TCsvReader)(unsafe.Pointer(bp + 4))).Fin)) - (*(*TCsvReader)(unsafe.Pointer(bp + 4))).FnIn + (*(*TCsvReader)(unsafe.Pointer(bp + 4))).FiIn)
 		}
 	}
 	_csv_reader_reset(tls, bp+4)
@@ -78316,7 +78316,7 @@ func _zipfileUpdate(tls *libc.TLS, pVtab uintptr, nVal int32, apVal uintptr, pRo
 							}
 						}
 					}
-					iCrc32 = uint32(libz.Xcrc32(tls, uint32(0), aIn, libc.Uint32FromInt32(nIn)))
+					iCrc32 = libz.Xcrc32(tls, uint32(0), aIn, libc.Uint32FromInt32(nIn))
 				}
 			}
 		}
@@ -97840,7 +97840,7 @@ func _unixDeviceCharacteristics(tls *libc.TLS, id uintptr) (r int32) {
 //	** Instead, it should be called via macro osGetpagesize().
 //	*/
 func _unixGetpagesize(tls *libc.TLS) (r int32) {
-	return int32(libc.Xsysconf(tls, int32(m__SC_PAGESIZE)))
+	return libc.Xsysconf(tls, int32(m__SC_PAGESIZE))
 }
 
 /*
@@ -117286,7 +117286,7 @@ func _zeroPage(tls *libc.TLS, pPage uintptr, flags int32) {
 	if libc.Int32FromUint16((*TBtShared)(unsafe.Pointer(pBt)).FbtsFlags)&int32(m_BTS_FAST_SECURE1) != 0 {
 		libc.Xmemset(tls, data+uintptr(hdr), 0, (*TBtShared)(unsafe.Pointer(pBt)).FusableSize-uint32(hdr))
 	}
-	*(*uint8)(unsafe.Pointer(data + uintptr(hdr))) = uint8(libc.Uint8FromInt32(flags))
+	*(*uint8)(unsafe.Pointer(data + uintptr(hdr))) = libc.Uint8FromInt32(flags)
 	if flags&int32(m_PTF_LEAF1) == 0 {
 		v1 = int32(12)
 	} else {
