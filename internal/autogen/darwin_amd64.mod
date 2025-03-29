@@ -4,10 +4,10 @@ go 1.23.0
 
 require (
 	golang.org/x/sys v0.31.0
-	modernc.org/ccgo/v4 v4.25.1
+	modernc.org/ccgo/v4 v4.25.2
 	modernc.org/fileutil v1.3.0
-	modernc.org/libc v1.62.0
-	modernc.org/libtcl8.6 v0.16.8
+	modernc.org/libc v1.62.1
+	modernc.org/libtcl8.6 v0.16.9
 	modernc.org/libz v0.16.15
 )
 
