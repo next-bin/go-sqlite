@@ -1146,7 +1146,7 @@ func (n *structType) clone() (r *structType) {
 	return &m
 }
 
-func (n *structType) isIncomplete(m map[Type]struct{}) bool {
+func (n *structType) isIncomplete(m map[Type]struct{}) (r bool) {
 	if n.isIncomplete0 {
 		return true
 	}
@@ -1493,7 +1493,7 @@ func (n *StructType) IsIncomplete() bool {
 	return n.isIncompleteInner(nil)
 }
 
-func (n *StructType) isIncompleteInner(m map[Type]struct{}) bool {
+func (n *StructType) isIncompleteInner(m map[Type]struct{}) (r bool) {
 	if n == nil {
 		return true
 	}
@@ -1506,6 +1506,9 @@ func (n *StructType) isIncompleteInner(m map[Type]struct{}) bool {
 		m = map[Type]struct{}{}
 	}
 	m[n] = struct{}{}
+
+	defer func() { delete(m, n) }()
+
 	if n.forward != nil {
 		return n.forward.Type().isIncompleteInner(m)
 	}
@@ -1788,6 +1791,9 @@ func (n *UnionType) isIncompleteInner(m map[Type]struct{}) bool {
 		m = map[Type]struct{}{}
 	}
 	m[n] = struct{}{}
+
+	defer func() { delete(m, n) }()
+
 	if n.forward != nil {
 		return n.forward.Type().isIncompleteInner(m)
 	}
@@ -1991,6 +1997,9 @@ func (n *ArrayType) isIncompleteInner(m map[Type]struct{}) bool {
 		m = map[Type]struct{}{}
 	}
 	m[n] = struct{}{}
+
+	defer func() { delete(m, n) }()
+
 	return n.Elem().isIncompleteInner(m) || n.elems < 0
 }
 
@@ -2247,6 +2256,9 @@ func (n *EnumType) isIncompleteInner(m map[Type]struct{}) bool {
 		m = map[Type]struct{}{}
 	}
 	m[n] = struct{}{}
+
+	defer func() { delete(m, n) }()
+
 	if n.forward != nil {
 		return n.forward.Type().isIncompleteInner(m)
 	}
