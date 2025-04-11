@@ -262,6 +262,7 @@ type Type interface {
 	setName(d *Declarator) Type
 	str(b *strings.Builder, useTag bool) *strings.Builder
 	isGenericAssociationCompatible(assoc Type) bool
+	isIncompleteInner(map[Type]struct{}) bool
 }
 
 func mergeAttr(t Type, a *Attributes) (r Type, err error) {
@@ -343,7 +344,9 @@ func (n *InvalidType) str(b *strings.Builder, useTag bool) *strings.Builder {
 }
 
 // IsIncomplete implements Type.
-func (n *InvalidType) IsIncomplete() bool { return true }
+func (n *InvalidType) IsIncomplete() bool { return n.isIncompleteInner(nil) }
+
+func (n *InvalidType) isIncompleteInner(map[Type]struct{}) bool { return true }
 
 // Kind implements Type.
 func (n *InvalidType) Kind() Kind { return InvalidKind }
@@ -498,6 +501,10 @@ func (n *PredefinedType) str(b *strings.Builder, useTag bool) *strings.Builder {
 
 // IsIncomplete implements Type.
 func (n *PredefinedType) IsIncomplete() bool {
+	return n.isIncompleteInner(nil)
+}
+
+func (n *PredefinedType) isIncompleteInner(map[Type]struct{}) bool {
 	if n == nil {
 		return true
 	}
@@ -726,7 +733,9 @@ func (n *FunctionType) Undecay() Type { return n }
 func (n *FunctionType) FieldAlign() int { return 1 }
 
 // IsIncomplete implements Type.
-func (n *FunctionType) IsIncomplete() bool { return n == nil }
+func (n *FunctionType) IsIncomplete() bool { return n.isIncompleteInner(nil) }
+
+func (n *FunctionType) isIncompleteInner(map[Type]struct{}) bool { return n == nil }
 
 // Kind implements Type.
 func (n *FunctionType) Kind() Kind { return Function }
@@ -921,7 +930,9 @@ func (n *PointerType) FieldAlign() int {
 }
 
 // IsIncomplete implements Type.
-func (n *PointerType) IsIncomplete() bool { return n == nil }
+func (n *PointerType) IsIncomplete() bool { return n.isIncompleteInner(nil) }
+
+func (n *PointerType) isIncompleteInner(map[Type]struct{}) bool { return n == nil }
 
 // Kind implements Type.
 func (n *PointerType) Kind() Kind { return Ptr }
@@ -1135,7 +1146,7 @@ func (n *structType) clone() (r *structType) {
 	return &m
 }
 
-func (n *structType) isIncomplete() bool {
+func (n *structType) isIncomplete(m map[Type]struct{}) bool {
 	if n.isIncomplete0 {
 		return true
 	}
@@ -1145,7 +1156,7 @@ func (n *structType) isIncomplete() bool {
 			return false
 		}
 
-		if f.Type().IsIncomplete() {
+		if f.Type().isIncompleteInner(m) {
 			if x, ok := f.Type().(*ArrayType); ok && x.IsVLA() {
 				continue
 			}
@@ -1479,15 +1490,27 @@ func (n *StructType) FieldAlign() int {
 
 // IsIncomplete implements Type.
 func (n *StructType) IsIncomplete() bool {
+	return n.isIncompleteInner(nil)
+}
+
+func (n *StructType) isIncompleteInner(m map[Type]struct{}) bool {
 	if n == nil {
 		return true
 	}
 
-	if n.forward != nil {
-		return n.forward.Type().IsIncomplete()
+	if _, ok := m[n]; ok {
+		return true
 	}
 
-	return n.isIncomplete()
+	if m == nil {
+		m = map[Type]struct{}{}
+	}
+	m[n] = struct{}{}
+	if n.forward != nil {
+		return n.forward.Type().isIncompleteInner(m)
+	}
+
+	return n.isIncomplete(m)
 }
 
 // Kind implements Type.
@@ -1749,15 +1772,27 @@ func (n *UnionType) FieldAlign() int {
 
 // IsIncomplete implements Type.
 func (n *UnionType) IsIncomplete() bool {
+	return n.isIncompleteInner(nil)
+}
+
+func (n *UnionType) isIncompleteInner(m map[Type]struct{}) bool {
 	if n == nil {
 		return true
 	}
 
-	if n.forward != nil {
-		return n.forward.Type().IsIncomplete()
+	if _, ok := m[n]; ok {
+		return true
 	}
 
-	return n.isIncomplete()
+	if m == nil {
+		m = map[Type]struct{}{}
+	}
+	m[n] = struct{}{}
+	if n.forward != nil {
+		return n.forward.Type().isIncompleteInner(m)
+	}
+
+	return n.isIncomplete(m)
 }
 
 // Kind implements Type.
@@ -1940,11 +1975,23 @@ func (n *ArrayType) FieldAlign() int {
 
 // IsIncomplete implements Type.
 func (n *ArrayType) IsIncomplete() bool {
+	return n.isIncompleteInner(nil)
+}
+
+func (n *ArrayType) isIncompleteInner(m map[Type]struct{}) bool {
 	if n == nil {
 		return true
 	}
 
-	return n.Elem().IsIncomplete() || n.elems < 0
+	if _, ok := m[n]; ok {
+		return true
+	}
+
+	if m == nil {
+		m = map[Type]struct{}{}
+	}
+	m[n] = struct{}{}
+	return n.Elem().isIncompleteInner(m) || n.elems < 0
 }
 
 // Kind implements Type.
@@ -2185,6 +2232,26 @@ func (n *EnumType) IsIncomplete() bool {
 	}
 
 	return n.isIncomplete0 || n.typ.Type().IsIncomplete()
+}
+
+func (n *EnumType) isIncompleteInner(m map[Type]struct{}) bool {
+	if n == nil {
+		return true
+	}
+
+	if _, ok := m[n]; ok {
+		return true
+	}
+
+	if m == nil {
+		m = map[Type]struct{}{}
+	}
+	m[n] = struct{}{}
+	if n.forward != nil {
+		return n.forward.Type().isIncompleteInner(m)
+	}
+
+	return n.isIncomplete0 || n.typ.Type().isIncompleteInner(m)
 }
 
 // Kind implements Type.
