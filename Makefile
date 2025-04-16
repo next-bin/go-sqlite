@@ -49,7 +49,6 @@ generate: download
 	rm -rf $(DIR)/*
 	GO_GENERATE_DIR=$(DIR) go run generator*.go
 	go build -v ./...
-	# go install github.com/mdempsky/unconvert@latest
 	go build -v ./...
 	git status
 
