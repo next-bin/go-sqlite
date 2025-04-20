@@ -389,6 +389,7 @@ const m_DBL_MAX_EXP = "__DBL_MAX_EXP__"
 const m_DBL_MIN = "__DBL_MIN__"
 const m_DBL_MIN_10_EXP = "__DBL_MIN_10_EXP__"
 const m_DBL_MIN_EXP = "__DBL_MIN_EXP__"
+const m_DBL_NORM_MAX = "__DBL_NORM_MAX__"
 const m_DBL_TRUE_MIN = "__DBL_DENORM_MIN__"
 const m_DECIMAL_DIG = "__DECIMAL_DIG__"
 const m_DELETED = 1
@@ -602,6 +603,7 @@ const m_FLT_MAX_EXP = "__FLT_MAX_EXP__"
 const m_FLT_MIN = "__FLT_MIN__"
 const m_FLT_MIN_10_EXP = "__FLT_MIN_10_EXP__"
 const m_FLT_MIN_EXP = "__FLT_MIN_EXP__"
+const m_FLT_NORM_MAX = "__FLT_NORM_MAX__"
 const m_FLT_RADIX = "__FLT_RADIX__"
 const m_FLT_TRUE_MIN = "__FLT_DENORM_MIN__"
 const m_FNDELAY = "O_NONBLOCK"
@@ -845,6 +847,7 @@ const m_IOPOL_VFS_IGNORE_PERMISSIONS_OFF = 0
 const m_IOPOL_VFS_IGNORE_PERMISSIONS_ON = 1
 const m_IOPOL_VFS_NOCACHE_WRITE_FS_BLKSIZE_DEFAULT = 0
 const m_IOPOL_VFS_NOCACHE_WRITE_FS_BLKSIZE_ON = 1
+const m_IOPOL_VFS_SKIP_MTIME_UPDATE_IGNORE = 2
 const m_IOPOL_VFS_SKIP_MTIME_UPDATE_OFF = 0
 const m_IOPOL_VFS_SKIP_MTIME_UPDATE_ON = 1
 const m_IOPOL_VFS_STATFS_FORCE_NO_DATA_VOLUME = 1
@@ -1194,6 +1197,7 @@ const m_LDBL_MAX_EXP = "__LDBL_MAX_EXP__"
 const m_LDBL_MIN = "__LDBL_MIN__"
 const m_LDBL_MIN_10_EXP = "__LDBL_MIN_10_EXP__"
 const m_LDBL_MIN_EXP = "__LDBL_MIN_EXP__"
+const m_LDBL_NORM_MAX = "__LDBL_NORM_MAX__"
 const m_LDBL_TRUE_MIN = "__LDBL_DENORM_MIN__"
 const m_LINE_MAX = 2048
 const m_LINK_MAX = 32767
@@ -1240,15 +1244,20 @@ const m_MAC_OS_VERSION_13_3 = "__MAC_13_3"
 const m_MAC_OS_VERSION_13_4 = "__MAC_13_4"
 const m_MAC_OS_VERSION_13_5 = "__MAC_13_5"
 const m_MAC_OS_VERSION_13_6 = "__MAC_13_6"
+const m_MAC_OS_VERSION_13_7 = "__MAC_13_7"
 const m_MAC_OS_VERSION_14_0 = "__MAC_14_0"
 const m_MAC_OS_VERSION_14_1 = "__MAC_14_1"
 const m_MAC_OS_VERSION_14_2 = "__MAC_14_2"
 const m_MAC_OS_VERSION_14_3 = "__MAC_14_3"
 const m_MAC_OS_VERSION_14_4 = "__MAC_14_4"
 const m_MAC_OS_VERSION_14_5 = "__MAC_14_5"
+const m_MAC_OS_VERSION_14_6 = "__MAC_14_6"
+const m_MAC_OS_VERSION_14_7 = "__MAC_14_7"
 const m_MAC_OS_VERSION_15_0 = "__MAC_15_0"
 const m_MAC_OS_VERSION_15_1 = "__MAC_15_1"
 const m_MAC_OS_VERSION_15_2 = "__MAC_15_2"
+const m_MAC_OS_VERSION_15_3 = "__MAC_15_3"
+const m_MAC_OS_VERSION_15_4 = "__MAC_15_4"
 const m_MAC_OS_X_VERSION_10_0 = "__MAC_10_0"
 const m_MAC_OS_X_VERSION_10_1 = "__MAC_10_1"
 const m_MAC_OS_X_VERSION_10_10 = "__MAC_10_10"
@@ -1441,6 +1450,7 @@ const m_O_NONBLOCK = 0x00000004
 const m_O_POPUP = 0x80000000
 const m_O_RDONLY = 0x0000
 const m_O_RDWR = 0x0002
+const m_O_RESOLVE_BENEATH = 0x00001000
 const m_O_SHLOCK = 0x00000010
 const m_O_SYMLINK = 0x00200000
 const m_O_SYNC = 0x0080
@@ -1942,15 +1952,18 @@ const m_TARGET_CPU_PPC64 = 0
 const m_TARGET_CPU_SPARC = 0
 const m_TARGET_CPU_X86 = 0
 const m_TARGET_CPU_X86_64 = 0
-const m_TARGET_IPHONE_SIMULATOR = "TARGET_OS_SIMULATOR"
+const m_TARGET_IPHONE_SIMULATOR = 0
+const m_TARGET_OS_ARROW = 1
+const m_TARGET_OS_BRIDGE = 0
 const m_TARGET_OS_DRIVERKIT = 0
 const m_TARGET_OS_EMBEDDED = 0
 const m_TARGET_OS_IOS = 0
+const m_TARGET_OS_IOSMAC = 0
 const m_TARGET_OS_IPHONE = 0
 const m_TARGET_OS_LINUX = 0
 const m_TARGET_OS_MAC = 1
 const m_TARGET_OS_MACCATALYST = 0
-const m_TARGET_OS_NANO = "TARGET_OS_WATCH"
+const m_TARGET_OS_NANO = 0
 const m_TARGET_OS_OSX = 1
 const m_TARGET_OS_RTKIT = 0
 const m_TARGET_OS_SIMULATOR = 0
@@ -1961,6 +1974,7 @@ const m_TARGET_OS_VISION = 0
 const m_TARGET_OS_WATCH = 0
 const m_TARGET_OS_WIN32 = 0
 const m_TARGET_OS_WINDOWS = 0
+const m_TARGET_OS_XR = 0
 const m_TARGET_RT_64_BIT = 1
 const m_TARGET_RT_BIG_ENDIAN = 0
 const m_TARGET_RT_LITTLE_ENDIAN = 1
@@ -2324,6 +2338,8 @@ const m__FORTIFY_SOURCE = 2
 const m__IOFBF = 0
 const m__IOLBF = 1
 const m__IONBF = 2
+const m__LIBC_COUNT__MB_LEN_MAX = "_LIBC_UNSAFE_INDEXABLE"
+const m__LIBC_COUNT__PATH_MAX = "_LIBC_UNSAFE_INDEXABLE"
 const m__LP64 = 1
 const m__MASTERPASSWD = "master.passwd"
 const m__MP_DB = "pwd.db"
@@ -2572,11 +2588,18 @@ const m___AARCH64_SIMD__ = 1
 const m___API_TO_BE_DEPRECATED = 100000
 const m___API_TO_BE_DEPRECATED_DRIVERKIT = 100000
 const m___API_TO_BE_DEPRECATED_IOS = 100000
+const m___API_TO_BE_DEPRECATED_IOSAPPLICATIONEXTENSION = 100000
+const m___API_TO_BE_DEPRECATED_KERNELKIT = 100000
 const m___API_TO_BE_DEPRECATED_MACCATALYST = 100000
+const m___API_TO_BE_DEPRECATED_MACCATALYSTAPPLICATIONEXTENSION = 100000
 const m___API_TO_BE_DEPRECATED_MACOS = 100000
+const m___API_TO_BE_DEPRECATED_MACOSAPPLICATIONEXTENSION = 100000
 const m___API_TO_BE_DEPRECATED_TVOS = 100000
+const m___API_TO_BE_DEPRECATED_TVOSAPPLICATIONEXTENSION = 100000
 const m___API_TO_BE_DEPRECATED_VISIONOS = 100000
+const m___API_TO_BE_DEPRECATED_VISIONOSAPPLICATIONEXTENSION = 100000
 const m___API_TO_BE_DEPRECATED_WATCHOS = 100000
+const m___API_TO_BE_DEPRECATED_WATCHOSAPPLICATIONEXTENSION = 100000
 const m___APPLE_CC__ = 6000
 const m___APPLE__ = 1
 const m___ARM64_ARCH_8__ = 1
@@ -2624,12 +2647,17 @@ const m___ARM_NEON__ = 1
 const m___ARM_PCS_AAPCS64 = 1
 const m___ARM_SIZEOF_MINIMAL_ENUM = 4
 const m___ARM_SIZEOF_WCHAR_T = 4
+const m___ARM_STATE_ZA = 1
+const m___ARM_STATE_ZT0 = 1
 const m___ATOMIC_ACQUIRE = 2
 const m___ATOMIC_ACQ_REL = 4
 const m___ATOMIC_CONSUME = 1
 const m___ATOMIC_RELAXED = 0
 const m___ATOMIC_RELEASE = 3
 const m___ATOMIC_SEQ_CST = 5
+const m___AVAILABILITY_FILE = "AvailabilityVersions.h"
+const m___AVAILABILITY_VERSIONS_VERSION_HASH = 93585900
+const m___AVAILABILITY_VERSIONS_VERSION_STRING = "Local"
 const m___BIGGEST_ALIGNMENT__ = 8
 const m___BITINT_MAXWIDTH__ = 128
 const m___BLOCKS__ = 1
@@ -2660,9 +2688,12 @@ const m___BRIDGEOS_8_2 = 80200
 const m___BRIDGEOS_8_3 = 80300
 const m___BRIDGEOS_8_4 = 80400
 const m___BRIDGEOS_8_5 = 80500
+const m___BRIDGEOS_8_6 = 80600
 const m___BRIDGEOS_9_0 = 90000
 const m___BRIDGEOS_9_1 = 90100
 const m___BRIDGEOS_9_2 = 90200
+const m___BRIDGEOS_9_3 = 90300
+const m___BRIDGEOS_9_4 = 90400
 const m___BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const m___CCGO__ = 1
 const m___CHAR_BIT__ = 8
@@ -2715,6 +2746,7 @@ const m___DBL_MAX_10_EXP__ = 308
 const m___DBL_MAX_EXP__ = 1024
 const m___DBL_MAX__ = 1.7976931348623157e+308
 const m___DBL_MIN__ = 2.2250738585072014e-308
+const m___DBL_NORM_MAX__ = 1.7976931348623157e+308
 const m___DECIMAL_DIG__ = "__LDBL_DECIMAL_DIG__"
 const m___DRIVERKIT_19_0 = 190000
 const m___DRIVERKIT_20_0 = 200000
@@ -2729,9 +2761,12 @@ const m___DRIVERKIT_23_2 = 230200
 const m___DRIVERKIT_23_3 = 230300
 const m___DRIVERKIT_23_4 = 230400
 const m___DRIVERKIT_23_5 = 230500
+const m___DRIVERKIT_23_6 = 230600
 const m___DRIVERKIT_24_0 = 240000
 const m___DRIVERKIT_24_1 = 240100
 const m___DRIVERKIT_24_2 = 240200
+const m___DRIVERKIT_24_3 = 240300
+const m___DRIVERKIT_24_4 = 240400
 const m___DTF_ATEND = 0x0020
 const m___DTF_READALL = 0x0008
 const m___DTF_SKIPREAD = 0x0010
@@ -2752,6 +2787,7 @@ const m___FLT16_MAX_10_EXP__ = 4
 const m___FLT16_MAX_EXP__ = 16
 const m___FLT16_MAX__ = 6.5504e+4
 const m___FLT16_MIN__ = 6.103515625e-5
+const m___FLT16_NORM_MAX__ = 6.5504e+4
 const m___FLT_DECIMAL_DIG__ = 9
 const m___FLT_DENORM_MIN__ = 1.40129846e-45
 const m___FLT_DIG__ = 6
@@ -2764,6 +2800,7 @@ const m___FLT_MAX_10_EXP__ = 38
 const m___FLT_MAX_EXP__ = 128
 const m___FLT_MAX__ = 3.40282347e+38
 const m___FLT_MIN__ = 1.17549435e-38
+const m___FLT_NORM_MAX__ = 3.40282347e+38
 const m___FLT_RADIX__ = 2
 const m___FPCLASS_NEGINF = 0x0004
 const m___FPCLASS_NEGNORMAL = 0x0008
@@ -2790,8 +2827,11 @@ const m___GCC_ATOMIC_POINTER_LOCK_FREE = 2
 const m___GCC_ATOMIC_SHORT_LOCK_FREE = 2
 const m___GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
 const m___GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
+const m___GCC_CONSTRUCTIVE_SIZE = 64
+const m___GCC_DESTRUCTIVE_SIZE = 64
 const m___GCC_HAVE_DWARF2_CFI_ASM = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_16 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
@@ -2919,9 +2959,13 @@ const m___IPHONE_17_2 = 170200
 const m___IPHONE_17_3 = 170300
 const m___IPHONE_17_4 = 170400
 const m___IPHONE_17_5 = 170500
+const m___IPHONE_17_6 = 170600
+const m___IPHONE_17_7 = 170700
 const m___IPHONE_18_0 = 180000
 const m___IPHONE_18_1 = 180100
 const m___IPHONE_18_2 = 180200
+const m___IPHONE_18_3 = 180300
+const m___IPHONE_18_4 = 180400
 const m___IPHONE_2_0 = 20000
 const m___IPHONE_2_1 = 20100
 const m___IPHONE_2_2 = 20200
@@ -2967,6 +3011,7 @@ const m___LDBL_MAX_10_EXP__ = 308
 const m___LDBL_MAX_EXP__ = 1024
 const m___LDBL_MAX__ = 1.7976931348623157e+308
 const m___LDBL_MIN__ = 2.2250738585072014e-308
+const m___LDBL_NORM_MAX__ = 1.7976931348623157e+308
 const m___LITTLE_ENDIAN__ = 1
 const m___LLONG_WIDTH__ = 64
 const m___LONG_LONG_MAX__ = 9223372036854775807
@@ -3031,17 +3076,27 @@ const m___MAC_13_3 = 130300
 const m___MAC_13_4 = 130400
 const m___MAC_13_5 = 130500
 const m___MAC_13_6 = 130600
+const m___MAC_13_7 = 130700
 const m___MAC_14_0 = 140000
 const m___MAC_14_1 = 140100
 const m___MAC_14_2 = 140200
 const m___MAC_14_3 = 140300
 const m___MAC_14_4 = 140400
 const m___MAC_14_5 = 140500
+const m___MAC_14_6 = 140600
+const m___MAC_14_7 = 140700
 const m___MAC_15_0 = 150000
 const m___MAC_15_1 = 150100
 const m___MAC_15_2 = 150200
-const m___MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_15_2"
+const m___MAC_15_3 = 150300
+const m___MAC_15_4 = 150400
+const m___MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_15_4"
 const m___MAC_OS_X_VERSION_MIN_REQUIRED = "__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__"
+const m___MEMORY_SCOPE_DEVICE = 1
+const m___MEMORY_SCOPE_SINGLE = 4
+const m___MEMORY_SCOPE_SYSTEM = 0
+const m___MEMORY_SCOPE_WRKGRP = 2
+const m___MEMORY_SCOPE_WVFRNT = 3
 const m___NO_MATH_ERRNO__ = 1
 const m___OBJC_BOOL_IS_BOOL = 1
 const m___OPENCL_MEMORY_SCOPE_ALL_SVM_DEVICES = 3
@@ -3115,6 +3170,9 @@ const m___SRD = 0x0004
 const m___SRW = 0x0010
 const m___SSP__ = 1
 const m___SSTR = 0x0200
+const m___STDC_EMBED_EMPTY__ = 2
+const m___STDC_EMBED_FOUND__ = 1
+const m___STDC_EMBED_NOT_FOUND__ = 0
 const m___STDC_HOSTED__ = 1
 const m___STDC_NO_THREADS__ = 1
 const m___STDC_UTF_16__ = 1
@@ -3168,9 +3226,12 @@ const m___TVOS_17_2 = 170200
 const m___TVOS_17_3 = 170300
 const m___TVOS_17_4 = 170400
 const m___TVOS_17_5 = 170500
+const m___TVOS_17_6 = 170600
 const m___TVOS_18_0 = 180000
 const m___TVOS_18_1 = 180100
 const m___TVOS_18_2 = 180200
+const m___TVOS_18_3 = 180300
+const m___TVOS_18_4 = 180400
 const m___TVOS_9_0 = 90000
 const m___TVOS_9_1 = 90100
 const m___TVOS_9_2 = 90200
@@ -3251,22 +3312,29 @@ const m___UINT_LEAST8_FMTu__ = "hhu"
 const m___UINT_LEAST8_FMTx__ = "hhx"
 const m___UINT_LEAST8_MAX__ = 255
 const m___USER_LABEL_PREFIX__ = "_"
-const m___VERSION__ = "Apple LLVM 16.0.0 (clang-1600.0.26.6)"
+const m___VERSION__ = "Apple LLVM 17.0.0 (clang-1700.0.13.3)"
 const m___VISIONOS_1_0 = 10000
 const m___VISIONOS_1_1 = 10100
 const m___VISIONOS_1_2 = 10200
+const m___VISIONOS_1_3 = 10300
 const m___VISIONOS_2_0 = 20000
 const m___VISIONOS_2_1 = 20100
 const m___VISIONOS_2_2 = 20200
+const m___VISIONOS_2_3 = 20300
+const m___VISIONOS_2_4 = 20400
 const m___WATCHOS_10_0 = 100000
 const m___WATCHOS_10_1 = 100100
 const m___WATCHOS_10_2 = 100200
 const m___WATCHOS_10_3 = 100300
 const m___WATCHOS_10_4 = 100400
 const m___WATCHOS_10_5 = 100500
+const m___WATCHOS_10_6 = 100600
+const m___WATCHOS_10_7 = 100700
 const m___WATCHOS_11_0 = 110000
 const m___WATCHOS_11_1 = 110100
 const m___WATCHOS_11_2 = 110200
+const m___WATCHOS_11_3 = 110300
+const m___WATCHOS_11_4 = 110400
 const m___WATCHOS_1_0 = 10000
 const m___WATCHOS_2_0 = 20000
 const m___WATCHOS_2_1 = 20100
@@ -3315,17 +3383,18 @@ const m___WINT_MAX__ = 2147483647
 const m___WINT_TYPE__ = "int"
 const m___WINT_WIDTH__ = 32
 const m___aarch64__ = 1
-const m___apple_build_version__ = 16000026
+const m___apple_build_version__ = 17000013
 const m___arm64 = 1
 const m___arm64__ = 1
 const m___clang__ = 1
 const m___clang_literal_encoding__ = "UTF-8"
-const m___clang_major__ = 16
+const m___clang_major__ = 17
 const m___clang_minor__ = 0
 const m___clang_patchlevel__ = 0
-const m___clang_version__ = "16.0.0 (clang-1600.0.26.6)"
+const m___clang_version__ = "17.0.0 (clang-1700.0.13.3)"
 const m___clang_wide_literal_encoding__ = "UTF-32"
 const m___const = "const"
+const m___has_bounds_safety_attributes = 0
 const m___has_ptrcheck = 0
 const m___has_safe_buffers = 0
 const m___header_inline = "inline"
@@ -3891,6 +3960,32 @@ type t__arm_pagein_state = struct {
 	F__pagein_error int32
 }
 
+type t__darwin_arm_sme_state = struct {
+	F__svcr       t__uint64_t
+	F__tpidr2_el0 t__uint64_t
+	F__svl_b      t__uint16_t
+}
+
+type t__darwin_arm_sve_z_state = struct {
+	F__ccgo_align [0]uint32
+	F__z          [16][256]int8
+}
+
+type t__darwin_arm_sve_p_state = struct {
+	F__ccgo_align [0]uint32
+	F__p          [16][32]int8
+}
+
+type t__darwin_arm_sme_za_state = struct {
+	F__ccgo_align [0]uint32
+	F__za         [4096]int8
+}
+
+type t__darwin_arm_sme2_state = struct {
+	F__ccgo_align [0]uint32
+	F__zt0        [64]int8
+}
+
 type t__arm_legacy_debug_state = struct {
 	F__bvr [16]t__uint32_t
 	F__bcr [16]t__uint32_t
@@ -4278,7 +4373,7 @@ type Ttm = struct {
 	Ftm_isdst  int32
 	Ftm_gmtoff int64
 	Ftm_zone   uintptr
-} //TODO "timezone" // _time.h:103:13:
+} //TODO "timezone" // _time.h:106:13:
 
 type Tclockid_t = int32
 
@@ -29581,7 +29676,6 @@ const m_FP_SUBNORMAL = 5
 const m_FP_SUPERNORMAL = 6
 const m_FP_ZERO = 3
 const m_HUGE = "MAXFLOAT"
-const m_INFINITY = "HUGE_VALF"
 const m_INTERP_DEBUG_FRAME1 = 16
 const m_INTERP_STACK_INITIAL_SIZE = 2000
 const m_MATH_ERREXCEPT = 2
@@ -38040,7 +38134,7 @@ func _ExprRandFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 	 * Since the recurrence keeps seed values in the range [1, RAND_IM - 1],
 	 * dividing by RAND_IM yields a double in the range (0, 1).
 	 */
-	dResult = float64((*TInterp)(unsafe.Pointer(iPtr)).FrandSeed) * (libc.Float64FromFloat64(1) / libc.Float64FromInt32(m_RAND_IM))
+	dResult = float64(float64((*TInterp)(unsafe.Pointer(iPtr)).FrandSeed) * (libc.Float64FromFloat64(1) / libc.Float64FromInt32(m_RAND_IM)))
 	/*
 	 * Push a Tcl object with the result.
 	 */
@@ -45890,6 +45984,7 @@ const m_S_IFREG1 = 32768
 const m_S_IFSOCK1 = 49152
 const m_TCL_LEAVE_ERR_MSG3 = 512
 const m__LC_LAST = 7
+const m__LC_NUM_MASK = 6
 
 var _UUID_NULL11 = Tuuid_t{}
 
@@ -45919,6 +46014,8 @@ type Tlconv = struct {
 	Fint_p_sign_posn    int8
 	Fint_n_sign_posn    int8
 }
+
+type Tlocale_t = uintptr
 
 /*
  * The state structure used by [foreach]. Note that the actual structure has
@@ -61951,7 +62048,7 @@ func XTclNRTryObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).Fbytes = libc.UintptrFromInt32(0)
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).FinternalRep.FlongValue = int64(*(*int32)(unsafe.Pointer(bp + 4)))
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType)) /* returnCode */
-		if (*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(2)] == libc.UintptrFromInt32(0) {                                              /* errorCodePrefix */
+		if (*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(2)] == libc.UintptrFromInt32(0) {                                               /* errorCodePrefix */
 			if XtclFreeObjList == libc.UintptrFromInt32(0) {
 				XTclAllocateFreeObjects(tls)
 			}
@@ -164336,7 +164433,7 @@ _22:
 	case int32(m_INST_SUB):
 		dResult = *(*float64)(unsafe.Pointer(bp + 24)) - *(*float64)(unsafe.Pointer(bp + 32))
 	case int32(m_INST_MULT):
-		dResult = *(*float64)(unsafe.Pointer(bp + 24)) * *(*float64)(unsafe.Pointer(bp + 32))
+		dResult = float64(*(*float64)(unsafe.Pointer(bp + 24)) * *(*float64)(unsafe.Pointer(bp + 32)))
 	case int32(m_INST_DIV):
 		/*
 		 * We presume that we are running with zero-divide unmasked if
@@ -170851,7 +170948,7 @@ func XTcl_HashStats(tls *libc.TLS, tablePtr uintptr) (r uintptr) {
 		}
 		tmp = float64(j)
 		if (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries != 0 {
-			average += (tmp + float64(1)) * (tmp / float64((*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries)) / float64(2)
+			average += float64((tmp+float64(1))*(tmp/float64((*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries))) / float64(2)
 		}
 		goto _2
 	_2:
@@ -242299,7 +242396,7 @@ func _MakeLowPrecisionDouble(tls *libc.TLS, signum int32, significand TTcl_WideU
 				 * 10**exponent. The product will be correct to within 1/2 ulp
 				 * without special handling.
 				 */
-				retval = float64(libc.Int64FromUint64(significand)) * _pow10vals[exponent]
+				retval = float64(float64(libc.Int64FromUint64(significand)) * _pow10vals[exponent])
 				goto returnValue
 			} else {
 				diff = int32(m_QUICK_MAX) - numSigDigs
@@ -242310,8 +242407,8 @@ func _MakeLowPrecisionDouble(tls *libc.TLS, signum int32, significand TTcl_WideU
 					 * significand*10**diff, so we can still compute the value
 					 * with only one roundoff.
 					 */
-					factor = float64(libc.Int64FromUint64(significand)) * _pow10vals[diff]
-					retval = factor * _pow10vals[exponent-int64(diff)]
+					factor = float64(float64(libc.Int64FromUint64(significand)) * _pow10vals[diff])
+					retval = float64(factor * _pow10vals[exponent-int64(diff)])
 					goto returnValue
 				}
 			}
@@ -243010,7 +243107,7 @@ func _ApproximateLog10(tls *libc.TLS, bw TTcl_WideUInt, be int32, bbits int32) (
 		Fword0 int32
 	})(unsafe.Pointer(bp))).Fword0 |= libc.Int32FromInt32(m_EXPONENT_BIAS) << libc.Int32FromInt32(m_EXP_SHIFT)
 	i = be + bbits - int32(1)
-	ds = (*(*float64)(unsafe.Pointer(bp))-float64(1.5))*float64(m_TWO_OVER_3LOG10) + float64(m_LOG10_3HALVES_PLUS_FUDGE) + float64(m_LOG10_2)*float64(i)
+	ds = float64((*(*float64)(unsafe.Pointer(bp))-float64(1.5))*float64(m_TWO_OVER_3LOG10)) + float64(m_LOG10_3HALVES_PLUS_FUDGE) + float64(float64(m_LOG10_2)*float64(i))
 	k = int32(ds)
 	if float64(k) > ds {
 		k--
@@ -243470,13 +243567,13 @@ func _QuickConversion(tls *libc.TLS, _e float64, k int32, k_check int32, flags i
 		}
 		ilim = ilim1
 		k--
-		d = d * float64(10)
+		d = float64(d * float64(10))
 		ieps++
 	}
 	/*
 	 * Compute estimated roundoff error.
 	 */
-	*(*float64)(unsafe.Pointer(bp + 8)) = float64(ieps)*d + float64(7)
+	*(*float64)(unsafe.Pointer(bp + 8)) = float64(float64(ieps)*d) + float64(7)
 	(*(*struct {
 		Fword1 int32
 		Fword0 int32
@@ -244937,7 +245034,7 @@ func XTclInitDoubleConversion(tls *libc.TLS) {
 	/*
 	 * Initialize table of powers of 10 expressed as wide integers.
 	 */
-	_maxpow10_wide = int32(libc.Xfloor(tls, float64(libc.Uint64FromInt64(8)*libc.Uint64FromInt32(m___CHAR_BIT__))*libc.Xlog(tls, float64(2))/libc.Xlog(tls, float64(10))))
+	_maxpow10_wide = int32(libc.Xfloor(tls, float64(float64(libc.Uint64FromInt64(8)*libc.Uint64FromInt32(m___CHAR_BIT__))*libc.Xlog(tls, float64(2)))/libc.Xlog(tls, float64(10))))
 	_pow10_wide = XTcl_Alloc(tls, uint32(libc.Uint64FromInt32(_maxpow10_wide+libc.Int32FromInt32(1))*libc.Uint64FromInt64(8)))
 	u = uint64(1)
 	i = 0
@@ -244967,7 +245064,7 @@ func XTclInitDoubleConversion(tls *libc.TLS) {
 	 * Initialize a table of powers of ten that can be exactly represented in
 	 * a double.
 	 */
-	x = int32(libc.Float64FromInt32(m___DBL_MANT_DIG__) * libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__)) / libc.Xlog(tls, float64(5)))
+	x = int32(float64(libc.Float64FromInt32(m___DBL_MANT_DIG__)*libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__))) / libc.Xlog(tls, float64(5)))
 	if x < int32(m_MAXPOW) {
 		_mmaxpow = x
 	} else {
@@ -245030,9 +245127,9 @@ func XTclInitDoubleConversion(tls *libc.TLS) {
 	 * that differs from zero, and the number of mp_digits needed to represent
 	 * the significand of a double.
 	 */
-	_maxDigits = int32((libc.Float64FromInt32(m___DBL_MAX_EXP__)*libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__)) + libc.Float64FromFloat64(0.5)*libc.Xlog(tls, float64(10))) / libc.Xlog(tls, float64(10)))
-	_minDigits = int32(libc.Xfloor(tls, float64(-libc.Int32FromInt32(1021)-libc.Int32FromInt32(m___DBL_MANT_DIG__))*libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__))/libc.Xlog(tls, float64(10))))
-	_log10_DIGIT_MAX = int32(libc.Xfloor(tls, libc.Float64FromInt32(m_MP_DIGIT_BIT)*libc.Xlog(tls, float64(2))/libc.Xlog(tls, float64(10))))
+	_maxDigits = int32((float64(libc.Float64FromInt32(m___DBL_MAX_EXP__)*libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__))) + float64(libc.Float64FromFloat64(0.5)*libc.Xlog(tls, float64(10)))) / libc.Xlog(tls, float64(10)))
+	_minDigits = int32(libc.Xfloor(tls, float64(float64(-libc.Int32FromInt32(1021)-libc.Int32FromInt32(m___DBL_MANT_DIG__))*libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__)))/libc.Xlog(tls, float64(10))))
+	_log10_DIGIT_MAX = int32(libc.Xfloor(tls, float64(libc.Float64FromInt32(m_MP_DIGIT_BIT)*libc.Xlog(tls, float64(2)))/libc.Xlog(tls, float64(10))))
 	/*
 	 * Nokia 770's software-emulated floating point is "middle endian": the
 	 * bytes within a 32-bit word are little-endian (like the native
@@ -245531,7 +245628,7 @@ func _Pow10TimesFrExp(tls *libc.TLS, exponent int32, fraction float64, machexp u
 		/*
 		 * Multiply by 10**exponent.
 		 */
-		retval = libc.Xfrexp(tls, retval*_pow10vals[exponent&int32(0xF)], bp)
+		retval = libc.Xfrexp(tls, float64(retval*_pow10vals[exponent&int32(0xF)]), bp)
 		expt += *(*int32)(unsafe.Pointer(bp))
 		i = int32(4)
 		for {
@@ -245539,7 +245636,7 @@ func _Pow10TimesFrExp(tls *libc.TLS, exponent int32, fraction float64, machexp u
 				break
 			}
 			if exponent&(int32(1)<<i) != 0 {
-				retval = libc.Xfrexp(tls, retval*_pow_10_2_n[i], bp)
+				retval = libc.Xfrexp(tls, float64(retval*_pow_10_2_n[i]), bp)
 				expt += *(*int32)(unsafe.Pointer(bp))
 			}
 			goto _1
@@ -245600,7 +245697,7 @@ func _SafeLdExp(tls *libc.TLS, fract float64, expt int32) (r float64) {
 	if expt < minexpt {
 		a = libc.Xldexp(tls, fract, expt-_mantBits-minexpt)
 		b = libc.Xldexp(tls, float64(1), _mantBits+minexpt)
-		retval = a * b
+		retval = float64(a * b)
 	} else {
 		retval = libc.Xldexp(tls, fract, expt)
 	}
@@ -282616,7 +282713,7 @@ func _FileSeekProc(tls *libc.TLS, instanceData TClientData, offset int64, mode i
 	/*
 	 * Save our current place in case we need to roll-back the seek.
 	 */
-	oldLoc = libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, libc.Int64FromInt32(0), int32(m_SEEK_CUR))
+	oldLoc = int64(libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, libc.Int64FromInt32(0), int32(m_SEEK_CUR)))
 	if oldLoc == int64(-libc.Int32FromInt32(1)) {
 		/*
 		 * Bad things are happening. Error out...
@@ -282624,7 +282721,7 @@ func _FileSeekProc(tls *libc.TLS, instanceData TClientData, offset int64, mode i
 		*(*int32)(unsafe.Pointer(errorCodePtr)) = *(*int32)(unsafe.Pointer(libc.X__error(tls)))
 		return -int32(1)
 	}
-	newLoc = libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, offset, mode)
+	newLoc = int64(libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, offset, mode))
 	/*
 	 * Check for expressability in our return type, and roll-back otherwise.
 	 */
@@ -282670,7 +282767,7 @@ func _FileWideSeekProc(tls *libc.TLS, instanceData TClientData, offset TTcl_Wide
 	var v1 int32
 	_, _, _ = fsPtr, newLoc, v1
 	fsPtr = instanceData
-	newLoc = libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, offset, mode)
+	newLoc = int64(libc.Xlseek(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, offset, mode))
 	if newLoc == int64(-int32(1)) {
 		v1 = *(*int32)(unsafe.Pointer(libc.X__error(tls)))
 	} else {
@@ -288851,6 +288948,27 @@ const m_ARM_EXCEPTION_STATE64_V2 = 10
 const m_ARM_NEON_STATE = 16
 const m_ARM_NEON_STATE64 = 17
 const m_ARM_PAGEIN_STATE = 27
+const m_ARM_SME2_STATE = 48
+const m_ARM_SME_STATE = 28
+const m_ARM_SME_ZA_STATE1 = 32
+const m_ARM_SME_ZA_STATE10 = 41
+const m_ARM_SME_ZA_STATE11 = 42
+const m_ARM_SME_ZA_STATE12 = 42
+const m_ARM_SME_ZA_STATE13 = 44
+const m_ARM_SME_ZA_STATE14 = 45
+const m_ARM_SME_ZA_STATE15 = 46
+const m_ARM_SME_ZA_STATE16 = 47
+const m_ARM_SME_ZA_STATE2 = 33
+const m_ARM_SME_ZA_STATE3 = 34
+const m_ARM_SME_ZA_STATE4 = 35
+const m_ARM_SME_ZA_STATE5 = 36
+const m_ARM_SME_ZA_STATE6 = 37
+const m_ARM_SME_ZA_STATE7 = 38
+const m_ARM_SME_ZA_STATE8 = 39
+const m_ARM_SME_ZA_STATE9 = 40
+const m_ARM_SVE_P_STATE = 31
+const m_ARM_SVE_Z_STATE1 = 29
+const m_ARM_SVE_Z_STATE2 = 30
 const m_ARM_THREAD_STATE = 1
 const m_ARM_THREAD_STATE32 = 9
 const m_ARM_THREAD_STATE64 = 6
@@ -289296,6 +289414,8 @@ const m_MATTR_VAL_ICACHE_FLUSH = 8
 const m_MATTR_VAL_OFF = 0
 const m_MATTR_VAL_ON = 1
 const m_MAXTHREADNAMESIZE = 64
+const m_MAX_FATAL_kGUARD_EXC_CODE = "kGUARD_EXC_MSG_FILTERED"
+const m_MAX_OPTIONAL_kGUARD_EXC_CODE = "kGUARD_EXC_RCV_INVALID_NAME"
 const m_MEMORY_OBJECT_ATTRIBUTE_INFO = 14
 const m_MEMORY_OBJECT_BEHAVIOR_INFO = 15
 const m_MEMORY_OBJECT_COPY_CALL = 1
@@ -289493,7 +289613,7 @@ const m_THREAD_SCHED_RR_INFO = 11
 const m_THREAD_SCHED_TIMESHARE_INFO = 10
 const m_THREAD_STANDARD_POLICY = 1
 const m_THREAD_STANDARD_POLICY_COUNT = 0
-const m_THREAD_STATE_FLAVORS = 29
+const m_THREAD_STATE_FLAVORS = 50
 const m_THREAD_STATE_FLAVOR_LIST = 0
 const m_THREAD_STATE_FLAVOR_LIST_10_13 = 130
 const m_THREAD_STATE_FLAVOR_LIST_10_15 = 131
@@ -289685,9 +289805,13 @@ const m_VM_VOLATILE_ORDER_SHIFT = 4
 const m_WORD_BIT = 32
 const m___DARWIN_CLK_TCK = 100
 const m___VM_LEDGER_ACCOUNTING_POSTMARK = 2019032600
+const m___bool_true_false_are_defined = 1
+const m_bool = "_Bool"
+const m_false = 0
 const m_mach_msg_kind_t = "mach_port_seqno_t"
 const m_msgh_kind = "msgh_seqno"
 const m_msgh_reserved = "msgh_voucher_port"
+const m_true = 1
 
 var _UUID_NULL83 = Tuuid_t{}
 
@@ -289827,6 +289951,7 @@ const _kGUARD_EXC_INVALID_OPTIONS = 3
 const _kGUARD_EXC_SET_CONTEXT = 4
 const _kGUARD_EXC_THREAD_SET_STATE = 5
 const _kGUARD_EXC_EXCEPTION_BEHAVIOR_ENFORCE = 6
+const _kGUARD_EXC_SERVICE_PORT_VIOLATION_FATAL = 7
 const _kGUARD_EXC_UNGUARDED = 8
 const _kGUARD_EXC_INCORRECT_GUARD = 16
 const _kGUARD_EXC_IMMOVABLE = 32
@@ -289845,6 +289970,8 @@ const _kGUARD_EXC_SEND_INVALID_VOUCHER = 131072
 const _kGUARD_EXC_SEND_INVALID_RIGHT = 262144
 const _kGUARD_EXC_RCV_INVALID_NAME = 524288
 const _kGUARD_EXC_RCV_GUARDED_DESC = 1048576
+const _kGUARD_EXC_SERVICE_PORT_VIOLATION_NON_FATAL = 1048577
+const _kGUARD_EXC_PROVISIONAL_REPLY_PORT = 1048578
 const _kGUARD_EXC_MOD_REFS_NON_FATAL = 2097152
 const _kGUARD_EXC_IMMOVABLE_NON_FATAL = 4194304
 const _kGUARD_EXC_REQUIRE_REPLY_PORT_SEMANTICS = 8388608
@@ -290200,12 +290327,18 @@ type Tvm_purgeable_info = struct {
 
 type Tvm_purgeable_info_t = uintptr
 
-type _virtual_memory_guard_exception_codes = int32
+type Tvirtual_memory_guard_exception_code_t = uint32
 
 const _kGUARD_EXC_DEALLOC_GAP = 1
 const _kGUARD_EXC_RECLAIM_COPYIO_FAILURE = 2
+const _kGUARD_EXC_SEC_LOOKUP_DENIED = 3
 const _kGUARD_EXC_RECLAIM_INDEX_FAILURE = 4
+const _kGUARD_EXC_SEC_RANGE_DENIED = 6
+const _kGUARD_EXC_SEC_ACCESS_FAULT = 7
 const _kGUARD_EXC_RECLAIM_DEALLOCATE_FAILURE = 8
+const _kGUARD_EXC_SEC_COPY_DENIED = 16
+const _kGUARD_EXC_SEC_SHARING_DENIED = 32
+const _kGUARD_EXC_SEC_ASYNC_ACCESS_FAULT = 64
 
 type Tcpu_type_t = int32
 
@@ -290633,6 +290766,32 @@ type Tarm_debug_state64_t = struct {
 
 type Tarm_pagein_state_t = struct {
 	F__pagein_error int32
+}
+
+type Tarm_sme_state_t = struct {
+	F__svcr       t__uint64_t
+	F__tpidr2_el0 t__uint64_t
+	F__svl_b      t__uint16_t
+}
+
+type Tarm_sve_z_state_t = struct {
+	F__ccgo_align [0]uint32
+	F__z          [16][256]int8
+}
+
+type Tarm_sve_p_state_t = struct {
+	F__ccgo_align [0]uint32
+	F__p          [16][32]int8
+}
+
+type Tarm_sme_za_state_t = struct {
+	F__ccgo_align [0]uint32
+	F__za         [4096]int8
+}
+
+type Tarm_sme2_state_t = struct {
+	F__ccgo_align [0]uint32
+	F__zt0        [64]int8
 }
 
 type Tarm_debug_state_t = struct {
@@ -292383,6 +292542,10 @@ type Tmach_timebase_info_data_t = struct {
 }
 
 /*
+ * variant of mach_continuous_time that uses speculative timebase
+ */
+
+/*
  * TclpGetDate is coded to return a pointer to a 'struct tm'. For thread
  * safety, this structure must be in thread-specific data. The 'tmKey'
  * variable is the key to this buffer.
@@ -292552,7 +292715,7 @@ func XTclpWideClicksToNanoseconds(tls *libc.TLS, clicks TTcl_WideInt) (r float64
 		if libc.Uint64FromInt64(clicks) < _maxClicksForUInt64 {
 			nsec = float64(libc.Uint64FromInt64(clicks) * uint64(_tb.Fnumer) / uint64(_tb.Fdenom))
 		} else {
-			nsec = float64(libc.Uint64FromInt64(clicks)) * float64(_tb.Fnumer) / float64(_tb.Fdenom)
+			nsec = float64(float64(libc.Uint64FromInt64(clicks))*float64(_tb.Fnumer)) / float64(_tb.Fdenom)
 		}
 	}
 	return nsec
@@ -309995,6 +310158,7 @@ const m_ATTR_VOL_MOUNTFLAGS = 0x00004000
 const m_ATTR_VOL_MOUNTPOINT = 0x00001000
 const m_ATTR_VOL_NAME = 0x00002000
 const m_ATTR_VOL_OBJCOUNT = 0x00000100
+const m_ATTR_VOL_OWNER = 0x00400000
 const m_ATTR_VOL_QUOTA_SIZE = 0x10000000
 const m_ATTR_VOL_RESERVED_SIZE = 0x20000000
 const m_ATTR_VOL_SETMASK = 0x80002000
@@ -310004,7 +310168,7 @@ const m_ATTR_VOL_SPACEAVAIL = 0x00000010
 const m_ATTR_VOL_SPACEFREE = 0x00000008
 const m_ATTR_VOL_SPACEUSED = 0x00800000
 const m_ATTR_VOL_UUID = 0x00040000
-const m_ATTR_VOL_VALIDMASK = 0xF0BFFFFF
+const m_ATTR_VOL_VALIDMASK = 0xF0FFFFFF
 const m_AUC_AUDITING = 1
 const m_AUC_NOAUDIT = 2
 const m_AUC_UNSET = 0
@@ -311105,10 +311269,6 @@ const m_O_TRUNC8 = 0x00000400
 const m_O_WRONLY16 = 0x0001
 const m_S_IFDIR12 = 0040000
 const m_S_IFMT12 = 0170000
-const m___bool_true_false_are_defined = 1
-const m_bool = "_Bool"
-const m_false = 0
-const m_true = 1
 
 var _UUID_NULL98 = Tuuid_t{}
 
