@@ -10757,9 +10757,9 @@ _1:
 					return int32(m_TCL_ERROR)
 				}
 				if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(varPtr + uintptr(*(*int32)(unsafe.Pointer(bp)))*8)))).FrefCount > libc.Int32FromInt32(1)) {
-					(*(*func(*libc.TLS, uintptr, float64))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_SetDoubleObj})))(tls, *(*uintptr)(unsafe.Pointer(varPtr + uintptr(*(*int32)(unsafe.Pointer(bp)))*8)), *(*float64)(unsafe.Pointer(bp + 8))*float64(10))
+					(*(*func(*libc.TLS, uintptr, float64))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_SetDoubleObj})))(tls, *(*uintptr)(unsafe.Pointer(varPtr + uintptr(*(*int32)(unsafe.Pointer(bp)))*8)), float64(*(*float64)(unsafe.Pointer(bp + 8))*float64(10)))
 				} else {
-					_SetVarToObj(tls, varPtr, *(*int32)(unsafe.Pointer(bp)), (*(*func(*libc.TLS, float64) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_NewDoubleObj})))(tls, *(*float64)(unsafe.Pointer(bp + 8))*float64(10)))
+					_SetVarToObj(tls, varPtr, *(*int32)(unsafe.Pointer(bp)), (*(*func(*libc.TLS, float64) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_NewDoubleObj})))(tls, float64(*(*float64)(unsafe.Pointer(bp + 8))*float64(10))))
 				}
 				(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(x_tclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, *(*uintptr)(unsafe.Pointer(varPtr + uintptr(*(*int32)(unsafe.Pointer(bp)))*8)))
 			} else {
@@ -43294,7 +43294,7 @@ func _ExprRandFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 	 * Since the recurrence keeps seed values in the range [1, RAND_IM - 1],
 	 * dividing by RAND_IM yields a double in the range (0, 1).
 	 */
-	dResult = float64((*TInterp)(unsafe.Pointer(iPtr)).FrandSeed) * (libc.Float64FromFloat64(1) / libc.Float64FromInt32(m_RAND_IM))
+	dResult = float64(float64((*TInterp)(unsafe.Pointer(iPtr)).FrandSeed) * (libc.Float64FromFloat64(1) / libc.Float64FromInt32(m_RAND_IM)))
 	/*
 	 * Push a Tcl object with the result.
 	 */
@@ -66245,7 +66245,7 @@ func x_Tcl_TimeObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 		}
 	}
 	x_Tcl_GetTime(tls, bp+56)
-	totalMicroSec = float64((*(*TTcl_Time)(unsafe.Pointer(bp + 56))).Fsec-(*(*TTcl_Time)(unsafe.Pointer(bp + 40))).Fsec)*float64(1e+06) + float64((*(*TTcl_Time)(unsafe.Pointer(bp + 56))).Fusec-(*(*TTcl_Time)(unsafe.Pointer(bp + 40))).Fusec)
+	totalMicroSec = float64(float64((*(*TTcl_Time)(unsafe.Pointer(bp + 56))).Fsec-(*(*TTcl_Time)(unsafe.Pointer(bp + 40))).Fsec)*float64(1e+06)) + float64((*(*TTcl_Time)(unsafe.Pointer(bp + 56))).Fusec-(*(*TTcl_Time)(unsafe.Pointer(bp + 40))).Fusec)
 	if *(*int32)(unsafe.Pointer(bp + 32)) <= int32(1) {
 		/*
 		 * Use int obj since we know time is not fractional. [Bug 1202178]
@@ -168944,7 +168944,7 @@ _22:
 	case int32(m_INST_SUB):
 		dResult = *(*float64)(unsafe.Pointer(bp + 24)) - *(*float64)(unsafe.Pointer(bp + 32))
 	case int32(m_INST_MULT):
-		dResult = *(*float64)(unsafe.Pointer(bp + 24)) * *(*float64)(unsafe.Pointer(bp + 32))
+		dResult = float64(*(*float64)(unsafe.Pointer(bp + 24)) * *(*float64)(unsafe.Pointer(bp + 32)))
 	case int32(m_INST_DIV):
 		/*
 		 * We presume that we are running with zero-divide unmasked if
@@ -175424,7 +175424,7 @@ func x_Tcl_HashStats(tls *libc.TLS, tablePtr uintptr) (r uintptr) {
 		}
 		tmp = float64(j)
 		if (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries != 0 {
-			average += (tmp + float64(1)) * (tmp / float64((*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries)) / float64(2)
+			average += float64((tmp+float64(1))*(tmp/float64((*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries))) / float64(2)
 		}
 		goto _2
 	_2:
@@ -246028,7 +246028,7 @@ func _MakeLowPrecisionDouble(tls *libc.TLS, signum int32, significand TTcl_WideU
 				 * 10**exponent. The product will be correct to within 1/2 ulp
 				 * without special handling.
 				 */
-				retval = float64(libc.Int64FromUint64(significand)) * _pow10vals[exponent]
+				retval = float64(float64(libc.Int64FromUint64(significand)) * _pow10vals[exponent])
 				goto returnValue
 			} else {
 				diff = int32(m_QUICK_MAX) - numSigDigs
@@ -246039,8 +246039,8 @@ func _MakeLowPrecisionDouble(tls *libc.TLS, signum int32, significand TTcl_WideU
 					 * significand*10**diff, so we can still compute the value
 					 * with only one roundoff.
 					 */
-					factor = float64(libc.Int64FromUint64(significand)) * _pow10vals[diff]
-					retval = factor * _pow10vals[exponent-int64(diff)]
+					factor = float64(float64(libc.Int64FromUint64(significand)) * _pow10vals[diff])
+					retval = float64(factor * _pow10vals[exponent-int64(diff)])
 					goto returnValue
 				}
 			}
@@ -246739,7 +246739,7 @@ func _ApproximateLog10(tls *libc.TLS, bw TTcl_WideUInt, be int32, bbits int32) (
 		Fword0 int32
 	})(unsafe.Pointer(bp))).Fword0 |= libc.Int32FromInt32(m_EXPONENT_BIAS) << libc.Int32FromInt32(m_EXP_SHIFT)
 	i = be + bbits - int32(1)
-	ds = (*(*float64)(unsafe.Pointer(bp))-float64(1.5))*float64(m_TWO_OVER_3LOG10) + float64(m_LOG10_3HALVES_PLUS_FUDGE) + float64(m_LOG10_2)*float64(i)
+	ds = float64((*(*float64)(unsafe.Pointer(bp))-float64(1.5))*float64(m_TWO_OVER_3LOG10)) + float64(m_LOG10_3HALVES_PLUS_FUDGE) + float64(float64(m_LOG10_2)*float64(i))
 	k = int32(ds)
 	if float64(k) > ds {
 		k--
@@ -247199,13 +247199,13 @@ func _QuickConversion(tls *libc.TLS, _e float64, k int32, k_check int32, flags i
 		}
 		ilim = ilim1
 		k--
-		d = d * float64(10)
+		d = float64(d * float64(10))
 		ieps++
 	}
 	/*
 	 * Compute estimated roundoff error.
 	 */
-	*(*float64)(unsafe.Pointer(bp + 8)) = float64(ieps)*d + float64(7)
+	*(*float64)(unsafe.Pointer(bp + 8)) = float64(float64(ieps)*d) + float64(7)
 	(*(*struct {
 		Fword1 int32
 		Fword0 int32
@@ -248666,7 +248666,7 @@ func x_TclInitDoubleConversion(tls *libc.TLS) {
 	/*
 	 * Initialize table of powers of 10 expressed as wide integers.
 	 */
-	_maxpow10_wide = int32(libc.Xfloor(tls, float64(libc.Uint64FromInt64(8)*libc.Uint64FromInt32(m___CHAR_BIT))*libc.Xlog(tls, float64(2))/libc.Xlog(tls, float64(10))))
+	_maxpow10_wide = int32(libc.Xfloor(tls, float64(float64(libc.Uint64FromInt64(8)*libc.Uint64FromInt32(m___CHAR_BIT))*libc.Xlog(tls, float64(2)))/libc.Xlog(tls, float64(10))))
 	_pow10_wide = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt32(_maxpow10_wide+libc.Int32FromInt32(1))*libc.Uint64FromInt64(8)))
 	u = uint64(1)
 	i = 0
@@ -248696,7 +248696,7 @@ func x_TclInitDoubleConversion(tls *libc.TLS) {
 	 * Initialize a table of powers of ten that can be exactly represented in
 	 * a double.
 	 */
-	x = int32(libc.Float64FromInt32(m_DBL_MANT_DIG) * libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX)) / libc.Xlog(tls, float64(5)))
+	x = int32(float64(libc.Float64FromInt32(m_DBL_MANT_DIG)*libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX))) / libc.Xlog(tls, float64(5)))
 	if x < int32(m_MAXPOW) {
 		_mmaxpow = x
 	} else {
@@ -248759,9 +248759,9 @@ func x_TclInitDoubleConversion(tls *libc.TLS) {
 	 * that differs from zero, and the number of mp_digits needed to represent
 	 * the significand of a double.
 	 */
-	_maxDigits = int32((libc.Float64FromInt32(m_DBL_MAX_EXP)*libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX)) + libc.Float64FromFloat64(0.5)*libc.Xlog(tls, float64(10))) / libc.Xlog(tls, float64(10)))
-	_minDigits = int32(libc.Xfloor(tls, float64(-libc.Int32FromInt32(1021)-libc.Int32FromInt32(m_DBL_MANT_DIG))*libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX))/libc.Xlog(tls, float64(10))))
-	_log10_DIGIT_MAX = int32(libc.Xfloor(tls, libc.Float64FromInt32(m_MP_DIGIT_BIT)*libc.Xlog(tls, float64(2))/libc.Xlog(tls, float64(10))))
+	_maxDigits = int32((float64(libc.Float64FromInt32(m_DBL_MAX_EXP)*libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX))) + float64(libc.Float64FromFloat64(0.5)*libc.Xlog(tls, float64(10)))) / libc.Xlog(tls, float64(10)))
+	_minDigits = int32(libc.Xfloor(tls, float64(float64(-libc.Int32FromInt32(1021)-libc.Int32FromInt32(m_DBL_MANT_DIG))*libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX)))/libc.Xlog(tls, float64(10))))
+	_log10_DIGIT_MAX = int32(libc.Xfloor(tls, float64(libc.Float64FromInt32(m_MP_DIGIT_BIT)*libc.Xlog(tls, float64(2)))/libc.Xlog(tls, float64(10))))
 	/*
 	 * Nokia 770's software-emulated floating point is "middle endian": the
 	 * bytes within a 32-bit word are little-endian (like the native
@@ -249260,7 +249260,7 @@ func _Pow10TimesFrExp(tls *libc.TLS, exponent int32, fraction float64, machexp u
 		/*
 		 * Multiply by 10**exponent.
 		 */
-		retval = libc.Xfrexp(tls, retval*_pow10vals[exponent&int32(0xF)], bp)
+		retval = libc.Xfrexp(tls, float64(retval*_pow10vals[exponent&int32(0xF)]), bp)
 		expt += *(*int32)(unsafe.Pointer(bp))
 		i = int32(4)
 		for {
@@ -249268,7 +249268,7 @@ func _Pow10TimesFrExp(tls *libc.TLS, exponent int32, fraction float64, machexp u
 				break
 			}
 			if exponent&(int32(1)<<i) != 0 {
-				retval = libc.Xfrexp(tls, retval*_pow_10_2_n[i], bp)
+				retval = libc.Xfrexp(tls, float64(retval*_pow_10_2_n[i]), bp)
 				expt += *(*int32)(unsafe.Pointer(bp))
 			}
 			goto _1
@@ -249329,7 +249329,7 @@ func _SafeLdExp(tls *libc.TLS, fract float64, expt int32) (r float64) {
 	if expt < minexpt {
 		a = libc.Xldexp(tls, fract, expt-_mantBits-minexpt)
 		b = libc.Xldexp(tls, float64(1), _mantBits+minexpt)
-		retval = a * b
+		retval = float64(a * b)
 	} else {
 		retval = libc.Xldexp(tls, fract, expt)
 	}
