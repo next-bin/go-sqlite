@@ -6,7 +6,7 @@ require (
 	github.com/adrg/xdg v0.5.0
 	modernc.org/cc/v4 v4.26.0
 	modernc.org/ccgo/v4 v4.26.0
-	modernc.org/fileutil v1.3.0
+	modernc.org/fileutil v1.3.1
 	modernc.org/libc v1.63.0
 	modernc.org/libz v0.16.16
 )
