@@ -297,10 +297,6 @@ var (
 	traceFails bool
 )
 
-func init() { //TODO- DBG
-
-}
-
 // NewConfig returns the system C compiler configuration, or an error, if
 // any. The function will look for the compiler first in the environment
 // variable CC, then it'll try other options. Usually that means looking for
@@ -432,6 +428,51 @@ func (c *Config) AdjustLongDouble() error {
 	return nil
 }
 
+func fixArgs(args *[]string, msg string) (r bool) {
+	tag := "unknown argument"
+	a := strings.Split(strings.TrimSpace(msg), "\n")
+	var m map[string]struct{}
+	for _, v := range a {
+		x := strings.Index(v, tag)
+		if x < 0 {
+			continue
+		}
+
+		v = v[x+len(tag):]
+		if strings.HasPrefix(v, ":") {
+			v = v[1:]
+		}
+		v = strings.TrimSpace(v)
+		if !strings.HasPrefix(v, "'") {
+			continue
+		}
+
+		v = v[1:]
+		if x = strings.Index(v, "'"); x > 0 {
+			v = v[:x]
+			if m == nil {
+				m = map[string]struct{}{}
+			}
+			m[v] = struct{}{}
+		}
+	}
+	if len(m) == 0 {
+		return false
+	}
+
+	a = a[:0]
+	for _, v := range *args {
+		if _, ok := m[v]; ok {
+			r = true
+			continue
+		}
+
+		a = append(a, v)
+	}
+	*args = a
+	return true
+}
+
 func newConfig(opts []string) (cc, predefined string, includePaths, sysIncludePaths []string, keywords map[string]rune, err error) {
 	if Dmesgs {
 		Dmesg("newConfig(%v)", opts)
@@ -504,11 +545,16 @@ func newConfig(opts []string) (cc, predefined string, includePaths, sysIncludePa
 			continue
 		}
 
+		again:
 		args := append(opts, "-dM", "-E", "-")
 		cmd := exec.Command(cc, args...)
 		cmd.Env = append(os.Environ(), "LC_ALL=C")
 		pre, err := cmd.CombinedOutput()
 		if err != nil {
+			if fixArgs(&opts, string(pre)) {
+				goto again
+			}
+
 			if Dmesgs {
 				Dmesg("cc: %s %v ----\n%s\n----: %v", cc, args, pre, err)
 			}

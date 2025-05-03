@@ -2410,7 +2410,7 @@ func (n *DeclarationSpecifiers) check(c *ctx, isExtern, isStatic, isAtomic, isTh
 	defer func(n *DeclarationSpecifiers) {
 		if r == nil || r == Invalid {
 			//panic(todo("%v: %v %v", n.Position(), ts, TypeString(r)))
-			c.errors.add(errorf("TODO %T missed/failed type check: %v", n, ts))
+			c.errors.add(errorf("%v: TODO %T missed/failed type check: %v", n.Position(), n, ts))
 			return
 		}
 

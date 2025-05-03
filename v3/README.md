@@ -1,11 +1,9 @@
-# cc/v3
+[![LiberaPay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/jnml/donate)
+[![receives](https://img.shields.io/liberapay/receives/jnml.svg?logo=liberapay)](https://liberapay.com/jnml/donate)
+[![patrons](https://img.shields.io/liberapay/patrons/jnml.svg?logo=liberapay)](https://liberapay.com/jnml/donate)
 
-Package CC is a C99 compiler front end.
+# cc/v2
 
-Most of the functionality is now working.
+2025-05-03 This package is no longer maintained. Please see [cc/v4].
 
-Installation
-
-    $ go get -u modernc.org/cc/v3
-
-Documentation: [godoc.org/modernc.org/cc/v3](http://godoc.org/modernc.org/cc/v3)
+[cc/v4]: https://modernc.org/cc/v4
