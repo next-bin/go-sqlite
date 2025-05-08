@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_darwin_arm64.go -I /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3490100 /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3490100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_darwin_arm64.go -I /tmp/libsqlite3/sqlite-src-3490200 /tmp/libsqlite3/sqlite-src-3490200/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build darwin && arm64
 
@@ -454,7 +454,7 @@ func speedtest1_timestamp(tls *libc.TLS) (r sqlite3_int64) {
 		(*(*func(*libc.TLS, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*sqlite3_vfs)(unsafe.Pointer(clockVfs)).FxCurrentTimeInt64})))(tls, clockVfs, bp)
 	} else {
 		(*(*func(*libc.TLS, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*sqlite3_vfs)(unsafe.Pointer(clockVfs)).FxCurrentTime})))(tls, clockVfs, bp+8)
-		*(*sqlite3_int64)(unsafe.Pointer(bp)) = int64(*(*float64)(unsafe.Pointer(bp + 8)) * libc.Float64FromFloat64(8.64e+07))
+		*(*sqlite3_int64)(unsafe.Pointer(bp)) = int64(float64(*(*float64)(unsafe.Pointer(bp + 8)) * libc.Float64FromFloat64(8.64e+07)))
 	}
 	return *(*sqlite3_int64)(unsafe.Pointer(bp))
 }
@@ -1608,7 +1608,7 @@ func testset_cte(tls *libc.TLS) {
 	rSpacing = float64(5) / float64(g.FszTest)
 	speedtest1_begin_test(tls, int32(300), __ccgo_ts+5899, libc.VaList(bp+8, rSpacing))
 	speedtest1_prepare(tls, __ccgo_ts+5930, 0)
-	libsqlite3.Xsqlite3_bind_double(tls, g.FpStmt, int32(1), rSpacing*float64(0.05))
+	libsqlite3.Xsqlite3_bind_double(tls, g.FpStmt, int32(1), float64(rSpacing*float64(0.05)))
 	libsqlite3.Xsqlite3_bind_double(tls, g.FpStmt, int32(2), rSpacing)
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
