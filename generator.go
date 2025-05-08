@@ -175,6 +175,7 @@ func main() {
 			"--prefix-undefined=_",
 			"-ignore-unsupported-alignment",
 			"-ignore-link-errors",
+			"-import=sync",
 
 			"-DHAVE_USLEEP",
 			"-DLONGDOUBLE_TYPE=double",
@@ -251,6 +252,7 @@ func main() {
 
 		util.MustShell(true, nil, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, result)
 		util.MustShell(true, nil, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, result)
+		util.MustShell(true, nil, sed, "-i", `s/func _sqlite3MutexInit(tls \*libc\.TLS) (r int32) {/var mu sync.Mutex; func _sqlite3MutexInit(tls \*libc\.TLS) (r int32) { mu\.Lock(); defer mu\.Unlock();/`, result)
 		return nil
 	})
 
