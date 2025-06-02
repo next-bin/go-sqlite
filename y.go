@@ -1857,8 +1857,13 @@ func (y *y) rules0() error {
 		}
 
 		if e := rule.Sym.Type; e != "" && rule.Action == nil && len(rule.Components) != 0 {
-			if g := y.Syms[rule.Components[0]].Type; g != e {
-				y.err(rule.pos, "type clash on default action: <%s> != <%s>", e, g)
+			switch g, ok := y.Syms[rule.Components[0]]; {
+			case !ok:
+				y.err(rule.pos, "rule not defined: <%s>", rule.Components[0])
+			default:
+				if g.Type != e {
+					y.err(rule.pos, "type clash on default action: <%s> != <%s>", e, g)
+				}
 			}
 		}
 	}

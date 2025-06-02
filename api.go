@@ -7,7 +7,7 @@
 // Package y converts .y (yacc[2]) source files to data suitable for a parser
 // generator.
 //
-// Changelog
+// # Changelog
 //
 // 2015-02-23: Added methods Parser.{AcceptsEmptyInput,SkeletonXErrors}.
 //
@@ -15,17 +15,17 @@
 //
 // 2014-12-18: Support %precedence for better bison compatibility[5].
 //
-// Links
+// # Links
 //
 // Referenced from elsewhere:
 //
-//  [0]: http://godoc.org/modernc.org/goyacc
-//  [1]: http://people.via.ecp.fr/~stilgar/doc/compilo/parser/Generating%20LR%20Syntax%20Error%20Messages.pdf
-//  [2]: http://dinosaur.compilertools.net/yacc/
-//  [3]: http://dinosaur.compilertools.net/lex/index.html
-//  [4]: https://www.gnu.org/software/bison/manual/html_node/Using-Mid_002dRule-Actions.html
-//  [5]: http://www.gnu.org/software/bison/manual/html_node/Precedence-Only.html#Precedence-Only
-//  [6]: http://www.gnu.org/software/bison/manual/html_node/Token-Decl.html#Token-Decl
+//	[0]: http://godoc.org/modernc.org/goyacc
+//	[1]: http://people.via.ecp.fr/~stilgar/doc/compilo/parser/Generating%20LR%20Syntax%20Error%20Messages.pdf
+//	[2]: http://dinosaur.compilertools.net/yacc/
+//	[3]: http://dinosaur.compilertools.net/lex/index.html
+//	[4]: https://www.gnu.org/software/bison/manual/html_node/Using-Mid_002dRule-Actions.html
+//	[5]: http://www.gnu.org/software/bison/manual/html_node/Precedence-Only.html#Precedence-Only
+//	[6]: http://www.gnu.org/software/bison/manual/html_node/Token-Decl.html#Token-Decl
 package y // import "modernc.org/y"
 
 import (
@@ -100,7 +100,7 @@ type AssocDef struct {
 
 // Options amend the behavior of the various Process* functions.
 //
-// Error Examples
+// # Error Examples
 //
 // Error examples implement the ideas in "Generating LR Syntax Error Messages
 // from Examples"[1]. They extend the capability of a LALR parser to produce
@@ -136,7 +136,6 @@ type AssocDef struct {
 //	`Missing package name or newline after "package"`
 //
 // vs
-//
 //
 //	/*
 //		Reject empty file
@@ -523,7 +522,7 @@ func ProcessSource(fset *token.FileSet, fname string, src []byte, opts *Options)
 //			$$ = &ast{$1, $2, $3}
 //		}
 //
-// Inner rule actions
+// # Inner rule actions
 //
 // A rule can prescribe semantic actions not only at the end. For example
 //
@@ -657,7 +656,6 @@ func (s *State) syms0() []*Symbol {
 //	if la != nil {
 //		syms = append(syms, la)
 //	}
-//
 func (s *State) Syms0() ([]*Symbol, *Symbol) {
 	str := s.syms0()
 	if s.parent == nil {
@@ -721,7 +719,7 @@ func (s *State) Reduce0(r *Rule) []*Symbol {
 // Symbol represents a terminal or non terminal symbol. A special end symbol
 // has Name "$end" and represents the EOF token.
 //
-// LiteralString field
+// # LiteralString field
 //
 // Some parser generators accept an optional literal string token associated
 // with a token definition. From [6]:

@@ -776,3 +776,14 @@ Factor:
 	// 12 // NUMBER '*' NUMBER
 	// error "expected one of [$end, '+', '-']"
 }
+
+// https://gitlab.com/cznic/y/-/issues/7
+func TestIssue7(t *testing.T) {
+	if _, err := ProcessFile(token.NewFileSet(), filepath.Join("testdata", "issue7.y"), &Options{}); err != nil {
+		if !strings.Contains(err.Error(), "undefined symbol packageDecl") {
+			t.Fatalf("expected error to contain `undefined symbol packageDecl`: %v", err)
+		}
+
+		t.Logf("expected error but no panic, so OK: %v", err)
+	}
+}
