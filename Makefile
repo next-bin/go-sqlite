@@ -1,4 +1,4 @@
-.PHONY:	all clean cover cpu editor internalError later mem nuke todo edit
+.PHONY:	all clean cover cpu editor internalError later mem nuke todo edit test
 
 grep=--include=*.go --include=*.l --include=*.y --include=*.yy
 ngrep='TODOOK\|parser\.go\|scanner\.go\|.*_string\.go'
@@ -53,3 +53,6 @@ todo:
 	@grep -nr $(grep) TODO * | grep -v $(ngrep) || true
 	@grep -nr $(grep) BUG * | grep -v $(ngrep) || true
 	@grep -nr $(grep) [^[:alpha:]]println * | grep -v $(ngrep) || true
+
+test:
+	go test -v -failfast
