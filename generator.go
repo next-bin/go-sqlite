@@ -148,7 +148,7 @@ func main() {
 	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.62.1 modernc.org/libz@v0.16.15 modernc.org/libtcl8.6@v0.16.9")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.65.10 modernc.org/libz@v0.16.17 modernc.org/libtcl8.6@v0.16.9")
 		config := []string{os.Args[0]}
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
@@ -303,9 +303,9 @@ func main() {
 		util.MustShell(true, nil, "sh", "-c", `
 go mod init example.com/libsqlite3
 go get \
-	modernc.org/libc@v1.62.1 \
+	modernc.org/libc@v1.65.10 \
 	modernc.org/libtcl8.6@v0.16.9 \
-	modernc.org/libz@v0.16.15 \
+	modernc.org/libz@v0.16.17 \
 `)
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", `
