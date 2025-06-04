@@ -5,8 +5,8 @@ go 1.23.0
 require (
 	golang.org/x/sys v0.33.0
 	modernc.org/ccgo/v4 v4.28.0
-	modernc.org/fileutil v1.3.1
-	modernc.org/libc v1.65.7
+	modernc.org/fileutil v1.3.3
+	modernc.org/libc v1.65.10
 	modernc.org/libtcl8.6 v0.16.9
 	modernc.org/libz v0.16.17
 )
