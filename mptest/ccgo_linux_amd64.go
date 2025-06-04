@@ -1,4 +1,4 @@
-// Code generated for linux/amd64 by 'generator -DNDEBUG -I /tmp/libsqlite3-generate772070116/sqlite-src-3500000 -ignore-unsupported-alignment -ignore-link-errors -o mptest/ccgo_linux_amd64.go /tmp/libsqlite3-generate772070116/sqlite-src-3500000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/amd64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3500000 -ignore-unsupported-alignment -ignore-link-errors -o mptest/ccgo_linux_amd64.go /tmp/libsqlite3/sqlite-src-3500000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && amd64
 
