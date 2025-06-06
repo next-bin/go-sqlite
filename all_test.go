@@ -35,21 +35,19 @@ var (
 	oXTags    = flag.String("xtags", "", "passed as -tags to go build of testfixture")
 
 	expectedFailures = map[string]struct{}{
-		// Measured cache usage seems to be sometimes slightly different for the
-		// transpilled code, but this is per se considered only an implementation
-		// detail, not a functional failure.
+		// Exact memory accounting of the transpilled-to-Go code differs from the
+		// original C code because we additionally allocate space for escaped local
+		// variables while using the same heap. We currently keep the TLS stacks,
+		// because of tcl8.6 implementation of closures, and do not free them until
+		// TLS.Close. See libc.TLS.Alloc/Free for more details.
 		"dbstatus-4.0.1": {},
 		"dbstatus-4.1.1": {},
 		"dbstatus-4.2.1": {},
 		"dbstatus-4.2.2": {},
 		"dbstatus-4.2.3": {},
 		"dbstatus-4.2.4": {},
-
-		// Our min-useable malloc block-size appears to be 2k (actual) Because this
-		// test attempts to measure actual memory freed causing 2 blocks to be freed
-		// will free 4K, failing the tests
-		"malloc5-6.2.2": {},
-		"malloc5-6.2.3": {},
+		"malloc5-6.2.2":  {},
+		"malloc5-6.2.3":  {},
 
 		// 2024-05-25: Reported at https://sqlite.org/forum/forumpost/8caab936c9
 		"values-11.0": {},
@@ -61,6 +59,33 @@ var (
 	goarch = runtime.GOARCH
 	target = fmt.Sprintf("%s/%s", goos, goarch)
 )
+
+func init() {
+	if goos == "windows" {
+		for _, v := range []string{
+			"dbstatus-2.0-1.a",
+			"dbstatus-2.0-2.a",
+			"dbstatus-2.0-3.a",
+			"dbstatus-2.0-4.a",
+			"dbstatus-2.0-5.a",
+			"dbstatus-2.0-7.a",
+			"dbstatus-2.64-1.a",
+			"dbstatus-2.64-2.a",
+			"dbstatus-2.64-3.a",
+			"dbstatus-2.64-4.a",
+			"dbstatus-2.64-5.a",
+			"dbstatus-2.64-7.a",
+			"dbstatus-2.120-1.a",
+			"dbstatus-2.120-2.a",
+			"dbstatus-2.120-3.a",
+			"dbstatus-2.120-4.a",
+			"dbstatus-2.120-5.a",
+			"dbstatus-2.120-7.a",
+		} {
+			expectedFailures[v] = struct{}{}
+		}
+	}
+}
 
 func TestMain(m *testing.M) {
 	rc := m.Run()
