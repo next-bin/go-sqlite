@@ -14,7 +14,7 @@ var (
 // Param describes a function argument or return value.
 type Param interface {
 	Name() string
-	Type() Type
+	Type
 }
 
 // Slot describes the properties of a stack/struct slot.
@@ -33,18 +33,14 @@ type Type interface {
 }
 
 type slot struct {
+	Type
 	name string
 	off  int64
 	sz   int64
-	typ  Type
 }
 
 func (s *slot) Name() string {
 	return s.name
-}
-
-func (s *slot) Type() Type {
-	return s.typ
 }
 
 func (s *slot) Offset() int64 {
@@ -59,27 +55,25 @@ func StackLayout(stackAlign int64, in, out []Param) (frame, args int64, inStack,
 	var off int64
 	var inSlot, outSlot *slot
 	for _, v := range in {
-		typ := v.Type()
-		off = roundUp(off, typ.Alignof())
+		off = roundUp(off, v.Alignof())
 		nm := v.Name()
 		if nm == "" {
 			nm = "arg"
 		}
-		sz := typ.Sizeof()
-		inSlot = &slot{name: nm, off: off, sz: sz, typ: typ}
+		sz := v.Sizeof()
+		inSlot = &slot{name: nm, off: off, sz: sz, Type: v}
 		inStack = append(inStack, inSlot)
 		off += sz
 	}
 	off = roundUp(off, stackAlign)
 	for _, v := range out {
-		typ := v.Type()
-		off = roundUp(off, typ.Alignof())
+		off = roundUp(off, v.Alignof())
 		nm := v.Name()
 		if nm == "" {
 			nm = "ret"
 		}
-		sz := typ.Sizeof()
-		outSlot = &slot{name: nm, off: off, sz: sz, typ: typ}
+		sz := v.Sizeof()
+		outSlot = &slot{name: nm, off: off, sz: sz, Type: v}
 		outStack = append(outStack, outSlot)
 		off += sz
 	}
