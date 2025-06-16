@@ -28,6 +28,13 @@ type Slot interface {
 }
 
 // Type describes the properties of a type.
+//
+//	Kind    Elem()  Fields()  Len()
+//	-------------------------------
+//	Array   non-nil nil       >= 0
+//	Pointer non-nil nil       < 0
+//	Scalar  nil     nil       < 0
+//	Struct  nil     non-nil   < 0
 type Type interface {
 	Alignof() int64
 	Elem() Type     // Returns nil if not an array or pointer type.
