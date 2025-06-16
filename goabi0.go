@@ -30,8 +30,8 @@ type Slot interface {
 // Type describes the properties of a type.
 type Type interface {
 	Alignof() int64
-	Elem() Type     // Returns nil if not array or pointer type.
-	Fields() []Slot // Returns zero length slice if not a struct type.
+	Elem() Type     // Returns nil if not an array or pointer type.
+	Fields() []Slot // Returns a nil slice if not a struct type.
 	Len() int64     // Returns a negative value if not an array type.
 	Sizeof() int64
 }
@@ -120,7 +120,7 @@ func Cp(wordSize int64, s Slot) (r []Move, err error) {
 			for i := int64(0); i < arrLen; i++ {
 				cp(off+i*sz, elem, fmt.Sprintf("%s_%v", nm, i))
 			}
-		case len(flds) != 0:
+		case flds == nil:
 			for _, f := range flds {
 				cp(off+f.Offset(), f, fmt.Sprintf("%s_%s", nm, f.Name()))
 			}

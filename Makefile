@@ -19,6 +19,7 @@ edit:
 editor:
 	gofmt -l -s -w .
 	go test -c -o /dev/null
+	go test
 	go install -v
 	staticcheck 2>&1
 
