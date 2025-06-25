@@ -2871,7 +2871,10 @@ func (n *Attributes) Weak() bool { return n.weak }
 // IsAttrSet reports whether an attribute has been set, with or without value. For example,
 // with __attribute__((my_attribute1, my_attribute2(42))), it reports true for both my_attribute1
 // and my_attribute2
-func (n *Attributes) IsAttrSet(name string) bool { return n.AttrValue(name) != nil }
+func (n *Attributes) IsAttrSet(name string) (r bool) {
+	_, r = n.customAttributes[name]
+	return r
+}
 
 // AttrValue reports the value associated with a custom attribute, if present. For example,
 // with __attribute__((my_attribute1, my_attribute2(42))), it reports nil for my_attribute1

@@ -3156,3 +3156,34 @@ typedef struct ecs_serializer_t {
 		t.Fatal(err)
 	}
 }
+
+// https://gitlab.com/cznic/cc/-/issues/165
+func TestIssue165(t *testing.T) {
+	const src = `
+#define CEPH_RBD_API          __attribute__ ((visibility ("default")))
+#define CEPH_RBD_DEPRECATED   __attribute__((deprecated))
+CEPH_RBD_API int a CEPH_RBD_DEPRECATED; 
+`
+	cfg, err := NewConfig(runtime.GOOS, runtime.GOARCH)
+	if err != nil {
+		t.Fatalf("failed to create new config: %v", err)
+	}
+
+	sources := []Source{
+		{Name: "<predefined>", Value: cfg.Predefined},
+		{Name: "<builtin>", Value: Builtin},
+		{Name: "test.c", Value: src},
+	}
+
+	ast, err := Translate(cfg, sources)
+	if err != nil {
+		t.Fatalf("parse error: %v", err)
+	}
+
+	d := ast.Scope.Nodes["a"][0].(*Declarator)
+	for _, v := range []string{"visibility", "deprecated"} {
+		if g, e := d.Type().Attributes().IsAttrSet(v), true; g != e {
+			t.Errorf("%s: got=%v expexted=%v", v, g, e)
+		}
+	}
+}

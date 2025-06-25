@@ -545,7 +545,7 @@ func newConfig(opts []string) (cc, predefined string, includePaths, sysIncludePa
 			continue
 		}
 
-		again:
+	again:
 		args := append(opts, "-dM", "-E", "-")
 		cmd := exec.Command(cc, args...)
 		cmd.Env = append(os.Environ(), "LC_ALL=C")
