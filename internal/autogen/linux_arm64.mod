@@ -4,10 +4,10 @@ go 1.23.0
 
 require (
 	github.com/adrg/xdg v0.5.0
-	modernc.org/cc/v4 v4.26.1
+	modernc.org/cc/v4 v4.26.2
 	modernc.org/ccgo/v4 v4.28.0
-	modernc.org/fileutil v1.3.6
-	modernc.org/libc v1.65.8
+	modernc.org/fileutil v1.3.8
+	modernc.org/libc v1.66.1
 	modernc.org/libz v0.16.18
 )
 
