@@ -127,7 +127,7 @@ func Cp(wordSize int64, s Slot) (r []Move, err error) {
 			for i := int64(0); i < arrLen; i++ {
 				cp(off+i*sz, elem, fmt.Sprintf("%s_%v", nm, i))
 			}
-		case flds == nil:
+		case flds != nil:
 			for _, f := range flds {
 				cp(off+f.Offset(), f, fmt.Sprintf("%s_%s", nm, f.Name()))
 			}
