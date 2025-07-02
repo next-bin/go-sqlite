@@ -17,6 +17,7 @@ edit:
 	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile go.mod builder.json *.go & fi
 
 editor:
+	stringer -type=Kind
 	gofmt -l -s -w .
 	go test -c -o /dev/null
 	go test

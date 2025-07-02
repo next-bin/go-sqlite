@@ -15,10 +15,11 @@ var (
 	_ Slot = (*slot)(nil)
 )
 
-// Param describes a function argument or return value.
+// Param describes a function argument or a return value.
 type Param interface {
 	Name() string
 	Type
+	GetType() Type
 }
 
 // Slot describes the properties of a stack/struct slot.
@@ -39,9 +40,33 @@ type Type interface {
 	Alignof() int64
 	Elem() Type     // Returns nil if not an array or pointer type.
 	Fields() []Slot // Returns a nil slice if not a struct type.
-	Len() int64     // Returns a negative value if not an array type.
+	Kind() Kind
+	Len() int64 // Returns a negative value if not an array type.
 	Sizeof() int64
 }
+
+func Kindof(t Type) Kind {
+	switch {
+	case t.Len() >= 0:
+		return Array
+	case t.Elem() != nil:
+		return Pointer
+	case t.Fields() != nil:
+		return Struct
+	default:
+		return Scalar
+	}
+}
+
+// Kind is a type class.
+type Kind int
+
+const (
+	Array Kind = iota
+	Pointer
+	Scalar
+	Struct
+)
 
 type slot struct {
 	Type
@@ -52,6 +77,10 @@ type slot struct {
 
 func (s *slot) Name() string {
 	return s.name
+}
+
+func (s *slot) GetType() Type {
+	return s.Type
 }
 
 func (s *slot) Offset() int64 {
