@@ -326,10 +326,10 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
 	var bname, in uintptr
-	var copyout, uncompr, v1, v2, v3, v4, v6 int32
+	var copyout, uncompr, v1, v2 int32
 	var file TgzFile
 	var _ /* outmode at bp+0 */ [20]uint8
-	_, _, _, _, _, _, _, _, _, _ = bname, copyout, file, in, uncompr, v1, v2, v3, v4, v6
+	_, _, _, _, _, _, _ = bname, copyout, file, in, uncompr, v1, v2
 	copyout = 0
 	uncompr = 0
 	libc.X__builtin_snprintf(tls, bp, uint64(20), __ccgo_ts+113, libc.VaList(bp+32, __ccgo_ts+119))
@@ -385,23 +385,13 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	}
 	if argc == 0 {
 		if uncompr != 0 {
-			if !(libc.X__isthreaded != 0) {
-				v2 = int32((*TFILE)(unsafe.Pointer(libc.X__stdinp)).F_file)
-			} else {
-				v2 = libc.Xfileno(tls, libc.X__stdinp)
-			}
-			file = x_gzdopen(tls, v2, __ccgo_ts+89)
+			file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__stdinp), __ccgo_ts+89)
 			if file == libc.UintptrFromInt32(0) {
 				_error(tls, __ccgo_ts+151)
 			}
 			_gz_uncompress(tls, file, libc.X__stdoutp)
 		} else {
-			if !(libc.X__isthreaded != 0) {
-				v3 = int32((*TFILE)(unsafe.Pointer(libc.X__stdoutp)).F_file)
-			} else {
-				v3 = libc.Xfileno(tls, libc.X__stdoutp)
-			}
-			file = x_gzdopen(tls, v3, bp)
+			file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__stdoutp), bp)
 			if file == libc.UintptrFromInt32(0) {
 				_error(tls, __ccgo_ts+171)
 			}
@@ -428,12 +418,7 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 					if in == libc.UintptrFromInt32(0) {
 						libc.Xperror(tls, *(*uintptr)(unsafe.Pointer(argv)))
 					} else {
-						if !(libc.X__isthreaded != 0) {
-							v6 = int32((*TFILE)(unsafe.Pointer(libc.X__stdoutp)).F_file)
-						} else {
-							v6 = libc.Xfileno(tls, libc.X__stdoutp)
-						}
-						file = x_gzdopen(tls, v6, bp)
+						file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__stdoutp), bp)
 						if file == libc.UintptrFromInt32(0) {
 							_error(tls, __ccgo_ts+171)
 						}
@@ -443,13 +428,13 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 					_file_compress(tls, *(*uintptr)(unsafe.Pointer(argv)), bp)
 				}
 			}
-			goto _5
-		_5:
+			goto _3
+		_3:
 			;
 			argv += 8
 			argc--
-			v4 = argc
-			if !(v4 != 0) {
+			v2 = argc
+			if !(v2 != 0) {
 				break
 			}
 		}
