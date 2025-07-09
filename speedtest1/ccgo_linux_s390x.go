@@ -1,4 +1,4 @@
-// Code generated for linux/s390x by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_s390x.go -I /tmp/libsqlite3/sqlite-src-3500100 /tmp/libsqlite3/sqlite-src-3500100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/s390x by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_s390x.go -I /tmp/libsqlite3/sqlite-src-3500200 /tmp/libsqlite3/sqlite-src-3500200/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && s390x
 
