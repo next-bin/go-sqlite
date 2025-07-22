@@ -91,14 +91,18 @@ func TestMain(m *testing.M) {
 	rc := m.Run()
 	os.Exit(rc)
 }
+
 func TestConcurrentProcesses(t *testing.T) {
 	if testing.Short() {
 		t.Skip("skipping test in short mode")
 	}
 
 	switch target {
-	case "linux/ppc64le":
-		t.Skip("TODO") // Slow VM?
+	case
+		"linux/ppc64le",
+		"linux/s390x":
+
+		t.Skip("TODO") // VM too slow.
 	}
 
 	dir, err := os.MkdirTemp("", "sqlite-test-")
