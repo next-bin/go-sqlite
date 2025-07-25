@@ -144,7 +144,7 @@ func (n *ConditionalExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -170,7 +170,7 @@ func (n *LogicalOrExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -201,7 +201,7 @@ func (n *LogicalAndExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -232,7 +232,7 @@ func (n *InclusiveOrExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -250,7 +250,7 @@ func (n *InclusiveOrExpression) eval(c *ctx, mode flags) (r Value) {
 			case Int64Value:
 				n.val = convert(x|y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.ExclusiveOrExpression.eval(c, mode), n.Type()).(type) {
@@ -259,10 +259,10 @@ func (n *InclusiveOrExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x|y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	default:
 		c.errors.add(errorf("internal error: %v", n.Case))
@@ -276,7 +276,7 @@ func (n *ExclusiveOrExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -294,7 +294,7 @@ func (n *ExclusiveOrExpression) eval(c *ctx, mode flags) (r Value) {
 			case Int64Value:
 				n.val = convert(x^y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.AndExpression.eval(c, mode), n.Type()).(type) {
@@ -303,10 +303,10 @@ func (n *ExclusiveOrExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x^y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	default:
 		c.errors.add(errorf("internal error: %v", n.Case))
@@ -320,7 +320,7 @@ func (n *AndExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -338,7 +338,7 @@ func (n *AndExpression) eval(c *ctx, mode flags) (r Value) {
 			case Int64Value:
 				n.val = convert(x&y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.EqualityExpression.eval(c, mode), n.Type()).(type) {
@@ -347,10 +347,10 @@ func (n *AndExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x&y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	default:
 		c.errors.add(errorf("internal error: %v", n.Case))
@@ -364,7 +364,7 @@ func (n *EqualityExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -390,7 +390,7 @@ func (n *EqualityExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = bool2int(x == Int64Value(y))
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.RelationalExpression.eval(c, mode), t2).(type) {
@@ -401,10 +401,19 @@ func (n *EqualityExpression) eval(c *ctx, mode flags) (r Value) {
 			case Int64Value:
 				n.val = bool2int(x == UInt64Value(y))
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.RelationalExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				n.val = bool2int(x == y)
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case EqualityExpressionNeq: // EqualityExpression "!=" RelationalExpression
 		t1 := n.EqualityExpression.Type()
@@ -425,7 +434,7 @@ func (n *EqualityExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = bool2int(UInt64Value(x) != y)
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.RelationalExpression.eval(c, mode), t2).(type) {
@@ -436,10 +445,19 @@ func (n *EqualityExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = bool2int(x != y)
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.RelationalExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				n.val = bool2int(x != y)
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	default:
 		c.errors.add(errorf("internal error: %v", n.Case))
@@ -453,7 +471,7 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -482,7 +500,7 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 
 				n.val = int0
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.ShiftExpression.eval(c, mode), t2).(type) {
@@ -496,10 +514,24 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 
 				n.val = int0
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.ShiftExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				if x < y {
+					n.val = int1
+					break
+				}
+
+				n.val = int0
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case RelationalExpressionGt: // RelationalExpression '>' ShiftExpression
 		t1 := n.RelationalExpression.Type()
@@ -523,7 +555,7 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 
 				n.val = int0
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.ShiftExpression.eval(c, mode), t2).(type) {
@@ -537,10 +569,24 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 
 				n.val = int0
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.ShiftExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				if x > y {
+					n.val = int1
+					break
+				}
+
+				n.val = int0
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case RelationalExpressionLeq: // RelationalExpression "<=" ShiftExpression
 		t1 := n.RelationalExpression.Type()
@@ -564,7 +610,7 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 
 				n.val = int0
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.ShiftExpression.eval(c, mode), t2).(type) {
@@ -578,10 +624,24 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 
 				n.val = int0
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.ShiftExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				if x <= y {
+					n.val = int1
+					break
+				}
+
+				n.val = int0
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case RelationalExpressionGeq: // RelationalExpression ">=" ShiftExpression
 		t1 := n.RelationalExpression.Type()
@@ -605,7 +665,7 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 
 				n.val = int0
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.ShiftExpression.eval(c, mode), t2).(type) {
@@ -619,10 +679,24 @@ func (n *RelationalExpression) eval(c *ctx, mode flags) (r Value) {
 
 				n.val = int0
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.ShiftExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				if x >= y {
+					n.val = int1
+					break
+				}
+
+				n.val = int0
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	default:
 		c.errors.add(errorf("internal error: %v", n.Case))
@@ -636,7 +710,7 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -665,7 +739,7 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x<<y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := n.AdditiveExpression.eval(c, mode).(type) {
@@ -685,10 +759,10 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x<<y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case ShiftExpressionRsh: // ShiftExpression ">>" AdditiveExpression
 		switch x := convert(n.ShiftExpression.eval(c, mode), n.Type()).(type) {
@@ -712,7 +786,7 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x>>y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := n.AdditiveExpression.eval(c, mode).(type) {
@@ -732,10 +806,10 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x>>y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	default:
 		c.errors.add(errorf("internal error: %v", n.Case))
@@ -749,7 +823,7 @@ func (n *AdditiveExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -767,7 +841,7 @@ func (n *AdditiveExpression) eval(c *ctx, mode flags) (r Value) {
 			case Int64Value:
 				n.val = convert(x+y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.MultiplicativeExpression.eval(c, mode), n.Type()).(type) {
@@ -776,12 +850,19 @@ func (n *AdditiveExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x+y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case Float64Value:
-			// nop
+			switch y := convert(n.MultiplicativeExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				n.val = convert(x+y, n.Type())
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case AdditiveExpressionSub: // AdditiveExpression '-' MultiplicativeExpression
 		switch x := convert(n.AdditiveExpression.eval(c, mode), n.Type()).(type) {
@@ -794,7 +875,7 @@ func (n *AdditiveExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x-y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case Int64Value:
 			switch y := convert(n.MultiplicativeExpression.eval(c, mode), n.Type()).(type) {
@@ -803,10 +884,19 @@ func (n *AdditiveExpression) eval(c *ctx, mode flags) (r Value) {
 			case Int64Value:
 				n.val = convert(x-y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.MultiplicativeExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				n.val = convert(x-y, n.Type())
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	default:
 		c.errors.add(errorf("internal error: %v", n.Case))
@@ -820,7 +910,7 @@ func (n *MultiplicativeExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 
@@ -838,7 +928,7 @@ func (n *MultiplicativeExpression) eval(c *ctx, mode flags) (r Value) {
 			case UInt64Value:
 				n.val = convert(x*y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case Int64Value:
 			switch y := convert(n.CastExpression.eval(c, mode), n.Type()).(type) {
@@ -847,10 +937,19 @@ func (n *MultiplicativeExpression) eval(c *ctx, mode flags) (r Value) {
 			case Int64Value:
 				n.val = convert(x*y, n.Type())
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.CastExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				n.val = convert(x*y, n.Type())
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case MultiplicativeExpressionDiv: // MultiplicativeExpression '/' CastExpression
 		switch x := convert(n.MultiplicativeExpression.eval(c, mode), n.Type()).(type) {
@@ -866,7 +965,7 @@ func (n *MultiplicativeExpression) eval(c *ctx, mode flags) (r Value) {
 					break
 				}
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.CastExpression.eval(c, mode), n.Type()).(type) {
@@ -878,10 +977,19 @@ func (n *MultiplicativeExpression) eval(c *ctx, mode flags) (r Value) {
 					break
 				}
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+			}
+		case Float64Value:
+			switch y := convert(n.CastExpression.eval(c, mode), n.Type()).(type) {
+			case *UnknownValue:
+				// nop
+			case Float64Value:
+				n.val = convert(x/y, n.Type())
+			default:
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case MultiplicativeExpressionMod: // MultiplicativeExpression '%' CastExpression
 		switch x := convert(n.MultiplicativeExpression.eval(c, mode), n.Type()).(type) {
@@ -897,7 +1005,7 @@ func (n *MultiplicativeExpression) eval(c *ctx, mode flags) (r Value) {
 					break
 				}
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		case UInt64Value:
 			switch y := convert(n.CastExpression.eval(c, mode), n.Type()).(type) {
@@ -909,10 +1017,10 @@ func (n *MultiplicativeExpression) eval(c *ctx, mode flags) (r Value) {
 					break
 				}
 			default:
-				c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
+				// c.errors.add(errorf("TODO %v TYPE %T", n.Case, y))
 			}
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	default:
 		c.errors.add(errorf("internal error: %v", n.Case))
@@ -930,7 +1038,7 @@ func (n *CastExpression) eval(c *ctx, mode flags) (r Value) {
 		case CastExpressionUnary: // UnaryExpression
 			n.val = n.UnaryExpression.eval(c, mode)
 		case CastExpressionCast: // '(' TypeName ')' CastExpression
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		default:
 			c.errors.add(errorf("internal error: %v", n.Case))
 		}
@@ -956,11 +1064,11 @@ func (n *UnaryExpression) eval(c *ctx, mode flags) (r Value) {
 	if mode.has(addrOf) {
 		switch n.Case {
 		case UnaryExpressionPostfix: // PostfixExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionInc: // "++" UnaryExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionDec: // "--" UnaryExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionAddrof: // '&' CastExpression
 			// ok
 		case UnaryExpressionDeref: // '*' CastExpression
@@ -972,34 +1080,34 @@ func (n *UnaryExpression) eval(c *ctx, mode flags) (r Value) {
 					n.val = convert(x, n.CastExpression.Type())
 				}
 			default:
-				c.errors.add(errorf("TODO %v %v %T", n.Case, mode.has(addrOf), x))
+				// c.errors.add(errorf("TODO %v %v %T", n.Case, mode.has(addrOf), x))
 			}
 		case UnaryExpressionPlus: // '+' CastExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionMinus: // '-' CastExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionCpl: // '~' CastExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionNot: // '!' CastExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionSizeofExpr: // "sizeof" UnaryExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionSizeofType: // "sizeof" '(' TypeName ')'
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionLabelAddr: // "&&" IDENTIFIER
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionAlignofExpr: // "_Alignof" UnaryExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionAlignofType: // "_Alignof" '(' TypeName ')'
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionImag: // "__imag__" UnaryExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionReal: // "__real__" UnaryExpression
-			switch x := n.UnaryExpression.eval(c, mode.del(addrOf)).(type) {
+			switch /* x := */ n.UnaryExpression.eval(c, mode.del(addrOf)).(type) {
 			case *UnknownValue:
 				// ok
 			default:
-				c.errors.add(errorf("TODO %v %v %T", n.Case, mode.has(addrOf), x))
+				// c.errors.add(errorf("TODO %v %v %T", n.Case, mode.has(addrOf), x))
 			}
 		default:
 			c.errors.add(errorf("internal error: %v", n.Case))
@@ -1026,8 +1134,10 @@ func (n *UnaryExpression) eval(c *ctx, mode flags) (r Value) {
 			n.val = convert(x, n.Type())
 		case UInt64Value:
 			n.val = convert(x, n.Type())
+		case Float64Value:
+			n.val = convert(x, n.Type())
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case UnaryExpressionMinus: // '-' CastExpression
 		switch x := convert(n.CastExpression.eval(c, mode), n.Type()).(type) {
@@ -1040,7 +1150,7 @@ func (n *UnaryExpression) eval(c *ctx, mode flags) (r Value) {
 		case Float64Value:
 			// nop
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case UnaryExpressionCpl: // '~' CastExpression
 		switch x := n.CastExpression.eval(c, mode).(type) {
@@ -1051,7 +1161,7 @@ func (n *UnaryExpression) eval(c *ctx, mode flags) (r Value) {
 		case UInt64Value:
 			n.val = convert(^x, n.Type())
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case UnaryExpressionNot: // '!' CastExpression
 		switch x := n.CastExpression.eval(c, mode).(type) {
@@ -1064,7 +1174,7 @@ func (n *UnaryExpression) eval(c *ctx, mode flags) (r Value) {
 		case StringValue, UTF16StringValue, UTF32StringValue:
 			n.val = convert(int0, n.Type())
 		default:
-			c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
+			// c.errors.add(errorf("TODO %v TYPE %T", n.Case, x))
 		}
 	case UnaryExpressionSizeofExpr: // "sizeof" UnaryExpression
 		// nop
@@ -1094,7 +1204,7 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 	if mode.has(addrOf) {
 		switch n.Case {
 		case PostfixExpressionPrimary: // PrimaryExpression
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PostfixExpressionIndex: // PostfixExpression '[' Expression ']'
 			switch x := n.PostfixExpression.eval(c, mode.del(addrOf)).(type) {
 			case *UnknownValue, StringValue, UTF16StringValue, UTF32StringValue:
@@ -1108,10 +1218,10 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 					}
 				}
 			default:
-				c.errors.add(errorf("TODO %v %v %T", n.Case, mode.has(addrOf), x))
+				// c.errors.add(errorf("TODO %v %v %T", n.Case, mode.has(addrOf), x))
 			}
 		case PostfixExpressionCall: // PostfixExpression '(' ArgumentExpressionList ')'
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PostfixExpressionSelect: // PostfixExpression '.' IDENTIFIER
 			switch x := n.PostfixExpression.Type().(type) {
 			case *StructType:
@@ -1123,7 +1233,7 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 						n.val = convert(y+UInt64Value(f.Offset()), c.newPointerType(f.Type()))
 					}
 				default:
-					c.errors.add(errorf("TODO %T %T", x, y))
+					// c.errors.add(errorf("TODO %T %T", x, y))
 				}
 			case *UnionType:
 				switch y := n.PostfixExpression.eval(c, mode).(type) {
@@ -1134,10 +1244,10 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 						n.val = convert(y+UInt64Value(f.Offset()), c.newPointerType(f.Type()))
 					}
 				default:
-					c.errors.add(errorf("TODO %T %T", x, y))
+					// c.errors.add(errorf("TODO %T %T", x, y))
 				}
 			default:
-				c.errors.add(errorf("TODO %T", x))
+				// c.errors.add(errorf("TODO %T", x))
 			}
 		case PostfixExpressionPSelect: // PostfixExpression "->" IDENTIFIER
 			switch x := n.PostfixExpression.Type().(type) {
@@ -1156,18 +1266,18 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 							n.val = convert(y+UInt64Value(f.Offset()), c.newPointerType(f.Type()))
 						}
 					default:
-						c.errors.add(errorf("TODO %T %T", x, y, z))
+						// c.errors.add(errorf("TODO %T %T", x, y, z))
 					}
 				default:
-					c.errors.add(errorf("TODO %T %T", x, y))
+					// c.errors.add(errorf("TODO %T %T", x, y))
 				}
 			default:
-				c.errors.add(errorf("TODO %T", x))
+				// c.errors.add(errorf("TODO %T", x))
 			}
 		case PostfixExpressionInc: // PostfixExpression "++"
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PostfixExpressionDec: // PostfixExpression "--"
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PostfixExpressionComplit: // '(' TypeName ')' '{' InitializerList ',' '}'
 			// ok
 		default:
@@ -1198,7 +1308,7 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 						n.val = convert(Int64Value(v[x]), n.Type())
 					}
 				default:
-					c.errors.add(errorf("TODO %v %T", n.Case, x))
+					// c.errors.add(errorf("TODO %v %T", n.Case, x))
 				}
 			case UTF32StringValue:
 				switch x := n.ExpressionList.eval(c, 0).(type) {
@@ -1213,7 +1323,7 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 						n.val = convert(Int64Value(v[x]), n.Type())
 					}
 				default:
-					c.errors.add(errorf("TODO %v %T", n.Case, x))
+					// c.errors.add(errorf("TODO %v %T", n.Case, x))
 				}
 			case UTF16StringValue:
 				switch x := n.ExpressionList.eval(c, 0).(type) {
@@ -1228,13 +1338,13 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 						n.val = convert(Int64Value(v[x]), n.Type())
 					}
 				default:
-					c.errors.add(errorf("TODO %v %T", n.Case, x))
+					// c.errors.add(errorf("TODO %v %T", n.Case, x))
 				}
 			case UInt64Value:
 				// nop
 			default:
 				// trc("%v: %v %v [%v %v] %T", n.Token.Position(), n.PostfixExpression.Value(), n.PostfixExpression.Type(), n.ExpressionList.Value(), n.ExpressionList.Type(), v)
-				c.errors.add(errorf("TODO %v %T", n.Case, v))
+				// c.errors.add(errorf("TODO %v %T", n.Case, v))
 			}
 		case IsIntegerType(n.PostfixExpression.Type()) && isPointerType(n.ExpressionList.Type()):
 			switch v := n.ExpressionList.eval(c, mode).(type) {
@@ -1253,11 +1363,11 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 						n.val = convert(Int64Value(v[x]), n.Type())
 					}
 				default:
-					c.errors.add(errorf("TODO %v %T", n.Case, x))
+					// c.errors.add(errorf("TODO %v %T", n.Case, x))
 				}
 			default:
 				// trc("%v: %v %v [%v %v] %T", n.Token.Position(), n.PostfixExpression.Value(), n.PostfixExpression.Type(), n.ExpressionList.Value(), n.ExpressionList.Type(), v)
-				c.errors.add(errorf("TODO %v %T", n.Case, v))
+				// c.errors.add(errorf("TODO %v %T", n.Case, v))
 			}
 		}
 	case PostfixExpressionCall: // PostfixExpression '(' ArgumentExpressionList ')'
@@ -1300,23 +1410,23 @@ func (n *PrimaryExpression) eval(c *ctx, mode flags) (r Value) {
 		case PrimaryExpressionIdent: // IDENTIFIER
 			// nop
 		case PrimaryExpressionInt: // INTCONST
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PrimaryExpressionFloat: // FLOATCONST
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PrimaryExpressionChar: // CHARCONST
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PrimaryExpressionLChar: // LONGCHARCONST
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PrimaryExpressionString: // STRINGLITERAL
 			// ok
 		case PrimaryExpressionLString: // LONGSTRINGLITERAL
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PrimaryExpressionExpr: // '(' Expression ')'
 			n.val = n.ExpressionList.eval(c, mode)
 		case PrimaryExpressionStmt: // '(' CompoundStatement ')'
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		case PrimaryExpressionGeneric: // GenericSelection
-			c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+			// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		default:
 			c.errors.add(errorf("internal error: %v", n.Case))
 		}
@@ -1329,7 +1439,7 @@ func (n *PrimaryExpression) eval(c *ctx, mode flags) (r Value) {
 		case *Declarator, *Parameter, *Enumerator, nil:
 			// ok
 		default:
-			c.errors.add(errorf("TODO %v %T", n.Case, n.resolvedTo))
+			// c.errors.add(errorf("TODO %v %T", n.Case, n.resolvedTo))
 		}
 	case PrimaryExpressionInt: // INTCONST
 		// nop
@@ -1378,7 +1488,7 @@ func (n *AssignmentExpression) eval(c *ctx, mode flags) (r Value) {
 	}
 
 	if mode.has(addrOf) {
-		c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
+		// c.errors.add(errorf("TODO %v %v", n.Case, mode.has(addrOf)))
 		return n.Value()
 	}
 

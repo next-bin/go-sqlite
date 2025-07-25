@@ -452,6 +452,14 @@ func convert(v Value, t Type) (r Value) {
 	case Void:
 		return VoidValue{}
 	}
+	switch x := v.(type) {
+	case Float64Value:
+		switch t.Kind() {
+		case Double:
+			return x
+		}
+	}
+
 	return Unknown
 }
 

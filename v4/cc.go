@@ -439,9 +439,7 @@ func fixArgs(args *[]string, msg string) (r bool) {
 		}
 
 		v = v[x+len(tag):]
-		if strings.HasPrefix(v, ":") {
-			v = v[1:]
-		}
+		v = strings.TrimPrefix(v, ":")
 		v = strings.TrimSpace(v)
 		if !strings.HasPrefix(v, "'") {
 			continue
