@@ -851,7 +851,10 @@ func (n *PointerType) isGenericAssociationCompatible(assoc Type) (r bool) {
 
 	switch x := assoc.(type) {
 	case *PointerType:
-		return n == x || n.Attributes().IsConst() == x.Attributes().IsConst() && n.Elem().IsCompatible(x.Elem())
+		return n == x ||
+			n.Attributes().IsConst() == x.Attributes().IsConst() && n.Elem().IsCompatible(x.Elem()) ||
+			n.Elem().Kind() == Ptr || x.Elem().Kind() == Ptr ||
+			n.Elem().Kind() == Function || x.Elem().Kind() == Function
 	case *UnionType:
 		return x.isGenericAssociationCompatible(assoc)
 	default:

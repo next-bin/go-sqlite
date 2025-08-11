@@ -4077,7 +4077,7 @@ func (n *EqualityExpression) check(c *ctx, mode flags) (r Type) {
 
 			n.typ = c.intT
 		default:
-			c.errors.add(errorf("%v: invalid operands: %v and %v", n.Token.Position(), a, b))
+			c.errors.add(errorf("%v: invalid operands: %s (%v) and %s (%v)", n.Token.Position(), NodeSource(n.EqualityExpression), a, NodeSource(n.RelationalExpression), b))
 		}
 		n.setPure(n.EqualityExpression.Pure() && n.RelationalExpression.Pure())
 	default:
@@ -4600,7 +4600,7 @@ func (c *ctx) takeAddr(n Node) {
 			c.errors.add(errorf("internal error: %v", x.Case))
 		}
 	default:
-		c.errors.add(errorf("internal error: %T", x))
+		c.errors.add(errorf("%v: %s: internal error: %T", n.Position(), NodeSource(n), x))
 	}
 }
 
