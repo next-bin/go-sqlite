@@ -38,72 +38,56 @@ edit:
 
 editor:
 	gofmt -l -s -w *.go
-	go test -c -o /dev/null 2>&1 | tee log-editor
+	go test -c -o /dev/null
 
 race:
-	go test -v -failfast -heap -race 2>&1 | tee log-test
+	go test -v -failfast -heap -race
 	@git diff testdata/ || true
 	@git status
-	@grep TOTAL log-test || true
-	grep 'FAIL\|TODO' log-test || true
 
 test:
-	go test -v -failfast -trctodo -exterr -heap 2>&1 | tee log-test
+	go test -v -failfast -trctodo -exterr -heap
 	@git diff testdata/ || true
 	@git status
-	@grep TOTAL log-test || true
-	grep 'FAIL\|TODO' log-test || true
 
 test2:
-	go test -v -failfast -trctodo -exterr -src $$HOME/src 2>&1 | tee log-test2
+	go test -v -failfast -trctodo -exterr -src $$HOME/src
 	@git diff testdata/ || true
 	@git status
-	@grep TOTAL log-test2 || true
-	grep 'FAIL\|TODO' log-test2 || true
 
 parser2:
-	go test -v -failfast -run TestParser -src $$HOME/src 2>&1 | tee log-parser2
+	go test -v -failfast -run TestParser -src $$HOME/src
 	@git diff testdata/ || true
 	@git status
-	@grep TOTAL log-parser2 || true
-	grep 'FAIL\|TODO' log-parser2 || true
 
 back:
-	go test -v -failfast -noback 2>&1 | tee log-back
+	go test -v -failfast -noback
 	@git diff testdata/ || true
 	@git status
-	@grep TOTAL log-back || true
-	grep 'FAIL\|TODO' log-back || true
 
 nreport:
 	touch log-nreport
 	cp log-nreport log-nreport0
-	go test -v -failfast -run TestParser -heap -nreport 2>&1 | tee log-nreport
+	go test -v -failfast -run TestParser -heap -nreport
 	@git diff testdata/ || true
 	@git status
-	@grep TOTAL log-report || true
-	grep 'FAIL\|TODO' log-report || true
 
 report:
-	go test -v -failfast -run TestParser -report 2>&1 | tee log-report
+	go test -v -failfast -run TestParser -report
 	@git diff testdata/ || true
 	@git status
-	@grep TOTAL log-report || true
-	grep 'FAIL\|TODO' log-report || true
 
 report2:
-	go test -v -failfast -run TestParser -src $$HOME/src -report 2>&1 | tee log-report2
+	go test -v -failfast -run TestParser -src $$HOME/src -report
 	@git diff testdata/ || true
 	@git status
-	@grep TOTAL log-report2 || true
-	grep 'FAIL\|TODO' log-report2 || true
 
 
 benchmarks:
-	go test -v -run @ -bench . 2>&1 | tee log-benchmarks
+	go test -v -run @ -bench .
 
 benchmarks2:
-	go test -v -run @ -bench . -bsrc $$HOME/src 2>&1 | tee log-benchmarks2
+	go test -v -run @ -bench . -bsrc $$HOME/src
 
 mem:
 	go test -run @ -bench BenchmarkParser -memprofile mem.out
