@@ -1,8 +1,8 @@
-// Copyright 2016 The Internal Authors. All rights reserved.
+// Copyright 2025 The Internal Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-//go:build !(linux && riscv64)
+//go:build linux && riscv64
 
 // Package buffer implements a pool of pointers to byte slices.
 //
@@ -36,26 +36,30 @@ package buffer // import "modernc.org/internal/buffer"
 
 import (
 	"io"
-	"modernc.org/internal/slice"
 )
 
 // CGet returns a pointer to a byte slice of len size. The pointed to byte
 // slice is zeroed up to its cap. CGet panics for size < 0.
 //
 // CGet is safe for concurrent use by multiple goroutines.
-func CGet(size int) *[]byte { return slice.Bytes.CGet(size).(*[]byte) }
+func CGet(size int) *[]byte {
+	s := make([]byte, size)
+	return &s
+}
 
 // Get returns a pointer to a byte slice of len size. The pointed to byte slice
 // is not zeroed. Get panics for size < 0.
 //
 // Get is safe for concurrent use by multiple goroutines.
-func Get(size int) *[]byte { return slice.Bytes.Get(size).(*[]byte) }
+func Get(size int) *[]byte {
+	return CGet(size)
+}
 
 // Put puts a pointer to a byte slice into a pool for possible later reuse by
 // CGet or Get.
 //
 // Put is safe for concurrent use by multiple goroutines.
-func Put(p *[]byte) { slice.Bytes.Put(p) }
+func Put(p *[]byte) {}
 
 // Bytes is similar to bytes.Buffer but may generate less garbage when properly
 // Closed. Zero value is ready to use.
