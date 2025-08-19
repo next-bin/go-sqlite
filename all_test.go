@@ -134,6 +134,7 @@ func TestMain(m *testing.M) {
 			"cmdIL-5.7",
 			"encoding-28.0",
 			"event-11.5",
+			"io-29.33b",
 			"io-29.34",
 			"io-29.35",
 			"io-29.36.1",
