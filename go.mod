@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/edsrzf/mmap-go v1.2.0
-	modernc.org/fileutil v1.3.22
+	modernc.org/fileutil v1.3.23
 	modernc.org/mathutil v1.7.1
 )
 
