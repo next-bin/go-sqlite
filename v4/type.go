@@ -2584,7 +2584,7 @@ func UsualArithmeticConversions(a, b Type) (r Type) {
 
 func integerPromotionKind(k Kind) Kind {
 	switch k {
-	case Char, SChar, UChar, Short, UShort:
+	case Bool, Char, SChar, UChar, Short, UShort:
 		return Int
 	default:
 		return k
@@ -2599,7 +2599,7 @@ func integerPromotionKind(k Kind) Kind {
 // integer promotions.
 func IntegerPromotion(t Type) Type {
 	switch t.Kind() {
-	case Char, SChar, UChar, Short, UShort:
+	case Bool, Char, SChar, UChar, Short, UShort:
 		return t.(*PredefinedType).c.ast.kinds[Int]
 	default:
 		return t
