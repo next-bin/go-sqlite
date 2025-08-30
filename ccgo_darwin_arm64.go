@@ -13162,6 +13162,10 @@ var _distfix = [32]Tcode{
 	},
 }
 
+type t__ccgo_fp__XinflateBack_1 = func(*libc.TLS, uintptr, uintptr) uint32
+
+type t__ccgo_fp__XinflateBack_3 = func(*libc.TLS, uintptr, uintptr, uint32) int32
+
 /* Macros for inflateBack(): */
 
 /* Load returned state from inflate_fast() */
@@ -13219,7 +13223,7 @@ var _distfix = [32]Tcode{
 //	   inflateBack() can also return Z_STREAM_ERROR if the input parameters
 //	   are not correct, i.e. strm is Z_NULL or the state was not initialized.
 //	 */
-func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, out Tout_func, out_desc uintptr) (r int32) {
+func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc uintptr, __ccgo_fp_out Tout_func, out_desc uintptr) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 	var bits, copy1, have, left, len1, v1, v18, v20, v24, v29, v30, v43, v44 uint32
@@ -13280,7 +13284,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		}
 		for bits < libc.Uint32FromInt32(libc.Int32FromInt32(3)) {
 			if have == uint32(0) {
-				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 				if have == uint32(0) {
 					*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 					ret = -int32(5)
@@ -13329,7 +13333,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		; /* go to byte boundary */
 		for bits < libc.Uint32FromInt32(libc.Int32FromInt32(32)) {
 			if have == uint32(0) {
-				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 				if have == uint32(0) {
 					*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 					ret = -int32(5)
@@ -13354,7 +13358,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		for (*Tinflate_state)(unsafe.Pointer(state)).Flength != uint32(0) {
 			copy1 = (*Tinflate_state)(unsafe.Pointer(state)).Flength
 			if have == uint32(0) {
-				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 				if have == uint32(0) {
 					*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 					ret = -int32(5)
@@ -13365,7 +13369,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 				put = (*Tinflate_state)(unsafe.Pointer(state)).Fwindow
 				left = (*Tinflate_state)(unsafe.Pointer(state)).Fwsize
 				(*Tinflate_state)(unsafe.Pointer(state)).Fwhave = left
-				if (*(*func(*libc.TLS, uintptr, uintptr, uint32) int32)(unsafe.Pointer(&struct{ uintptr }{out})))(tls, out_desc, put, left) != 0 {
+				if (*(*func(*libc.TLS, uintptr, uintptr, uint32) int32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_out})))(tls, out_desc, put, left) != 0 {
 					ret = -int32(5)
 					goto inf_leave
 				}
@@ -13390,7 +13394,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		/* get dynamic table entries descriptor */
 		for bits < libc.Uint32FromInt32(libc.Int32FromInt32(14)) {
 			if have == uint32(0) {
-				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 				if have == uint32(0) {
 					*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 					ret = -int32(5)
@@ -13422,7 +13426,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		for (*Tinflate_state)(unsafe.Pointer(state)).Fhave < (*Tinflate_state)(unsafe.Pointer(state)).Fncode {
 			for bits < libc.Uint32FromInt32(libc.Int32FromInt32(3)) {
 				if have == uint32(0) {
-					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 					if have == uint32(0) {
 						*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 						ret = -int32(5)
@@ -13466,7 +13470,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 					break
 				}
 				if have == uint32(0) {
-					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 					if have == uint32(0) {
 						*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 						ret = -int32(5)
@@ -13492,7 +13496,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 				if libc.Int32FromUint16(here.Fval) == int32(16) {
 					for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(2)) {
 						if have == uint32(0) {
-							have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+							have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 							if have == uint32(0) {
 								*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 								ret = -int32(5)
@@ -13520,7 +13524,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 					if libc.Int32FromUint16(here.Fval) == int32(17) {
 						for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(3)) {
 							if have == uint32(0) {
-								have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+								have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 								if have == uint32(0) {
 									*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 									ret = -int32(5)
@@ -13542,7 +13546,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 					} else {
 						for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(7)) {
 							if have == uint32(0) {
-								have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+								have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 								if have == uint32(0) {
 									*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 									ret = -int32(5)
@@ -13642,7 +13646,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 				break
 			}
 			if have == uint32(0) {
-				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 				if have == uint32(0) {
 					*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 					ret = -int32(5)
@@ -13665,7 +13669,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 					break
 				}
 				if have == uint32(0) {
-					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 					if have == uint32(0) {
 						*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 						ret = -int32(5)
@@ -13692,7 +13696,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 				put = (*Tinflate_state)(unsafe.Pointer(state)).Fwindow
 				left = (*Tinflate_state)(unsafe.Pointer(state)).Fwsize
 				(*Tinflate_state)(unsafe.Pointer(state)).Fwhave = left
-				if (*(*func(*libc.TLS, uintptr, uintptr, uint32) int32)(unsafe.Pointer(&struct{ uintptr }{out})))(tls, out_desc, put, left) != 0 {
+				if (*(*func(*libc.TLS, uintptr, uintptr, uint32) int32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_out})))(tls, out_desc, put, left) != 0 {
 					ret = -int32(5)
 					goto inf_leave
 				}
@@ -13720,7 +13724,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fextra != uint32(0) {
 			for bits < (*Tinflate_state)(unsafe.Pointer(state)).Fextra {
 				if have == uint32(0) {
-					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 					if have == uint32(0) {
 						*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 						ret = -int32(5)
@@ -13744,7 +13748,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 				break
 			}
 			if have == uint32(0) {
-				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+				have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 				if have == uint32(0) {
 					*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 					ret = -int32(5)
@@ -13767,7 +13771,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 					break
 				}
 				if have == uint32(0) {
-					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 					if have == uint32(0) {
 						*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 						ret = -int32(5)
@@ -13798,7 +13802,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fextra != uint32(0) {
 			for bits < (*Tinflate_state)(unsafe.Pointer(state)).Fextra {
 				if have == uint32(0) {
-					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{in})))(tls, in_desc, bp)
+					have = (*(*func(*libc.TLS, uintptr, uintptr) uint32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_in})))(tls, in_desc, bp)
 					if have == uint32(0) {
 						*(*uintptr)(unsafe.Pointer(bp)) = uintptr(m_Z_NULL)
 						ret = -int32(5)
@@ -13831,7 +13835,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 				put = (*Tinflate_state)(unsafe.Pointer(state)).Fwindow
 				left = (*Tinflate_state)(unsafe.Pointer(state)).Fwsize
 				(*Tinflate_state)(unsafe.Pointer(state)).Fwhave = left
-				if (*(*func(*libc.TLS, uintptr, uintptr, uint32) int32)(unsafe.Pointer(&struct{ uintptr }{out})))(tls, out_desc, put, left) != 0 {
+				if (*(*func(*libc.TLS, uintptr, uintptr, uint32) int32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_out})))(tls, out_desc, put, left) != 0 {
 					ret = -int32(5)
 					goto inf_leave
 				}
@@ -13890,7 +13894,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 inf_leave:
 	;
 	if left < (*Tinflate_state)(unsafe.Pointer(state)).Fwsize {
-		if (*(*func(*libc.TLS, uintptr, uintptr, uint32) int32)(unsafe.Pointer(&struct{ uintptr }{out})))(tls, out_desc, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, (*Tinflate_state)(unsafe.Pointer(state)).Fwsize-left) != 0 && ret == int32(m_Z_STREAM_END) {
+		if (*(*func(*libc.TLS, uintptr, uintptr, uint32) int32)(unsafe.Pointer(&struct{ uintptr }{__ccgo_fp_out})))(tls, out_desc, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, (*Tinflate_state)(unsafe.Pointer(state)).Fwsize-left) != 0 && ret == int32(m_Z_STREAM_END) {
 			ret = -int32(5)
 		}
 	}
