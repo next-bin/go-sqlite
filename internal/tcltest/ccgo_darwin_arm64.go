@@ -66191,7 +66191,7 @@ func x_Tcl_ThrowObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc in
 		}
 	}
 	/*
-	 * Now prepare the result options dictionary. We use the list API as it is
+	 * No7 prepare the result options dictionary. We use the list API as it is
 	 * slightly more convenient.
 	 */
 	if x_tclFreeObjList == libc.UintptrFromInt32(0) {
