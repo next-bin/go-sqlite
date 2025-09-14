@@ -3,7 +3,7 @@ module modernc.org/libz
 go 1.23.0
 
 require (
-	modernc.org/cc/v4 v4.26.4
+	modernc.org/cc/v4 v4.26.5
 	modernc.org/ccgo/v4 v4.28.1
 	modernc.org/fileutil v1.3.29
 	modernc.org/libc v1.66.8
