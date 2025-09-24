@@ -262,6 +262,7 @@ func TestTclTest(t *testing.T) {
 		// # this test.
 		blacklist["bigsort.test"] = struct{}{}
 	case "linux/ppc64le":
+		blacklist["bigsort.test"] = struct{}{} // OOM killed on ppc64le
 		knownCFailures["snapshot_fault-4.1.1"] = struct{}{}
 	}
 
