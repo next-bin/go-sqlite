@@ -1,14 +1,14 @@
 module modernc.org/libsqlite3
 
-go 1.23.0
+go 1.24.0
 
 require (
-	golang.org/x/sys v0.34.0
-	modernc.org/ccgo/v4 v4.28.0
-	modernc.org/fileutil v1.3.8
-	modernc.org/libc v1.66.3
-	modernc.org/libtcl8.6 v0.16.9
-	modernc.org/libz v0.16.18
+	golang.org/x/sys v0.36.0
+	modernc.org/ccgo/v4 v4.28.1
+	modernc.org/fileutil v1.3.40
+	modernc.org/libc v1.66.10
+	modernc.org/libtcl8.6 v0.16.10
+	modernc.org/libz v0.16.22
 )
 
 require (
@@ -18,10 +18,10 @@ require (
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b // indirect
-	golang.org/x/mod v0.25.0 // indirect
-	golang.org/x/sync v0.15.0 // indirect
-	golang.org/x/tools v0.34.0 // indirect
-	modernc.org/cc/v4 v4.26.2 // indirect
+	golang.org/x/mod v0.27.0 // indirect
+	golang.org/x/sync v0.16.0 // indirect
+	golang.org/x/tools v0.36.0 // indirect
+	modernc.org/cc/v4 v4.26.5 // indirect
 	modernc.org/gc/v2 v2.6.5 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
