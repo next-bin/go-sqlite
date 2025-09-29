@@ -31,7 +31,7 @@ download:
 	@if [ ! -f $(TAR) ]; then wget $(URL) ; fi
 
 edit:
-	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile go.mod builder.json all_test.go generator.go libtcl.go & fi
+	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile go.mod builder.json all_test.go generator.go libtcl.go & fi
 
 editor:
 	gofmt -l -s -w .

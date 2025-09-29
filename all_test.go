@@ -603,6 +603,7 @@ func TestMain(m *testing.M) {
 			"filename-10.7",
 			"filename-11.12",
 			"filesystem-1.38",
+			"filesystem-1.39",
 			"interp-34.11",
 			"io-29.*",
 			"io-39.*",
