@@ -1,4 +1,4 @@
-// Code generated for linux/386 by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_386.go -I /tmp/libsqlite3/sqlite-src-3500300 /tmp/libsqlite3/sqlite-src-3500300/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/386 by 'generator -DNDEBUG -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_386.go -I /tmp/libsqlite3/sqlite-src-3500400 /tmp/libsqlite3/sqlite-src-3500400/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && 386
 
