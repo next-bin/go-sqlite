@@ -3334,7 +3334,7 @@ func (p *parser) enumSpecifier() (r *EnumSpecifier) {
 		r = &EnumSpecifier{Case: EnumSpecifierDef, Token: p.shift(false), EnumTypeSpecifier: p.enumTypeSpecifier(), lexicalScope: (*lexicalScope)(p.scope)}
 		switch p.rune(false) {
 		case '{':
-			r.Token2 = p.shift(false)
+			r.Token3 = p.shift(false)
 			r.EnumeratorList = p.enumeratorList()
 		default:
 			return r
