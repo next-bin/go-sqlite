@@ -1911,19 +1911,20 @@ func (n EnumSpecifierCase) String() string {
 // EnumSpecifier represents data reduced by productions:
 //
 //	EnumSpecifier:
-//	        "enum" IDENTIFIER '{' EnumeratorList ',' '}'  // Case EnumSpecifierDef
-//	|       "enum" IDENTIFIER                             // Case EnumSpecifierTag
+//	        "enum" IDENTIFIER EnumTypeSpecifier '{' EnumeratorList ',' '}'  // Case EnumSpecifierDef
+//	|       "enum" IDENTIFIER EnumTypeSpecifier                             // Case EnumSpecifierTag
 type EnumSpecifier struct {
 	*lexicalScope
 	visible
 	typer
-	Case           EnumSpecifierCase `PrettyPrint:"stringer,zero"`
-	EnumeratorList *EnumeratorList
-	Token          Token
-	Token2         Token
-	Token3         Token
-	Token4         Token
-	Token5         Token
+	Case              EnumSpecifierCase `PrettyPrint:"stringer,zero"`
+	EnumTypeSpecifier *EnumTypeSpecifier
+	EnumeratorList    *EnumeratorList
+	Token             Token
+	Token2            Token
+	Token3            Token
+	Token4            Token
+	Token5            Token
 }
 
 // String implements fmt.Stringer.
@@ -1941,13 +1942,21 @@ func (n *EnumSpecifier) Position() (r token.Position) {
 			return p
 		}
 
-		return n.Token2.Position()
+		if p := n.Token2.Position(); p.IsValid() {
+			return p
+		}
+
+		return n.EnumTypeSpecifier.Position()
 	case 0:
 		if p := n.Token.Position(); p.IsValid() {
 			return p
 		}
 
 		if p := n.Token2.Position(); p.IsValid() {
+			return p
+		}
+
+		if p := n.EnumTypeSpecifier.Position(); p.IsValid() {
 			return p
 		}
 
@@ -1967,6 +1976,31 @@ func (n *EnumSpecifier) Position() (r token.Position) {
 	default:
 		panic("internal error")
 	}
+}
+
+// EnumTypeSpecifier represents data reduced by production:
+//
+//	EnumTypeSpecifier:
+//	        ':' SpecifierQualifierList
+type EnumTypeSpecifier struct {
+	SpecifierQualifierList *SpecifierQualifierList
+	Token                  Token
+}
+
+// String implements fmt.Stringer.
+func (n *EnumTypeSpecifier) String() string { return PrettyString(n) }
+
+// Position reports the position of the first component of n, if available.
+func (n *EnumTypeSpecifier) Position() (r token.Position) {
+	if n == nil {
+		return r
+	}
+
+	if p := n.Token.Position(); p.IsValid() {
+		return p
+	}
+
+	return n.SpecifierQualifierList.Position()
 }
 
 // EnumeratorCase represents case numbers of production Enumerator

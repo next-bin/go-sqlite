@@ -635,11 +635,16 @@ package cc // import "modernc.org/cc/v4"
 			/*yy:field	*lexicalScope		*/
 			/*yy:field	visible	*/
 			/*yy:field	typer		*/
-			/*yy:example enum e {a}; */
+			/*yy:example enum e : char {a}; */
 /*yy:case Def        */ EnumSpecifier:
-				"enum" IDENTIFIER '{' EnumeratorList ',' '}'
-			/*yy:example enum e i; */
-/*yy:case Tag        */ |	"enum" IDENTIFIER
+				"enum" IDENTIFIER EnumTypeSpecifier '{' EnumeratorList ',' '}'
+			/*yy:example enum e : char i; */
+/*yy:case Tag        */ |	"enum" IDENTIFIER EnumTypeSpecifier
+
+			/* C23 enum type specifier */
+			/*yy:example enum : char {a} b; */
+			EnumTypeSpecifier:
+				':' SpecifierQualifierList
 
 			/*yy:example enum e {a}; */
 			EnumeratorList:

@@ -3187,3 +3187,28 @@ CEPH_RBD_API int a CEPH_RBD_DEPRECATED;
 		}
 	}
 }
+
+func TestEnumC23(t *testing.T) {
+	const src = `
+enum {a2};
+enum b3;
+enum c4 {d4};
+enum : char {e5};
+enum f6 : char;
+enum g7 : char {h7};
+`
+	cfg, err := NewConfig(runtime.GOOS, runtime.GOARCH)
+	if err != nil {
+		t.Fatalf("failed to create new config: %v", err)
+	}
+
+	sources := []Source{
+		{Name: "<predefined>", Value: cfg.Predefined},
+		{Name: "<builtin>", Value: Builtin},
+		{Name: "test.c", Value: src},
+	}
+
+	if _, err := Translate(cfg, sources); err != nil {
+		t.Fatalf("parse error: %v", err)
+	}
+}

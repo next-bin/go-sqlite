@@ -3298,9 +3298,9 @@ func (p *parser) atomicTypeSpecifier() (r *AtomicTypeSpecifier) {
 // [0], 6.7.2.2 Enumeration specifiers
 //
 //	 enum-specifier:
-//		enum identifier_opt { enumerator-list }
-//		enum identifier_opt { enumerator-list , }
-//		enum identifier
+//		enum identifier_opt enum-type-specifier_opt { enumerator-list }
+//		enum identifier_opt enum-type-specifier_opt { enumerator-list , }
+//		enum identifier enum-type-specifier_opt
 func (p *parser) enumSpecifier() (r *EnumSpecifier) {
 	switch p.peek(1, false).Ch {
 	case eof:
@@ -3312,11 +3312,33 @@ func (p *parser) enumSpecifier() (r *EnumSpecifier) {
 			r = &EnumSpecifier{Case: EnumSpecifierDef, Token: p.shift(false), Token2: p.shift(false), Token3: p.shift(false), EnumeratorList: p.enumeratorList(), lexicalScope: (*lexicalScope)(p.scope)}
 			r.visible = visible(r.Token.seq + 1) // [0]6.2.1,7
 			p.scope.declare(p.cpp.eh, r.Token2.SrcStr(), r)
+		case ':':
+			r = &EnumSpecifier{Token: p.shift(false), Token2: p.shift(false), EnumTypeSpecifier: p.enumTypeSpecifier(), lexicalScope: (*lexicalScope)(p.scope)}
+			r.visible = visible(r.Token.seq + 1) // [0]6.2.1,7
+			p.scope.declare(p.cpp.eh, r.Token2.SrcStr(), r)
+			switch p.rune(false) {
+			case '{':
+				r.Case = EnumSpecifierDef
+				r.Token3 = p.shift(false)
+				r.EnumeratorList = p.enumeratorList()
+			default:
+				r.Case = EnumSpecifierTag
+				return r
+			}
 		default:
 			return &EnumSpecifier{Case: EnumSpecifierTag, Token: p.shift(false), Token2: p.shift(false), lexicalScope: (*lexicalScope)(p.scope)}
 		}
 	case '{':
 		r = &EnumSpecifier{Case: EnumSpecifierDef, Token: p.shift(false), Token3: p.shift(false), EnumeratorList: p.enumeratorList(), lexicalScope: (*lexicalScope)(p.scope)}
+	case ':':
+		r = &EnumSpecifier{Case: EnumSpecifierDef, Token: p.shift(false), EnumTypeSpecifier: p.enumTypeSpecifier(), lexicalScope: (*lexicalScope)(p.scope)}
+		switch p.rune(false) {
+		case '{':
+			r.Token2 = p.shift(false)
+			r.EnumeratorList = p.enumeratorList()
+		default:
+			return r
+		}
 	default:
 		t := p.shift(false)
 		p.cpp.eh("%v: unexpected %v, expected enum specifier", t.Position(), runeName(t.Ch))
@@ -3336,6 +3358,23 @@ func (p *parser) enumSpecifier() (r *EnumSpecifier) {
 	default:
 		t := p.shift(false)
 		p.cpp.eh("%v: unexpected %v, expected enum specifier", t.Position(), runeName(t.Ch))
+		return nil
+	}
+}
+
+// enum-type-specifier:
+//
+//	':' specifier-qualifier-list
+func (p *parser) enumTypeSpecifier() (r *EnumTypeSpecifier) {
+	switch p.rune(false) {
+	case eof:
+		p.cpp.eh("%v: unexpected EOF", p.toks[0].Position())
+		return nil
+	case ':':
+		return &EnumTypeSpecifier{Token: p.shift(false), SpecifierQualifierList: p.specifierQualifierList()}
+	default:
+		t := p.shift(false)
+		p.cpp.eh("%v: unexpected %v, expected ':'", t.Position(), runeName(t.Ch))
 		return nil
 	}
 }

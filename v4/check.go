@@ -2923,9 +2923,16 @@ func (n *EnumSpecifier) check(c *ctx) (r Type) {
 		}
 	}()
 
+	var ts Type
+	if n.EnumTypeSpecifier != nil {
+		var isAtomic, isConst, isVolatile, isRestrict bool
+		var alignas int
+		ts = n.EnumTypeSpecifier.SpecifierQualifierList.check(c, &isAtomic, &isConst, &isVolatile, &isRestrict, &alignas)
+	}
+
 	tag := n.Token2
 	switch n.Case {
-	case EnumSpecifierDef: // "enum" IDENTIFIER '{' EnumeratorList ',' '}'
+	case EnumSpecifierDef: // "enum" IDENTIFIER EnumTypeSpecifier '{' EnumeratorList ',' '}'
 		var t Type
 		var iota, min int64
 		var max uint64
@@ -2984,6 +2991,9 @@ func (n *EnumSpecifier) check(c *ctx) (r Type) {
 				}
 			}
 		}
+		if ts != nil {
+			t = ts
+		}
 		for _, v := range list {
 			v.typ = t
 		}
@@ -2995,8 +3005,10 @@ func (n *EnumSpecifier) check(c *ctx) (r Type) {
 		if x := n.LexicalScope().enum(n.Token2); x != nil {
 			switch {
 			case x.typ == nil:
-				t := c.newEnumType(n.LexicalScope(), tag, nil, nil)
-				t.forward = x
+				t := c.newEnumType(n.LexicalScope(), tag, ts, nil)
+				if ts == nil {
+					t.forward = x
+				}
 				n.typ = t
 			default:
 				n.typ = x.typ
@@ -3004,7 +3016,7 @@ func (n *EnumSpecifier) check(c *ctx) (r Type) {
 			break
 		}
 
-		t := c.newEnumType(n.LexicalScope(), tag, nil, nil)
+		t := c.newEnumType(n.LexicalScope(), tag, ts, nil)
 		t.isIncomplete0 = true
 		n.typ = t
 		c.ast.Scope.declare(&c.errors, tag.SrcStr(), n)
