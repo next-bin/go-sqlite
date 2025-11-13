@@ -78,12 +78,13 @@ func main() {
 		goarch = "386"
 	}
 
+	switch goos {
+	case "darwin", "freebsd", "openbsd":
+		sed = "gsed"
+	}
 	switch target {
 	case "freebsd/amd64":
 		os.Setenv("CC", "gcc")
-		sed = "gsed"
-	case "freebsd/arm64", "openbsd/amd64", "darwin/amd64", "darwin/arm64":
-		sed = "gsed"
 	}
 	switch target {
 	case "darwin/arm64":
