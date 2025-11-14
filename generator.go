@@ -211,6 +211,10 @@ go work use \
 			args = append(args,
 				"-hide", "__fpgetround,__fpsetround,__fpsetprec,__fpsetmask,__fpgetsticky",
 			)
+		case "netbsd/amd64":
+			args = append(args,
+				"-hide", "__isnand",
+			)
 		case "openbsd/amd64":
 			args = append(args,
 				"-hide", "__swap16md,__swap32md,__swap64md",

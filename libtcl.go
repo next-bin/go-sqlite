@@ -75,3 +75,7 @@ func ___swap16md(t *libc.TLS, x uint16) uint16 {
 func ___darwin_check_fd_set(t *libc.TLS, a int32, b uintptr) int32 {
 	return 1
 }
+
+func ___isnand(t *libc.TLS, n float64) int32 {
+	return libc.Xisnan(t, n)
+}
