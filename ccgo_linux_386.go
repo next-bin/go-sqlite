@@ -1096,21 +1096,21 @@ type Tulg = uint32
 //	/* ========================================================================= */
 func Xadler32_z(tls *libc.TLS, adler TuLong, buf uintptr, len1 Tz_size_t) (r TuLong) {
 	var n, sum2, v3 uint32
-	var v1, v5 Tz_size_t
-	var v2, v6 uintptr
-	_, _, _, _, _, _, _ = n, sum2, v1, v2, v3, v5, v6
+	var v1 Tz_size_t
+	var v2 uintptr
+	_, _, _, _, _ = n, sum2, v1, v2, v3
 	/* split Adler-32 into component sums */
 	sum2 = adler >> libc.Int32FromInt32(16) & uint32(0xffff)
-	adler &= uint32(0xffff)
+	adler = adler & uint32(0xffff)
 	/* in case user likes doing a byte at a time, keep it fast */
 	if len1 == uint32(1) {
-		adler += uint32(*(*TBytef)(unsafe.Pointer(buf)))
+		adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf)))
 		if adler >= uint32(65521) {
-			adler -= uint32(65521)
+			adler = adler - uint32(65521)
 		}
-		sum2 += adler
+		sum2 = sum2 + adler
 		if sum2 >= uint32(65521) {
-			sum2 -= uint32(65521)
+			sum2 = sum2 - uint32(65521)
 		}
 		return adler | sum2<<int32(16)
 	}
@@ -1122,122 +1122,122 @@ func Xadler32_z(tls *libc.TLS, adler TuLong, buf uintptr, len1 Tz_size_t) (r TuL
 	if len1 < uint32(16) {
 		for {
 			v1 = len1
-			len1--
+			len1 = len1 - 1
 			if !(v1 != 0) {
 				break
 			}
 			v2 = buf
-			buf++
-			adler += uint32(*(*TBytef)(unsafe.Pointer(v2)))
-			sum2 += adler
+			buf = buf + 1
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(v2)))
+			sum2 = sum2 + adler
 		}
 		if adler >= uint32(65521) {
-			adler -= uint32(65521)
+			adler = adler - uint32(65521)
 		}
-		sum2 %= uint32(65521) /* only added so many BASE's */
+		sum2 = sum2 % uint32(65521) /* only added so many BASE's */
 		return adler | sum2<<int32(16)
 	}
 	/* do length NMAX blocks -- requires just one modulo operation */
 	for len1 >= uint32(m_NMAX) {
-		len1 -= uint32(m_NMAX)
+		len1 = len1 - uint32(m_NMAX)
 		n = libc.Uint32FromInt32(libc.Int32FromInt32(m_NMAX) / libc.Int32FromInt32(16)) /* NMAX is divisible by 16 */
 		for {
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf)))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(2)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + 8)))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(2)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
-			sum2 += adler /* 16 sums unrolled */
-			buf += uintptr(16)
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf)))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(2)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + 8)))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(2)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler /* 16 sums unrolled */
+			buf = buf + uintptr(16)
 			goto _4
 		_4:
 			;
-			n--
+			n = n - 1
 			v3 = n
 			if !(v3 != 0) {
 				break
 			}
 		}
-		adler %= uint32(65521)
-		sum2 %= uint32(65521)
+		adler = adler % uint32(65521)
+		sum2 = sum2 % uint32(65521)
 	}
 	/* do remaining bytes (less than NMAX, still just one modulo) */
 	if len1 != 0 { /* avoid modulos if none remaining */
 		for len1 >= uint32(16) {
-			len1 -= uint32(16)
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf)))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(2)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + 8)))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(2)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)))))
-			sum2 += adler
-			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
-			sum2 += adler
-			buf += uintptr(16)
+			len1 = len1 - uint32(16)
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf)))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(2)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + 8)))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(2)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)))))
+			sum2 = sum2 + adler
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(8)+libc.Int32FromInt32(4)+libc.Int32FromInt32(2)+libc.Int32FromInt32(1)))))
+			sum2 = sum2 + adler
+			buf = buf + uintptr(16)
 		}
 		for {
-			v5 = len1
-			len1--
-			if !(v5 != 0) {
+			v1 = len1
+			len1 = len1 - 1
+			if !(v1 != 0) {
 				break
 			}
-			v6 = buf
-			buf++
-			adler += uint32(*(*TBytef)(unsafe.Pointer(v6)))
-			sum2 += adler
+			v2 = buf
+			buf = buf + 1
+			adler = adler + uint32(*(*TBytef)(unsafe.Pointer(v2)))
+			sum2 = sum2 + adler
 		}
-		adler %= uint32(65521)
-		sum2 %= uint32(65521)
+		adler = adler % uint32(65521)
+		sum2 = sum2 % uint32(65521)
 	}
 	/* return recombined sums */
 	return adler | sum2<<int32(16)
@@ -1261,24 +1261,24 @@ func _adler32_combine_(tls *libc.TLS, adler1 TuLong, adler2 TuLong, len2 Toff_t)
 		return uint32(0xffffffff)
 	}
 	/* the derivation of this formula is left as an exercise for the reader */
-	len2 %= libc.Int64FromUint32(65521) /* assumes len2 >= 0 */
+	len2 = len2 % libc.Int64FromUint32(65521) /* assumes len2 >= 0 */
 	rem = libc.Uint32FromInt64(len2)
 	sum1 = adler1 & uint32(0xffff)
 	sum2 = rem * sum1
-	sum2 %= uint32(65521)
-	sum1 += adler2&uint32(0xffff) + uint32(65521) - uint32(1)
-	sum2 += adler1>>libc.Int32FromInt32(16)&uint32(0xffff) + adler2>>libc.Int32FromInt32(16)&uint32(0xffff) + uint32(65521) - rem
+	sum2 = sum2 % uint32(65521)
+	sum1 = sum1 + (adler2&uint32(0xffff) + uint32(65521) - uint32(1))
+	sum2 = sum2 + (adler1>>libc.Int32FromInt32(16)&uint32(0xffff) + adler2>>libc.Int32FromInt32(16)&uint32(0xffff) + uint32(65521) - rem)
 	if sum1 >= uint32(65521) {
-		sum1 -= uint32(65521)
+		sum1 = sum1 - uint32(65521)
 	}
 	if sum1 >= uint32(65521) {
-		sum1 -= uint32(65521)
+		sum1 = sum1 - uint32(65521)
 	}
 	if sum2 >= libc.Uint32FromUint32(65521)<<libc.Int32FromInt32(1) {
-		sum2 -= libc.Uint32FromUint32(65521) << libc.Int32FromInt32(1)
+		sum2 = sum2 - libc.Uint32FromUint32(65521)<<libc.Int32FromInt32(1)
 	}
 	if sum2 >= uint32(65521) {
-		sum2 -= uint32(65521)
+		sum2 = sum2 - uint32(65521)
 	}
 	return sum1 | sum2<<int32(16)
 }
@@ -3976,12 +3976,12 @@ func _multmodp(tls *libc.TLS, a Tz_crc_t, b Tz_crc_t) (r Tz_crc_t) {
 	p = uint32(0)
 	for {
 		if a&m != 0 {
-			p ^= b
+			p = p ^ b
 			if a&(m-uint32(1)) == uint32(0) {
 				break
 			}
 		}
-		m >>= uint32(1)
+		m = m >> uint32(1)
 		if b&uint32(1) != 0 {
 			v2 = b>>libc.Int32FromInt32(1) ^ uint32(m_POLY)
 		} else {
@@ -4008,8 +4008,8 @@ func _x2nmodp(tls *libc.TLS, n Toff_t, k uint32) (r Tz_crc_t) {
 		if n&int64(1) != 0 {
 			p = _multmodp(tls, _x2n_table[k&uint32(31)], p)
 		}
-		n >>= int64(1)
-		k++
+		n = n >> int64(1)
+		k = k + 1
 	}
 	return p
 }
@@ -4053,7 +4053,7 @@ func _crc_word(tls *libc.TLS, data Tz_word_t) (r Tz_crc_t) {
 		goto _1
 	_1:
 		;
-		k++
+		k = k + 1
 	}
 	return data
 }
@@ -4070,7 +4070,7 @@ func _crc_word_big(tls *libc.TLS, data Tz_word_t) (r Tz_word_t) {
 		goto _1
 	_1:
 		;
-		k++
+		k = k + 1
 	}
 	return data
 }
@@ -4081,13 +4081,13 @@ func _crc_word_big(tls *libc.TLS, data Tz_word_t) (r Tz_word_t) {
 func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	var blks, v2, v4 Tz_size_t
+	var blks, v2 Tz_size_t
 	var comb, crc01, crc11, crc21, crc31, crc41, word0, word01, word1, word11, word2, word21, word3, word31, word4, word41 Tz_word_t
 	var crc0, crc1, crc2, crc3, crc4 Tz_crc_t
 	var k int32
-	var words, v1, v10, v11, v12, v13, v14, v6, v7, v8, v9 uintptr
+	var words, v1 uintptr
 	var _ /* endian at bp+0 */ uint32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = blks, comb, crc0, crc01, crc1, crc11, crc2, crc21, crc3, crc31, crc4, crc41, k, word0, word01, word1, word11, word2, word21, word3, word31, word4, word41, words, v1, v10, v11, v12, v13, v14, v2, v4, v6, v7, v8, v9
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = blks, comb, crc0, crc01, crc1, crc11, crc2, crc21, crc3, crc31, crc4, crc41, k, word0, word01, word1, word11, word2, word21, word3, word31, word4, word41, words, v1, v2
 	/* Return initial CRC, if requested. */
 	if buf == uintptr(m_Z_NULL) {
 		return uint32(0)
@@ -4098,14 +4098,14 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 	if len1 >= libc.Uint32FromInt32(libc.Int32FromInt32(m_N)*libc.Int32FromInt32(4)+libc.Int32FromInt32(4)-libc.Int32FromInt32(1)) {
 		/* Compute the CRC up to a z_word_t boundary. */
 		for len1 != 0 && uint32(buf)&libc.Uint32FromInt32(libc.Int32FromInt32(4)-libc.Int32FromInt32(1)) != uint32(0) {
-			len1--
+			len1 = len1 - 1
 			v1 = buf
-			buf++
+			buf = buf + 1
 			crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
 		}
 		/* Compute the CRC on as many N z_word_t blocks as are available. */
 		blks = len1 / libc.Uint32FromInt32(libc.Int32FromInt32(m_N)*libc.Int32FromInt32(4))
-		len1 -= blks * uint32(m_N) * uint32(4)
+		len1 = len1 - blks*uint32(m_N)*uint32(4)
 		words = buf
 		/* Do endian check at execution time instead of compile time, since ARM
 		   processors can change the endianness at execution time. If the
@@ -4124,7 +4124,7 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 			   independently.
 			*/
 			for {
-				blks--
+				blks = blks - 1
 				v2 = blks
 				if !(v2 != 0) {
 					break
@@ -4135,7 +4135,7 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 				word2 = crc2 ^ *(*Tz_word_t)(unsafe.Pointer(words + 2*4))
 				word3 = crc3 ^ *(*Tz_word_t)(unsafe.Pointer(words + 3*4))
 				word4 = crc4 ^ *(*Tz_word_t)(unsafe.Pointer(words + 4*4))
-				words += uintptr(m_N) * 4
+				words = words + uintptr(m_N)*4
 				/* Compute and update the CRC for each word. The loop should
 				   get unrolled. */
 				crc0 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word0&uint32(0xff))*4))
@@ -4148,15 +4148,15 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 					if !(k < int32(4)) {
 						break
 					}
-					crc0 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word0>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
-					crc1 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word1>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
-					crc2 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word2>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
-					crc3 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word3>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
-					crc4 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word4>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc0 = crc0 ^ *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word0>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc1 = crc1 ^ *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word1>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc2 = crc2 ^ *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word2>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc3 = crc3 ^ *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word3>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc4 = crc4 ^ *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word4>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
 					goto _3
 				_3:
 					;
-					k++
+					k = k + 1
 				}
 			}
 			/*
@@ -4168,7 +4168,7 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 			crc = _crc_word(tls, crc2^*(*Tz_word_t)(unsafe.Pointer(words + 2*4))^crc)
 			crc = _crc_word(tls, crc3^*(*Tz_word_t)(unsafe.Pointer(words + 3*4))^crc)
 			crc = _crc_word(tls, crc4^*(*Tz_word_t)(unsafe.Pointer(words + 4*4))^crc)
-			words += uintptr(m_N) * 4
+			words = words + uintptr(m_N)*4
 		} else {
 			/* Initialize the CRC for each braid. */
 			crc01 = _byte_swap(tls, crc)
@@ -4181,9 +4181,9 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 			   independently.
 			*/
 			for {
-				blks--
-				v4 = blks
-				if !(v4 != 0) {
+				blks = blks - 1
+				v2 = blks
+				if !(v2 != 0) {
 					break
 				}
 				/* Load the word for each braid into registers. */
@@ -4192,7 +4192,7 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 				word21 = crc21 ^ *(*Tz_word_t)(unsafe.Pointer(words + 2*4))
 				word31 = crc31 ^ *(*Tz_word_t)(unsafe.Pointer(words + 3*4))
 				word41 = crc41 ^ *(*Tz_word_t)(unsafe.Pointer(words + 4*4))
-				words += uintptr(m_N) * 4
+				words = words + uintptr(m_N)*4
 				/* Compute and update the CRC for each word. The loop should
 				   get unrolled. */
 				crc01 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word01&uint32(0xff))*4))
@@ -4205,15 +4205,15 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 					if !(k < int32(4)) {
 						break
 					}
-					crc01 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word01>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
-					crc11 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word11>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
-					crc21 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word21>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
-					crc31 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word31>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
-					crc41 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word41>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc01 = crc01 ^ *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word01>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc11 = crc11 ^ *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word11>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc21 = crc21 ^ *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word21>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc31 = crc31 ^ *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word31>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc41 = crc41 ^ *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word41>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
 					goto _5
 				_5:
 					;
-					k++
+					k = k + 1
 				}
 			}
 			/*
@@ -4225,7 +4225,7 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 			comb = _crc_word_big(tls, crc21^*(*Tz_word_t)(unsafe.Pointer(words + 2*4))^comb)
 			comb = _crc_word_big(tls, crc31^*(*Tz_word_t)(unsafe.Pointer(words + 3*4))^comb)
 			comb = _crc_word_big(tls, crc41^*(*Tz_word_t)(unsafe.Pointer(words + 4*4))^comb)
-			words += uintptr(m_N) * 4
+			words = words + uintptr(m_N)*4
 			crc = _byte_swap(tls, comb)
 		}
 		/*
@@ -4235,37 +4235,37 @@ func Xcrc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32)
 	}
 	/* Complete the computation of the CRC on any remaining bytes. */
 	for len1 >= uint32(8) {
-		len1 -= uint32(8)
-		v6 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v6))))&uint32(0xff)]
-		v7 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v7))))&uint32(0xff)]
-		v8 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v8))))&uint32(0xff)]
-		v9 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v9))))&uint32(0xff)]
-		v10 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v10))))&uint32(0xff)]
-		v11 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v11))))&uint32(0xff)]
-		v12 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v12))))&uint32(0xff)]
-		v13 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v13))))&uint32(0xff)]
+		len1 = len1 - uint32(8)
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
 	}
 	for len1 != 0 {
-		len1--
-		v14 = buf
-		buf++
-		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v14))))&uint32(0xff)]
+		len1 = len1 - 1
+		v1 = buf
+		buf = buf + 1
+		crc = crc>>int32(8) ^ _crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)]
 	}
 	/* Return the CRC, post-conditioned. */
 	return crc ^ uint32(0xffffffff)
@@ -4657,10 +4657,10 @@ func init() {
 //	 * keep the hash table consistent if we switch back to level > 0 later.
 //	 */
 func _slide_hash(tls *libc.TLS, s uintptr) {
-	var m, n, v1, v4, v5, v8 uint32
-	var p, v3, v7 uintptr
+	var m, n, v1 uint32
+	var p, v3 uintptr
 	var wsize TuInt
-	_, _, _, _, _, _, _, _, _, _ = m, n, p, wsize, v1, v3, v4, v5, v7, v8
+	_, _, _, _, _, _ = m, n, p, wsize, v1, v3
 	wsize = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 	n = (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size
 	p = (*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr(n)*2
@@ -4669,15 +4669,15 @@ func _slide_hash(tls *libc.TLS, s uintptr) {
 		v3 = p
 		m = uint32(*(*TPosf)(unsafe.Pointer(v3)))
 		if m >= wsize {
-			v4 = m - wsize
+			v1 = m - wsize
 		} else {
-			v4 = uint32(m_NIL)
+			v1 = uint32(m_NIL)
 		}
-		*(*TPosf)(unsafe.Pointer(p)) = uint16(v4)
+		*(*TPosf)(unsafe.Pointer(p)) = uint16(v1)
 		goto _2
 	_2:
 		;
-		n--
+		n = n - 1
 		v1 = n
 		if !(v1 != 0) {
 			break
@@ -4687,23 +4687,23 @@ func _slide_hash(tls *libc.TLS, s uintptr) {
 	p = (*Tdeflate_state)(unsafe.Pointer(s)).Fprev + uintptr(n)*2
 	for {
 		p -= 2
-		v7 = p
-		m = uint32(*(*TPosf)(unsafe.Pointer(v7)))
+		v3 = p
+		m = uint32(*(*TPosf)(unsafe.Pointer(v3)))
 		if m >= wsize {
-			v8 = m - wsize
+			v1 = m - wsize
 		} else {
-			v8 = uint32(m_NIL)
+			v1 = uint32(m_NIL)
 		}
-		*(*TPosf)(unsafe.Pointer(p)) = uint16(v8)
+		*(*TPosf)(unsafe.Pointer(p)) = uint16(v1)
 		/* If n is not on any hash chain, prev[n] is garbage but
 		 * its value will never be used.
 		 */
 		goto _6
 	_6:
 		;
-		n--
-		v5 = n
-		if !(v5 != 0) {
+		n = n - 1
+		v1 = n
+		if !(v1 != 0) {
 			break
 		}
 	}
@@ -4771,7 +4771,7 @@ func _fill_window(tls *libc.TLS, s uintptr) {
 					/* Very unlikely, but possible on 16 bit machine if
 					 * strstart == 0 && lookahead == 1 (input done a byte at time)
 					 */
-					more--
+					more = more - 1
 				}
 			}
 		}
@@ -4787,7 +4787,7 @@ func _fill_window(tls *libc.TLS, s uintptr) {
 				(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart
 			}
 			_slide_hash(tls, s)
-			more += wsize
+			more = more + wsize
 		}
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in == uint32(0) {
 			break
@@ -4814,8 +4814,8 @@ func _fill_window(tls *libc.TLS, s uintptr) {
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fins_h = ((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h<<(*Tdeflate_state)(unsafe.Pointer(s)).Fhash_shift ^ uint32(*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(str+uint32(m_MIN_MATCH)-uint32(1)))))) & (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_mask
 				*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fprev + uintptr(str&(*Tdeflate_state)(unsafe.Pointer(s)).Fw_mask)*2)) = *(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2))
 				*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2)) = uint16(str)
-				str++
-				(*Tdeflate_state)(unsafe.Pointer(s)).Finsert--
+				str = str + 1
+				(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Finsert - 1
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead+(*Tdeflate_state)(unsafe.Pointer(s)).Finsert < uint32(m_MIN_MATCH) {
 					break
 				}
@@ -4903,7 +4903,7 @@ func XdeflateInit2_(tls *libc.TLS, strm Tz_streamp, level int32, method int32, w
 	} else {
 		if windowBits > int32(15) {
 			wrap = int32(2) /* write gzip wrapper instead */
-			windowBits -= int32(16)
+			windowBits = windowBits - int32(16)
 		}
 	}
 	if memLevel < int32(1) || memLevel > int32(m_MAX_MEM_LEVEL) || method != int32(m_Z_DEFLATED) || windowBits < int32(8) || windowBits > int32(15) || level < 0 || level > int32(9) || strategy < 0 || strategy > int32(m_Z_FIXED) || windowBits == int32(8) && wrap != int32(1) {
@@ -5016,10 +5016,10 @@ func _deflateStateCheck(tls *libc.TLS, strm Tz_streamp) (r int32) {
 //	/* ========================================================================= */
 func XdeflateSetDictionary(tls *libc.TLS, strm Tz_streamp, dictionary uintptr, dictLength TuInt) (r int32) {
 	var avail uint32
-	var n, str, v1, v3 TuInt
+	var n, str, v1 TuInt
 	var next, s uintptr
 	var wrap int32
-	_, _, _, _, _, _, _, _ = avail, n, next, s, str, wrap, v1, v3
+	_, _, _, _, _, _, _ = avail, n, next, s, str, wrap, v1
 	if _deflateStateCheck(tls, strm) != 0 || dictionary == uintptr(m_Z_NULL) {
 		return -int32(2)
 	}
@@ -5042,7 +5042,7 @@ func XdeflateSetDictionary(tls *libc.TLS, strm Tz_streamp, dictionary uintptr, d
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = 0
 			(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = uint32(0)
 		}
-		dictionary += uintptr(dictLength - (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size) /* use the tail */
+		dictionary = dictionary + uintptr(dictLength-(*Tdeflate_state)(unsafe.Pointer(s)).Fw_size) /* use the tail */
 		dictLength = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 	}
 	/* insert dictionary into window and hash */
@@ -5058,11 +5058,11 @@ func XdeflateSetDictionary(tls *libc.TLS, strm Tz_streamp, dictionary uintptr, d
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fins_h = ((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h<<(*Tdeflate_state)(unsafe.Pointer(s)).Fhash_shift ^ uint32(*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(str+uint32(m_MIN_MATCH)-uint32(1)))))) & (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_mask
 			*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fprev + uintptr(str&(*Tdeflate_state)(unsafe.Pointer(s)).Fw_mask)*2)) = *(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2))
 			*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2)) = uint16(str)
-			str++
+			str = str + 1
 			goto _2
 		_2:
 			;
-			n--
+			n = n - 1
 			v1 = n
 			if !(v1 != 0) {
 				break
@@ -5076,9 +5076,9 @@ func XdeflateSetDictionary(tls *libc.TLS, strm Tz_streamp, dictionary uintptr, d
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 	(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead
 	(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead = uint32(0)
-	v3 = libc.Uint32FromInt32(libc.Int32FromInt32(m_MIN_MATCH) - libc.Int32FromInt32(1))
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length = v3
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = v3
+	v1 = libc.Uint32FromInt32(libc.Int32FromInt32(m_MIN_MATCH) - libc.Int32FromInt32(1))
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length = v1
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = v1
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_available = 0
 	(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = next
 	(*Tz_stream)(unsafe.Pointer(strm)).Favail_in = avail
@@ -5223,8 +5223,8 @@ func XdeflatePending(tls *libc.TLS, strm Tz_streamp, pending uintptr, bits uintp
 //	/* ========================================================================= */
 func XdeflatePrime(tls *libc.TLS, strm Tz_streamp, bits int32, value int32) (r int32) {
 	var put int32
-	var s, p1 uintptr
-	_, _, _ = put, s, p1
+	var s, v1 uintptr
+	_, _, _ = put, s, v1
 	if _deflateStateCheck(tls, strm) != 0 {
 		return -int32(2)
 	}
@@ -5237,12 +5237,12 @@ func XdeflatePrime(tls *libc.TLS, strm Tz_streamp, bits int32, value int32) (r i
 		if put > bits {
 			put = bits
 		}
-		p1 = s + 5816
-		*(*Tush)(unsafe.Pointer(p1)) = Tush(int32(*(*Tush)(unsafe.Pointer(p1))) | libc.Int32FromUint16(libc.Uint16FromInt32(value&(libc.Int32FromInt32(1)<<put-libc.Int32FromInt32(1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)))
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(value&(libc.Int32FromInt32(1)<<put-libc.Int32FromInt32(1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)))
 		*(*int32)(unsafe.Pointer(s + 5820)) += put
 		x__tr_flush_bits(tls, s)
-		value >>= put
-		bits -= put
+		value = value >> put
+		bits = bits - put
 	}
 	return m_Z_OK
 }
@@ -5341,10 +5341,10 @@ func XdeflateTune(tls *libc.TLS, strm Tz_streamp, good_length int32, max_lazy in
 //	 */
 func XdeflateBound(tls *libc.TLS, strm Tz_streamp, sourceLen TuLong) (r TuLong) {
 	var fixedlen, storelen, wraplen TuLong
-	var s, str, v3, v5 uintptr
-	var v1, v7 uint32
+	var s, str, v3 uintptr
+	var v1 uint32
 	var v2 int32
-	_, _, _, _, _, _, _, _, _, _ = fixedlen, s, storelen, str, wraplen, v1, v2, v3, v5, v7
+	_, _, _, _, _, _, _, _ = fixedlen, s, storelen, str, wraplen, v1, v2, v3
 	/* upper bound for fixed blocks with 9-bit literals and length 255
 	   (memLevel == 2, which is the lowest that may not use stored blocks) --
 	   ~13% overhead plus a small constant */
@@ -5377,17 +5377,17 @@ func XdeflateBound(tls *libc.TLS, strm Tz_streamp, sourceLen TuLong) (r TuLong) 
 		wraplen = uint32(18)
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead != uintptr(m_Z_NULL) {
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra != uintptr(m_Z_NULL) {
-				wraplen += uint32(2) + (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len
+				wraplen = wraplen + (uint32(2) + (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len)
 			}
 			str = (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fname
 			if str != uintptr(m_Z_NULL) {
 				for {
-					wraplen++
+					wraplen = wraplen + 1
 					goto _4
 				_4:
 					;
 					v3 = str
-					str++
+					str = str + 1
 					if !(*(*TBytef)(unsafe.Pointer(v3)) != 0) {
 						break
 					}
@@ -5396,19 +5396,19 @@ func XdeflateBound(tls *libc.TLS, strm Tz_streamp, sourceLen TuLong) (r TuLong) 
 			str = (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fcomment
 			if str != uintptr(m_Z_NULL) {
 				for {
-					wraplen++
+					wraplen = wraplen + 1
 					goto _6
 				_6:
 					;
-					v5 = str
-					str++
-					if !(*(*TBytef)(unsafe.Pointer(v5)) != 0) {
+					v3 = str
+					str = str + 1
+					if !(*(*TBytef)(unsafe.Pointer(v3)) != 0) {
 						break
 					}
 				}
 			}
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 {
-				wraplen += uint32(2)
+				wraplen = wraplen + uint32(2)
 			}
 		}
 	default: /* for compiler happiness */
@@ -5417,11 +5417,11 @@ func XdeflateBound(tls *libc.TLS, strm Tz_streamp, sourceLen TuLong) (r TuLong) 
 	/* if not default parameters, return one of the conservative bounds */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fw_bits != uint32(15) || (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_bits != libc.Uint32FromInt32(libc.Int32FromInt32(8)+libc.Int32FromInt32(7)) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fw_bits <= (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_bits && (*Tdeflate_state)(unsafe.Pointer(s)).Flevel != 0 {
-			v7 = fixedlen
+			v1 = fixedlen
 		} else {
-			v7 = storelen
+			v1 = storelen
 		}
-		return v7 + wraplen
+		return v1 + wraplen
 	}
 	/* default settings: return tight bound for that case -- ~0.03% overhead
 	   plus a small constant */
@@ -5436,17 +5436,17 @@ func XdeflateBound(tls *libc.TLS, strm Tz_streamp, sourceLen TuLong) (r TuLong) 
 //	 * pending_buf.
 //	 */
 func _putShortMSB(tls *libc.TLS, s uintptr, b TuInt) {
-	var v1, v3 Tulg
-	var v2, v4 uintptr
-	_, _, _, _ = v1, v2, v3, v4
+	var v1 Tulg
+	var v2 uintptr
+	_, _ = v1, v2
 	v2 = s + 20
 	v1 = *(*Tulg)(unsafe.Pointer(v2))
-	*(*Tulg)(unsafe.Pointer(v2))++
+	*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
 	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = uint8(b >> libc.Int32FromInt32(8))
-	v4 = s + 20
-	v3 = *(*Tulg)(unsafe.Pointer(v4))
-	*(*Tulg)(unsafe.Pointer(v4))++
-	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = uint8(b & libc.Uint32FromInt32(0xff))
+	v2 = s + 20
+	v1 = *(*Tulg)(unsafe.Pointer(v2))
+	*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = uint8(b & libc.Uint32FromInt32(0xff))
 }
 
 // C documentation
@@ -5489,13 +5489,13 @@ func _flush_pending(tls *libc.TLS, strm Tz_streamp) {
 //
 //	/* ========================================================================= */
 func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
-	var beg, beg1, beg2, v10, v12, v14, v16, v18, v20, v24, v26, v33, v35, v37, v39, v4, v41, v45, v47, v49, v51, v53, v55, v57, v59, v6, v61, v66, v68, v70, v72, v74, v76, v78, v8, v80 Tulg
+	var beg, beg1, beg2, v4 Tulg
 	var bstate Tblock_state
 	var copy1, header, left, level_flags TuInt
-	var old_flush, val, val1, v1, v2, v22, v23, v28, v29, v30, v31, v32, v43, v44, v63, v64, v65, v82 int32
-	var s, v11, v13, v15, v17, v19, v21, v25, v27, v34, v36, v38, v40, v42, v46, v48, v5, v50, v52, v54, v56, v58, v60, v62, v67, v69, v7, v71, v73, v75, v77, v79, v81, v9 uintptr
+	var old_flush, val, val1, v1, v2, v22, v23, v28 int32
+	var s, v5 uintptr
 	var v3 bool
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = beg, beg1, beg2, bstate, copy1, header, left, level_flags, old_flush, s, val, val1, v1, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v5, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v8, v80, v81, v82, v9
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = beg, beg1, beg2, bstate, copy1, header, left, level_flags, old_flush, s, val, val1, v1, v2, v22, v23, v28, v3, v4, v5
 	if _deflateStateCheck(tls, strm) != 0 || flush > int32(m_Z_BLOCK) || flush < 0 {
 		return -int32(2)
 	}
@@ -5570,11 +5570,11 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				}
 			}
 		}
-		header |= level_flags << libc.Int32FromInt32(6)
+		header = header | level_flags<<libc.Int32FromInt32(6)
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart != uint32(0) {
-			header |= uint32(m_PRESET_DICT1)
+			header = header | uint32(m_PRESET_DICT1)
 		}
-		header += uint32(31) - header%uint32(31)
+		header = header + (uint32(31) - header%uint32(31))
 		_putShortMSB(tls, s, header)
 		/* Save the adler32 of the preset dictionary: */
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart != uint32(0) {
@@ -5595,55 +5595,55 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = Xcrc32(tls, uint32(0), uintptr(m_Z_NULL), uint32(0))
 		v5 = s + 20
 		v4 = *(*Tulg)(unsafe.Pointer(v5))
-		*(*Tulg)(unsafe.Pointer(v5))++
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(31))
-		v7 = s + 20
-		v6 = *(*Tulg)(unsafe.Pointer(v7))
-		*(*Tulg)(unsafe.Pointer(v7))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromInt32(139))
-		v9 = s + 20
-		v8 = *(*Tulg)(unsafe.Pointer(v9))
-		*(*Tulg)(unsafe.Pointer(v9))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v8))) = libc.Uint8FromInt32(libc.Int32FromInt32(8))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(139))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(8))
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead == uintptr(m_Z_NULL) {
-			v11 = s + 20
-			v10 = *(*Tulg)(unsafe.Pointer(v11))
-			*(*Tulg)(unsafe.Pointer(v11))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v10))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
-			v13 = s + 20
-			v12 = *(*Tulg)(unsafe.Pointer(v13))
-			*(*Tulg)(unsafe.Pointer(v13))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v12))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
-			v15 = s + 20
-			v14 = *(*Tulg)(unsafe.Pointer(v15))
-			*(*Tulg)(unsafe.Pointer(v15))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v14))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
-			v17 = s + 20
-			v16 = *(*Tulg)(unsafe.Pointer(v17))
-			*(*Tulg)(unsafe.Pointer(v17))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v16))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
-			v19 = s + 20
-			v18 = *(*Tulg)(unsafe.Pointer(v19))
-			*(*Tulg)(unsafe.Pointer(v19))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v18))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
-			v21 = s + 20
-			v20 = *(*Tulg)(unsafe.Pointer(v21))
-			*(*Tulg)(unsafe.Pointer(v21))++
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(0))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Flevel == int32(9) {
-				v22 = int32(2)
+				v1 = int32(2)
 			} else {
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrategy >= int32(m_Z_HUFFMAN_ONLY) || (*Tdeflate_state)(unsafe.Pointer(s)).Flevel < int32(2) {
-					v23 = int32(4)
+					v2 = int32(4)
 				} else {
-					v23 = 0
+					v2 = 0
 				}
-				v22 = v23
+				v1 = v2
 			}
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v20))) = libc.Uint8FromInt32(v22)
-			v25 = s + 20
-			v24 = *(*Tulg)(unsafe.Pointer(v25))
-			*(*Tulg)(unsafe.Pointer(v25))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v24))) = libc.Uint8FromInt32(libc.Int32FromInt32(m_OS_CODE))
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(v1)
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromInt32(m_OS_CODE))
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fstatus = int32(m_BUSY_STATE)
 			/* Compression must start with an empty pending buffer */
 			_flush_pending(tls, strm)
@@ -5652,78 +5652,78 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				return m_Z_OK
 			}
 		} else {
-			v27 = s + 20
-			v26 = *(*Tulg)(unsafe.Pointer(v27))
-			*(*Tulg)(unsafe.Pointer(v27))++
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftext != 0 {
-				v28 = int32(1)
+				v1 = int32(1)
 			} else {
-				v28 = 0
+				v1 = 0
 			}
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 {
-				v29 = int32(2)
+				v2 = int32(2)
 			} else {
-				v29 = 0
+				v2 = 0
 			}
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra == uintptr(m_Z_NULL) {
-				v30 = 0
+				v22 = 0
 			} else {
-				v30 = int32(4)
+				v22 = int32(4)
 			}
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fname == uintptr(m_Z_NULL) {
-				v31 = 0
+				v23 = 0
 			} else {
-				v31 = int32(8)
+				v23 = int32(8)
 			}
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fcomment == uintptr(m_Z_NULL) {
-				v32 = 0
+				v28 = 0
 			} else {
-				v32 = int32(16)
+				v28 = int32(16)
 			}
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v26))) = libc.Uint8FromInt32(v28 + v29 + v30 + v31 + v32)
-			v34 = s + 20
-			v33 = *(*Tulg)(unsafe.Pointer(v34))
-			*(*Tulg)(unsafe.Pointer(v34))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v33))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime & libc.Uint32FromInt32(0xff))
-			v36 = s + 20
-			v35 = *(*Tulg)(unsafe.Pointer(v36))
-			*(*Tulg)(unsafe.Pointer(v36))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v35))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
-			v38 = s + 20
-			v37 = *(*Tulg)(unsafe.Pointer(v38))
-			*(*Tulg)(unsafe.Pointer(v38))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v37))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
-			v40 = s + 20
-			v39 = *(*Tulg)(unsafe.Pointer(v40))
-			*(*Tulg)(unsafe.Pointer(v40))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v39))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
-			v42 = s + 20
-			v41 = *(*Tulg)(unsafe.Pointer(v42))
-			*(*Tulg)(unsafe.Pointer(v42))++
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(v1 + v2 + v22 + v23 + v28)
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime & libc.Uint32FromInt32(0xff))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Flevel == int32(9) {
-				v43 = int32(2)
+				v1 = int32(2)
 			} else {
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrategy >= int32(m_Z_HUFFMAN_ONLY) || (*Tdeflate_state)(unsafe.Pointer(s)).Flevel < int32(2) {
-					v44 = int32(4)
+					v2 = int32(4)
 				} else {
-					v44 = 0
+					v2 = 0
 				}
-				v43 = v44
+				v1 = v2
 			}
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v41))) = libc.Uint8FromInt32(v43)
-			v46 = s + 20
-			v45 = *(*Tulg)(unsafe.Pointer(v46))
-			*(*Tulg)(unsafe.Pointer(v46))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v45))) = libc.Uint8FromInt32((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fos & libc.Int32FromInt32(0xff))
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(v1)
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fos & libc.Int32FromInt32(0xff))
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra != uintptr(m_Z_NULL) {
-				v48 = s + 20
-				v47 = *(*Tulg)(unsafe.Pointer(v48))
-				*(*Tulg)(unsafe.Pointer(v48))++
-				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v47))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len & libc.Uint32FromInt32(0xff))
-				v50 = s + 20
-				v49 = *(*Tulg)(unsafe.Pointer(v50))
-				*(*Tulg)(unsafe.Pointer(v50))++
-				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v49))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
+				v5 = s + 20
+				v4 = *(*Tulg)(unsafe.Pointer(v5))
+				*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len & libc.Uint32FromInt32(0xff))
+				v5 = s + 20
+				v4 = *(*Tulg)(unsafe.Pointer(v5))
+				*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
 			}
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 {
 				(*Tz_stream)(unsafe.Pointer(strm)).Fadler = Xcrc32(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fadler, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending)
@@ -5750,7 +5750,7 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					return m_Z_OK
 				}
 				beg = uint32(0)
-				left -= copy1
+				left = left - copy1
 			}
 			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fpending), (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fgzindex), left)
 			*(*Tulg)(unsafe.Pointer(s + 20)) += left
@@ -5776,14 +5776,14 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					}
 					beg1 = uint32(0)
 				}
-				v52 = s + 32
-				v51 = *(*Tulg)(unsafe.Pointer(v52))
-				*(*Tulg)(unsafe.Pointer(v52))++
-				val = libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fname + uintptr(v51))))
-				v54 = s + 20
-				v53 = *(*Tulg)(unsafe.Pointer(v54))
-				*(*Tulg)(unsafe.Pointer(v54))++
-				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v53))) = libc.Uint8FromInt32(val)
+				v5 = s + 32
+				v4 = *(*Tulg)(unsafe.Pointer(v5))
+				*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+				val = libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fname + uintptr(v4))))
+				v5 = s + 20
+				v4 = *(*Tulg)(unsafe.Pointer(v5))
+				*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(val)
 			}
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 && (*Tdeflate_state)(unsafe.Pointer(s)).Fpending > beg1 {
 				(*Tz_stream)(unsafe.Pointer(strm)).Fadler = Xcrc32(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fadler, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr(beg1), (*Tdeflate_state)(unsafe.Pointer(s)).Fpending-beg1)
@@ -5807,14 +5807,14 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					}
 					beg2 = uint32(0)
 				}
-				v56 = s + 32
-				v55 = *(*Tulg)(unsafe.Pointer(v56))
-				*(*Tulg)(unsafe.Pointer(v56))++
-				val1 = libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fcomment + uintptr(v55))))
-				v58 = s + 20
-				v57 = *(*Tulg)(unsafe.Pointer(v58))
-				*(*Tulg)(unsafe.Pointer(v58))++
-				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v57))) = libc.Uint8FromInt32(val1)
+				v5 = s + 32
+				v4 = *(*Tulg)(unsafe.Pointer(v5))
+				*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+				val1 = libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fcomment + uintptr(v4))))
+				v5 = s + 20
+				v4 = *(*Tulg)(unsafe.Pointer(v5))
+				*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(val1)
 			}
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 && (*Tdeflate_state)(unsafe.Pointer(s)).Fpending > beg2 {
 				(*Tz_stream)(unsafe.Pointer(strm)).Fadler = Xcrc32(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fadler, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr(beg2), (*Tdeflate_state)(unsafe.Pointer(s)).Fpending-beg2)
@@ -5831,14 +5831,14 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					return m_Z_OK
 				}
 			}
-			v60 = s + 20
-			v59 = *(*Tulg)(unsafe.Pointer(v60))
-			*(*Tulg)(unsafe.Pointer(v60))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v59))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler & libc.Uint32FromInt32(0xff))
-			v62 = s + 20
-			v61 = *(*Tulg)(unsafe.Pointer(v62))
-			*(*Tulg)(unsafe.Pointer(v62))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v61))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler & libc.Uint32FromInt32(0xff))
+			v5 = s + 20
+			v4 = *(*Tulg)(unsafe.Pointer(v5))
+			*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
 			(*Tz_stream)(unsafe.Pointer(strm)).Fadler = Xcrc32(tls, uint32(0), uintptr(m_Z_NULL), uint32(0))
 		}
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fstatus = int32(m_BUSY_STATE)
@@ -5853,21 +5853,21 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	 */
 	if (*Tz_stream)(unsafe.Pointer(strm)).Favail_in != uint32(0) || (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead != uint32(0) || flush != m_Z_NO_FLUSH && (*Tdeflate_state)(unsafe.Pointer(s)).Fstatus != int32(m_FINISH_STATE) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Flevel == 0 {
-			v63 = _deflate_stored(tls, s, flush)
+			v1 = _deflate_stored(tls, s, flush)
 		} else {
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrategy == int32(m_Z_HUFFMAN_ONLY) {
-				v64 = _deflate_huff(tls, s, flush)
+				v2 = _deflate_huff(tls, s, flush)
 			} else {
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrategy == int32(m_Z_RLE) {
-					v65 = _deflate_rle(tls, s, flush)
+					v22 = _deflate_rle(tls, s, flush)
 				} else {
-					v65 = (*(*func(*libc.TLS, uintptr, int32) Tblock_state)(unsafe.Pointer(&struct{ uintptr }{_configuration_table[(*Tdeflate_state)(unsafe.Pointer(s)).Flevel].Ffunc1})))(tls, s, flush)
+					v22 = (*(*func(*libc.TLS, uintptr, int32) Tblock_state)(unsafe.Pointer(&struct{ uintptr }{_configuration_table[(*Tdeflate_state)(unsafe.Pointer(s)).Flevel].Ffunc1})))(tls, s, flush)
 				}
-				v64 = v65
+				v2 = v22
 			}
-			v63 = v64
+			v1 = v2
 		}
-		bstate = v63
+		bstate = v1
 		if bstate == int32(_finish_started) || bstate == int32(_finish_done) {
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fstatus = int32(m_FINISH_STATE)
 		}
@@ -5919,38 +5919,38 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	}
 	/* Write the trailer */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fwrap == int32(2) {
-		v67 = s + 20
-		v66 = *(*Tulg)(unsafe.Pointer(v67))
-		*(*Tulg)(unsafe.Pointer(v67))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v66))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler & libc.Uint32FromInt32(0xff))
-		v69 = s + 20
-		v68 = *(*Tulg)(unsafe.Pointer(v69))
-		*(*Tulg)(unsafe.Pointer(v69))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v68))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
-		v71 = s + 20
-		v70 = *(*Tulg)(unsafe.Pointer(v71))
-		*(*Tulg)(unsafe.Pointer(v71))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v70))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
-		v73 = s + 20
-		v72 = *(*Tulg)(unsafe.Pointer(v73))
-		*(*Tulg)(unsafe.Pointer(v73))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v72))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
-		v75 = s + 20
-		v74 = *(*Tulg)(unsafe.Pointer(v75))
-		*(*Tulg)(unsafe.Pointer(v75))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v74))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in & libc.Uint32FromInt32(0xff))
-		v77 = s + 20
-		v76 = *(*Tulg)(unsafe.Pointer(v77))
-		*(*Tulg)(unsafe.Pointer(v77))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v76))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
-		v79 = s + 20
-		v78 = *(*Tulg)(unsafe.Pointer(v79))
-		*(*Tulg)(unsafe.Pointer(v79))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v78))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
-		v81 = s + 20
-		v80 = *(*Tulg)(unsafe.Pointer(v81))
-		*(*Tulg)(unsafe.Pointer(v81))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v80))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler & libc.Uint32FromInt32(0xff))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in & libc.Uint32FromInt32(0xff))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
+		v5 = s + 20
+		v4 = *(*Tulg)(unsafe.Pointer(v5))
+		*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
 	} else {
 		_putShortMSB(tls, s, uint32((*Tz_stream)(unsafe.Pointer(strm)).Fadler>>libc.Int32FromInt32(16)))
 		_putShortMSB(tls, s, uint32((*Tz_stream)(unsafe.Pointer(strm)).Fadler&libc.Uint32FromInt32(0xffff)))
@@ -5963,11 +5963,11 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fwrap = -(*Tdeflate_state)(unsafe.Pointer(s)).Fwrap
 	} /* write the trailer only once! */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fpending != uint32(0) {
-		v82 = m_Z_OK
+		v1 = m_Z_OK
 	} else {
-		v82 = int32(m_Z_STREAM_END)
+		v1 = int32(m_Z_STREAM_END)
 	}
-	return v82
+	return v1
 }
 
 // C documentation
@@ -6059,13 +6059,13 @@ func XdeflateCopy(tls *libc.TLS, dest Tz_streamp, source Tz_streamp) (r int32) {
 //	 */
 func _longest_match(tls *libc.TLS, s uintptr, cur_match TIPos) (r TuInt) {
 	var best_len, len1, nice_match int32
-	var chain_length, v1, v3 uint32
+	var chain_length, v1 uint32
 	var limit, v2 TIPos
-	var match, prev, scan, strend, v10, v11, v13, v14, v16, v17, v19, v20, v22, v23, v25, v26, v28, v29, v6, v8, v9 uintptr
+	var match, prev, scan, strend, v10, v11, v13, v14, v16, v17, v19, v20, v22, v23, v25, v26, v28, v6, v8, v9 uintptr
 	var scan_end, scan_end1 TByte
 	var wmask TuInt
-	var v12, v15, v18, v21, v24, v27, v30, v4, v7 bool
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = best_len, chain_length, len1, limit, match, nice_match, prev, scan, scan_end, scan_end1, strend, wmask, v1, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v3, v30, v4, v6, v7, v8, v9
+	var v12, v15, v18, v21, v24, v4, v7 bool
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = best_len, chain_length, len1, limit, match, nice_match, prev, scan, scan_end, scan_end1, strend, wmask, v1, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v22, v23, v24, v25, v26, v28, v4, v6, v7, v8, v9
 	chain_length = (*Tdeflate_state)(unsafe.Pointer(s)).Fmax_chain_length                                         /* max hash chain length */
 	scan = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart) /* length of current match */
 	best_len = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length)                            /* best match length so far */
@@ -6089,7 +6089,7 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match TIPos) (r TuInt) {
 	 */
 	/* Do not waste too much time if we already have a good match: */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length >= (*Tdeflate_state)(unsafe.Pointer(s)).Fgood_match {
-		chain_length >>= uint32(2)
+		chain_length = chain_length >> uint32(2)
 	}
 	/* Do not look for matches beyond the end of the input. This is necessary
 	 * to make deflate deterministic.
@@ -6107,11 +6107,11 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match TIPos) (r TuInt) {
 		 * However the length of the match is limited to the lookahead, so
 		 * the output of deflate is not affected by the uninitialized values.
 		 */
-		if v7 = libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(match + uintptr(best_len)))) != libc.Int32FromUint8(scan_end) || libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(match + uintptr(best_len-int32(1))))) != libc.Int32FromUint8(scan_end1) || libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(match))) != libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(scan))); !v7 {
-			match++
+		if v4 = libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(match + uintptr(best_len)))) != libc.Int32FromUint8(scan_end) || libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(match + uintptr(best_len-int32(1))))) != libc.Int32FromUint8(scan_end1) || libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(match))) != libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(scan))); !v4 {
+			match = match + 1
 			v6 = match
 		}
-		if v7 || libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v6))) != libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(scan + 1))) {
+		if v4 || libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v6))) != libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(scan + 1))) {
 			goto _5
 		}
 		/* The check at best_len - 1 can be removed because it will be made
@@ -6120,14 +6120,14 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match TIPos) (r TuInt) {
 		 * are always equal when the other bytes match, given that
 		 * the hash keys are equal and that HASH_BITS >= 8.
 		 */
-		scan += uintptr(2)
+		scan = scan + uintptr(2)
 		/* The check at best_len - 1 can be removed because it will be made
 		 * again later. (This heuristic is not always a win.)
 		 * It is not necessary to compare scan[2] and match[2] since they
 		 * are always equal when the other bytes match, given that
 		 * the hash keys are equal and that HASH_BITS >= 8.
 		 */
-		match++
+		match = match + 1
 		/* We check for insufficient lookahead only every 8th comparison;
 		 * the 256th check will be made at strstart + 258.
 		 */
@@ -6135,53 +6135,53 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match TIPos) (r TuInt) {
 			goto _31
 		_31:
 			;
-			scan++
-			v8 = scan
-			match++
-			v9 = match
-			if v12 = libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v8))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v9))); v12 {
-				scan++
-				v10 = scan
-				match++
-				v11 = match
+			scan = scan + 1
+			v6 = scan
+			match = match + 1
+			v8 = match
+			if v4 = libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v6))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v8))); v4 {
+				scan = scan + 1
+				v9 = scan
+				match = match + 1
+				v10 = match
 			}
-			if v15 = v12 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v10))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v11))); v15 {
-				scan++
-				v13 = scan
-				match++
-				v14 = match
+			if v7 = v4 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v9))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v10))); v7 {
+				scan = scan + 1
+				v11 = scan
+				match = match + 1
+				v13 = match
 			}
-			if v18 = v15 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v13))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v14))); v18 {
-				scan++
-				v16 = scan
-				match++
-				v17 = match
+			if v12 = v7 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v11))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v13))); v12 {
+				scan = scan + 1
+				v14 = scan
+				match = match + 1
+				v16 = match
 			}
-			if v21 = v18 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v16))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v17))); v21 {
-				scan++
-				v19 = scan
-				match++
-				v20 = match
+			if v15 = v12 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v14))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v16))); v15 {
+				scan = scan + 1
+				v17 = scan
+				match = match + 1
+				v19 = match
 			}
-			if v24 = v21 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v19))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v20))); v24 {
-				scan++
-				v22 = scan
-				match++
-				v23 = match
+			if v18 = v15 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v17))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v19))); v18 {
+				scan = scan + 1
+				v20 = scan
+				match = match + 1
+				v22 = match
 			}
-			if v27 = v24 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v22))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v23))); v27 {
-				scan++
-				v25 = scan
-				match++
-				v26 = match
+			if v21 = v18 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v20))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v22))); v21 {
+				scan = scan + 1
+				v23 = scan
+				match = match + 1
+				v25 = match
 			}
-			if v30 = v27 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v25))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v26))); v30 {
-				scan++
-				v28 = scan
-				match++
-				v29 = match
+			if v24 = v21 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v23))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v25))); v24 {
+				scan = scan + 1
+				v26 = scan
+				match = match + 1
+				v28 = match
 			}
-			if !(v30 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v28))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v29))) && scan < strend) {
+			if !(v24 && libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v26))) == libc.Int32FromUint8(*(*TBytef)(unsafe.Pointer(v28))) && scan < strend) {
 				break
 			}
 		}
@@ -6202,10 +6202,10 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match TIPos) (r TuInt) {
 		v2 = uint32(*(*TPosf)(unsafe.Pointer(prev + uintptr(cur_match&wmask)*2)))
 		cur_match = v2
 		if v4 = v2 > limit; v4 {
-			chain_length--
-			v3 = chain_length
+			chain_length = chain_length - 1
+			v1 = chain_length
 		}
-		if !(v4 && v3 != uint32(0)) {
+		if !(v4 && v1 != uint32(0)) {
 			break
 		}
 	}
@@ -6244,10 +6244,10 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match TIPos) (r TuInt) {
 //	 * maximizes the opportunities to have a single copy from next_in to next_out.
 //	 */
 func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
-	var have, last, left, len1, min_block, used, v1, v4, v6, v7, v8, v9 uint32
-	var v10, v12, v2 int32
-	var p11, p3, p5 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = have, last, left, len1, min_block, used, v1, v10, v12, v2, v4, v6, v7, v8, v9, p11, p3, p5
+	var have, last, left, len1, min_block, used, v1 uint32
+	var v2 int32
+	var v3 uintptr
+	_, _, _, _, _, _, _, _, _ = have, last, left, len1, min_block, used, v1, v2, v3
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size-uint32(5) > (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size {
 		v1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 	} else {
@@ -6313,9 +6313,9 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 			*(*uintptr)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 12)) += uintptr(left)
 			*(*TuInt)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 16)) -= left
 			*(*TuLong)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 20)) += left
-			p3 = s + 92
-			*(*int32)(unsafe.Pointer(p3)) = int32(uint32(*(*int32)(unsafe.Pointer(p3))) + left)
-			len1 -= left
+			v3 = s + 92
+			*(*int32)(unsafe.Pointer(v3)) = int32(uint32(*(*int32)(unsafe.Pointer(v3))) + left)
+			len1 = len1 - left
 		}
 		/* Copy uncompressed bytes directly from next_in to next_out, updating
 		 * the check value.
@@ -6333,7 +6333,7 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	 * insert in the hash tables, in the event that deflateParams() switches to
 	 * a non-zero compression level.
 	 */
-	used -= (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in /* number of input bytes directly copied */
+	used = used - (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in /* number of input bytes directly copied */
 	if used != 0 {
 		/* If any input was used, then no unused input remains in the window,
 		 * therefore s->block_start == s->strstart.
@@ -6349,7 +6349,7 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 				*(*TuInt)(unsafe.Pointer(s + 108)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 				libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size), (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatches < uint32(2) {
-					(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches++
+					(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches = (*Tdeflate_state)(unsafe.Pointer(s)).Fmatches + 1
 				} /* add a pending slide_hash() */
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Finsert > (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart {
 					(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart
@@ -6358,11 +6358,11 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart), (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fnext_in-uintptr(used), used)
 			*(*TuInt)(unsafe.Pointer(s + 108)) += used
 			if used > (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size-(*Tdeflate_state)(unsafe.Pointer(s)).Finsert {
-				v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size - (*Tdeflate_state)(unsafe.Pointer(s)).Finsert
+				v1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size - (*Tdeflate_state)(unsafe.Pointer(s)).Finsert
 			} else {
-				v4 = used
+				v1 = used
 			}
-			*(*TuInt)(unsafe.Pointer(s + 5812)) += v4
+			*(*TuInt)(unsafe.Pointer(s + 5812)) += v1
 		}
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 	}
@@ -6381,14 +6381,14 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	have = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size - (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart
 	if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in > have && (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size) {
 		/* Slide the window down. */
-		p5 = s + 92
-		*(*int32)(unsafe.Pointer(p5)) = int32(uint32(*(*int32)(unsafe.Pointer(p5))) - (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size)
+		v3 = s + 92
+		*(*int32)(unsafe.Pointer(v3)) = int32(uint32(*(*int32)(unsafe.Pointer(v3))) - (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size)
 		*(*TuInt)(unsafe.Pointer(s + 108)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 		libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size), (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatches < uint32(2) {
-			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches++
+			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches = (*Tdeflate_state)(unsafe.Pointer(s)).Fmatches + 1
 		} /* add a pending slide_hash() */
-		have += (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size /* more space now */
+		have = have + (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size /* more space now */
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Finsert > (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart {
 			(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart
 		}
@@ -6400,11 +6400,11 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		_read_buf(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart), have)
 		*(*TuInt)(unsafe.Pointer(s + 108)) += have
 		if have > (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size-(*Tdeflate_state)(unsafe.Pointer(s)).Finsert {
-			v6 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size - (*Tdeflate_state)(unsafe.Pointer(s)).Finsert
+			v1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size - (*Tdeflate_state)(unsafe.Pointer(s)).Finsert
 		} else {
-			v6 = have
+			v1 = have
 		}
-		*(*TuInt)(unsafe.Pointer(s + 5812)) += v6
+		*(*TuInt)(unsafe.Pointer(s + 5812)) += v1
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water < (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart {
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart
@@ -6417,43 +6417,43 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	have = libc.Uint32FromInt32(((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid + int32(42)) >> int32(3)) /* number of header bytes */
 	/* maximum stored block length that will fit in pending: */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size-have > libc.Uint32FromInt32(libc.Int32FromInt32(m_MAX_STORED)) {
-		v7 = libc.Uint32FromInt32(libc.Int32FromInt32(m_MAX_STORED))
+		v1 = libc.Uint32FromInt32(libc.Int32FromInt32(m_MAX_STORED))
 	} else {
-		v7 = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size - have
+		v1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size - have
 	}
-	have = v7
+	have = v1
 	if have > (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size {
-		v8 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
+		v1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 	} else {
-		v8 = have
+		v1 = have
 	}
-	min_block = v8
+	min_block = v1
 	left = uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart - libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 	if left >= min_block || (left != 0 || flush == int32(m_Z_FINISH)) && flush != m_Z_NO_FLUSH && (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in == uint32(0) && left <= have {
 		if left > have {
-			v9 = have
+			v1 = have
 		} else {
-			v9 = left
+			v1 = left
 		}
-		len1 = v9
+		len1 = v1
 		if flush == int32(m_Z_FINISH) && (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in == uint32(0) && len1 == left {
-			v10 = int32(1)
+			v2 = int32(1)
 		} else {
-			v10 = 0
+			v2 = 0
 		}
-		last = libc.Uint32FromInt32(v10)
+		last = libc.Uint32FromInt32(v2)
 		x__tr_stored_block(tls, s, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), len1, libc.Int32FromUint32(last))
-		p11 = s + 92
-		*(*int32)(unsafe.Pointer(p11)) = int32(uint32(*(*int32)(unsafe.Pointer(p11))) + len1)
+		v3 = s + 92
+		*(*int32)(unsafe.Pointer(v3)) = int32(uint32(*(*int32)(unsafe.Pointer(v3))) + len1)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 	}
 	/* We've done all we can with the available input and output. */
 	if last != 0 {
-		v12 = int32(_finish_started)
+		v2 = int32(_finish_started)
 	} else {
-		v12 = int32(_need_more)
+		v2 = int32(_need_more)
 	}
-	return v12
+	return v2
 }
 
 // C documentation
@@ -6470,11 +6470,11 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	var cc, len1 Tuch
 	var dist Tush
 	var hash_head TIPos
-	var v10, v14, v16, v18, v3, v5, v7 TuInt
-	var v11, v15, v17, v19, v20, v22, v23, v4, v6, v8 uintptr
-	var v13, v2 TPosf
+	var v3 TuInt
+	var v4 uintptr
+	var v2 TPosf
 	var v21 uint32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bflush, cc, dist, hash_head, len1, v10, v11, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v22, v23, v3, v4, v5, v6, v7, v8, v9 /* set if current block must be flushed */
+	_, _, _, _, _, _, _, _, _, _ = bflush, cc, dist, hash_head, len1, v2, v21, v3, v4, v9 /* set if current block must be flushed */
 	for {
 		/* Make sure that we always have enough lookahead, except
 		 * at the end of the input file. We need MAX_MATCH bytes
@@ -6517,37 +6517,37 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 			dist = uint16((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart - (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_start)
 			v4 = s + 5792
 			v3 = *(*TuInt)(unsafe.Pointer(v4))
-			*(*TuInt)(unsafe.Pointer(v4))++
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(dist)
-			v6 = s + 5792
-			v5 = *(*TuInt)(unsafe.Pointer(v6))
-			*(*TuInt)(unsafe.Pointer(v6))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16(dist) >> libc.Int32FromInt32(8))
-			v8 = s + 5792
-			v7 = *(*TuInt)(unsafe.Pointer(v8))
-			*(*TuInt)(unsafe.Pointer(v8))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v7))) = len1
-			dist--
-			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
+			v4 = s + 5792
+			v3 = *(*TuInt)(unsafe.Pointer(v4))
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = libc.Uint8FromInt32(libc.Int32FromUint16(dist) >> libc.Int32FromInt32(8))
+			v4 = s + 5792
+			v3 = *(*TuInt)(unsafe.Pointer(v4))
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = len1
+			dist = dist - 1
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4)) + 1
 			if libc.Int32FromUint16(dist) < int32(256) {
 				v9 = libc.Int32FromUint8(x__dist_code[dist])
 			} else {
 				v9 = libc.Int32FromUint8(x__dist_code[int32(256)+libc.Int32FromUint16(dist)>>int32(7)])
 			}
-			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v9)*4))++
+			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v9)*4)) = *(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v9)*4)) + 1
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 			*(*TuInt)(unsafe.Pointer(s + 116)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
 			/* Insert new strings in the hash table only if the match length
 			 * is not too large. This saves time but degrades compression.
 			 */
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length <= (*Tdeflate_state)(unsafe.Pointer(s)).Fmax_lazy_match && (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead >= uint32(m_MIN_MATCH) {
-				(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length-- /* string at strstart already in table */
+				(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length - 1 /* string at strstart already in table */
 				for {
-					(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
+					(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart + 1
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fins_h = ((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h<<(*Tdeflate_state)(unsafe.Pointer(s)).Fhash_shift ^ uint32(*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart+libc.Uint32FromInt32(libc.Int32FromInt32(m_MIN_MATCH)-libc.Int32FromInt32(1))))))) & (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_mask
-					v13 = *(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2))
-					*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fprev + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart&(*Tdeflate_state)(unsafe.Pointer(s)).Fw_mask)*2)) = v13
-					hash_head = uint32(v13)
+					v2 = *(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2))
+					*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fprev + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart&(*Tdeflate_state)(unsafe.Pointer(s)).Fw_mask)*2)) = v2
+					hash_head = uint32(v2)
 					*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2)) = uint16((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 					/* strstart never exceeds WSIZE-MAX_MATCH, so there are
 					 * always MIN_MATCH bytes ahead.
@@ -6555,14 +6555,14 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 					goto _12
 				_12:
 					;
-					v11 = s + 96
-					*(*TuInt)(unsafe.Pointer(v11))--
-					v10 = *(*TuInt)(unsafe.Pointer(v11))
-					if !(v10 != uint32(0)) {
+					v4 = s + 96
+					*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) - 1
+					v3 = *(*TuInt)(unsafe.Pointer(v4))
+					if !(v3 != uint32(0)) {
 						break
 					}
 				}
-				(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
+				(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart + 1
 			} else {
 				*(*TuInt)(unsafe.Pointer(s + 108)) += (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = uint32(0)
@@ -6575,30 +6575,30 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		} else {
 			/* No match, output a literal byte */
 			cc = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)))
-			v15 = s + 5792
-			v14 = *(*TuInt)(unsafe.Pointer(v15))
-			*(*TuInt)(unsafe.Pointer(v15))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v14))) = uint8(0)
-			v17 = s + 5792
-			v16 = *(*TuInt)(unsafe.Pointer(v17))
-			*(*TuInt)(unsafe.Pointer(v17))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v16))) = uint8(0)
-			v19 = s + 5792
-			v18 = *(*TuInt)(unsafe.Pointer(v19))
-			*(*TuInt)(unsafe.Pointer(v19))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v18))) = cc
-			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4))++
+			v4 = s + 5792
+			v3 = *(*TuInt)(unsafe.Pointer(v4))
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(0)
+			v4 = s + 5792
+			v3 = *(*TuInt)(unsafe.Pointer(v4))
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(0)
+			v4 = s + 5792
+			v3 = *(*TuInt)(unsafe.Pointer(v4))
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = cc
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4)) + 1
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
-			(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead--
-			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
+			(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead - 1
+			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart + 1
 		}
 		if bflush != 0 {
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-				v20 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+				v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 			} else {
-				v20 = libc.UintptrFromInt32(m_Z_NULL)
+				v4 = libc.UintptrFromInt32(m_Z_NULL)
 			}
-			x__tr_flush_block(tls, s, v20, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+			x__tr_flush_block(tls, s, v4, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 			_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 			if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -6616,11 +6616,11 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = v21
 	if flush == int32(m_Z_FINISH) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-			v22 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+			v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 		} else {
-			v22 = libc.UintptrFromInt32(m_Z_NULL)
+			v4 = libc.UintptrFromInt32(m_Z_NULL)
 		}
-		x__tr_flush_block(tls, s, v22, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), int32(1))
+		x__tr_flush_block(tls, s, v4, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), int32(1))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -6630,11 +6630,11 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next != 0 {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-			v23 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+			v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 		} else {
-			v23 = libc.UintptrFromInt32(m_Z_NULL)
+			v4 = libc.UintptrFromInt32(m_Z_NULL)
 		}
-		x__tr_flush_block(tls, s, v23, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+		x__tr_flush_block(tls, s, v4, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -6656,11 +6656,11 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	var cc, cc1, len1 Tuch
 	var dist Tush
 	var hash_head TIPos
-	var max_insert, v10, v13, v17, v19, v21, v24, v26, v28, v3, v5, v7 TuInt
-	var v11, v14, v16, v18, v20, v22, v23, v25, v27, v29, v31, v32, v4, v6, v8 uintptr
-	var v15, v2 TPosf
+	var max_insert, v3, v5 TuInt
+	var v4, v6 uintptr
+	var v2 TPosf
 	var v30 uint32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bflush, cc, cc1, dist, hash_head, len1, max_insert, v10, v11, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v4, v5, v6, v7, v8, v9 /* set if current block must be flushed */
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = bflush, cc, cc1, dist, hash_head, len1, max_insert, v2, v3, v30, v4, v5, v6, v9 /* set if current block must be flushed */
 	/* Process the input block. */
 	for {
 		/* Make sure that we always have enough lookahead, except
@@ -6719,24 +6719,24 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 			dist = uint16((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart - libc.Uint32FromInt32(1) - (*Tdeflate_state)(unsafe.Pointer(s)).Fprev_match)
 			v4 = s + 5792
 			v3 = *(*TuInt)(unsafe.Pointer(v4))
-			*(*TuInt)(unsafe.Pointer(v4))++
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(dist)
-			v6 = s + 5792
-			v5 = *(*TuInt)(unsafe.Pointer(v6))
-			*(*TuInt)(unsafe.Pointer(v6))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16(dist) >> libc.Int32FromInt32(8))
-			v8 = s + 5792
-			v7 = *(*TuInt)(unsafe.Pointer(v8))
-			*(*TuInt)(unsafe.Pointer(v8))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v7))) = len1
-			dist--
-			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
+			v4 = s + 5792
+			v3 = *(*TuInt)(unsafe.Pointer(v4))
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = libc.Uint8FromInt32(libc.Int32FromUint16(dist) >> libc.Int32FromInt32(8))
+			v4 = s + 5792
+			v3 = *(*TuInt)(unsafe.Pointer(v4))
+			*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = len1
+			dist = dist - 1
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4)) + 1
 			if libc.Int32FromUint16(dist) < int32(256) {
 				v9 = libc.Int32FromUint8(x__dist_code[dist])
 			} else {
 				v9 = libc.Int32FromUint8(x__dist_code[int32(256)+libc.Int32FromUint16(dist)>>int32(7)])
 			}
-			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v9)*4))++
+			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v9)*4)) = *(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v9)*4)) + 1
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 			/* Insert in hash table all strings up to the end of the match.
 			 * strstart - 1 and strstart are already inserted. If there is not
@@ -6746,36 +6746,36 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 			*(*TuInt)(unsafe.Pointer(s + 116)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length - uint32(1)
 			*(*TuInt)(unsafe.Pointer(s + 120)) -= uint32(2)
 			for {
-				v14 = s + 108
-				*(*TuInt)(unsafe.Pointer(v14))++
-				v13 = *(*TuInt)(unsafe.Pointer(v14))
-				if v13 <= max_insert {
+				v6 = s + 108
+				*(*TuInt)(unsafe.Pointer(v6)) = *(*TuInt)(unsafe.Pointer(v6)) + 1
+				v5 = *(*TuInt)(unsafe.Pointer(v6))
+				if v5 <= max_insert {
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fins_h = ((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h<<(*Tdeflate_state)(unsafe.Pointer(s)).Fhash_shift ^ uint32(*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart+libc.Uint32FromInt32(libc.Int32FromInt32(m_MIN_MATCH)-libc.Int32FromInt32(1))))))) & (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_mask
-					v15 = *(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2))
-					*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fprev + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart&(*Tdeflate_state)(unsafe.Pointer(s)).Fw_mask)*2)) = v15
-					hash_head = uint32(v15)
+					v2 = *(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2))
+					*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fprev + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart&(*Tdeflate_state)(unsafe.Pointer(s)).Fw_mask)*2)) = v2
+					hash_head = uint32(v2)
 					*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h)*2)) = uint16((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 				}
 				goto _12
 			_12:
 				;
-				v11 = s + 120
-				*(*TuInt)(unsafe.Pointer(v11))--
-				v10 = *(*TuInt)(unsafe.Pointer(v11))
-				if !(v10 != uint32(0)) {
+				v4 = s + 120
+				*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) - 1
+				v3 = *(*TuInt)(unsafe.Pointer(v4))
+				if !(v3 != uint32(0)) {
 					break
 				}
 			}
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_available = 0
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = libc.Uint32FromInt32(libc.Int32FromInt32(m_MIN_MATCH) - libc.Int32FromInt32(1))
-			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
+			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart + 1
 			if bflush != 0 {
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-					v16 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+					v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 				} else {
-					v16 = libc.UintptrFromInt32(m_Z_NULL)
+					v4 = libc.UintptrFromInt32(m_Z_NULL)
 				}
-				x__tr_flush_block(tls, s, v16, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+				x__tr_flush_block(tls, s, v4, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 				_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 				if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -6789,32 +6789,32 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 				 * is longer, truncate the previous match to a single literal.
 				 */
 				cc = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart-uint32(1))))
-				v18 = s + 5792
-				v17 = *(*TuInt)(unsafe.Pointer(v18))
-				*(*TuInt)(unsafe.Pointer(v18))++
-				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v17))) = uint8(0)
-				v20 = s + 5792
-				v19 = *(*TuInt)(unsafe.Pointer(v20))
-				*(*TuInt)(unsafe.Pointer(v20))++
-				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v19))) = uint8(0)
-				v22 = s + 5792
-				v21 = *(*TuInt)(unsafe.Pointer(v22))
-				*(*TuInt)(unsafe.Pointer(v22))++
-				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v21))) = cc
-				*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4))++
+				v4 = s + 5792
+				v3 = *(*TuInt)(unsafe.Pointer(v4))
+				*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(0)
+				v4 = s + 5792
+				v3 = *(*TuInt)(unsafe.Pointer(v4))
+				*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(0)
+				v4 = s + 5792
+				v3 = *(*TuInt)(unsafe.Pointer(v4))
+				*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = cc
+				*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4)) + 1
 				bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 				if bflush != 0 {
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-						v23 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+						v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 					} else {
-						v23 = libc.UintptrFromInt32(m_Z_NULL)
+						v4 = libc.UintptrFromInt32(m_Z_NULL)
 					}
-					x__tr_flush_block(tls, s, v23, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+					x__tr_flush_block(tls, s, v4, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 					_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 				}
-				(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
-				(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead--
+				(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart + 1
+				(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead - 1
 				if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
 					return int32(_need_more)
 				}
@@ -6823,8 +6823,8 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 				 * the next step to decide.
 				 */
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_available = int32(1)
-				(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
-				(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead--
+				(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart + 1
+				(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead - 1
 			}
 		}
 		goto _1
@@ -6832,19 +6832,19 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_available != 0 {
 		cc1 = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart-uint32(1))))
-		v25 = s + 5792
-		v24 = *(*TuInt)(unsafe.Pointer(v25))
-		*(*TuInt)(unsafe.Pointer(v25))++
-		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v24))) = uint8(0)
-		v27 = s + 5792
-		v26 = *(*TuInt)(unsafe.Pointer(v27))
-		*(*TuInt)(unsafe.Pointer(v27))++
-		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v26))) = uint8(0)
-		v29 = s + 5792
-		v28 = *(*TuInt)(unsafe.Pointer(v29))
-		*(*TuInt)(unsafe.Pointer(v29))++
-		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v28))) = cc1
-		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc1)*4))++
+		v4 = s + 5792
+		v3 = *(*TuInt)(unsafe.Pointer(v4))
+		*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(0)
+		v4 = s + 5792
+		v3 = *(*TuInt)(unsafe.Pointer(v4))
+		*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(0)
+		v4 = s + 5792
+		v3 = *(*TuInt)(unsafe.Pointer(v4))
+		*(*TuInt)(unsafe.Pointer(v4)) = *(*TuInt)(unsafe.Pointer(v4)) + 1
+		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = cc1
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc1)*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc1)*4)) + 1
 		bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_available = 0
 	}
@@ -6856,11 +6856,11 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = v30
 	if flush == int32(m_Z_FINISH) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-			v31 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+			v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 		} else {
-			v31 = libc.UintptrFromInt32(m_Z_NULL)
+			v4 = libc.UintptrFromInt32(m_Z_NULL)
 		}
-		x__tr_flush_block(tls, s, v31, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), int32(1))
+		x__tr_flush_block(tls, s, v4, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), int32(1))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -6870,11 +6870,11 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next != 0 {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-			v32 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+			v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 		} else {
-			v32 = libc.UintptrFromInt32(m_Z_NULL)
+			v4 = libc.UintptrFromInt32(m_Z_NULL)
 		}
-		x__tr_flush_block(tls, s, v32, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+		x__tr_flush_block(tls, s, v4, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -6895,10 +6895,10 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	var bflush, v29 int32
 	var cc, len1 Tuch
 	var dist Tush
-	var prev, v23, v25, v27, v30, v32, v34 TuInt
-	var scan, strend, v10, v12, v14, v16, v18, v2, v20, v24, v26, v28, v3, v31, v33, v35, v36, v37, v38, v5, v7, v8 uintptr
-	var v11, v13, v15, v17, v19, v21, v4, v6, v9 bool
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bflush, cc, dist, len1, prev, scan, strend, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v4, v5, v6, v7, v8, v9 /* scan goes up to strend for length of run */
+	var prev, v23 TuInt
+	var scan, strend, v10, v12, v14, v2, v3, v5, v7, v8 uintptr
+	var v11, v13, v15, v17, v4, v6, v9 bool
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bflush, cc, dist, len1, prev, scan, strend, v10, v11, v12, v13, v14, v15, v17, v2, v23, v29, v3, v4, v5, v6, v7, v8, v9 /* scan goes up to strend for length of run */
 	for {
 		/* Make sure that we always have enough lookahead, except
 		 * at the end of the input file. We need MAX_MATCH bytes
@@ -6918,14 +6918,14 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead >= uint32(m_MIN_MATCH) && (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart > uint32(0) {
 			scan = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart) - uintptr(1)
 			prev = uint32(*(*TBytef)(unsafe.Pointer(scan)))
-			scan++
+			scan = scan + 1
 			v2 = scan
 			if v4 = prev == uint32(*(*TBytef)(unsafe.Pointer(v2))); v4 {
-				scan++
+				scan = scan + 1
 				v3 = scan
 			}
 			if v6 = v4 && prev == uint32(*(*TBytef)(unsafe.Pointer(v3))); v6 {
-				scan++
+				scan = scan + 1
 				v5 = scan
 			}
 			if v6 && prev == uint32(*(*TBytef)(unsafe.Pointer(v5))) {
@@ -6934,37 +6934,37 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 					goto _22
 				_22:
 					;
-					scan++
-					v7 = scan
-					if v9 = prev == uint32(*(*TBytef)(unsafe.Pointer(v7))); v9 {
-						scan++
+					scan = scan + 1
+					v2 = scan
+					if v4 = prev == uint32(*(*TBytef)(unsafe.Pointer(v2))); v4 {
+						scan = scan + 1
+						v3 = scan
+					}
+					if v6 = v4 && prev == uint32(*(*TBytef)(unsafe.Pointer(v3))); v6 {
+						scan = scan + 1
+						v5 = scan
+					}
+					if v9 = v6 && prev == uint32(*(*TBytef)(unsafe.Pointer(v5))); v9 {
+						scan = scan + 1
+						v7 = scan
+					}
+					if v11 = v9 && prev == uint32(*(*TBytef)(unsafe.Pointer(v7))); v11 {
+						scan = scan + 1
 						v8 = scan
 					}
-					if v11 = v9 && prev == uint32(*(*TBytef)(unsafe.Pointer(v8))); v11 {
-						scan++
+					if v13 = v11 && prev == uint32(*(*TBytef)(unsafe.Pointer(v8))); v13 {
+						scan = scan + 1
 						v10 = scan
 					}
-					if v13 = v11 && prev == uint32(*(*TBytef)(unsafe.Pointer(v10))); v13 {
-						scan++
+					if v15 = v13 && prev == uint32(*(*TBytef)(unsafe.Pointer(v10))); v15 {
+						scan = scan + 1
 						v12 = scan
 					}
-					if v15 = v13 && prev == uint32(*(*TBytef)(unsafe.Pointer(v12))); v15 {
-						scan++
+					if v17 = v15 && prev == uint32(*(*TBytef)(unsafe.Pointer(v12))); v17 {
+						scan = scan + 1
 						v14 = scan
 					}
-					if v17 = v15 && prev == uint32(*(*TBytef)(unsafe.Pointer(v14))); v17 {
-						scan++
-						v16 = scan
-					}
-					if v19 = v17 && prev == uint32(*(*TBytef)(unsafe.Pointer(v16))); v19 {
-						scan++
-						v18 = scan
-					}
-					if v21 = v19 && prev == uint32(*(*TBytef)(unsafe.Pointer(v18))); v21 {
-						scan++
-						v20 = scan
-					}
-					if !(v21 && prev == uint32(*(*TBytef)(unsafe.Pointer(v20))) && scan < strend) {
+					if !(v17 && prev == uint32(*(*TBytef)(unsafe.Pointer(v14))) && scan < strend) {
 						break
 					}
 				}
@@ -6978,26 +6978,26 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length >= uint32(m_MIN_MATCH) {
 			len1 = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length - libc.Uint32FromInt32(m_MIN_MATCH))
 			dist = libc.Uint16FromInt32(libc.Int32FromInt32(1))
-			v24 = s + 5792
-			v23 = *(*TuInt)(unsafe.Pointer(v24))
-			*(*TuInt)(unsafe.Pointer(v24))++
+			v2 = s + 5792
+			v23 = *(*TuInt)(unsafe.Pointer(v2))
+			*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v23))) = uint8(dist)
-			v26 = s + 5792
-			v25 = *(*TuInt)(unsafe.Pointer(v26))
-			*(*TuInt)(unsafe.Pointer(v26))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v25))) = libc.Uint8FromInt32(libc.Int32FromUint16(dist) >> libc.Int32FromInt32(8))
-			v28 = s + 5792
-			v27 = *(*TuInt)(unsafe.Pointer(v28))
-			*(*TuInt)(unsafe.Pointer(v28))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v27))) = len1
-			dist--
-			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
+			v2 = s + 5792
+			v23 = *(*TuInt)(unsafe.Pointer(v2))
+			*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v23))) = libc.Uint8FromInt32(libc.Int32FromUint16(dist) >> libc.Int32FromInt32(8))
+			v2 = s + 5792
+			v23 = *(*TuInt)(unsafe.Pointer(v2))
+			*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v23))) = len1
+			dist = dist - 1
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4)) + 1
 			if libc.Int32FromUint16(dist) < int32(256) {
 				v29 = libc.Int32FromUint8(x__dist_code[dist])
 			} else {
 				v29 = libc.Int32FromUint8(x__dist_code[int32(256)+libc.Int32FromUint16(dist)>>int32(7)])
 			}
-			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v29)*4))++
+			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v29)*4)) = *(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v29)*4)) + 1
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 			*(*TuInt)(unsafe.Pointer(s + 116)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
 			*(*TuInt)(unsafe.Pointer(s + 108)) += (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
@@ -7005,30 +7005,30 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		} else {
 			/* No match, output a literal byte */
 			cc = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)))
-			v31 = s + 5792
-			v30 = *(*TuInt)(unsafe.Pointer(v31))
-			*(*TuInt)(unsafe.Pointer(v31))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v30))) = uint8(0)
-			v33 = s + 5792
-			v32 = *(*TuInt)(unsafe.Pointer(v33))
-			*(*TuInt)(unsafe.Pointer(v33))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v32))) = uint8(0)
-			v35 = s + 5792
-			v34 = *(*TuInt)(unsafe.Pointer(v35))
-			*(*TuInt)(unsafe.Pointer(v35))++
-			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v34))) = cc
-			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4))++
+			v2 = s + 5792
+			v23 = *(*TuInt)(unsafe.Pointer(v2))
+			*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v23))) = uint8(0)
+			v2 = s + 5792
+			v23 = *(*TuInt)(unsafe.Pointer(v2))
+			*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v23))) = uint8(0)
+			v2 = s + 5792
+			v23 = *(*TuInt)(unsafe.Pointer(v2))
+			*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
+			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v23))) = cc
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4)) + 1
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
-			(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead--
-			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
+			(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead - 1
+			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart + 1
 		}
 		if bflush != 0 {
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-				v36 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+				v2 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 			} else {
-				v36 = libc.UintptrFromInt32(m_Z_NULL)
+				v2 = libc.UintptrFromInt32(m_Z_NULL)
 			}
-			x__tr_flush_block(tls, s, v36, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+			x__tr_flush_block(tls, s, v2, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 			_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 			if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -7041,11 +7041,11 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = uint32(0)
 	if flush == int32(m_Z_FINISH) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-			v37 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+			v2 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 		} else {
-			v37 = libc.UintptrFromInt32(m_Z_NULL)
+			v2 = libc.UintptrFromInt32(m_Z_NULL)
 		}
-		x__tr_flush_block(tls, s, v37, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), int32(1))
+		x__tr_flush_block(tls, s, v2, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), int32(1))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -7055,11 +7055,11 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next != 0 {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-			v38 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+			v2 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 		} else {
-			v38 = libc.UintptrFromInt32(m_Z_NULL)
+			v2 = libc.UintptrFromInt32(m_Z_NULL)
 		}
-		x__tr_flush_block(tls, s, v38, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+		x__tr_flush_block(tls, s, v2, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -7078,9 +7078,9 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	var bflush int32
 	var cc Tuch
-	var v10, v3, v5, v7, v8, v9 uintptr
-	var v2, v4, v6 TuInt
-	_, _, _, _, _, _, _, _, _, _, _ = bflush, cc, v10, v2, v3, v4, v5, v6, v7, v8, v9 /* set if current block must be flushed */
+	var v3 uintptr
+	var v2 TuInt
+	_, _, _, _ = bflush, cc, v2, v3 /* set if current block must be flushed */
 	for {
 		/* Make sure that we have a literal to write. */
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead == uint32(0) {
@@ -7097,27 +7097,27 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		cc = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)))
 		v3 = s + 5792
 		v2 = *(*TuInt)(unsafe.Pointer(v3))
-		*(*TuInt)(unsafe.Pointer(v3))++
+		*(*TuInt)(unsafe.Pointer(v3)) = *(*TuInt)(unsafe.Pointer(v3)) + 1
 		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v2))) = uint8(0)
-		v5 = s + 5792
-		v4 = *(*TuInt)(unsafe.Pointer(v5))
-		*(*TuInt)(unsafe.Pointer(v5))++
-		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v4))) = uint8(0)
-		v7 = s + 5792
-		v6 = *(*TuInt)(unsafe.Pointer(v7))
-		*(*TuInt)(unsafe.Pointer(v7))++
-		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v6))) = cc
-		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4))++
+		v3 = s + 5792
+		v2 = *(*TuInt)(unsafe.Pointer(v3))
+		*(*TuInt)(unsafe.Pointer(v3)) = *(*TuInt)(unsafe.Pointer(v3)) + 1
+		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v2))) = uint8(0)
+		v3 = s + 5792
+		v2 = *(*TuInt)(unsafe.Pointer(v3))
+		*(*TuInt)(unsafe.Pointer(v3)) = *(*TuInt)(unsafe.Pointer(v3)) + 1
+		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v2))) = cc
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4)) + 1
 		bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
-		(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead--
-		(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
+		(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead - 1
+		(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart + 1
 		if bflush != 0 {
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-				v8 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+				v3 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 			} else {
-				v8 = libc.UintptrFromInt32(m_Z_NULL)
+				v3 = libc.UintptrFromInt32(m_Z_NULL)
 			}
-			x__tr_flush_block(tls, s, v8, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+			x__tr_flush_block(tls, s, v3, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 			_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 			if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -7130,11 +7130,11 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = uint32(0)
 	if flush == int32(m_Z_FINISH) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-			v9 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+			v3 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 		} else {
-			v9 = libc.UintptrFromInt32(m_Z_NULL)
+			v3 = libc.UintptrFromInt32(m_Z_NULL)
 		}
-		x__tr_flush_block(tls, s, v9, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), int32(1))
+		x__tr_flush_block(tls, s, v3, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), int32(1))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -7144,11 +7144,11 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next != 0 {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
-			v10 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
+			v3 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr(libc.Uint32FromInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start))
 		} else {
-			v10 = libc.UintptrFromInt32(m_Z_NULL)
+			v3 = libc.UintptrFromInt32(m_Z_NULL)
 		}
-		x__tr_flush_block(tls, s, v10, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
+		x__tr_flush_block(tls, s, v3, libc.Uint32FromInt32(libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)-(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), 0)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = libc.Int32FromUint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 		if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_out == uint32(0) {
@@ -9685,12 +9685,12 @@ type t__ccgo_fp__XinflateBack_3 = func(*libc.TLS, uintptr, uintptr, uint32) int3
 func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc uintptr, __ccgo_fp_out Tout_func, out_desc uintptr) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	var bits, copy1, have, hold, left, len1, v1, v18, v20, v24, v29, v30, v43, v44 uint32
-	var from, put, state, v11, v15, v16, v17, v19, v21, v23, v25, v26, v27, v28, v31, v33, v35, v36, v37, v39, v41, v42, v46, v47 uintptr
+	var bits, copy1, have, hold, left, len1, v1, v18 uint32
+	var from, put, state, v11, v15 uintptr
 	var here, last Tcode
 	var ret int32
 	var _ /* next at bp+0 */ uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bits, copy1, from, have, here, hold, last, left, len1, put, ret, state, v1, v11, v15, v16, v17, v18, v19, v20, v21, v23, v24, v25, v26, v27, v28, v29, v30, v31, v33, v35, v36, v37, v39, v41, v42, v43, v44, v46, v47 /* return code */
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bits, copy1, from, have, here, hold, last, left, len1, put, ret, state, v1, v11, v15, v18 /* return code */
 	/* Check that the strm exists and that the state was initialized */
 	if strm == uintptr(m_Z_NULL) || (*Tz_stream)(unsafe.Pointer(strm)).Fstate == uintptr(m_Z_NULL) {
 		return -int32(2)
@@ -9735,8 +9735,8 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 		;
 		/* determine and dispatch block type */
 		if (*Tinflate_state)(unsafe.Pointer(state)).Flast != 0 {
-			hold >>= bits & uint32(7)
-			bits -= bits & uint32(7)
+			hold = hold >> (bits & uint32(7))
+			bits = bits - bits&uint32(7)
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_DONE)
 			goto _10
 		}
@@ -9749,15 +9749,15 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 					goto inf_leave
 				}
 			}
-			have--
+			have = have - 1
 			v11 = *(*uintptr)(unsafe.Pointer(bp))
-			*(*uintptr)(unsafe.Pointer(bp))++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v11))) << bits
-			bits += uint32(8)
+			*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+			bits = bits + uint32(8)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Flast = libc.Int32FromUint32(hold & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(1) - libc.Uint32FromInt32(1)))
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(1))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(1))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(1))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(1))
 		switch hold & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(2) - libc.Uint32FromInt32(1)) {
 		case uint32(0): /* stored block */
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_STORED)
@@ -9770,16 +9770,16 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 6
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 		}
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(2))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(2))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(2))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(2))
 		goto _10
 	_4:
 		;
 		/* get and verify stored block length */
 	_14:
 		;
-		hold >>= bits & uint32(7)
-		bits -= bits & uint32(7)
+		hold = hold >> (bits & uint32(7))
+		bits = bits - bits&uint32(7)
 		goto _13
 	_13:
 		;
@@ -9798,11 +9798,11 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 					goto inf_leave
 				}
 			}
-			have--
-			v15 = *(*uintptr)(unsafe.Pointer(bp))
-			*(*uintptr)(unsafe.Pointer(bp))++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v15))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v11 = *(*uintptr)(unsafe.Pointer(bp))
+			*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+			bits = bits + uint32(8)
 		}
 		if hold&uint32(0xffff) != hold>>int32(16)^uint32(0xffff) {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 25
@@ -9839,10 +9839,10 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 				copy1 = left
 			}
 			libc.Xmemcpy(tls, put, *(*uintptr)(unsafe.Pointer(bp)), copy1)
-			have -= copy1
-			*(*uintptr)(unsafe.Pointer(bp)) += uintptr(copy1)
-			left -= copy1
-			put += uintptr(copy1)
+			have = have - copy1
+			*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + uintptr(copy1)
+			left = left - copy1
+			put = put + uintptr(copy1)
 			*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_TYPE)
@@ -9859,21 +9859,21 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 					goto inf_leave
 				}
 			}
-			have--
-			v16 = *(*uintptr)(unsafe.Pointer(bp))
-			*(*uintptr)(unsafe.Pointer(bp))++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v16))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v11 = *(*uintptr)(unsafe.Pointer(bp))
+			*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+			bits = bits + uint32(8)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fnlen = hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(5)-libc.Uint32FromInt32(1)) + uint32(257)
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(5))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(5))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(5))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(5))
 		(*Tinflate_state)(unsafe.Pointer(state)).Fndist = hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(5)-libc.Uint32FromInt32(1)) + uint32(1)
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(5))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(5))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(5))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(5))
 		(*Tinflate_state)(unsafe.Pointer(state)).Fncode = hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(4)-libc.Uint32FromInt32(1)) + uint32(4)
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(4))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(4))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(4))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(4))
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fnlen > uint32(286) || (*Tinflate_state)(unsafe.Pointer(state)).Fndist > uint32(30) {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 54
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
@@ -9891,24 +9891,24 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 						goto inf_leave
 					}
 				}
-				have--
-				v17 = *(*uintptr)(unsafe.Pointer(bp))
-				*(*uintptr)(unsafe.Pointer(bp))++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v17))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v11 = *(*uintptr)(unsafe.Pointer(bp))
+				*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+				bits = bits + uint32(8)
 			}
-			v19 = state + 108
-			v18 = *(*uint32)(unsafe.Pointer(v19))
-			*(*uint32)(unsafe.Pointer(v19))++
-			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order[v18])*2)) = uint16(hold & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3) - libc.Uint32FromInt32(1)))
-			hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(3))
-			bits -= libc.Uint32FromInt32(libc.Int32FromInt32(3))
+			v11 = state + 108
+			v1 = *(*uint32)(unsafe.Pointer(v11))
+			*(*uint32)(unsafe.Pointer(v11)) = *(*uint32)(unsafe.Pointer(v11)) + 1
+			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order[v1])*2)) = uint16(hold & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3) - libc.Uint32FromInt32(1)))
+			hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(3))
+			bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(3))
 		}
 		for (*Tinflate_state)(unsafe.Pointer(state)).Fhave < uint32(19) {
-			v21 = state + 108
-			v20 = *(*uint32)(unsafe.Pointer(v21))
-			*(*uint32)(unsafe.Pointer(v21))++
-			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order[v20])*2)) = uint16(0)
+			v11 = state + 108
+			v1 = *(*uint32)(unsafe.Pointer(v11))
+			*(*uint32)(unsafe.Pointer(v11)) = *(*uint32)(unsafe.Pointer(v11)) + 1
+			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order[v1])*2)) = uint16(0)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1332
 		(*Tinflate_state)(unsafe.Pointer(state)).Flencode = (*Tinflate_state)(unsafe.Pointer(state)).Fnext
@@ -9935,21 +9935,21 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 						goto inf_leave
 					}
 				}
-				have--
-				v23 = *(*uintptr)(unsafe.Pointer(bp))
-				*(*uintptr)(unsafe.Pointer(bp))++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v23))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v11 = *(*uintptr)(unsafe.Pointer(bp))
+				*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+				bits = bits + uint32(8)
 				goto _22
 			_22:
 			}
 			if libc.Int32FromUint16(here.Fval) < int32(16) {
-				hold >>= uint32(here.Fbits)
-				bits -= uint32(here.Fbits)
-				v25 = state + 108
-				v24 = *(*uint32)(unsafe.Pointer(v25))
-				*(*uint32)(unsafe.Pointer(v25))++
-				*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v24)*2)) = here.Fval
+				hold = hold >> uint32(here.Fbits)
+				bits = bits - uint32(here.Fbits)
+				v11 = state + 108
+				v1 = *(*uint32)(unsafe.Pointer(v11))
+				*(*uint32)(unsafe.Pointer(v11)) = *(*uint32)(unsafe.Pointer(v11)) + 1
+				*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v1)*2)) = here.Fval
 			} else {
 				if libc.Int32FromUint16(here.Fval) == int32(16) {
 					for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(2)) {
@@ -9961,14 +9961,14 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 								goto inf_leave
 							}
 						}
-						have--
-						v26 = *(*uintptr)(unsafe.Pointer(bp))
-						*(*uintptr)(unsafe.Pointer(bp))++
-						hold += uint32(*(*uint8)(unsafe.Pointer(v26))) << bits
-						bits += uint32(8)
+						have = have - 1
+						v11 = *(*uintptr)(unsafe.Pointer(bp))
+						*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+						hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+						bits = bits + uint32(8)
 					}
-					hold >>= uint32(here.Fbits)
-					bits -= uint32(here.Fbits)
+					hold = hold >> uint32(here.Fbits)
+					bits = bits - uint32(here.Fbits)
 					if (*Tinflate_state)(unsafe.Pointer(state)).Fhave == uint32(0) {
 						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 115
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
@@ -9976,8 +9976,8 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 					}
 					len1 = uint32(*(*uint16)(unsafe.Pointer(state + 116 + uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fhave-uint32(1))*2)))
 					copy1 = uint32(3) + hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(2)-libc.Uint32FromInt32(1))
-					hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(2))
-					bits -= libc.Uint32FromInt32(libc.Int32FromInt32(2))
+					hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(2))
+					bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(2))
 				} else {
 					if libc.Int32FromUint16(here.Fval) == int32(17) {
 						for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(3)) {
@@ -9989,18 +9989,18 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 									goto inf_leave
 								}
 							}
-							have--
-							v27 = *(*uintptr)(unsafe.Pointer(bp))
-							*(*uintptr)(unsafe.Pointer(bp))++
-							hold += uint32(*(*uint8)(unsafe.Pointer(v27))) << bits
-							bits += uint32(8)
+							have = have - 1
+							v11 = *(*uintptr)(unsafe.Pointer(bp))
+							*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+							hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+							bits = bits + uint32(8)
 						}
-						hold >>= uint32(here.Fbits)
-						bits -= uint32(here.Fbits)
+						hold = hold >> uint32(here.Fbits)
+						bits = bits - uint32(here.Fbits)
 						len1 = uint32(0)
 						copy1 = uint32(3) + hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3)-libc.Uint32FromInt32(1))
-						hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(3))
-						bits -= libc.Uint32FromInt32(libc.Int32FromInt32(3))
+						hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(3))
+						bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(3))
 					} else {
 						for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(7)) {
 							if have == uint32(0) {
@@ -10011,18 +10011,18 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 									goto inf_leave
 								}
 							}
-							have--
-							v28 = *(*uintptr)(unsafe.Pointer(bp))
-							*(*uintptr)(unsafe.Pointer(bp))++
-							hold += uint32(*(*uint8)(unsafe.Pointer(v28))) << bits
-							bits += uint32(8)
+							have = have - 1
+							v11 = *(*uintptr)(unsafe.Pointer(bp))
+							*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+							hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+							bits = bits + uint32(8)
 						}
-						hold >>= uint32(here.Fbits)
-						bits -= uint32(here.Fbits)
+						hold = hold >> uint32(here.Fbits)
+						bits = bits - uint32(here.Fbits)
 						len1 = uint32(0)
 						copy1 = uint32(11) + hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(7)-libc.Uint32FromInt32(1))
-						hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(7))
-						bits -= libc.Uint32FromInt32(libc.Int32FromInt32(7))
+						hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(7))
+						bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(7))
 					}
 				}
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhave+copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fnlen+(*Tinflate_state)(unsafe.Pointer(state)).Fndist {
@@ -10031,15 +10031,15 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 					break
 				}
 				for {
-					v29 = copy1
-					copy1--
-					if !(v29 != 0) {
+					v1 = copy1
+					copy1 = copy1 - 1
+					if !(v1 != 0) {
 						break
 					}
-					v31 = state + 108
-					v30 = *(*uint32)(unsafe.Pointer(v31))
-					*(*uint32)(unsafe.Pointer(v31))++
-					*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v30)*2)) = uint16(len1)
+					v11 = state + 108
+					v18 = *(*uint32)(unsafe.Pointer(v11))
+					*(*uint32)(unsafe.Pointer(v11)) = *(*uint32)(unsafe.Pointer(v11)) + 1
+					*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v18)*2)) = uint16(len1)
 				}
 			}
 		}
@@ -10111,11 +10111,11 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 					goto inf_leave
 				}
 			}
-			have--
-			v33 = *(*uintptr)(unsafe.Pointer(bp))
-			*(*uintptr)(unsafe.Pointer(bp))++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v33))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v11 = *(*uintptr)(unsafe.Pointer(bp))
+			*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+			bits = bits + uint32(8)
 			goto _32
 		_32:
 		}
@@ -10134,19 +10134,19 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 						goto inf_leave
 					}
 				}
-				have--
-				v35 = *(*uintptr)(unsafe.Pointer(bp))
-				*(*uintptr)(unsafe.Pointer(bp))++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v35))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v11 = *(*uintptr)(unsafe.Pointer(bp))
+				*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+				bits = bits + uint32(8)
 				goto _34
 			_34:
 			}
-			hold >>= uint32(last.Fbits)
-			bits -= uint32(last.Fbits)
+			hold = hold >> uint32(last.Fbits)
+			bits = bits - uint32(last.Fbits)
 		}
-		hold >>= uint32(here.Fbits)
-		bits -= uint32(here.Fbits)
+		hold = hold >> uint32(here.Fbits)
+		bits = bits - uint32(here.Fbits)
 		(*Tinflate_state)(unsafe.Pointer(state)).Flength = uint32(here.Fval)
 		/* process literal */
 		if libc.Int32FromUint8(here.Fop) == 0 {
@@ -10159,10 +10159,10 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 					goto inf_leave
 				}
 			}
-			v36 = put
-			put++
-			*(*uint8)(unsafe.Pointer(v36)) = uint8((*Tinflate_state)(unsafe.Pointer(state)).Flength)
-			left--
+			v11 = put
+			put = put + 1
+			*(*uint8)(unsafe.Pointer(v11)) = uint8((*Tinflate_state)(unsafe.Pointer(state)).Flength)
+			left = left - 1
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_LEN)
 			goto _10
 		}
@@ -10189,15 +10189,15 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 						goto inf_leave
 					}
 				}
-				have--
-				v37 = *(*uintptr)(unsafe.Pointer(bp))
-				*(*uintptr)(unsafe.Pointer(bp))++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v37))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v11 = *(*uintptr)(unsafe.Pointer(bp))
+				*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+				bits = bits + uint32(8)
 			}
 			*(*uint32)(unsafe.Pointer(state + 68)) += hold & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
-			hold >>= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
-			bits -= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
+			hold = hold >> (*Tinflate_state)(unsafe.Pointer(state)).Fextra
+			bits = bits - (*Tinflate_state)(unsafe.Pointer(state)).Fextra
 		}
 		/* get distance code */
 		for {
@@ -10213,11 +10213,11 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 					goto inf_leave
 				}
 			}
-			have--
-			v39 = *(*uintptr)(unsafe.Pointer(bp))
-			*(*uintptr)(unsafe.Pointer(bp))++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v39))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v11 = *(*uintptr)(unsafe.Pointer(bp))
+			*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+			bits = bits + uint32(8)
 			goto _38
 		_38:
 		}
@@ -10236,19 +10236,19 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 						goto inf_leave
 					}
 				}
-				have--
-				v41 = *(*uintptr)(unsafe.Pointer(bp))
-				*(*uintptr)(unsafe.Pointer(bp))++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v41))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v11 = *(*uintptr)(unsafe.Pointer(bp))
+				*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+				bits = bits + uint32(8)
 				goto _40
 			_40:
 			}
-			hold >>= uint32(last.Fbits)
-			bits -= uint32(last.Fbits)
+			hold = hold >> uint32(last.Fbits)
+			bits = bits - uint32(last.Fbits)
 		}
-		hold >>= uint32(here.Fbits)
-		bits -= uint32(here.Fbits)
+		hold = hold >> uint32(here.Fbits)
+		bits = bits - uint32(here.Fbits)
 		if libc.Int32FromUint8(here.Fop)&int32(64) != 0 {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 256
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
@@ -10267,22 +10267,22 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 						goto inf_leave
 					}
 				}
-				have--
-				v42 = *(*uintptr)(unsafe.Pointer(bp))
-				*(*uintptr)(unsafe.Pointer(bp))++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v42))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v11 = *(*uintptr)(unsafe.Pointer(bp))
+				*(*uintptr)(unsafe.Pointer(bp)) = *(*uintptr)(unsafe.Pointer(bp)) + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v11)))<<bits
+				bits = bits + uint32(8)
 			}
 			*(*uint32)(unsafe.Pointer(state + 72)) += hold & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
-			hold >>= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
-			bits -= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
+			hold = hold >> (*Tinflate_state)(unsafe.Pointer(state)).Fextra
+			bits = bits - (*Tinflate_state)(unsafe.Pointer(state)).Fextra
 		}
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fwhave < (*Tinflate_state)(unsafe.Pointer(state)).Fwsize {
-			v43 = left
+			v1 = left
 		} else {
-			v43 = uint32(0)
+			v1 = uint32(0)
 		}
-		if (*Tinflate_state)(unsafe.Pointer(state)).Foffset > (*Tinflate_state)(unsafe.Pointer(state)).Fwsize-v43 {
+		if (*Tinflate_state)(unsafe.Pointer(state)).Foffset > (*Tinflate_state)(unsafe.Pointer(state)).Fwsize-v1 {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 278
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
@@ -10310,19 +10310,19 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, __ccgo_fp_in Tin_func, in_desc
 				copy1 = (*Tinflate_state)(unsafe.Pointer(state)).Flength
 			}
 			*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
-			left -= copy1
+			left = left - copy1
 			for {
-				v46 = put
-				put++
-				v47 = from
-				from++
-				*(*uint8)(unsafe.Pointer(v46)) = *(*uint8)(unsafe.Pointer(v47))
+				v11 = put
+				put = put + 1
+				v15 = from
+				from = from + 1
+				*(*uint8)(unsafe.Pointer(v11)) = *(*uint8)(unsafe.Pointer(v15))
 				goto _45
 			_45:
 				;
-				copy1--
-				v44 = copy1
-				if !(v44 != 0) {
+				copy1 = copy1 - 1
+				v1 = copy1
+				if !(v1 != 0) {
 					break
 				}
 			}
@@ -10429,10 +10429,10 @@ func XinflateBackEnd(tls *libc.TLS, strm Tz_streamp) (r int32) {
 //	      output space.
 //	 */
 func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
-	var beg, dcode, end, from, here, in, last, lcode, out, state, window, v1, v11, v12, v15, v16, v19, v2, v20, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v5, v6, v7, v8 uintptr
-	var bits, dist, dmask, hold, len1, lmask, op, whave, wnext, wsize, v13, v17, v21, v9 uint32
-	var v45, v46 int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = beg, bits, dcode, dist, dmask, end, from, here, hold, in, last, lcode, len1, lmask, op, out, state, whave, window, wnext, wsize, v1, v11, v12, v13, v15, v16, v17, v19, v2, v20, v21, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v5, v6, v7, v8, v9 /* where to copy match from */
+	var beg, dcode, end, from, here, in, last, lcode, out, state, window, v1, v2 uintptr
+	var bits, dist, dmask, hold, len1, lmask, op, whave, wnext, wsize, v9 uint32
+	var v45 int32
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = beg, bits, dcode, dist, dmask, end, from, here, hold, in, last, lcode, len1, lmask, op, out, state, whave, window, wnext, wsize, v1, v2, v45, v9 /* where to copy match from */
 	/* copy state to local variables */
 	state = (*Tz_stream)(unsafe.Pointer(strm)).Fstate
 	in = (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in
@@ -10455,77 +10455,77 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 	for cond := true; cond; cond = in < last && out < end {
 		if bits < uint32(15) {
 			v1 = in
-			in++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v1))) << bits
-			bits += uint32(8)
-			v2 = in
-			in++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v2))) << bits
-			bits += uint32(8)
+			in = in + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v1)))<<bits
+			bits = bits + uint32(8)
+			v1 = in
+			in = in + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v1)))<<bits
+			bits = bits + uint32(8)
 		}
 		here = lcode + uintptr(hold&lmask)*4
 		goto dolen
 	dolen:
 		;
 		op = uint32((*Tcode)(unsafe.Pointer(here)).Fbits)
-		hold >>= op
-		bits -= op
+		hold = hold >> op
+		bits = bits - op
 		op = uint32((*Tcode)(unsafe.Pointer(here)).Fop)
 		if op == uint32(0) { /* literal */
-			v3 = out
-			out++
-			*(*uint8)(unsafe.Pointer(v3)) = uint8((*Tcode)(unsafe.Pointer(here)).Fval)
+			v1 = out
+			out = out + 1
+			*(*uint8)(unsafe.Pointer(v1)) = uint8((*Tcode)(unsafe.Pointer(here)).Fval)
 		} else {
 			if op&uint32(16) != 0 { /* length base */
 				len1 = uint32((*Tcode)(unsafe.Pointer(here)).Fval)
-				op &= uint32(15) /* number of extra bits */
+				op = op & uint32(15) /* number of extra bits */
 				if op != 0 {
 					if bits < op {
-						v4 = in
-						in++
-						hold += uint32(*(*uint8)(unsafe.Pointer(v4))) << bits
-						bits += uint32(8)
+						v1 = in
+						in = in + 1
+						hold = hold + uint32(*(*uint8)(unsafe.Pointer(v1)))<<bits
+						bits = bits + uint32(8)
 					}
-					len1 += hold & (uint32(1)<<op - uint32(1))
-					hold >>= op
-					bits -= op
+					len1 = len1 + hold&(uint32(1)<<op-uint32(1))
+					hold = hold >> op
+					bits = bits - op
 				}
 				if bits < uint32(15) {
-					v5 = in
-					in++
-					hold += uint32(*(*uint8)(unsafe.Pointer(v5))) << bits
-					bits += uint32(8)
-					v6 = in
-					in++
-					hold += uint32(*(*uint8)(unsafe.Pointer(v6))) << bits
-					bits += uint32(8)
+					v1 = in
+					in = in + 1
+					hold = hold + uint32(*(*uint8)(unsafe.Pointer(v1)))<<bits
+					bits = bits + uint32(8)
+					v1 = in
+					in = in + 1
+					hold = hold + uint32(*(*uint8)(unsafe.Pointer(v1)))<<bits
+					bits = bits + uint32(8)
 				}
 				here = dcode + uintptr(hold&dmask)*4
 				goto dodist
 			dodist:
 				;
 				op = uint32((*Tcode)(unsafe.Pointer(here)).Fbits)
-				hold >>= op
-				bits -= op
+				hold = hold >> op
+				bits = bits - op
 				op = uint32((*Tcode)(unsafe.Pointer(here)).Fop)
 				if op&uint32(16) != 0 { /* distance base */
 					dist = uint32((*Tcode)(unsafe.Pointer(here)).Fval)
-					op &= uint32(15) /* number of extra bits */
+					op = op & uint32(15) /* number of extra bits */
 					if bits < op {
-						v7 = in
-						in++
-						hold += uint32(*(*uint8)(unsafe.Pointer(v7))) << bits
-						bits += uint32(8)
+						v1 = in
+						in = in + 1
+						hold = hold + uint32(*(*uint8)(unsafe.Pointer(v1)))<<bits
+						bits = bits + uint32(8)
 						if bits < op {
-							v8 = in
-							in++
-							hold += uint32(*(*uint8)(unsafe.Pointer(v8))) << bits
-							bits += uint32(8)
+							v1 = in
+							in = in + 1
+							hold = hold + uint32(*(*uint8)(unsafe.Pointer(v1)))<<bits
+							bits = bits + uint32(8)
 						}
 					}
-					dist += hold & (uint32(1)<<op - uint32(1))
-					hold >>= op
-					bits -= op
+					dist = dist + hold&(uint32(1)<<op-uint32(1))
+					hold = hold >> op
+					bits = bits - op
 					op = libc.Uint32FromInt32(int32(out) - int32(beg)) /* max distance in output */
 					if dist > op {                                     /* see if copy from window */
 						op = dist - op /* distance back in window */
@@ -10538,19 +10538,19 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 						}
 						from = window
 						if wnext == uint32(0) { /* very common case */
-							from += uintptr(wsize - op)
+							from = from + uintptr(wsize-op)
 							if op < len1 { /* some from window */
-								len1 -= op
+								len1 = len1 - op
 								for {
-									v11 = out
-									out++
-									v12 = from
-									from++
-									*(*uint8)(unsafe.Pointer(v11)) = *(*uint8)(unsafe.Pointer(v12))
+									v1 = out
+									out = out + 1
+									v2 = from
+									from = from + 1
+									*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 									goto _10
 								_10:
 									;
-									op--
+									op = op - 1
 									v9 = op
 									if !(v9 != 0) {
 										break
@@ -10560,41 +10560,41 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 							}
 						} else {
 							if wnext < op { /* wrap around window */
-								from += uintptr(wsize + wnext - op)
-								op -= wnext
+								from = from + uintptr(wsize+wnext-op)
+								op = op - wnext
 								if op < len1 { /* some from end of window */
-									len1 -= op
+									len1 = len1 - op
 									for {
-										v15 = out
-										out++
-										v16 = from
-										from++
-										*(*uint8)(unsafe.Pointer(v15)) = *(*uint8)(unsafe.Pointer(v16))
+										v1 = out
+										out = out + 1
+										v2 = from
+										from = from + 1
+										*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 										goto _14
 									_14:
 										;
-										op--
-										v13 = op
-										if !(v13 != 0) {
+										op = op - 1
+										v9 = op
+										if !(v9 != 0) {
 											break
 										}
 									}
 									from = window
 									if wnext < len1 { /* some from start of window */
 										op = wnext
-										len1 -= op
+										len1 = len1 - op
 										for {
-											v19 = out
-											out++
-											v20 = from
-											from++
-											*(*uint8)(unsafe.Pointer(v19)) = *(*uint8)(unsafe.Pointer(v20))
+											v1 = out
+											out = out + 1
+											v2 = from
+											from = from + 1
+											*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 											goto _18
 										_18:
 											;
-											op--
-											v17 = op
-											if !(v17 != 0) {
+											op = op - 1
+											v9 = op
+											if !(v9 != 0) {
 												break
 											}
 										}
@@ -10602,21 +10602,21 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 									}
 								}
 							} else { /* contiguous in window */
-								from += uintptr(wnext - op)
+								from = from + uintptr(wnext-op)
 								if op < len1 { /* some from window */
-									len1 -= op
+									len1 = len1 - op
 									for {
-										v23 = out
-										out++
-										v24 = from
-										from++
-										*(*uint8)(unsafe.Pointer(v23)) = *(*uint8)(unsafe.Pointer(v24))
+										v1 = out
+										out = out + 1
+										v2 = from
+										from = from + 1
+										*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 										goto _22
 									_22:
 										;
-										op--
-										v21 = op
-										if !(v21 != 0) {
+										op = op - 1
+										v9 = op
+										if !(v9 != 0) {
 											break
 										}
 									}
@@ -10625,69 +10625,69 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 							}
 						}
 						for len1 > uint32(2) {
-							v25 = out
-							out++
-							v26 = from
-							from++
-							*(*uint8)(unsafe.Pointer(v25)) = *(*uint8)(unsafe.Pointer(v26))
-							v27 = out
-							out++
-							v28 = from
-							from++
-							*(*uint8)(unsafe.Pointer(v27)) = *(*uint8)(unsafe.Pointer(v28))
-							v29 = out
-							out++
-							v30 = from
-							from++
-							*(*uint8)(unsafe.Pointer(v29)) = *(*uint8)(unsafe.Pointer(v30))
-							len1 -= uint32(3)
+							v1 = out
+							out = out + 1
+							v2 = from
+							from = from + 1
+							*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
+							v1 = out
+							out = out + 1
+							v2 = from
+							from = from + 1
+							*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
+							v1 = out
+							out = out + 1
+							v2 = from
+							from = from + 1
+							*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
+							len1 = len1 - uint32(3)
 						}
 						if len1 != 0 {
-							v31 = out
-							out++
-							v32 = from
-							from++
-							*(*uint8)(unsafe.Pointer(v31)) = *(*uint8)(unsafe.Pointer(v32))
+							v1 = out
+							out = out + 1
+							v2 = from
+							from = from + 1
+							*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 							if len1 > uint32(1) {
-								v33 = out
-								out++
-								v34 = from
-								from++
-								*(*uint8)(unsafe.Pointer(v33)) = *(*uint8)(unsafe.Pointer(v34))
+								v1 = out
+								out = out + 1
+								v2 = from
+								from = from + 1
+								*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 							}
 						}
 					} else {
 						from = out - uintptr(dist)                        /* copy direct from output */
 						for cond := true; cond; cond = len1 > uint32(2) { /* minimum length is three */
-							v35 = out
-							out++
-							v36 = from
-							from++
-							*(*uint8)(unsafe.Pointer(v35)) = *(*uint8)(unsafe.Pointer(v36))
-							v37 = out
-							out++
-							v38 = from
-							from++
-							*(*uint8)(unsafe.Pointer(v37)) = *(*uint8)(unsafe.Pointer(v38))
-							v39 = out
-							out++
-							v40 = from
-							from++
-							*(*uint8)(unsafe.Pointer(v39)) = *(*uint8)(unsafe.Pointer(v40))
-							len1 -= uint32(3)
+							v1 = out
+							out = out + 1
+							v2 = from
+							from = from + 1
+							*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
+							v1 = out
+							out = out + 1
+							v2 = from
+							from = from + 1
+							*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
+							v1 = out
+							out = out + 1
+							v2 = from
+							from = from + 1
+							*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
+							len1 = len1 - uint32(3)
 						}
 						if len1 != 0 {
-							v41 = out
-							out++
-							v42 = from
-							from++
-							*(*uint8)(unsafe.Pointer(v41)) = *(*uint8)(unsafe.Pointer(v42))
+							v1 = out
+							out = out + 1
+							v2 = from
+							from = from + 1
+							*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 							if len1 > uint32(1) {
-								v43 = out
-								out++
-								v44 = from
-								from++
-								*(*uint8)(unsafe.Pointer(v43)) = *(*uint8)(unsafe.Pointer(v44))
+								v1 = out
+								out = out + 1
+								v2 = from
+								from = from + 1
+								*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 							}
 						}
 					}
@@ -10720,9 +10720,9 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 	}
 	/* return unused bytes (on entry, bits < 8, so in won't go too far back) */
 	len1 = bits >> int32(3)
-	in -= uintptr(len1)
-	bits -= len1 << int32(3)
-	hold &= uint32(uint32(1)<<bits - uint32(1))
+	in = in - uintptr(len1)
+	bits = bits - len1<<int32(3)
+	hold = hold & uint32(uint32(1)<<bits-uint32(1))
 	/* update state and return */
 	(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = in
 	(*Tz_stream)(unsafe.Pointer(strm)).Fnext_out = out
@@ -10733,11 +10733,11 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 	}
 	(*Tz_stream)(unsafe.Pointer(strm)).Favail_in = libc.Uint32FromInt32(v45)
 	if out < end {
-		v46 = int32(257) + (int32(end) - int32(out))
+		v45 = int32(257) + (int32(end) - int32(out))
 	} else {
-		v46 = int32(257) - (int32(out) - int32(end))
+		v45 = int32(257) - (int32(out) - int32(end))
 	}
-	(*Tz_stream)(unsafe.Pointer(strm)).Favail_out = libc.Uint32FromInt32(v46)
+	(*Tz_stream)(unsafe.Pointer(strm)).Favail_out = libc.Uint32FromInt32(v45)
 	(*Tinflate_state)(unsafe.Pointer(state)).Fhold = hold
 	(*Tinflate_state)(unsafe.Pointer(state)).Fbits = bits
 	return
@@ -10824,7 +10824,7 @@ func XinflateReset2(tls *libc.TLS, strm Tz_streamp, windowBits int32) (r int32) 
 	} else {
 		wrap = windowBits>>int32(4) + int32(5)
 		if windowBits < int32(48) {
-			windowBits &= int32(15)
+			windowBits = windowBits & int32(15)
 		}
 	}
 	/* set number of window bits, free window if different */
@@ -13281,7 +13281,7 @@ func _updatewindow(tls *libc.TLS, strm Tz_streamp, end uintptr, copy1 uint32) (r
 			dist = copy1
 		}
 		libc.Xmemcpy(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwnext), end-uintptr(copy1), dist)
-		copy1 -= dist
+		copy1 = copy1 - dist
 		if copy1 != 0 {
 			libc.Xmemcpy(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, end-uintptr(copy1), copy1)
 			(*Tinflate_state)(unsafe.Pointer(state)).Fwnext = copy1
@@ -13408,13 +13408,13 @@ func _updatewindow(tls *libc.TLS, strm Tz_streamp, end uintptr, copy1 uint32) (r
 func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	var bits, copy1, have, hold, in, left, len1, out, v101, v102, v37, v46, v48, v49, v50, v52, v53, v56, v58, v59, v64, v66, v70, v75, v76, v90, v96, v97, v98 uint32
-	var from, next, put, state, v100, v36, v42, v43, v44, v45, v51, v54, v55, v57, v60, v61, v62, v63, v65, v67, v69, v71, v72, v73, v74, v77, v79, v81, v82, v85, v87, v88, v92, v93, v94, v95, p83, p89 uintptr
+	var bits, copy1, have, hold, in, left, len1, out, v37, v46 uint32
+	var from, next, put, state, v36, v42 uintptr
 	var here, last Tcode
-	var ret, v103, v104, v105, v38 int32
-	var v47, v99 bool
+	var ret, v103, v104, v38 int32
+	var v47 bool
 	var _ /* hbuf at bp+0 */ [4]uint8
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bits, copy1, from, have, here, hold, in, last, left, len1, next, out, put, ret, state, v100, v101, v102, v103, v104, v105, v36, v37, v38, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v69, v70, v71, v72, v73, v74, v75, v76, v77, v79, v81, v82, v85, v87, v88, v90, v92, v93, v94, v95, v96, v97, v98, v99, p83, p89 /* buffer for gzip header crc calculation */
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bits, copy1, from, have, here, hold, in, last, left, len1, next, out, put, ret, state, v103, v104, v36, v37, v38, v42, v46, v47 /* buffer for gzip header crc calculation */
 	if _inflateStateCheck(tls, strm) != 0 || (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out == uintptr(m_Z_NULL) || (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in == uintptr(m_Z_NULL) && (*Tz_stream)(unsafe.Pointer(strm)).Favail_in != uint32(0) {
 		return -int32(2)
 	}
@@ -13511,11 +13511,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
+			have = have - 1
 			v36 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v36))) << bits
-			bits += uint32(8)
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 		}
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(2) != 0 && hold == uint32(0x8b1f) { /* gzip header */
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwbits == uint32(0) {
@@ -13543,8 +13543,8 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(4))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(4))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(4))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(4))
 		len1 = hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(4)-libc.Uint32FromInt32(1)) + uint32(8)
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fwbits == uint32(0) {
 			(*Tinflate_state)(unsafe.Pointer(state)).Fwbits = len1
@@ -13576,11 +13576,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v42 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v42))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 		}
 		goto _40
 	_40:
@@ -13620,11 +13620,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v43 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v43))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 		}
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fhead != uintptr(m_Z_NULL) {
 			(*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Ftime = hold
@@ -13646,11 +13646,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v44 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v44))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 		}
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fhead != uintptr(m_Z_NULL) {
 			(*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fxflags = libc.Int32FromUint32(hold & libc.Uint32FromInt32(0xff))
@@ -13672,11 +13672,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v45 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v45))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 			}
 			(*Tinflate_state)(unsafe.Pointer(state)).Flength = hold
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fhead != uintptr(m_Z_NULL) {
@@ -13705,22 +13705,22 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			}
 			if copy1 != 0 {
 				if v47 = (*Tinflate_state)(unsafe.Pointer(state)).Fhead != uintptr(m_Z_NULL) && (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra != uintptr(m_Z_NULL); v47 {
-					v46 = (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra_len - (*Tinflate_state)(unsafe.Pointer(state)).Flength
-					len1 = v46
+					v37 = (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra_len - (*Tinflate_state)(unsafe.Pointer(state)).Flength
+					len1 = v37
 				}
-				if v47 && v46 < (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra_max {
+				if v47 && v37 < (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra_max {
 					if len1+copy1 > (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra_max {
-						v48 = (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra_max - len1
+						v46 = (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra_max - len1
 					} else {
-						v48 = copy1
+						v46 = copy1
 					}
-					libc.Xmemcpy(tls, (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra+uintptr(len1), next, v48)
+					libc.Xmemcpy(tls, (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra+uintptr(len1), next, v46)
 				}
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fflags&int32(0x0200) != 0 && (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 {
 					(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = Xcrc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, next, copy1)
 				}
-				have -= copy1
-				next += uintptr(copy1)
+				have = have - copy1
+				next = next + uintptr(copy1)
 				*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Flength != 0 {
@@ -13738,21 +13738,21 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			}
 			copy1 = uint32(0)
 			for cond := true; cond; cond = len1 != 0 && copy1 < have {
-				v49 = copy1
-				copy1++
-				len1 = uint32(*(*uint8)(unsafe.Pointer(next + uintptr(v49))))
+				v37 = copy1
+				copy1 = copy1 + 1
+				len1 = uint32(*(*uint8)(unsafe.Pointer(next + uintptr(v37))))
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhead != uintptr(m_Z_NULL) && (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fname != uintptr(m_Z_NULL) && (*Tinflate_state)(unsafe.Pointer(state)).Flength < (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fname_max {
-					v51 = state + 68
-					v50 = *(*uint32)(unsafe.Pointer(v51))
-					*(*uint32)(unsafe.Pointer(v51))++
-					*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fname + uintptr(v50))) = uint8(len1)
+					v36 = state + 68
+					v37 = *(*uint32)(unsafe.Pointer(v36))
+					*(*uint32)(unsafe.Pointer(v36)) = *(*uint32)(unsafe.Pointer(v36)) + 1
+					*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fname + uintptr(v37))) = uint8(len1)
 				}
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fflags&int32(0x0200) != 0 && (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 {
 				(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = Xcrc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, next, copy1)
 			}
-			have -= copy1
-			next += uintptr(copy1)
+			have = have - copy1
+			next = next + uintptr(copy1)
 			if len1 != 0 {
 				goto inf_leave
 			}
@@ -13772,21 +13772,21 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			}
 			copy1 = uint32(0)
 			for cond := true; cond; cond = len1 != 0 && copy1 < have {
-				v52 = copy1
-				copy1++
-				len1 = uint32(*(*uint8)(unsafe.Pointer(next + uintptr(v52))))
+				v37 = copy1
+				copy1 = copy1 + 1
+				len1 = uint32(*(*uint8)(unsafe.Pointer(next + uintptr(v37))))
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhead != uintptr(m_Z_NULL) && (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fcomment != uintptr(m_Z_NULL) && (*Tinflate_state)(unsafe.Pointer(state)).Flength < (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fcomm_max {
-					v54 = state + 68
-					v53 = *(*uint32)(unsafe.Pointer(v54))
-					*(*uint32)(unsafe.Pointer(v54))++
-					*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fcomment + uintptr(v53))) = uint8(len1)
+					v36 = state + 68
+					v37 = *(*uint32)(unsafe.Pointer(v36))
+					*(*uint32)(unsafe.Pointer(v36)) = *(*uint32)(unsafe.Pointer(v36)) + 1
+					*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fcomment + uintptr(v37))) = uint8(len1)
 				}
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fflags&int32(0x0200) != 0 && (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 {
 				(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = Xcrc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, next, copy1)
 			}
-			have -= copy1
-			next += uintptr(copy1)
+			have = have - copy1
+			next = next + uintptr(copy1)
 			if len1 != 0 {
 				goto inf_leave
 			}
@@ -13804,11 +13804,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v55 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v55))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && hold != (*Tinflate_state)(unsafe.Pointer(state)).Fcheck&uint32(0xffff) {
 				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 403
@@ -13822,9 +13822,9 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			(*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fhcrc = (*Tinflate_state)(unsafe.Pointer(state)).Fflags >> libc.Int32FromInt32(9) & libc.Int32FromInt32(1)
 			(*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fdone = int32(1)
 		}
-		v56 = Xcrc32(tls, uint32(0), uintptr(m_Z_NULL), uint32(0))
-		(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v56
-		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v56
+		v37 = Xcrc32(tls, uint32(0), uintptr(m_Z_NULL), uint32(0))
+		(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v37
+		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v37
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_TYPE)
 		goto _35
 	_11:
@@ -13833,15 +13833,15 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v57 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v57))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 		}
-		v58 = hold>>libc.Int32FromInt32(24)&libc.Uint32FromInt32(0xff) + hold>>libc.Int32FromInt32(8)&libc.Uint32FromInt32(0xff00) + hold&libc.Uint32FromInt32(0xff00)<<libc.Int32FromInt32(8) + hold&libc.Uint32FromInt32(0xff)<<libc.Int32FromInt32(24)
-		(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v58
-		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v58
+		v37 = hold>>libc.Int32FromInt32(24)&libc.Uint32FromInt32(0xff) + hold>>libc.Int32FromInt32(8)&libc.Uint32FromInt32(0xff00) + hold&libc.Uint32FromInt32(0xff00)<<libc.Int32FromInt32(8) + hold&libc.Uint32FromInt32(0xff)<<libc.Int32FromInt32(24)
+		(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v37
+		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v37
 		hold = uint32(0)
 		bits = uint32(0)
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_DICT)
@@ -13857,9 +13857,9 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			(*Tinflate_state)(unsafe.Pointer(state)).Fbits = bits
 			return int32(m_Z_NEED_DICT)
 		}
-		v59 = Xadler32(tls, uint32(0), uintptr(m_Z_NULL), uint32(0))
-		(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v59
-		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v59
+		v37 = Xadler32(tls, uint32(0), uintptr(m_Z_NULL), uint32(0))
+		(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v37
+		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v37
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_TYPE)
 		/* fallthrough */
 	_13:
@@ -13871,8 +13871,8 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	_14:
 		;
 		if (*Tinflate_state)(unsafe.Pointer(state)).Flast != 0 {
-			hold >>= bits & uint32(7)
-			bits -= bits & uint32(7)
+			hold = hold >> (bits & uint32(7))
+			bits = bits - bits&uint32(7)
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_CHECK)
 			goto _35
 		}
@@ -13880,15 +13880,15 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v60 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v60))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Flast = libc.Int32FromUint32(hold & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(1) - libc.Uint32FromInt32(1)))
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(1))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(1))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(1))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(1))
 		switch hold & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(2) - libc.Uint32FromInt32(1)) {
 		case uint32(0): /* stored block */
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_STORED)
@@ -13896,8 +13896,8 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			_fixedtables1(tls, state)
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_LEN_) /* decode codes */
 			if flush == int32(m_Z_TREES) {
-				hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(2))
-				bits -= libc.Uint32FromInt32(libc.Int32FromInt32(2))
+				hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(2))
+				bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(2))
 				goto inf_leave
 			}
 		case uint32(2): /* dynamic block */
@@ -13906,22 +13906,22 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 6
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 		}
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(2))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(2))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(2))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(2))
 		goto _35
 	_15:
 		;
-		hold >>= bits & uint32(7)
-		bits -= bits & uint32(7) /* go to byte boundary */
+		hold = hold >> (bits & uint32(7))
+		bits = bits - bits&uint32(7) /* go to byte boundary */
 		for bits < libc.Uint32FromInt32(libc.Int32FromInt32(32)) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v61 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v61))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 		}
 		if hold&uint32(0xffff) != hold>>int32(16)^uint32(0xffff) {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 25
@@ -13954,10 +13954,10 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				goto inf_leave
 			}
 			libc.Xmemcpy(tls, put, next, copy1)
-			have -= copy1
-			next += uintptr(copy1)
-			left -= copy1
-			put += uintptr(copy1)
+			have = have - copy1
+			next = next + uintptr(copy1)
+			left = left - copy1
+			put = put + uintptr(copy1)
 			*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 			goto _35
 		}
@@ -13969,21 +13969,21 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v62 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v62))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fnlen = hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(5)-libc.Uint32FromInt32(1)) + uint32(257)
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(5))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(5))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(5))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(5))
 		(*Tinflate_state)(unsafe.Pointer(state)).Fndist = hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(5)-libc.Uint32FromInt32(1)) + uint32(1)
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(5))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(5))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(5))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(5))
 		(*Tinflate_state)(unsafe.Pointer(state)).Fncode = hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(4)-libc.Uint32FromInt32(1)) + uint32(4)
-		hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(4))
-		bits -= libc.Uint32FromInt32(libc.Int32FromInt32(4))
+		hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(4))
+		bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(4))
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fnlen > uint32(286) || (*Tinflate_state)(unsafe.Pointer(state)).Fndist > uint32(30) {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 54
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
@@ -13999,24 +13999,24 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v63 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v63))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 			}
-			v65 = state + 108
-			v64 = *(*uint32)(unsafe.Pointer(v65))
-			*(*uint32)(unsafe.Pointer(v65))++
-			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order1[v64])*2)) = uint16(hold & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3) - libc.Uint32FromInt32(1)))
-			hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(3))
-			bits -= libc.Uint32FromInt32(libc.Int32FromInt32(3))
+			v36 = state + 108
+			v37 = *(*uint32)(unsafe.Pointer(v36))
+			*(*uint32)(unsafe.Pointer(v36)) = *(*uint32)(unsafe.Pointer(v36)) + 1
+			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order1[v37])*2)) = uint16(hold & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3) - libc.Uint32FromInt32(1)))
+			hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(3))
+			bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(3))
 		}
 		for (*Tinflate_state)(unsafe.Pointer(state)).Fhave < uint32(19) {
-			v67 = state + 108
-			v66 = *(*uint32)(unsafe.Pointer(v67))
-			*(*uint32)(unsafe.Pointer(v67))++
-			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order1[v66])*2)) = uint16(0)
+			v36 = state + 108
+			v37 = *(*uint32)(unsafe.Pointer(v36))
+			*(*uint32)(unsafe.Pointer(v36)) = *(*uint32)(unsafe.Pointer(v36)) + 1
+			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order1[v37])*2)) = uint16(0)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1332
 		(*Tinflate_state)(unsafe.Pointer(state)).Flencode = (*Tinflate_state)(unsafe.Pointer(state)).Fnext
@@ -14041,35 +14041,35 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v69 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v69))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 				goto _68
 			_68:
 			}
 			if libc.Int32FromUint16(here.Fval) < int32(16) {
-				hold >>= uint32(here.Fbits)
-				bits -= uint32(here.Fbits)
-				v71 = state + 108
-				v70 = *(*uint32)(unsafe.Pointer(v71))
-				*(*uint32)(unsafe.Pointer(v71))++
-				*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v70)*2)) = here.Fval
+				hold = hold >> uint32(here.Fbits)
+				bits = bits - uint32(here.Fbits)
+				v36 = state + 108
+				v37 = *(*uint32)(unsafe.Pointer(v36))
+				*(*uint32)(unsafe.Pointer(v36)) = *(*uint32)(unsafe.Pointer(v36)) + 1
+				*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v37)*2)) = here.Fval
 			} else {
 				if libc.Int32FromUint16(here.Fval) == int32(16) {
 					for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(2)) {
 						if have == uint32(0) {
 							goto inf_leave
 						}
-						have--
-						v72 = next
-						next++
-						hold += uint32(*(*uint8)(unsafe.Pointer(v72))) << bits
-						bits += uint32(8)
+						have = have - 1
+						v36 = next
+						next = next + 1
+						hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+						bits = bits + uint32(8)
 					}
-					hold >>= uint32(here.Fbits)
-					bits -= uint32(here.Fbits)
+					hold = hold >> uint32(here.Fbits)
+					bits = bits - uint32(here.Fbits)
 					if (*Tinflate_state)(unsafe.Pointer(state)).Fhave == uint32(0) {
 						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 115
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
@@ -14077,43 +14077,43 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					}
 					len1 = uint32(*(*uint16)(unsafe.Pointer(state + 116 + uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fhave-uint32(1))*2)))
 					copy1 = uint32(3) + hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(2)-libc.Uint32FromInt32(1))
-					hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(2))
-					bits -= libc.Uint32FromInt32(libc.Int32FromInt32(2))
+					hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(2))
+					bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(2))
 				} else {
 					if libc.Int32FromUint16(here.Fval) == int32(17) {
 						for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(3)) {
 							if have == uint32(0) {
 								goto inf_leave
 							}
-							have--
-							v73 = next
-							next++
-							hold += uint32(*(*uint8)(unsafe.Pointer(v73))) << bits
-							bits += uint32(8)
+							have = have - 1
+							v36 = next
+							next = next + 1
+							hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+							bits = bits + uint32(8)
 						}
-						hold >>= uint32(here.Fbits)
-						bits -= uint32(here.Fbits)
+						hold = hold >> uint32(here.Fbits)
+						bits = bits - uint32(here.Fbits)
 						len1 = uint32(0)
 						copy1 = uint32(3) + hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3)-libc.Uint32FromInt32(1))
-						hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(3))
-						bits -= libc.Uint32FromInt32(libc.Int32FromInt32(3))
+						hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(3))
+						bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(3))
 					} else {
 						for bits < libc.Uint32FromInt32(libc.Int32FromUint8(here.Fbits)+libc.Int32FromInt32(7)) {
 							if have == uint32(0) {
 								goto inf_leave
 							}
-							have--
-							v74 = next
-							next++
-							hold += uint32(*(*uint8)(unsafe.Pointer(v74))) << bits
-							bits += uint32(8)
+							have = have - 1
+							v36 = next
+							next = next + 1
+							hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+							bits = bits + uint32(8)
 						}
-						hold >>= uint32(here.Fbits)
-						bits -= uint32(here.Fbits)
+						hold = hold >> uint32(here.Fbits)
+						bits = bits - uint32(here.Fbits)
 						len1 = uint32(0)
 						copy1 = uint32(11) + hold&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(7)-libc.Uint32FromInt32(1))
-						hold >>= libc.Uint32FromInt32(libc.Int32FromInt32(7))
-						bits -= libc.Uint32FromInt32(libc.Int32FromInt32(7))
+						hold = hold >> libc.Uint32FromInt32(libc.Int32FromInt32(7))
+						bits = bits - libc.Uint32FromInt32(libc.Int32FromInt32(7))
 					}
 				}
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhave+copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fnlen+(*Tinflate_state)(unsafe.Pointer(state)).Fndist {
@@ -14122,15 +14122,15 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					break
 				}
 				for {
-					v75 = copy1
-					copy1--
-					if !(v75 != 0) {
+					v37 = copy1
+					copy1 = copy1 - 1
+					if !(v37 != 0) {
 						break
 					}
-					v77 = state + 108
-					v76 = *(*uint32)(unsafe.Pointer(v77))
-					*(*uint32)(unsafe.Pointer(v77))++
-					*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v76)*2)) = uint16(len1)
+					v36 = state + 108
+					v46 = *(*uint32)(unsafe.Pointer(v36))
+					*(*uint32)(unsafe.Pointer(v36)) = *(*uint32)(unsafe.Pointer(v36)) + 1
+					*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v46)*2)) = uint16(len1)
 				}
 			}
 		}
@@ -14203,11 +14203,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v79 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v79))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 			goto _78
 		_78:
 		}
@@ -14221,20 +14221,20 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v81 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v81))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 				goto _80
 			_80:
 			}
-			hold >>= uint32(last.Fbits)
-			bits -= uint32(last.Fbits)
+			hold = hold >> uint32(last.Fbits)
+			bits = bits - uint32(last.Fbits)
 			*(*int32)(unsafe.Pointer(state + 7112)) += libc.Int32FromUint8(last.Fbits)
 		}
-		hold >>= uint32(here.Fbits)
-		bits -= uint32(here.Fbits)
+		hold = hold >> uint32(here.Fbits)
+		bits = bits - uint32(here.Fbits)
 		*(*int32)(unsafe.Pointer(state + 7112)) += libc.Int32FromUint8(here.Fbits)
 		(*Tinflate_state)(unsafe.Pointer(state)).Flength = uint32(here.Fval)
 		if libc.Int32FromUint8(here.Fop) == 0 {
@@ -14261,17 +14261,17 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v82 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v82))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 			}
 			*(*uint32)(unsafe.Pointer(state + 68)) += hold & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
-			hold >>= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
-			bits -= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
-			p83 = state + 7112
-			*(*int32)(unsafe.Pointer(p83)) = int32(uint32(*(*int32)(unsafe.Pointer(p83))) + (*Tinflate_state)(unsafe.Pointer(state)).Fextra)
+			hold = hold >> (*Tinflate_state)(unsafe.Pointer(state)).Fextra
+			bits = bits - (*Tinflate_state)(unsafe.Pointer(state)).Fextra
+			v36 = state + 7112
+			*(*int32)(unsafe.Pointer(v36)) = int32(uint32(*(*int32)(unsafe.Pointer(v36))) + (*Tinflate_state)(unsafe.Pointer(state)).Fextra)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fwas = (*Tinflate_state)(unsafe.Pointer(state)).Flength
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_DIST)
@@ -14286,11 +14286,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if have == uint32(0) {
 				goto inf_leave
 			}
-			have--
-			v85 = next
-			next++
-			hold += uint32(*(*uint8)(unsafe.Pointer(v85))) << bits
-			bits += uint32(8)
+			have = have - 1
+			v36 = next
+			next = next + 1
+			hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+			bits = bits + uint32(8)
 			goto _84
 		_84:
 		}
@@ -14304,20 +14304,20 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v87 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v87))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 				goto _86
 			_86:
 			}
-			hold >>= uint32(last.Fbits)
-			bits -= uint32(last.Fbits)
+			hold = hold >> uint32(last.Fbits)
+			bits = bits - uint32(last.Fbits)
 			*(*int32)(unsafe.Pointer(state + 7112)) += libc.Int32FromUint8(last.Fbits)
 		}
-		hold >>= uint32(here.Fbits)
-		bits -= uint32(here.Fbits)
+		hold = hold >> uint32(here.Fbits)
+		bits = bits - uint32(here.Fbits)
 		*(*int32)(unsafe.Pointer(state + 7112)) += libc.Int32FromUint8(here.Fbits)
 		if libc.Int32FromUint8(here.Fop)&int32(64) != 0 {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 256
@@ -14335,17 +14335,17 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v88 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v88))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 			}
 			*(*uint32)(unsafe.Pointer(state + 72)) += hold & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
-			hold >>= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
-			bits -= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
-			p89 = state + 7112
-			*(*int32)(unsafe.Pointer(p89)) = int32(uint32(*(*int32)(unsafe.Pointer(p89))) + (*Tinflate_state)(unsafe.Pointer(state)).Fextra)
+			hold = hold >> (*Tinflate_state)(unsafe.Pointer(state)).Fextra
+			bits = bits - (*Tinflate_state)(unsafe.Pointer(state)).Fextra
+			v36 = state + 7112
+			*(*int32)(unsafe.Pointer(v36)) = int32(uint32(*(*int32)(unsafe.Pointer(v36))) + (*Tinflate_state)(unsafe.Pointer(state)).Fextra)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_MATCH)
 		/* fallthrough */
@@ -14365,7 +14365,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				}
 			}
 			if copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fwnext {
-				copy1 -= (*Tinflate_state)(unsafe.Pointer(state)).Fwnext
+				copy1 = copy1 - (*Tinflate_state)(unsafe.Pointer(state)).Fwnext
 				from = (*Tinflate_state)(unsafe.Pointer(state)).Fwindow + uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwsize-copy1)
 			} else {
 				from = (*Tinflate_state)(unsafe.Pointer(state)).Fwindow + uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwnext-copy1)
@@ -14380,20 +14380,20 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		if copy1 > left {
 			copy1 = left
 		}
-		left -= copy1
+		left = left - copy1
 		*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 		for {
-			v92 = put
-			put++
-			v93 = from
-			from++
-			*(*uint8)(unsafe.Pointer(v92)) = *(*uint8)(unsafe.Pointer(v93))
+			v36 = put
+			put = put + 1
+			v42 = from
+			from = from + 1
+			*(*uint8)(unsafe.Pointer(v36)) = *(*uint8)(unsafe.Pointer(v42))
 			goto _91
 		_91:
 			;
-			copy1--
-			v90 = copy1
-			if !(v90 != 0) {
+			copy1 = copy1 - 1
+			v37 = copy1
+			if !(v37 != 0) {
 				break
 			}
 		}
@@ -14406,10 +14406,10 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		if left == uint32(0) {
 			goto inf_leave
 		}
-		v94 = put
-		put++
-		*(*uint8)(unsafe.Pointer(v94)) = uint8((*Tinflate_state)(unsafe.Pointer(state)).Flength)
-		left--
+		v36 = put
+		put = put + 1
+		*(*uint8)(unsafe.Pointer(v36)) = uint8((*Tinflate_state)(unsafe.Pointer(state)).Flength)
+		left = left - 1
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_LEN)
 		goto _35
 	_28:
@@ -14419,34 +14419,34 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v95 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v95))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 			}
-			out -= left
+			out = out - left
 			*(*TuLong)(unsafe.Pointer(strm + 20)) += out
 			*(*uint32)(unsafe.Pointer(state + 32)) += out
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && out != 0 {
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fflags != 0 {
-					v97 = Xcrc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, put-uintptr(out), out)
+					v46 = Xcrc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, put-uintptr(out), out)
 				} else {
-					v97 = Xadler32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, put-uintptr(out), out)
+					v46 = Xadler32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, put-uintptr(out), out)
 				}
-				v96 = v97
-				(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v96
-				(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v96
+				v37 = v46
+				(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v37
+				(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v37
 			}
 			out = left
-			if v99 = (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0; v99 {
+			if v47 = (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0; v47 {
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fflags != 0 {
-					v98 = hold
+					v37 = hold
 				} else {
-					v98 = hold>>int32(24)&uint32(0xff) + hold>>int32(8)&uint32(0xff00) + hold&uint32(0xff00)<<int32(8) + hold&uint32(0xff)<<int32(24)
+					v37 = hold>>int32(24)&uint32(0xff) + hold>>int32(8)&uint32(0xff00) + hold&uint32(0xff00)<<int32(8) + hold&uint32(0xff)<<int32(24)
 				}
 			}
-			if v99 && v98 != (*Tinflate_state)(unsafe.Pointer(state)).Fcheck {
+			if v47 && v37 != (*Tinflate_state)(unsafe.Pointer(state)).Fcheck {
 				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 423
 				(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 				goto _35
@@ -14463,11 +14463,11 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				if have == uint32(0) {
 					goto inf_leave
 				}
-				have--
-				v100 = next
-				next++
-				hold += uint32(*(*uint8)(unsafe.Pointer(v100))) << bits
-				bits += uint32(8)
+				have = have - 1
+				v36 = next
+				next = next + 1
+				hold = hold + uint32(*(*uint8)(unsafe.Pointer(v36)))<<bits
+				bits = bits + uint32(8)
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && hold != (*Tinflate_state)(unsafe.Pointer(state)).Ftotal&uint32(0xffffffff) {
 				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 444
@@ -14522,37 +14522,37 @@ inf_leave:
 			return -int32(4)
 		}
 	}
-	in -= (*Tz_stream)(unsafe.Pointer(strm)).Favail_in
-	out -= (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
+	in = in - (*Tz_stream)(unsafe.Pointer(strm)).Favail_in
+	out = out - (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
 	*(*TuLong)(unsafe.Pointer(strm + 8)) += in
 	*(*TuLong)(unsafe.Pointer(strm + 20)) += out
 	*(*uint32)(unsafe.Pointer(state + 32)) += out
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && out != 0 {
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fflags != 0 {
-			v102 = Xcrc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out-uintptr(out), out)
+			v46 = Xcrc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out-uintptr(out), out)
 		} else {
-			v102 = Xadler32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out-uintptr(out), out)
+			v46 = Xadler32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out-uintptr(out), out)
 		}
-		v101 = v102
-		(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v101
-		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v101
+		v37 = v46
+		(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = v37
+		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = v37
 	}
 	if (*Tinflate_state)(unsafe.Pointer(state)).Flast != 0 {
-		v103 = int32(64)
+		v38 = int32(64)
+	} else {
+		v38 = 0
+	}
+	if (*Tinflate_state)(unsafe.Pointer(state)).Fmode == int32(_TYPE) {
+		v103 = int32(128)
 	} else {
 		v103 = 0
 	}
-	if (*Tinflate_state)(unsafe.Pointer(state)).Fmode == int32(_TYPE) {
-		v104 = int32(128)
+	if (*Tinflate_state)(unsafe.Pointer(state)).Fmode == int32(_LEN_) || (*Tinflate_state)(unsafe.Pointer(state)).Fmode == int32(_COPY_) {
+		v104 = int32(256)
 	} else {
 		v104 = 0
 	}
-	if (*Tinflate_state)(unsafe.Pointer(state)).Fmode == int32(_LEN_) || (*Tinflate_state)(unsafe.Pointer(state)).Fmode == int32(_COPY_) {
-		v105 = int32(256)
-	} else {
-		v105 = 0
-	}
-	(*Tz_stream)(unsafe.Pointer(strm)).Fdata_type = libc.Int32FromUint32((*Tinflate_state)(unsafe.Pointer(state)).Fbits) + v103 + v104 + v105
+	(*Tz_stream)(unsafe.Pointer(strm)).Fdata_type = libc.Int32FromUint32((*Tinflate_state)(unsafe.Pointer(state)).Fbits) + v38 + v103 + v104
 	if (in == uint32(0) && out == uint32(0) || flush == int32(m_Z_FINISH)) && ret == m_Z_OK {
 		ret = -int32(5)
 	}
@@ -14689,7 +14689,7 @@ func _syncsearch(tls *libc.TLS, have uintptr, buf uintptr, len1 uint32) (r uint3
 			v1 = int32(0xff)
 		}
 		if libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(buf + uintptr(next)))) == v1 {
-			got++
+			got = got + 1
 		} else {
 			if *(*uint8)(unsafe.Pointer(buf + uintptr(next))) != 0 {
 				got = uint32(0)
@@ -14697,7 +14697,7 @@ func _syncsearch(tls *libc.TLS, have uintptr, buf uintptr, len1 uint32) (r uint3
 				got = uint32(4) - got
 			}
 		}
-		next++
+		next = next + 1
 	}
 	*(*uint32)(unsafe.Pointer(have)) = got
 	return next
@@ -14727,7 +14727,7 @@ func XinflateSync(tls *libc.TLS, strm Tz_streamp) (r int32) {
 		len1 = uint32(0)
 		for (*Tinflate_state)(unsafe.Pointer(state)).Fbits >= uint32(8) {
 			v1 = len1
-			len1++
+			len1 = len1 + 1
 			(*(*[4]uint8)(unsafe.Pointer(bp)))[v1] = uint8((*Tinflate_state)(unsafe.Pointer(state)).Fhold)
 			*(*uint32)(unsafe.Pointer(state + 60)) >>= uint32(8)
 			*(*uint32)(unsafe.Pointer(state + 64)) -= uint32(8)
@@ -14904,14 +14904,14 @@ const m_MAXBITS = 15
 func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, table uintptr, bits uintptr, work uintptr) (r int32) {
 	bp := tls.Alloc(64)
 	defer tls.Free(64)
-	var base, extra, next, v13, v14, v17, v4, v5, v6, v7 uintptr
+	var base, extra, next, v4, v5 uintptr
 	var curr, drop, fill, huff, incr, len1, low, mask, match, max, min, root, sym, used uint32
 	var here Tcode
 	var left int32
-	var v12, v16 uint16
+	var v12 uint16
 	var _ /* count at bp+0 */ [16]uint16
 	var _ /* offs at bp+32 */ [16]uint16
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = base, curr, drop, extra, fill, here, huff, incr, left, len1, low, mask, match, max, min, next, root, sym, used, v12, v13, v14, v16, v17, v4, v5, v6, v7 /* offsets in table for each length */
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = base, curr, drop, extra, fill, here, huff, incr, left, len1, low, mask, match, max, min, next, root, sym, used, v12, v4, v5 /* offsets in table for each length */
 	/*
 	   Process a set of code lengths to create a canonical Huffman code.  The
 	   code lengths are lens[0..codes-1].  Each length corresponds to the
@@ -14949,18 +14949,18 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 		goto _1
 	_1:
 		;
-		len1++
+		len1 = len1 + 1
 	}
 	sym = uint32(0)
 	for {
 		if !(sym < codes) {
 			break
 		}
-		(*(*[16]uint16)(unsafe.Pointer(bp)))[*(*uint16)(unsafe.Pointer(lens + uintptr(sym)*2))]++
+		(*(*[16]uint16)(unsafe.Pointer(bp)))[*(*uint16)(unsafe.Pointer(lens + uintptr(sym)*2))] = (*(*[16]uint16)(unsafe.Pointer(bp)))[*(*uint16)(unsafe.Pointer(lens + uintptr(sym)*2))] + 1
 		goto _2
 	_2:
 		;
-		sym++
+		sym = sym + 1
 	}
 	/* bound code lengths, force root to be within code lengths */
 	root = *(*uint32)(unsafe.Pointer(bits))
@@ -14975,7 +14975,7 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 		goto _3
 	_3:
 		;
-		max--
+		max = max - 1
 	}
 	if root > max {
 		root = max
@@ -14988,10 +14988,10 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 		v4 = *(*uintptr)(unsafe.Pointer(v5))
 		*(*uintptr)(unsafe.Pointer(v5)) += 4
 		*(*Tcode)(unsafe.Pointer(v4)) = here /* make a table to force an error */
-		v7 = table
-		v6 = *(*uintptr)(unsafe.Pointer(v7))
-		*(*uintptr)(unsafe.Pointer(v7)) += 4
-		*(*Tcode)(unsafe.Pointer(v6)) = here
+		v5 = table
+		v4 = *(*uintptr)(unsafe.Pointer(v5))
+		*(*uintptr)(unsafe.Pointer(v5)) += 4
+		*(*Tcode)(unsafe.Pointer(v4)) = here
 		*(*uint32)(unsafe.Pointer(bits)) = uint32(1)
 		return 0 /* no symbols, but wait for decoding to report error */
 	}
@@ -15006,7 +15006,7 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 		goto _8
 	_8:
 		;
-		min++
+		min = min + 1
 	}
 	if root < min {
 		root = min
@@ -15018,15 +15018,15 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 		if !(len1 <= uint32(m_MAXBITS)) {
 			break
 		}
-		left <<= int32(1)
-		left -= libc.Int32FromUint16((*(*[16]uint16)(unsafe.Pointer(bp)))[len1])
+		left = left << int32(1)
+		left = left - libc.Int32FromUint16((*(*[16]uint16)(unsafe.Pointer(bp)))[len1])
 		if left < 0 {
 			return -int32(1)
 		} /* over-subscribed */
 		goto _9
 	_9:
 		;
-		len1++
+		len1 = len1 + 1
 	}
 	if left > 0 && (type1 == int32(_CODES) || max != uint32(1)) {
 		return -int32(1)
@@ -15042,7 +15042,7 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 		goto _10
 	_10:
 		;
-		len1++
+		len1 = len1 + 1
 	}
 	/* sort symbols by length, by symbol order within each length */
 	sym = uint32(0)
@@ -15051,15 +15051,15 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 			break
 		}
 		if libc.Int32FromUint16(*(*uint16)(unsafe.Pointer(lens + uintptr(sym)*2))) != 0 {
-			v13 = bp + 32 + uintptr(*(*uint16)(unsafe.Pointer(lens + uintptr(sym)*2)))*2
-			v12 = *(*uint16)(unsafe.Pointer(v13))
-			*(*uint16)(unsafe.Pointer(v13))++
+			v4 = bp + 32 + uintptr(*(*uint16)(unsafe.Pointer(lens + uintptr(sym)*2)))*2
+			v12 = *(*uint16)(unsafe.Pointer(v4))
+			*(*uint16)(unsafe.Pointer(v4)) = *(*uint16)(unsafe.Pointer(v4)) + 1
 			*(*uint16)(unsafe.Pointer(work + uintptr(v12)*2)) = uint16(sym)
 		}
 		goto _11
 	_11:
 		;
-		sym++
+		sym = sym + 1
 	}
 	/*
 	   Create and fill in decoding tables.  In this loop, the table being
@@ -15090,9 +15090,9 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 	/* set up for code type */
 	switch type1 {
 	case int32(_CODES):
-		v14 = work
-		extra = v14
-		base = v14 /* dummy value--not used */
+		v4 = work
+		extra = v4
+		base = v4 /* dummy value--not used */
 		match = uint32(20)
 	case int32(_LENS):
 		base = uintptr(unsafe.Pointer(&_lbase))
@@ -15138,26 +15138,26 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 		fill = uint32(1) << curr
 		min = fill /* save offset to next table */
 		for cond := true; cond; cond = fill != uint32(0) {
-			fill -= incr
+			fill = fill - incr
 			*(*Tcode)(unsafe.Pointer(next + uintptr(huff>>drop+fill)*4)) = here
 		}
 		/* backwards increment the len-bit code huff */
 		incr = uint32(1) << (len1 - uint32(1))
 		for huff&incr != 0 {
-			incr >>= uint32(1)
+			incr = incr >> uint32(1)
 		}
 		if incr != uint32(0) {
-			huff &= incr - uint32(1)
-			huff += incr
+			huff = huff & (incr - uint32(1))
+			huff = huff + incr
 		} else {
 			huff = uint32(0)
 		}
 		/* go to next symbol, update count, len */
-		sym++
-		v17 = bp + uintptr(len1)*2
-		*(*uint16)(unsafe.Pointer(v17))--
-		v16 = *(*uint16)(unsafe.Pointer(v17))
-		if libc.Int32FromUint16(v16) == 0 {
+		sym = sym + 1
+		v4 = bp + uintptr(len1)*2
+		*(*uint16)(unsafe.Pointer(v4)) = *(*uint16)(unsafe.Pointer(v4)) - 1
+		v12 = *(*uint16)(unsafe.Pointer(v4))
+		if libc.Int32FromUint16(v12) == 0 {
 			if len1 == max {
 				break
 			}
@@ -15170,20 +15170,20 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 				drop = root
 			}
 			/* increment past last table */
-			next += uintptr(min) * 4 /* here min is 1 << curr */
+			next = next + uintptr(min)*4 /* here min is 1 << curr */
 			/* determine length of next table */
 			curr = len1 - drop
 			left = libc.Int32FromInt32(1) << curr
 			for curr+drop < max {
-				left -= libc.Int32FromUint16((*(*[16]uint16)(unsafe.Pointer(bp)))[curr+drop])
+				left = left - libc.Int32FromUint16((*(*[16]uint16)(unsafe.Pointer(bp)))[curr+drop])
 				if left <= 0 {
 					break
 				}
-				curr++
-				left <<= int32(1)
+				curr = curr + 1
+				left = left << int32(1)
 			}
 			/* check for enough space */
-			used += uint32(1) << curr
+			used = used + uint32(1)<<curr
 			if type1 == int32(_LENS) && used > uint32(m_ENOUGH_LENS) || type1 == int32(_DISTS) && used > uint32(m_ENOUGH_DISTS) {
 				return int32(1)
 			}
@@ -18731,13 +18731,13 @@ func _bi_reverse(tls *libc.TLS, code uint32, len1 int32) (r uint32) {
 	_, _ = res, v1
 	res = uint32(0)
 	for {
-		res |= code & uint32(1)
-		code >>= uint32(1)
-		res <<= uint32(1)
+		res = res | code&uint32(1)
+		code = code >> uint32(1)
+		res = res << uint32(1)
 		goto _2
 	_2:
 		;
-		len1--
+		len1 = len1 - 1
 		v1 = len1
 		if !(v1 > 0) {
 			break
@@ -18752,28 +18752,28 @@ func _bi_reverse(tls *libc.TLS, code uint32, len1 int32) (r uint32) {
 //	 * Flush the bit buffer, keeping at most 7 bits in it.
 //	 */
 func _bi_flush(tls *libc.TLS, s uintptr) {
-	var v1, v3, v5 Tulg
-	var v2, v4, v6, p7 uintptr
-	_, _, _, _, _, _, _ = v1, v2, v3, v4, v5, v6, p7
+	var v1 Tulg
+	var v2 uintptr
+	_, _ = v1, v2
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid == int32(16) {
 		v2 = s + 20
 		v1 = *(*Tulg)(unsafe.Pointer(v2))
-		*(*Tulg)(unsafe.Pointer(v2))++
+		*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v4 = s + 20
-		v3 = *(*Tulg)(unsafe.Pointer(v4))
-		*(*Tulg)(unsafe.Pointer(v4))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v2 = s + 20
+		v1 = *(*Tulg)(unsafe.Pointer(v2))
+		*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(0)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid = 0
 	} else {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid >= int32(8) {
-			v6 = s + 20
-			v5 = *(*Tulg)(unsafe.Pointer(v6))
-			*(*Tulg)(unsafe.Pointer(v6))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf)
-			p7 = s + 5816
-			*(*Tush)(unsafe.Pointer(p7)) = Tush(int32(*(*Tush)(unsafe.Pointer(p7))) >> libc.Int32FromInt32(8))
+			v2 = s + 20
+			v1 = *(*Tulg)(unsafe.Pointer(v2))
+			*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf)
+			v2 = s + 5816
+			*(*Tush)(unsafe.Pointer(v2)) = Tush(int32(*(*Tush)(unsafe.Pointer(v2))) >> libc.Int32FromInt32(8))
 			*(*int32)(unsafe.Pointer(s + 5820)) -= int32(8)
 		}
 	}
@@ -18785,24 +18785,24 @@ func _bi_flush(tls *libc.TLS, s uintptr) {
 //	 * Flush the bit buffer and align the output on a byte boundary
 //	 */
 func _bi_windup(tls *libc.TLS, s uintptr) {
-	var v1, v3, v5 Tulg
-	var v2, v4, v6 uintptr
-	_, _, _, _, _, _ = v1, v2, v3, v4, v5, v6
+	var v1 Tulg
+	var v2 uintptr
+	_, _ = v1, v2
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > int32(8) {
 		v2 = s + 20
 		v1 = *(*Tulg)(unsafe.Pointer(v2))
-		*(*Tulg)(unsafe.Pointer(v2))++
+		*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v4 = s + 20
-		v3 = *(*Tulg)(unsafe.Pointer(v4))
-		*(*Tulg)(unsafe.Pointer(v4))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v2 = s + 20
+		v1 = *(*Tulg)(unsafe.Pointer(v2))
+		*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 	} else {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > 0 {
-			v6 = s + 20
-			v5 = *(*Tulg)(unsafe.Pointer(v6))
-			*(*Tulg)(unsafe.Pointer(v6))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf)
+			v2 = s + 20
+			v1 = *(*Tulg)(unsafe.Pointer(v2))
+			*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf)
 		}
 	}
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(0)
@@ -18842,7 +18842,7 @@ func _gen_codes(tls *libc.TLS, tree uintptr, max_code int32, bl_count uintptr) {
 		goto _1
 	_1:
 		;
-		bits++
+		bits = bits + 1
 	}
 	/* Check that the bit counts in bl_count are consistent. The last code
 	 * must be all ones.
@@ -18859,12 +18859,12 @@ func _gen_codes(tls *libc.TLS, tree uintptr, max_code int32, bl_count uintptr) {
 		/* Now reverse the bits */
 		v4 = bp + uintptr(len1)*2
 		v3 = *(*Tush)(unsafe.Pointer(v4))
-		*(*Tush)(unsafe.Pointer(v4))++
+		*(*Tush)(unsafe.Pointer(v4)) = *(*Tush)(unsafe.Pointer(v4)) + 1
 		*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4)) = uint16(_bi_reverse(tls, uint32(v3), len1))
 		goto _2
 	_2:
 		;
-		n++
+		n = n + 1
 	}
 }
 
@@ -18909,7 +18909,7 @@ func _init_block(tls *libc.TLS, s uintptr) {
 		goto _1
 	_1:
 		;
-		n++
+		n = n + 1
 	}
 	n = 0
 	for {
@@ -18920,7 +18920,7 @@ func _init_block(tls *libc.TLS, s uintptr) {
 		goto _2
 	_2:
 		;
-		n++
+		n = n + 1
 	}
 	n = 0
 	for {
@@ -18931,7 +18931,7 @@ func _init_block(tls *libc.TLS, s uintptr) {
 		goto _3
 	_3:
 		;
-		n++
+		n = n + 1
 	}
 	*(*Tush)(unsafe.Pointer(s + 148 + 256*4)) = uint16(1)
 	v4 = libc.Uint32FromInt32(0)
@@ -18989,7 +18989,7 @@ func _pqdownheap(tls *libc.TLS, s uintptr, tree uintptr, k int32) {
 	for j <= (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_len {
 		/* Set j to the smallest of the two sons: */
 		if j < (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_len && (libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j+int32(1))*4)))*4))) < libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))*4))) || libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j+int32(1))*4)))*4))) == libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))*4))) && libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j+int32(1))*4)))))) <= libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4))))))) {
-			j++
+			j = j + 1
 		}
 		/* Exit if v is smaller than both sons */
 		if libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(v)*4))) < libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))*4))) || libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(v)*4))) == libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))*4))) && libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(v)))) <= libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))))) {
@@ -18999,7 +18999,7 @@ func _pqdownheap(tls *libc.TLS, s uintptr, tree uintptr, k int32) {
 		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(k)*4)) = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4))
 		k = j
 		/* And continue down the tree, setting j to the left son of k */
-		j <<= int32(1)
+		j = j << int32(1)
 	}
 	*(*int32)(unsafe.Pointer(s + 2908 + uintptr(k)*4)) = v
 }
@@ -19018,9 +19018,9 @@ func _pqdownheap(tls *libc.TLS, s uintptr, tree uintptr, k int32) {
 //	 */
 func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 	var base, bits, h, m, max_code, max_length, n, overflow, xbits, v5 int32
-	var extra, stree, tree, p3 uintptr
+	var extra, stree, tree, v3 uintptr
 	var f Tush
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = base, bits, extra, f, h, m, max_code, max_length, n, overflow, stree, tree, xbits, v5, p3
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = base, bits, extra, f, h, m, max_code, max_length, n, overflow, stree, tree, xbits, v3, v5
 	tree = (*Ttree_desc)(unsafe.Pointer(desc)).Fdyn_tree
 	max_code = (*Ttree_desc)(unsafe.Pointer(desc)).Fmax_code
 	stree = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Fstatic_tree
@@ -19037,7 +19037,7 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 		goto _1
 	_1:
 		;
-		bits++
+		bits = bits + 1
 	}
 	/* In a first pass, compute the optimal bit lengths (which may
 	 * overflow in the case of the bit length tree).
@@ -19052,14 +19052,14 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 		bits = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4 + 2)))*4 + 2))) + int32(1)
 		if bits > max_length {
 			bits = max_length
-			overflow++
+			overflow = overflow + 1
 		}
 		*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4 + 2)) = libc.Uint16FromInt32(bits)
 		/* We overwrite tree[n].Dad which is no longer needed */
 		if n > max_code {
 			goto _2
 		} /* not a leaf node */
-		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2))++
+		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2)) = *(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2)) + 1
 		xbits = 0
 		if n >= base {
 			xbits = *(*Tintf)(unsafe.Pointer(extra + uintptr(n-base)*4))
@@ -19072,7 +19072,7 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 		goto _2
 	_2:
 		;
-		h++
+		h = h + 1
 	}
 	if overflow == 0 {
 		return
@@ -19082,16 +19082,16 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 	for cond := true; cond; cond = overflow > 0 {
 		bits = max_length - int32(1)
 		for libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2))) == 0 {
-			bits--
+			bits = bits - 1
 		}
-		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2))-- /* move one leaf down the tree */
-		p3 = s + 2876 + uintptr(bits+int32(1))*2
-		*(*Tush)(unsafe.Pointer(p3)) = Tush(int32(*(*Tush)(unsafe.Pointer(p3))) + libc.Int32FromInt32(2)) /* move one overflow item as its brother */
-		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(max_length)*2))--
+		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2)) = *(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2)) - 1 /* move one leaf down the tree */
+		v3 = s + 2876 + uintptr(bits+int32(1))*2
+		*(*Tush)(unsafe.Pointer(v3)) = Tush(int32(*(*Tush)(unsafe.Pointer(v3))) + libc.Int32FromInt32(2)) /* move one overflow item as its brother */
+		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(max_length)*2)) = *(*Tush)(unsafe.Pointer(s + 2876 + uintptr(max_length)*2)) - 1
 		/* The brother of the overflow item also moves one step up,
 		 * but this does not affect bl_count[max_length]
 		 */
-		overflow -= int32(2)
+		overflow = overflow - int32(2)
 	}
 	/* Now recompute all bit lengths, scanning in increasing frequency.
 	 * h is still equal to HEAP_SIZE. (It is simpler to reconstruct all
@@ -19105,7 +19105,7 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 		}
 		n = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2)))
 		for n != 0 {
-			h--
+			h = h - 1
 			v5 = h
 			m = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(v5)*4))
 			if m > max_code {
@@ -19115,12 +19115,12 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 				*(*Tulg)(unsafe.Pointer(s + 5800)) += (libc.Uint32FromInt32(bits) - uint32(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4 + 2)))) * uint32(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4)))
 				*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4 + 2)) = libc.Uint16FromInt32(bits)
 			}
-			n--
+			n = n - 1
 		}
 		goto _4
 	_4:
 		;
-		bits--
+		bits = bits - 1
 	}
 }
 
@@ -19135,10 +19135,10 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 //	 *     also updated if stree is not null. The field max_code is set.
 //	 */
 func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
-	var elems, m, max_code, n, node, v11, v13, v15, v17, v19, v2, v20, v4, v5, v6, v7, v8 int32
-	var stree, tree, v12, v14, v16, v21, v3, v9 uintptr
+	var elems, m, max_code, n, node, v2, v4, v5, v6 int32
+	var stree, tree, v3 uintptr
 	var v18 Tush
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = elems, m, max_code, n, node, stree, tree, v11, v12, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v3, v4, v5, v6, v7, v8, v9
+	_, _, _, _, _, _, _, _, _, _, _, _, _ = elems, m, max_code, n, node, stree, tree, v18, v2, v3, v4, v5, v6
 	tree = (*Ttree_desc)(unsafe.Pointer(desc)).Fdyn_tree
 	stree = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Fstatic_tree
 	elems = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Felems /* iterate over heap elements */
@@ -19160,7 +19160,7 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 		}
 		if libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4))) != 0 {
 			v3 = s + 5200
-			*(*int32)(unsafe.Pointer(v3))++
+			*(*int32)(unsafe.Pointer(v3)) = *(*int32)(unsafe.Pointer(v3)) + 1
 			v2 = *(*int32)(unsafe.Pointer(v3))
 			v4 = n
 			max_code = v4
@@ -19172,7 +19172,7 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 		goto _1
 	_1:
 		;
-		n++
+		n = n + 1
 	}
 	/* The pkzip format requires that at least one distance code exists,
 	 * and that at least one bit should be sent even if there is only one
@@ -19181,21 +19181,21 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 	 */
 	for (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_len < int32(2) {
 		if max_code < int32(2) {
-			max_code++
-			v7 = max_code
-			v6 = v7
+			max_code = max_code + 1
+			v5 = max_code
+			v4 = v5
 		} else {
-			v6 = 0
+			v4 = 0
 		}
-		v5 = v6
-		v9 = s + 5200
-		*(*int32)(unsafe.Pointer(v9))++
-		v8 = *(*int32)(unsafe.Pointer(v9))
-		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v8)*4)) = v5
-		node = v5
+		v2 = v4
+		v3 = s + 5200
+		*(*int32)(unsafe.Pointer(v3)) = *(*int32)(unsafe.Pointer(v3)) + 1
+		v6 = *(*int32)(unsafe.Pointer(v3))
+		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v6)*4)) = v2
+		node = v2
 		*(*Tush)(unsafe.Pointer(tree + uintptr(node)*4)) = uint16(1)
 		*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(node))) = uint8(0)
-		(*Tdeflate_state)(unsafe.Pointer(s)).Fopt_len--
+		(*Tdeflate_state)(unsafe.Pointer(s)).Fopt_len = (*Tdeflate_state)(unsafe.Pointer(s)).Fopt_len - 1
 		if stree != 0 {
 			*(*Tulg)(unsafe.Pointer(s + 5804)) -= uint32(*(*Tush)(unsafe.Pointer(stree + uintptr(node)*4 + 2)))
 		}
@@ -19214,7 +19214,7 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 		goto _10
 	_10:
 		;
-		n--
+		n = n - 1
 	}
 	/* Construct the Huffman tree by repeatedly combining the least two
 	 * frequent nodes.
@@ -19222,41 +19222,41 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 	node = elems /* next internal node of the tree */
 	for cond := true; cond; cond = (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_len >= int32(2) {
 		n = *(*int32)(unsafe.Pointer(s + 2908 + 1*4))
-		v12 = s + 5200
-		v11 = *(*int32)(unsafe.Pointer(v12))
-		*(*int32)(unsafe.Pointer(v12))--
-		*(*int32)(unsafe.Pointer(s + 2908 + 1*4)) = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(v11)*4))
+		v3 = s + 5200
+		v2 = *(*int32)(unsafe.Pointer(v3))
+		*(*int32)(unsafe.Pointer(v3)) = *(*int32)(unsafe.Pointer(v3)) - 1
+		*(*int32)(unsafe.Pointer(s + 2908 + 1*4)) = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(v2)*4))
 		_pqdownheap(tls, s, tree, int32(m_SMALLEST))  /* n = node of least frequency */
 		m = *(*int32)(unsafe.Pointer(s + 2908 + 1*4)) /* m = node of next least frequency */
-		v14 = s + 5204
-		*(*int32)(unsafe.Pointer(v14))--
-		v13 = *(*int32)(unsafe.Pointer(v14))
-		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v13)*4)) = n /* keep the nodes sorted by frequency */
-		v16 = s + 5204
-		*(*int32)(unsafe.Pointer(v16))--
-		v15 = *(*int32)(unsafe.Pointer(v16))
-		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v15)*4)) = m
+		v3 = s + 5204
+		*(*int32)(unsafe.Pointer(v3)) = *(*int32)(unsafe.Pointer(v3)) - 1
+		v2 = *(*int32)(unsafe.Pointer(v3))
+		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v2)*4)) = n /* keep the nodes sorted by frequency */
+		v3 = s + 5204
+		*(*int32)(unsafe.Pointer(v3)) = *(*int32)(unsafe.Pointer(v3)) - 1
+		v2 = *(*int32)(unsafe.Pointer(v3))
+		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v2)*4)) = m
 		/* Create a new node father of n and m */
 		*(*Tush)(unsafe.Pointer(tree + uintptr(node)*4)) = libc.Uint16FromInt32(libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4))) + libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4))))
 		if libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(n)))) >= libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(m)))) {
-			v17 = libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(n))))
+			v2 = libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(n))))
 		} else {
-			v17 = libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(m))))
+			v2 = libc.Int32FromUint8(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(m))))
 		}
-		*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(node))) = libc.Uint8FromInt32(v17 + libc.Int32FromInt32(1))
+		*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(node))) = libc.Uint8FromInt32(v2 + libc.Int32FromInt32(1))
 		v18 = libc.Uint16FromInt32(node)
 		*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4 + 2)) = v18
 		*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4 + 2)) = v18
 		/* and insert the new node in the heap */
-		v19 = node
-		node++
-		*(*int32)(unsafe.Pointer(s + 2908 + 1*4)) = v19
+		v2 = node
+		node = node + 1
+		*(*int32)(unsafe.Pointer(s + 2908 + 1*4)) = v2
 		_pqdownheap(tls, s, tree, int32(m_SMALLEST))
 	}
-	v21 = s + 5204
-	*(*int32)(unsafe.Pointer(v21))--
-	v20 = *(*int32)(unsafe.Pointer(v21))
-	*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v20)*4)) = *(*int32)(unsafe.Pointer(s + 2908 + 1*4))
+	v3 = s + 5204
+	*(*int32)(unsafe.Pointer(v3)) = *(*int32)(unsafe.Pointer(v3)) - 1
+	v2 = *(*int32)(unsafe.Pointer(v3))
+	*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v2)*4)) = *(*int32)(unsafe.Pointer(s + 2908 + 1*4))
 	/* At this point, the fields freq and dad are set. We can now
 	 * generate the bit lengths.
 	 */
@@ -19273,8 +19273,8 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 //	 */
 func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 	var count, curlen, max_count, min_count, n, nextlen, prevlen, v2 int32
-	var p3 uintptr
-	_, _, _, _, _, _, _, _, _ = count, curlen, max_count, min_count, n, nextlen, prevlen, v2, p3 /* iterates over all tree elements */
+	var v3 uintptr
+	_, _, _, _, _, _, _, _, _ = count, curlen, max_count, min_count, n, nextlen, prevlen, v2, v3 /* iterates over all tree elements */
 	prevlen = -int32(1)                                                                          /* length of current code */
 	nextlen = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + 2)))                           /* length of next code */
 	count = 0                                                                                    /* repeat count of the current code */
@@ -19292,25 +19292,25 @@ func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 		}
 		curlen = nextlen
 		nextlen = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(n+int32(1))*4 + 2)))
-		count++
+		count = count + 1
 		v2 = count
 		if v2 < max_count && curlen == nextlen {
 			goto _1
 		} else {
 			if count < min_count {
-				p3 = s + 2684 + uintptr(curlen)*4
-				*(*Tush)(unsafe.Pointer(p3)) = Tush(int32(*(*Tush)(unsafe.Pointer(p3))) + count)
+				v3 = s + 2684 + uintptr(curlen)*4
+				*(*Tush)(unsafe.Pointer(v3)) = Tush(int32(*(*Tush)(unsafe.Pointer(v3))) + count)
 			} else {
 				if curlen != 0 {
 					if curlen != prevlen {
-						*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4))++
+						*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)) = *(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)) + 1
 					}
-					*(*Tush)(unsafe.Pointer(s + 2684 + 16*4))++
+					*(*Tush)(unsafe.Pointer(s + 2684 + 16*4)) = *(*Tush)(unsafe.Pointer(s + 2684 + 16*4)) + 1
 				} else {
 					if count <= int32(10) {
-						*(*Tush)(unsafe.Pointer(s + 2684 + 17*4))++
+						*(*Tush)(unsafe.Pointer(s + 2684 + 17*4)) = *(*Tush)(unsafe.Pointer(s + 2684 + 17*4)) + 1
 					} else {
-						*(*Tush)(unsafe.Pointer(s + 2684 + 18*4))++
+						*(*Tush)(unsafe.Pointer(s + 2684 + 18*4)) = *(*Tush)(unsafe.Pointer(s + 2684 + 18*4)) + 1
 					}
 				}
 			}
@@ -19332,7 +19332,7 @@ func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 		goto _1
 	_1:
 		;
-		n++
+		n = n + 1
 	}
 }
 
@@ -19343,15 +19343,15 @@ func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 //	 * bl_tree.
 //	 */
 func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
-	var count, curlen, len1, len11, len2, len3, len4, len5, len6, len7, max_count, min_count, n, nextlen, prevlen, val, val1, val2, val3, val4, val5, val6, val7, v2, v3 int32
-	var v12, v14, v18, v20, v24, v26, v30, v32, v36, v38, v42, v44, v48, v50, v6, v8 Tulg
-	var v13, v15, v19, v21, v25, v27, v31, v33, v37, v39, v43, v45, v49, v51, v7, v9, p10, p11, p16, p17, p22, p23, p28, p29, p34, p35, p40, p41, p46, p47, p5, p52 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = count, curlen, len1, len11, len2, len3, len4, len5, len6, len7, max_count, min_count, n, nextlen, prevlen, val, val1, val2, val3, val4, val5, val6, val7, v12, v13, v14, v15, v18, v19, v2, v20, v21, v24, v25, v26, v27, v3, v30, v31, v32, v33, v36, v37, v38, v39, v42, v43, v44, v45, v48, v49, v50, v51, v6, v7, v8, v9, p10, p11, p16, p17, p22, p23, p28, p29, p34, p35, p40, p41, p46, p47, p5, p52 /* iterates over all tree elements */
-	prevlen = -int32(1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     /* length of current code */
-	nextlen = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + 2)))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /* length of next code */
-	count = 0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* repeat count of the current code */
-	max_count = int32(7)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    /* max repeat count */
-	min_count = int32(4)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    /* min repeat count */
+	var count, curlen, len1, len11, len2, len3, len4, len5, len6, len7, max_count, min_count, n, nextlen, prevlen, val, val1, val2, val3, val4, val5, val6, val7, v2 int32
+	var v5 uintptr
+	var v6 Tulg
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = count, curlen, len1, len11, len2, len3, len4, len5, len6, len7, max_count, min_count, n, nextlen, prevlen, val, val1, val2, val3, val4, val5, val6, val7, v2, v5, v6 /* iterates over all tree elements */
+	prevlen = -int32(1)                                                                                                                                                                                                                                 /* length of current code */
+	nextlen = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + 2)))                                                                                                                                                                                  /* length of next code */
+	count = 0                                                                                                                                                                                                                                           /* repeat count of the current code */
+	max_count = int32(7)                                                                                                                                                                                                                                /* max repeat count */
+	min_count = int32(4)                                                                                                                                                                                                                                /* min repeat count */
 	/* tree[max_code + 1].Len = -1; */ /* guard already set */
 	if nextlen == 0 {
 		max_count = int32(138)
@@ -19364,7 +19364,7 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 		}
 		curlen = nextlen
 		nextlen = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(tree + uintptr(n+int32(1))*4 + 2)))
-		count++
+		count = count + 1
 		v2 = count
 		if v2 < max_count && curlen == nextlen {
 			goto _1
@@ -19374,29 +19374,29 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 					len1 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4 + 2)))
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 						val = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))
-						p5 = s + 5816
-						*(*Tush)(unsafe.Pointer(p5)) = Tush(int32(*(*Tush)(unsafe.Pointer(p5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v7 = s + 20
-						v6 = *(*Tulg)(unsafe.Pointer(v7))
-						*(*Tulg)(unsafe.Pointer(v7))++
+						v5 = s + 5816
+						*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v5 = s + 20
+						v6 = *(*Tulg)(unsafe.Pointer(v5))
+						*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v9 = s + 20
-						v8 = *(*Tulg)(unsafe.Pointer(v9))
-						*(*Tulg)(unsafe.Pointer(v9))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v8))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+						v5 = s + 20
+						v6 = *(*Tulg)(unsafe.Pointer(v5))
+						*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 						*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 					} else {
-						p10 = s + 5816
-						*(*Tush)(unsafe.Pointer(p10)) = Tush(int32(*(*Tush)(unsafe.Pointer(p10))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v5 = s + 5816
+						*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 						*(*int32)(unsafe.Pointer(s + 5820)) += len1
 					}
 					goto _4
 				_4:
 					;
-					count--
-					v3 = count
-					if !(v3 != 0) {
+					count = count - 1
+					v2 = count
+					if !(v2 != 0) {
 						break
 					}
 				}
@@ -19406,63 +19406,63 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 						len11 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4 + 2)))
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 							val1 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))
-							p11 = s + 5816
-							*(*Tush)(unsafe.Pointer(p11)) = Tush(int32(*(*Tush)(unsafe.Pointer(p11))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v13 = s + 20
-							v12 = *(*Tulg)(unsafe.Pointer(v13))
-							*(*Tulg)(unsafe.Pointer(v13))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v12))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v15 = s + 20
-							v14 = *(*Tulg)(unsafe.Pointer(v15))
-							*(*Tulg)(unsafe.Pointer(v15))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v14))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val1)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 							*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 						} else {
-							p16 = s + 5816
-							*(*Tush)(unsafe.Pointer(p16)) = Tush(int32(*(*Tush)(unsafe.Pointer(p16))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 							*(*int32)(unsafe.Pointer(s + 5820)) += len11
 						}
-						count--
+						count = count - 1
 					}
 					len2 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 16*4 + 2)))
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len2 {
 						val2 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 16*4)))
-						p17 = s + 5816
-						*(*Tush)(unsafe.Pointer(p17)) = Tush(int32(*(*Tush)(unsafe.Pointer(p17))) | libc.Int32FromUint16(libc.Uint16FromInt32(val2))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v19 = s + 20
-						v18 = *(*Tulg)(unsafe.Pointer(v19))
-						*(*Tulg)(unsafe.Pointer(v19))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v18))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v21 = s + 20
-						v20 = *(*Tulg)(unsafe.Pointer(v21))
-						*(*Tulg)(unsafe.Pointer(v21))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v20))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+						v5 = s + 5816
+						*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val2))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v5 = s + 20
+						v6 = *(*Tulg)(unsafe.Pointer(v5))
+						*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+						v5 = s + 20
+						v6 = *(*Tulg)(unsafe.Pointer(v5))
+						*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val2)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 						*(*int32)(unsafe.Pointer(s + 5820)) += len2 - int32(m_Buf_size)
 					} else {
-						p22 = s + 5816
-						*(*Tush)(unsafe.Pointer(p22)) = Tush(int32(*(*Tush)(unsafe.Pointer(p22))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 16*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v5 = s + 5816
+						*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 16*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 						*(*int32)(unsafe.Pointer(s + 5820)) += len2
 					}
 					len3 = int32(2)
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len3 {
 						val3 = count - int32(3)
-						p23 = s + 5816
-						*(*Tush)(unsafe.Pointer(p23)) = Tush(int32(*(*Tush)(unsafe.Pointer(p23))) | libc.Int32FromUint16(libc.Uint16FromInt32(val3))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v25 = s + 20
-						v24 = *(*Tulg)(unsafe.Pointer(v25))
-						*(*Tulg)(unsafe.Pointer(v25))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v24))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v27 = s + 20
-						v26 = *(*Tulg)(unsafe.Pointer(v27))
-						*(*Tulg)(unsafe.Pointer(v27))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v26))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+						v5 = s + 5816
+						*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val3))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v5 = s + 20
+						v6 = *(*Tulg)(unsafe.Pointer(v5))
+						*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+						v5 = s + 20
+						v6 = *(*Tulg)(unsafe.Pointer(v5))
+						*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val3)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 						*(*int32)(unsafe.Pointer(s + 5820)) += len3 - int32(m_Buf_size)
 					} else {
-						p28 = s + 5816
-						*(*Tush)(unsafe.Pointer(p28)) = Tush(int32(*(*Tush)(unsafe.Pointer(p28))) | libc.Int32FromUint16(libc.Uint16FromInt32(count-libc.Int32FromInt32(3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v5 = s + 5816
+						*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(count-libc.Int32FromInt32(3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 						*(*int32)(unsafe.Pointer(s + 5820)) += len3
 					}
 				} else {
@@ -19470,82 +19470,82 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 						len4 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 17*4 + 2)))
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len4 {
 							val4 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 17*4)))
-							p29 = s + 5816
-							*(*Tush)(unsafe.Pointer(p29)) = Tush(int32(*(*Tush)(unsafe.Pointer(p29))) | libc.Int32FromUint16(libc.Uint16FromInt32(val4))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v31 = s + 20
-							v30 = *(*Tulg)(unsafe.Pointer(v31))
-							*(*Tulg)(unsafe.Pointer(v31))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v30))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v33 = s + 20
-							v32 = *(*Tulg)(unsafe.Pointer(v33))
-							*(*Tulg)(unsafe.Pointer(v33))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v32))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val4))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val4)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 							*(*int32)(unsafe.Pointer(s + 5820)) += len4 - int32(m_Buf_size)
 						} else {
-							p34 = s + 5816
-							*(*Tush)(unsafe.Pointer(p34)) = Tush(int32(*(*Tush)(unsafe.Pointer(p34))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 17*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 17*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 							*(*int32)(unsafe.Pointer(s + 5820)) += len4
 						}
 						len5 = int32(3)
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len5 {
 							val5 = count - int32(3)
-							p35 = s + 5816
-							*(*Tush)(unsafe.Pointer(p35)) = Tush(int32(*(*Tush)(unsafe.Pointer(p35))) | libc.Int32FromUint16(libc.Uint16FromInt32(val5))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v37 = s + 20
-							v36 = *(*Tulg)(unsafe.Pointer(v37))
-							*(*Tulg)(unsafe.Pointer(v37))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v36))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v39 = s + 20
-							v38 = *(*Tulg)(unsafe.Pointer(v39))
-							*(*Tulg)(unsafe.Pointer(v39))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v38))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val5))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val5)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 							*(*int32)(unsafe.Pointer(s + 5820)) += len5 - int32(m_Buf_size)
 						} else {
-							p40 = s + 5816
-							*(*Tush)(unsafe.Pointer(p40)) = Tush(int32(*(*Tush)(unsafe.Pointer(p40))) | libc.Int32FromUint16(libc.Uint16FromInt32(count-libc.Int32FromInt32(3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(count-libc.Int32FromInt32(3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 							*(*int32)(unsafe.Pointer(s + 5820)) += len5
 						}
 					} else {
 						len6 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 18*4 + 2)))
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len6 {
 							val6 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 18*4)))
-							p41 = s + 5816
-							*(*Tush)(unsafe.Pointer(p41)) = Tush(int32(*(*Tush)(unsafe.Pointer(p41))) | libc.Int32FromUint16(libc.Uint16FromInt32(val6))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v43 = s + 20
-							v42 = *(*Tulg)(unsafe.Pointer(v43))
-							*(*Tulg)(unsafe.Pointer(v43))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v42))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v45 = s + 20
-							v44 = *(*Tulg)(unsafe.Pointer(v45))
-							*(*Tulg)(unsafe.Pointer(v45))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v44))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val6))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val6)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 							*(*int32)(unsafe.Pointer(s + 5820)) += len6 - int32(m_Buf_size)
 						} else {
-							p46 = s + 5816
-							*(*Tush)(unsafe.Pointer(p46)) = Tush(int32(*(*Tush)(unsafe.Pointer(p46))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 18*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + 18*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 							*(*int32)(unsafe.Pointer(s + 5820)) += len6
 						}
 						len7 = int32(7)
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len7 {
 							val7 = count - int32(11)
-							p47 = s + 5816
-							*(*Tush)(unsafe.Pointer(p47)) = Tush(int32(*(*Tush)(unsafe.Pointer(p47))) | libc.Int32FromUint16(libc.Uint16FromInt32(val7))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v49 = s + 20
-							v48 = *(*Tulg)(unsafe.Pointer(v49))
-							*(*Tulg)(unsafe.Pointer(v49))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v48))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v51 = s + 20
-							v50 = *(*Tulg)(unsafe.Pointer(v51))
-							*(*Tulg)(unsafe.Pointer(v51))++
-							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v50))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(val7))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+							v5 = s + 20
+							v6 = *(*Tulg)(unsafe.Pointer(v5))
+							*(*Tulg)(unsafe.Pointer(v5)) = *(*Tulg)(unsafe.Pointer(v5)) + 1
+							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val7)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 							*(*int32)(unsafe.Pointer(s + 5820)) += len7 - int32(m_Buf_size)
 						} else {
-							p52 = s + 5816
-							*(*Tush)(unsafe.Pointer(p52)) = Tush(int32(*(*Tush)(unsafe.Pointer(p52))) | libc.Int32FromUint16(libc.Uint16FromInt32(count-libc.Int32FromInt32(11)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							v5 = s + 5816
+							*(*Tush)(unsafe.Pointer(v5)) = Tush(int32(*(*Tush)(unsafe.Pointer(v5))) | libc.Int32FromUint16(libc.Uint16FromInt32(count-libc.Int32FromInt32(11)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 							*(*int32)(unsafe.Pointer(s + 5820)) += len7
 						}
 					}
@@ -19569,7 +19569,7 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 		goto _1
 	_1:
 		;
-		n++
+		n = n + 1
 	}
 }
 
@@ -19605,7 +19605,7 @@ func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
 		goto _1
 	_1:
 		;
-		max_blindex--
+		max_blindex = max_blindex - 1
 	}
 	/* Update opt_len to include the bit length tree and counts */
 	*(*Tulg)(unsafe.Pointer(s + 5800)) += uint32(3)*(libc.Uint32FromInt32(max_blindex)+uint32(1)) + uint32(5) + uint32(5) + uint32(4)
@@ -19621,67 +19621,67 @@ func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
 //	 */
 func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcodes int32) {
 	var len1, len11, len2, len3, rank, val, val1, val2, val3 int32
-	var v10, v14, v16, v2, v21, v23, v4, v8 Tulg
-	var v11, v15, v17, v22, v24, v3, v5, v9, p1, p12, p13, p18, p20, p25, p6, p7 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = len1, len11, len2, len3, rank, val, val1, val2, val3, v10, v11, v14, v15, v16, v17, v2, v21, v22, v23, v24, v3, v4, v5, v8, v9, p1, p12, p13, p18, p20, p25, p6, p7 /* index in bl_order */
+	var v1 uintptr
+	var v2 Tulg
+	_, _, _, _, _, _, _, _, _, _, _ = len1, len11, len2, len3, rank, val, val1, val2, val3, v1, v2 /* index in bl_order */
 	len1 = int32(5)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 		val = lcodes - int32(257)
-		p1 = s + 5816
-		*(*Tush)(unsafe.Pointer(p1)) = Tush(int32(*(*Tush)(unsafe.Pointer(p1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v3 = s + 20
-		v2 = *(*Tulg)(unsafe.Pointer(v3))
-		*(*Tulg)(unsafe.Pointer(v3))++
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v5 = s + 20
-		v4 = *(*Tulg)(unsafe.Pointer(v5))
-		*(*Tulg)(unsafe.Pointer(v5))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 		*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 	} else {
-		p6 = s + 5816
-		*(*Tush)(unsafe.Pointer(p6)) = Tush(int32(*(*Tush)(unsafe.Pointer(p6))) | libc.Int32FromUint16(libc.Uint16FromInt32(lcodes-libc.Int32FromInt32(257)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(lcodes-libc.Int32FromInt32(257)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 		*(*int32)(unsafe.Pointer(s + 5820)) += len1
 	} /* not +255 as stated in appnote.txt */
 	len11 = int32(5)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 		val1 = dcodes - int32(1)
-		p7 = s + 5816
-		*(*Tush)(unsafe.Pointer(p7)) = Tush(int32(*(*Tush)(unsafe.Pointer(p7))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v9 = s + 20
-		v8 = *(*Tulg)(unsafe.Pointer(v9))
-		*(*Tulg)(unsafe.Pointer(v9))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v8))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v11 = s + 20
-		v10 = *(*Tulg)(unsafe.Pointer(v11))
-		*(*Tulg)(unsafe.Pointer(v11))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v10))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val1)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 		*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 	} else {
-		p12 = s + 5816
-		*(*Tush)(unsafe.Pointer(p12)) = Tush(int32(*(*Tush)(unsafe.Pointer(p12))) | libc.Int32FromUint16(libc.Uint16FromInt32(dcodes-libc.Int32FromInt32(1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(dcodes-libc.Int32FromInt32(1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 		*(*int32)(unsafe.Pointer(s + 5820)) += len11
 	}
 	len2 = int32(4)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len2 {
 		val2 = blcodes - int32(4)
-		p13 = s + 5816
-		*(*Tush)(unsafe.Pointer(p13)) = Tush(int32(*(*Tush)(unsafe.Pointer(p13))) | libc.Int32FromUint16(libc.Uint16FromInt32(val2))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v15 = s + 20
-		v14 = *(*Tulg)(unsafe.Pointer(v15))
-		*(*Tulg)(unsafe.Pointer(v15))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v14))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v17 = s + 20
-		v16 = *(*Tulg)(unsafe.Pointer(v17))
-		*(*Tulg)(unsafe.Pointer(v17))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v16))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val2))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val2)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 		*(*int32)(unsafe.Pointer(s + 5820)) += len2 - int32(m_Buf_size)
 	} else {
-		p18 = s + 5816
-		*(*Tush)(unsafe.Pointer(p18)) = Tush(int32(*(*Tush)(unsafe.Pointer(p18))) | libc.Int32FromUint16(libc.Uint16FromInt32(blcodes-libc.Int32FromInt32(4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(blcodes-libc.Int32FromInt32(4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 		*(*int32)(unsafe.Pointer(s + 5820)) += len2
 	} /* not -3 as stated in appnote.txt */
 	rank = 0
@@ -19692,27 +19692,27 @@ func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcod
 		len3 = int32(3)
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len3 {
 			val3 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(_bl_order[rank])*4 + 2)))
-			p20 = s + 5816
-			*(*Tush)(unsafe.Pointer(p20)) = Tush(int32(*(*Tush)(unsafe.Pointer(p20))) | libc.Int32FromUint16(libc.Uint16FromInt32(val3))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-			v22 = s + 20
-			v21 = *(*Tulg)(unsafe.Pointer(v22))
-			*(*Tulg)(unsafe.Pointer(v22))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v21))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-			v24 = s + 20
-			v23 = *(*Tulg)(unsafe.Pointer(v24))
-			*(*Tulg)(unsafe.Pointer(v24))++
-			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v23))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+			v1 = s + 5816
+			*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val3))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+			v1 = s + 20
+			v2 = *(*Tulg)(unsafe.Pointer(v1))
+			*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+			v1 = s + 20
+			v2 = *(*Tulg)(unsafe.Pointer(v1))
+			*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val3)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 			*(*int32)(unsafe.Pointer(s + 5820)) += len3 - int32(m_Buf_size)
 		} else {
-			p25 = s + 5816
-			*(*Tush)(unsafe.Pointer(p25)) = Tush(int32(*(*Tush)(unsafe.Pointer(p25))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(_bl_order[rank])*4 + 2)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+			v1 = s + 5816
+			*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(_bl_order[rank])*4 + 2)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 			*(*int32)(unsafe.Pointer(s + 5820)) += len3
 		}
 		goto _19
 	_19:
 		;
-		rank++
+		rank = rank + 1
 	}
 	_send_tree(tls, s, s+148, lcodes-int32(1))  /* literal tree */
 	_send_tree(tls, s, s+2440, dcodes-int32(1)) /* distance tree */
@@ -19725,46 +19725,46 @@ func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcod
 //	 */
 func x__tr_stored_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len Tulg, last int32) {
 	var len1, val int32
-	var v10, v12, v14, v3, v5, v8, p1, p6 uintptr
-	var v11, v13, v2, v4, v7, v9 Tulg
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = len1, val, v10, v11, v12, v13, v14, v2, v3, v4, v5, v7, v8, v9, p1, p6
+	var v1 uintptr
+	var v2 Tulg
+	_, _, _, _ = len1, val, v1, v2
 	len1 = int32(3)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 		val = libc.Int32FromInt32(m_STORED_BLOCK)<<libc.Int32FromInt32(1) + last
-		p1 = s + 5816
-		*(*Tush)(unsafe.Pointer(p1)) = Tush(int32(*(*Tush)(unsafe.Pointer(p1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v3 = s + 20
-		v2 = *(*Tulg)(unsafe.Pointer(v3))
-		*(*Tulg)(unsafe.Pointer(v3))++
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v5 = s + 20
-		v4 = *(*Tulg)(unsafe.Pointer(v5))
-		*(*Tulg)(unsafe.Pointer(v5))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 		*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 	} else {
-		p6 = s + 5816
-		*(*Tush)(unsafe.Pointer(p6)) = Tush(int32(*(*Tush)(unsafe.Pointer(p6))) | libc.Int32FromUint16(libc.Uint16FromInt32(libc.Int32FromInt32(m_STORED_BLOCK)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(libc.Int32FromInt32(m_STORED_BLOCK)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 		*(*int32)(unsafe.Pointer(s + 5820)) += len1
 	} /* send block type */
 	_bi_windup(tls, s) /* align on byte boundary */
-	v8 = s + 20
-	v7 = *(*Tulg)(unsafe.Pointer(v8))
-	*(*Tulg)(unsafe.Pointer(v8))++
-	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v7))) = libc.Uint8FromInt32(libc.Int32FromUint16(uint16(stored_len)) & libc.Int32FromInt32(0xff))
-	v10 = s + 20
-	v9 = *(*Tulg)(unsafe.Pointer(v10))
-	*(*Tulg)(unsafe.Pointer(v10))++
-	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v9))) = libc.Uint8FromInt32(libc.Int32FromUint16(uint16(stored_len)) >> libc.Int32FromInt32(8))
-	v12 = s + 20
-	v11 = *(*Tulg)(unsafe.Pointer(v12))
-	*(*Tulg)(unsafe.Pointer(v12))++
-	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v11))) = libc.Uint8FromInt32(libc.Int32FromUint16(uint16(^stored_len)) & libc.Int32FromInt32(0xff))
-	v14 = s + 20
-	v13 = *(*Tulg)(unsafe.Pointer(v14))
-	*(*Tulg)(unsafe.Pointer(v14))++
-	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v13))) = libc.Uint8FromInt32(libc.Int32FromUint16(uint16(^stored_len)) >> libc.Int32FromInt32(8))
+	v1 = s + 20
+	v2 = *(*Tulg)(unsafe.Pointer(v1))
+	*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16(uint16(stored_len)) & libc.Int32FromInt32(0xff))
+	v1 = s + 20
+	v2 = *(*Tulg)(unsafe.Pointer(v1))
+	*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16(uint16(stored_len)) >> libc.Int32FromInt32(8))
+	v1 = s + 20
+	v2 = *(*Tulg)(unsafe.Pointer(v1))
+	*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16(uint16(^stored_len)) & libc.Int32FromInt32(0xff))
+	v1 = s + 20
+	v2 = *(*Tulg)(unsafe.Pointer(v1))
+	*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16(uint16(^stored_len)) >> libc.Int32FromInt32(8))
 	if stored_len != 0 {
 		libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fpending), buf, stored_len)
 	}
@@ -19788,47 +19788,47 @@ func x__tr_flush_bits(tls *libc.TLS, s uintptr) {
 //	 */
 func x__tr_align(tls *libc.TLS, s uintptr) {
 	var len1, len11, val, val1 int32
-	var v10, v2, v4, v8 Tulg
-	var v11, v3, v5, v9, p1, p12, p6, p7 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = len1, len11, val, val1, v10, v11, v2, v3, v4, v5, v8, v9, p1, p12, p6, p7
+	var v1 uintptr
+	var v2 Tulg
+	_, _, _, _, _, _ = len1, len11, val, val1, v1, v2
 	len1 = int32(3)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 		val = libc.Int32FromInt32(m_STATIC_TREES) << libc.Int32FromInt32(1)
-		p1 = s + 5816
-		*(*Tush)(unsafe.Pointer(p1)) = Tush(int32(*(*Tush)(unsafe.Pointer(p1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v3 = s + 20
-		v2 = *(*Tulg)(unsafe.Pointer(v3))
-		*(*Tulg)(unsafe.Pointer(v3))++
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v5 = s + 20
-		v4 = *(*Tulg)(unsafe.Pointer(v5))
-		*(*Tulg)(unsafe.Pointer(v5))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 		*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 	} else {
-		p6 = s + 5816
-		*(*Tush)(unsafe.Pointer(p6)) = Tush(int32(*(*Tush)(unsafe.Pointer(p6))) | libc.Int32FromUint16(libc.Uint16FromInt32(libc.Int32FromInt32(m_STATIC_TREES)<<libc.Int32FromInt32(1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(libc.Int32FromInt32(m_STATIC_TREES)<<libc.Int32FromInt32(1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 		*(*int32)(unsafe.Pointer(s + 5820)) += len1
 	}
 	len11 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(uintptr(unsafe.Pointer(&_static_ltree)) + 256*4 + 2)))
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 		val1 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(uintptr(unsafe.Pointer(&_static_ltree)) + 256*4)))
-		p7 = s + 5816
-		*(*Tush)(unsafe.Pointer(p7)) = Tush(int32(*(*Tush)(unsafe.Pointer(p7))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v9 = s + 20
-		v8 = *(*Tulg)(unsafe.Pointer(v9))
-		*(*Tulg)(unsafe.Pointer(v9))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v8))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v11 = s + 20
-		v10 = *(*Tulg)(unsafe.Pointer(v11))
-		*(*Tulg)(unsafe.Pointer(v11))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v10))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+		v1 = s + 20
+		v2 = *(*Tulg)(unsafe.Pointer(v1))
+		*(*Tulg)(unsafe.Pointer(v1)) = *(*Tulg)(unsafe.Pointer(v1)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val1)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 		*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 	} else {
-		p12 = s + 5816
-		*(*Tush)(unsafe.Pointer(p12)) = Tush(int32(*(*Tush)(unsafe.Pointer(p12))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(uintptr(unsafe.Pointer(&_static_ltree)) + 256*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v1 = s + 5816
+		*(*Tush)(unsafe.Pointer(v1)) = Tush(int32(*(*Tush)(unsafe.Pointer(v1))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(uintptr(unsafe.Pointer(&_static_ltree)) + 256*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 		*(*int32)(unsafe.Pointer(s + 5820)) += len11
 	}
 	_bi_flush(tls, s)
@@ -19840,42 +19840,42 @@ func x__tr_align(tls *libc.TLS, s uintptr) {
 //	 * Send the block data compressed using the given Huffman trees
 //	 */
 func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
-	var code, dist, sx, v1, v2, v3 uint32
+	var code, dist, sx, v1 uint32
 	var extra, lc, len1, len11, len2, len3, len4, len5, val, val1, val2, val3, val4, val5, v22 int32
-	var v11, v13, v17, v19, v24, v26, v30, v32, v36, v38, v5, v7 Tulg
-	var v12, v14, v18, v20, v25, v27, v31, v33, v37, v39, v6, v8, p10, p15, p16, p21, p23, p28, p29, p34, p35, p4, p40, p9 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = code, dist, extra, lc, len1, len11, len2, len3, len4, len5, sx, val, val1, val2, val3, val4, val5, v1, v11, v12, v13, v14, v17, v18, v19, v2, v20, v22, v24, v25, v26, v27, v3, v30, v31, v32, v33, v36, v37, v38, v39, v5, v6, v7, v8, p10, p15, p16, p21, p23, p28, p29, p34, p35, p4, p40, p9 /* match length or unmatched char (if dist == 0) */
-	sx = uint32(0)                                                                                                                                                                                                                                                                                                                                                                                                                                                               /* number of extra bits to send */
+	var v4 uintptr
+	var v5 Tulg
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = code, dist, extra, lc, len1, len11, len2, len3, len4, len5, sx, val, val1, val2, val3, val4, val5, v1, v22, v4, v5 /* match length or unmatched char (if dist == 0) */
+	sx = uint32(0)                                                                                                                                                                     /* number of extra bits to send */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next != uint32(0) {
 		for cond := true; cond; cond = sx < (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next {
 			v1 = sx
-			sx++
+			sx = sx + 1
 			dist = libc.Uint32FromInt32(libc.Int32FromUint8(*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v1)))) & int32(0xff))
-			v2 = sx
-			sx++
-			dist += libc.Uint32FromInt32(libc.Int32FromUint8(*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v2))))&libc.Int32FromInt32(0xff)) << int32(8)
-			v3 = sx
-			sx++
-			lc = libc.Int32FromUint8(*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))))
+			v1 = sx
+			sx = sx + 1
+			dist = dist + libc.Uint32FromInt32(libc.Int32FromUint8(*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v1))))&libc.Int32FromInt32(0xff))<<int32(8)
+			v1 = sx
+			sx = sx + 1
+			lc = libc.Int32FromUint8(*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v1))))
 			if dist == uint32(0) {
 				len1 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + uintptr(lc)*4 + 2)))
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 					val = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + uintptr(lc)*4)))
-					p4 = s + 5816
-					*(*Tush)(unsafe.Pointer(p4)) = Tush(int32(*(*Tush)(unsafe.Pointer(p4))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					v6 = s + 20
-					v5 = *(*Tulg)(unsafe.Pointer(v6))
-					*(*Tulg)(unsafe.Pointer(v6))++
+					v4 = s + 5816
+					*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+					v4 = s + 20
+					v5 = *(*Tulg)(unsafe.Pointer(v4))
+					*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
 					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-					v8 = s + 20
-					v7 = *(*Tulg)(unsafe.Pointer(v8))
-					*(*Tulg)(unsafe.Pointer(v8))++
-					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v7))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+					v4 = s + 20
+					v5 = *(*Tulg)(unsafe.Pointer(v4))
+					*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 					*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 				} else {
-					p9 = s + 5816
-					*(*Tush)(unsafe.Pointer(p9)) = Tush(int32(*(*Tush)(unsafe.Pointer(p9))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + uintptr(lc)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+					v4 = s + 5816
+					*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + uintptr(lc)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 					*(*int32)(unsafe.Pointer(s + 5820)) += len1
 				} /* send a literal byte */
 			} else {
@@ -19884,48 +19884,48 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 				len11 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + uintptr(code+uint32(m_LITERALS)+uint32(1))*4 + 2)))
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 					val1 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + uintptr(code+uint32(m_LITERALS)+uint32(1))*4)))
-					p10 = s + 5816
-					*(*Tush)(unsafe.Pointer(p10)) = Tush(int32(*(*Tush)(unsafe.Pointer(p10))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					v12 = s + 20
-					v11 = *(*Tulg)(unsafe.Pointer(v12))
-					*(*Tulg)(unsafe.Pointer(v12))++
-					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v11))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-					v14 = s + 20
-					v13 = *(*Tulg)(unsafe.Pointer(v14))
-					*(*Tulg)(unsafe.Pointer(v14))++
-					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v13))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+					v4 = s + 5816
+					*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+					v4 = s + 20
+					v5 = *(*Tulg)(unsafe.Pointer(v4))
+					*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+					v4 = s + 20
+					v5 = *(*Tulg)(unsafe.Pointer(v4))
+					*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val1)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 					*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 				} else {
-					p15 = s + 5816
-					*(*Tush)(unsafe.Pointer(p15)) = Tush(int32(*(*Tush)(unsafe.Pointer(p15))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + uintptr(code+uint32(m_LITERALS)+uint32(1))*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+					v4 = s + 5816
+					*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + uintptr(code+uint32(m_LITERALS)+uint32(1))*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 					*(*int32)(unsafe.Pointer(s + 5820)) += len11
 				} /* send length code */
 				extra = _extra_lbits[code]
 				if extra != 0 {
-					lc -= _base_length[code]
+					lc = lc - _base_length[code]
 					len2 = extra
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len2 {
 						val2 = lc
-						p16 = s + 5816
-						*(*Tush)(unsafe.Pointer(p16)) = Tush(int32(*(*Tush)(unsafe.Pointer(p16))) | libc.Int32FromUint16(libc.Uint16FromInt32(val2))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v18 = s + 20
-						v17 = *(*Tulg)(unsafe.Pointer(v18))
-						*(*Tulg)(unsafe.Pointer(v18))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v17))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v20 = s + 20
-						v19 = *(*Tulg)(unsafe.Pointer(v20))
-						*(*Tulg)(unsafe.Pointer(v20))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v19))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+						v4 = s + 5816
+						*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(libc.Uint16FromInt32(val2))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v4 = s + 20
+						v5 = *(*Tulg)(unsafe.Pointer(v4))
+						*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+						v4 = s + 20
+						v5 = *(*Tulg)(unsafe.Pointer(v4))
+						*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val2)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 						*(*int32)(unsafe.Pointer(s + 5820)) += len2 - int32(m_Buf_size)
 					} else {
-						p21 = s + 5816
-						*(*Tush)(unsafe.Pointer(p21)) = Tush(int32(*(*Tush)(unsafe.Pointer(p21))) | libc.Int32FromUint16(libc.Uint16FromInt32(lc))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v4 = s + 5816
+						*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(libc.Uint16FromInt32(lc))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 						*(*int32)(unsafe.Pointer(s + 5820)) += len2
 					} /* send the extra length bits */
 				}
-				dist-- /* dist is now the match distance - 1 */
+				dist = dist - 1 /* dist is now the match distance - 1 */
 				if dist < uint32(256) {
 					v22 = libc.Int32FromUint8(x__dist_code[dist])
 				} else {
@@ -19935,44 +19935,44 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 				len3 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(dtree + uintptr(code)*4 + 2)))
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len3 {
 					val3 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(dtree + uintptr(code)*4)))
-					p23 = s + 5816
-					*(*Tush)(unsafe.Pointer(p23)) = Tush(int32(*(*Tush)(unsafe.Pointer(p23))) | libc.Int32FromUint16(libc.Uint16FromInt32(val3))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					v25 = s + 20
-					v24 = *(*Tulg)(unsafe.Pointer(v25))
-					*(*Tulg)(unsafe.Pointer(v25))++
-					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v24))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-					v27 = s + 20
-					v26 = *(*Tulg)(unsafe.Pointer(v27))
-					*(*Tulg)(unsafe.Pointer(v27))++
-					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v26))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+					v4 = s + 5816
+					*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(libc.Uint16FromInt32(val3))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+					v4 = s + 20
+					v5 = *(*Tulg)(unsafe.Pointer(v4))
+					*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+					v4 = s + 20
+					v5 = *(*Tulg)(unsafe.Pointer(v4))
+					*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val3)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 					*(*int32)(unsafe.Pointer(s + 5820)) += len3 - int32(m_Buf_size)
 				} else {
-					p28 = s + 5816
-					*(*Tush)(unsafe.Pointer(p28)) = Tush(int32(*(*Tush)(unsafe.Pointer(p28))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(dtree + uintptr(code)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+					v4 = s + 5816
+					*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(dtree + uintptr(code)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 					*(*int32)(unsafe.Pointer(s + 5820)) += len3
 				} /* send the distance code */
 				extra = _extra_dbits[code]
 				if extra != 0 {
-					dist -= libc.Uint32FromInt32(_base_dist[code])
+					dist = dist - libc.Uint32FromInt32(_base_dist[code])
 					len4 = extra
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len4 {
 						val4 = libc.Int32FromUint32(dist)
-						p29 = s + 5816
-						*(*Tush)(unsafe.Pointer(p29)) = Tush(int32(*(*Tush)(unsafe.Pointer(p29))) | libc.Int32FromUint16(libc.Uint16FromInt32(val4))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v31 = s + 20
-						v30 = *(*Tulg)(unsafe.Pointer(v31))
-						*(*Tulg)(unsafe.Pointer(v31))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v30))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v33 = s + 20
-						v32 = *(*Tulg)(unsafe.Pointer(v33))
-						*(*Tulg)(unsafe.Pointer(v33))++
-						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v32))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+						v4 = s + 5816
+						*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(libc.Uint16FromInt32(val4))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v4 = s + 20
+						v5 = *(*Tulg)(unsafe.Pointer(v4))
+						*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+						v4 = s + 20
+						v5 = *(*Tulg)(unsafe.Pointer(v4))
+						*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val4)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 						*(*int32)(unsafe.Pointer(s + 5820)) += len4 - int32(m_Buf_size)
 					} else {
-						p34 = s + 5816
-						*(*Tush)(unsafe.Pointer(p34)) = Tush(int32(*(*Tush)(unsafe.Pointer(p34))) | libc.Int32FromUint16(uint16(dist))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						v4 = s + 5816
+						*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(uint16(dist))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 						*(*int32)(unsafe.Pointer(s + 5820)) += len4
 					} /* send the extra distance bits */
 				}
@@ -19983,21 +19983,21 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 	len5 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + 256*4 + 2)))
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len5 {
 		val5 = libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + 256*4)))
-		p35 = s + 5816
-		*(*Tush)(unsafe.Pointer(p35)) = Tush(int32(*(*Tush)(unsafe.Pointer(p35))) | libc.Int32FromUint16(libc.Uint16FromInt32(val5))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v37 = s + 20
-		v36 = *(*Tulg)(unsafe.Pointer(v37))
-		*(*Tulg)(unsafe.Pointer(v37))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v36))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v39 = s + 20
-		v38 = *(*Tulg)(unsafe.Pointer(v39))
-		*(*Tulg)(unsafe.Pointer(v39))++
-		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v38))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+		v4 = s + 5816
+		*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(libc.Uint16FromInt32(val5))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v4 = s + 20
+		v5 = *(*Tulg)(unsafe.Pointer(v4))
+		*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+		v4 = s + 20
+		v5 = *(*Tulg)(unsafe.Pointer(v4))
+		*(*Tulg)(unsafe.Pointer(v4)) = *(*Tulg)(unsafe.Pointer(v4)) + 1
+		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val5)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 		*(*int32)(unsafe.Pointer(s + 5820)) += len5 - int32(m_Buf_size)
 	} else {
-		p40 = s + 5816
-		*(*Tush)(unsafe.Pointer(p40)) = Tush(int32(*(*Tush)(unsafe.Pointer(p40))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + 256*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+		v4 = s + 5816
+		*(*Tush)(unsafe.Pointer(v4)) = Tush(int32(*(*Tush)(unsafe.Pointer(v4))) | libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(ltree + 256*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 		*(*int32)(unsafe.Pointer(s + 5820)) += len5
 	}
 }
@@ -20038,8 +20038,8 @@ func _detect_data_type(tls *libc.TLS, s uintptr) (r int32) {
 		goto _1
 	_1:
 		;
-		n++
-		block_mask >>= uint32(1)
+		n = n + 1
+		block_mask = block_mask >> uint32(1)
 	}
 	/* Check for textual ("allow-listed") bytes. */
 	if libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 148 + 9*4))) != 0 || libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 148 + 10*4))) != 0 || libc.Int32FromUint16(*(*Tush)(unsafe.Pointer(s + 148 + 13*4))) != 0 {
@@ -20056,7 +20056,7 @@ func _detect_data_type(tls *libc.TLS, s uintptr) (r int32) {
 		goto _2
 	_2:
 		;
-		n++
+		n = n + 1
 	}
 	/* There are no "block-listed" or "allow-listed" bytes:
 	 * this stream either is empty or has tolerated ("gray-listed") bytes only.
@@ -20072,10 +20072,10 @@ func _detect_data_type(tls *libc.TLS, s uintptr) (r int32) {
 //	 */
 func x__tr_flush_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len Tulg, last int32) {
 	var len1, len11, max_blindex, val, val1 int32
-	var opt_lenb, static_lenb, v1, v11, v3, v5, v9 Tulg
-	var v10, v12, v4, v6, p13, p2, p7, p8 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = len1, len11, max_blindex, opt_lenb, static_lenb, val, val1, v1, v10, v11, v12, v3, v4, v5, v6, v9, p13, p2, p7, p8 /* opt_len and static_len in bytes */
-	max_blindex = 0                                                                                                                                                                 /* index of last bit length code of non zero freq */
+	var opt_lenb, static_lenb, v1 Tulg
+	var v2 uintptr
+	_, _, _, _, _, _, _, _, _ = len1, len11, max_blindex, opt_lenb, static_lenb, val, val1, v1, v2 /* opt_len and static_len in bytes */
+	max_blindex = 0                                                                                /* index of last bit length code of non zero freq */
 	/* Build the Huffman trees unless a stored block is forced */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Flevel > 0 {
 		/* Check if the file is binary or text */
@@ -20117,21 +20117,21 @@ func x__tr_flush_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len Tulg, l
 			len1 = int32(3)
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 				val = libc.Int32FromInt32(m_STATIC_TREES)<<libc.Int32FromInt32(1) + last
-				p2 = s + 5816
-				*(*Tush)(unsafe.Pointer(p2)) = Tush(int32(*(*Tush)(unsafe.Pointer(p2))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-				v4 = s + 20
-				v3 = *(*Tulg)(unsafe.Pointer(v4))
-				*(*Tulg)(unsafe.Pointer(v4))++
-				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-				v6 = s + 20
-				v5 = *(*Tulg)(unsafe.Pointer(v6))
-				*(*Tulg)(unsafe.Pointer(v6))++
-				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+				v2 = s + 5816
+				*(*Tush)(unsafe.Pointer(v2)) = Tush(int32(*(*Tush)(unsafe.Pointer(v2))) | libc.Int32FromUint16(libc.Uint16FromInt32(val))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+				v2 = s + 20
+				v1 = *(*Tulg)(unsafe.Pointer(v2))
+				*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+				v2 = s + 20
+				v1 = *(*Tulg)(unsafe.Pointer(v2))
+				*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 				*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 			} else {
-				p7 = s + 5816
-				*(*Tush)(unsafe.Pointer(p7)) = Tush(int32(*(*Tush)(unsafe.Pointer(p7))) | libc.Int32FromUint16(libc.Uint16FromInt32(libc.Int32FromInt32(m_STATIC_TREES)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+				v2 = s + 5816
+				*(*Tush)(unsafe.Pointer(v2)) = Tush(int32(*(*Tush)(unsafe.Pointer(v2))) | libc.Int32FromUint16(libc.Uint16FromInt32(libc.Int32FromInt32(m_STATIC_TREES)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 				*(*int32)(unsafe.Pointer(s + 5820)) += len1
 			}
 			_compress_block(tls, s, uintptr(unsafe.Pointer(&_static_ltree)), uintptr(unsafe.Pointer(&_static_dtree)))
@@ -20139,21 +20139,21 @@ func x__tr_flush_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len Tulg, l
 			len11 = int32(3)
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 				val1 = libc.Int32FromInt32(m_DYN_TREES)<<libc.Int32FromInt32(1) + last
-				p8 = s + 5816
-				*(*Tush)(unsafe.Pointer(p8)) = Tush(int32(*(*Tush)(unsafe.Pointer(p8))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-				v10 = s + 20
-				v9 = *(*Tulg)(unsafe.Pointer(v10))
-				*(*Tulg)(unsafe.Pointer(v10))++
-				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v9))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-				v12 = s + 20
-				v11 = *(*Tulg)(unsafe.Pointer(v12))
-				*(*Tulg)(unsafe.Pointer(v12))++
-				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v11))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
+				v2 = s + 5816
+				*(*Tush)(unsafe.Pointer(v2)) = Tush(int32(*(*Tush)(unsafe.Pointer(v2))) | libc.Int32FromUint16(libc.Uint16FromInt32(val1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+				v2 = s + 20
+				v1 = *(*Tulg)(unsafe.Pointer(v2))
+				*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
+				v2 = s + 20
+				v1 = *(*Tulg)(unsafe.Pointer(v2))
+				*(*Tulg)(unsafe.Pointer(v2)) = *(*Tulg)(unsafe.Pointer(v2)) + 1
+				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = libc.Uint8FromInt32(libc.Int32FromUint16((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = libc.Uint16FromInt32(libc.Int32FromUint16(libc.Uint16FromInt32(val1)) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
 				*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 			} else {
-				p13 = s + 5816
-				*(*Tush)(unsafe.Pointer(p13)) = Tush(int32(*(*Tush)(unsafe.Pointer(p13))) | libc.Int32FromUint16(libc.Uint16FromInt32(libc.Int32FromInt32(m_DYN_TREES)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+				v2 = s + 5816
+				*(*Tush)(unsafe.Pointer(v2)) = Tush(int32(*(*Tush)(unsafe.Pointer(v2))) | libc.Int32FromUint16(libc.Uint16FromInt32(libc.Int32FromInt32(m_DYN_TREES)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
 				*(*int32)(unsafe.Pointer(s + 5820)) += len11
 			}
 			_send_all_trees(tls, s, (*Tdeflate_state)(unsafe.Pointer(s)).Fl_desc.Fmax_code+int32(1), (*Tdeflate_state)(unsafe.Pointer(s)).Fd_desc.Fmax_code+int32(1), max_blindex+int32(1))
@@ -20176,36 +20176,36 @@ func x__tr_flush_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len Tulg, l
 //	 * the current block must be flushed.
 //	 */
 func x__tr_tally(tls *libc.TLS, s uintptr, dist uint32, lc uint32) (r int32) {
-	var v1, v3, v5 TuInt
-	var v2, v4, v6 uintptr
+	var v1 TuInt
+	var v2 uintptr
 	var v7 int32
-	_, _, _, _, _, _, _ = v1, v2, v3, v4, v5, v6, v7
+	_, _, _ = v1, v2, v7
 	v2 = s + 5792
 	v1 = *(*TuInt)(unsafe.Pointer(v2))
-	*(*TuInt)(unsafe.Pointer(v2))++
+	*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
 	*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v1))) = uint8(dist)
-	v4 = s + 5792
-	v3 = *(*TuInt)(unsafe.Pointer(v4))
-	*(*TuInt)(unsafe.Pointer(v4))++
-	*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(dist >> libc.Int32FromInt32(8))
-	v6 = s + 5792
-	v5 = *(*TuInt)(unsafe.Pointer(v6))
-	*(*TuInt)(unsafe.Pointer(v6))++
-	*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v5))) = uint8(lc)
+	v2 = s + 5792
+	v1 = *(*TuInt)(unsafe.Pointer(v2))
+	*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
+	*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v1))) = uint8(dist >> libc.Int32FromInt32(8))
+	v2 = s + 5792
+	v1 = *(*TuInt)(unsafe.Pointer(v2))
+	*(*TuInt)(unsafe.Pointer(v2)) = *(*TuInt)(unsafe.Pointer(v2)) + 1
+	*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v1))) = uint8(lc)
 	if dist == uint32(0) {
 		/* lc is the unmatched char */
-		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(lc)*4))++
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(lc)*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(lc)*4)) + 1
 	} else {
-		(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches++
+		(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches = (*Tdeflate_state)(unsafe.Pointer(s)).Fmatches + 1
 		/* Here, lc is the match length - MIN_MATCH */
-		dist-- /* dist = match distance - 1 */
-		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[lc])+int32(m_LITERALS)+int32(1))*4))++
+		dist = dist - 1 /* dist = match distance - 1 */
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[lc])+int32(m_LITERALS)+int32(1))*4)) = *(*Tush)(unsafe.Pointer(s + 148 + uintptr(libc.Int32FromUint8(x__length_code[lc])+int32(m_LITERALS)+int32(1))*4)) + 1
 		if dist < uint32(256) {
 			v7 = libc.Int32FromUint8(x__dist_code[dist])
 		} else {
 			v7 = libc.Int32FromUint8(x__dist_code[uint32(256)+dist>>int32(7)])
 		}
-		*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v7)*4))++
+		*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v7)*4)) = *(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v7)*4)) + 1
 	}
 	return libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 }
@@ -20592,38 +20592,38 @@ func XzlibCompileFlags(tls *libc.TLS) (r TuLong) {
 	switch libc.Int32FromUint32(libc.Uint32FromInt64(4)) {
 	case int32(2):
 	case int32(4):
-		flags += uint32(1)
+		flags = flags + uint32(1)
 	case int32(8):
-		flags += uint32(2)
+		flags = flags + uint32(2)
 	default:
-		flags += uint32(3)
+		flags = flags + uint32(3)
 	}
 	switch libc.Int32FromUint32(libc.Uint32FromInt64(4)) {
 	case int32(2):
 	case int32(4):
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(1) << libc.Int32FromInt32(2))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2))
 	case int32(8):
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(2) << libc.Int32FromInt32(2))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(2)<<libc.Int32FromInt32(2))
 	default:
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(3) << libc.Int32FromInt32(2))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(3)<<libc.Int32FromInt32(2))
 	}
 	switch libc.Int32FromUint32(libc.Uint32FromInt64(4)) {
 	case int32(2):
 	case int32(4):
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(1) << libc.Int32FromInt32(4))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(4))
 	case int32(8):
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(2) << libc.Int32FromInt32(4))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(2)<<libc.Int32FromInt32(4))
 	default:
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(3) << libc.Int32FromInt32(4))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(3)<<libc.Int32FromInt32(4))
 	}
 	switch libc.Int32FromUint32(libc.Uint32FromInt64(8)) {
 	case int32(2):
 	case int32(4):
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(1) << libc.Int32FromInt32(6))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(6))
 	case int32(8):
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(2) << libc.Int32FromInt32(6))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(2)<<libc.Int32FromInt32(6))
 	default:
-		flags += libc.Uint32FromInt32(libc.Int32FromInt32(3) << libc.Int32FromInt32(6))
+		flags = flags + libc.Uint32FromInt32(libc.Int32FromInt32(3)<<libc.Int32FromInt32(6))
 	}
 	/*
 		#if defined(ASMV) || defined(ASMINF)
@@ -20675,12 +20675,12 @@ func Xzcfree(tls *libc.TLS, opaque Tvoidpf, ptr Tvoidpf) {
 func Xcompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, sourceLen TuLong, level int32) (r int32) {
 	bp := tls.Alloc(64)
 	defer tls.Free(64)
-	var err, v3, v4 int32
+	var err, v3 int32
 	var left TuLong
 	var max TuInt
-	var v1, v2 uint32
+	var v1 uint32
 	var _ /* stream at bp+0 */ Tz_stream
-	_, _, _, _, _, _, _ = err, left, max, v1, v2, v3, v4
+	_, _, _, _, _ = err, left, max, v1, v3
 	max = libc.Uint32FromInt32(-libc.Int32FromInt32(1))
 	left = *(*TuLongf)(unsafe.Pointer(destLen))
 	*(*TuLongf)(unsafe.Pointer(destLen)) = uint32(0)
@@ -20703,16 +20703,16 @@ func Xcompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, so
 				v1 = left
 			}
 			(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = v1
-			left -= (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out
+			left = left - (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out
 		}
 		if (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in == uint32(0) {
 			if sourceLen > max {
-				v2 = max
+				v1 = max
 			} else {
-				v2 = sourceLen
+				v1 = sourceLen
 			}
-			(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v2
-			sourceLen -= (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in
+			(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v1
+			sourceLen = sourceLen - (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in
 		}
 		if sourceLen != 0 {
 			v3 = m_Z_NO_FLUSH
@@ -20724,11 +20724,11 @@ func Xcompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, so
 	*(*TuLongf)(unsafe.Pointer(destLen)) = (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out
 	XdeflateEnd(tls, bp)
 	if err == int32(m_Z_STREAM_END) {
-		v4 = m_Z_OK
+		v3 = m_Z_OK
 	} else {
-		v4 = err
+		v3 = err
 	}
-	return v4
+	return v3
 }
 
 // C documentation
@@ -20773,10 +20773,10 @@ func Xuncompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, 
 	var err, v3, v4, v5 int32
 	var left, len1 TuLong
 	var max TuInt
-	var v1, v2 uint32
+	var v1 uint32
 	var _ /* buf at bp+56 */ [1]TByte
 	var _ /* stream at bp+0 */ Tz_stream
-	_, _, _, _, _, _, _, _, _ = err, left, len1, max, v1, v2, v3, v4, v5
+	_, _, _, _, _, _, _, _ = err, left, len1, max, v1, v3, v4, v5
 	max = libc.Uint32FromInt32(-libc.Int32FromInt32(1)) /* for detection of incomplete stream when *destLen == 0 */
 	len1 = *(*TuLong)(unsafe.Pointer(sourceLen))
 	if *(*TuLongf)(unsafe.Pointer(destLen)) != 0 {
@@ -20805,16 +20805,16 @@ func Xuncompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, 
 				v1 = left
 			}
 			(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = v1
-			left -= (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out
+			left = left - (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out
 		}
 		if (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in == uint32(0) {
 			if len1 > max {
-				v2 = max
+				v1 = max
 			} else {
-				v2 = len1
+				v1 = len1
 			}
-			(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v2
-			len1 -= (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in
+			(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v1
+			len1 = len1 - (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in
 		}
 		err = Xinflate(tls, bp, m_Z_NO_FLUSH)
 	}
@@ -20908,10 +20908,10 @@ func _gz_reset(tls *libc.TLS, state Tgz_statep) {
 func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	var cloexec, exclusive, oflag, v1, v2, v3, v4, v5 int32
+	var cloexec, exclusive, oflag, v1, v2, v3, v4 int32
 	var len1 Tz_size_t
 	var state Tgz_statep
-	_, _, _, _, _, _, _, _, _, _ = cloexec, exclusive, len1, oflag, state, v1, v2, v3, v4, v5
+	_, _, _, _, _, _, _, _, _ = cloexec, exclusive, len1, oflag, state, v1, v2, v3, v4
 	cloexec = 0
 	exclusive = 0
 	/* check input */
@@ -20963,7 +20963,7 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 			default: /* could consider as an error, but just ignore */
 			}
 		}
-		mode++
+		mode = mode + 1
 	}
 	/* must provide an "r", "w", or "a" */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == m_GZ_NONE {
@@ -21010,11 +21010,11 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 	oflag = int32(m_O_LARGEFILE1) | v1 | v2
 	/* open the file with the appropriate flags (or just use fd) */
 	if fd > -int32(1) {
-		v5 = fd
+		v1 = fd
 	} else {
-		v5 = libc.Xopen(tls, path, oflag, libc.VaList(bp+8, int32(0666)))
+		v1 = libc.Xopen(tls, path, oflag, libc.VaList(bp+8, int32(0666)))
 	}
-	(*Tgz_state)(unsafe.Pointer(state)).Ffd = v5
+	(*Tgz_state)(unsafe.Pointer(state)).Ffd = v1
 	if (*Tgz_state)(unsafe.Pointer(state)).Ffd == -int32(1) {
 		libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)
 		libc.Xfree(tls, state)
@@ -21154,10 +21154,10 @@ func Xgzseek64(tls *libc.TLS, file TgzFile, offset Toff_t, whence int32) (r Toff
 	}
 	/* normalize offset to a SEEK_CUR specification */
 	if whence == 0 {
-		offset -= (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos
+		offset = offset - (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos
 	} else {
 		if (*Tgz_state)(unsafe.Pointer(state)).Fseek != 0 {
-			offset += (*Tgz_state)(unsafe.Pointer(state)).Fskip
+			offset = offset + (*Tgz_state)(unsafe.Pointer(state)).Fskip
 		}
 	}
 	(*Tgz_state)(unsafe.Pointer(state)).Fseek = 0
@@ -21181,7 +21181,7 @@ func Xgzseek64(tls *libc.TLS, file TgzFile, offset Toff_t, whence int32) (r Toff
 		if (*Tgz_state)(unsafe.Pointer(state)).Fmode != int32(m_GZ_READ) { /* writing -- can't go backwards */
 			return int64(-int32(1))
 		}
-		offset += (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos
+		offset = offset + (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos
 		if offset < 0 { /* before start of file! */
 			return int64(-int32(1))
 		}
@@ -21200,7 +21200,7 @@ func Xgzseek64(tls *libc.TLS, file TgzFile, offset Toff_t, whence int32) (r Toff
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave -= n
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext += uintptr(n)
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos += libc.Int64FromUint32(n)
-		offset -= libc.Int64FromUint32(n)
+		offset = offset - libc.Int64FromUint32(n)
 	}
 	/* request skip (if not zero) */
 	if offset != 0 {
@@ -21287,7 +21287,7 @@ func Xgzoffset64(tls *libc.TLS, file TgzFile) (r Toff_t) {
 		return int64(-int32(1))
 	}
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) { /* reading */
-		offset -= libc.Int64FromUint32((*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in)
+		offset = offset - libc.Int64FromUint32((*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in)
 	} /* don't count buffered input */
 	return offset
 }
@@ -21510,14 +21510,14 @@ func _gz_avail(tls *libc.TLS, state Tgz_statep) (r int32) {
 			n = (*Tz_stream)(unsafe.Pointer(strm)).Favail_in
 			for {
 				v3 = p
-				p++
+				p = p + 1
 				v4 = q
-				q++
+				q = q + 1
 				*(*uint8)(unsafe.Pointer(v3)) = *(*uint8)(unsafe.Pointer(v4))
 				goto _2
 			_2:
 				;
-				n--
+				n = n - 1
 				v1 = n
 				if !(v1 != 0) {
 					break
@@ -21730,7 +21730,7 @@ func _gz_skip(tls *libc.TLS, state Tgz_statep, len1 Toff_t) (r int32) {
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave -= n
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext += uintptr(n)
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos += libc.Int64FromUint32(n)
-			len1 -= libc.Int64FromUint32(n)
+			len1 = len1 - libc.Int64FromUint32(n)
 		} else {
 			if (*Tgz_state)(unsafe.Pointer(state)).Feof != 0 && (*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in == uint32(0) {
 				break
@@ -21815,9 +21815,9 @@ func _gz_read(tls *libc.TLS, state Tgz_statep, buf Tvoidp, len1 Tz_size_t) (r Tz
 			}
 		}
 		/* update progress */
-		len1 -= *(*uint32)(unsafe.Pointer(bp))
+		len1 = len1 - *(*uint32)(unsafe.Pointer(bp))
 		buf = buf + uintptr(*(*uint32)(unsafe.Pointer(bp)))
-		got += *(*uint32)(unsafe.Pointer(bp))
+		got = got + *(*uint32)(unsafe.Pointer(bp))
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos += libc.Int64FromUint32(*(*uint32)(unsafe.Pointer(bp)))
 	}
 	/* return number of bytes read into user buffer */
@@ -21909,11 +21909,11 @@ func Xgzgetc(tls *libc.TLS, file TgzFile) (r int32) {
 	}
 	/* try output buffer (no need to check for skip request) */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave != 0 {
-		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave--
-		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos++
+		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave - 1
+		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos + 1
 		v2 = state + 4
 		v1 = *(*uintptr)(unsafe.Pointer(v2))
-		*(*uintptr)(unsafe.Pointer(v2))++
+		*(*uintptr)(unsafe.Pointer(v2)) = *(*uintptr)(unsafe.Pointer(v2)) + 1
 		return libc.Int32FromUint8(*(*uint8)(unsafe.Pointer(v1)))
 	}
 	/* nothing there -- try gz_read() */
@@ -21965,7 +21965,7 @@ func Xgzungetc(tls *libc.TLS, c int32, file TgzFile) (r int32) {
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave = uint32(1)
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext = (*Tgz_state)(unsafe.Pointer(state)).Fout + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize<<libc.Int32FromInt32(1)) - uintptr(1)
 		*(*uint8)(unsafe.Pointer((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext)) = libc.Uint8FromInt32(c)
-		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos--
+		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos - 1
 		(*Tgz_state)(unsafe.Pointer(state)).Fpast = 0
 		return c
 	}
@@ -21979,18 +21979,18 @@ func Xgzungetc(tls *libc.TLS, c int32, file TgzFile) (r int32) {
 		src = (*Tgz_state)(unsafe.Pointer(state)).Fout + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave)
 		dest = (*Tgz_state)(unsafe.Pointer(state)).Fout + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize<<libc.Int32FromInt32(1))
 		for src > (*Tgz_state)(unsafe.Pointer(state)).Fout {
-			dest--
+			dest = dest - 1
 			v1 = dest
-			src--
+			src = src - 1
 			v2 = src
 			*(*uint8)(unsafe.Pointer(v1)) = *(*uint8)(unsafe.Pointer(v2))
 		}
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext = dest
 	}
-	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave++
-	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext--
+	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave + 1
+	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext - 1
 	*(*uint8)(unsafe.Pointer((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext)) = libc.Uint8FromInt32(c)
-	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos--
+	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos - 1
 	(*Tgz_state)(unsafe.Pointer(state)).Fpast = 0
 	return c
 }
@@ -22050,8 +22050,8 @@ func Xgzgets(tls *libc.TLS, file TgzFile, buf uintptr, len1 int32) (r uintptr) {
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave -= n
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext += uintptr(n)
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos += libc.Int64FromUint32(n)
-			left -= n
-			buf += uintptr(n)
+			left = left - n
+			buf = buf + uintptr(n)
 		}
 	}
 	/* return terminated string, or if nothing, end of file */
@@ -22086,9 +22086,9 @@ func Xgzdirect(tls *libc.TLS, file TgzFile) (r int32) {
 //
 //	/* -- see zlib.h -- */
 func Xgzclose_r(tls *libc.TLS, file TgzFile) (r int32) {
-	var err, ret, v1, v2 int32
+	var err, ret, v1 int32
 	var state Tgz_statep
-	_, _, _, _, _ = err, ret, state, v1, v2
+	_, _, _, _ = err, ret, state, v1
 	/* get internal structure */
 	if file == libc.UintptrFromInt32(0) {
 		return -int32(2)
@@ -22115,11 +22115,11 @@ func Xgzclose_r(tls *libc.TLS, file TgzFile) (r int32) {
 	ret = libc.Xclose(tls, (*Tgz_state)(unsafe.Pointer(state)).Ffd)
 	libc.Xfree(tls, state)
 	if ret != 0 {
-		v2 = -int32(1)
+		v1 = -int32(1)
 	} else {
-		v2 = err
+		v1 = err
 	}
-	return v2
+	return v1
 }
 
 // C documentation
@@ -22180,10 +22180,10 @@ func _gz_init(tls *libc.TLS, state Tgz_statep) (r int32) {
 //	   reset to start a new gzip stream.  If gz->direct is true, then simply write
 //	   to the output file without compressing, and ignore flush. */
 func _gz_comp(tls *libc.TLS, state Tgz_statep, flush int32) (r int32) {
-	var have, max, put, v1, v2 uint32
+	var have, max, put, v1 uint32
 	var ret, writ int32
 	var strm Tz_streamp
-	_, _, _, _, _, _, _, _ = have, max, put, ret, strm, writ, v1, v2
+	_, _, _, _, _, _, _ = have, max, put, ret, strm, writ, v1
 	max = libc.Uint32FromInt32(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(2) + libc.Uint32FromInt32(1)
 	strm = state + 100
 	/* allocate memory if this is the first time through */
@@ -22226,11 +22226,11 @@ func _gz_comp(tls *libc.TLS, state Tgz_statep, flush int32) (r int32) {
 		if (*Tz_stream)(unsafe.Pointer(strm)).Favail_out == uint32(0) || flush != m_Z_NO_FLUSH && (flush != int32(m_Z_FINISH) || ret == int32(m_Z_STREAM_END)) {
 			for (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out > (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext {
 				if int32((*Tz_stream)(unsafe.Pointer(strm)).Fnext_out)-int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext) > libc.Int32FromUint32(max) {
-					v2 = max
+					v1 = max
 				} else {
-					v2 = libc.Uint32FromInt32(int32((*Tz_stream)(unsafe.Pointer(strm)).Fnext_out) - int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext))
+					v1 = libc.Uint32FromInt32(int32((*Tz_stream)(unsafe.Pointer(strm)).Fnext_out) - int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext))
 				}
-				put = v2
+				put = v1
 				writ = libc.Xwrite(tls, (*Tgz_state)(unsafe.Pointer(state)).Ffd, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, put)
 				if writ < 0 {
 					Xgz_error(tls, state, -int32(1), libc.Xstrerror(tls, *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))))
@@ -22251,7 +22251,7 @@ func _gz_comp(tls *libc.TLS, state Tgz_statep, flush int32) (r int32) {
 			Xgz_error(tls, state, -int32(2), __ccgo_ts+798)
 			return -int32(1)
 		}
-		have -= (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
+		have = have - (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
 	}
 	/* if that completed a deflate stream, allow another to start */
 	if flush == int32(m_Z_FINISH) {
@@ -22294,7 +22294,7 @@ func _gz_zero(tls *libc.TLS, state Tgz_statep, len1 Toff_t) (r int32) {
 		if _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
 			return -int32(1)
 		}
-		len1 -= libc.Int64FromUint32(n)
+		len1 = len1 - libc.Int64FromUint32(n)
 	}
 	return 0
 }
@@ -22339,7 +22339,7 @@ func _gz_write(tls *libc.TLS, state Tgz_statep, buf Tvoidpc, len1 Tz_size_t) (r 
 			(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in += copy1
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos += libc.Int64FromUint32(copy1)
 			buf = buf + uintptr(copy1)
-			len1 -= copy1
+			len1 = len1 - copy1
 			if len1 != 0 && _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
 				return uint32(0)
 			}
@@ -22361,7 +22361,7 @@ func _gz_write(tls *libc.TLS, state Tgz_statep, buf Tvoidpc, len1 Tz_size_t) (r 
 			if _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
 				return uint32(0)
 			}
-			len1 -= n
+			len1 = len1 - n
 		}
 	}
 	/* input was all buffered or compressed */
@@ -22462,8 +22462,8 @@ func Xgzputc(tls *libc.TLS, file TgzFile, c int32) (r int32) {
 		have = libc.Uint32FromInt32(int32((*Tz_stream)(unsafe.Pointer(strm)).Fnext_in+uintptr((*Tz_stream)(unsafe.Pointer(strm)).Favail_in)) - int32((*Tgz_state)(unsafe.Pointer(state)).Fin))
 		if have < (*Tgz_state)(unsafe.Pointer(state)).Fsize {
 			*(*uint8)(unsafe.Pointer((*Tgz_state)(unsafe.Pointer(state)).Fin + uintptr(have))) = libc.Uint8FromInt32(c)
-			(*Tz_stream)(unsafe.Pointer(strm)).Favail_in++
-			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos++
+			(*Tz_stream)(unsafe.Pointer(strm)).Favail_in = (*Tz_stream)(unsafe.Pointer(strm)).Favail_in + 1
+			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos + 1
 			return c & int32(0xff)
 		}
 	}
