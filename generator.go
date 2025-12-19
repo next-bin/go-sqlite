@@ -407,6 +407,7 @@ go work use \
 		}
 		switch {
 		case win:
+			util.MustShell(true, nil, sed, "-i", `s/#if !defined(_WIN32) || defined(__MSVCRT__)/#if !defined(__CCGO__) \&\& (!defined(_WIN32) || defined(__MSVCRT__))/`, "src/test_fs.c")
 			ccgo.NewTask(
 				goos, goarch,
 				append(args,
@@ -429,6 +430,7 @@ go work use \
 			).Exec()
 			return nil
 		case win32:
+			util.MustShell(true, nil, sed, "-i", `s/#if !defined(_WIN32) || defined(__MSVCRT__)/#if !defined(__CCGO__) \&\& (!defined(_WIN32) || defined(__MSVCRT__))/`, "src/test_fs.c")
 			ccgo.NewTask(
 				goos, goarch,
 				append(args,
