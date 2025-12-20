@@ -363,7 +363,19 @@ func TestTclTest(t *testing.T) {
 		case *oStrace:
 			out, err = util.Shell(nil, "strace", append([]string{"-f", "-r", bin}, args...)...)
 		default:
-			out, err = util.Shell(nil, bin, args...)
+			runBin := bin
+			runArgs := args
+
+			// On Windows, if running under git-bash, environment interactions (signals, paths)
+			// can differ from native cmd.exe. Wrapping in "cmd /c" ensures a standard environment.
+			if runtime.GOOS == "windows" {
+				runBin = "cmd"
+				// Prepend "/c" and the original binary path to the arguments.
+				// util.Shell will pass these securely to exec.CommandContext.
+				runArgs = append([]string{"/c", bin}, args...)
+			}
+
+			out, err = util.Shell(nil, runBin, runArgs...)
 		}
 		if err != nil {
 			switch err.Error() {
