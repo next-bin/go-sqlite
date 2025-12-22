@@ -198,6 +198,7 @@ func main() {
 			"-DSQLITE_ENABLE_UNLOCK_NOTIFY",
 			"-DSQLITE_HAVE_ZLIB=1",
 			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
+			"-DSQLITE_MUTEX_NOOP",
 			"-DSQLITE_SOUNDEX",
 			"-DSQLITE_THREADSAFE=1",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
@@ -210,12 +211,6 @@ func main() {
 			"-o", result,
 			"sqlite3.c",
 		)
-		switch goos {
-		case "linux":
-			// nop
-		default:
-			config = append(config, "-DSQLITE_MUTEX_NOOP")
-		}
 		switch {
 		case win:
 			config = append(config,
@@ -342,17 +337,11 @@ go work use \
 			"-DSQLITE_ENABLE_STAT4",
 			"-DSQLITE_ENABLE_UNLOCK_NOTIFY",
 			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
+			"-DSQLITE_MUTEX_NOOP",
 			"-DSQLITE_SOUNDEX",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
 			"-D_LARGEFILE64_SOURCE",
 		)
-		switch target {
-		case
-			"linux/amd64":
-			config = append(config, "-DSQLITE_THREADSAFE=1")
-		default:
-			config = append(config, "-DSQLITE_MUTEX_NOOP")
-		}
 		switch {
 		case win:
 			config = append(config,
