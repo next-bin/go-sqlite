@@ -1302,7 +1302,7 @@ int SQLITE_CDECL main(int argc, char **argv){
   if( argc<2 ) usage(argv[0]);
   g.zDbFile = argv[1];
   if( strglob("*.test", g.zDbFile) ) usage(argv[0]);
-  if( strcmp(sqlite3_sourceid(), SQLITE_SOURCE_ID)!=0 ){
+  if( strncmp(sqlite3_sourceid(), SQLITE_SOURCE_ID, 80)!=0 ){
     fprintf(stderr, "SQLite library and header mismatch\n"
                     "Library: %s\n"
                     "Header:  %s\n",
