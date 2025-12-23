@@ -23,6 +23,10 @@ import (
 	"modernc.org/libtcl8.6/library"
 )
 
+const (
+	mptestRepeatEnv = "MPTEST_REPEAT"
+)
+
 var (
 	oInner    = flag.Bool("inner", false, "internal use")
 	oMatch    = flag.String("match", "", "pattern match for tests")
@@ -184,8 +188,12 @@ func TestConcurrentProcesses(t *testing.T) {
 	//		$(MPTEST1) --journalmode TRUNCATE
 	//		$(MPTEST2) --journalmode DELETE
 
-	mptest1 := []string{bin, "mptest.db", "crash01.test", "--repeat", "20", "--timeout", "120000"}
-	mptest2 := []string{bin, "mptest.db", "multiwrite01.test", "--repeat", "20", "--timeout", "120000"}
+	repeat := os.Getenv(mptestRepeatEnv)
+	if repeat == "" {
+		repeat = "20"
+	}
+	mptest1 := []string{bin, "mptest.db", "crash01.test", "--repeat", repeat, "--timeout", "120000"}
+	mptest2 := []string{bin, "mptest.db", "multiwrite01.test", "--repeat", repeat, "--timeout", "120000"}
 	mptest1 = mptest1[:len(mptest1):len(mptest1)]
 	mptest2 = mptest2[:len(mptest2):len(mptest2)]
 	os.Remove("mptest.db")
