@@ -10,6 +10,7 @@ import (
 
 	"modernc.org/libc"
 	"modernc.org/libtcl8.6"
+	"modernc.org/libz"
 )
 
 var _ reflect.Type
@@ -76883,11 +76884,11 @@ func _zipfileInflate(tls *libc.TLS, pCtx uintptr, aIn uintptr, nIn int32, nOut i
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = libc.Uint32FromInt32(nIn)
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = aRes
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = libc.Uint32FromInt32(nOut)
-		err = libtcl8_6.XinflateInit2_(tls, bp, -int32(15), __ccgo_ts+48976, libc.Int32FromInt64(112))
+		err = libz.XinflateInit2_(tls, bp, -int32(15), __ccgo_ts+48976, libc.Int32FromInt64(112))
 		if err != m_Z_OK {
 			_zipfileCtxErrorMsg(tls, pCtx, __ccgo_ts+48982, libc.VaList(bp+120, err))
 		} else {
-			err = libtcl8_6.Xinflate(tls, bp, m_Z_NO_FLUSH)
+			err = libz.Xinflate(tls, bp, m_Z_NO_FLUSH)
 			if err != int32(m_Z_STREAM_END) {
 				_zipfileCtxErrorMsg(tls, pCtx, __ccgo_ts+49009, libc.VaList(bp+120, err))
 			} else {
@@ -76896,7 +76897,7 @@ func _zipfileInflate(tls *libc.TLS, pCtx uintptr, aIn uintptr, nIn int32, nOut i
 			}
 		}
 		x_sqlite3_free(tls, aRes)
-		libtcl8_6.XinflateEnd(tls, bp)
+		libz.XinflateEnd(tls, bp)
 	}
 }
 
@@ -76926,15 +76927,15 @@ func _zipfileDeflate(tls *libc.TLS, aIn uintptr, nIn int32, ppOut uintptr, pnOut
 	libc.Xmemset(tls, bp, 0, uint64(112))
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = aIn
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = libc.Uint32FromInt32(nIn)
-	libtcl8_6.XdeflateInit2_(tls, bp, int32(9), int32(m_Z_DEFLATED), -int32(15), int32(8), m_Z_DEFAULT_STRATEGY, __ccgo_ts+48976, libc.Int32FromInt64(112))
-	nAlloc = libc.Int64FromUint64(libtcl8_6.XdeflateBound(tls, bp, libc.Uint64FromInt32(nIn)))
+	libz.XdeflateInit2_(tls, bp, int32(9), int32(m_Z_DEFLATED), -int32(15), int32(8), m_Z_DEFAULT_STRATEGY, __ccgo_ts+48976, libc.Int32FromInt64(112))
+	nAlloc = libc.Int64FromUint64(libz.XdeflateBound(tls, bp, libc.Uint64FromInt32(nIn)))
 	aOut = x_sqlite3_malloc64(tls, libc.Uint64FromInt64(nAlloc))
 	if aOut == uintptr(0) {
 		rc = int32(m_SQLITE_NOMEM)
 	} else {
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = aOut
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = libc.Uint32FromInt64(nAlloc)
-		res = libtcl8_6.Xdeflate(tls, bp, int32(m_Z_FINISH))
+		res = libz.Xdeflate(tls, bp, int32(m_Z_FINISH))
 		if res == int32(m_Z_STREAM_END) {
 			*(*uintptr)(unsafe.Pointer(ppOut)) = aOut
 			*(*int32)(unsafe.Pointer(pnOut)) = libc.Int32FromUint64((*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out)
@@ -76943,7 +76944,7 @@ func _zipfileDeflate(tls *libc.TLS, aIn uintptr, nIn int32, ppOut uintptr, pnOut
 			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+49031, 0)
 			rc = int32(m_SQLITE_ERROR)
 		}
-		libtcl8_6.XdeflateEnd(tls, bp)
+		libz.XdeflateEnd(tls, bp)
 	}
 	return rc
 }
@@ -77702,7 +77703,7 @@ func _zipfileUpdate(tls *libc.TLS, pVtab uintptr, nVal int32, apVal uintptr, pRo
 							}
 						}
 					}
-					iCrc32 = uint32(libtcl8_6.Xcrc32(tls, uint64(0), aIn, libc.Uint32FromInt32(nIn)))
+					iCrc32 = uint32(libz.Xcrc32(tls, uint64(0), aIn, libc.Uint32FromInt32(nIn)))
 				}
 			}
 		}
