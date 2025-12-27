@@ -23,10 +23,6 @@ import (
 	"modernc.org/libtcl8.6/library"
 )
 
-const (
-	mptestRepeatEnv = "MPTEST_REPEAT"
-)
-
 var (
 	oInner    = flag.Bool("inner", false, "internal use")
 	oMatch    = flag.String("match", "", "pattern match for tests")
@@ -188,12 +184,8 @@ func TestConcurrentProcesses(t *testing.T) {
 	//		$(MPTEST1) --journalmode TRUNCATE
 	//		$(MPTEST2) --journalmode DELETE
 
-	repeat := os.Getenv(mptestRepeatEnv)
-	if repeat == "" {
-		repeat = "20"
-	}
-	mptest1 := []string{bin, "mptest.db", "crash01.test", "--repeat", repeat, "--timeout", "120000"}
-	mptest2 := []string{bin, "mptest.db", "multiwrite01.test", "--repeat", repeat, "--timeout", "120000"}
+	mptest1 := []string{bin, "mptest.db", "crash01.test", "--repeat", "20", "--timeout", "120000"}
+	mptest2 := []string{bin, "mptest.db", "multiwrite01.test", "--repeat", "20", "--timeout", "120000"}
 	mptest1 = mptest1[:len(mptest1):len(mptest1)]
 	mptest2 = mptest2[:len(mptest2):len(mptest2)]
 	os.Remove("mptest.db")
@@ -371,19 +363,7 @@ func TestTclTest(t *testing.T) {
 		case *oStrace:
 			out, err = util.Shell(nil, "strace", append([]string{"-f", "-r", bin}, args...)...)
 		default:
-			runBin := bin
-			runArgs := args
-
-			// On Windows, if running under git-bash, environment interactions (signals, paths)
-			// can differ from native cmd.exe. Wrapping in "cmd /c" ensures a standard environment.
-			if runtime.GOOS == "windows" {
-				runBin = "cmd"
-				// Prepend "/c" and the original binary path to the arguments.
-				// util.Shell will pass these securely to exec.CommandContext.
-				runArgs = append([]string{"/c", bin}, args...)
-			}
-
-			out, err = util.Shell(nil, runBin, runArgs...)
+			out, err = util.Shell(nil, bin, args...)
 		}
 		if err != nil {
 			switch err.Error() {

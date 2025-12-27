@@ -25,7 +25,7 @@ import (
 const (
 	archivePath  = "sqlite-amalgamation-" + versionTag + ".zip"
 	archive2Path = "sqlite-src-" + versionTag + ".zip"
-	versionTag   = "3510100"
+	versionTag   = "3500400"
 )
 
 var (
@@ -148,7 +148,7 @@ func main() {
 	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.67.2 modernc.org/libz@v0.17.2 modernc.org/libtcl8.6@v0.17.2")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.66.10 modernc.org/libz@v0.16.22 modernc.org/libtcl8.6@v0.16.10")
 		config := []string{os.Args[0]}
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
@@ -198,7 +198,6 @@ func main() {
 			"-DSQLITE_ENABLE_UNLOCK_NOTIFY",
 			"-DSQLITE_HAVE_ZLIB=1",
 			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
-			"-DSQLITE_MUTEX_NOOP",
 			"-DSQLITE_SOUNDEX",
 			"-DSQLITE_THREADSAFE=1",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
@@ -211,6 +210,12 @@ func main() {
 			"-o", result,
 			"sqlite3.c",
 		)
+		switch goos {
+		case "linux":
+			// nop
+		default:
+			config = append(config, "-DSQLITE_MUTEX_NOOP")
+		}
 		switch {
 		case win:
 			config = append(config,
@@ -298,9 +303,9 @@ func main() {
 		util.MustShell(true, nil, "sh", "-c", `
 go mod init example.com/libsqlite3
 go get \
-	modernc.org/libc@v1.67.2 \
-	modernc.org/libtcl8.6@v0.17.2 \
-	modernc.org/libz@v0.17.2 \
+	modernc.org/libc@v1.66.10 \
+	modernc.org/libtcl8.6@v0.16.10 \
+	modernc.org/libz@v0.16.22 \
 `)
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", `
@@ -337,11 +342,17 @@ go work use \
 			"-DSQLITE_ENABLE_STAT4",
 			"-DSQLITE_ENABLE_UNLOCK_NOTIFY",
 			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
-			"-DSQLITE_MUTEX_NOOP",
 			"-DSQLITE_SOUNDEX",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
 			"-D_LARGEFILE64_SOURCE",
 		)
+		switch target {
+		case
+			"linux/amd64":
+			config = append(config, "-DSQLITE_THREADSAFE=1")
+		default:
+			config = append(config, "-DSQLITE_MUTEX_NOOP")
+		}
 		switch {
 		case win:
 			config = append(config,
@@ -396,7 +407,6 @@ go work use \
 		}
 		switch {
 		case win:
-			util.MustShell(true, nil, sed, "-i", `s/#if !defined(_WIN32) || defined(__MSVCRT__)/#if !defined(__CCGO__) \&\& (!defined(_WIN32) || defined(__MSVCRT__))/`, "src/test_fs.c")
 			ccgo.NewTask(
 				goos, goarch,
 				append(args,
@@ -419,7 +429,6 @@ go work use \
 			).Exec()
 			return nil
 		case win32:
-			util.MustShell(true, nil, sed, "-i", `s/#if !defined(_WIN32) || defined(__MSVCRT__)/#if !defined(__CCGO__) \&\& (!defined(_WIN32) || defined(__MSVCRT__))/`, "src/test_fs.c")
 			ccgo.NewTask(
 				goos, goarch,
 				append(args,
@@ -540,7 +549,7 @@ go work use \
 				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 				"-map", "gcc=x86_64-w64-mingw32-gcc",
 				"-o", filepath.Join("mptest", fn),
-				filepath.Join("internal", "overlay", "mptest", "mptest.c"),
+				filepath.Join(makeRoot, "mptest", "mptest.c"),
 				"-lsqlite3",
 			},
 			os.Stdout, os.Stderr,
@@ -562,7 +571,7 @@ go work use \
 				"-I", makeRoot,
 				"-map", "gcc=i686-w64-mingw32-gcc",
 				"-o", filepath.Join("mptest", fn),
-				filepath.Join("internal", "overlay", "mptest", "mptest.c"),
+				filepath.Join(makeRoot, "mptest", "mptest.c"),
 				"-lsqlite3",
 			},
 			os.Stdout, os.Stderr,
@@ -580,7 +589,7 @@ go work use \
 				"-ignore-unsupported-alignment",
 				"-ignore-link-errors",
 				"-o", filepath.Join("mptest", fn),
-				filepath.Join("internal", "overlay", "mptest", "mptest.c"),
+				filepath.Join(makeRoot, "mptest", "mptest.c"),
 				"-lsqlite3",
 			},
 			os.Stdout, os.Stderr,

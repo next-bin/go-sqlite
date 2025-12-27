@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3510100 -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -o speedtest1/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3510100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3500400 -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -o speedtest1/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3500400/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 // +build windows
@@ -228,7 +228,7 @@ func HashInit(tls *libc.TLS) {
 		goto _1
 	_1:
 		;
-		k = k + 1
+		k++
 	}
 }
 
@@ -256,11 +256,11 @@ func HashUpdate(tls *libc.TLS, aData uintptr, nData uint32) {
 		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3168 + 3 + uintptr(j)))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3168 + 3 + uintptr(j))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3168 + 3 + uintptr(i)))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3168 + 3 + uintptr(i))) = t
-		i = i + 1
+		i++
 		goto _1
 	_1:
 		;
-		k = k + 1
+		k++
 	}
 	g.Fhash.Fi = i
 	g.Fhash.Fj = j
@@ -283,7 +283,7 @@ func HashFinal(tls *libc.TLS) {
 		if !(k < uint32(32)) {
 			break
 		}
-		i = i + 1
+		i++
 		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3168 + 3 + uintptr(i)))
 		j = uint8(int32(j) + int32(t))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3168 + 3 + uintptr(i))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3168 + 3 + uintptr(j)))
@@ -293,7 +293,7 @@ func HashFinal(tls *libc.TLS) {
 		goto _1
 	_1:
 		;
-		k = k + 1
+		k++
 	}
 }
 
@@ -336,14 +336,14 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 	isNeg = 0
 	if int32(*(*int8)(unsafe.Pointer(zArg))) == int32('-') {
 		isNeg = int32(1)
-		zArg = zArg + 1
+		zArg++
 	} else {
 		if int32(*(*int8)(unsafe.Pointer(zArg))) == int32('+') {
-			zArg = zArg + 1
+			zArg++
 		}
 	}
 	if int32(*(*int8)(unsafe.Pointer(zArg))) == int32('0') && int32(*(*int8)(unsafe.Pointer(zArg + 1))) == int32('x') {
-		zArg = zArg + uintptr(2)
+		zArg += uintptr(2)
 		for {
 			v1 = hexDigitValue(tls, *(*int8)(unsafe.Pointer(zArg)))
 			x = v1
@@ -351,12 +351,12 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 				break
 			}
 			v = v<<libc.Int32FromInt32(4) + int64(x)
-			zArg = zArg + 1
+			zArg++
 		}
 	} else {
 		for libc.Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(zArg)))) != 0 {
 			v = v*int64(10) + int64(*(*int8)(unsafe.Pointer(zArg))) - int64('0')
-			zArg = zArg + 1
+			zArg++
 		}
 	}
 	i = 0
@@ -365,13 +365,13 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 			break
 		}
 		if libsqlite3.Xsqlite3_stricmp(tls, aMult[i].FzSuffix, zArg) == 0 {
-			v = v * int64(aMult[i].FiMult)
+			v *= int64(aMult[i].FiMult)
 			break
 		}
 		goto _2
 	_2:
 		;
-		i = i + 1
+		i++
 	}
 	if v > int64(0x7fffffff) {
 		fatal_error(tls, __ccgo_ts+34, 0)
@@ -468,8 +468,8 @@ func swizzle(tls *libc.TLS, in uint32, limit uint32) (r uint32) {
 	out = uint32(0)
 	for limit != 0 {
 		out = out<<int32(1) | in&uint32(1)
-		in = in >> uint32(1)
-		limit = limit >> uint32(1)
+		in >>= uint32(1)
+		limit >>= uint32(1)
 	}
 	return out
 }
@@ -501,69 +501,69 @@ func roundup_allones(tls *libc.TLS, limit uint32) (r uint32) {
 func speedtest1_numbername(tls *libc.TLS, n uint32, zOut uintptr, nOut int32) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	var i, v1 int32
-	_, _ = i, v1
+	var i, v1, v2, v3, v4, v5 int32
+	_, _, _, _, _, _ = i, v1, v2, v3, v4, v5
 	i = 0
 	if n >= uint32(1000000000) {
-		i = i + speedtest1_numbername(tls, n/uint32(1000000000), zOut+uintptr(i), nOut-i)
+		i += speedtest1_numbername(tls, n/uint32(1000000000), zOut+uintptr(i), nOut-i)
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+255, 0)
-		i = i + int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(1000000000)
 	}
 	if n >= uint32(1000000) {
 		if i != 0 && i < nOut-int32(1) {
 			v1 = i
-			i = i + 1
+			i++
 			*(*int8)(unsafe.Pointer(zOut + uintptr(v1))) = int8(' ')
 		}
-		i = i + speedtest1_numbername(tls, n/uint32(1000000), zOut+uintptr(i), nOut-i)
+		i += speedtest1_numbername(tls, n/uint32(1000000), zOut+uintptr(i), nOut-i)
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+264, 0)
-		i = i + int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(1000000)
 	}
 	if n >= uint32(1000) {
 		if i != 0 && i < nOut-int32(1) {
-			v1 = i
-			i = i + 1
-			*(*int8)(unsafe.Pointer(zOut + uintptr(v1))) = int8(' ')
+			v2 = i
+			i++
+			*(*int8)(unsafe.Pointer(zOut + uintptr(v2))) = int8(' ')
 		}
-		i = i + speedtest1_numbername(tls, n/uint32(1000), zOut+uintptr(i), nOut-i)
+		i += speedtest1_numbername(tls, n/uint32(1000), zOut+uintptr(i), nOut-i)
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+273, 0)
-		i = i + int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(1000)
 	}
 	if n >= uint32(100) {
 		if i != 0 && i < nOut-int32(1) {
-			v1 = i
-			i = i + 1
-			*(*int8)(unsafe.Pointer(zOut + uintptr(v1))) = int8(' ')
+			v3 = i
+			i++
+			*(*int8)(unsafe.Pointer(zOut + uintptr(v3))) = int8(' ')
 		}
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+283, libc.VaList(bp+8, ones[n/uint32(100)]))
-		i = i + int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(100)
 	}
 	if n >= uint32(20) {
 		if i != 0 && i < nOut-int32(1) {
-			v1 = i
-			i = i + 1
-			*(*int8)(unsafe.Pointer(zOut + uintptr(v1))) = int8(' ')
+			v4 = i
+			i++
+			*(*int8)(unsafe.Pointer(zOut + uintptr(v4))) = int8(' ')
 		}
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+294, libc.VaList(bp+8, tens[n/uint32(10)]))
-		i = i + int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
 		n = n % uint32(10)
 	}
 	if n > uint32(0) {
 		if i != 0 && i < nOut-int32(1) {
-			v1 = i
-			i = i + 1
-			*(*int8)(unsafe.Pointer(zOut + uintptr(v1))) = int8(' ')
+			v5 = i
+			i++
+			*(*int8)(unsafe.Pointer(zOut + uintptr(v5))) = int8(' ')
 		}
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+294, libc.VaList(bp+8, ones[n]))
-		i = i + int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
 	}
 	if i == 0 {
 		libsqlite3.Xsqlite3_snprintf(tls, nOut-i, zOut+uintptr(i), __ccgo_ts+71, 0)
-		i = i + int32(libc.Xstrlen(tls, zOut+uintptr(i)))
+		i += int32(libc.Xstrlen(tls, zOut+uintptr(i)))
 	}
 	return i
 }
@@ -615,8 +615,8 @@ func speedtest1_begin_test(tls *libc.TLS, iTestNum int32, zTestName uintptr, va 
 	var __local_argv, __local_argv1 __builtin_va_list
 	var __retval, __retval1, n int32
 	var ap va_list
-	var zName, v1 uintptr
-	_, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, ap, n, zName, v1
+	var zName, v1, v3, v5 uintptr
+	_, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, ap, n, zName, v1, v3, v5
 	n = int32(libc.Xstrlen(tls, zTestName))
 	iTestNumber = iTestNum
 	ap = va
@@ -638,19 +638,19 @@ func speedtest1_begin_test(tls *libc.TLS, iTestNum int32, zTestName uintptr, va 
 	_2:
 	}
 	if g.FbSqlOnly != 0 {
-		v1 = __ccgo_ts + 320
+		v3 = __ccgo_ts + 320
 		libc.VaList(bp, iTestNum, zName, int32(NAMEWIDTH)-n, uintptr(unsafe.Pointer(&zDots)))
 		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv1)
+		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv1)
 		_ = __local_argv1
 		_ = __retval1
 		goto _4
 	_4:
 	} else {
-		v1 = __ccgo_ts + 340
+		v5 = __ccgo_ts + 340
 		libc.VaList(bp, iTestNum, zName, int32(NAMEWIDTH)-n, uintptr(unsafe.Pointer(&zDots)))
 		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv1)
+		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v5, __local_argv1)
 		_ = __local_argv1
 		_ = __retval1
 		goto _6
@@ -674,8 +674,8 @@ func speedtest1_end_test(tls *libc.TLS) {
 	var __local_argv, __local_argv1 __builtin_va_list
 	var __retval, __retval1 int32
 	var iElapseTime sqlite3_int64
-	var v1 uintptr
-	_, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, iElapseTime, v1
+	var v1, v3 uintptr
+	_, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, iElapseTime, v1, v3
 	iElapseTime = speedtest1_timestamp(tls) - g.FiStart
 	if g.FdoCheckpoint != 0 {
 		speedtest1_exec(tls, __ccgo_ts+354, 0)
@@ -692,10 +692,10 @@ func speedtest1_end_test(tls *libc.TLS) {
 	}
 	if !(g.FbSqlOnly != 0) {
 		g.FiTotal += iElapseTime
-		v1 = __ccgo_ts + 393
+		v3 = __ccgo_ts + 393
 		libc.VaList(bp, int32(iElapseTime/libc.Int64FromInt32(1000)), int32(iElapseTime%libc.Int64FromInt32(1000)))
 		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv1)
+		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv1)
 		_ = __local_argv1
 		_ = __retval1
 		goto _4
@@ -716,8 +716,8 @@ func speedtest1_final(tls *libc.TLS) {
 	defer tls.Free(112)
 	var __local_argv __builtin_va_list
 	var __retval, i int32
-	var v1 uintptr
-	_, _, _, _ = __local_argv, __retval, i, v1
+	var v1, v3, v6, v8 uintptr
+	_, _, _, _, _, _, _ = __local_argv, __retval, i, v1, v3, v6, v8
 	if !(g.FbSqlOnly != 0) {
 		v1 = __ccgo_ts + 404
 		libc.VaList(bp, libc.Int32FromInt32(NAMEWIDTH)-libc.Int32FromInt32(5), uintptr(unsafe.Pointer(&zDots)), int32(g.FiTotal/libc.Int64FromInt32(1000)), int32(g.FiTotal%libc.Int64FromInt32(1000)))
@@ -729,10 +729,10 @@ func speedtest1_final(tls *libc.TLS) {
 	_2:
 	}
 	if g.FbVerify != 0 {
-		v1 = __ccgo_ts + 432
+		v3 = __ccgo_ts + 432
 		libc.VaList(bp, g.FnResByte)
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _4
@@ -745,10 +745,10 @@ func speedtest1_final(tls *libc.TLS) {
 			if !(i < int32(24)) {
 				break
 			}
-			v1 = __ccgo_ts + 459
+			v6 = __ccgo_ts + 459
 			libc.VaList(bp, int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3168 + 259 + uintptr(i)))))
 			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v6, __local_argv)
 			_ = __local_argv
 			_ = __retval
 			goto _7
@@ -757,14 +757,14 @@ func speedtest1_final(tls *libc.TLS) {
 			goto _5
 		_5:
 			;
-			i = i + 1
+			i++
 		}
 		if g.FhashFile != 0 && g.FhashFile != libc.X__acrt_iob_func(tls, uint32(1)) {
 			libc.Xfclose(tls, g.FhashFile)
 		}
-		v1 = __ccgo_ts + 457
+		v8 = __ccgo_ts + 457
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v8, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _9
@@ -780,11 +780,11 @@ func printSql(tls *libc.TLS, zSql uintptr) {
 	defer tls.Free(80)
 	var __local_argv __builtin_va_list
 	var __retval, n int32
-	var v1 uintptr
-	_, _, _, _ = __local_argv, __retval, n, v1
+	var v1, v3, v5 uintptr
+	_, _, _, _, _, _ = __local_argv, __retval, n, v1, v3, v5
 	n = int32(libc.Xstrlen(tls, zSql))
 	for n > 0 && (int32(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';') || libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))) != 0) {
-		n = n - 1
+		n--
 	}
 	if g.FbExplain != 0 {
 		v1 = __ccgo_ts + 464
@@ -795,20 +795,20 @@ func printSql(tls *libc.TLS, zSql uintptr) {
 		goto _2
 	_2:
 	}
-	v1 = __ccgo_ts + 473
+	v3 = __ccgo_ts + 473
 	libc.VaList(bp, n, zSql)
 	__local_argv = bp
-	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv)
 	_ = __local_argv
 	_ = __retval
 	goto _4
 _4:
 	;
 	if g.FbExplain != 0 && (libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+480, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+489, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+496, zSql) == 0) {
-		v1 = __ccgo_ts + 473
+		v5 = __ccgo_ts + 473
 		libc.VaList(bp, n, zSql)
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v5, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _6
@@ -875,14 +875,14 @@ func speedtest1_exec(tls *libc.TLS, zFormat uintptr, va uintptr) {
 //	** the caller.
 //	*/
 func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
-	bp := tls.Alloc(64)
-	defer tls.Free(64)
+	bp := tls.Alloc(96)
+	defer tls.Free(96)
 	var __local_argv __builtin_va_list
-	var __retval, rc1 int32
+	var __retval, rc, rc1 int32
 	var ap va_list
-	var z, z1, zResult, zSql, v1 uintptr
-	var _ /* pStmt at bp+24 */ uintptr
-	_, _, _, _, _, _, _, _, _ = __local_argv, __retval, ap, rc1, z, z1, zResult, zSql, v1
+	var z, z1, zResult, zSql, v1, v3 uintptr
+	var _ /* pStmt at bp+64 */ uintptr
+	_, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, ap, rc, rc1, z, z1, zResult, zSql, v1, v3
 	zResult = uintptr(0)
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
@@ -890,12 +890,12 @@ func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 	if g.FbSqlOnly != 0 {
 		printSql(tls, zSql)
 	} else {
-		rc1 = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), bp+24, uintptr(0))
+		rc1 = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), bp+64, uintptr(0))
 		if rc1 != 0 {
-			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+40, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
+			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+80, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
 		if g.FpScript != 0 {
-			z = libsqlite3.Xsqlite3_expanded_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
+			z = libsqlite3.Xsqlite3_expanded_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 64)))
 			v1 = __ccgo_ts + 558
 			libc.VaList(bp, z)
 			__local_argv = bp
@@ -907,17 +907,26 @@ func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 			;
 			libsqlite3.Xsqlite3_free(tls, z)
 		}
-		if libsqlite3.Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 24))) == int32(SQLITE_ROW) {
-			z1 = libsqlite3.Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0)
+		if libsqlite3.Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 64))) == int32(SQLITE_ROW) {
+			z1 = libsqlite3.Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp + 64)), 0)
 			if z1 != 0 {
-				zResult = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+294, libc.VaList(bp+40, z1))
+				zResult = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+294, libc.VaList(bp+80, z1))
 			}
 		}
-		rc1 = libsqlite3.Xsqlite3_reset(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
+		rc1 = libsqlite3.Xsqlite3_reset(tls, *(*uintptr)(unsafe.Pointer(bp + 64)))
 		if rc1 != SQLITE_OK {
-			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+40, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 24))), rc1, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
+			v3 = __ccgo_ts + 562
+			libc.VaList(bp, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 64))), rc1, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb))
+			__local_argv = bp
+			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v3, __local_argv)
+			_ = __local_argv
+			_ = __retval
+			goto _4
+		_4:
+			;
+			libc.Xexit(tls, int32(1))
 		}
-		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
+		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp + 64)))
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	speedtest1_shrink_memory(tls)
@@ -955,15 +964,15 @@ func speedtest1_prepare(tls *libc.TLS, zFormat uintptr, va uintptr) {
 //
 //	/* Run an SQL statement previously prepared */
 func speedtest1_run(tls *libc.TLS) {
-	bp := tls.Alloc(80)
-	defer tls.Free(80)
+	bp := tls.Alloc(128)
+	defer tls.Free(128)
 	var __local_argv __builtin_va_list
 	var __retval, eType, i, iBlob, len1, n, nBlob, rc, v5 int32
-	var aBlob, z, z1, v1 uintptr
-	var _ /* pNew at bp+32 */ uintptr
-	var _ /* zChar at bp+26 */ [2]uint8
-	var _ /* zPrefix at bp+24 */ [2]uint8
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, aBlob, eType, i, iBlob, len1, n, nBlob, rc, z, z1, v1, v5
+	var aBlob, z, z1, v1, v6, v7, v9 uintptr
+	var _ /* pNew at bp+112 */ uintptr
+	var _ /* zChar at bp+106 */ [2]uint8
+	var _ /* zPrefix at bp+104 */ [2]uint8
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, aBlob, eType, i, iBlob, len1, n, nBlob, rc, z, z1, v1, v5, v6, v7, v9
 	if g.FbSqlOnly != 0 {
 		return
 	}
@@ -995,12 +1004,12 @@ func speedtest1_run(tls *libc.TLS) {
 			len1 = int32(libc.Xstrlen(tls, z1))
 			if g.FbVerify != 0 {
 				eType = libsqlite3.Xsqlite3_column_type(tls, g.FpStmt, i)
-				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[0] = uint8('\n')
-				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 588 + uintptr(eType))))
+				(*(*[2]uint8)(unsafe.Pointer(bp + 104)))[0] = uint8('\n')
+				(*(*[2]uint8)(unsafe.Pointer(bp + 104)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 588 + uintptr(eType))))
 				if g.FnResByte != 0 {
-					HashUpdate(tls, bp+24, uint32(2))
+					HashUpdate(tls, bp+104, uint32(2))
 				} else {
-					HashUpdate(tls, bp+24+uintptr(1), uint32(1))
+					HashUpdate(tls, bp+104+uintptr(1), uint32(1))
 				}
 				if eType == int32(SQLITE_FLOAT) {
 					/* Omit the value of floating-point results from the verification
@@ -1016,13 +1025,13 @@ func speedtest1_run(tls *libc.TLS) {
 							if !(iBlob < nBlob) {
 								break
 							}
-							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[0] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 595 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4)))))
-							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 595 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15)))))
-							HashUpdate(tls, bp+26, uint32(2))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 106)))[0] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 595 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4)))))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 106)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 595 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15)))))
+							HashUpdate(tls, bp+106, uint32(2))
 							goto _4
 						_4:
 							;
-							iBlob = iBlob + 1
+							iBlob++
 						}
 						g.FnResByte += uint64(nBlob*int32(2) + int32(2))
 					} else {
@@ -1033,9 +1042,9 @@ func speedtest1_run(tls *libc.TLS) {
 			}
 			if uint64(g.FnResult+len1) < libc.Uint64FromInt64(3000)-libc.Uint64FromInt32(2) {
 				if g.FnResult > 0 {
-					v1 = uintptr(unsafe.Pointer(&g)) + 144
-					v5 = *(*int32)(unsafe.Pointer(v1))
-					*(*int32)(unsafe.Pointer(v1)) = *(*int32)(unsafe.Pointer(v1)) + 1
+					v6 = uintptr(unsafe.Pointer(&g)) + 144
+					v5 = *(*int32)(unsafe.Pointer(v6))
+					*(*int32)(unsafe.Pointer(v6))++
 					*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 148 + uintptr(v5))) = int8(' ')
 				}
 				libc.Xmemcpy(tls, uintptr(unsafe.Pointer(&g))+148+uintptr(g.FnResult), z1, uint64(len1+int32(1)))
@@ -1044,20 +1053,38 @@ func speedtest1_run(tls *libc.TLS) {
 			goto _3
 		_3:
 			;
-			i = i + 1
+			i++
 		}
 	}
 	if g.FbReprepare != 0 {
-		libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), -int32(1), bp+32, uintptr(0))
+		libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), -int32(1), bp+112, uintptr(0))
 		rc = libsqlite3.Xsqlite3_finalize(tls, g.FpStmt)
 		if rc != SQLITE_OK {
-			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+48, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 32))), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
+			v7 = __ccgo_ts + 562
+			libc.VaList(bp, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 112))), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb))
+			__local_argv = bp
+			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v7, __local_argv)
+			_ = __local_argv
+			_ = __retval
+			goto _8
+		_8:
+			;
+			libc.Xexit(tls, int32(1))
 		}
-		g.FpStmt = *(*uintptr)(unsafe.Pointer(bp + 32))
+		g.FpStmt = *(*uintptr)(unsafe.Pointer(bp + 112))
 	} else {
 		rc = libsqlite3.Xsqlite3_reset(tls, g.FpStmt)
 		if rc != SQLITE_OK {
-			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+48, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
+			v9 = __ccgo_ts + 562
+			libc.VaList(bp, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb))
+			__local_argv = bp
+			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v9, __local_argv)
+			_ = __local_argv
+			_ = __retval
+			goto _10
+		_10:
+			;
+			libc.Xexit(tls, int32(1))
 		}
 	}
 	speedtest1_shrink_memory(tls)
@@ -1075,7 +1102,7 @@ func traceCallback(tls *libc.TLS, NotUsed uintptr, zSql uintptr) {
 	_, _, _, _ = __local_argv, __retval, n, v1
 	n = int32(libc.Xstrlen(tls, zSql))
 	for n > 0 && (int32(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';') || libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))) != 0) {
-		n = n - 1
+		n--
 	}
 	v1 = __ccgo_ts + 473
 	libc.VaList(bp, n, zSql)
@@ -1115,7 +1142,7 @@ func est_square_root(tls *libc.TLS, x int32) (r int32) {
 		goto _1
 	_1:
 		;
-		n = n + 1
+		n++
 	}
 	return y0
 }
@@ -1128,11 +1155,11 @@ func est_square_root(tls *libc.TLS, x int32) (r int32) {
 func testset_main(tls *libc.TLS) {
 	bp := tls.Alloc(2064)
 	defer tls.Free(2064)
-	var i, len1, maxb, n, sz, v1 int32
+	var i, len1, maxb, n, sz, v1, v17, v20 int32
 	var x1, x2 uint32
 	var v21 uintptr
 	var _ /* zNum at bp+0 */ [2000]int8
-	_, _, _, _, _, _, _, _, _ = i, len1, maxb, n, sz, x1, x2, v1, v21 /* Maximum swizzled value */
+	_, _, _, _, _, _, _, _, _, _, _ = i, len1, maxb, n, sz, x1, x2, v1, v17, v20, v21 /* Maximum swizzled value */
 	x1 = uint32(0)
 	x2 = uint32(0) /* Parameters */
 	len1 = 0       /* A number name */
@@ -1159,7 +1186,7 @@ func testset_main(tls *libc.TLS) {
 		goto _2
 	_2:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1182,7 +1209,7 @@ func testset_main(tls *libc.TLS) {
 		goto _3
 	_3:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1205,7 +1232,7 @@ func testset_main(tls *libc.TLS) {
 		goto _4
 	_4:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1228,7 +1255,7 @@ func testset_main(tls *libc.TLS) {
 		goto _5
 	_5:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1253,7 +1280,7 @@ func testset_main(tls *libc.TLS) {
 		goto _6
 	_6:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1278,7 +1305,7 @@ func testset_main(tls *libc.TLS) {
 		goto _7
 	_7:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1303,7 +1330,7 @@ func testset_main(tls *libc.TLS) {
 		goto _8
 	_8:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1335,7 +1362,7 @@ func testset_main(tls *libc.TLS) {
 		goto _9
 	_9:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1358,7 +1385,7 @@ func testset_main(tls *libc.TLS) {
 		goto _10
 	_10:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1380,7 +1407,7 @@ func testset_main(tls *libc.TLS) {
 		goto _11
 	_11:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1422,7 +1449,7 @@ func testset_main(tls *libc.TLS) {
 		goto _12
 	_12:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1441,7 +1468,7 @@ func testset_main(tls *libc.TLS) {
 		goto _13
 	_13:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1468,7 +1495,7 @@ func testset_main(tls *libc.TLS) {
 		goto _14
 	_14:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1487,7 +1514,7 @@ func testset_main(tls *libc.TLS) {
 		goto _15
 	_15:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1517,7 +1544,7 @@ func testset_main(tls *libc.TLS) {
 		goto _16
 	_16:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1526,9 +1553,9 @@ func testset_main(tls *libc.TLS) {
 	libsqlite3.Xsqlite3_bind_int(tls, g.FpStmt, int32(1), est_square_root(tls, g.FszTest)*int32(50))
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
-	v1 = g.FszTest * libc.Int32FromInt32(700)
-	n = v1
-	sz = v1
+	v17 = g.FszTest * libc.Int32FromInt32(700)
+	n = v17
+	sz = v17
 	(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = 0
 	maxb = int32(roundup_allones(tls, uint32(sz/int32(3))))
 	speedtest1_begin_test(tls, int32(400), __ccgo_ts+3523, libc.VaList(bp+2008, n))
@@ -1548,7 +1575,7 @@ func testset_main(tls *libc.TLS) {
 		goto _18
 	_18:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1574,15 +1601,15 @@ func testset_main(tls *libc.TLS) {
 		goto _19
 	_19:
 		;
-		i = i + 1
+		i++
 	}
 	if g.FdoBigTransactions != 0 {
 		speedtest1_exec(tls, __ccgo_ts+758, 0)
 	}
 	speedtest1_end_test(tls)
-	v1 = g.FszTest * libc.Int32FromInt32(700)
-	n = v1
-	sz = v1
+	v20 = g.FszTest * libc.Int32FromInt32(700)
+	n = v20
+	sz = v20
 	(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = 0
 	maxb = int32(roundup_allones(tls, uint32(sz/int32(3))))
 	speedtest1_begin_test(tls, int32(500), __ccgo_ts+3703, libc.VaList(bp+2008, n))
@@ -1607,7 +1634,7 @@ func testset_main(tls *libc.TLS) {
 		goto _22
 	_22:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1629,7 +1656,7 @@ func testset_main(tls *libc.TLS) {
 		goto _23
 	_23:
 		;
-		i = i + 1
+		i++
 	}
 	if g.FdoBigTransactions != 0 {
 		speedtest1_exec(tls, __ccgo_ts+758, 0)
@@ -1715,7 +1742,7 @@ func speedtest1_random_ascii_fp(tls *libc.TLS, zFP uintptr) {
 	if z < 0 {
 		z = -z
 	}
-	y = y / int32(10)
+	y /= int32(10)
 	libsqlite3.Xsqlite3_snprintf(tls, int32(100), zFP, __ccgo_ts+6816, libc.VaList(bp+8, y, z, x%int32(200)))
 }
 
@@ -1749,7 +1776,7 @@ func testset_fp(tls *libc.TLS) {
 		goto _1
 	_1:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -1769,7 +1796,7 @@ func testset_fp(tls *libc.TLS) {
 		goto _2
 	_2:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(120), __ccgo_ts+7004, 0)
@@ -1795,7 +1822,7 @@ func testset_fp(tls *libc.TLS) {
 		goto _3
 	_3:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_end_test(tls)
 	n = g.FszTest * int32(5000)
@@ -1832,7 +1859,7 @@ func testset_star(tls *libc.TLS) {
 		goto _1
 	_1:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(120), __ccgo_ts+7967, 0)
@@ -1851,7 +1878,7 @@ func testset_star(tls *libc.TLS) {
 		goto _2
 	_2:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(130), __ccgo_ts+8363, 0)
@@ -1914,7 +1941,7 @@ func testset_app(tls *libc.TLS) {
 		goto _1
 	_1:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_end_test(tls)
 }
@@ -1967,13 +1994,13 @@ func testset_orm(tls *libc.TLS) {
 			goto _3
 		_3:
 			;
-			j = j + 1
+			j++
 		}
 		speedtest1_run(tls)
 		goto _2
 	_2:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+1725, 0)
 	speedtest1_end_test(tls)
@@ -1991,7 +2018,7 @@ func testset_orm(tls *libc.TLS) {
 		goto _4
 	_4:
 		;
-		i = i + 1
+		i++
 	}
 	speedtest1_end_test(tls)
 }
@@ -2030,12 +2057,12 @@ func testset_trigger(tls *libc.TLS) {
 			goto _2
 		_2:
 			;
-			ii = ii + 1
+			ii++
 		}
 		goto _1
 	_1:
 		;
-		jj = jj + 1
+		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+30677, 0)
 	speedtest1_begin_test(tls, int32(100), __ccgo_ts+30760, 0)
@@ -2063,12 +2090,12 @@ func testset_trigger(tls *libc.TLS) {
 			goto _4
 		_4:
 			;
-			ii = ii + int32(3)
+			ii += int32(3)
 		}
 		goto _3
 	_3:
 		;
-		jj = jj + 1
+		jj++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(130), __ccgo_ts+30962, 0)
@@ -2088,12 +2115,12 @@ func testset_trigger(tls *libc.TLS) {
 			goto _6
 		_6:
 			;
-			ii = ii + int32(3)
+			ii += int32(3)
 		}
 		goto _5
 	_5:
 		;
-		jj = jj + 1
+		jj++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(140), __ccgo_ts+30962, 0)
@@ -2113,12 +2140,12 @@ func testset_trigger(tls *libc.TLS) {
 			goto _8
 		_8:
 			;
-			ii = ii + int32(3)
+			ii += int32(3)
 		}
 		goto _7
 	_7:
 		;
-		jj = jj + 1
+		jj++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(150), __ccgo_ts+31011, 0)
@@ -2133,7 +2160,7 @@ func testset_trigger(tls *libc.TLS) {
 		goto _9
 	_9:
 		;
-		jj = jj + 1
+		jj++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(160), __ccgo_ts+31145, 0)
@@ -2149,7 +2176,7 @@ func testset_trigger(tls *libc.TLS) {
 		goto _10
 	_10:
 		;
-		jj = jj + 1
+		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
 	speedtest1_end_test(tls)
@@ -2172,7 +2199,7 @@ func testset_trigger(tls *libc.TLS) {
 		goto _11
 	_11:
 		;
-		jj = jj + 1
+		jj++
 	}
 	speedtest1_end_test(tls)
 	/*
@@ -2195,7 +2222,7 @@ func testset_trigger(tls *libc.TLS) {
 		goto _12
 	_12:
 		;
-		jj = jj + int32(2)
+		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
 	/*
@@ -2213,7 +2240,7 @@ func testset_trigger(tls *libc.TLS) {
 		goto _13
 	_13:
 		;
-		jj = jj + int32(2)
+		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
@@ -2238,7 +2265,7 @@ func testset_trigger(tls *libc.TLS) {
 		goto _14
 	_14:
 		;
-		jj = jj + 1
+		jj++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(210), __ccgo_ts+32095, 0)
@@ -2256,7 +2283,7 @@ func testset_trigger(tls *libc.TLS) {
 		goto _15
 	_15:
 		;
-		jj = jj + int32(2)
+		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(220), __ccgo_ts+32114, 0)
@@ -2271,7 +2298,7 @@ func testset_trigger(tls *libc.TLS) {
 		goto _16
 	_16:
 		;
-		jj = jj + int32(2)
+		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
 	speedtest1_exec(tls, __ccgo_ts+758, 0)
@@ -2312,7 +2339,7 @@ func testset_debug1(tls *libc.TLS) {
 		goto _1
 	_1:
 		;
-		i = i + 1
+		i++
 	}
 }
 
@@ -2383,7 +2410,7 @@ func testset_parsenumber(tls *libc.TLS) {
 		goto _1
 	_1:
 		;
-		ii = ii + 1
+		ii++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(110), __ccgo_ts+35052, libc.VaList(bp+8, NROW))
@@ -2396,7 +2423,7 @@ func testset_parsenumber(tls *libc.TLS) {
 		goto _2
 	_2:
 		;
-		ii = ii + 1
+		ii++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(200), __ccgo_ts+35078, libc.VaList(bp+8, NROW))
@@ -2409,7 +2436,7 @@ func testset_parsenumber(tls *libc.TLS) {
 		goto _3
 	_3:
 		;
-		ii = ii + 1
+		ii++
 	}
 	speedtest1_end_test(tls)
 	speedtest1_begin_test(tls, int32(210), __ccgo_ts+35101, libc.VaList(bp+8, NROW))
@@ -2422,7 +2449,7 @@ func testset_parsenumber(tls *libc.TLS) {
 		goto _4
 	_4:
 		;
-		ii = ii + 1
+		ii++
 	}
 	speedtest1_end_test(tls)
 }
@@ -2450,11 +2477,11 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	bp := tls.Alloc(528)
 	defer tls.Free(528)
 	var __local_argv __builtin_va_list
-	var __retval, cacheSize, doAutovac, doExclusive, doFullFSync, doIncrvac, doPCache, doTrace, i, kk, memDb, mmapSize, mnHeap, nHardHeapLmt, nHeap, nLook, nPCache, nSoftHeapLmt, nThread, noSync, openFlags, pageSize, rc, showStats, szLook, szPCache, v4, v5 int32
-	var pHeap, pLook, pPCache, pVfs, z, zComma, zEncoding, zJMode, zKey, zObj, zSep, zSql, zTSet, zThisTest, v1 uintptr
+	var __retval, cacheSize, doAutovac, doExclusive, doFullFSync, doIncrvac, doPCache, doTrace, i, kk, memDb, mmapSize, mnHeap, nHardHeapLmt, nHeap, nLook, nPCache, nSoftHeapLmt, nThread, noSync, openFlags, pageSize, rc, showStats, szLook, szPCache, v10, v11, v12, v13, v14, v15, v16, v4, v5, v6, v7, v8, v9 int32
+	var pHeap, pLook, pPCache, pVfs, z, zComma, zEncoding, zJMode, zKey, zObj, zSep, zSql, zTSet, zThisTest, v1, v17, v19, v20, v23, v25, v27, v29, v31, v33, v35, v37, v39, v41, v43, v45, v47, v49, v51, v53 uintptr
 	var _ /* iCur at bp+488 */ int32
 	var _ /* iHi at bp+492 */ int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, cacheSize, doAutovac, doExclusive, doFullFSync, doIncrvac, doPCache, doTrace, i, kk, memDb, mmapSize, mnHeap, nHardHeapLmt, nHeap, nLook, nPCache, nSoftHeapLmt, nThread, noSync, openFlags, pHeap, pLook, pPCache, pVfs, pageSize, rc, showStats, szLook, szPCache, z, zComma, zEncoding, zJMode, zKey, zObj, zSep, zSql, zTSet, zThisTest, v1, v4, v5
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, cacheSize, doAutovac, doExclusive, doFullFSync, doIncrvac, doPCache, doTrace, i, kk, memDb, mmapSize, mnHeap, nHardHeapLmt, nHeap, nLook, nPCache, nSoftHeapLmt, nThread, noSync, openFlags, pHeap, pLook, pPCache, pVfs, pageSize, rc, showStats, szLook, szPCache, z, zComma, zEncoding, zJMode, zKey, zObj, zSep, zSql, zTSet, zThisTest, v1, v10, v11, v12, v13, v14, v15, v16, v17, v19, v20, v23, v25, v27, v29, v31, v33, v35, v37, v39, v4, v41, v43, v45, v47, v49, v5, v51, v53, v6, v7, v8, v9
 	doAutovac = 0   /* True for --autovacuum */
 	cacheSize = 0   /* Desired cache size.  0 means default */
 	doExclusive = 0 /* True for --exclusive */
@@ -2513,7 +2540,7 @@ _2:
 		z = *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))
 		if int32(*(*int8)(unsafe.Pointer(z))) == int32('-') {
 			for cond := true; cond; cond = int32(*(*int8)(unsafe.Pointer(z))) == int32('-') {
-				z = z + 1
+				z++
 			}
 			if libc.Xstrcmp(tls, z, __ccgo_ts+35194) == 0 {
 				doAutovac = int32(1)
@@ -2525,7 +2552,7 @@ _2:
 						if i >= argc-int32(1) {
 							fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 						}
-						i = i + 1
+						i++
 						v4 = i
 						cacheSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8)))
 					} else {
@@ -2547,7 +2574,7 @@ _2:
 												fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 											}
 											nHardHeapLmt = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
-											i = i + int32(1)
+											i += int32(1)
 										} else {
 											if libc.Xstrcmp(tls, z, __ccgo_ts+35311) == 0 {
 												if i >= argc-int32(2) {
@@ -2555,7 +2582,7 @@ _2:
 												}
 												nHeap = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
 												mnHeap = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
-												i = i + int32(2)
+												i += int32(2)
 											} else {
 												if libc.Xstrcmp(tls, z, __ccgo_ts+35316) == 0 {
 													doIncrvac = int32(1)
@@ -2564,17 +2591,17 @@ _2:
 														if i >= argc-int32(1) {
 															fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 														}
-														i = i + 1
-														v4 = i
-														zJMode = *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8))
+														i++
+														v5 = i
+														zJMode = *(*uintptr)(unsafe.Pointer(argv + uintptr(v5)*8))
 													} else {
 														if libc.Xstrcmp(tls, z, __ccgo_ts+35335) == 0 {
 															if i >= argc-int32(1) {
 																fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 															}
-															i = i + 1
-															v4 = i
-															zKey = *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8))
+															i++
+															v6 = i
+															zKey = *(*uintptr)(unsafe.Pointer(argv + uintptr(v6)*8))
 														} else {
 															if libc.Xstrcmp(tls, z, __ccgo_ts+35339) == 0 {
 																if i >= argc-int32(2) {
@@ -2582,7 +2609,7 @@ _2:
 																}
 																nLook = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
 																szLook = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
-																i = i + int32(2)
+																i += int32(2)
 															} else {
 																if libc.Xstrcmp(tls, z, __ccgo_ts+35349) == 0 {
 																	memDb = int32(1)
@@ -2597,12 +2624,12 @@ _2:
 																				if i >= argc-int32(1) {
 																					fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																				}
-																				i = i + 1
-																				v4 = i
-																				mmapSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8)))
+																				i++
+																				v7 = i
+																				mmapSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v7)*8)))
 																			} else {
 																				if libc.Xstrcmp(tls, z, __ccgo_ts+35382) == 0 {
-																					openFlags = openFlags | int32(SQLITE_OPEN_NOMUTEX)
+																					openFlags |= int32(SQLITE_OPEN_NOMUTEX)
 																				} else {
 																					if libc.Xstrcmp(tls, z, __ccgo_ts+35390) == 0 {
 																						noSync = int32(1)
@@ -2614,7 +2641,7 @@ _2:
 																								if i >= argc-int32(1) {
 																									fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																								}
-																								i = i + 1
+																								i++
 																								if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+35421) == 0 {
 																									g.FhashFile = libc.X__acrt_iob_func(tls, uint32(1))
 																								} else {
@@ -2628,9 +2655,9 @@ _2:
 																									if i >= argc-int32(1) {
 																										fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																									}
-																									i = i + 1
-																									v4 = i
-																									pageSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8)))
+																									i++
+																									v8 = i
+																									pageSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v8)*8)))
 																								} else {
 																									if libc.Xstrcmp(tls, z, __ccgo_ts+35465) == 0 {
 																										if i >= argc-int32(2) {
@@ -2639,7 +2666,7 @@ _2:
 																										nPCache = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
 																										szPCache = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
 																										doPCache = int32(1)
-																										i = i + int32(2)
+																										i += int32(2)
 																									} else {
 																										if libc.Xstrcmp(tls, z, __ccgo_ts+35472) == 0 {
 																											g.FzPK = __ccgo_ts + 35483
@@ -2648,9 +2675,9 @@ _2:
 																												if i >= argc-int32(1) {
 																													fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																												}
-																												i = i + 1
-																												v4 = i
-																												g.FnRepeat = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8)))
+																												i++
+																												v9 = i
+																												g.FnRepeat = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v9)*8)))
 																											} else {
 																												if libc.Xstrcmp(tls, z, __ccgo_ts+35502) == 0 {
 																													g.FbReprepare = int32(1)
@@ -2668,9 +2695,9 @@ _2:
 																																if g.FpScript != 0 {
 																																	libc.Xfclose(tls, g.FpScript)
 																																}
-																																i = i + 1
-																																v4 = i
-																																g.FpScript = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8)), __ccgo_ts+35423)
+																																i++
+																																v10 = i
+																																g.FpScript = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v10)*8)), __ccgo_ts+35423)
 																																if g.FpScript == uintptr(0) {
 																																	fatal_error(tls, __ccgo_ts+35543, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																}
@@ -2685,18 +2712,18 @@ _2:
 																																			if i >= argc-int32(1) {
 																																				fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																			}
-																																			i = i + 1
-																																			v5 = i
-																																			v4 = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v5)*8)))
-																																			g.FszBase = v4
-																																			g.FszTest = v4
+																																			i++
+																																			v12 = i
+																																			v11 = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v12)*8)))
+																																			g.FszBase = v11
+																																			g.FszTest = v11
 																																		} else {
 																																			if libc.Xstrcmp(tls, z, __ccgo_ts+35603) == 0 {
 																																				if i >= argc-int32(1) {
 																																					fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																				}
 																																				nSoftHeapLmt = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
-																																				i = i + int32(1)
+																																				i += int32(1)
 																																			} else {
 																																				if libc.Xstrcmp(tls, z, __ccgo_ts+35619) == 0 {
 																																					showStats = int32(1)
@@ -2705,7 +2732,7 @@ _2:
 																																						if i >= argc-int32(1) {
 																																							fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																						}
-																																						i = i + 1
+																																						i++
 																																						if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) < int32('0') || int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) > int32('9') || int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)) + 1))) != 0 {
 																																							fatal_error(tls, __ccgo_ts+35630, 0)
 																																						}
@@ -2715,9 +2742,9 @@ _2:
 																																							if i >= argc-int32(1) {
 																																								fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																							}
-																																							i = i + 1
-																																							v4 = i
-																																							zTSet = *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8))
+																																							i++
+																																							v13 = i
+																																							zTSet = *(*uintptr)(unsafe.Pointer(argv + uintptr(v13)*8))
 																																						} else {
 																																							if libc.Xstrcmp(tls, z, __ccgo_ts+35691) == 0 {
 																																								doTrace = int32(1)
@@ -2726,9 +2753,9 @@ _2:
 																																									if i >= argc-int32(1) {
 																																										fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																									}
-																																									i = i + 1
-																																									v4 = i
-																																									nThread = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8)))
+																																									i++
+																																									v14 = i
+																																									nThread = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v14)*8)))
 																																								} else {
 																																									if libc.Xstrcmp(tls, z, __ccgo_ts+35705) == 0 {
 																																										zEncoding = __ccgo_ts + 35705
@@ -2744,17 +2771,17 @@ _2:
 																																													if i >= argc-int32(1) {
 																																														fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																													}
-																																													i = i + 1
-																																													v4 = i
-																																													g.FzVfs = *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8))
+																																													i++
+																																													v15 = i
+																																													g.FzVfs = *(*uintptr)(unsafe.Pointer(argv + uintptr(v15)*8))
 																																												} else {
 																																													if libc.Xstrcmp(tls, z, __ccgo_ts+35732) == 0 {
 																																														if i >= argc-int32(1) {
 																																															fatal_error(tls, __ccgo_ts+35232, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																														}
-																																														i = i + 1
-																																														v4 = i
-																																														g.FnReserve = libc.Xatoi(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8)))
+																																														i++
+																																														v16 = i
+																																														g.FnReserve = libc.Xatoi(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v16)*8)))
 																																													} else {
 																																														if libc.Xstrcmp(tls, z, __ccgo_ts+35740) == 0 {
 																																															g.FstmtScanStatus = int32(1)
@@ -2783,10 +2810,10 @@ _2:
 																																																	}
 																																																} else {
 																																																	if libc.Xstrcmp(tls, z, __ccgo_ts+35812) == 0 || libc.Xstrcmp(tls, z, __ccgo_ts+35817) == 0 {
-																																																		v1 = uintptr(unsafe.Pointer(&zHelp))
+																																																		v17 = uintptr(unsafe.Pointer(&zHelp))
 																																																		libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv)))
 																																																		__local_argv = bp
-																																																		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+																																																		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v17, __local_argv)
 																																																		_ = __local_argv
 																																																		_ = __retval
 																																																		goto _18
@@ -2852,7 +2879,7 @@ _2:
 		goto _3
 	_3:
 		;
-		i = i + 1
+		i++
 	}
 	if nHeap > 0 {
 		pHeap = libc.Xmalloc(tls, uint64(nHeap))
@@ -2895,11 +2922,11 @@ _2:
 	}
 	/* Open the database and the input file */
 	if memDb != 0 {
-		v1 = __ccgo_ts + 36031
+		v19 = __ccgo_ts + 36031
 	} else {
-		v1 = g.FzDbName
+		v19 = g.FzDbName
 	}
-	if libsqlite3.Xsqlite3_open_v2(tls, v1, uintptr(unsafe.Pointer(&g)), openFlags, g.FzVfs) != 0 {
+	if libsqlite3.Xsqlite3_open_v2(tls, v19, uintptr(unsafe.Pointer(&g)), openFlags, g.FzVfs) != 0 {
 		fatal_error(tls, __ccgo_ts+18708, libc.VaList(bp+504, g.FzDbName))
 	}
 	if nLook > 0 && szLook > 0 {
@@ -2969,9 +2996,9 @@ _2:
 		speedtest1_exec(tls, __ccgo_ts+36351, libc.VaList(bp+504, zJMode))
 	}
 	if g.FbExplain != 0 {
-		v1 = __ccgo_ts + 36426
+		v20 = __ccgo_ts + 36426
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v20, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _21
@@ -2999,7 +3026,7 @@ _2:
 				goto _22
 			_22:
 				;
-				kk = kk + 1
+				kk++
 			}
 			if kk == int32(1) || int32(*(*int8)(unsafe.Pointer(zSep + uintptr(kk)))) != 0 {
 				fatal_error(tls, __ccgo_ts+36445, libc.VaList(bp+504, zThisTest))
@@ -3013,10 +3040,10 @@ _2:
 			g.FszTest = g.FszBase
 		}
 		if g.FiTotal > 0 || zComma == uintptr(0) {
-			v1 = __ccgo_ts + 36480
+			v23 = __ccgo_ts + 36480
 			libc.VaList(bp, zThisTest)
 			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v23, __local_argv)
 			_ = __local_argv
 			_ = __retval
 			goto _24
@@ -3100,100 +3127,100 @@ _2:
 	 ** have been finalized */
 	if showStats != 0 {
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, SQLITE_DBSTATUS_LOOKASIDE_USED, bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 36905
+		v25 = __ccgo_ts + 36905
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v25, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _26
 	_26:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_HIT), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 36950
+		v27 = __ccgo_ts + 36950
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v27, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _28
 	_28:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 36986
+		v29 = __ccgo_ts + 36986
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v29, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _30
 	_30:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37022
+		v31 = __ccgo_ts + 37022
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v31, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _32
 	_32:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_USED), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37058
+		v33 = __ccgo_ts + 37058
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v33, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _34
 	_34:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_HIT), bp+488, bp+492, int32(1))
-		v1 = __ccgo_ts + 37100
+		v35 = __ccgo_ts + 37100
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v35, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _36
 	_36:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_MISS), bp+488, bp+492, int32(1))
-		v1 = __ccgo_ts + 37136
+		v37 = __ccgo_ts + 37136
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v37, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _38
 	_38:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_CACHE_WRITE), bp+488, bp+492, int32(1))
-		v1 = __ccgo_ts + 37172
+		v39 = __ccgo_ts + 37172
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v39, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _40
 	_40:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_SCHEMA_USED), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37208
+		v41 = __ccgo_ts + 37208
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v41, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _42
 	_42:
 		;
 		libsqlite3.Xsqlite3_db_status(tls, g.Fdb, int32(SQLITE_DBSTATUS_STMT_USED), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37250
+		v43 = __ccgo_ts + 37250
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v43, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _44
@@ -3204,50 +3231,50 @@ _2:
 	 ** has closed.  Memory usage should be zero at this point. */
 	if showStats != 0 {
 		libsqlite3.Xsqlite3_status(tls, SQLITE_STATUS_MEMORY_USED, bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37292
+		v45 = __ccgo_ts + 37292
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v45, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _46
 	_46:
 		;
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_COUNT), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37337
+		v47 = __ccgo_ts + 37337
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v47, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _48
 	_48:
 		;
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_OVERFLOW), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37382
+		v49 = __ccgo_ts + 37382
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v49, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _50
 	_50:
 		;
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_SIZE), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37427
+		v51 = __ccgo_ts + 37427
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v51, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _52
 	_52:
 		;
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_SIZE), bp+488, bp+492, 0)
-		v1 = __ccgo_ts + 37469
+		v53 = __ccgo_ts + 37469
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v53, __local_argv)
 		_ = __local_argv
 		_ = __retval
 		goto _54
