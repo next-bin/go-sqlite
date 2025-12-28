@@ -32,8 +32,6 @@ const SQLITE_ROW = 100
 const SQLITE_SCHEMA = 17
 const SQLITE_UTF8 = 1
 
-type __predefined_size_t = uint64
-
 type va_list = uintptr
 
 type __uint32_t = uint32
@@ -645,7 +643,7 @@ func stringFree(tls *libc.TLS, p uintptr) {
 	if (*String)(unsafe.Pointer(p)).Fz != 0 {
 		libsqlite3.Xsqlite3_free(tls, (*String)(unsafe.Pointer(p)).Fz)
 	}
-	libc.X__builtin___memset_chk(tls, p, 0, uint64(16), ^__predefined_size_t(0))
+	libc.Xmemset(tls, p, 0, uint64(16))
 }
 
 // C documentation
@@ -667,7 +665,7 @@ func stringAppend(tls *libc.TLS, p uintptr, z uintptr, n int32) {
 		(*String)(unsafe.Pointer(p)).Fz = zNew
 		(*String)(unsafe.Pointer(p)).FnAlloc = nAlloc
 	}
-	libc.X__builtin___memcpy_chk(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), z, libc.Uint64FromInt32(n), ^__predefined_size_t(0))
+	libc.Xmemcpy(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), z, libc.Uint64FromInt32(n))
 	*(*int32)(unsafe.Pointer(p + 8)) += n
 	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).Fz + uintptr((*String)(unsafe.Pointer(p)).Fn))) = 0
 }
@@ -829,7 +827,7 @@ func evalFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	zSql = libsqlite3.Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	*(*uintptr)(unsafe.Pointer(bp + 16)) = uintptr(0)
 	_ = argc
-	libc.X__builtin___memset_chk(tls, bp, 0, uint64(16), ^__predefined_size_t(0))
+	libc.Xmemset(tls, bp, 0, uint64(16))
 	rc = libsqlite3.Xsqlite3_exec(tls, db, zSql, __ccgo_fp(evalCallback), bp, bp+16)
 	if *(*uintptr)(unsafe.Pointer(bp + 16)) != 0 {
 		libsqlite3.Xsqlite3_result_error(tls, context, *(*uintptr)(unsafe.Pointer(bp + 16)), -int32(1))
@@ -890,7 +888,7 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 		if rc == int32(SQLITE_ROW) {
 			n = libsqlite3.Xsqlite3_column_bytes(tls, pStmt, 0)
 			*(*uintptr)(unsafe.Pointer(pzScript)) = libsqlite3.Xsqlite3_malloc(tls, n+int32(1))
-			libc.X__builtin___strcpy_chk(tls, *(*uintptr)(unsafe.Pointer(pzScript)), libsqlite3.Xsqlite3_column_text(tls, pStmt, 0), ^__predefined_size_t(0))
+			libc.Xstrcpy(tls, *(*uintptr)(unsafe.Pointer(pzScript)), libsqlite3.Xsqlite3_column_text(tls, pStmt, 0))
 			v1 = libsqlite3.Xsqlite3_column_int(tls, pStmt, int32(1))
 			taskId = v1
 			*(*int32)(unsafe.Pointer(pTaskId)) = v1
@@ -1468,7 +1466,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 	prevLine = int32(1)
 	ii = 0
 	iBegin = 0
-	libc.X__builtin___memset_chk(tls, bp+8, 0, uint64(16), ^__predefined_size_t(0))
+	libc.Xmemset(tls, bp+8, 0, uint64(16))
 	stringReset(tls, bp+8)
 	for {
 		v1 = int32(*(*int8)(unsafe.Pointer(zScript + uintptr(ii))))
