@@ -198,7 +198,18 @@ func main() {
 			}
 		}
 
-		return ccgo.NewTask(goos, goarch, append(args, "--package-name=libz", "-o", result, "libz.a"), os.Stdout, os.Stderr, nil).Main()
+		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=libz", "-o", result, "libz.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+			return err
+		}
+
+		switch target {
+		case "openbsd/amd64":
+			util.MustShell(true, nil, sed, "-i.bak", `s/\<___stdin\>/libc.Xstdin/g`, "example64.go", "minigzip64.go")
+			util.MustShell(true, nil, sed, "-i.bak", `s/\<___stdout\>/libc.Xstdout/g`, "example64.go", "minigzip64.go")
+			util.MustShell(true, nil, sed, "-i.bak", `s/\<___stderr\>/libc.Xstderr/g`, "example64.go", "minigzip64.go")
+		}
+
+		return nil
 	})
 
 	util.MustCopyFile(true, filepath.Join("include", goos, goarch, "zconf.h"), filepath.Join(libRoot, "zconf.h"), nil)
