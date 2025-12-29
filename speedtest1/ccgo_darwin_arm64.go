@@ -51,8 +51,6 @@ const SQLITE_STATUS_PAGECACHE_SIZE = 7
 const SQLITE_TESTCTRL_PRNG_SEED = 28
 const SQLITE_UTF8 = 1
 
-type __predefined_size_t = uint64
-
 // C documentation
 //
 //	/*
@@ -960,7 +958,7 @@ func speedtest1_run(tls *libc.TLS) {
 					*(*int32)(unsafe.Pointer(v4))++
 					*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 148 + uintptr(v3))) = int8(' ')
 				}
-				libc.X__builtin___memcpy_chk(tls, uintptr(unsafe.Pointer(&g))+148+uintptr(g.FnResult), z1, libc.Uint64FromInt32(len1+int32(1)), ^__predefined_size_t(0))
+				libc.Xmemcpy(tls, uintptr(unsafe.Pointer(&g))+148+uintptr(g.FnResult), z1, libc.Uint64FromInt32(len1+int32(1)))
 				g.FnResult += len1
 			}
 			goto _1
