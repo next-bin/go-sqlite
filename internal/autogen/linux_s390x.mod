@@ -30,3 +30,5 @@ require (
 	modernc.org/strutil v1.2.1 // indirect
 	modernc.org/token v1.1.0 // indirect
 )
+
+retract v1.10.4 // Accidentaly broken, reverting to v1.10.3 state
