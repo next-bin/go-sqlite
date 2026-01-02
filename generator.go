@@ -204,9 +204,9 @@ func main() {
 
 		switch target {
 		case "openbsd/amd64":
-			util.MustShell(true, nil, sed, "-i.bak", `s/\<___stdin\>/libc.Xstdin/g`, "example64.go", "minigzip64.go")
-			util.MustShell(true, nil, sed, "-i.bak", `s/\<___stdout\>/libc.Xstdout/g`, "example64.go", "minigzip64.go")
-			util.MustShell(true, nil, sed, "-i.bak", `s/\<___stderr\>/libc.Xstderr/g`, "example64.go", "minigzip64.go")
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`, "example64.go", "minigzip64.go")
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdout\>/libc.Xstdout/g`, "example64.go", "minigzip64.go")
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stderr\>/libc.Xstderr/g`, "example64.go", "minigzip64.go")
 		}
 
 		return nil

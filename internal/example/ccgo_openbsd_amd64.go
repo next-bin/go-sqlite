@@ -157,17 +157,17 @@ func _test_compress(tls *libc.TLS, compr uintptr, _comprLen TuLong, uncompr uint
 	len1 = libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello))) + uint64(1)
 	err = x_compress(tls, compr, bp, uintptr(unsafe.Pointer(&_hello)), len1)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+24, __ccgo_ts+14, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+24, __ccgo_ts+14, err))
 		libc.Xexit(tls, int32(1))
 	}
 	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
 	err = x_uncompress(tls, uncompr, bp+8, compr, *(*TuLong)(unsafe.Pointer(bp)))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+24, __ccgo_ts+31, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+24, __ccgo_ts+31, err))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+42, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+42, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
 		libc.Xprintf(tls, __ccgo_ts+58, libc.VaList(bp+24, uncompr))
@@ -191,39 +191,39 @@ func _test_gzio(tls *libc.TLS, fname uintptr, uncompr uintptr, uncomprLen TuLong
 	len1 = libc.Int32FromUint64(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + int32(1)
 	file = x_gzopen(tls, fname, __ccgo_ts+76)
 	if file == libc.UintptrFromInt32(0) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+79, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+79, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	x_gzputc(tls, file, int32('h'))
 	if x_gzputs(tls, file, __ccgo_ts+93) != int32(4) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+98, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+98, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
 		libc.Xexit(tls, int32(1))
 	}
 	if x_gzprintf(tls, file, __ccgo_ts+114, libc.VaList(bp+16, __ccgo_ts+120)) != int32(8) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+126, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+126, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
 		libc.Xexit(tls, int32(1))
 	}
 	x_gzseek(tls, file, int64(1), int32(m_SEEK_CUR)) /* add one zero byte */
 	x_gzclose(tls, file)
 	file = x_gzopen(tls, fname, __ccgo_ts+144)
 	if file == libc.UintptrFromInt32(0) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+79, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+79, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
 	if x_gzread(tls, file, uncompr, uint32(uncomprLen)) != len1 {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+147, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+147, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+163, libc.VaList(bp+16, uncompr))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+163, libc.VaList(bp+16, uncompr))
 		libc.Xexit(tls, int32(1))
 	} else {
 		libc.Xprintf(tls, __ccgo_ts+179, libc.VaList(bp+16, uncompr))
 	}
 	pos = x_gzseek(tls, file, -int64(8), int32(m_SEEK_CUR))
 	if pos != int64(6) || x_gztell(tls, file) != pos {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+193, libc.VaList(bp+16, pos, x_gztell(tls, file)))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+193, libc.VaList(bp+16, pos, x_gztell(tls, file)))
 		libc.Xexit(tls, int32(1))
 	}
 	if (*TgzFile_s)(unsafe.Pointer(file)).Fhave != 0 {
@@ -237,20 +237,20 @@ func _test_gzio(tls *libc.TLS, fname uintptr, uncompr uintptr, uncomprLen TuLong
 		v1 = x_gzgetc(tls, file)
 	}
 	if v1 != int32(' ') {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+228, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+228, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	if x_gzungetc(tls, int32(' '), file) != int32(' ') {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+242, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+242, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	x_gzgets(tls, file, uncompr, libc.Int32FromUint64(uncomprLen))
 	if libc.Xstrlen(tls, uncompr) != uint64(7) { /* " hello!" */
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+258, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+258, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))+uintptr(6)) != 0 {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+287, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+287, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
 		libc.Xprintf(tls, __ccgo_ts+312, libc.VaList(bp+16, uncompr))
@@ -277,7 +277,7 @@ func _test_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
 	err = x_deflateInit_(tls, bp, -int32(1), __ccgo_ts+339, libc.Int32FromInt64(112))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+345, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
@@ -288,7 +288,7 @@ func _test_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v1 /* force small buffers */
 		err = x_deflate(tls, bp, m_Z_NO_FLUSH)
 		if err != m_Z_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
+			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
 			libc.Xexit(tls, int32(1))
 		}
 	}
@@ -300,7 +300,7 @@ func _test_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
 			break
 		}
 		if err != m_Z_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
+			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
 			libc.Xexit(tls, int32(1))
 		}
 		goto _2
@@ -308,7 +308,7 @@ func _test_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
 	}
 	err = x_deflateEnd(tls, bp)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+365, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+365, err))
 		libc.Xexit(tls, int32(1))
 	}
 }
@@ -334,7 +334,7 @@ func _test_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintpt
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
 	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(112))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+376, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+376, err))
 		libc.Xexit(tls, int32(1))
 	}
 	for (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out < uncomprLen && (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_in < comprLen {
@@ -346,17 +346,17 @@ func _test_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintpt
 			break
 		}
 		if err != m_Z_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+388, err))
+			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+388, err))
 			libc.Xexit(tls, int32(1))
 		}
 	}
 	err = x_inflateEnd(tls, bp)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+396, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+407, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+407, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
 		libc.Xprintf(tls, __ccgo_ts+420, libc.VaList(bp+120, uncompr))
@@ -379,7 +379,7 @@ func _test_large_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
 	err = x_deflateInit_(tls, bp, int32(m_Z_BEST_SPEED), __ccgo_ts+339, libc.Int32FromInt64(112))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+345, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
@@ -391,11 +391,11 @@ func _test_large_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uncomprLen)
 	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
 	if (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in != uint32(0) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+435, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+435, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	/* Feed in already compressed data and switch to no compression: */
@@ -404,7 +404,7 @@ func _test_large_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uncomprLen) / uint32(2)
 	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
 	/* Switch back to compressing mode: */
@@ -413,17 +413,17 @@ func _test_large_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uncomprLen)
 	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
 	err = x_deflate(tls, bp, int32(m_Z_FINISH))
 	if err != int32(m_Z_STREAM_END) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+455, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+455, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	err = x_deflateEnd(tls, bp)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+365, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+365, err))
 		libc.Xexit(tls, int32(1))
 	}
 }
@@ -447,7 +447,7 @@ func _test_large_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(comprLen)
 	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(112))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+376, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+376, err))
 		libc.Xexit(tls, int32(1))
 	}
 	for {
@@ -458,7 +458,7 @@ func _test_large_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 			break
 		}
 		if err != m_Z_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+491, err))
+			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+491, err))
 			libc.Xexit(tls, int32(1))
 		}
 		goto _1
@@ -466,11 +466,11 @@ func _test_large_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 	}
 	err = x_inflateEnd(tls, bp)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+396, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
 	if (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out != uint64(2)*uncomprLen+uncomprLen/uint64(2) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+505, libc.VaList(bp+120, (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+505, libc.VaList(bp+120, (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out))
 		libc.Xexit(tls, int32(1))
 	} else {
 		libc.Xprintf(tls, __ccgo_ts+529, 0)
@@ -495,7 +495,7 @@ func _test_flush(tls *libc.TLS, compr uintptr, comprLen uintptr) {
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
 	err = x_deflateInit_(tls, bp, -int32(1), __ccgo_ts+339, libc.Int32FromInt64(112))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+345, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
@@ -504,7 +504,7 @@ func _test_flush(tls *libc.TLS, compr uintptr, comprLen uintptr) {
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(*(*TuLong)(unsafe.Pointer(comprLen)))
 	err = x_deflate(tls, bp, int32(m_Z_FULL_FLUSH))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
 	*(*TByte)(unsafe.Pointer(compr + 3)) = *(*TByte)(unsafe.Pointer(compr + 3)) + 1 /* force an error in first compressed block */
@@ -512,13 +512,13 @@ func _test_flush(tls *libc.TLS, compr uintptr, comprLen uintptr) {
 	err = x_deflate(tls, bp, int32(m_Z_FINISH))
 	if err != int32(m_Z_STREAM_END) {
 		if err != m_Z_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
+			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+357, err))
 			libc.Xexit(tls, int32(1))
 		}
 	}
 	err = x_deflateEnd(tls, bp)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+365, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+365, err))
 		libc.Xexit(tls, int32(1))
 	}
 	*(*TuLong)(unsafe.Pointer(comprLen)) = (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out
@@ -543,30 +543,30 @@ func _test_sync(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, 
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(2) /* just read the zlib header */
 	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(112))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+376, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+376, err))
 		libc.Xexit(tls, int32(1))
 	}
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uncomprLen)
 	err = x_inflate(tls, bp, m_Z_NO_FLUSH)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+388, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+388, err))
 		libc.Xexit(tls, int32(1))
 	}
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(comprLen) - uint32(2) /* read all compressed data */
 	err = x_inflateSync(tls, bp)                                                 /* but skip the damaged part */
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+550, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+550, err))
 		libc.Xexit(tls, int32(1))
 	}
 	err = x_inflate(tls, bp, int32(m_Z_FINISH))
 	if err != int32(m_Z_STREAM_END) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+562, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+562, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	err = x_inflateEnd(tls, bp)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+396, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
 	libc.Xprintf(tls, __ccgo_ts+598, libc.VaList(bp+120, uncompr))
@@ -588,12 +588,12 @@ func _test_dict_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
 	err = x_deflateInit_(tls, bp, int32(m_Z_BEST_COMPRESSION), __ccgo_ts+339, libc.Int32FromInt64(112))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+345, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
 	err = x_deflateSetDictionary(tls, bp, uintptr(unsafe.Pointer(&_dictionary)), libc.Uint32FromInt32(libc.Int32FromInt64(6)))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+626, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+626, err))
 		libc.Xexit(tls, int32(1))
 	}
 	_dictId = (*(*Tz_stream)(unsafe.Pointer(bp))).Fadler
@@ -603,12 +603,12 @@ func _test_dict_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + uint32(1)
 	err = x_deflate(tls, bp, int32(m_Z_FINISH))
 	if err != int32(m_Z_STREAM_END) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+455, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+455, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	err = x_deflateEnd(tls, bp)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+365, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+365, err))
 		libc.Xexit(tls, int32(1))
 	}
 }
@@ -632,7 +632,7 @@ func _test_dict_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr u
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(comprLen)
 	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(112))
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+376, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+376, err))
 		libc.Xexit(tls, int32(1))
 	}
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
@@ -644,13 +644,13 @@ func _test_dict_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr u
 		}
 		if err == int32(m_Z_NEED_DICT) {
 			if (*(*Tz_stream)(unsafe.Pointer(bp))).Fadler != _dictId {
-				libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+647, 0)
+				libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+647, 0)
 				libc.Xexit(tls, int32(1))
 			}
 			err = x_inflateSetDictionary(tls, bp, uintptr(unsafe.Pointer(&_dictionary)), libc.Uint32FromInt32(libc.Int32FromInt64(6)))
 		}
 		if err != m_Z_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+669, err))
+			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+669, err))
 			libc.Xexit(tls, int32(1))
 		}
 		goto _1
@@ -658,11 +658,11 @@ func _test_dict_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr u
 	}
 	err = x_inflateEnd(tls, bp)
 	if err != m_Z_OK {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+396, err))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts, libc.VaList(bp+120, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+687, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+687, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
 		libc.Xprintf(tls, __ccgo_ts+710, libc.VaList(bp+120, uncompr))
@@ -683,11 +683,11 @@ func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	uncomprLen = uint64(20000)
 	*(*TuLong)(unsafe.Pointer(bp)) = uint64(3) * uncomprLen
 	if int32(*(*int8)(unsafe.Pointer(x_zlibVersion(tls)))) != int32(*(*int8)(unsafe.Pointer(_myVersion))) {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+739, 0)
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+739, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
 		if libc.Xstrcmp(tls, x_zlibVersion(tls), __ccgo_ts+339) != 0 {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(&libc.Xstderr)), __ccgo_ts+766, libc.VaList(bp+16, x_zlibVersion(tls)))
+			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+766, libc.VaList(bp+16, x_zlibVersion(tls)))
 		}
 	}
 	libc.Xprintf(tls, __ccgo_ts+810, libc.VaList(bp+16, __ccgo_ts+339, int32(m_ZLIB_VERNUM), x_zlibCompileFlags(tls)))
