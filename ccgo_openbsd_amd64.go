@@ -5501,7 +5501,7 @@ func XTclReComp(tls *libc.TLS, re uintptr, string1 uintptr, len1 Tsize_t, flags 
 	_, _, _, _, _, _ = debug, g, i, j, v, v1
 	v = XTcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_varsKey)), int32(272))
 	if flags&int32(m_REG_PROGRESS) != 0 {
-		v1 = uintptr(unsafe.Pointer(&___stdout))
+		v1 = uintptr(unsafe.Pointer(libc.Xstdout))
 	} else {
 		v1 = libc.UintptrFromInt32(0)
 	}
@@ -5690,7 +5690,7 @@ func XTclReComp(tls *libc.TLS, re uintptr, string1 uintptr, len1 Tsize_t, flags 
 	(*Tvars)(unsafe.Pointer(v)).Flacons = libc.UintptrFromInt32(0)
 	(*Tguts)(unsafe.Pointer(g)).Fnlacons = (*Tvars)(unsafe.Pointer(v)).Fnlacons
 	if flags&int32(m_REG_DUMP) != 0 {
-		_dump(tls, re, uintptr(unsafe.Pointer(&___stdout)))
+		_dump(tls, re, uintptr(unsafe.Pointer(libc.Xstdout)))
 	}
 	return _freev(tls, v, 0)
 }
@@ -41373,7 +41373,7 @@ func XTcl_DbCkalloc(tls *libc.TLS, size uint32, file uintptr, line int32) (r uin
 	_ = result
 	result = XTclpAlloc(tls, size)
 	if result == libc.UintptrFromInt32(0) && size != 0 {
-		libc.Xfflush(tls, uintptr(unsafe.Pointer(&___stdout)))
+		libc.Xfflush(tls, uintptr(unsafe.Pointer(libc.Xstdout)))
 		XTcl_Panic(tls, __ccgo_ts+10187, libc.VaList(bp+8, size, file, line))
 	}
 	return result
@@ -41436,7 +41436,7 @@ func XTcl_DbCkrealloc(tls *libc.TLS, ptr uintptr, size uint32, file uintptr, lin
 	_ = result
 	result = XTclpRealloc(tls, ptr, size)
 	if result == libc.UintptrFromInt32(0) && size != 0 {
-		libc.Xfflush(tls, uintptr(unsafe.Pointer(&___stdout)))
+		libc.Xfflush(tls, uintptr(unsafe.Pointer(libc.Xstdout)))
 		XTcl_Panic(tls, __ccgo_ts+10251, libc.VaList(bp+8, size, file, line))
 	}
 	return result
@@ -59691,7 +59691,7 @@ func XTclNRTryObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).Fbytes = libc.UintptrFromInt32(0)
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).FinternalRep.FlongValue = int64(*(*int32)(unsafe.Pointer(bp + 4)))
 		(*TTcl_Obj)(unsafe.Pointer((*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(1)])).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType)) /* returnCode */
-		if (*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(2)] == libc.UintptrFromInt32(0) {                                              /* errorCodePrefix */
+		if (*(*[5]uintptr)(unsafe.Pointer(bp + 16)))[int32(2)] == libc.UintptrFromInt32(0) {                                               /* errorCodePrefix */
 			if XtclFreeObjList == libc.UintptrFromInt32(0) {
 				XTclAllocateFreeObjects(tls)
 			}
@@ -160982,7 +160982,7 @@ abnormalReturn:
 		}
 	}
 	if tosPtr < TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8 {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&___stderr)), __ccgo_ts+28960, libc.VaList(bp+296, libc.Uint32FromInt64(int64(pc)-int64((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FcodeStart)), libc.Uint32FromInt64((int64(tosPtr)-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8), libc.Uint32FromInt32(0)))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+28960, libc.VaList(bp+296, libc.Uint32FromInt64(int64(pc)-int64((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FcodeStart)), libc.Uint32FromInt64((int64(tosPtr)-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8), libc.Uint32FromInt32(0)))
 		XTcl_Panic(tls, __ccgo_ts+29044, 0)
 	}
 	(*TInterp)(unsafe.Pointer(interp)).FcmdFramePtr = (*TCmdFrame)(unsafe.Pointer(TD + 24)).FnextPtr
@@ -215450,9 +215450,9 @@ func XTcl_PanicVA(tls *libc.TLS, format uintptr, argList Tva_list) {
 	if _panicProc != libc.UintptrFromInt32(0) {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{_panicProc})))(tls, format, libc.VaList(bp+8, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8))
 	} else {
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&___stderr)), format, libc.VaList(bp+8, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8))
-		libc.Xfprintf(tls, uintptr(unsafe.Pointer(&___stderr)), __ccgo_ts+285, 0)
-		libc.Xfflush(tls, uintptr(unsafe.Pointer(&___stderr)))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), format, libc.VaList(bp+8, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8))
+		libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+285, 0)
+		libc.Xfflush(tls, uintptr(unsafe.Pointer(libc.Xstderr)))
 		libc.Xabort(tls)
 	}
 }

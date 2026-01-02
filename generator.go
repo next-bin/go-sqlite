@@ -285,7 +285,9 @@ go work use \
 				return err
 			}
 		default:
-			ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec()
+			if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+				return err
+			}
 		}
 		switch {
 		case win, win32:
@@ -303,7 +305,14 @@ go work use \
 				"-lws2_32",
 			), os.Stdout, os.Stderr, nil).Main()
 		case target == "openbsd/amd64":
-			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl86.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+			if err := ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl86.a", "-lz"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+				return err
+			}
+
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`,   result)
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdout\>/libc.Xstdout/g`, result)
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stderr\>/libc.Xstderr/g`, result)
+			return nil
 		default:
 			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 		}
@@ -334,7 +343,15 @@ go work use \
 	case win || win32:
 		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltests.exe.go"), nil)
 	default:
-		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
+		dest := filepath.Join("internal", "tcltest", fn)
+		mustCopyFile(dest, filepath.Join(makeRoot, "tcltest.go"), nil)
+		switch target {
+		case "openbsd/amd64":
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`,   dest)
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdout\>/libc.Xstdout/g`, dest)
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stderr\>/libc.Xstderr/g`, dest)
+			util.MustShell(true, nil, "find", ".", "-name", "*.bak", "-delete")
+		}
 	}
 	util.Shell(nil, "git", "status")
 }
