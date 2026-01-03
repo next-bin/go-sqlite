@@ -309,7 +309,7 @@ go work use \
 				return err
 			}
 
-			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`,   result)
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`, result)
 			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdout\>/libc.Xstdout/g`, result)
 			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stderr\>/libc.Xstderr/g`, result)
 			return nil
@@ -347,7 +347,7 @@ go work use \
 		mustCopyFile(dest, filepath.Join(makeRoot, "tcltest.go"), nil)
 		switch target {
 		case "openbsd/amd64":
-			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`,   dest)
+			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`, dest)
 			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdout\>/libc.Xstdout/g`, dest)
 			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stderr\>/libc.Xstderr/g`, dest)
 			util.MustShell(true, nil, "find", ".", "-name", "*.bak", "-delete")
