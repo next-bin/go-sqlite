@@ -82,7 +82,7 @@ func main() {
 	}
 
 	switch target {
-	case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "darwin/amd64", "darwin/arm64", "netbsd/amd64":
+	case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "openbsd/arm64", "darwin/amd64", "darwin/arm64", "netbsd/amd64":
 		sed = "gsed"
 	}
 
@@ -148,7 +148,7 @@ func main() {
 	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.67.4 modernc.org/libz@v0.17.3 modernc.org/libtcl8.6@v0.17.3")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.67.4 modernc.org/libz@v0.17.3 modernc.org/libtcl8.6@v0.17.4")
 		config := []string{os.Args[0]}
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
@@ -242,7 +242,7 @@ func main() {
 			config = append(config, "-DSQLITE_OS_UNIX=1")
 		}
 		switch target {
-		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "netbsd/amd64":
+		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "openbsd/arm64", "netbsd/amd64":
 			config = append(config, "-ltcl8.6")
 		}
 		config = append(config, "-eval-all-macros")
@@ -254,7 +254,7 @@ func main() {
 		util.MustShell(true, nil, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, result)
 		util.MustShell(true, nil, sed, "-i", `s/func _sqlite3MutexInit(tls \*libc\.TLS) (r int32) {/var mu sync.Mutex; func _sqlite3MutexInit(tls \*libc\.TLS) (r int32) { mu\.Lock(); defer mu\.Unlock();/`, result)
 		switch target {
-		case "openbsd/amd64":
+		case "openbsd/amd64", "openbsd/arm64":
 			fmt.Printf("sqlite3.c: result=%q", result)
 			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`, result)
 			util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdout\>/libc.Xstdout/g`, result)
@@ -311,7 +311,7 @@ func main() {
 go mod init example.com/libsqlite3
 go get \
 	modernc.org/libc@v1.67.4 \
-	modernc.org/libtcl8.6@v0.17.3 \
+	modernc.org/libtcl8.6@v0.17.4 \
 	modernc.org/libz@v0.17.3 \
 `)
 		if dev {
@@ -381,7 +381,7 @@ go work use \
 				s = fmt.Sprintf("--with-tclsh=%s", withTclsh)
 			}
 			switch target {
-			case "openbsd/amd64":
+			case "openbsd/amd64", "openbsd/arm64":
 				s += "--with-tcl=/usr/local/lib/tcl/tcl8.6"
 			}
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure %s --disable-shared --disable-load-extension", strings.Join(config, " "), s))
@@ -413,7 +413,7 @@ go work use \
 			"-ignore-link-errors",
 		)
 		switch target {
-		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "netbsd/amd64":
+		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "openbsd/arm64", "netbsd/amd64":
 			args = append(args, "-ltcl8.6")
 		}
 		switch {
@@ -546,7 +546,7 @@ go work use \
 		}
 	}
 	switch target {
-	case "openbsd/amd64":
+	case "openbsd/amd64", "openbsd/arm64":
 		result := filepath.Join("speedtest1", fn)
 		fmt.Printf("speedtest1.c: result=%q", result)
 		util.MustShell(true, nil, sed, "-i.bak", `s/\&_stdin\>/libc.Xstdin/g`, result)
@@ -621,7 +621,7 @@ go work use \
 		}
 	}
 	switch target {
-	case "openbsd/amd64":
+	case "openbsd/amd64", "openbsd/arm64":
 		result := filepath.Join("mptest", fn)
 		fmt.Printf("mptest.c: result=%q", result)
 		util.MustShell(true, nil, sed, "-i.bak", `s/\&_stdin\>/libc.Xstdin/g`, result)
@@ -639,7 +639,7 @@ go work use \
 		mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
 	}
 	switch target {
-	case "openbsd/amd64":
+	case "openbsd/amd64", "openbsd/arm64":
 		result := filepath.Join("internal", "testfixture", fn)
 		fmt.Printf("testfixture: result=%q", result)
 		util.MustShell(true, nil, sed, "-i.bak", `s/\&___stdin\>/libc.Xstdin/g`, result)
@@ -650,7 +650,7 @@ go work use \
 	util.Shell(nil, "rm", "-rf", filepath.Join("internal", "test"))
 	mustCopyDir(filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil, false)
 	mustCopyDir("internal/test", "internal/overlay/test", nil, true)
-	util.MustShell(true, nil, "go", "test", "-run", "@")
+	util.MustShell(true, nil, "go", "test", "-vet=off", "-run", "@")
 	util.Shell(nil, "git", "status")
 }
 
