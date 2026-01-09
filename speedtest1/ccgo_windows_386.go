@@ -1,4 +1,4 @@
-// Code generated for windows/386 by 'generator --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -DSQLITE_ENABLE_RTREE -I /tmp/libsqlite3/sqlite-src-3500400 -map gcc=i686-w64-mingw32-gcc -o speedtest1/ccgo_windows_386.go /tmp/libsqlite3/sqlite-src-3500400/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for windows/386 by 'generator --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -DSQLITE_ENABLE_RTREE -I /tmp/libsqlite3/sqlite-src-3510100 -map gcc=i686-w64-mingw32-gcc -o speedtest1/ccgo_windows_386.go /tmp/libsqlite3/sqlite-src-3510100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build windows && 386
 
@@ -886,13 +886,13 @@ func speedtest1_exec(tls *libc.TLS, zFormat uintptr, va uintptr) {
 //	** the caller.
 //	*/
 func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
-	bp := tls.Alloc(96)
-	defer tls.Free(96)
+	bp := tls.Alloc(64)
+	defer tls.Free(64)
 	var __local_argv __builtin_va_list
 	var __retval, rc1 int32
 	var ap va_list
 	var z, z1, zResult, zSql, v1 uintptr
-	var _ /* pStmt at bp+64 */ uintptr
+	var _ /* pStmt at bp+24 */ uintptr
 	_, _, _, _, _, _, _, _, _ = __local_argv, __retval, ap, rc1, z, z1, zResult, zSql, v1
 	zResult = uintptr(0)
 	ap = va
@@ -901,12 +901,12 @@ func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 	if g.FbSqlOnly != 0 {
 		printSql(tls, zSql)
 	} else {
-		rc1 = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), bp+64, uintptr(0))
+		rc1 = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), bp+24, uintptr(0))
 		if rc1 != 0 {
-			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+80, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
+			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+40, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
 		if g.FpScript != 0 {
-			z = libsqlite3.Xsqlite3_expanded_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 64)))
+			z = libsqlite3.Xsqlite3_expanded_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
 			v1 = __ccgo_ts + 558
 			libc.VaList(bp, z)
 			__local_argv = bp
@@ -918,26 +918,17 @@ func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 			;
 			libsqlite3.Xsqlite3_free(tls, z)
 		}
-		if libsqlite3.Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 64))) == int32(SQLITE_ROW) {
-			z1 = libsqlite3.Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp + 64)), 0)
+		if libsqlite3.Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 24))) == int32(SQLITE_ROW) {
+			z1 = libsqlite3.Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), 0)
 			if z1 != 0 {
-				zResult = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+294, libc.VaList(bp+80, z1))
+				zResult = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+294, libc.VaList(bp+40, z1))
 			}
 		}
-		rc1 = libsqlite3.Xsqlite3_reset(tls, *(*uintptr)(unsafe.Pointer(bp + 64)))
+		rc1 = libsqlite3.Xsqlite3_reset(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
 		if rc1 != SQLITE_OK {
-			v1 = __ccgo_ts + 562
-			libc.VaList(bp, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 64))), rc1, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb))
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _4
-		_4:
-			;
-			libc.Xexit(tls, int32(1))
+			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+40, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 24))), rc1, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
-		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp + 64)))
+		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	speedtest1_shrink_memory(tls)
@@ -975,14 +966,14 @@ func speedtest1_prepare(tls *libc.TLS, zFormat uintptr, va uintptr) {
 //
 //	/* Run an SQL statement previously prepared */
 func speedtest1_run(tls *libc.TLS) {
-	bp := tls.Alloc(112)
-	defer tls.Free(112)
+	bp := tls.Alloc(64)
+	defer tls.Free(64)
 	var __local_argv __builtin_va_list
 	var __retval, eType, i, iBlob, len1, n, nBlob, rc, v5 int32
 	var aBlob, z, z1, v1 uintptr
-	var _ /* pNew at bp+108 */ uintptr
-	var _ /* zChar at bp+106 */ [2]uint8
-	var _ /* zPrefix at bp+104 */ [2]uint8
+	var _ /* pNew at bp+28 */ uintptr
+	var _ /* zChar at bp+26 */ [2]uint8
+	var _ /* zPrefix at bp+24 */ [2]uint8
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, aBlob, eType, i, iBlob, len1, n, nBlob, rc, z, z1, v1, v5
 	if g.FbSqlOnly != 0 {
 		return
@@ -1015,12 +1006,12 @@ func speedtest1_run(tls *libc.TLS) {
 			len1 = int32(libc.Xstrlen(tls, z1))
 			if g.FbVerify != 0 {
 				eType = libsqlite3.Xsqlite3_column_type(tls, g.FpStmt, i)
-				(*(*[2]uint8)(unsafe.Pointer(bp + 104)))[0] = uint8('\n')
-				(*(*[2]uint8)(unsafe.Pointer(bp + 104)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 588 + uintptr(eType))))
+				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[0] = uint8('\n')
+				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 588 + uintptr(eType))))
 				if g.FnResByte != 0 {
-					HashUpdate(tls, bp+104, uint32(2))
+					HashUpdate(tls, bp+24, uint32(2))
 				} else {
-					HashUpdate(tls, bp+104+uintptr(1), uint32(1))
+					HashUpdate(tls, bp+24+uintptr(1), uint32(1))
 				}
 				if eType == int32(SQLITE_FLOAT) {
 					/* Omit the value of floating-point results from the verification
@@ -1036,9 +1027,9 @@ func speedtest1_run(tls *libc.TLS) {
 							if !(iBlob < nBlob) {
 								break
 							}
-							(*(*[2]uint8)(unsafe.Pointer(bp + 106)))[0] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 595 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4)))))
-							(*(*[2]uint8)(unsafe.Pointer(bp + 106)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 595 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15)))))
-							HashUpdate(tls, bp+106, uint32(2))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[0] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 595 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4)))))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 595 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15)))))
+							HashUpdate(tls, bp+26, uint32(2))
 							goto _4
 						_4:
 							;
@@ -1068,34 +1059,16 @@ func speedtest1_run(tls *libc.TLS) {
 		}
 	}
 	if g.FbReprepare != 0 {
-		libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), -int32(1), bp+108, uintptr(0))
+		libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), -int32(1), bp+28, uintptr(0))
 		rc = libsqlite3.Xsqlite3_finalize(tls, g.FpStmt)
 		if rc != SQLITE_OK {
-			v1 = __ccgo_ts + 562
-			libc.VaList(bp, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 108))), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb))
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _8
-		_8:
-			;
-			libc.Xexit(tls, int32(1))
+			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+40, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 28))), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
-		g.FpStmt = *(*uintptr)(unsafe.Pointer(bp + 108))
+		g.FpStmt = *(*uintptr)(unsafe.Pointer(bp + 28))
 	} else {
 		rc = libsqlite3.Xsqlite3_reset(tls, g.FpStmt)
 		if rc != SQLITE_OK {
-			v1 = __ccgo_ts + 562
-			libc.VaList(bp, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb))
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _10
-		_10:
-			;
-			libc.Xexit(tls, int32(1))
+			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+40, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
 	}
 	speedtest1_shrink_memory(tls)
