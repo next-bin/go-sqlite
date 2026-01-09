@@ -15,21 +15,21 @@
 //
 //	OS      Arch    SQLite version
 //	------------------------------
-//	darwin  amd64   3.50.4
-//	darwin  arm64   3.50.4
-//	freebsd amd64   3.50.4
-//	freebsd arm64   3.50.4
-//	linux   386     3.50.4
-//	linux   amd64   3.50.4
-//	linux   arm     3.50.4
-//	linux   arm64   3.50.4
-//	linux   loong64 3.50.4
-//	linux   ppc64le 3.50.4
-//	linux   riscv64 3.50.4
-//	linux   s390x   3.50.4
-//	windows 386     3.50.4
-//	windows amd64   3.50.4
-//	windows arm64   3.50.4
+//	darwin  amd64   3.51.1
+//	darwin  arm64   3.51.1
+//	freebsd amd64   3.51.1
+//	freebsd arm64   3.51.1
+//	linux   386     3.51.1
+//	linux   amd64   3.51.1
+//	linux   arm     3.51.1
+//	linux   arm64   3.51.1
+//	linux   loong64 3.51.1
+//	linux   ppc64le 3.51.1
+//	linux   riscv64 3.51.1
+//	linux   s390x   3.51.1
+//	windows 386     3.51.1
+//	windows amd64   3.51.1
+//	windows arm64   3.51.1
 //
 // # Supported platforms and architectures - Tier 2
 //
@@ -45,8 +45,8 @@
 //
 //	OS         Arch    SQLite version
 //	---------------------------------
-//	openbsd7.8 amd64   3.50.4
-//	openbsd7.8 arm64   3.50.4
+//	openbsd7.8 amd64   3.51.1
+//	openbsd7.8 arm64   3.51.1
 //
 // # Builders
 //
