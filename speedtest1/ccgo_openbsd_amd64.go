@@ -1,4 +1,4 @@
-// Code generated for openbsd/amd64 by 'generator -DNDEBUG -DSQLITE_ENABLE_RTREE -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_openbsd_amd64.go -I /tmp/libsqlite3/sqlite-src-3500400 /tmp/libsqlite3/sqlite-src-3500400/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for openbsd/amd64 by 'generator -DNDEBUG -DSQLITE_ENABLE_RTREE -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_openbsd_amd64.go -I /tmp/libsqlite3/sqlite-src-3510100 /tmp/libsqlite3/sqlite-src-3510100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build openbsd && amd64
 
@@ -838,8 +838,7 @@ func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 		}
 		rc1 = libsqlite3.Xsqlite3_reset(tls, *(*uintptr)(unsafe.Pointer(bp)))
 		if rc1 != SQLITE_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+562, libc.VaList(bp+16, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp))), rc1, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
-			libc.Xexit(tls, int32(1))
+			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+16, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp))), rc1, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
 		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp)))
 	}
@@ -966,15 +965,13 @@ func speedtest1_run(tls *libc.TLS) {
 		libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), -int32(1), bp+8, uintptr(0))
 		rc = libsqlite3.Xsqlite3_finalize(tls, g.FpStmt)
 		if rc != SQLITE_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+562, libc.VaList(bp+24, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 8))), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
-			libc.Xexit(tls, int32(1))
+			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+24, libsqlite3.Xsqlite3_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 8))), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
 		g.FpStmt = *(*uintptr)(unsafe.Pointer(bp + 8))
 	} else {
 		rc = libsqlite3.Xsqlite3_reset(tls, g.FpStmt)
 		if rc != SQLITE_OK {
-			libc.Xfprintf(tls, uintptr(unsafe.Pointer(libc.Xstderr)), __ccgo_ts+562, libc.VaList(bp+24, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
-			libc.Xexit(tls, int32(1))
+			fatal_error(tls, __ccgo_ts+562, libc.VaList(bp+24, libsqlite3.Xsqlite3_sql(tls, g.FpStmt), rc, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
 	}
 	speedtest1_shrink_memory(tls)
