@@ -11,8 +11,8 @@ GREP = 'TRC\|TODO\|ERRORF\|FAIL\|undefined:'
 DIR = /tmp/libsqlite3
 ZIP = sqlite-amalgamation-3510200.zip
 ZIP2 = sqlite-src-3510200.zip
-URL = https://www.sqlite.org/2025/$(ZIP)
-URL2 = https://www.sqlite.org/2025/$(ZIP2)
+URL = https://www.sqlite.org/2026/$(ZIP)
+URL2 = https://www.sqlite.org/2026/$(ZIP2)
 
 all: editor
 	golint 2>&1
