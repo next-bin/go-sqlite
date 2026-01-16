@@ -2,11 +2,13 @@ module modernc.org/libsqlite3
 
 go 1.24.0
 
+retract v1.10.4 // Accidentaly broken, reverting to v1.10.3 state
+
 require (
-	golang.org/x/sys v0.37.0
+	golang.org/x/sys v0.40.0
 	modernc.org/ccgo/v4 v4.30.1
 	modernc.org/fileutil v1.3.40
-	modernc.org/libc v1.67.4
+	modernc.org/libc v1.67.6
 	modernc.org/libtcl8.6 v0.17.4
 	modernc.org/libz v0.17.3
 )
@@ -32,5 +34,3 @@ require (
 	modernc.org/strutil v1.2.1 // indirect
 	modernc.org/token v1.1.0 // indirect
 )
-
-retract v1.10.4 // Accidentaly broken, reverting to v1.10.3 state

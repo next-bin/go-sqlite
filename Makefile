@@ -9,8 +9,8 @@ SHELL=/bin/bash -o pipefail
 GREP = 'TRC\|TODO\|ERRORF\|FAIL\|undefined:'
 
 DIR = /tmp/libsqlite3
-ZIP = sqlite-amalgamation-3510100.zip
-ZIP2 = sqlite-src-3510100.zip
+ZIP = sqlite-amalgamation-3510200.zip
+ZIP2 = sqlite-src-3510200.zip
 URL = https://www.sqlite.org/2025/$(ZIP)
 URL2 = https://www.sqlite.org/2025/$(ZIP2)
 
@@ -32,7 +32,7 @@ clean-dev:
 	rm -f internal/autogen/linux_amd64.mod internal/autogen/windows*.mod
 
 edit:
-	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile go.mod builder.json all_test.go generator.go & fi
+	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile go.mod builder.json all_test.go generator.go libsqlite3.go CHANGELOG.md & fi
 
 editor:
 	gofmt -l -s -w .

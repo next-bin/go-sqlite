@@ -15,21 +15,21 @@
 //
 //	OS      Arch    SQLite version
 //	------------------------------
-//	darwin  amd64   3.51.1
-//	darwin  arm64   3.51.1
-//	freebsd amd64   3.51.1
-//	freebsd arm64   3.51.1
-//	linux   386     3.51.1
-//	linux   amd64   3.51.1
-//	linux   arm     3.51.1
-//	linux   arm64   3.51.1
-//	linux   loong64 3.51.1
-//	linux   ppc64le 3.51.1
-//	linux   riscv64 3.51.1
-//	linux   s390x   3.51.1
-//	windows 386     3.51.1
-//	windows amd64   3.51.1
-//	windows arm64   3.51.1
+//	darwin  amd64   3.51.2
+//	darwin  arm64   3.51.2
+//	freebsd amd64   3.51.2
+//	freebsd arm64   3.51.2
+//	linux   386     3.51.2
+//	linux   amd64   3.51.2
+//	linux   arm     3.51.2
+//	linux   arm64   3.51.2
+//	linux   loong64 3.51.2
+//	linux   ppc64le 3.51.2
+//	linux   riscv64 3.51.2
+//	linux   s390x   3.51.2
+//	windows 386     3.51.2
+//	windows amd64   3.51.2
+//	windows arm64   3.51.2
 //
 // # Supported platforms and architectures - Tier 2
 //
@@ -45,22 +45,12 @@
 //
 //	OS         Arch    SQLite version
 //	---------------------------------
-//	openbsd7.8 amd64   3.51.1
-//	openbsd7.8 arm64   3.51.1
+//	openbsd7.8 amd64   3.51.2
+//	openbsd7.8 arm64   3.51.2
 //
 // # Builders
 //
 // Builder results available at:
 //
 // https://modern-c.appspot.com/-/builder/?importpath=modernc.org%2flibsqlite3
-//
-// # Changelog
-//
-// 2026-01-06: v1.11.0 - Add tier 2 openbsd/{amd,arm64}.
-//
-// 2024-07-22: v1.5.2 - Add windows/386 support.
-//
-// 2024-03-12: v1.2.0 - Add linux/loong64 support.
-//
-// 2024-02-13: v1.0.0
 package libsqlite3 // import "modernc.org/libsqlite3"
