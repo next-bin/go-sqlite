@@ -98,10 +98,7 @@ func TestConcurrentProcesses(t *testing.T) {
 	}
 
 	switch target {
-	case
-		"linux/ppc64le",
-		"linux/s390x":
-
+	case "linux/s390x":
 		t.Skip("TODO") // VM too slow.
 	}
 
