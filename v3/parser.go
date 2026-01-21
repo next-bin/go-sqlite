@@ -256,7 +256,10 @@ func nodeSource(n interface{}, full bool) string {
 func nodeSource2(n interface{}, full bool, kill map[Node]struct{}) string {
 	var a []int32
 	var t Token
-	nodeSource0(&t.source, &a, n, kill)
+
+	// Call the new iterative version
+	nodeSourceIterative(&t.source, &a, n, kill)
+
 	if len(a) == 0 {
 		return ""
 	}
@@ -271,48 +274,77 @@ func nodeSource2(n interface{}, full bool, kill map[Node]struct{}) string {
 	return b.String()
 }
 
-func nodeSource0(ps **source, a *[]int32, n interface{}, kill map[Node]struct{}) {
-	if x, ok := n.(Node); ok {
-		if _, ok := kill[x]; ok {
-			return
-		}
-	}
+// nodeSourceIterative uses an explicit stack slice to traverse the tree,
+// avoiding recursion and stack overflow errors on deep trees.
+func nodeSourceIterative(ps **source, a *[]int32, root interface{}, kill map[Node]struct{}) {
+	// Initialize stack with the root node.
+	// Using a slice as a LIFO stack.
+	stack := []interface{}{root}
 
-	switch x := n.(type) {
-	case nil:
-		// nop
-	case Token:
-		if x.IsValid() {
-			*ps = x.source
-			*a = append(*a, x.index)
-		}
-	case *BasicLitNode:
-		if x.IsValid() {
-			*ps = x.source
-			*a = append(*a, x.index)
-		}
-	default:
-		t := reflect.TypeOf(n)
-		v := reflect.ValueOf(n)
-		if v.IsZero() {
-			break
-		}
+	for len(stack) > 0 {
+		// Pop the last element
+		lastIdx := len(stack) - 1
+		n := stack[lastIdx]
+		stack = stack[:lastIdx] // Resize slice to remove element
 
-		switch t.Kind() {
-		case reflect.Pointer:
-			nodeSource0(ps, a, v.Elem().Interface(), kill)
-		case reflect.Struct:
-			for i := 0; i < t.NumField(); i++ {
-				if token.IsExported(t.Field(i).Name) {
-					nodeSource0(ps, a, v.Field(i).Interface(), kill)
-				}
+		// 1. Check Kill Map
+		if x, ok := n.(Node); ok {
+			if _, ok := kill[x]; ok {
+				continue
 			}
-		case reflect.Slice:
-			for i := 0; i < v.Len(); i++ {
-				nodeSource0(ps, a, v.Index(i).Interface(), kill)
+		}
+
+		// 2. Process Node
+		switch x := n.(type) {
+		case nil:
+			// nop
+		case Token:
+			if x.IsValid() {
+				*ps = x.source
+				*a = append(*a, x.index)
+			}
+		case *BasicLitNode:
+			if x.IsValid() {
+				*ps = x.source
+				*a = append(*a, x.index)
 			}
 		default:
-			panic(todo("", t.Name(), t.Kind()))
+			// Reflection handling
+			v := reflect.ValueOf(n)
+
+			// Equivalent to the original `if v.IsZero() { break }`
+			// checking for nil pointers inside interfaces, etc.
+			if v.IsZero() {
+				continue
+			}
+
+			t := v.Type()
+			switch t.Kind() {
+			case reflect.Pointer:
+				// Push the element the pointer points to.
+				stack = append(stack, v.Elem().Interface())
+
+			case reflect.Struct:
+				// Push fields in REVERSE order.
+				// We want Field(0) to be processed next, so it must be
+				// at the top (end) of the stack.
+				for i := t.NumField() - 1; i >= 0; i-- {
+					if token.IsExported(t.Field(i).Name) {
+						stack = append(stack, v.Field(i).Interface())
+					}
+				}
+
+			case reflect.Slice:
+				// Push slice elements in REVERSE order.
+				// We want Index(0) to be processed next.
+				for i := v.Len() - 1; i >= 0; i-- {
+					stack = append(stack, v.Index(i).Interface())
+				}
+
+			default:
+				// The helper function 'todo' was presumed to be in the original package context.
+				panic(todo("", t.Name(), t.Kind()))
+			}
 		}
 	}
 }

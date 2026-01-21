@@ -5659,6 +5659,7 @@
 /usr/local/go/src/runtime/debuglog_off.go
 /usr/local/go/src/runtime/debuglog_on.go
 /usr/local/go/src/runtime/debuglog_test.go
+/usr/local/go/src/runtime/decoratemappings_test.go
 /usr/local/go/src/runtime/defer_test.go
 /usr/local/go/src/runtime/defs1_linux.go
 /usr/local/go/src/runtime/defs1_netbsd_386.go

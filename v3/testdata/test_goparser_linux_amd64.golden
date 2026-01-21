@@ -5902,6 +5902,7 @@
 /usr/local/go/src/runtime/debuglog_off.go
 /usr/local/go/src/runtime/debuglog_on.go
 /usr/local/go/src/runtime/debuglog_test.go
+/usr/local/go/src/runtime/decoratemappings_test.go
 /usr/local/go/src/runtime/defer_test.go
 /usr/local/go/src/runtime/defs1_linux.go
 /usr/local/go/src/runtime/defs1_netbsd_386.go
@@ -9621,12 +9622,15 @@
 /usr/local/go/test/fixedbugs/issue7538b.go
 /usr/local/go/test/fixedbugs/issue7547.go
 /usr/local/go/test/fixedbugs/issue7550.go
+/usr/local/go/test/fixedbugs/issue75569.go
 /usr/local/go/test/fixedbugs/issue7590.go
+/usr/local/go/test/fixedbugs/issue76008.go
 /usr/local/go/test/fixedbugs/issue7648.dir/a.go
 /usr/local/go/test/fixedbugs/issue7648.dir/b.go
 /usr/local/go/test/fixedbugs/issue7648.go
 /usr/local/go/test/fixedbugs/issue7675.go
 /usr/local/go/test/fixedbugs/issue7690.go
+/usr/local/go/test/fixedbugs/issue76950.go
 /usr/local/go/test/fixedbugs/issue7740.go
 /usr/local/go/test/fixedbugs/issue7742.go
 /usr/local/go/test/fixedbugs/issue7746.go
