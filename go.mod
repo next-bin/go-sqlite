@@ -1,6 +1,6 @@
 module modernc.org/fileutil
 
-go 1.21
+go 1.24
 
 require modernc.org/mathutil v1.7.1
 
