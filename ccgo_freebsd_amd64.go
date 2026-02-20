@@ -27,6 +27,8 @@ const m_CHAR_MAX = "SCHAR_MAX"
 const m_CHAR_MIN = "SCHAR_MIN"
 const m_CHILD_MAX = 40
 const m_COLL_WEIGHTS_MAX = 10
+const m_COPY_FILE_RANGE_CLONE = 0x00800000
+const m_COPY_FILE_RANGE_USERFLAGS = "COPY_FILE_RANGE_CLONE"
 const m_DEF_MEM_LEVEL = 8
 const m_DEF_WBITS = "MAX_WBITS"
 const m_DYN_TREES = 2
@@ -79,6 +81,7 @@ const m_NL_NMAX = 1
 const m_NL_SETMAX = 255
 const m_NL_TEXTMAX = 2048
 const m_NMAX = 5552
+const m_NSIG_MAX = 128
 const m_OFF_MAX = "__OFF_MAX"
 const m_OFF_MIN = "__OFF_MIN"
 const m_OPEN_MAX = 64
@@ -178,14 +181,18 @@ const m__PC_ALLOC_SIZE_MIN = 10
 const m__PC_ASYNC_IO = 53
 const m__PC_CAP_PRESENT = 61
 const m__PC_CHOWN_RESTRICTED = 7
+const m__PC_CLONE_BLKSIZE = 69
 const m__PC_DEALLOC_PRESENT = 65
 const m__PC_FILESIZEBITS = 12
+const m__PC_HAS_HIDDENSYSTEM = 68
+const m__PC_HAS_NAMEDATTR = 67
 const m__PC_INF_PRESENT = 62
 const m__PC_LINK_MAX = 1
 const m__PC_MAC_PRESENT = 63
 const m__PC_MAX_CANON = 2
 const m__PC_MAX_INPUT = 3
 const m__PC_MIN_HOLE_SIZE = 21
+const m__PC_NAMEDATTR_ENABLED = 66
 const m__PC_NAME_MAX = 4
 const m__PC_NO_TRUNC = 8
 const m__PC_PATH_MAX = 5
@@ -198,6 +205,8 @@ const m__PC_REC_XFER_ALIGN = 17
 const m__PC_SYMLINK_MAX = 18
 const m__PC_SYNC_IO = 55
 const m__PC_VDISABLE = 9
+const m__PC_XATTR_ENABLED = "_PC_NAMEDATTR_ENABLED"
+const m__PC_XATTR_EXISTS = "_PC_HAS_NAMEDATTR"
 const m__PDP_ENDIAN = "__ORDER_PDP_ENDIAN__"
 const m__POSIX2_BC_BASE_MAX = 99
 const m__POSIX2_BC_DIM_MAX = 2048
@@ -287,7 +296,7 @@ const m__POSIX_TRACE_USER_EVENT_MAX = 32
 const m__POSIX_TTY_NAME_MAX = 9
 const m__POSIX_TZNAME_MAX = 6
 const m__POSIX_VDISABLE = 0xff
-const m__POSIX_VERSION = 200112
+const m__POSIX_VERSION = 200809
 const m__QUAD_HIGHWORD = 1
 const m__QUAD_LOWWORD = 0
 const m__SC_2_CHAR_TERM = 20
@@ -346,6 +355,7 @@ const m__SC_MQ_PRIO_MAX = 75
 const m__SC_NGROUPS_MAX = 4
 const m__SC_NPROCESSORS_CONF = 57
 const m__SC_NPROCESSORS_ONLN = 58
+const m__SC_NSIG = 124
 const m__SC_OPEN_MAX = 5
 const m__SC_PAGESIZE = 47
 const m__SC_PAGE_SIZE = "_SC_PAGESIZE"
@@ -395,6 +405,7 @@ const m__SC_TRACE_LOG = 100
 const m__SC_TTY_NAME_MAX = 101
 const m__SC_TYPED_MEMORY_OBJECTS = 102
 const m__SC_TZNAME_MAX = 27
+const m__SC_UEXTERR_MAXLEN = 123
 const m__SC_V6_ILP32_OFF32 = 103
 const m__SC_V6_ILP32_OFFBIG = 104
 const m__SC_V6_LP64_OFF64 = 105
@@ -430,13 +441,8 @@ const m___BOOL_WIDTH__ = 8
 const m___BSD_VISIBLE = 1
 const m___BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const m___CCGO__ = 1
-const m___CC_SUPPORTS_DYNAMIC_ARRAY_INIT = 1
-const m___CC_SUPPORTS_INLINE = 1
-const m___CC_SUPPORTS_VARADIC_XXX = 1
-const m___CC_SUPPORTS_WARNING = 1
-const m___CC_SUPPORTS___FUNC__ = 1
+const m___CC_SUPPORTS_SYMVER = 1
 const m___CC_SUPPORTS___INLINE = 1
-const m___CC_SUPPORTS___INLINE__ = 1
 const m___CHAR_BIT = 8
 const m___CHAR_BIT__ = 8
 const m___CLANG_ATOMIC_BOOL_LOCK_FREE = 2
@@ -507,8 +513,8 @@ const m___FPCLASS_QNAN = 0x0002
 const m___FPCLASS_SNAN = 0x0001
 const m___FUNCTION__ = "__func__"
 const m___FXSR__ = 1
-const m___FreeBSD__ = 14
-const m___FreeBSD_cc_version = 1400006
+const m___FreeBSD__ = 15
+const m___FreeBSD_cc_version = 1500000
 const m___GCC_ASM_FLAG_OUTPUTS__ = 1
 const m___GCC_ATOMIC_BOOL_LOCK_FREE = 2
 const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
@@ -528,20 +534,9 @@ const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
-const m___GNUCLIKE_ASM = 3
-const m___GNUCLIKE_BUILTIN_CONSTANT_P = 1
-const m___GNUCLIKE_BUILTIN_MEMCPY = 1
-const m___GNUCLIKE_BUILTIN_NEXT_ARG = 1
-const m___GNUCLIKE_BUILTIN_STDARG = 1
-const m___GNUCLIKE_BUILTIN_VAALIST = 1
-const m___GNUCLIKE_BUILTIN_VARARGS = 1
-const m___GNUCLIKE_CTOR_SECTION_HANDLING = 1
-const m___GNUCLIKE___SECTION = 1
-const m___GNUCLIKE___TYPEOF = 1
 const m___GNUC_MINOR__ = 2
 const m___GNUC_PATCHLEVEL__ = 1
 const m___GNUC_STDC_INLINE__ = 1
-const m___GNUC_VA_LIST_COMPATIBILITY = 1
 const m___GNUC__ = 4
 const m___GXX_ABI_VERSION = 1002
 const m___INT16_FMTd__ = "hd"
@@ -696,6 +691,7 @@ const m___SSE2__ = 1
 const m___SSE_MATH__ = 1
 const m___SSE__ = 1
 const m___SSIZE_MAX = "__LONG_MAX"
+const m___SSP_FORTIFY_LEVEL = 0
 const m___STDC_EMBED_EMPTY__ = 2
 const m___STDC_EMBED_FOUND__ = 1
 const m___STDC_EMBED_NOT_FOUND__ = 0
@@ -807,14 +803,12 @@ const m___clang_patchlevel__ = 7
 const m___clang_version__ = "19.1.7 (https://github.com/llvm/llvm-project.git llvmorg-19.1.7-0-gcd708029e0b2)"
 const m___clang_wide_literal_encoding__ = "UTF-32"
 const m___code_model_small__ = 1
-const m___const = "const"
 const m___has_extension = "__has_feature"
 const m___k8 = 1
 const m___k8__ = 1
 const m___llvm__ = 1
 const m___restrict = "restrict"
 const m___restrict_arr = "restrict"
-const m___signed = "signed"
 const m___tune_k8__ = 1
 const m___unix = 1
 const m___unix__ = 1
@@ -1005,6 +999,20 @@ type t__max_align_t = struct {
 	F__max_align2 float64
 }
 
+type t__acl_tag_t = uint32
+
+type t__acl_perm_t = uint32
+
+type t__acl_entry_type_t = uint16
+
+type t__acl_flag_t = uint16
+
+type t__acl_type_t = uint32
+
+type t__acl_permset_t = uintptr
+
+type t__acl_flagset_t = uintptr
+
 type t__dev_t = uint64
 
 type t__fixpt_t = uint32
@@ -1021,8 +1029,6 @@ type t__va_list = uintptr
 type t__gnuc_va_list = uintptr
 
 type Tptrdiff_t = int64
-
-type Trune_t = int32
 
 type Tsize_t = uint64
 
@@ -22622,6 +22628,8 @@ const m_FAPPEND = "O_APPEND"
 const m_FASYNC = "O_ASYNC"
 const m_FDSYNC = "O_DSYNC"
 const m_FD_CLOEXEC = 1
+const m_FD_CLOFORK = 4
+const m_FD_RESOLVE_BENEATH = 2
 const m_FFSYNC = "O_FSYNC"
 const m_FILENAME_MAX = 1024
 const m_FNDELAY = "O_NONBLOCK"
@@ -22634,8 +22642,11 @@ const m_F_ADD_SEALS = 19
 const m_F_CANCEL = 5
 const m_F_DUP2FD = 10
 const m_F_DUP2FD_CLOEXEC = 18
+const m_F_DUP3FD = 24
+const m_F_DUP3FD_SHIFT = 16
 const m_F_DUPFD = 0
 const m_F_DUPFD_CLOEXEC = 17
+const m_F_DUPFD_CLOFORK = 23
 const m_F_GETFD = 1
 const m_F_GETFL = 3
 const m_F_GETLK = 11
@@ -22680,6 +22691,7 @@ const m_O_ACCMODE = 0x0003
 const m_O_APPEND = 0x0008
 const m_O_ASYNC = 0x0040
 const m_O_CLOEXEC = 0x00100000
+const m_O_CLOFORK = 0x08000000
 const m_O_CREAT = 0x0200
 const m_O_DIRECT = 0x00010000
 const m_O_DIRECTORY = 0x00020000
@@ -22689,6 +22701,7 @@ const m_O_EXCL = 0x0800
 const m_O_EXEC = 0x00040000
 const m_O_EXLOCK = 0x0020
 const m_O_FSYNC = 0x0080
+const m_O_NAMEDATTR = 0x04000000
 const m_O_NDELAY = "O_NONBLOCK"
 const m_O_NOCTTY = 0x8000
 const m_O_NOFOLLOW = 0x0100
@@ -22704,6 +22717,7 @@ const m_O_TRUNC = 0x0400
 const m_O_TTY_INIT = 0x00080000
 const m_O_VERIFY = 0x00200000
 const m_O_WRONLY = 0x0001
+const m_O_XATTR = "O_NAMEDATTR"
 const m_POSIX_FADV_DONTNEED = 4
 const m_POSIX_FADV_NOREUSE = 5
 const m_POSIX_FADV_NORMAL = 0
@@ -24782,37 +24796,6 @@ func Xgzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
 	}
 	return v1
 }
-
-/*-
- * This file is in the public domain.
- */
-
-/*-
- * SPDX-License-Identifier: BSD-2-Clause
- *
- * Copyright (c) 2017 Poul-Henning Kamp.  All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
- */
 
 // C documentation
 //
