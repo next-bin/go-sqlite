@@ -1,10 +1,10 @@
 module modernc.org/internal
 
-go 1.21
+go 1.24
 
 require (
 	github.com/edsrzf/mmap-go v1.2.0
-	modernc.org/fileutil v1.3.40
+	modernc.org/fileutil v1.4.0
 	modernc.org/mathutil v1.7.1
 )
 
