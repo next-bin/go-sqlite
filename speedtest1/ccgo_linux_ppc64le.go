@@ -1,4 +1,4 @@
-// Code generated for linux/ppc64le by 'generator -DNDEBUG -DSQLITE_ENABLE_RTREE -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_ppc64le.go -I /tmp/libsqlite3/sqlite-src-3510200 /tmp/libsqlite3/sqlite-src-3510200/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/ppc64le by 'generator -DNDEBUG -DSQLITE_ENABLE_RTREE -ignore-unsupported-alignment -ignore-link-errors -o speedtest1/ccgo_linux_ppc64le.go -I /tmp/libsqlite3/sqlite-src-3520000 /tmp/libsqlite3/sqlite-src-3520000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && ppc64le
 
