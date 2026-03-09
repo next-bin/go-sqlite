@@ -25,7 +25,7 @@ import (
 const (
 	archivePath  = "sqlite-amalgamation-" + versionTag + ".zip"
 	archive2Path = "sqlite-src-" + versionTag + ".zip"
-	versionTag   = "3510200"
+	versionTag   = "3520000"
 )
 
 var (
@@ -140,6 +140,8 @@ func main() {
 	util.MustShell(true, nil, sed, "-i", `s/sqlite3Config.bUseLongDouble = hasHighPrecisionDouble(rc);/\/\/ disabled/`, filepath.Join(libRoot, "sqlite3.c"))
 	// Another C-race, enforce atomic access.
 	util.MustShell(true, nil, sed, "-i", `0,/int isInit;*True after/{s/int isInit/volatile int isInit/}`, filepath.Join(libRoot, "sqlite3.c"))
+
+	util.MustShell(true, nil, sed, "-i", `s/#if (defined(__GNUC__) || defined(__clang__)) \\/#if 0 \&\& (defined(__GNUC__) || defined(__clang__)) \\/`, filepath.Join(libRoot, "sqlite3.c"))
 
 	fixWin(tempDir)
 	cwd := util.MustAbsCwd(true)
@@ -305,6 +307,7 @@ func main() {
 	util.MustShell(true, nil, "patch", filepath.Join(makeRoot, "src", "pcache1.c"), filepath.Join("internal", "issue1.patch2"))
 	mustCopyDir(makeRoot, filepath.Join("internal", "overlay", "generator"), nil, false)
 	fixWin(tempDir)
+	util.MustShell(true, nil, sed, "-i", `s/#if (defined(__GNUC__) || defined(__clang__)) \\/#if 0 \&\& (defined(__GNUC__) || defined(__clang__)) \\/`, filepath.Join(libRoot, "src", "util.c"))
 	mustCopyFile("LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
 	util.MustInDir(true, makeRoot, func() (err error) {
 		util.MustShell(true, nil, "sh", "-c", `
