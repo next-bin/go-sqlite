@@ -25,7 +25,7 @@ import (
 const (
 	archivePath  = "sqlite-amalgamation-" + versionTag + ".zip"
 	archive2Path = "sqlite-src-" + versionTag + ".zip"
-	versionTag   = "3520000"
+	versionTag   = "3510300"
 )
 
 var (
