@@ -2,7 +2,7 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package main // import "modernc.org/libsqlite3"
+package main
 
 import (
 	"runtime"
