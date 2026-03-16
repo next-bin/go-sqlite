@@ -1,5 +1,8 @@
 # Changelog
 
+ * 2026-01-16: Upgrade to SQLite 3.51.3
+  * linux/s390x is failing one test, see https://sqlite.org/forum/forumpost/cdeb669113
+
  * 2026-01-16: Upgrade to SQLite 3.51.1
 
  * 2026-01-06: v1.11.0 - Add tier 2 openbsd/{amd,arm64}.
