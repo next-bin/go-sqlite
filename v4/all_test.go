@@ -264,6 +264,48 @@ def
 	}
 }
 
+func TestPragmaOnceSkipSource(t *testing.T) {
+	dir := t.TempDir()
+	header := filepath.Join(dir, "test.h")
+	main := filepath.Join(dir, "test2.h")
+	if err := os.WriteFile(header, []byte(`#pragma once
+
+#ifdef TESTPRAGMA
+#error pragma once not working
+#endif
+#define TESTPRAGMA
+`), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(main, []byte(`#include "test.h"
+#include "test.h"
+`), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	seen := map[string]struct{}{}
+	cfg := &Config{
+		IncludePaths: []string{"@"},
+		PragmaHandler: func(toks []Token) error {
+			if len(toks) == 0 || toks[0].SrcStr() != "once" {
+				return nil
+			}
+
+			fn := toks[0].Position().Filename
+			if _, ok := seen[fn]; ok {
+				return SkipSource
+			}
+
+			seen[fn] = struct{}{}
+			return nil
+		},
+	}
+
+	if err := Preprocess(cfg, []Source{{Name: main}}, io.Discard); err != nil {
+		t.Fatalf("Preprocess: %v", err)
+	}
+}
+
 type parallel struct {
 	limit chan struct{}
 	sync.Mutex

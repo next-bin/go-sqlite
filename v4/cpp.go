@@ -1550,6 +1550,10 @@ func (c *cpp) nextLine() (r textLine) {
 				default:
 					if h := c.cfg.PragmaHandler; h != nil {
 						if err := h(x[2 : len(x)-1]); err != nil {
+							if err == SkipSource {
+								c.skipCurrentSource()
+								break
+							}
 							c.eh("%v:", err)
 						}
 					}
@@ -2966,6 +2970,17 @@ func (c *cpp) push(v interface{}) {
 		c.stack = append(c.stack, c.tos)
 	}
 	c.tos = v
+}
+
+func (c *cpp) skipCurrentSource() {
+	for c.tos != nil {
+		if inc, ok := c.tos.(*included); ok {
+			c.included = inc
+			c.pop()
+			return
+		}
+		c.pop()
+	}
 }
 
 func (c *cpp) group(src Source) (group, error) {

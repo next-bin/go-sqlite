@@ -28,6 +28,7 @@
 package cc // import "modernc.org/cc/v4"
 
 import (
+	stdErrors "errors"
 	"fmt"
 	"io"
 	"io/fs"
@@ -674,6 +675,10 @@ type Config struct {
 	noBuiltin              bool // -fno-builtin
 	noPredefinedDeclarator bool // testing
 }
+
+// SkipSource can be returned from PragmaHandler to stop processing the rest of the current source file.
+// This is useful for client-side implementations of pragmas such as '#pragma once'.
+var SkipSource = stdErrors.New("skip source")
 
 type errors []string
 
