@@ -1290,7 +1290,6 @@ func (n *PostfixExpression) eval(c *ctx, mode flags) (r Value) {
 	case PostfixExpressionPrimary: // PrimaryExpression
 		n.val = n.PrimaryExpression.eval(c, mode)
 	case PostfixExpressionIndex: // PostfixExpression '[' Expression ']'
-		break // Incorrect. Breaks qbecc + widechar-3.c
 		switch {
 		case isPointerType(n.PostfixExpression.Type()) && IsIntegerType(n.ExpressionList.Type()):
 			switch v := n.PostfixExpression.eval(c, mode).(type) {
