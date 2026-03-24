@@ -1,3 +1,7 @@
+// Copyright 2019 The Opt Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
 // Package opt implements command-line flag parsing.
 package opt // import "modernc.org/opt"
 
@@ -10,7 +14,8 @@ type opt struct {
 	handler func(opt, arg string) error
 	name    string
 
-	arg bool // Enable argument, e.g. `-I foo` or `-I=foo`
+	arg      bool // Enable argument, e.g. `-I foo` or `-I=foo`
+	optional bool // Enable optional argument via '=', e.g. `-flto` or `-flto=auto`
 }
 
 // A Set represents a set of defined options.
@@ -47,6 +52,18 @@ func (p *Set) Arg(name string, imm bool, handler func(opt, arg string) error) {
 			handler: handler,
 			name:    name,
 		}
+	}
+}
+
+// OptionalArg defines an option that takes an optional argument.  The argument
+// must be provided using the '=' syntax, e.g. `-flto` or `-flto=auto`.  When
+// the option is found during Parse, the handler is called with the option name
+// and the argument (which will be an empty string if '=' was not used).
+func (p *Set) OptionalArg(name string, handler func(opt, arg string) error) {
+	p.cfg[name] = &opt{
+		optional: true,
+		handler:  handler,
+		name:     name,
 	}
 }
 
@@ -129,6 +146,10 @@ func (p *Set) Parse(opts []string, handler func(string) error) (err error) {
 						}
 
 						opts = opts[1:]
+					}
+				case cfg.optional:
+					if err = cfg.handler(opt, arg); err != nil {
+						return err
 					}
 				default:
 					if err = cfg.handler(opt, ""); err != nil {
