@@ -1,5 +1,7 @@
 # Changelog
 
+ * 2026-04-10: Upgrade to SQLite 3.53.0
+
  * 2026-01-16: Upgrade to SQLite 3.51.3
   * linux/s390x is failing one test, see https://sqlite.org/forum/forumpost/cdeb669113
 
