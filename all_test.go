@@ -281,34 +281,11 @@ func TestTclTest(t *testing.T) {
 	os.Setenv("TCL_LIBRARY", tclLibrary)
 	os.Setenv("PATH", fmt.Sprintf("%s%c%s", tmpDir, os.PathListSeparator, os.Getenv("PATH")))
 	bin := filepath.Join(tmpDir, "testfixture")
-	var src string
-	switch {
-	case goos == "windows":
+	if goos == "windows" {
 		bin += ".exe"
-		src = filepath.Join("internal", "testfixture", "ccgo_windows.go")
-		if goarch == "386" {
-			src = filepath.Join("internal", "testfixture", "ccgo_windows_386.go")
-		}
-		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
-			t.Fatalf("%s\nFAIL: %v", out, err)
-		}
-	case goos == "darwin":
-		src = filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))
-		src2 := filepath.Join("internal", "testfixture", "patch_darwin.go")
-		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src, src2); err != nil {
-			t.Fatalf("%s\nFAIL: %v", out, err)
-		}
-	case goos == "freebsd":
-		src = filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))
-		src2 := filepath.Join("internal", "testfixture", "patch_freebsd.go")
-		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src, src2); err != nil {
-			t.Fatalf("%s\nFAIL: %v", out, err)
-		}
-	default:
-		src = filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))
-		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
-			t.Fatalf("%s\nFAIL: %v", out, err)
-		}
+	}
+	if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, fmt.Sprintf(".%c%s", os.PathSeparator, filepath.Join("internal", "testfixture"))); err != nil {
+		t.Fatalf("%s\nFAIL: %v", out, err)
 	}
 
 	testsSrc := filepath.Join("internal", "test")
