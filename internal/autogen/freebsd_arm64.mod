@@ -6,7 +6,7 @@ require (
 	modernc.org/cc/v4 v4.27.3
 	modernc.org/ccgo/v4 v4.32.4
 	modernc.org/fileutil v1.4.0
-	modernc.org/libc v1.70.0
+	modernc.org/libc v1.72.0
 )
 
 require (
