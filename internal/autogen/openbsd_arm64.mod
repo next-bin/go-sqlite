@@ -1,12 +1,12 @@
 module modernc.org/libz
 
-go 1.24.0
+go 1.25.0
 
 require (
-	modernc.org/cc/v4 v4.27.1
-	modernc.org/ccgo/v4 v4.32.0
+	modernc.org/cc/v4 v4.27.3
+	modernc.org/ccgo/v4 v4.32.4
 	modernc.org/fileutil v1.4.0
-	modernc.org/libc v1.70.0
+	modernc.org/libc v1.72.0
 )
 
 require (
@@ -17,7 +17,7 @@ require (
 	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/mod v0.33.0 // indirect
-	golang.org/x/sync v0.19.0 // indirect
+	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.41.0 // indirect
 	golang.org/x/tools v0.42.0 // indirect
 	modernc.org/gc/v2 v2.6.5 // indirect
