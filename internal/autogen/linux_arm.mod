@@ -6,7 +6,7 @@ retract v1.10.4 // Accidentaly broken, reverting to v1.10.3 state
 
 require (
 	golang.org/x/sys v0.42.0
-	modernc.org/ccgo/v4 v4.32.4
+	modernc.org/ccgo/v4 v4.32.5
 	modernc.org/fileutil v1.4.0
 	modernc.org/libc v1.72.0
 	modernc.org/libtcl8.6 v0.17.4
