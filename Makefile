@@ -5,7 +5,7 @@
 .PHONY:	all clean dev download edit editor generate work test windows windows-dev
 
 DIR = /tmp/libz
-TAR = zlib-1.3.1.tar.gz
+TAR = zlib-1.3.2.tar.gz
 URL = https://zlib.net/$(TAR)
 
 
