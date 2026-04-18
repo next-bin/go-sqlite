@@ -138,6 +138,7 @@ func main() {
 			)
 		}
 		args = append(args,
+			"--libc", libc,
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
@@ -150,7 +151,7 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-extended-errors",
-			"--libc", libc,
+			"-ignore-unsupported-alignment",
 		)
 		switch {
 		case win:
