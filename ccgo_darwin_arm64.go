@@ -22256,7 +22256,7 @@ func _gz_reset(tls *libc.TLS, state Tgz_statep) {
 	} /* no deflateReset pending */
 	(*Tgz_state)(unsafe.Pointer(state)).Fagain = 0                  /* no stalled i/o yet */
 	(*Tgz_state)(unsafe.Pointer(state)).Fskip = 0                   /* no seek request pending */
-	Xgz_error(tls, state, m_Z_OK, libc.UintptrFromInt32(0))        /* clear error */
+	Xgz_error(tls, state, m_Z_OK, libc.UintptrFromInt32(0))         /* clear error */
 	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos = 0                 /* no uncompressed data yet */
 	(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in = uint32(0) /* no input data yet */
 }

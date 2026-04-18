@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'generator --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc -D_UCRT -build-lines \/\/go:build windows && (amd64 || arm64)\n --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -D_UCRT -build-lines \/\/go:build windows && (amd64 || arm64)\n --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 
@@ -18,24 +18,108 @@ const m_BASE = 65521
 const m_DEF_MEM_LEVEL = 8
 const m_DEF_WBITS = "MAX_WBITS"
 const m_DYN_TREES = 2
+const m_E2BIG = 7
+const m_EACCES = 13
+const m_EADDRINUSE = 100
+const m_EADDRNOTAVAIL = 101
+const m_EAFNOSUPPORT = 102
+const m_EAGAIN = 11
+const m_EALREADY = 103
+const m_EBADF = 9
+const m_EBADMSG = 104
+const m_EBUSY = 16
+const m_ECANCELED = 105
+const m_ECHILD = 10
+const m_ECONNABORTED = 106
+const m_ECONNREFUSED = 107
+const m_ECONNRESET = 108
+const m_EDEADLK = 36
+const m_EDEADLOCK = "EDEADLK"
+const m_EDESTADDRREQ = 109
+const m_EDOM = 33
+const m_EEXIST = 17
+const m_EFAULT = 14
+const m_EFBIG = 27
+const m_EHOSTUNREACH = 110
+const m_EIDRM = 111
+const m_EILSEQ = 42
+const m_EINPROGRESS = 112
+const m_EINTR = 4
+const m_EINVAL = 22
+const m_EIO = 5
+const m_EISCONN = 113
+const m_EISDIR = 21
+const m_ELOOP = 114
+const m_EMFILE = 24
+const m_EMLINK = 31
+const m_EMSGSIZE = 115
+const m_ENAMETOOLONG = 38
+const m_ENETDOWN = 116
+const m_ENETRESET = 117
+const m_ENETUNREACH = 118
+const m_ENFILE = 23
+const m_ENOBUFS = 119
+const m_ENODATA = 120
+const m_ENODEV = 19
+const m_ENOENT = 2
+const m_ENOEXEC = 8
+const m_ENOFILE = "ENOENT"
+const m_ENOLCK = 39
+const m_ENOLINK = 121
+const m_ENOMEM = 12
+const m_ENOMSG = 122
+const m_ENOPROTOOPT = 123
+const m_ENOSPC = 28
+const m_ENOSR = 124
+const m_ENOSTR = 125
+const m_ENOSYS = 40
+const m_ENOTCONN = 126
+const m_ENOTDIR = 20
+const m_ENOTEMPTY = 41
+const m_ENOTRECOVERABLE = 127
+const m_ENOTSOCK = 128
+const m_ENOTSUP = 129
+const m_ENOTTY = 25
+const m_ENXIO = 6
+const m_EOPNOTSUPP = 130
+const m_EOVERFLOW = 132
+const m_EOWNERDEAD = 133
+const m_EPERM = 1
+const m_EPIPE = 32
+const m_EPROTO = 134
+const m_EPROTONOSUPPORT = 135
+const m_EPROTOTYPE = 136
+const m_ERANGE = 34
+const m_EROFS = 30
+const m_ESPIPE = 29
+const m_ESRCH = 3
+const m_ETIME = 137
+const m_ETIMEDOUT = 138
+const m_ETXTBSY = 139
+const m_EWOULDBLOCK = 140
+const m_EXDEV = 18
 const m_EXIT_FAILURE = 1
 const m_EXIT_SUCCESS = 0
 const m_MAX_MATCH = 258
 const m_MAX_MEM_LEVEL = 9
 const m_MAX_WBITS = 15
-const m_MB_LEN_MAX = 1
+const m_MB_LEN_MAX = 5
 const m_MINGW_HAS_DDK_H = 1
 const m_MINGW_HAS_SECURE_API = 1
 const m_MIN_MATCH = 3
 const m_NMAX = 5552
 const m_OS_CODE = 10
+const m_PATH_MAX = 260
 const m_PRESET_DICT = 0x20
 const m_RAND_MAX = 0x7fff
 const m_SEEK_CUR = 1
 const m_SEEK_END = 2
 const m_SEEK_SET = 0
+const m_SIZE_MAX = "_UI64_MAX"
+const m_SSIZE_MAX = "_I64_MAX"
 const m_STATIC_TREES = 1
 const m_STORED_BLOCK = 0
+const m_STRUNCATE = 80
 const m_UNALIGNED = "__unaligned"
 const m_USE___UUIDOF = 0
 const m_WIN32 = 1
@@ -87,6 +171,11 @@ const m__CRTIMP_NOIA64 = "_CRTIMP"
 const m__CRTIMP_PURE = "_CRTIMP"
 const m__FREEENTRY = 0
 const m__HEAP_MAXREQ = 0xFFFFFFFFFFFFFFE0
+const m__I16_MAX = 32767
+const m__I32_MAX = 2147483647
+const m__I64_MAX = "9223372036854775807ll"
+const m__I8_MAX = 127
+const m__INTEGRAL_MAX_BITS = 64
 const m__MAX_DIR = 256
 const m__MAX_DRIVE = 3
 const m__MAX_ENV = 32767
@@ -105,76 +194,149 @@ const m__OUT_TO_STDERR = 1
 const m__REPORT_ERRMODE = 3
 const m__SECURECRT_FILL_BUFFER_PATTERN = 0xFD
 const m__UCRT = 1
+const m__UI16_MAX = "0xffffu"
+const m__UI32_MAX = "0xffffffffu"
+const m__UI64_MAX = "0xffffffffffffffffull"
+const m__UI8_MAX = "0xffu"
 const m__USEDENTRY = 1
 const m__WConst_return = "_CONST_RETURN"
 const m__WIN32 = 1
-const m__WIN32_WINNT = 0x601
+const m__WIN32_WINNT = 0xa00
 const m__WIN64 = 1
 const m__WRITE_ABORT_MSG = 0x1
 const m___ATOMIC_ACQUIRE = 2
 const m___ATOMIC_ACQ_REL = 4
 const m___ATOMIC_CONSUME = 1
+const m___ATOMIC_HLE_ACQUIRE = 65536
+const m___ATOMIC_HLE_RELEASE = 131072
 const m___ATOMIC_RELAXED = 0
 const m___ATOMIC_RELEASE = 3
 const m___ATOMIC_SEQ_CST = 5
 const m___BIGGEST_ALIGNMENT__ = 16
-const m___BITINT_MAXWIDTH__ = 8388608
-const m___BOOL_WIDTH__ = 1
 const m___BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const m___C89_NAMELESS = "__MINGW_EXTENSION"
 const m___CCGO__ = 1
 const m___CHAR_BIT__ = 8
-const m___CLANG_ATOMIC_BOOL_LOCK_FREE = 2
-const m___CLANG_ATOMIC_CHAR16_T_LOCK_FREE = 2
-const m___CLANG_ATOMIC_CHAR32_T_LOCK_FREE = 2
-const m___CLANG_ATOMIC_CHAR_LOCK_FREE = 2
-const m___CLANG_ATOMIC_INT_LOCK_FREE = 2
-const m___CLANG_ATOMIC_LLONG_LOCK_FREE = 2
-const m___CLANG_ATOMIC_LONG_LOCK_FREE = 2
-const m___CLANG_ATOMIC_POINTER_LOCK_FREE = 2
-const m___CLANG_ATOMIC_SHORT_LOCK_FREE = 2
-const m___CLANG_ATOMIC_WCHAR_T_LOCK_FREE = 2
-const m___CONSTANT_CFSTRINGS__ = 1
 const m___CRTDECL = "__cdecl"
 const m___DBL_DECIMAL_DIG__ = 17
-const m___DBL_DENORM_MIN__ = 4.9406564584124654e-324
 const m___DBL_DIG__ = 15
-const m___DBL_EPSILON__ = 2.2204460492503131e-16
 const m___DBL_HAS_DENORM__ = 1
 const m___DBL_HAS_INFINITY__ = 1
 const m___DBL_HAS_QUIET_NAN__ = 1
+const m___DBL_IS_IEC_60559__ = 2
 const m___DBL_MANT_DIG__ = 53
 const m___DBL_MAX_10_EXP__ = 308
 const m___DBL_MAX_EXP__ = 1024
-const m___DBL_MAX__ = 1.7976931348623157e+308
-const m___DBL_MIN__ = 2.2250738585072014e-308
-const m___DBL_NORM_MAX__ = 1.7976931348623157e+308
-const m___DECIMAL_DIG__ = "__LDBL_DECIMAL_DIG__"
+const m___DEC128_EPSILON__ = 1e-33
+const m___DEC128_MANT_DIG__ = 34
+const m___DEC128_MAX_EXP__ = 6145
+const m___DEC128_MAX__ = "9.999999999999999999999999999999999E6144"
+const m___DEC128_MIN__ = 1e-6143
+const m___DEC128_SUBNORMAL_MIN__ = 0.000000000000000000000000000000001e-6143
+const m___DEC32_EPSILON__ = 1e-6
+const m___DEC32_MANT_DIG__ = 7
+const m___DEC32_MAX_EXP__ = 97
+const m___DEC32_MAX__ = 9.999999e96
+const m___DEC32_MIN__ = 1e-95
+const m___DEC32_SUBNORMAL_MIN__ = 0.000001e-95
+const m___DEC64_EPSILON__ = 1e-15
+const m___DEC64_MANT_DIG__ = 16
+const m___DEC64_MAX_EXP__ = 385
+const m___DEC64_MAX__ = "9.999999999999999E384"
+const m___DEC64_MIN__ = 1e-383
+const m___DEC64_SUBNORMAL_MIN__ = 0.000000000000001e-383
+const m___DECIMAL_BID_FORMAT__ = 1
+const m___DECIMAL_DIG__ = 17
+const m___DEC_EVAL_METHOD__ = 2
 const m___FINITE_MATH_ONLY__ = 0
+const m___FLOAT_WORD_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
+const m___FLT128_DECIMAL_DIG__ = 36
+const m___FLT128_DENORM_MIN__ = 6.47517511943802511092443895822764655e-4966
+const m___FLT128_DIG__ = 33
+const m___FLT128_EPSILON__ = 1.92592994438723585305597794258492732e-34
+const m___FLT128_HAS_DENORM__ = 1
+const m___FLT128_HAS_INFINITY__ = 1
+const m___FLT128_HAS_QUIET_NAN__ = 1
+const m___FLT128_IS_IEC_60559__ = 2
+const m___FLT128_MANT_DIG__ = 113
+const m___FLT128_MAX_10_EXP__ = 4932
+const m___FLT128_MAX_EXP__ = 16384
+const m___FLT128_MAX__ = "1.18973149535723176508575932662800702e+4932"
+const m___FLT128_MIN__ = 3.36210314311209350626267781732175260e-4932
+const m___FLT128_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
+const m___FLT32X_DECIMAL_DIG__ = 17
+const m___FLT32X_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
+const m___FLT32X_DIG__ = 15
+const m___FLT32X_EPSILON__ = 2.22044604925031308084726333618164062e-16
+const m___FLT32X_HAS_DENORM__ = 1
+const m___FLT32X_HAS_INFINITY__ = 1
+const m___FLT32X_HAS_QUIET_NAN__ = 1
+const m___FLT32X_IS_IEC_60559__ = 2
+const m___FLT32X_MANT_DIG__ = 53
+const m___FLT32X_MAX_10_EXP__ = 308
+const m___FLT32X_MAX_EXP__ = 1024
+const m___FLT32X_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___FLT32X_MIN__ = 2.22507385850720138309023271733240406e-308
+const m___FLT32X_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___FLT32_DECIMAL_DIG__ = 9
+const m___FLT32_DENORM_MIN__ = 1.40129846432481707092372958328991613e-45
+const m___FLT32_DIG__ = 6
+const m___FLT32_EPSILON__ = 1.19209289550781250000000000000000000e-7
+const m___FLT32_HAS_DENORM__ = 1
+const m___FLT32_HAS_INFINITY__ = 1
+const m___FLT32_HAS_QUIET_NAN__ = 1
+const m___FLT32_IS_IEC_60559__ = 2
+const m___FLT32_MANT_DIG__ = 24
+const m___FLT32_MAX_10_EXP__ = 38
+const m___FLT32_MAX_EXP__ = 128
+const m___FLT32_MAX__ = 3.40282346638528859811704183484516925e+38
+const m___FLT32_MIN__ = 1.17549435082228750796873653722224568e-38
+const m___FLT32_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
+const m___FLT64X_DECIMAL_DIG__ = 36
+const m___FLT64X_DENORM_MIN__ = 6.47517511943802511092443895822764655e-4966
+const m___FLT64X_DIG__ = 33
+const m___FLT64X_EPSILON__ = 1.92592994438723585305597794258492732e-34
+const m___FLT64X_HAS_DENORM__ = 1
+const m___FLT64X_HAS_INFINITY__ = 1
+const m___FLT64X_HAS_QUIET_NAN__ = 1
+const m___FLT64X_IS_IEC_60559__ = 2
+const m___FLT64X_MANT_DIG__ = 113
+const m___FLT64X_MAX_10_EXP__ = 4932
+const m___FLT64X_MAX_EXP__ = 16384
+const m___FLT64X_MAX__ = "1.18973149535723176508575932662800702e+4932"
+const m___FLT64X_MIN__ = 3.36210314311209350626267781732175260e-4932
+const m___FLT64X_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
+const m___FLT64_DECIMAL_DIG__ = 17
+const m___FLT64_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
+const m___FLT64_DIG__ = 15
+const m___FLT64_EPSILON__ = 2.22044604925031308084726333618164062e-16
+const m___FLT64_HAS_DENORM__ = 1
+const m___FLT64_HAS_INFINITY__ = 1
+const m___FLT64_HAS_QUIET_NAN__ = 1
+const m___FLT64_IS_IEC_60559__ = 2
+const m___FLT64_MANT_DIG__ = 53
+const m___FLT64_MAX_10_EXP__ = 308
+const m___FLT64_MAX_EXP__ = 1024
+const m___FLT64_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___FLT64_MIN__ = 2.22507385850720138309023271733240406e-308
+const m___FLT64_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
 const m___FLT_DECIMAL_DIG__ = 9
-const m___FLT_DENORM_MIN__ = 1.40129846e-45
+const m___FLT_DENORM_MIN__ = 1.40129846432481707092372958328991613e-45
 const m___FLT_DIG__ = 6
-const m___FLT_EPSILON__ = 1.19209290e-7
+const m___FLT_EPSILON__ = 1.19209289550781250000000000000000000e-7
+const m___FLT_EVAL_METHOD_TS_18661_3__ = 2
+const m___FLT_EVAL_METHOD__ = 2
 const m___FLT_HAS_DENORM__ = 1
 const m___FLT_HAS_INFINITY__ = 1
 const m___FLT_HAS_QUIET_NAN__ = 1
+const m___FLT_IS_IEC_60559__ = 2
 const m___FLT_MANT_DIG__ = 24
 const m___FLT_MAX_10_EXP__ = 38
 const m___FLT_MAX_EXP__ = 128
-const m___FLT_MAX__ = 3.40282347e+38
-const m___FLT_MIN__ = 1.17549435e-38
-const m___FLT_NORM_MAX__ = 3.40282347e+38
+const m___FLT_MAX__ = 3.40282346638528859811704183484516925e+38
+const m___FLT_MIN__ = 1.17549435082228750796873653722224568e-38
+const m___FLT_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
 const m___FLT_RADIX__ = 2
-const m___FPCLASS_NEGINF = 0x0004
-const m___FPCLASS_NEGNORMAL = 0x0008
-const m___FPCLASS_NEGSUBNORMAL = 0x0010
-const m___FPCLASS_NEGZERO = 0x0020
-const m___FPCLASS_POSINF = 0x0200
-const m___FPCLASS_POSNORMAL = 0x0100
-const m___FPCLASS_POSSUBNORMAL = 0x0080
-const m___FPCLASS_POSZERO = 0x0040
-const m___FPCLASS_QNAN = 0x0002
-const m___FPCLASS_SNAN = 0x0001
 const m___FUNCTION__ = "__func__"
 const m___FXSR__ = 1
 const m___GCC_ASM_FLAG_OUTPUTS__ = 1
@@ -195,111 +357,79 @@ const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
-const m___GNUC_MINOR__ = 2
-const m___GNUC_PATCHLEVEL__ = 1
+const m___GCC_IEC_559 = 2
+const m___GCC_IEC_559_COMPLEX = 2
+const m___GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
+const m___GNUC_MINOR__ = 0
+const m___GNUC_PATCHLEVEL__ = 0
 const m___GNUC_STDC_INLINE__ = 1
-const m___GNUC__ = 4
+const m___GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-16LE"
+const m___GNUC__ = 12
 const m___GNU_EXTENSION = "__MINGW_EXTENSION"
 const m___GOT_SECURE_LIB__ = "__STDC_SECURE_LIB__"
-const m___GXX_ABI_VERSION = 1002
+const m___GXX_ABI_VERSION = 1017
+const m___GXX_MERGED_TYPEINFO_NAMES = 0
 const m___GXX_TYPEINFO_EQUALITY_INLINE = 0
-const m___INT16_FMTd__ = "hd"
-const m___INT16_FMTi__ = "hi"
-const m___INT16_MAX__ = 32767
-const m___INT16_TYPE__ = "short"
-const m___INT32_FMTd__ = "d"
-const m___INT32_FMTi__ = "i"
-const m___INT32_MAX__ = 2147483647
+const m___HAVE_SPECULATION_SAFE_VALUE = 1
+const m___INT16_MAX__ = 0x7fff
+const m___INT32_MAX__ = 0x7fffffff
 const m___INT32_TYPE__ = "int"
-const m___INT64_C_SUFFIX__ = "LL"
-const m___INT64_FMTd__ = "lld"
-const m___INT64_FMTi__ = "lli"
-const m___INT64_MAX__ = 9223372036854775807
-const m___INT8_FMTd__ = "hhd"
-const m___INT8_FMTi__ = "hhi"
-const m___INT8_MAX__ = 127
-const m___INTMAX_C_SUFFIX__ = "LL"
-const m___INTMAX_FMTd__ = "lld"
-const m___INTMAX_FMTi__ = "lli"
-const m___INTMAX_MAX__ = 9223372036854775807
+const m___INT64_MAX__ = 0x7fffffffffffffff
+const m___INT8_MAX__ = 0x7f
+const m___INTMAX_MAX__ = 0x7fffffffffffffff
 const m___INTMAX_WIDTH__ = 64
-const m___INTPTR_FMTd__ = "lld"
-const m___INTPTR_FMTi__ = "lli"
-const m___INTPTR_MAX__ = 9223372036854775807
+const m___INTPTR_MAX__ = 0x7fffffffffffffff
 const m___INTPTR_WIDTH__ = 64
-const m___INT_FAST16_FMTd__ = "hd"
-const m___INT_FAST16_FMTi__ = "hi"
-const m___INT_FAST16_MAX__ = 32767
-const m___INT_FAST16_TYPE__ = "short"
+const m___INT_FAST16_MAX__ = 0x7fff
 const m___INT_FAST16_WIDTH__ = 16
-const m___INT_FAST32_FMTd__ = "d"
-const m___INT_FAST32_FMTi__ = "i"
-const m___INT_FAST32_MAX__ = 2147483647
+const m___INT_FAST32_MAX__ = 0x7fffffff
 const m___INT_FAST32_TYPE__ = "int"
 const m___INT_FAST32_WIDTH__ = 32
-const m___INT_FAST64_FMTd__ = "lld"
-const m___INT_FAST64_FMTi__ = "lli"
-const m___INT_FAST64_MAX__ = 9223372036854775807
+const m___INT_FAST64_MAX__ = 0x7fffffffffffffff
 const m___INT_FAST64_WIDTH__ = 64
-const m___INT_FAST8_FMTd__ = "hhd"
-const m___INT_FAST8_FMTi__ = "hhi"
-const m___INT_FAST8_MAX__ = 127
+const m___INT_FAST8_MAX__ = 0x7f
 const m___INT_FAST8_WIDTH__ = 8
-const m___INT_LEAST16_FMTd__ = "hd"
-const m___INT_LEAST16_FMTi__ = "hi"
-const m___INT_LEAST16_MAX__ = 32767
-const m___INT_LEAST16_TYPE__ = "short"
+const m___INT_LEAST16_MAX__ = 0x7fff
 const m___INT_LEAST16_WIDTH__ = 16
-const m___INT_LEAST32_FMTd__ = "d"
-const m___INT_LEAST32_FMTi__ = "i"
-const m___INT_LEAST32_MAX__ = 2147483647
+const m___INT_LEAST32_MAX__ = 0x7fffffff
 const m___INT_LEAST32_TYPE__ = "int"
 const m___INT_LEAST32_WIDTH__ = 32
-const m___INT_LEAST64_FMTd__ = "lld"
-const m___INT_LEAST64_FMTi__ = "lli"
-const m___INT_LEAST64_MAX__ = 9223372036854775807
+const m___INT_LEAST64_MAX__ = 0x7fffffffffffffff
 const m___INT_LEAST64_WIDTH__ = 64
-const m___INT_LEAST8_FMTd__ = "hhd"
-const m___INT_LEAST8_FMTi__ = "hhi"
-const m___INT_LEAST8_MAX__ = 127
+const m___INT_LEAST8_MAX__ = 0x7f
 const m___INT_LEAST8_WIDTH__ = 8
-const m___INT_MAX__ = 2147483647
+const m___INT_MAX__ = 0x7fffffff
 const m___INT_WIDTH__ = 32
 const m___LDBL_DECIMAL_DIG__ = 17
-const m___LDBL_DENORM_MIN__ = 4.9406564584124654e-324
+const m___LDBL_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
 const m___LDBL_DIG__ = 15
-const m___LDBL_EPSILON__ = 2.2204460492503131e-16
+const m___LDBL_EPSILON__ = 2.22044604925031308084726333618164062e-16
 const m___LDBL_HAS_DENORM__ = 1
 const m___LDBL_HAS_INFINITY__ = 1
 const m___LDBL_HAS_QUIET_NAN__ = 1
+const m___LDBL_IS_IEC_60559__ = 2
 const m___LDBL_MANT_DIG__ = 53
 const m___LDBL_MAX_10_EXP__ = 308
 const m___LDBL_MAX_EXP__ = 1024
-const m___LDBL_MAX__ = 1.7976931348623157e+308
-const m___LDBL_MIN__ = 2.2250738585072014e-308
-const m___LDBL_NORM_MAX__ = 1.7976931348623157e+308
-const m___LITTLE_ENDIAN__ = 1
-const m___LLONG_WIDTH__ = 64
+const m___LDBL_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___LDBL_MIN__ = 2.22507385850720138309023271733240406e-308
+const m___LDBL_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
 const m___LONG32 = "long"
-const m___LONG_LONG_MAX__ = 9223372036854775807
-const m___LONG_MAX__ = 2147483647
+const m___LONG_DOUBLE_64__ = 1
+const m___LONG_LONG_MAX__ = 0x7fffffffffffffff
+const m___LONG_LONG_WIDTH__ = 64
+const m___LONG_MAX__ = 0x7fffffff
 const m___LONG_WIDTH__ = 32
-const m___MEMORY_SCOPE_DEVICE = 1
-const m___MEMORY_SCOPE_SINGLE = 4
-const m___MEMORY_SCOPE_SYSTEM = 0
-const m___MEMORY_SCOPE_WRKGRP = 2
-const m___MEMORY_SCOPE_WVFRNT = 3
 const m___MINGW32_MAJOR_VERSION = 3
 const m___MINGW32_MINOR_VERSION = 11
 const m___MINGW32__ = 1
 const m___MINGW64_VERSION_BUGFIX = 0
-const m___MINGW64_VERSION_MAJOR = 14
+const m___MINGW64_VERSION_MAJOR = 10
 const m___MINGW64_VERSION_MINOR = 0
 const m___MINGW64_VERSION_RC = 0
 const m___MINGW64_VERSION_STATE = "alpha"
 const m___MINGW64__ = 1
 const m___MINGW_DEBUGBREAK_IMPL = 1
-const m___MINGW_FASTFAIL_IMPL = 1
 const m___MINGW_FORTIFY_LEVEL = 0
 const m___MINGW_FORTIFY_VA_ARG = 0
 const m___MINGW_HAVE_ANSI_C99_PRINTF = 1
@@ -307,40 +437,32 @@ const m___MINGW_HAVE_ANSI_C99_SCANF = 1
 const m___MINGW_HAVE_WIDE_C99_PRINTF = 1
 const m___MINGW_HAVE_WIDE_C99_SCANF = 1
 const m___MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
-const m___MINGW_PREFETCH_IMPL = 1
 const m___MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
 const m___MINGW_USE_UNDERSCORE_PREFIX = 0
 const m___MSVCRT_VERSION__ = 0xE00
 const m___MSVCRT__ = 1
-const m___NO_MATH_INLINES = 1
-const m___OBJC_BOOL_IS_BOOL = 0
-const m___OPENCL_MEMORY_SCOPE_ALL_SVM_DEVICES = 3
-const m___OPENCL_MEMORY_SCOPE_DEVICE = 2
-const m___OPENCL_MEMORY_SCOPE_SUB_GROUP = 4
-const m___OPENCL_MEMORY_SCOPE_WORK_GROUP = 1
-const m___OPENCL_MEMORY_SCOPE_WORK_ITEM = 0
 const m___OPTIMIZE__ = 1
 const m___ORDER_BIG_ENDIAN__ = 4321
 const m___ORDER_LITTLE_ENDIAN__ = 1234
 const m___ORDER_PDP_ENDIAN__ = 3412
-const m___PIC__ = 2
-const m___POINTER_WIDTH__ = 64
+const m___PIC__ = 1
 const m___PRAGMA_REDEFINE_EXTNAME = 1
 const m___PRETTY_FUNCTION__ = "__func__"
-const m___PTRDIFF_FMTd__ = "lld"
-const m___PTRDIFF_FMTi__ = "lli"
-const m___PTRDIFF_MAX__ = 9223372036854775807
+const m___PTRDIFF_MAX__ = 0x7fffffffffffffff
 const m___PTRDIFF_WIDTH__ = 64
-const m___SCHAR_MAX__ = 127
+const m___SCHAR_MAX__ = 0x7f
+const m___SCHAR_WIDTH__ = 8
 const m___SEG_FS = 1
 const m___SEG_GS = 1
 const m___SEH__ = 1
-const m___SHRT_MAX__ = 32767
+const m___SHRT_MAX__ = 0x7fff
 const m___SHRT_WIDTH__ = 16
-const m___SIG_ATOMIC_MAX__ = 2147483647
+const m___SIG_ATOMIC_MAX__ = 0x7fffffff
+const m___SIG_ATOMIC_TYPE__ = "int"
 const m___SIG_ATOMIC_WIDTH__ = 32
 const m___SIZEOF_DOUBLE__ = 8
 const m___SIZEOF_FLOAT128__ = 16
+const m___SIZEOF_FLOAT80__ = 16
 const m___SIZEOF_FLOAT__ = 4
 const m___SIZEOF_INT128__ = 16
 const m___SIZEOF_INT__ = 4
@@ -353,100 +475,32 @@ const m___SIZEOF_SHORT__ = 2
 const m___SIZEOF_SIZE_T__ = 8
 const m___SIZEOF_WCHAR_T__ = 2
 const m___SIZEOF_WINT_T__ = 2
-const m___SIZE_FMTX__ = "llX"
-const m___SIZE_FMTo__ = "llo"
-const m___SIZE_FMTu__ = "llu"
-const m___SIZE_FMTx__ = "llx"
-const m___SIZE_MAX__ = "18446744073709551615U"
+const m___SIZE_MAX__ = "0xffffffffffffffffU"
 const m___SIZE_WIDTH__ = 64
-const m___STDC_EMBED_EMPTY__ = 2
-const m___STDC_EMBED_FOUND__ = 1
-const m___STDC_EMBED_NOT_FOUND__ = 0
 const m___STDC_HOSTED__ = 1
 const m___STDC_SECURE_LIB__ = 200411
 const m___STDC_UTF_16__ = 1
 const m___STDC_UTF_32__ = 1
 const m___STDC_VERSION__ = 201710
 const m___STDC__ = 1
-const m___UINT16_FMTX__ = "hX"
-const m___UINT16_FMTo__ = "ho"
-const m___UINT16_FMTu__ = "hu"
-const m___UINT16_FMTx__ = "hx"
-const m___UINT16_MAX__ = 65535
-const m___UINT32_C_SUFFIX__ = "U"
-const m___UINT32_FMTX__ = "X"
-const m___UINT32_FMTo__ = "o"
-const m___UINT32_FMTu__ = "u"
-const m___UINT32_FMTx__ = "x"
-const m___UINT32_MAX__ = 4294967295
-const m___UINT64_C_SUFFIX__ = "ULL"
-const m___UINT64_FMTX__ = "llX"
-const m___UINT64_FMTo__ = "llo"
-const m___UINT64_FMTu__ = "llu"
-const m___UINT64_FMTx__ = "llx"
-const m___UINT64_MAX__ = "18446744073709551615U"
-const m___UINT8_FMTX__ = "hhX"
-const m___UINT8_FMTo__ = "hho"
-const m___UINT8_FMTu__ = "hhu"
-const m___UINT8_FMTx__ = "hhx"
-const m___UINT8_MAX__ = 255
-const m___UINTMAX_C_SUFFIX__ = "ULL"
-const m___UINTMAX_FMTX__ = "llX"
-const m___UINTMAX_FMTo__ = "llo"
-const m___UINTMAX_FMTu__ = "llu"
-const m___UINTMAX_FMTx__ = "llx"
-const m___UINTMAX_MAX__ = "18446744073709551615U"
-const m___UINTMAX_WIDTH__ = 64
-const m___UINTPTR_FMTX__ = "llX"
-const m___UINTPTR_FMTo__ = "llo"
-const m___UINTPTR_FMTu__ = "llu"
-const m___UINTPTR_FMTx__ = "llx"
-const m___UINTPTR_MAX__ = "18446744073709551615U"
-const m___UINTPTR_WIDTH__ = 64
-const m___UINT_FAST16_FMTX__ = "hX"
-const m___UINT_FAST16_FMTo__ = "ho"
-const m___UINT_FAST16_FMTu__ = "hu"
-const m___UINT_FAST16_FMTx__ = "hx"
-const m___UINT_FAST16_MAX__ = 65535
-const m___UINT_FAST32_FMTX__ = "X"
-const m___UINT_FAST32_FMTo__ = "o"
-const m___UINT_FAST32_FMTu__ = "u"
-const m___UINT_FAST32_FMTx__ = "x"
-const m___UINT_FAST32_MAX__ = 4294967295
-const m___UINT_FAST64_FMTX__ = "llX"
-const m___UINT_FAST64_FMTo__ = "llo"
-const m___UINT_FAST64_FMTu__ = "llu"
-const m___UINT_FAST64_FMTx__ = "llx"
-const m___UINT_FAST64_MAX__ = "18446744073709551615U"
-const m___UINT_FAST8_FMTX__ = "hhX"
-const m___UINT_FAST8_FMTo__ = "hho"
-const m___UINT_FAST8_FMTu__ = "hhu"
-const m___UINT_FAST8_FMTx__ = "hhx"
-const m___UINT_FAST8_MAX__ = 255
-const m___UINT_LEAST16_FMTX__ = "hX"
-const m___UINT_LEAST16_FMTo__ = "ho"
-const m___UINT_LEAST16_FMTu__ = "hu"
-const m___UINT_LEAST16_FMTx__ = "hx"
-const m___UINT_LEAST16_MAX__ = 65535
-const m___UINT_LEAST32_FMTX__ = "X"
-const m___UINT_LEAST32_FMTo__ = "o"
-const m___UINT_LEAST32_FMTu__ = "u"
-const m___UINT_LEAST32_FMTx__ = "x"
-const m___UINT_LEAST32_MAX__ = 4294967295
-const m___UINT_LEAST64_FMTX__ = "llX"
-const m___UINT_LEAST64_FMTo__ = "llo"
-const m___UINT_LEAST64_FMTu__ = "llu"
-const m___UINT_LEAST64_FMTx__ = "llx"
-const m___UINT_LEAST64_MAX__ = "18446744073709551615U"
-const m___UINT_LEAST8_FMTX__ = "hhX"
-const m___UINT_LEAST8_FMTo__ = "hho"
-const m___UINT_LEAST8_FMTu__ = "hhu"
-const m___UINT_LEAST8_FMTx__ = "hhx"
-const m___UINT_LEAST8_MAX__ = 255
+const m___UINT16_MAX__ = 0xffff
+const m___UINT32_MAX__ = 0xffffffff
+const m___UINT64_MAX__ = "0xffffffffffffffffU"
+const m___UINT8_MAX__ = 0xff
+const m___UINTMAX_MAX__ = "0xffffffffffffffffU"
+const m___UINTPTR_MAX__ = "0xffffffffffffffffU"
+const m___UINT_FAST16_MAX__ = 0xffff
+const m___UINT_FAST32_MAX__ = 0xffffffff
+const m___UINT_FAST64_MAX__ = "0xffffffffffffffffU"
+const m___UINT_FAST8_MAX__ = 0xff
+const m___UINT_LEAST16_MAX__ = 0xffff
+const m___UINT_LEAST32_MAX__ = 0xffffffff
+const m___UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
+const m___UINT_LEAST8_MAX__ = 0xff
 const m___USE_MINGW_ANSI_STDIO = 0
-const m___VERSION__ = "Clang 21.1.8 (https://github.com/llvm/llvm-project.git 2078da43e25a4623cab2d0d60decddf709aaea28)"
-const m___WCHAR_MAX__ = 65535
-const m___WCHAR_UNSIGNED__ = 1
+const m___VERSION__ = "12-win32"
+const m___WCHAR_MAX__ = 0xffff
+const m___WCHAR_MIN__ = 0
 const m___WCHAR_WIDTH__ = 16
 const m___WIN32 = 1
 const m___WIN32__ = 1
@@ -454,28 +508,19 @@ const m___WIN64 = 1
 const m___WIN64__ = 1
 const m___WINNT = 1
 const m___WINNT__ = 1
-const m___WINT_MAX__ = 65535
-const m___WINT_UNSIGNED__ = 1
+const m___WINT_MAX__ = 0xffff
+const m___WINT_MIN__ = 0
 const m___WINT_WIDTH__ = 16
 const m___amd64 = 1
 const m___amd64__ = 1
-const m___clang__ = 1
-const m___clang_literal_encoding__ = "UTF-8"
-const m___clang_major__ = 21
-const m___clang_minor__ = 1
-const m___clang_patchlevel__ = 8
-const m___clang_version__ = "21.1.8 (https://github.com/llvm/llvm-project.git 2078da43e25a4623cab2d0d60decddf709aaea28)"
-const m___clang_wide_literal_encoding__ = "UTF-16"
-const m___code_model_small__ = 1
+const m___code_model_medium__ = 1
 const m___int16 = "short"
 const m___int32 = "int"
 const m___int8 = "char"
 const m___k8 = 1
 const m___k8__ = 1
-const m___llvm__ = 1
 const m___mingw_bos_ovr = "__mingw_ovr"
-const m___pic__ = 2
-const m___tune_k8__ = 1
+const m___pic__ = 1
 const m___x86_64 = 1
 const m___x86_64__ = 1
 const m__inline = "__inline"
@@ -496,46 +541,11 @@ type t__predefined_wchar_t = uint16
 
 type t__predefined_ptrdiff_t = int64
 
-type Tptrdiff_t = int64
-
-type Tsize_t = uint64
-
-type Twchar_t = uint16
-
-type Tmax_align_t = struct {
-	F__clang_max_align_nonce1 int64
-	F__clang_max_align_nonce2 float64
-}
-
-type Tz_size_t = uint64
-
-type TByte = uint8
-
-type TuInt = uint32
-
-type TuLong = uint32
-
-type TBytef = uint8
-
-type Tcharf = int8
-
-type Tintf = int32
-
-type TuIntf = uint32
-
-type TuLongf = uint32
-
-type Tvoidpc = uintptr
-
-type Tvoidpf = uintptr
-
-type Tvoidp = uintptr
-
-type Tz_crc_t = uint32
-
 type t__gnuc_va_list = uintptr
 
 type Tva_list = uintptr
+
+type Tsize_t = uint64
 
 type Tssize_t = int64
 
@@ -544,6 +554,10 @@ type Trsize_t = uint64
 type Tintptr_t = int64
 
 type Tuintptr_t = uint64
+
+type Tptrdiff_t = int64
+
+type Twchar_t = uint16
 
 type Twint_t = uint16
 
@@ -591,6 +605,37 @@ type Tthreadlocinfo = struct {
 	F_locale_mb_cur_max  int32
 	F_locale_lc_codepage uint32
 }
+
+type Tmax_align_t = struct {
+	F__max_align_ll int64
+	F__max_align_ld float64
+}
+
+type Tz_size_t = uint64
+
+type TByte = uint8
+
+type TuInt = uint32
+
+type TuLong = uint32
+
+type TBytef = uint8
+
+type Tcharf = int8
+
+type Tintf = int32
+
+type TuIntf = uint32
+
+type TuLongf = uint32
+
+type Tvoidpc = uintptr
+
+type Tvoidpf = uintptr
+
+type Tvoidp = uintptr
+
+type Tz_crc_t = uint32
 
 type T_ino_t = uint16
 
@@ -9111,86 +9156,6 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 
 const m_BUFSIZ = 512
 const m_COPY = 1
-const m_E2BIG = 7
-const m_EACCES = 13
-const m_EADDRINUSE = 100
-const m_EADDRNOTAVAIL = 101
-const m_EAFNOSUPPORT = 102
-const m_EAGAIN = 11
-const m_EALREADY = 103
-const m_EBADF = 9
-const m_EBADMSG = 104
-const m_EBUSY = 16
-const m_ECANCELED = 105
-const m_ECHILD = 10
-const m_ECONNABORTED = 106
-const m_ECONNREFUSED = 107
-const m_ECONNRESET = 108
-const m_EDEADLK = 36
-const m_EDEADLOCK = "EDEADLK"
-const m_EDESTADDRREQ = 109
-const m_EDOM = 33
-const m_EEXIST = 17
-const m_EFAULT = 14
-const m_EFBIG = 27
-const m_EHOSTUNREACH = 110
-const m_EIDRM = 111
-const m_EILSEQ = 42
-const m_EINPROGRESS = 112
-const m_EINTR = 4
-const m_EINVAL = 22
-const m_EIO = 5
-const m_EISCONN = 113
-const m_EISDIR = 21
-const m_ELOOP = 114
-const m_EMFILE = 24
-const m_EMLINK = 31
-const m_EMSGSIZE = 115
-const m_ENAMETOOLONG = 38
-const m_ENETDOWN = 116
-const m_ENETRESET = 117
-const m_ENETUNREACH = 118
-const m_ENFILE = 23
-const m_ENOBUFS = 119
-const m_ENODATA = 120
-const m_ENODEV = 19
-const m_ENOENT = 2
-const m_ENOEXEC = 8
-const m_ENOFILE = "ENOENT"
-const m_ENOLCK = 39
-const m_ENOLINK = 121
-const m_ENOMEM = 12
-const m_ENOMSG = 122
-const m_ENOPROTOOPT = 123
-const m_ENOSPC = 28
-const m_ENOSR = 124
-const m_ENOSTR = 125
-const m_ENOSYS = 40
-const m_ENOTCONN = 126
-const m_ENOTDIR = 20
-const m_ENOTEMPTY = 41
-const m_ENOTRECOVERABLE = 127
-const m_ENOTSOCK = 128
-const m_ENOTSUP = 129
-const m_ENOTTY = 25
-const m_ENXIO = 6
-const m_EOPNOTSUPP = 130
-const m_EOVERFLOW = 132
-const m_EOWNERDEAD = 133
-const m_EPERM = 1
-const m_EPIPE = 32
-const m_EPROTO = 134
-const m_EPROTONOSUPPORT = 135
-const m_EPROTOTYPE = 136
-const m_ERANGE = 34
-const m_EROFS = 30
-const m_ESPIPE = 29
-const m_ESRCH = 3
-const m_ETIME = 137
-const m_ETIMEDOUT = 138
-const m_ETXTBSY = 139
-const m_EWOULDBLOCK = 140
-const m_EXDEV = 18
 const m_FILENAME_MAX = 260
 const m_FOPEN_MAX = 20
 const m_F_OK = 0
@@ -9201,7 +9166,6 @@ const m_GZ_NONE = 0
 const m_GZ_READ = 7247
 const m_GZ_WRITE = 31153
 const m_LOOK = 0
-const m_L_tmpnam = 260
 const m_L_tmpnam_s = "L_tmpnam"
 const m_O_ACCMODE = "_O_ACCMODE"
 const m_O_APPEND = "_O_APPEND"
@@ -9223,7 +9187,6 @@ const m_R_OK = 4
 const m_STDERR_FILENO = 2
 const m_STDIN_FILENO = 0
 const m_STDOUT_FILENO = 1
-const m_STRUNCATE = 80
 const m_SYS_OPEN = "_SYS_OPEN"
 const m_S_IEXEC = "_S_IEXEC"
 const m_S_IFBLK = "_S_IFBLK"
@@ -9238,7 +9201,7 @@ const m_S_IRWXU = "_S_IRWXU"
 const m_S_IWRITE = "_S_IWRITE"
 const m_S_IWUSR = "_S_IWUSR"
 const m_S_IXUSR = "_S_IXUSR"
-const m_TMP_MAX = 2147483647
+const m_TMP_MAX = 32767
 const m_TMP_MAX_S = "TMP_MAX"
 const m_W_OK = 2
 const m_X_OK = 1
@@ -9248,14 +9211,15 @@ const m__A_NORMAL = 0x00
 const m__A_RDONLY = 0x01
 const m__A_SUBDIR = 0x10
 const m__A_SYSTEM = 0x04
+const m__CRT_INTERNAL_LOCAL_PRINTF_OPTIONS = "_CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS"
+const m__CRT_INTERNAL_LOCAL_SCANF_OPTIONS = "_CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS"
 const m__CRT_INTERNAL_PRINTF_LEGACY_MSVCRT_COMPATIBILITY = "0x0008U"
 const m__CRT_INTERNAL_PRINTF_LEGACY_THREE_DIGIT_EXPONENTS = "0x0010U"
 const m__CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION = 1
-const m__CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS = "0x0004U"
-const m__CRT_INTERNAL_PRINTF_STANDARD_ROUNDING = "0x0020U"
+const m__CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS = 4
 const m__CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = 2
 const m__CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY = "0x0004U"
-const m__CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = "0x0002U"
+const m__CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = 2
 const m__CRT_INTERNAL_SCANF_SECURECRT = 1
 const m__IOB_ENTRIES = 20
 const m__IOFBF = 0x0000
@@ -9291,7 +9255,7 @@ const m__P_WAIT = 0
 const m__P_tmpdir = "\\\\"
 const m__SYS_OPEN = 20
 const m__S_IEXEC = 0x0040
-const m__S_IFBLK = 0x6000
+const m__S_IFBLK = 0x3000
 const m__S_IFCHR = 0x2000
 const m__S_IFDIR = 0x4000
 const m__S_IFIFO = 0x1000
@@ -9302,6 +9266,7 @@ const m__S_IRUSR = "_S_IREAD"
 const m__S_IWRITE = 0x0080
 const m__S_IWUSR = "_S_IWRITE"
 const m__S_IXUSR = "_S_IEXEC"
+const m__TWO_DIGIT_EXPONENT = 0x1
 const m__WAIT_CHILD = 0
 const m__WAIT_GRANDCHILD = 1
 const m___stat64 = "_stat64"
@@ -9324,8 +9289,10 @@ const m__wfindnext = "_wfindnext64i32"
 const m__wfindnexti64 = "_wfindnext64"
 const m__wstat = "_wstat64i32"
 const m__wstati64 = "_wstat64"
+const m_fstat64 = "_fstat64"
 const m_pclose = "_pclose"
 const m_popen = "_popen"
+const m_stat64 = "_stat64"
 const m_wpopen = "_wpopen"
 
 type T_iobuf = struct {
@@ -9426,6 +9393,20 @@ type T_stat32 = struct {
 	Fst_ctime t__time32_t
 }
 
+type Tstat = struct {
+	Fst_dev   T_dev_t
+	Fst_ino   T_ino_t
+	Fst_mode  uint16
+	Fst_nlink int16
+	Fst_uid   int16
+	Fst_gid   int16
+	Fst_rdev  T_dev_t
+	Fst_size  T_off_t
+	Fst_atime Ttime_t
+	Fst_mtime Ttime_t
+	Fst_ctime Ttime_t
+}
+
 type T_stat32i64 = struct {
 	Fst_dev   T_dev_t
 	Fst_ino   T_ino_t
@@ -9455,34 +9436,6 @@ type T_stat64i32 = struct {
 }
 
 type T_stat64 = struct {
-	Fst_dev   T_dev_t
-	Fst_ino   T_ino_t
-	Fst_mode  uint16
-	Fst_nlink int16
-	Fst_uid   int16
-	Fst_gid   int16
-	Fst_rdev  T_dev_t
-	Fst_size  int64
-	Fst_atime t__time64_t
-	Fst_mtime t__time64_t
-	Fst_ctime t__time64_t
-}
-
-type Tstat = struct {
-	Fst_dev   T_dev_t
-	Fst_ino   T_ino_t
-	Fst_mode  uint16
-	Fst_nlink int16
-	Fst_uid   int16
-	Fst_gid   int16
-	Fst_rdev  T_dev_t
-	Fst_size  Toff_t
-	Fst_atime Ttime_t
-	Fst_mtime Ttime_t
-	Fst_ctime Ttime_t
-}
-
-type Tstat64 = struct {
 	Fst_dev   T_dev_t
 	Fst_ino   T_ino_t
 	Fst_mode  uint16
@@ -9554,6 +9507,7 @@ const m__O_TRUNC1 = 512
 const m__O_WRONLY1 = 1
 const m__S_IREAD1 = 256
 const m__S_IWRITE1 = 128
+const m___INT_MAX__1 = 2147483647
 
 // C documentation
 //
@@ -10135,7 +10089,7 @@ func Xgz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
 //	   used, since C standard permits 1's complement and sign-bit representations,
 //	   otherwise we could just use ((unsigned)-1) >> 1 */
 func Xgz_intmax(tls *libc.TLS) (r uint32) {
-	return uint32(m___INT_MAX__)
+	return uint32(m___INT_MAX__1)
 }
 
 const m__O_APPEND2 = 0x0008
@@ -10147,6 +10101,7 @@ const m__O_TRUNC2 = 0x0200
 const m__O_WRONLY2 = 0x0001
 const m__S_IREAD2 = 0x0100
 const m__S_IWRITE2 = 0x0080
+const m___INT_MAX__2 = 0x7fffffff
 
 // C documentation
 //
@@ -11339,82 +11294,68 @@ func _gz_vacate(tls *libc.TLS, state Tgz_statep) (r int32) {
 	return libc.BoolInt32((*Tz_stream)(unsafe.Pointer(strm)).Favail_in > (*Tgz_state)(unsafe.Pointer(state)).Fsize)
 }
 
-/*===---- stdarg.h - Variable argument handling ----------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
+/* Copyright (C) 1989, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
+
+This file is part of GCC.
+
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version.
+
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GCC; see the file COPYING.  If not, write to
+the Free Software Foundation, 51 Franklin Street, Fifth Floor,
+Boston, MA 02110-1301, USA.  */
+
+/* As a special exception, if you include this header file into source
+   files compiled by GCC, this header file does not by itself cause
+   the resulting executable to be covered by the GNU General Public
+   License.  This exception does not however invalidate any other
+   reasons why the executable file might be covered by the GNU General
+   Public License.  */
 
 /*
- * This header is designed to be included multiple times. If any of the __need_
- * macros are defined, then only that subset of interfaces are provided. This
- * can be useful for POSIX headers that need to not expose all of stdarg.h, but
- * need to use some of its interfaces. Otherwise this header provides all of
- * the expected interfaces.
- *
- * When clang modules are enabled, this header is a textual header to support
- * the multiple include behavior. As such, it doesn't directly declare anything
- * so that it doesn't add duplicate declarations to all of its includers'
- * modules.
- */
-/* GCC always defines __va_copy, but does not define va_copy unless in c99 mode
- * or -ansi is not specified, since it was not part of C90.
- */
-/*===---- __stdarg_header_macro.h ------------------------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
+ * ISO C Standard:  7.15  Variable arguments  <stdarg.h>
  */
 
-/*===---- __stdarg___gnuc_va_list.h - Definition of __gnuc_va_list ---------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
+/* include mingw stuff */
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-/*===---- __stdarg_va_list.h - Definition of va_list -----------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
+/* Copyright (C) 1989-2022 Free Software Foundation, Inc.
 
-/*===---- __stdarg_va_arg.h - Definitions of va_start, va_arg, va_end-------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
+This file is part of GCC.
 
-/*===---- __stdarg___va_copy.h - Definition of __va_copy -------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
 
-/*===---- __stdarg_va_copy.h - Definition of va_copy------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+Under Section 7 of GPL version 3, you are granted additional
+permissions described in the GCC Runtime Library Exception, version
+3.1, as published by the Free Software Foundation.
+
+You should have received a copy of the GNU General Public License and
+a copy of the GCC Runtime Library Exception along with this program;
+see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+<http://www.gnu.org/licenses/>.  */
+
+/*
+ * ISO C Standard:  7.15  Variable arguments  <stdarg.h>
  */
 
 // C documentation

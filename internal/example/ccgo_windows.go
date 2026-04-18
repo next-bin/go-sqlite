@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc -D_UCRT -build-lines \/\/go:build windows && (amd64 || arm64)\n --cpp /home/jnml/bin/llvm-mingw-20251216-ucrt-ubuntu-22.04-x86_64/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows --package-name=main -map ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc -o example.exe.go example.o.go libz.a', DO NOT EDIT.
+// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -D_UCRT -build-lines \/\/go:build windows && (amd64 || arm64)\n --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows --package-name=main -map ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc -o example.exe.go example.o.go libz.a', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 
@@ -14,6 +14,8 @@ import (
 var _ reflect.Type
 var _ unsafe.Pointer
 
+const m_EAGAIN = 11
+const m_EWOULDBLOCK = 140
 const m_MAX_MEM_LEVEL = 9
 const m_MAX_WBITS = 15
 const m_SEEK_CUR = 1
@@ -42,7 +44,8 @@ const m_Z_STREAM_END = 1
 const m_Z_TEXT = 1
 const m_Z_TREES = 6
 const m_Z_UNKNOWN = 2
-const m___INT_MAX__ = 2147483647
+
+type Tva_list = uintptr
 
 type Tz_size_t = uint64
 
@@ -65,8 +68,6 @@ type Tvoidpf = uintptr
 type Tvoidp = uintptr
 
 type Tz_crc_t = uint32
-
-type Tva_list = uintptr
 
 type Talloc_func = uintptr
 
@@ -8536,8 +8537,6 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 }
 
 const m_COPY = 1
-const m_EAGAIN = 11
-const m_EWOULDBLOCK = 140
 const m_GZBUFSIZE = 8192
 const m_GZIP = 2
 const m_GZ_APPEND = 1
@@ -8603,6 +8602,7 @@ const m__O_TRUNC1 = 512
 const m__O_WRONLY1 = 1
 const m__S_IREAD1 = 256
 const m__S_IWRITE1 = 128
+const m___INT_MAX__1 = 2147483647
 
 // C documentation
 //
@@ -9031,7 +9031,7 @@ func x_gz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
 //	   used, since C standard permits 1's complement and sign-bit representations,
 //	   otherwise we could just use ((unsigned)-1) >> 1 */
 func x_gz_intmax(tls *libc.TLS) (r uint32) {
-	return uint32(m___INT_MAX__)
+	return uint32(m___INT_MAX__1)
 }
 
 // C documentation
@@ -10106,82 +10106,68 @@ func _gz_vacate(tls *libc.TLS, state Tgz_statep) (r int32) {
 	return libc.BoolInt32((*Tz_stream)(unsafe.Pointer(strm)).Favail_in > (*Tgz_state)(unsafe.Pointer(state)).Fsize)
 }
 
-/*===---- stdarg.h - Variable argument handling ----------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
+/* Copyright (C) 1989, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
+
+This file is part of GCC.
+
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version.
+
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GCC; see the file COPYING.  If not, write to
+the Free Software Foundation, 51 Franklin Street, Fifth Floor,
+Boston, MA 02110-1301, USA.  */
+
+/* As a special exception, if you include this header file into source
+   files compiled by GCC, this header file does not by itself cause
+   the resulting executable to be covered by the GNU General Public
+   License.  This exception does not however invalidate any other
+   reasons why the executable file might be covered by the GNU General
+   Public License.  */
 
 /*
- * This header is designed to be included multiple times. If any of the __need_
- * macros are defined, then only that subset of interfaces are provided. This
- * can be useful for POSIX headers that need to not expose all of stdarg.h, but
- * need to use some of its interfaces. Otherwise this header provides all of
- * the expected interfaces.
- *
- * When clang modules are enabled, this header is a textual header to support
- * the multiple include behavior. As such, it doesn't directly declare anything
- * so that it doesn't add duplicate declarations to all of its includers'
- * modules.
- */
-/* GCC always defines __va_copy, but does not define va_copy unless in c99 mode
- * or -ansi is not specified, since it was not part of C90.
- */
-/*===---- __stdarg_header_macro.h ------------------------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
+ * ISO C Standard:  7.15  Variable arguments  <stdarg.h>
  */
 
-/*===---- __stdarg___gnuc_va_list.h - Definition of __gnuc_va_list ---------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
+/* include mingw stuff */
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-/*===---- __stdarg_va_list.h - Definition of va_list -----------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
+/* Copyright (C) 1989-2022 Free Software Foundation, Inc.
 
-/*===---- __stdarg_va_arg.h - Definitions of va_start, va_arg, va_end-------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
+This file is part of GCC.
 
-/*===---- __stdarg___va_copy.h - Definition of __va_copy -------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
 
-/*===---- __stdarg_va_copy.h - Definition of va_copy------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+Under Section 7 of GPL version 3, you are granted additional
+permissions described in the GCC Runtime Library Exception, version
+3.1, as published by the Free Software Foundation.
+
+You should have received a copy of the GNU General Public License and
+a copy of the GCC Runtime Library Exception along with this program;
+see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+<http://www.gnu.org/licenses/>.  */
+
+/*
+ * ISO C Standard:  7.15  Variable arguments  <stdarg.h>
  */
 
 // C documentation
