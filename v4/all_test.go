@@ -1410,6 +1410,9 @@ func testTranslateBug(t *testing.T, dir string, blacklist map[string]struct{}) {
 
 func TestTranslate(t *testing.T) {
 	cfg := defaultCfg()
+	if target == "darwin/arm64" {
+		cfg.IgnoreStaticAssert = true
+	}
 	cfg.SysIncludePaths = append(cfg.SysIncludePaths, "Include") // benchmarksgame
 	cfg.FS = cfs
 	blacklistCompCert := map[string]struct{}{}

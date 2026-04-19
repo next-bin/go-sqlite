@@ -668,6 +668,8 @@ type Config struct {
 	// Do not report negative shift amounts as errors. Appears for example in
 	// FFmpeg libavcodec/vp9dsp_template.c:1750:1:
 	IgnoreNegativeShiftAmounts bool
+	// Ignore _Static_assert
+	IgnoreStaticAssert bool
 
 	doNotInjectFunc        bool // testing
 	fakeIncludes           bool // testing

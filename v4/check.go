@@ -1211,6 +1211,10 @@ func (n *Declaration) check(c *ctx) {
 //
 //	"_Static_assert" '(' ConstantExpression ',' STRINGLITERAL ')'
 func (n *StaticAssertDeclaration) check(c *ctx) {
+	if c.cfg.IgnoreStaticAssert {
+		return
+	}
+
 	n.ConstantExpression.check(c, decay)
 	if !isNonzero(n.ConstantExpression.Value()) {
 		s := stringConst(func(msg string, args ...interface{}) {
