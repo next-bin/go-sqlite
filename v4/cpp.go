@@ -44,6 +44,9 @@ var (
 		"__STDC_VERSION__":         {},
 		"__STDC__":                 {},
 		"__TIME__":                 {},
+		"__has_builtin":            {},
+		"__has_extension":          {},
+		"__has_feature":            {},
 		"defined":                  {},
 	}
 )
@@ -799,6 +802,60 @@ func (c *cpp) undent() string {
 	return fmt.Sprintf("\t%s", strings.Repeat("· ", c.indentLevel))
 }
 
+func (c *cpp) parseHasFeature(ts tokenSequence, kind string) (r tokenSequence) {
+	c.skipBlank(ts)
+	var t cppToken
+
+	if p := ts.peek(0); p.Ch == '(' {
+		ts.shift()
+		c.skipBlank(ts)
+		if p = ts.peek(0); p.Ch == rune(IDENTIFIER) {
+			t = ts.shift()
+			c.skipBlank(ts)
+			if paren := ts.shift(); paren.Ch != ')' {
+				c.eh("%v: expected ')'", paren.Position())
+			}
+		} else {
+			c.eh("%v: operator %q requires an identifier", p.Position(), kind)
+			ts.shift()
+			return ts
+		}
+	} else {
+		c.eh("%v: operator %q requires a parenthesized identifier", p.Position(), kind)
+		return ts
+	}
+
+	nm := t.SrcStr()
+	oneTok := Token{s: t.s, Ch: rune(PPNUMBER)}
+	oneTok.Set(nil, one)
+	zeroTok := Token{s: t.s, Ch: rune(PPNUMBER)}
+	zeroTok.Set(nil, zero)
+
+	// Hardcode transpiler capabilities here
+	supported := false
+	switch kind {
+	case "__has_extension", "__has_feature":
+		switch nm {
+		case "c_atomic", "c_generic_selections", "c_thread_local", "c_alignas":
+			supported = true
+		}
+	case "__has_builtin":
+		// Match Clang's C11 atomic builtins, plus common GCC fallbacks
+		if strings.HasPrefix(nm, "__c11_atomic_") || strings.HasPrefix(nm, "__sync_") || strings.HasPrefix(nm, "__builtin_") {
+			supported = true
+		}
+	}
+
+	if supported {
+		t.Token = oneTok
+	} else {
+		t.Token = zeroTok
+	}
+
+	s := cppTokens(append([]cppToken{t}, *ts.(*cppTokens)...))
+	return &s
+}
+
 // [1], pg 1.
 func (c *cpp) expand(outer, eval bool, TS tokenSequence, w *cppTokens) {
 	// trc("* %s%v outer %v (%v)", c.indent(), toksDump(TS), outer, origin(2))
@@ -820,6 +877,11 @@ more:
 	src := T.SrcStr()
 	if eval && src == "defined" {
 		TS = c.parseDefined(TS)
+		goto more
+	}
+
+	if eval && (src == "__has_extension" || src == "__has_feature" || src == "__has_builtin") {
+		TS = c.parseHasFeature(TS, src)
 		goto more
 	}
 
@@ -1236,7 +1298,7 @@ func (c *cpp) macro(t Token, nm string) *Macro {
 
 		c.macros[nm] = m
 		return m
-	case "defined":
+	case "defined", "__has_extension", "__has_feature", "__has_builtin":
 		return nil
 	}
 
