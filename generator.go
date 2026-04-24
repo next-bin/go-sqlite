@@ -118,16 +118,19 @@ func main() {
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
+		var configFlags []string
 		switch target {
 		case "darwin/arm64":
 			cflags = append(cflags, "-U__ARM_FEATURE_CRC32")
+		case "linux/s390x":
+			configFlags = append(configFlags, "--disable-crcvx")
 		}
 		util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("go mod init example.com/libz ; go get %s@latest", libc))
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("go work init ; go work use . $GOPATH/src/%s", libc))
 		}
 		if !win && !win32 {
-			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure", strings.Join(cflags, " ")))
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure %s", strings.Join(cflags, " "), strings.Join(configFlags, " ")))
 		}
 		args := []string{os.Args[0]}
 		if dev {
