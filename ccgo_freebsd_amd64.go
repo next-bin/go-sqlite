@@ -803,7 +803,6 @@ const m___clang_patchlevel__ = 7
 const m___clang_version__ = "19.1.7 (https://github.com/llvm/llvm-project.git llvmorg-19.1.7-0-gcd708029e0b2)"
 const m___clang_wide_literal_encoding__ = "UTF-32"
 const m___code_model_small__ = 1
-const m___has_extension = "__has_feature"
 const m___k8 = 1
 const m___k8__ = 1
 const m___llvm__ = 1
