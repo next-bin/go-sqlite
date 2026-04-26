@@ -703,7 +703,6 @@ const m___code_model_small__ = 1
 const m___const = "const"
 const m___debugused = "__unused"
 const m___diagused = "__unused"
-const m___has_extension = "__has_feature"
 const m___k8 = 1
 const m___k8__ = 1
 const m___pthread_volatile = "volatile"
