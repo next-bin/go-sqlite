@@ -1206,8 +1206,8 @@ func initTasks() {
 			"github.com/next-bin/go-sqlite/libpcre2-16",
 			"github.com/next-bin/go-sqlite/libpcre2-32",
 			"github.com/next-bin/go-sqlite/libpcre2-8",
-			"github.com/next-bin/go-sqlite/libpcre2-posix",
-			"github.com/next-bin/go-sqlite/libpcre32",
+			"modernc.org/libpcre2-posix",
+			"modernc.org/libpcre32",
 			"github.com/next-bin/go-sqlite/libpcreposix",
 			"github.com/next-bin/go-sqlite/libqbe",
 			"github.com/next-bin/go-sqlite/libquickjs",
@@ -1234,9 +1234,9 @@ func initTasks() {
 			"github.com/next-bin/go-sqlite/sqlite-bench",
 			"github.com/next-bin/go-sqlite/sqlite-bench2",
 			"github.com/next-bin/go-sqlite/strutil",
-			"github.com/next-bin/go-sqlite/tcl8.6",
-			"github.com/next-bin/go-sqlite/tcl9.0",
-			"github.com/next-bin/go-sqlite/tfs",
+			"modernc.org/tcl8.6",
+			"modernc.org/tcl9.0",
+			"modernc.org/tfs",
 			"github.com/next-bin/go-sqlite/tk9.0",
 			"github.com/next-bin/go-sqlite/visualmd",
 			"github.com/next-bin/go-sqlite/y",
@@ -1257,7 +1257,7 @@ func initTasks() {
 			// obsolete "modernc.org/libuserenv",
 			// obsolete "modernc.org/libwinspool",
 			// obsolete "modernc.org/libws2_32",
-			// obsolete "github.com/next-bin/go-sqlite/tcl",
+			// obsolete "modernc.org/tcl",
 			// obsolete "github.com/next-bin/go-sqlite/z",
 			// paused "git.sr.ht/~jackmordaunt/go-libwebp",
 			// paused "gitea.arsenm.dev/Arsen6331/pcre",
@@ -1338,7 +1338,7 @@ func initTasks() {
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
 			case "github.com/next-bin/go-sqlite/rec":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "github.com/next-bin/go-sqlite/tfs":
+			case "modernc.org/tfs":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
 			case "github.com/next-bin/go-sqlite/gc/v2":
 				task.importPath = "github.com/next-bin/go-sqlite/gc"
