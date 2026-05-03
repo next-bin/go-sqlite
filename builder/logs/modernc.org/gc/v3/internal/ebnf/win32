@@ -1,0 +1,55 @@
+2022-11-21T00:49:44+01:00 commit bba7d38d3198040a15c7471d96e66069535939c3, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+runtime: out of memory: cannot allocate 4194304-byte block (1765507072 in use)
+fatal error: out of memory
+
+goroutine 14716 [running]:
+runtime.throw({0x2e956d, 0xd})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x4d fp=0x11dfe8bc sp=0x11dfe8a8 pc=0x169d0d
+runtime.(*mcache).refill(0x1310088, 0x4)
+	C:/Program Files/Go/src/runtime/mcache.go:183 +0x231 fp=0x11dfe8e8 sp=0x11dfe8bc pc=0x143801
+runtime.(*mcache).nextFree(0x1310088, 0x4)
+	C:/Program Files/Go/src/runtime/malloc.go:819 +0x81 fp=0x11dfe908 sp=0x11dfe8e8 pc=0x13b4d1
+runtime.mallocgc(0x10, 0x2c8420, 0x1)
+	C:/Program Files/Go/src/runtime/malloc.go:1018 +0x3d8 fp=0x11dfe950 sp=0x11dfe908 pc=0x13ba48
+reflect.unsafe_New(0x2c8420)
+	C:/Program Files/Go/src/runtime/malloc.go:1197 +0x2c fp=0x11dfe964 sp=0x11dfe950 pc=0x1930ec
+reflect.packEface({0x2c8420, 0x7ee96500, 0x199})
+	C:/Program Files/Go/src/reflect/value.go:122 +0x58 fp=0x11dfe980 sp=0x11dfe964 pc=0x1d73a8
+reflect.valueInterface({0x2c8420, 0x7ee96500, 0x199}, 0x1)
+	C:/Program Files/Go/src/reflect/value.go:1508 +0xe9 fp=0x11dfe9a8 sp=0x11dfe980 pc=0x1d90b9
+reflect.Value.Interface(...)
+	C:/Program Files/Go/src/reflect/value.go:1478
+modernc.org/gc/v3/internal/ebnf.nodeSource0(0x11dffdb4, 0x11dffdc0, {0x2c40a0, 0x7ee96500})
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1530 +0x210 fp=0x11dfea04 sp=0x11dfe9a8 pc=0x26da40
+modernc.org/gc/v3/internal/ebnf.nodeSource0(0x11dffdb4, 0x11dffdc0, {0x2c7ca0, 0xbe7ff0})
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1534 +0x2a3 fp=0x11dfea60 sp=0x11dfea04 pc=0x26dad3
+modernc.org/gc/v3/internal/ebnf.nodeSource0(0x11dffdb4, 0x11dffdc0, {0x2c2600, 0x7ee96510})
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1530 +0x234 fp=0x11dfeabc sp=0x11dfea60 pc=0x26da64
+modernc.org/gc/v3/internal/ebnf.nodeSource0(0x11dffdb4, 0x11dffdc0, {0x2c8660, 0xbe7fe0})
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1534 +0x2a3 fp
+
+...
+
+ernal/ebnf/parser.go:8270 +0x2c7 fp=0x11c35c58 sp=0x11c35bfc pc=0x290bf7
+modernc.org/gc/v3/internal/ebnf.(*parser).block(0x7f9226c0)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/parser.go:869 +0x13a fp=0x11c35c94 sp=0x11c35c58 pc=0x27c40a
+modernc.org/gc/v3/internal/ebnf.(*parser).functionBody(0x7f9226c0)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/parser.go:2940 +0x21 fp=0x11c35ca4 sp=0x11c35c94 pc=0x281bf1
+modernc.org/gc/v3/internal/ebnf.(*parser).functionDecl(0x7f9226c0)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/parser.go:3016 +0x249 fp=0x11c35ce0 sp=0x11c35ca4 pc=0x281e99
+modernc.org/gc/v3/internal/ebnf.(*parser).topLevelDecl(0x7f9226c0)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/parser.go:8514 +0xb8 fp=0x11c35cf8 sp=0x11c35ce0 pc=0x291638
+modernc.org/gc/v3/internal/ebnf.(*parser).sourceFile(0x7f9226c0)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/parser.go:7935 +0x327 fp=0x11c35d6c sp=0x11c35cf8 pc=0x28fdd7
+modernc.org/gc/v3/internal/ebnf.(*parser).parse(0x7f9226c0)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1428 +0x156 fp=0x11c35de0 sp=0x11c35d6c pc=0x26d066
+modernc.org/gc/v3/internal/ebnf.testParser.func1.1()
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/all_test.go:411 +0x353 fp=0x11c35fcc sp=0x11c35de0 pc=0x2a0d63
+modernc.org/gc/v3/internal/ebnf.(*parallel).exec.func1()
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:626 +0x62 fp=0x11c35ff0 sp=0x11c35fcc pc=0x2689b2
+runtime.goexit()
+	C:/Program Files/Go/src/runtime/asm_386.s:1326 +0x1 fp=0x11c35ff4 sp=0x11c35ff0 pc=0x197551
+created by modernc.org/gc/v3/internal/ebnf.(*parallel).exec
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:620 +0xbf
+exit status 2
+FAIL	modernc.org/gc/v3/internal/ebnf	31.569s

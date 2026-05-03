@@ -1,0 +1,17 @@
+go1.26.0 freebsd/amd64
+2026-03-26T19:45:56+01:00 commit e891ff95bdd8c584ccf7cef4f15b631377200fb9, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libtcl8.6 [modernc.org/libtcl8.6.test]
+./ccgo_freebsd_amd64.go:36261:5: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:144853:7: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:144889:7: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:148683:8: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:155814:7: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:155948:7: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:155973:8: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:156431:7: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:156461:7: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:157135:7: undefined: ___inline_isnan
+./ccgo_freebsd_amd64.go:157135:7: too many errors
+FAIL	modernc.org/libtcl8.6 [build failed]
+
+FAIL err=exit status 1

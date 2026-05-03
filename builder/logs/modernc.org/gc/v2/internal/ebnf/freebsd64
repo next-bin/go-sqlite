@@ -1,0 +1,25 @@
+2022-12-15T00:06:30+01:00 commit 0f06904b7290f7399003ca1e80fd7f5425f4fe0a, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+all_test.go:381: TRC FAIL /usr/local/go/src/internal/types/testdata/check/constdecl.go: /usr/local/go/src/internal/types/testdata/check/constdecl.go:5:1: "package" package (/usr/local/go/src/internal/types/testdata/check/constdecl.go:27:50: "\n" U+003B ';'), enters 4627, token tests 1363, maxIndex 73
+all_test.go:381: TRC FAIL /usr/local/go/src/internal/types/testdata/check/decls0.go: /usr/local/go/src/internal/types/testdata/check/decls0.go:9:1: "package" package (/usr/local/go/src/internal/types/testdata/check/decls0.go:54:7: "..." ...), enters 8206, token tests 2364, maxIndex 181
+all_test.go:381: TRC FAIL /usr/local/go/src/internal/types/testdata/check/expr0.go: /usr/local/go/src/internal/types/testdata/check/expr0.go:7:1: "package" package (/usr/local/go/src/internal/types/testdata/check/expr0.go:184:6: "~" U+007E '~'), enters 71333, token tests 20668, maxIndex 842
+all_test.go:381: TRC FAIL /usr/local/go/src/internal/types/testdata/fixedbugs/issue42987.go: /usr/local/go/src/internal/types/testdata/fixedbugs/issue42987.go:7:1: "package" package (/usr/local/go/src/internal/types/testdata/fixedbugs/issue42987.go:8:61: "(" U+0028 '('), enters 1078, token tests 299, maxIndex 10
+all_test.go:381: TRC FAIL /usr/local/go/src/internal/types/testdata/fixedbugs/issue43087.go: /usr/local/go/src/internal/types/testdata/fixedbugs/issue43087.go:5:1: "package" package (/usr/local/go/src/internal/types/testdata/fixedbugs/issue43087.go:27:54: ":=" :=), enters 18937, token tests 5638, maxIndex 101
+all_test.go:381: TRC FAIL /usr/local/go/test/const2.go: /usr/local/go/test/const2.go:10:1: "package" package (/usr/local/go/test/const2.go:14:8: ";" U+003B ';'), enters 433, token tests 134, maxIndex 12
+all_test.go:381: TRC FAIL /usr/local/go/test/ddd1.go: /usr/local/go/test/ddd1.go:10:1: "package" package (/usr/local/go/test/ddd1.go:60:15: "(" U+0028 '('), enters 42555, token tests 12653, maxIndex 324
+all_test.go:381: TRC FAIL /usr/local/go/test/fixedbugs/bug340.go: /usr/local/go/test/fixedbugs/bug340.go:9:1: "package" package (/usr/lo
+
+...
+
+g351.go:7:1: "package" package (/usr/local/go/test/fixedbugs/bug351.go:12:6: ":=" :=), enters 4144, token tests 1306, maxIndex 15
+        /usr/local/go/test/fixedbugs/bug358.go:10:1: "package" package (/usr/local/go/test/fixedbugs/bug358.go:20:55: "// ERROR \"syntax error|not an expression|invalid use of type\"\n" U+003B ';'), enters 4486, token tests 1202, maxIndex 45
+        /usr/local/go/test/fixedbugs/bug388a.go:9:1: "package" package (/usr/local/go/test/fixedbugs/bug388a.go:13:19: ":=" :=), enters 2134, token tests 683, maxIndex 16
+        /usr/local/go/test/fixedbugs/issue11614.go:11:1: "package" package (/usr/local/go/test/fixedbugs/issue11614.go:22:19: "// ERROR \"interface contains embedded non-interface|embedding non-interface type int requires\" \"type interface { int } is not an expression|\\(interface{int}\\) \\(type\\) is not an expression\"\n" U+003B ';'), enters 13960, token tests 3986, maxIndex 33
+        /usr/local/go/test/fixedbugs/issue16428.go:7:1: "package" package (/usr/local/go/test/fixedbugs/issue16428.go:10:15: "(" U+0028 '('), enters 1093, token tests 302, maxIndex 11
+        /usr/local/go/test/fixedbugs/issue20233.go:9:1: "package" package (/usr/local/go/test/fixedbugs/issue20233.go:11:20: "// ERROR \"undefined: A\"\n" U+003B ';'), enters 715, token tests 192, maxIndex 11
+        /usr/local/go/test/fixedbugs/issue20245.go:9:1: "package" package (/usr/local/go/test/fixedbugs/issue20245.go:11:25: "// ERROR \"undefined: I1\"\n" U+003B ';'), enters 492, token tests 139, maxIndex 10
+        /usr/local/go/test/fixedbugs/issue4452.go:9:1: "package" package (/usr/local/go/test/fixedbugs/issue4452.go:12:14: "(" U+0028 '('), enters 4037, token tests 1187, maxIndex 14
+        /usr/local/go/test/syntax/typesw.go:7:1: "package" package (/usr/local/go/test/syntax/typesw.go:10:16: ":=" :=), enters 7251, token tests 2197, maxIndex 12
+    all_test.go:315: TOTAL files 8,996, tokens 12,883,026, bytes 72,170,437, skip 112, ok 8,867, fails 17
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v2/internal/ebnf	59.516s

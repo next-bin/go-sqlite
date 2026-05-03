@@ -1,0 +1,74 @@
+go1.24.4 linux/arm
+2025-06-30T08:25:03+02:00 commit fdee50ea6b9e88f91907219161ba4b5e5918a636, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Example_amd64GoABI0 (0.01s)
+got:
+FAIL err=00_assignment.ssa:64: invalid type for first operand %._w in storel
+want:
+#include "funcdata.h"
+#include "textflag.h"
+
+TEXT ·__qbe_main(SB),$80-28
+	GO_ARGS
+	NO_LOCAL_POINTERS
+	MOVQ tls+0(FP), AX
+	MOVQ AX, 0(SP)
+	MOVQ $24, 8(SP)
+	CALL modernc·org∕libc·TLSAlloc(SB)
+	MOVQ 16(SP), AX
+	MOVQ AX, -16(BP)
+	MOVQ tls+0(FP), CX
+	MOVQ CX, 0(SP)
+	LEAQ ··ts·0<>+0(SB), CX
+	MOVQ CX, 8(SP)
+	MOVQ AX, CX
+	ADDQ $8, CX
+	MOVQ CX, -8(BP)
+	MOVQ CX, 16(SP)
+	MOVL $42, 8(AX)
+	CALL ·printf(SB)
+	MOVQ -8(BP), CX
+	MOVQ -16(BP), AX
+	MOVQ tls+0(FP), DX
+	MOVQ DX, 0(SP)
+	LEAQ ··ts·0<>+0(SB), DX
+	MOVQ DX, 8(SP)
+	MOVQ CX, 16(SP)
+	MOVL $64, 8(AX)
+	CALL ·printf(SB)
+	MOVQ -8(BP), CX
+	MOVQ -16(BP), AX
+	MOVQ tls+0(FP), DX
+	MOVQ DX, 0(SP)
+	LEAQ ··ts·1<>+0(SB), DX
+	MOVQ DX, 8(SP)
+	MOVQ CX, 16(SP)
+	MOVL $12, 8(AX)
+	MOVL $34, 16(AX)
+	CALL ·printf(SB)
+	MOVL $0, ret+24(FP)
+	MOVQ tls+0(FP), AX
+	MOVQ AX, 0(SP)
+	MOVQ $0, 8(SP)
+	CALL modernc·org∕libc·TLSFree(SB)
+	RET
+
+DATA ··ts·0<>+0(SB)/1, $37	// '%'
+DATA ··ts·0<>+1(SB)/1, $100	// 'd'
+DATA ··ts·0<>+2(SB)/1, $10
+DATA ··ts·0<>+3(SB)/1, $0
+GLOBL ··ts·0<>+0(SB), RODATA, $4
+
+DATA ··ts·1<>+0(SB)/1, $37	// '%'
+DATA ··ts·1<>+1(SB)/1, $100	// 'd'
+DATA ··ts·1<>+2(SB)/1, $44	// ','
+DATA ··ts·1<>+3(SB)/1, $32	// ' '
+DATA ··ts·1<>+4(SB)/1, $37	// '%'
+DATA ··ts·1<>+5(SB)/1, $100	// 'd'
+DATA ··ts·1<>+6(SB)/1, $10
+DATA ··ts·1<>+7(SB)/1, $0
+GLOBL ··ts·1<>+0(SB), RODATA, $8
+FAIL
+exit status 1
+FAIL	modernc.org/libqbe	2.534s
+
+FAIL err=exit status 1

@@ -1,0 +1,11 @@
+go1.24.1 linux/riscv64
+2025-05-28T05:03:33Z commit 78f024085f590666b36c61ba02fa3f138185f606, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/tk9.0 v0.70.3
+# modernc.org/tk9.0/internal/img
+/usr/local/go/src/iter/iter.go:221:6: internal compiler error: panic: assertion failed
+
+Please file a bug report including a short program that triggers the error.
+https://go.dev/issue/new
+FAIL	modernc.org/equ [build failed]
+
+FAIL err=exit status 1

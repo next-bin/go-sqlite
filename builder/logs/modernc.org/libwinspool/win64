@@ -1,0 +1,16 @@
+2024-07-15T01:32:39+02:00 commit 8de6f4cbf8bc8fafefcebec8612e150d9274aa77, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libwinspool [modernc.org/libwinspool.test]
+.\ccgo_windows_amd64.go:58359:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58378:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58397:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58416:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58435:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58454:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58473:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58492:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58511:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58530:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\ccgo_windows_amd64.go:58530:7: too many errors
+FAIL	modernc.org/libwinspool [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,4 @@
+2024-03-09T03:40:34+01:00 commit 4c3295fc56338d0fbbeaffae9c7e26b379e6529c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+no Go files in /usr/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/v2
+
+FAIL err=exit status 1

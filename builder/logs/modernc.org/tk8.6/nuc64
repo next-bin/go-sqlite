@@ -1,0 +1,6 @@
+2024-08-01T18:35:09+02:00 commit 8eebb261574ea6d4eb66f7cedddb1a6493a7b76a, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/tk8.6
+all_test.go:19:12: pattern examples/gopher.png: no matching files found
+FAIL	modernc.org/tk8.6 [setup failed]
+
+FAIL err=exit status 1

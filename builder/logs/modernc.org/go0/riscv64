@@ -1,0 +1,72 @@
+2025-02-24T09:24:43Z commit b7ba105fc88eb100de1c31f1ba2ef2dbc54b299e, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libqbe v0.1.41
+# Name: example.com/fib.init
+# Package: example.com/fib
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: example.com/fib.fib
+# Package: example.com/fib
+# Location: /tmp/Test1784724145/001/fib.go:3:6
+func fib(a int) int:
+0:                                                                entry P:0 S:2
+	t0 = a < 2:int                                                     bool
+	if t0 goto 1 else 2
+1:                                                              if.then P:1 S:0
+	return a
+2:                                                              if.done P:1 S:0
+	t1 = a - 1:int                                                      int
+	t2 = fib(t1)                                                        int
+	t3 = a - 2:int                                                      int
+	t4 = fib(t3)                                                        int
+	t5 = t2 + t4                                                        int
+	return t5
+
+# Name: example.com/fib.main
+# Package: example.com/fib
+# Location: /tmp/Test1784724145/001/fib.go:10:6
+func main():
+0:                                                                entry P:0 S:0
+	t0 = fib(42:int)                                                    int
+	t1 = println(t0)                                                     ()
+	return
+
+--- FAIL: Test (1.00s)
+panic: 
+	out=-rwxrwxr-x 1 jnml jnml 8688 Feb 24 09:24 /tmp/Test1784724145/001/fib
+	/tmp/Test1784724145/001/fib: ELF 64-bit LSB pie executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-riscv64-lp64d.so.1, BuildID[sha1]=42b1200e46ead41ef6cdf3d95c150c2108ea17dc, for GNU/Linux 4.15.0, not stripped
+	sh: 1: time: not found
+	 FAIL err=exit status 127 [recovered]
+	panic: 
+	out=-rwxrwxr-x 1 jnml jnml 8688 Feb 24 09:24 /tmp/Test1784724145/001/fib
+	/tmp/Test1784724145/001/fib: ELF 64-bit LSB pie executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-riscv64-lp64d.so.1, BuildID[sha1]=42b1200e46ead41ef6cdf3d95c150c2108ea17dc, for GNU/Linux 4.15.0, not stripped
+	sh: 1: time: not found
+	 FAIL err=exit status 127
+
+goroutine 36 [running]:
+testing.tRunner.func1.2({0x342840, 0x3f7420a290})
+	/usr/local/go/src/testing/testing.go:1632 +0x1d0
+testing.tRunner.func1()
+	/usr/local/go/src/testing/testing.go:1635 +0x2c0
+panic({0x342840?, 0x3f7420a290?})
+	/usr/local/go/src/runtime/panic.go:785 +0x108
+modernc.org/go0.main0({0x3f7414e120, 0x17}, {0x429060, 0x3f74142740})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/go0/main.go:109 +0x85c
+modernc.org/go0.Test(0x3f7414a820)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/go0/all_test.go:21 +0x64
+testing.tRunner(0x3f7414a820, 0x3c7cc8)
+	/usr/local/go/src/testing/testing.go:1690 +0xf8
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:1743 +0x344
+exit status 2
+FAIL	modernc.org/go0	1.036s
+
+FAIL err=exit status 1

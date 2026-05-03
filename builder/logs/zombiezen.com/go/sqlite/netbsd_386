@@ -1,0 +1,51 @@
+2024-05-05T01:05:44+02:00 commit a8ad27a0e6b4c69c48a148a604f51e58245fb81e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package zombiezen.com/go/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/errno
+package zombiezen.com/go/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/fcntl: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/fcntl
+package zombiezen.com/go/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/fts: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/fts
+package zombiezen.com/go/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/grp: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/grp
+package zombiezen.com/go/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/langinfo: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/langinfo
+package zombiezen.com/go/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/limits: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/limits
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_netbsd.go:28:2: no required module provides package modernc.org/libc/netdb; to add it:
+	go get modernc.org/libc/netdb
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_netbsd.go:29:2: no required module provides package modernc.org/libc/netinet/in; to add it:
+	go get modernc.org/libc/netinet/in
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_unix.go:33:2: no required module provides package modernc.org/libc/poll; to add it:
+	go get modernc.org/libc/poll
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/pthread.go:15:2: no required module provides package modernc.org/libc/pthread; to add it:
+	go get modernc.org/libc/pthread
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_unix.go:34:2: no required module provides package modernc.org/libc/pwd; to add it:
+	go get modernc.org/libc/pwd
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/etc.go:25:2: no required module provides package modernc.org/libc/signal; to add it:
+	go get modernc.org/libc/signal
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc.go:36:2: no required module provides package modernc.org/libc/stdio; to add it:
+	go get modernc.org/libc/stdio
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_unix.go:37:2: no required module provides package modernc.org/libc/stdlib; to add it:
+	go get modernc.org/libc/stdlib
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_netbsd.go:31:2: no required module provides package modernc.org/libc/sys/socket; to add it:
+	go get modernc.org/libc/sys/socket
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_netbsd.go:32:2: no required module provides package modernc.org/libc/sys/stat; to add it:
+	go get modernc.org/libc/sys/stat
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/etc.go:26:2: no required module provides package modernc.org/libc/sys/types; to add it:
+	go get modernc.org/libc/sys/types
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_netbsd.go:34:2: no required module provides package modernc.org/libc/termios; to add it:
+	go get modernc.org/libc/termios
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc.go:38:2: no required module provides package modernc.org/libc/time; to add it:
+	go get modernc.org/libc/time
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc.go:39:2: no required module provides package modernc.org/libc/unistd; to add it:
+	go get modernc.org/libc/unistd
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_netbsd.go:37:2: no required module provides package modernc.org/libc/uuid; to add it:
+	go get modernc.org/libc/uuid
+
+FAIL err=exit status 1

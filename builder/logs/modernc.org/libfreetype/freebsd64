@@ -1,0 +1,8 @@
+go1.24.2 freebsd/amd64
+2025-04-19T02:45:05+02:00 commit 7856a0aeb84d8f5acee81fafdf614e2cd7f9f58b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libfreetype
+/home/jnml/pkg/mod/modernc.org/ccgo/v4@v4.26.0/lib/compile.go:23:2: missing go.sum entry for module providing package golang.org/x/tools/go/packages (imported by modernc.org/ccgo/v4/lib); to add:
+	go get modernc.org/ccgo/v4/lib@v4.26.0
+FAIL	modernc.org/libfreetype [setup failed]
+
+FAIL err=exit status 1

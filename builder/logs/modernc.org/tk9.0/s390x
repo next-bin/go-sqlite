@@ -1,0 +1,23 @@
+go1.26.2 linux/s390x
+2026-05-02T11:01:20+02:00 commit f3eff0e1c0b81b4acb68f01e89bac9338b9e65e1, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libtcl9.0 v0.17.7
+go: downloading modernc.org/libtk9.0 v0.17.6
+--- FAIL: TestExamples (4781.38s)
+    all_test.go:166: DISPLAY=:6060 XVFB_DISPLAY=:6060 display=:6060
+    all_test.go:236: SKIP _examples/autoscroll.go (6/113)
+    all_test.go:236: SKIP _examples/demo.go (30/113)
+    all_test.go:236: SKIP _examples/embed.go (32/113)
+    all_test.go:236: SKIP _examples/font.go (38/113)
+    all_test.go:236: SKIP _examples/fontmeasure.go (40/113)
+    all_test.go:236: SKIP _examples/fontmetrics.go (41/113)
+    all_test.go:236: SKIP _examples/grid_content.go (44/113)
+    all_test.go:236: SKIP _examples/insert_ml.go (47/113)
+    all_test.go:268: _examples/ntext.go: FAIL expected process stdout=1777709990013583528, got stdout=, stderr= (tries=1)
+    all_test.go:236: SKIP _examples/ring.go (89/113)
+    all_test.go:236: SKIP _examples/themedetector.go (98/113)
+    all_test.go:236: SKIP _examples/winfoChildren.go (110/113)
+FAIL
+exit status 1
+FAIL	modernc.org/tk9.0	4781.677s
+
+FAIL err=exit status 1

@@ -1,0 +1,6 @@
+2023-10-07T05:37:38Z commit fe4b53bb555aa8cb9eafde9ca4c8a54631aa088a, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.01s)
+    all_test.go:64: lstat internal/freebsd/arm/tests: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libgmp	0.139s

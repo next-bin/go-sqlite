@@ -1,0 +1,9 @@
+2024-03-22T00:53:37+01:00 commit 031c2c3b9f17ae274d93b5ed06624f69695c7ff3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/z
+package modernc.org/z (test)
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/errno
+FAIL	modernc.org/z [setup failed]
+
+FAIL err=exit status 1

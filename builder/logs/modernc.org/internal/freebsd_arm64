@@ -1,0 +1,10 @@
+go1.24.2 freebsd/arm64
+2025-04-24T03:31:35+02:00 commit 174f2842f8fdf0d441b6979130d37f4daf1c6fc4, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/fileutil v1.3.1
+--- FAIL: Test (0.02s)
+    nonrace_test.go:36: 576
+FAIL
+FAIL	modernc.org/internal/buffer	1.428s
+FAIL
+
+FAIL err=exit status 1

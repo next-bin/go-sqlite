@@ -1,0 +1,49 @@
+2024-04-11T00:03:23+02:00 commit 40f3a252604a8b1ade0a154657ba637a15921dd8, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestExp (0.00s)
+    big_test.go:660: want: 1.105170918075648
+    big_test.go:661: got : NaN13
+    big_test.go:662: #0: expected "1.105170918075648", got "NaN13"
+--- FAIL: ExampleBig_reversePolishNotationCalculator (0.00s)
+got:
+NaN13
+want:
++8.333
+--- FAIL: ExampleContext_Lentz_phi (0.00s)
+got:
+Go     : 1.618033988749895
+Decimal: NaN13
+want:
+Go     : 1.618033988749895
+Decimal: 1.618033988749895
+--- FAIL: ExampleContext_Lentz_tan (0.00s)
+got:
+tan(42) = NaN13
+want:
+tan(42) = 2.291387992437486
+--- FAIL: ExampleBig_Round (0.00s)
+got:
+NaN13
+NaN13
+NaN13
+0
+want:
+1.2E+3
+54
+60
+0.002
+--- FAIL: ExampleBig_Quantize (0.00s)
+got:
+A: NaN13
+B: NaN13
+C: NaN13
+D: NaN27
+want:
+A: 2.170
+B: 2E+2
+C: -0.1
+D: -0E+5
+FAIL
+exit status 1
+FAIL	github.com/ericlagergren/decimal	0.272s
+
+FAIL err=exit status 1

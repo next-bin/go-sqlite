@@ -1,0 +1,45 @@
+2024-01-06T23:13:51+08:00 commit aad7f9013bebdc40eebd48d22cb05067f8b940cb, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/errno
+package modernc.org/libc
+	imports modernc.org/libc/fcntl: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/fcntl
+package modernc.org/libc
+	imports modernc.org/libc/fts: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/fts
+package modernc.org/libc
+	imports modernc.org/libc/grp: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/grp
+package modernc.org/libc
+	imports modernc.org/libc/langinfo: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/langinfo
+package modernc.org/libc
+	imports modernc.org/libc/limits: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/limits
+package modernc.org/libc
+	imports modernc.org/libc/netdb: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/netdb
+package modernc.org/libc
+	imports modernc.org/libc/netinet/in: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/netinet/in
+package modernc.org/libc
+	imports modernc.org/libc/poll: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/poll
+package modernc.org/libc
+	imports modernc.org/libc/pthread: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/pthread
+package modernc.org/libc
+	imports modernc.org/libc/pwd: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/pwd
+package modernc.org/libc
+	imports modernc.org/libc/signal: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/signal
+package modernc.org/libc
+	imports modernc.org/libc/stdio: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/stdio
+package modernc.org/libc
+	imports modernc.org/libc/stdlib: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/stdlib
+package modernc.org/libc
+	imports modernc.org/libc/sys/socket: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/sys/socket
+package modernc.org/libc
+	imports modernc.org/libc/sys/stat: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/sys/stat
+package modernc.org/libc
+	imports modernc.org/libc/sys/types: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/sys/types
+package modernc.org/libc
+	imports modernc.org/libc/termios: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/termios
+package modernc.org/libc
+	imports modernc.org/libc/time: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/time
+package modernc.org/libc
+	imports modernc.org/libc/unistd: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/unistd
+package modernc.org/libc
+	imports modernc.org/libc/uuid/uuid: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/uuid/uuid
+
+FAIL err=exit status 1

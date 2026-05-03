@@ -1,0 +1,48 @@
+go1.26.2 freebsd/amd64
+2026-04-23T09:52:38+02:00 commit 252ed45e47d706e3b800b93f1c3665ce14b02554, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["mod" "init" "test"] in /tmp/TestExec3449989300/001
+go: creating new go.mod: module test
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@v1.72.0"] in /tmp/TestExec3449989300/001
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.72.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v4/lib/csmith"] in /tmp/ccgo-test-4014314872
+go: creating new go.mod: module example.com/ccgo/v4/lib/csmith
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@v1.72.0"] in /tmp/ccgo-test-4014314872
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.72.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v4/lib/sqlitea"] in /tmp/ccgo-test-686798540
+go: creating new go.mod: module example.com/ccgo/v4/lib/sqlitea
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@v1.72.0"] in /tmp/ccgo-test-686798540
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.72.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+--- FAIL: TestSQLite (47.75s)
+    --- FAIL: TestSQLite/simple (47.75s)
+        all_test.go:1307: # command-line-arguments
+            ./main.go:277727:49: undefined: libc.AtomicLoadNUint8
+            exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v4/lib	11986.456s
+
+FAIL err=exit status 1

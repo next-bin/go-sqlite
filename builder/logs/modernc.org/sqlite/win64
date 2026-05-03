@@ -1,0 +1,25 @@
+go1.25.3 windows/amd64
+2025-12-08T13:05:57+01:00 commit 981f9f1e09f2a7d5baa74deb48cef202f6245721, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for windows/amd64
+execute C:\Program Files\Go\bin\go.exe ["test" "-v" "-timeout" "1h" "-race" "-run" "TestConcurrentGoroutines" "-inner"] in C:\Users\User\src\modernc.org\builder\.exclude\modernc.org\sqlite
+test binary compiled for windows/amd64
+=== RUN   TestConcurrentGoroutines
+    all_test.go:739: 8 goroutines concurrently inserted 40000 rows in 2.366504s
+--- PASS: TestConcurrentGoroutines (3.57s)
+PASS
+ok  	modernc.org/sqlite	4.667s
+C:/Users/User/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3559:TestIssue236: [13:05:55.907 TRACE] ==== prepared Exec
+C:/Users/User/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3566:TestIssue236: [13:05:55.908 TRACE] ----
+C:/Users/User/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3571:TestIssue236: [13:05:55.908 TRACE] ==== prepared Query
+C:/Users/User/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3581:TestIssue236: [13:05:55.908 TRACE] 0 
+C:/Users/User/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3581:TestIssue236: [13:05:55.908 TRACE] 1 
+C:/Users/User/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3581:TestIssue236: [13:05:55.908 TRACE] 0 
+C:/Users/User/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3581:TestIssue236: [13:05:55.908 TRACE] 1 
+C:/Users/User/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3584:TestIssue236: [13:05:55.908 TRACE] ----
+--- FAIL: TestIssue236 (2.01s)
+    testing.go:1369: TempDir RemoveAll cleanup: unlinkat C:\Users\User\AppData\Local\Temp\TestIssue2361433289818\001\db.db: The process cannot access the file because it is being used by another process.
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite	101.511s
+
+FAIL err=exit status 1

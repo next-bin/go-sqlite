@@ -1,0 +1,10 @@
+go1.25.4 linux/riscv64
+2025-11-13T20:01:12Z commit adcfe8155481bf47f8c1eddb0d2e4541dc4d3e35, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading github.com/pmezard/go-difflib v1.0.0
+# modernc.org/egg/lib
+lib/all_test.go:33:2: github.com/pmezard/go-difflib@v1.0.0: Get "https://proxy.golang.org/github.com/pmezard/go-difflib/@v/v1.0.0.zip": dial tcp 142.250.217.81:443: i/o timeout
+FAIL	modernc.org/egg/lib [setup failed]
+ok  	modernc.org/egg	0.017s [no tests to run]
+FAIL
+
+FAIL err=exit status 1

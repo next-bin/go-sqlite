@@ -1,0 +1,12 @@
+go1.25.4 linux/riscv64
+2025-11-14T19:33:41Z commit efb031171562facf1d2b5d23d20a41a1cf016200, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestNestedDlopenCall (0.03s)
+    dlfcn_test.go:25: Build /tmp/TestNestedDlopenCall1999053753/001/libdlnested.so
+    dlfcn_test.go:28: compile lib: exec: "g++": executable file not found in $PATH
+        "g++ -shared -Wall -Werror -fPIC -o /tmp/TestNestedDlopenCall1999053753/001/libdlnested.so testdata/libdlnested/nested_test.cpp"
+        
+FAIL
+exit status 1
+FAIL	github.com/ebitengine/purego	0.056s
+
+FAIL err=exit status 1

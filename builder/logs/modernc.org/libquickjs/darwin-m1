@@ -1,0 +1,64 @@
+go1.26.2 darwin/arm64
+2026-04-28T17:00:12+02:00 commit f3346148311996dee1c4d2d437439814a3506997, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/bin/unzip ["-q" "5c8206929d81b2d3d727ca6aac56c18358c8d790.zip"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs
+execute /usr/bin/git ["-C" "test262" "init"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs
+Initialized empty Git repository in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs/test262/.git/
+execute /usr/bin/git ["-C" "test262" "apply" "-v" "test262.diff"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs
+Checking patch harness/atomicsHelper.js...
+Checking patch harness/regExpUtils.js...
+Applied patch harness/atomicsHelper.js cleanly.
+Applied patch harness/regExpUtils.js cleanly.
+execute /usr/local/go/bin/go ["build" "-o" "test262/run-test262" "-tags=" "./internal/run-test262"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs
+execute test262/run-test262 ["-v" "-t" "-m" "-c" "test262.conf" "-a"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs
+....-...........!....-..-..-..--....--....---.....--....--.. 7/4281/179
+..-...--......-.....----.....-test262/test/built-ins/Array/prototype/sort/stability-5-elements.js:1: unknown feature: stable-array-sort
+test262/test/built-ins/Array/prototype/sort/stability-11-elements.js:1: unknown feature: stable-array-sort
+test262/test/built-ins/Array/prototype/sort/stability-513-elements.js:1: unknown feature: stable-array-sort
+test262/test/built-ins/Array/prototype/sort/stability-2048-elements.js:1: unknown feature: stable-array-sort
+-..-.-.-test262/test/built-ins/ArrayBuffer/prototype/resize/this-is-immutable-arraybuffer-object.js:1: unknown feature: immutable-arraybuffer
+test262/test/built-ins/ArrayBuffer/prototype/slice/species-returns-immutable-arraybuffer.js:1: unknown feature: immutable-arraybuffer
+test262/test/built-ins/ArrayBuffer/prototype/transfer/this-is-immutable-arraybuffer.js:1: unknown feature: immutable-arraybuffer
+test262/test/built-ins/ArrayBuffer/prototype/transferToFixedLength/this-is-immutable-arraybuffer.js:1:
+
+...
+
+ing/sm/generators/iteration.js:1: unknown feature: host-gc-required
+!!.test262/test/staging/sm/object/clear-dictionary-accessor-getset.js:1: unknown feature: host-gc-required
+!..test262/test/staging/sm/regress/regress-592556-c35.js:1: unknown feature: host-gc-required
+test262/test/staging/sm/regress/regress-596103.js:1: unknown feature: host-gc-required
+!.test262/test/staging/sm/regress/regress-1507322-deep-weakmap.js:1: unknown feature: host-gc-required
+test262/test/staging/sm/statements/for-in-with-gc-and-unvisited-deletion.js:1: unknown feature: host-gc-required
+test262/test/staging/sm/statements/regress-642975.js:11: unexpected error: Test262Error: Expected SameValue(«undefined», «"y"») to be true
+test262/test/staging/sm/statements/regress-642975.js:11: strict mode: unexpected error: Test262Error: Expected SameValue(«undefined», «"y"») to be true
+!!.- 62/80502/7509
+
+Average memory statistics for 80502 tests:
+
+QuickJS memory usage -- 2025-09-13 version, 64-bit, malloc limit: -1
+
+NAME                    COUNT     SIZE
+memory allocated         1306   191404  (146.6 per block)
+memory used              1259    94661  (0 overhead, 76.8 average slack)
+atoms                     619    24572  (39.7 per atom)
+objects                   203    14656  (72.2 per object)
+  properties             1016    18089  (5.0 per object)
+  shapes                  125    21061  (168.5 per shape)
+bytecode functions         19     9654
+  bytecode                 19     1370  (72.1 per function)
+  pc2line                  19      848  (44.6 per function)
+C functions               114
+arrays                      3
+  fast arrays               3
+  elements                 62      992  (20.7 per fast array)
+
+Result: 62/80502 errors, 3377 excluded, 7509 skipped, 2 new
+Total time: 1262.630s
+--- FAIL: Test262 (1280.20s)
+    all_test.go:292: using testdata/test262_darwin_arm64.conf
+    all_test.go:315: err=exit status 1
+    all_test.go:332: FAIL: new errors=2
+FAIL
+exit status 1
+FAIL	modernc.org/libquickjs	1280.730s
+
+FAIL err=exit status 1

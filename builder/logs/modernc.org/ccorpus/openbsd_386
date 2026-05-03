@@ -1,0 +1,80 @@
+2023-05-04T00:52:43+02:00 commit a2cd34148e7a3db22819b5a6ab0aceb5f82f7613, GOMAXPROCS 1, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/ccorpus [modernc.org/ccorpus.test]
+fatal error: runtime: out of memory
+
+runtime stack:
+runtime.throw({0x8a118fb, 0x16})
+	/home/jnml/goroot/src/runtime/panic.go:1047 +0x4d fp=0xcf7e2604 sp=0xcf7e25f0 pc=0x808236d
+runtime.sysMapOS(0x8b000000, 0x5c00000)
+	/home/jnml/goroot/src/runtime/mem_bsd.go:75 +0x144 fp=0xcf7e2630 sp=0xcf7e2604 pc=0x805d3d4
+runtime.sysMap(0x8b000000, 0x5c00000, 0x90e49a0)
+	/home/jnml/goroot/src/runtime/mem.go:142 +0x3f fp=0xcf7e2640 sp=0xcf7e2630 pc=0x805d1af
+runtime.(*mheap).grow(0x90d71a0, 0x2dad)
+	/home/jnml/goroot/src/runtime/mheap.go:1522 +0x2a4 fp=0xcf7e268c sp=0xcf7e2640 pc=0x8073504
+runtime.(*mheap).allocSpan(0x90d71a0, 0x2dad, 0x0, 0x1)
+	/home/jnml/goroot/src/runtime/mheap.go:1243 +0x2f2 fp=0xcf7e271c sp=0xcf7e268c pc=0x8072af2
+runtime.(*mheap).alloc.func1()
+	/home/jnml/goroot/src/runtime/mheap.go:961 +0x7c fp=0xcf7e2740 sp=0xcf7e271c pc=0x80724ac
+runtime.systemstack()
+	/home/jnml/goroot/src/runtime/asm_386.s:370 +0x35 fp=0xcf7e2744 sp=0xcf7e2740 pc=0x80b47e5
+
+goroutine 1 [running]:
+runtime.systemstack_switch()
+	/home/jnml/goroot/src/runtime/asm_386.s:337 fp=0x6c937768 sp=0x6c937764 pc=0x80b47a0
+runtime.(*mheap).alloc(0x90d71a0, 0x2dad, 0x1)
+	/home/jnml/goroot/src/runtime/mheap.go:955 +0x59 fp=0x6c937788 sp=0x6c937768 pc=0x8072419
+runtime.(*mcache).allocLarge(0x2ce57088, 0x5b5a000, 0x1)
+	/home/jnml/goroot/src/runtime/mcache.go:234 +0x6c fp=0x6c9377b0 sp=0x6c937788 pc=0x805c23c
+runtime.mallocgc(0x5b5a000, 0x0, 0x0)
+	/home/jnml/goroot/src/runtime/malloc.go:1053 +0x3df fp=0x6c9377e8 sp=0x6c9377b0 pc=0x8053ddf
+runtime.growslice(0x81f76000, 0x4fa3f09, 0x4914000, 0x83e149, 0x8995640)
+	/home/jnml/goroot/src/runtime/slice.go:266 +0x3e6 fp=0x6c937814 sp=0x6c9377e8 pc=0x80999e6
+strings.(*Builder).WriteString(0x6efefe80, {0x731a6000, 0x83e149})
+	/home/jnml/goroot/src/strings/builder.go:115 +0x71 fp=0x6c937844 sp=0x6c937814 pc=0x812dd51
+io.(*multiWriter).WriteString(0x6efefea0, {0x731a6000, 0x83e149})
+	/home/jnml/goroot/src/io/multi.go:103 +0x125 fp=0x6c937884 sp=0x6c937844 pc=0x80f6
+
+...
+
+377f0 sp=0x6b0377e8 pc=0x8061be1
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_386.s:1326 +0x1 fp=0x6b0377f4 sp=0x6b0377f0 pc=0x80b5ae1
+created by runtime.gcenable
+	/home/jnml/goroot/src/runtime/mgc.go:178 +0x76
+
+goroutine 4 [sleep]:
+runtime.gopark(0x8a365a0, 0x90c5880, 0x13, 0x13, 0x2)
+	/home/jnml/goroot/src/runtime/proc.go:381 +0xf6 fp=0x6b037f64 sp=0x6b037f50 pc=0x80852a6
+runtime.goparkunlock(...)
+	/home/jnml/goroot/src/runtime/proc.go:387
+runtime.(*scavengerState).sleep(0x90c5880, 0x41304e1b00000000)
+	/home/jnml/goroot/src/runtime/mgcscavenge.go:479 +0x15b fp=0x6b037fcc sp=0x6b037f64 pc=0x806d2eb
+runtime.bgscavenge(0x6b022100)
+	/home/jnml/goroot/src/runtime/mgcscavenge.go:637 +0x9f fp=0x6b037fe8 sp=0x6b037fcc pc=0x806d76f
+runtime.gcenable.func2()
+	/home/jnml/goroot/src/runtime/mgc.go:179 +0x21 fp=0x6b037ff0 sp=0x6b037fe8 pc=0x8061ba1
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_386.s:1326 +0x1 fp=0x6b037ff4 sp=0x6b037ff0 pc=0x80b5ae1
+created by runtime.gcenable
+	/home/jnml/goroot/src/runtime/mgc.go:179 +0xbb
+
+goroutine 5 [finalizer wait]:
+runtime.gopark(0x8a36424, 0x90e398c, 0x10, 0x14, 0x1)
+	/home/jnml/goroot/src/runtime/proc.go:381 +0xf6 fp=0x6b036794 sp=0x6b036780 pc=0x80852a6
+runtime.runfinq()
+	/home/jnml/goroot/src/runtime/mfinal.go:193 +0xe8 fp=0x6b0367f0 sp=0x6b036794 pc=0x8060d68
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_386.s:1326 +0x1 fp=0x6b0367f4 sp=0x6b0367f0 pc=0x80b5ae1
+created by runtime.createfing
+	/home/jnml/goroot/src/runtime/mfinal.go:163 +0x5a
+
+goroutine 10 [GC worker (idle)]:
+runtime.gopark(0x8a36434, 0x6b020990, 0x1a, 0x14, 0x0)
+	/home/jnml/goroot/src/runtime/proc.go:381 +0xf6 fp=0x6b039794 sp=0x6b039780 pc=0x80852a6
+runtime.gcBgMarkWorker()
+	/home/jnml/goroot/src/runtime/mgc.go:1275 +0xf1 fp=0x6b0397f0 sp=0x6b039794 pc=0x8064211
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_386.s:1326 +0x1 fp=0x6b0397f4 sp=0x6b0397f0 pc=0x80b5ae1
+created by runtime.gcBgMarkStartWorkers
+	/home/jnml/goroot/src/runtime/mgc.go:1199 +0x1f
+FAIL	modernc.org/ccorpus [build failed]

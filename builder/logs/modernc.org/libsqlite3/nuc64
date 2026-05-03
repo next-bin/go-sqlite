@@ -1,0 +1,85 @@
+go1.26.2 linux/amd64
+2026-04-10T21:31:24+02:00 commit 31e7a62ca6af963d2de87199fba4492cac405485, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: archivePath sqlite-amalgamation-3530000.zip
+extractedArchivePath sqlite-amalgamation-3530000
+tempDir /tmp/libsqlite3
+libRoot /tmp/libsqlite3/sqlite-amalgamation-3530000
+makeRoot /tmp/libsqlite3/sqlite-amalgamation-3530000
+execute /usr/bin/unzip ["-q" "sqlite-amalgamation-3530000.zip" "-d" "/tmp/libsqlite3"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /usr/bin/patch ["/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c" "internal/sqlite_issue173.patch"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+patching file /tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c
+Hunk #1 succeeded at 40456 (offset 2172 lines).
+Hunk #2 succeeded at 47264 (offset 2475 lines).
+Hunk #3 succeeded at 68039 (offset 2904 lines).
+execute /usr/bin/patch ["/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c" "internal/issue1.patch"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+patching file /tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c
+Hunk #1 succeeded at 57844 (offset 2224 lines).
+execute /bin/sed ["-i" "s/sqlite3Config.bUseLongDouble = hasHighPrecisionDouble(rc);/\\/\\/ disabled/" "/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /bin/sed ["-i" "0,/int isInit;*True after/{s/int isInit/volatile int isInit/}" "/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /bin/sed ["-i" "s/#if (defined(__GNUC__) || defined(__clang__)) \\\\/#if 0 \\&\\& (defined(__GNUC__) || defined(__clang__)) \\\\/" "/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /bin/sh ["-c" "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.72.0 modernc.org/libz@v0.17.3 modernc.org/libtcl8.6@v0.17.4"] in /tmp/libsqlite3/sqlite-amalgamation-3530000
+go: creating new go.mod: module example.com/libsqlite3
+go: added 
+
+...
+
+fied:   internal/test/values.test
+	modified:   internal/test/vt02.c
+	modified:   internal/test/vt100-a.sql
+	modified:   internal/test/walckptnoop.test
+	modified:   internal/test/where2.test
+	modified:   internal/test/whereK.test
+	modified:   internal/test/with1.test
+	modified:   internal/test/with5.test
+	modified:   internal/test/zipfile2.test
+	modified:   internal/testfixture/ccgo_linux_amd64.go
+	modified:   internal/testfixture/ccgo_windows.go
+	modified:   mptest/ccgo_linux_amd64.go
+	modified:   mptest/ccgo_windows.go
+	modified:   speedtest1/ccgo_linux_amd64.go
+	modified:   speedtest1/ccgo_windows.go
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	internal/test/altercons.test
+	internal/test/altercons2.test
+	internal/test/atof2.test
+	internal/test/bestindexF.test
+	internal/test/dotcmd01.sql
+	internal/test/expridx1.test
+	internal/test/fp-speed-2.c
+	internal/test/fptest01.sql
+	internal/test/import01.sql
+	internal/test/imposter1.sql
+	internal/test/intck01.sql
+	internal/test/json109.test
+	internal/test/modeA.sql
+	internal/test/qrf01.test
+	internal/test/qrf02.test
+	internal/test/qrf03.test
+	internal/test/qrf04.test
+	internal/test/qrf05.test
+	internal/test/qrf06.test
+	internal/test/regexp1.sql
+	internal/test/shellB.test
+	internal/test/temptrigfault.tes
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GOOS=windows GOARCH=amd64 go build -v ./...
+modernc.org/libsqlite3
+modernc.org/libsqlite3/internal/testfixture
+# modernc.org/libsqlite3
+./ccgo_windows.go:75451:9: undefined: ___umulh
+./ccgo_windows.go:75470:10: undefined: ___umulh
+./ccgo_windows.go:75472:7: undefined: ___umulh
+# modernc.org/libsqlite3/internal/testfixture
+internal/testfixture/ccgo_windows.go:98910:9: undefined: ___umulh
+internal/testfixture/ccgo_windows.go:98929:10: undefined: ___umulh
+internal/testfixture/ccgo_windows.go:98931:7: undefined: ___umulh
+make: *** [Makefile:84: windows] Chyba 1
+
+err: exit status 2
+exit status 1
+libsqlite3.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

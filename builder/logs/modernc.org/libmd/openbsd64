@@ -1,0 +1,8 @@
+2024-02-08T20:43:42+01:00 commit 073e033cb8614b293ae400e26e5ce96041930499, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.00s)
+    all_test.go:32: lstat internal/openbsd/amd64/test: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libmd	0.015s
+
+FAIL err=exit status 1

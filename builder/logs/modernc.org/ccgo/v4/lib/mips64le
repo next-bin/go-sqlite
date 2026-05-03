@@ -1,0 +1,6 @@
+2024-02-05T20:13:38+08:00 commit d122d569821c78acb28443de3339e041c81542ab, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/ccgo/v4/lib.test
+/usr/local/go/pkg/tool/linux_mips64le/link: mapping output file failed: no space left on device
+FAIL	modernc.org/ccgo/v4/lib [build failed]
+
+FAIL err=exit status 1

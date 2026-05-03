@@ -1,0 +1,9 @@
+2024-02-10T01:56:40+01:00 commit 9d8ee0ac36bd4c2a14040f692287ee483f6af940, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.16s)
+    all_test.go:34: out=package internal/windows/amd64/autest.go is not in std (C:\Program Files\Go\src\internal\windows\amd64\autest.go)
+         FAIL err=exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libXau	0.213s
+
+FAIL err=exit status 1

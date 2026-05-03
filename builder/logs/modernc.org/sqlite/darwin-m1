@@ -1,0 +1,16 @@
+2023-06-22T00:11:55+02:00 commit 2a8ff5d5e8843bc5ed2d15525e5f9bb342602e01, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for darwin/arm64
+exec: ./mptest db config01.test
+exec: ./mptest db config02.test
+exec: ./mptest db crash01.test
+exec: ./mptest db multiwrite01.test
+--- FAIL: TestTclTest (18.41s)
+    tcl_test.go:76: # modernc.org/sqlite/internal/testfixture
+        internal/testfixture/testfixture_darwin_arm64.go:45338:2: undefined: sysctl
+        internal/testfixture/testfixture_darwin_arm64.go:45341:3: undefined: sysctl
+        
+        exit status 1
+FAIL
+FAIL	modernc.org/sqlite	112.336s
+ok  	modernc.org/sqlite/functest	0.411s
+FAIL

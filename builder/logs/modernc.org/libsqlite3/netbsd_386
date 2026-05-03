@@ -1,0 +1,10 @@
+2023-10-19T00:06:29+02:00 commit 2fa4e14522afc0a33efefd15fd455d5466bf4601, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libtcl8.6 v0.0.20
+# modernc.org/libsqlite3
+package modernc.org/libsqlite3 (test)
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/errno
+FAIL	modernc.org/libsqlite3 [setup failed]
+
+FAIL err=exit status 1

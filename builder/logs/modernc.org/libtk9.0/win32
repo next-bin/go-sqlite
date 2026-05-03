@@ -1,0 +1,43 @@
+2024-07-28T21:51:08+02:00 commit f2744e90f4a1088f1f914fe12ec21d15ac572cdd, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libole32
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:66:21: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:73:16: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:75:22: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:83:23: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:98:30: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:113:26: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:128:26: undefined: TGUID
+# modernc.org/libgdi32
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:30:90: undefined: TLPARAM
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:54:78: undefined: TLPARAM
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:108:45: undefined: THDC
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:108:62: undefined: TLPCWSTR
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:108:80: undefined: TFONTENUMPROCW
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:108:104: undefined: TLPARAM
+# modernc.org/libuser32
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:32414:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:32423:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:32432:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:32593:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:32602:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:33822:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:33831:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:34330:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:34339:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:34348:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_386.go:34348:7: too many errors
+# modernc.org/libkernel32
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32.go:112:14: undefined: libc.CreateThread
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:27108:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:27117:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:27187:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:27215:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:27243:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:28238:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:28285:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:29509:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:29765:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_386.go:29765:7: too many errors
+FAIL	modernc.org/libtk9.0 [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,13 @@
+2023-10-10T00:05:56+02:00 commit 135ca8961fb519162695d3aaefbe5bf1eb6b6820, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestParseGCC (19.48s)
+    --- FAIL: TestParseGCC/gcc/testsuite/gcc.c-torture/execute (5.68s)
+        parser_test.go:356: /usr/include/floatingpoint.h:165:5: `FILE`: expected declaration-specifiers
+        parser_test.go:356: /usr/include/floatingpoint.h:165:5: `FILE`: expected declaration-specifiers
+        parser_test.go:369: files 1,701, sources 8,324, bytes 60,385,157, ok 1,699, 4.822512177s, 12,521,514 B/s, mem 1,072,192
+        parser_test.go:372: files 1701, bytes 60385157, ok 1699
+    parser_test.go:282: ok 3,490
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v3	24.384s
+
+FAIL err=exit status 1

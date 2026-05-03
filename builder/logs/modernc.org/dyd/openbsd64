@@ -1,0 +1,72 @@
+2023-11-24T00:06:29+01:00 commit b70b42cb85e55d5ad93514e2b43fd78b4e21257c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/dyd	0.020s
+unexpected fault address 0x2df148c10
+fatal error: fault
+[signal SIGBUS: bus error code=0x3 addr=0x2df148c10 pc=0x5cad51]
+
+goroutine 19 [running]:
+runtime.throw({0x7b3095?, 0x800000000001?})
+	/usr/local/go/src/runtime/panic.go:1077 +0x5c fp=0xc0001488a0 sp=0xc000148870 pc=0x437a1c
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:858 +0x196 fp=0xc000148900 sp=0xc0001488a0 pc=0x44e216
+modernc.org/libc.Xmemcpy(...)
+	/home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/libc.go:826
+modernc.org/sqlite/lib.walIndexTryHdr(0xc00009a820, 0x22f100d28, 0x26d0004b0)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.27.0/lib/sqlite_openbsd_amd64.go:25335 +0xb1 fp=0xc000148980 sp=0xc000148900 pc=0x5cad51
+modernc.org/sqlite/lib.walIndexReadHdr(0xc00009a820, 0x22f100d28, 0x26d0004b0)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.27.0/lib/sqlite_openbsd_amd64.go:25397 +0x212 fp=0xc0001489f0 sp=0xc000148980 pc=0x5cb272
+modernc.org/sqlite/lib.walTryBeginRead(0x26d0006a8?, 0x22f100d28, 0xc000148a88?, 0x0, 0x1)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.27.0/lib/sqlite_openbsd_amd64.go:25608 +0xba fp=0xc000148a48 sp=0xc0001489f0 pc=0x5cbada
+modernc.org/sqlite/lib.Xsqlite3WalBeginReadTransaction(0x22f100dc0?, 0x22f100d28, 0x26d0004b0)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.27.0/lib/sqlite_openbsd_amd64.go:25806 +0x70 fp=0xc000148a98 sp=0xc000148a48 pc=0x5cbff0
+modernc.org/sqlite/lib.pagerBeginReadTransaction(0xc00009a820, 0x269a00428)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.27.0/lib/sqlite_openbsd_amd64.go:21169 +0xa5 fp=0xc000148af0 sp=0xc000148a98 pc=0x5bfd65
+modernc.org/sqlite/lib.Xsqlite3PagerSharedLock(0xc00009a820, 0x269a00428)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.27.0/lib/sqlite_openbsd_amd64.go:22580 +0x4af fp=0xc000148b88 sp=0xc000148af0 pc=0x5c3a8f
+modernc.org/sqlite/lib.lockBtree(0xc00009a820, 0x22f100428)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.27.0/lib/sqlite_openbsd_amd64.go:29026 +0x9a fp=0xc000148c18 sp=0xc000148b88 pc=0x5d4cda
+modernc.org/sqlite/lib.Xsqlite3BtreeBegi
+
+...
+
+43a8ae
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:404
+runtime.(*scavengerState).park(0xaae2c0)
+	/usr/local/go/src/runtime/mgcscavenge.go:425 +0x49 fp=0xc000035fa0 sp=0xc000035f70 pc=0x423209
+runtime.bgscavenge(0x0?)
+	/usr/local/go/src/runtime/mgcscavenge.go:653 +0x3c fp=0xc000035fc8 sp=0xc000035fa0 pc=0x42377c
+runtime.gcenable.func2()
+	/usr/local/go/src/runtime/mgc.go:201 +0x25 fp=0xc000035fe0 sp=0xc000035fc8 pc=0x41ab65
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1650 +0x1 fp=0xc000035fe8 sp=0xc000035fe0 pc=0x46bd41
+created by runtime.gcenable in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:201 +0xa5
+
+goroutine 18 [finalizer wait]:
+runtime.gopark(0x7b1260?, 0x10043ba01?, 0x0?, 0x0?, 0x4428c5?)
+	/usr/local/go/src/runtime/proc.go:398 +0xce fp=0xc000034628 sp=0xc000034608 pc=0x43a8ae
+runtime.runfinq()
+	/usr/local/go/src/runtime/mfinal.go:193 +0x107 fp=0xc0000347e0 sp=0xc000034628 pc=0x419c47
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1650 +0x1 fp=0xc0000347e8 sp=0xc0000347e0 pc=0x46bd41
+created by runtime.createfing in goroutine 1
+	/usr/local/go/src/runtime/mfinal.go:163 +0x3d
+
+goroutine 20 [select]:
+runtime.gopark(0xc000030788?, 0x2?, 0xad?, 0x5?, 0xc000030784?)
+	/usr/local/go/src/runtime/proc.go:398 +0xce fp=0xc000030630 sp=0xc000030610 pc=0x43a8ae
+runtime.selectgo(0xc000030788, 0xc000030780, 0xc0000307b0?, 0x0, 0xc000086ea0?, 0x1)
+	/usr/local/go/src/runtime/select.go:327 +0x725 fp=0xc000030750 sp=0xc000030630 pc=0x44aa25
+database/sql.(*DB).connectionOpener(0xc000099110, {0x846090, 0xc000080280})
+	/usr/local/go/src/database/sql/sql.go:1218 +0x87 fp=0xc0000307b8 sp=0xc000030750 pc=0x523ee7
+database/sql.OpenDB.func1()
+	/usr/local/go/src/database/sql/sql.go:791 +0x28 fp=0xc0000307e0 sp=0xc0000307b8 pc=0x522e88
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1650 +0x1 fp=0xc0000307e8 sp=0xc0000307e0 pc=0x46bd41
+created by database/sql.OpenDB in goroutine 19
+	/usr/local/go/src/database/sql/sql.go:791 +0x165
+FAIL	modernc.org/dyd/dyd	0.056s
+FAIL
+
+FAIL err=exit status 1

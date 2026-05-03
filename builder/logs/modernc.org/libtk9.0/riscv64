@@ -1,0 +1,59 @@
+go1.25.5 linux/riscv64
+2025-12-30T15:41:19+01:00 commit 4a23e783569f0ad7e1c2c6b30b2470d1b3c65fcc, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: xdgDir /home/jnml/.config/ccgo/v4/libtk9.0/linux/riscv64
+archivePath tk9.0.3-src.tar.gz
+libRoot /home/jnml/.config/ccgo/v4/libtk9.0/linux/riscv64/tk9.0.3
+makeRoot /home/jnml/.config/ccgo/v4/libtk9.0/linux/riscv64/tk9.0.3/unix
+tkDocs /home/jnml/.config/ccgo/v4/libtk9.0/linux/riscv64/tk9.0.3/doc
+execute /usr/bin/sh ["-c" "find internal/tests -name *linux_riscv64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtk9.0
+execute /usr/bin/sh ["-c" "go mod init example.com/libtk9.0 ; go get modernc.org/libX11@latest modernc.org/libXft@latest modernc.org/libc@latest modernc.org/libfontconfig@latest modernc.org/libtcl9.0@latest modernc.org/libtk9.0@latest"] in /home/jnml/.config/ccgo/v4/libtk9.0/linux/riscv64/tk9.0.3/unix
+go: creating new go.mod: module example.com/libtk9.0
+go: downloading modernc.org/libc v1.67.3
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
+go: added golang.org/x/sys v0.37.0
+go: added modernc.org/libX11 v0.11.25
+go: added modernc.org/libXau v0.9.19
+go: added modernc.org/libXdmcp v0.12.21
+go: added modernc.org/libXft v0.10.44
+go: added modernc.org/libXrender v0.9.24
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.67.3
+go: added modernc.org/libexpat v0.10.23
+go: added modernc.org/libfontconfig v0.8.13
+go: added modernc.org/libfreetype v0.9.28
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/libtcl9.0 v0.17.0
+go: added modernc.org/libtk9.0 v0.17.0
+go: added modernc.org/libxcb v0.12.7
+go: added modernc.org/libz v0.17.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -I /home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64/tcl9.0.3/generic' ./configure --disable-libcups --disable-shared --disable-xss --enable
+
+...
+
+/linux/riscv64 -lX11 -lXft -lfontconfig -ltcl9.0 -o libtk.a.go --package-name libtk9_0 libtcl9tk9.0.a]: ar: ar: libtcl9tk9.0.ago: No such file or directory
+
+FAIL: exit status 9 (util.go:365:InDir: ccgo.go:209:Main: ccgo.go:408:main: opt.go:144:Parse: opt.go:144:Parse: ccgo.go:705:arExtract:) (generator.go:108:main: util.go:370:MustInDir: util.go:365:InDir: util.go:365:InDir: ccgo.go:209:Main: ccgo.go:457:main:) (generator.go:111:1: util.go:365:InDir:)
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x6c
+modernc.org/fileutil/ccgo.Fatal(0x0?, {0x3db4031850, 0x1, 0x1})
+	/home/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:323 +0x58
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x3db418c000?, 0x0?}, 0x3db436b4f0?)
+	/home/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:371 +0x84
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtk9.0/generator.go:108 +0xbdc
+
+parsing [--prefix-external=X --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -eval-all-macros -extended-errors -ignore-link-errors -ignore-unsupported-alignment -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libfontconfig/include/linux/riscv64 -I /home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64/tcl9.0.3/generic -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11/include/linux/riscv64 -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft/include/linux/riscv64 -lX11 -lXft -lfontconfig -ltcl9.0 -o libtk.a.go --package-name libtk9_0 libtcl9tk9.0.a]: ar: ar: libtcl9tk9.0.ago: No such file or directory
+
+FAIL: exit status 9 (util.go:365:InDir: ccgo.go:209:Main: ccgo.go:408:main: opt.go:144:Parse: opt.go:144:Parse: ccgo.go:705:arExtract:) (generator.go:108:main: util.go:370:MustInDir: util.go:365:InDir: util.go:365:InDir: ccgo.go:209:Main: ccgo.go:457:main:)
+exit status 1
+libtk.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

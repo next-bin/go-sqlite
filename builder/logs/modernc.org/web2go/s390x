@@ -1,0 +1,7 @@
+2023-04-17T00:05:38+02:00 commit dc32f9f39f66658cba8c01d6459182a4f1270acd, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/bin/pltotf ["trip.pl" "trip.tfm"] in /tmp/go-test-web2go-1982145670
+--- FAIL: TestTrip (0.09s)
+    all_test.go:221: signal: segmentation fault
+FAIL
+exit status 1
+FAIL	modernc.org/web2go	34.903s

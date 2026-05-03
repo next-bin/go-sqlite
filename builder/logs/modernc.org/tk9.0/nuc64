@@ -1,0 +1,6 @@
+go1.26.2 linux/amd64
+2026-04-09T15:09:39+02:00 commit 3fb34fcd19be83bdce718ebc7bddf8cb6b4045dc, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: go: downloading modernc.org/libX11 v0.11.28
+go: modernc.org/libX11@v0.11.28: verifying module: modernc.org/libX11@v0.11.28: Get "https://sum.golang.org/lookup/modernc.org/lib!x11@v0.11.28": net/http: TLS handshake timeout
+
+FAIL err=AUTOTASKS: exit status 1

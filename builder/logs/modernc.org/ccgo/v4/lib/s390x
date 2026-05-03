@@ -1,0 +1,27 @@
+go1.26.2 linux/s390x
+2026-04-24T07:02:24+02:00 commit fd913cc5baf340d7b875e4e8babdcff5dc8fe4e7, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["mod" "init" "test"] in /tmp/TestExec4199921029/001
+go: creating new go.mod: module test
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@v1.72.1"] in /tmp/TestExec4199921029/001
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.72.1
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+06:14:19.440 all_test.go:644:testExec1: TRC `assets/github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/pr40493.c`: {}, // EXEC FAIL: assets/github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/pr40493.c: : FAIL: signal: aborted
+gobinRC=-1cbinRC=0 (.:0:: .:0:: asm_s390x.s:864:goexit: asm_s390x.s:864:goexit: all_test.go:465:1: all_test.go:634:testExec1:)
+--- FAIL: TestExec (29595.47s)
+    --- FAIL: TestExec/github.com/gcc-mirror/gcc/gcc/testsuite (9871.77s)
+        all_test.go:424: assets/github.com/gcc-mirror/gcc/gcc/testsuite: copied 1652 files, 1,124,601 bytes
+        all_test.go:159: "assets/github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/pr40493.c: : FAIL: signal: aborted"
+        all_test.go:159: "assets/github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/pr40493.c: : FAIL: signal: aborted"
+        all_test.go:162: TOTAL: files 1,632, skip   237, ok 1,394, fails     1: assets/github.com/gcc-mirror/gcc/gcc/testsuite
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v4/lib	29597.034s
+
+FAIL err=exit status 1

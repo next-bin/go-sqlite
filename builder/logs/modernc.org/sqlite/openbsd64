@@ -1,0 +1,16 @@
+2024-02-20T11:35:05+01:00 commit 035adedafa05e05168e21cb4e05c1e770eb95d6b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/sqlite	65.475s
+[foo.* seafood]
+[foo.* fruit]
+[foo.* seafood]
+[foo.* fruit]
+[a(b seafood]
+[a(b 1]
+--- FAIL: TestRegisteredFunctions (0.17s)
+    --- FAIL: TestRegisteredFunctions/QueryContext_with_context_expiring (0.16s)
+        func_test.go:801: success with no data (try=0)
+FAIL
+FAIL	modernc.org/sqlite/functest	0.191s
+FAIL
+
+FAIL err=exit status 1

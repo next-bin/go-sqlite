@@ -1,0 +1,62 @@
+2024-06-18T00:36:03+03:00 commit 08dd4363897fdb25115adce008872a83e8aa4fc3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/fsm v1.2.1
+--- FAIL: TestFowler (0.03s)
+    exec_test.go:339: testdata\basic.dat
+    exec_test.go:468: skip: NOTE	all standard compliant implementations should pass these : 2002-05-31
+    exec_test.go:474: testdata\basic.dat:2: too few fields: 
+    exec_test.go:504: testdata\basic.dat:3: cannot parse result "(7,18)\r"
+    exec_test.go:504: testdata\basic.dat:4: cannot parse result "(2,7)\r"
+    exec_test.go:504: testdata\basic.dat:5: cannot parse result "(2,8)\r"
+    exec_test.go:504: testdata\basic.dat:6: cannot parse result "(1,2)\r"
+    exec_test.go:504: testdata\basic.dat:7: cannot parse result "(0,2)\r"
+    exec_test.go:504: testdata\basic.dat:8: cannot parse result "(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:9: cannot parse result "(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:10: cannot parse result "(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:11: cannot parse result "(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:12: cannot parse result "(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:13: cannot parse result "(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:14: cannot parse result "(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:15: cannot parse result "(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:16: cannot parse result "(1,3)\r"
+    exec_test.go:504: testdata\basic.dat:17: cannot parse result "(0,2)\r"
+    exec_test.go:504: testdata\basic.dat:18: cannot parse result "(1,2)\r"
+    exec_test.go:504: testdata\basic.dat:19: cannot parse result "(0,2)\r"
+    exec_test.go:504: testdata\basic.dat:20: cannot parse result "(0,0)\r"
+    exec_test.go:504: testdata\basic.dat:21: cannot parse result "(0,0)\r"
+    exec_test.go:504: testdata\basic.dat:22: cannot parse result "(1,2)(2,2)\r"
+    exec_test.go:504: testdata\basic.dat:23: cannot parse result "(0,1)(0,1)\r"
+    exec_test.go:504: testdata\basic.dat:24: cannot parse result "(0,0)\r"
+    exec_test.go:504: testdata\basic.dat:25: cannot parse result "(0,4)(2,4)\r"
+    exec_test.go:504: testdata\basic.da
+
+...
+
+ata\repetition.dat:96: cannot parse result "(0,9)(7,8)\r"
+    exec_test.go:504: testdata\repetition.dat:97: cannot parse result "(0,9)(7,8)\r"
+    exec_test.go:504: testdata\repetition.dat:98: cannot parse result "(0,9)(8,8)\r"
+    exec_test.go:504: testdata\repetition.dat:115: cannot parse result "(0,9)(8,8)\r"
+    exec_test.go:474: testdata\repetition.dat:116: too few fields: 
+    exec_test.go:474: testdata\repetition.dat:122: too few fields: 
+    exec_test.go:474: testdata\repetition.dat:125: too few fields: 
+    exec_test.go:504: testdata\repetition.dat:126: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:504: testdata\repetition.dat:127: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:504: testdata\repetition.dat:128: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:504: testdata\repetition.dat:129: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:540: testdata\repetition.dat:130: `(a|ab|c|bcd){4,}(d*)` should not compile
+    exec_test.go:504: testdata\repetition.dat:131: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:504: testdata\repetition.dat:132: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:504: testdata\repetition.dat:133: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:504: testdata\repetition.dat:134: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:540: testdata\repetition.dat:135: `(a|ab|c|bcd){4,10}(d*)` should not compile
+    exec_test.go:504: testdata\repetition.dat:136: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:504: testdata\repetition.dat:137: cannot parse result "(0,6)(3,6)(6,6)\r"
+    exec_test.go:474: testdata\repetition.dat:138: too few fields: 
+    exec_test.go:474: testdata\repetition.dat:141: too few fields: 
+    exec_test.go:540: testdata\repetition.dat:150: `(ab|a|c|bcd){4,}(d*)` should not compile
+    exec_test.go:540: testdata\repetition.dat:159: `(ab|a|c|bcd){4,10}(d*)` should not compile
+FAIL
+FAIL	modernc.org/regexp	80.018s
+ok  	modernc.org/regexp/syntax	0.828s
+FAIL
+
+FAIL err=exit status 1

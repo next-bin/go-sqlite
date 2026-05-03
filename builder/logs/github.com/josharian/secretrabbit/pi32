@@ -1,0 +1,10 @@
+2024-05-10T13:16:01+02:00 commit 0a8a35981ca6012072da14aed24fe1999d997c67, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# github.com/josharian/secretrabbit [github.com/josharian/secretrabbit.test]
+./src.go:74:26: cannot use int64(len(in) / channels) (value of type int64) as int32 value in assignment
+./src.go:75:27: cannot use int64(len(out) / channels) (value of type int64) as int32 value in assignment
+./src.go:82:14: invalid operation: srcData.Foutput_frames_gen * int64(channels) (mismatched types int32 and int64)
+./src.go:127:26: cannot use int64(len(in) / f.channels) (value of type int64) as int32 value in assignment
+./src.go:128:27: cannot use int64(len(out) / f.channels) (value of type int64) as int32 value in assignment
+FAIL	github.com/josharian/secretrabbit [build failed]
+
+FAIL err=exit status 1

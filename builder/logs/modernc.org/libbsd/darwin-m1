@@ -1,0 +1,4 @@
+go1.24.3 darwin/arm64
+2025-05-28T12:47:34+02:00 commit de9ff38d02b94b0a73c82cc1f2bf6cccbfe40712, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exit status 128

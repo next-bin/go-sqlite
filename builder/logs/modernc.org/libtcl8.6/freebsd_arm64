@@ -1,0 +1,131 @@
+go1.26.2 freebsd/arm64
+2026-04-23T12:30:48+02:00 commit 9e192b13a27b971dc50624556d32af764e3a821b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+Tests running in interp:  /tmp/Test21498991258/001/tcltest
+Tests located in:  /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/internal/tests
+Tests running in:  /tmp/Test21498991258/001
+Temporary files stored in /tmp/Test21498991258/001
+Test files run in separate interpreters
+Skipping tests that match:  chan-16.9 chan-io-28.7 chan-io-29.34 chan-io-29.35 chan-io-39.18 chan-io-39.19 chan-io-39.20 chan-io-39.21 chan-io-39.23 chan-io-39.24 chan-io-51.1 chan-io-53.10 chan-io-53.5 chan-io-54.1 chan-io-54.2 chan-io-57.1 chan-io-57.2 cmdIL-5.7 encoding-28.0 event-11.5 io-29.33b io-29.34 io-29.35 io-29.36.1 io-29.36.2 io-39.18 io-39.19 io-39.20 io-39.21 io-39.23 io-39.24 io-51.1 io-53.10 io-53.5 io-54.1 io-54.2 io-57.1 io-57.2 iocmd-8.15.1 iocmd-8.16 iortrans-3.1 unixFCmd-20.1 unixInit-1.2 unixInit-3.1 unixInit-3.2 zlib-10.0 zlib-10.1 zlib-10.2 zlib-8.3 zlib-9.10 zlib-9.11 zlib-9.2 zlib-9.3 zlib-9.4 zlib-9.5 zlib-9.6 zlib-9.7 zlib-9.8 zlib-9.9
+Running tests that match:  *
+Skipping test files that match:  http11.test socket.test
+Only running test files that match:  *.test
+Tests began at Thu Apr 23 12:04:16 CEST 2026
+aaa_exit.test
+
+
+==== exit-1.1 normal, quick exit FAILED
+---- Result was:
+Quick exit hangs !!!
+---- Result should have been (exact matching):
+OK
+==== exit-1.1 FAILED
+
+
+
+==== exit-1.2 full-finalized exit FAILED
+---- Result was:
+Full-finalized exit hangs !!!
+---- Result should have been (exact matching):
+OK
+==== exit-1.2 FAILED
+
+append.test
+appendComp.test
+apply.test
+assemble.test
+assocd.test
+async.test
+autoMkindex.test
+basic.test
+binary.test
+case.test
+chan.test
+chanio.test
+
+
+==== chan-io-28.6 Tcl_CloseEx (half-close) pipe FAILED
+---- Result was:
+Failed {Hey DONE}
+---- Result should have been (exact matching):
+Succeeded {Hey DONE}
+==== chan-io-28.6 FAILED
+
+clock.test
+cmdAH.test
+cmdIL.test
+cmdInfo.test
+cmdMZ.test
+compExpr-old.test
+compExpr.test
+compile.test
+concat.test
+config.test
+coroutine.test
+dcall.test
+dict.test
+dstring.test
+encoding.test
+env.test
+error.test
+eval.test
+event.test
+exec.test
+execu
+
+...
+
+han-io-53.10 chan-io-53.5 chan-io-54.1 chan-io-54.2 chan-io-57.1 chan-io-57.2 cmdIL-5.7 encoding-28.0 event-11.5 io-29.33b io-29.34 io-29.35 io-29.36.1 io-29.36.2 io-39.18 io-39.19 io-39.20 io-39.21 io-39.23 io-39.24 io-51.1 io-53.10 io-53.5 io-54.1 io-54.2 io-57.1 io-57.2 iocmd-8.15.1 iocmd-8.16 iortrans-3.1 unixFCmd-20.1 unixInit-1.2 unixInit-3.1 unixInit-3.2 zlib-10.0 zlib-10.1 zlib-10.2 zlib-8.3 zlib-9.10 zlib-9.11 zlib-9.2 zlib-9.3 zlib-9.4 zlib-9.5 zlib-9.6 zlib-9.7 zlib-9.8 zlib-9.9" "-notfile" "http11.test socket.test"]
+    all_test.go:1004: ==== exit-1.1 normal, quick exit FAILED
+    all_test.go:1004: ==== exit-1.1 FAILED
+    all_test.go:1004: ==== exit-1.2 full-finalized exit FAILED
+    all_test.go:1004: ==== exit-1.2 FAILED
+    all_test.go:1004: ==== chan-io-28.6 Tcl_CloseEx (half-close) pipe FAILED
+    all_test.go:1004: ==== chan-io-28.6 FAILED
+    all_test.go:1006: 
+        all.tcl:	Total	34269	Passed	30809	Skipped	3457	Failed	3
+        Sourced 149 Test Files.
+        Files with failing tests: aaa_exit.test chanio.test
+        Number of tests skipped for each constraint:
+        	9	!ieeeFloatingPoint
+        	3	asyncPipeChan
+        	76	bigEndian
+        	5	bug-3057639
+        	49	dde
+        	4	dontCopyLinks
+        	64	emptyTest
+        	1	execMknod
+        	58	fullutf
+        	2	hasIsoLocale
+        	1	knownBadTest
+        	39	knownBug
+        	100	localeRegexp
+        	48	longIs32bit
+        	14	macosxFileAttr
+        	85	memory
+        	44	nonPortable
+        	5	notNetworkFilesystem
+        	1	notValgrind
+        	4	nt
+        	1	pairsTo4bytes
+        	19	pkgaRequired
+        	20	pkguaRequired
+        	2	pre388
+        	1996	serverNeeded
+        	1	testCPUID
+        	1	testexprparser && !ieeeFloatingPoint
+        	1	testwinclock
+        	187	thread
+        	3	threaded
+        	17	utf16
+        	21	utf32
+        	2	wideBiggerThanInt
+        	493	win
+        	1	winLessThan10
+        	4	winVista
+        	6	xdev
+        
+FAIL
+exit status 1
+FAIL	modernc.org/libtcl8.6	1997.440s
+
+FAIL err=exit status 1

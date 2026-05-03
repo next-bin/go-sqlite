@@ -1,0 +1,8 @@
+2024-08-12T10:35:33+02:00 commit 574db8bce4646fc3e826b854e77421f7fbae304b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libtcl8.6 v0.15.0
+go: downloading modernc.org/tcl8.6 v0.3.2
+-> unzip /home/debian/pkg/mod/cache/download/modernc.org/libtcl8.6/@v/v0.15.0.zip: write /home/debian/pkg/mod/modernc.org/libtcl8.6@v0.15.0/ccgo_linux_amd64.go: no space left on device
+tk.go:252:2: unzip /home/debian/pkg/mod/cache/download/modernc.org/libtcl8.6/@v/v0.15.0.zip: write /home/debian/pkg/mod/modernc.org/libtcl8.6@v0.15.0/ccgo_linux_amd64.go: no space left on device
+/home/debian/pkg/mod/modernc.org/tcl8.6@v0.3.2/tcl.go:21:2: unzip /home/debian/pkg/mod/cache/download/modernc.org/libtcl8.6/@v/v0.15.0.zip: write /home/debian/pkg/mod/modernc.org/libtcl8.6@v0.15.0/ccgo_linux_amd64.go: no space left on device
+
+FAIL err=exit status 1

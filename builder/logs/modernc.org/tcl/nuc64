@@ -1,0 +1,249 @@
+2023-03-14T16:54:04+01:00 commit 8122ce263687822d66c30a30a1d16d9e6d8d9060, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for linux/amd64
+Tests running in interp:  /tmp/tcl-test-935076623/tcltest
+Tests located in:  /tmp/tcl-test-935076623
+Tests running in:  /tmp/tcl-test-935076623
+Temporary files stored in /tmp/tcl-test-935076623
+Test files run in separate interpreters
+Skipping tests that match:  cmdIL-5.7
+Running tests that match:  *
+Only running test files that match:  *.test
+Tests began at Tue Mar 14 16:48:14 CET 2023
+aaa_exit.test
+append.test
+appendComp.test
+apply.test
+assemble.test
+assocd.test
+async.test
+autoMkindex.test
+basic.test
+binary.test
+case.test
+chan.test
+chanio.test
+clock.test
+cmdAH.test
+cmdIL.test
+cmdInfo.test
+cmdMZ.test
+compExpr-old.test
+compExpr.test
+compile.test
+concat.test
+config.test
+coroutine.test
+dcall.test
+dict.test
+dstring.test
+encoding.test
+env.test
+error.test
+eval.test
+event.test
+exec.test
+execute.test
+expr-old.test
+expr.test
+fCmd.test
+fileName.test
+fileSystem.test
+fileSystemEncoding.test
+for-old.test
+for.test
+foreach.test
+format.test
+get.test
+history.test
+http.test
+http11.test
+httpPipeline.test
+httpold.test
+if-old.test
+if.test
+incr-old.test
+incr.test
+indexObj.test
+info.test
+init.test
+interp.test
+io.test
+ioCmd.test
+ioTrans.test
+iogt.test
+join.test
+lindex.test
+link.test
+linsert.test
+list.test
+listObj.test
+llength.test
+lmap.test
+load.test
+lrange.test
+lrepeat.test
+lreplace.test
+lsearch.test
+lset.test
+lsetComp.test
+macOSXFCmd.test
+macOSXLoad.test
+main.test
+mathop.test
+misc.test
+msgcat.test
+namespace-old.test
+namespace.test
+notify.test
+nre.test
+obj.test
+oo.test
+ooNext2.test
+opt.test
+package.test
+parse.test
+parseExpr.test
+parseOld.test
+pid.test
+pkgMkIndex.test
+platform.test
+proc-old.test
+proc.test
+pwd.test
+reg.test
+regexp.test
+regexpComp.test
+registry.test
+rename.test
+resolver.test
+result.test
+safe-stock.test
+safe.test
+scan.test
+security.test
+set-old.test
+set.test
+socket.test
+
+
+==== socket_inet6-2.13 Bug 1758a0b603 FAILED
+==== Contents of test case:
+
+    file delete $path(script)
+    set f [open $path(script) w]
+    puts $f {
+	set server [socket -server accept 0]
+	puts [lindex [chan configure
+
+...
+
+cket $localhost $port]
+    chan configure $sock -blocking  0 -buffering line
+    chan event $sock readable [list read_lines $sock $pipe ]
+    proc read_lines { sock pipe } {
+	gets $pipe
+	gets $sock line
+	after idle [list stop $sock $pipe]
+	chan event $sock readable {}
+    }
+    proc stop {sock pipe} {
+	variable done
+	close $sock
+	set done [gets $pipe]
+    }
+    variable done
+    vwait [namespace which -variable done]
+    close $pipe
+    set done
+
+---- Result was:
+timeout
+---- Result should have been (exact matching):
+write
+==== socket_inet6-2.13 FAILED
+
+source.test
+split.test
+stack.test
+string.test
+stringComp.test
+stringObj.test
+subst.test
+switch.test
+tailcall.test
+tcltest.test
+thread.test
+timer.test
+tm.test
+trace.test
+unixFCmd.test
+unixFile.test
+unixForkEvent.test
+unixInit.test
+unixNotfy.test
+unknown.test
+unload.test
+uplevel.test
+upvar.test
+utf.test
+util.test
+var.test
+while-old.test
+while.test
+winConsole.test
+winDde.test
+winFCmd.test
+winFile.test
+winNotify.test
+winPipe.test
+winTime.test
+zlib.test
+
+Tests ended at Tue Mar 14 16:54:04 CET 2023
+all.tcl:	Total	33971	Passed	30556	Skipped	3414	Failed	1
+Sourced 151 Test Files.
+Files with failing tests: socket.test
+Number of tests skipped for each constraint:
+	9	!ieeeFloatingPoint
+	3	asyncPipeChan
+	76	bigEndian
+	5	bug-3057639
+	49	dde
+	4	dontCopyLinks
+	64	emptyTest
+	58	fullutf
+	2	hasIsoLocale
+	1	knownBadTest
+	41	knownBug
+	100	localeRegexp
+	52	longIs32bit
+	14	macosxFileAttr
+	82	memory
+	46	nonPortable
+	5	notNetworkFilesystem
+	1	notValgrind
+	4	nt
+	1	pairsTo4bytes
+	19	pkgaRequired
+	20	pkguaRequired
+	2	pre388
+	4	readonlyAttr
+	1996	serverNeeded
+	1	testCPUID
+	1	testexprparser && !ieeeFloatingPoint
+	1	testwinclock
+	197	thread
+	21	ucs4
+	2	unthreaded
+	16	utf16
+	2	wideBiggerThanInt
+	492	win
+	1	winLessThan10
+	4	winVista
+	6	xdev
+--- FAIL: TestTclTest (354.04s)
+    all_test.go:1232: writing results to /home/jnml/src/modernc.org/builder/.exclude/modernc.org/tcl/testdata/tcltest_linux_amd64.golden
+    all_test.go:1212: failure(s) detected
+FAIL
+exit status 1
+FAIL	modernc.org/tcl	354.046s

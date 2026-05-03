@@ -1,0 +1,160 @@
+2024-05-02T10:15:45+02:00 commit ec4d829cccd77f958272247218af4e196ef3c30b, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestString (0.12s)
+    all_test.go:139: ----
+        got:
+        andnot = "&^" .
+        boolean = "true" | "false" .
+        float = .
+        identifier = .
+        imaginary = .
+        integer = .
+        lsh = "<<" .
+        rsh = ">>" .
+        str = .
+        
+        Expression = Term {
+        		 (
+        			  "^"
+        			| "|"
+        			| "-"
+        			| "+"
+        		  ) Term
+        	  } .
+        ExpressionList = Expression { "," Expression } .
+        Factor = [
+        		  "^"
+        		| "!"
+        		| "-"
+        		| "+"
+        	  ] Operand .
+        Literal = boolean
+        	| float
+        	| QualifiedIdent
+        	| imaginary
+        	| integer
+        	| str .
+        Operand = Literal
+        	| QualifiedIdent "(" [ ExpressionList ] ")"
+        	| "(" Expression ")" .
+        QualifiedIdent = identifier [ "." identifier ] .
+        Start = Expression .
+        Term = Factor {
+        		 (
+        			  andnot
+        			| "&"
+        			| lsh
+        			| rsh
+        			| "%"
+        			| "/"
+        			| "*"
+        		  ) Factor
+        	  } .
+        
+        ----
+        exp:
+        andnot = "&^" .
+        boolean = "true" | "false" .
+        float = .
+        identifier = .
+        imaginary = .
+        integer = .
+        lsh = "<<" .
+        rsh = ">>" .
+        str = .
+        
+        Expression = Term {
+        		 (
+        			  "^"
+        			| "|"
+        			| "-"
+        			| "+"
+        		  ) Term
+        	  } .
+        ExpressionList = Expression { "," Expression } .
+        Factor = [
+        		  "^"
+        		| "!"
+        		| "-"
+        		| "+"
+        	  ] Operand .
+        Literal = boolean
+        	| float
+        	| QualifiedIdent
+        	| imaginary
+        	| integer
+        	| str .
+        Operand = Literal
+        	| QualifiedIdent "(" [ ExpressionList ] ")"
+        	| "(" Expression ")" .
+        QualifiedIdent = identifier [ "." identifier ] .
+        Start = Expression .
+        Term = Factor {
+        	
+
+...
+
+= "[" [ Expression ] ":" [ Expression ] "]" .
+        SliceType = "[" "]" ElementType .
+        Start = PackageClause ";" { ImportDecl ";" } { TopLevelDecl ";" } .
+        Statement = Declaration
+        	| LabeledStmt
+        	| SimpleStmt
+        	| GoStmt
+        	| ReturnStmt
+        	| BreakStmt
+        	| ContinueStmt
+        	| GotoStmt
+        	| FallthroughStmt
+        	| Block
+        	| IfStmt
+        	| SwitchStmt
+        	| SelectStmt
+        	| ForStmt
+        	| DeferStmt .
+        StatementList = { Statement ";" } .
+        StructType = "struct" "{" { FieldDecl ";" } "}" .
+        SwitchStmt = ExprSwitchStmt | TypeSwitchStmt .
+        Tag = string_lit .
+        TopLevelDecl = Declaration
+        	| FunctionDecl
+        	| MethodDecl .
+        Type = TypeName
+        	| TypeLit
+        	| "(" Type ")" .
+        TypeAssertion = "." "(" Type ")" .
+        TypeCaseClause = TypeSwitchCase ":" StatementList .
+        TypeDecl = "type" (
+        		  TypeSpec
+        		| "(" { TypeSpec ";" } ")"
+        	  ) .
+        TypeList = Type { "," Type } .
+        TypeLit = ArrayType
+        	| StructType
+        	| PointerType
+        	| FunctionType
+        	| InterfaceType
+        	| SliceType
+        	| MapType
+        	| ChannelType .
+        TypeName = identifier | QualifiedIdent .
+        TypeSpec = identifier Type .
+        TypeSwitchCase = "case" TypeList
+        	| "default" .
+        TypeSwitchGuard = [ identifier ":=" ] PrimaryExpr "." "(" "type" ")" .
+        TypeSwitchStmt = "switch" [ SimpleStmt ";" ] TypeSwitchGuard "{" { TypeCaseClause } "}" .
+        UnaryExpr = PrimaryExpr
+        	| unary_op UnaryExpr .
+        Value = Expression | LiteralValue .
+        VarDecl = "var" (
+        		  VarSpec
+        		| "(" { VarSpec ";" } ")"
+        	  ) .
+        VarSpec = IdentifierList (
+        		  Type [ "=" ExpressionList ]
+        		| "=" ExpressionList
+        	  ) .
+FAIL
+exit status 1
+FAIL	modernc.org/ebnfutil	0.250s
+
+FAIL err=exit status 1

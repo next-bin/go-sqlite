@@ -1,0 +1,17 @@
+2023-10-10T01:12:03Z commit 135ca8961fb519162695d3aaefbe5bf1eb6b6820, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# os/user
+cgo-gcc-prolog:95:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:89:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:89:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+cgo-gcc-prolog:117:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:111:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:111:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+--- FAIL: TestParserBug (1.82s)
+    --- FAIL: TestParserBug/bug (1.82s)
+        all_test.go:1084: ../v4/testdata/bug/11.c: ../v4/testdata/bug/11.c:2:2: unexpected identifier, expected enumerator (parser.go:3348:enumerator: parser.go:3312:enumeratorList)
+            ../v4/testdata/bug/11.c:6:2: unexpected identifier, expected enumerator (parser.go:3348:enumerator: parser.go:3312:enumeratorList)
+            ../v4/testdata/bug/11.c:11:2: unexpected identifier, expected enumerator (parser.go:3348:enumerator: parser.go:3312:enumeratorList)
+            ../v4/testdata/bug/11.c:12:2: unexpected identifier, expected enumerator (parser.go:3348:enumerator: parser.go:3324:enumeratorList)
+        all_test.go:1093: ../v4/testdata/bug/11.c
+        all_test.go:1095: files 11, skip 0, ok 10, fails 1
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v5	549.264s
+
+FAIL err=exit status 1

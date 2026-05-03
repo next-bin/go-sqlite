@@ -1,0 +1,8 @@
+2024-05-22T02:00:35+02:00 commit f24137013fa2f15c71f544b27ef99e1a91cb17ae, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.00s)
+    all_test.go:69: CreateFile internal\windows\386\tests: The system cannot find the path specified.
+FAIL
+exit status 1
+FAIL	modernc.org/libmpfr	0.022s
+
+FAIL err=exit status 1

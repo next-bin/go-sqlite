@@ -1,0 +1,12 @@
+go1.26.0 linux/riscv64
+2026-04-06T15:55:10+02:00 commit 430be9545f50be7270f8faf6a5337aa2ea9e0058, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/sqlite v1.48.1
+# modernc.org/dyd
+main.go:31:2: modernc.org/sqlite@v1.48.1: Get "https://storage.googleapis.com/proxy-golang-org-prod/bc93c8bca2639136-modernc.org:sqlite-v1.48.1.zip?Expires=1775569876&GoogleAccessId=gcs-urlsigner-prod%40golang-modproxy.iam.gserviceaccount.com&Signature=FW0GOj57dLW2E0oa3VUJ9hrwBNj84sAunhUP7lBeN6hfD0uem9V94brPZzEdz7JWBSz47bSGFZaGXkOXLblwzOBWvf%2FEq%2Bp8VgHEAZYIRKlmkwBxcFWM6aJBsmPErzh4bdBGc3eY%2F7kIsJVu3Dn6P335W1ElYvGpA320imQ3rWMMBR9Lk6Pqcq%2BXT%2BwtKRfxpsIQNhy7Gyu7%2F5gzD8qhQvcsR%2B5kaQl5jYedydve7hEqFo%2BUVqEYBgGjDgWZPzPNqt9kHgdz6%2FfsC1JVE4822kL8N3NULwQIKZfKJgU61uWmzCJg0iPBB9HSo9jnzLslsJbQslGZi2Jd4QcYwcXuMQ%3D%3D": dial tcp: lookup storage.googleapis.com on 127.0.0.53:53: read udp 127.0.0.1:59212->127.0.0.53:53: i/o timeout
+FAIL	modernc.org/dyd [setup failed]
+# modernc.org/dyd/dyd
+main.go:31:2: modernc.org/sqlite@v1.48.1: Get "https://storage.googleapis.com/proxy-golang-org-prod/bc93c8bca2639136-modernc.org:sqlite-v1.48.1.zip?Expires=1775569876&GoogleAccessId=gcs-urlsigner-prod%40golang-modproxy.iam.gserviceaccount.com&Signature=FW0GOj57dLW2E0oa3VUJ9hrwBNj84sAunhUP7lBeN6hfD0uem9V94brPZzEdz7JWBSz47bSGFZaGXkOXLblwzOBWvf%2FEq%2Bp8VgHEAZYIRKlmkwBxcFWM6aJBsmPErzh4bdBGc3eY%2F7kIsJVu3Dn6P335W1ElYvGpA320imQ3rWMMBR9Lk6Pqcq%2BXT%2BwtKRfxpsIQNhy7Gyu7%2F5gzD8qhQvcsR%2B5kaQl5jYedydve7hEqFo%2BUVqEYBgGjDgWZPzPNqt9kHgdz6%2FfsC1JVE4822kL8N3NULwQIKZfKJgU61uWmzCJg0iPBB9HSo9jnzLslsJbQslGZi2Jd4QcYwcXuMQ%3D%3D": dial tcp: lookup storage.googleapis.com on 127.0.0.53:53: read udp 127.0.0.1:59212->127.0.0.53:53: i/o timeout
+FAIL	modernc.org/dyd/dyd [setup failed]
+FAIL
+
+FAIL err=exit status 1

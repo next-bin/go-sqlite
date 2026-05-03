@@ -1,0 +1,8 @@
+2023-09-01T01:09:04+02:00 commit d14a8c451c9cc46f11c3ca97453a429a4b150bd1, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.18s)
+    all_test.go:26: 
+        CreateFile example\example_windows_arm64.go: The system cannot find the file specified.
+    all_test.go:28: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/z/v2	0.309s

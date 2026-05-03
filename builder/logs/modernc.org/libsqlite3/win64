@@ -1,0 +1,29 @@
+go1.26.2 windows/amd64
+2026-04-11T13:26:34+02:00 commit 230968bc2b9f85c5ac5f29d550ac678791bf9838, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc v1.72.0
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+tmpDir=C:\Users\User\AppData\Local\Temp\TestTclTest1998130513\001
+execute C:\Program Files\Go\bin\go.exe ["build" "-o" "C:\\Users\\User\\AppData\\Local\\Temp\\TestTclTest1998130513\\001\\testfixture.exe" "-tags=" "internal\\testfixture\\ccgo_windows.go"] in C:\Users\User\src\modernc.org\builder\.exclude\modernc.org\libsqlite3
+# command-line-arguments
+internal\testfixture\ccgo_windows.go:98910:9: undefined: ___umulh
+internal\testfixture\ccgo_windows.go:98929:10: undefined: ___umulh
+internal\testfixture\ccgo_windows.go:98931:7: undefined: ___umulh
+--- FAIL: TestTclTest (26.78s)
+    all_test.go:293: # command-line-arguments
+        internal\testfixture\ccgo_windows.go:98910:9: undefined: ___umulh
+        internal\testfixture\ccgo_windows.go:98929:10: undefined: ___umulh
+        internal\testfixture\ccgo_windows.go:98931:7: undefined: ___umulh
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	765.964s
+
+FAIL err=exit status 1

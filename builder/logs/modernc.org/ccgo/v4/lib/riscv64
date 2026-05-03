@@ -1,0 +1,59 @@
+go1.26.2 linux/riscv64
+2026-04-25T02:52:39+02:00 commit f60579bcfb791346a2ef167c4d779000d802f84c, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["mod" "init" "test"] in /tmp/TestExec3005270758/001
+go: creating new go.mod: module test
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@v1.72.1"] in /tmp/TestExec3005270758/001
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.72.1
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v4/lib/csmith"] in /tmp/ccgo-test-4090909219
+go: creating new go.mod: module example.com/ccgo/v4/lib/csmith
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@v1.72.1"] in /tmp/ccgo-test-4090909219
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.72.1
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+--- FAIL: TestCSmith (2310.87s)
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 1110506964
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 1338573550
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 1416441494
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 15739796933983044010
+    all_test.go:
+
+...
+
+nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 4130344133
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 4146870674
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 424465590
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 517639208
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 56498550
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 890611563
+    all_test.go:1002: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 963985971
+    all_test.go:1002: --bitfields --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid --max-nested-struct-level 10 -s 1236173074
+    all_test.go:1110: -s 1236173074
+        /*
+         * This is a RANDOMLY GENERATED PROGRAM.
+         *
+         * Generator: csmith 2.3.0
+         * Git version: 30dccd7
+         * Options:   --bitfields --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid --max-nested-struct-level 10 -s 1236173074
+         * Seed:      1236173074
+         */
+        ccgo: 
+    all_test.go:1111: main.go: gofmt: exit status 2 (all_test.go:1113:TestCSmith: all_test.go:1113:TestCSmith: ccgo.go:210:Main: ccgo.go:691:main: link.go:313:link: link.go:1180:link:)
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v4/lib	23207.310s
+
+FAIL err=exit status 1

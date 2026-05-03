@@ -1,0 +1,43 @@
+go1.25.5 linux/loong64
+2026-02-05T19:39:44+01:00 commit 04269e04c01181a237a1216b92d65aa3fa629805, GOMAXPROCS 16, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libfreetype/freetype-2.12.1"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libfreetype
+archivePath freetype-2.12.1.tar.gz
+extractedArchivePath freetype-2.12.1
+tempDir /tmp/libfreetype
+libRoot /tmp/libfreetype/freetype-2.12.1
+makeRoot /tmp/libfreetype/freetype-2.12.1
+includeDir /tmp/libfreetype/freetype-2.12.1/ccgo
+execute /usr/bin/sh ["-c" "go mod init example.com/libfreetype ; go get modernc.org/libc@latest modernc.org/libz@latest"] in /tmp/libfreetype/freetype-2.12.1
+go: creating new go.mod: module example.com/libfreetype
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: unrecognized import path "modernc.org/libc": https fetch: Get "https://modernc.org/libc?go-get=1": read tcp 10.180.200.94:54408->216.239.34.21:443: read: connection timed out
+go: modernc.org/libz@latest: unrecognized import path "modernc.org/libz": https fetch: Get "https://modernc.org/libz?go-get=1": read tcp 10.180.200.94:54408->216.239.34.21:443: read: connection timed out
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x70
+modernc.org/fileutil/ccgo.Fatalf(0x0?, {0x510ed8, 0x18}, {0xc000505a40, 0x4, 0x4})
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:313 +0x40
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x5054c0, 0x2}, {0xc0000901e0, 0x2, 0x2})
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:414 +0x118
+main.main.func2()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libfreetype/generator.go:112 +0x9c
+modernc.org/fileutil/ccgo.InDir({0xc000028280, 0x20}, 0xc000505d78)
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:365 +0xc0
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0xc000028280?, 0x0?}, 0xc0000283a0?)
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:370 +0x30
+main.main()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libfreetype/generator.go:111 +0xc50
+
+sh [-c go mod init example.com/libfreetype ; go get modernc.org/libc@latest modernc.org/libz@latest]
+output: go: creating new go.mod: module example.com/libfreetype
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: unrecognized import path "modernc.org/libc": https fetch: Get "https://modernc.org/libc?go-get=1": read tcp 10.180.200.94:54408->216.239.34.21:443: read: connection timed out
+go: modernc.org/libz@latest: unrecognized import path "modernc.org/libz": https fetch: Get "https://modernc.org/libz?go-get=1": read tcp 10.180.200.94:54408->216.239.34.21:443: read: connection timed out
+
+err: exit status 1
+exit status 1
+libfreetype.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

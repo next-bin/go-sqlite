@@ -1,0 +1,23 @@
+2023-08-28T00:07:15+02:00 commit 4ce849193f6405a87953590b94b608bdbe3936cd, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package go.elara.ws/pcre
+	imports go.elara.ws/pcre/lib: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/gitea.arsenm.dev/Arsen6331/pcre/lib
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/errno
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/pthread: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/pthread
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/signal: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/signal
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/stdio: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/stdio
+package go.elara.ws/pcre
+	imports modernc.org/libc/sys/types: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/sys/types
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/time: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/time
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/unistd: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/unistd

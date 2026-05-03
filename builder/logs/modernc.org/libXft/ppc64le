@@ -1,0 +1,85 @@
+go1.25.1 linux/ppc64le
+2025-09-24T05:19:00Z commit 1c28fc6af270d1669a7ba294563c1260fe9504a5, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libXft/libXft-2.3.2"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXft
+execute /usr/bin/sh ["-c" "find /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXft/internal/linux/ppc64le -name \\*linux_ppc64le.go -delete"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXft
+archivePath libXft-2.3.2.tar.gz
+extractedArchivePath libXft-2.3.2
+tempDir /tmp/libXft
+libRoot /tmp/libXft/libXft-2.3.2
+makeRoot /tmp/libXft/libXft-2.3.2
+tests /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXft/internal/linux/ppc64le
+execute /usr/bin/tar ["xf" "libXft-2.3.2.tar.gz" "-C" "/tmp/libXft"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXft
+execute /usr/bin/sh ["-c" "go mod init example.com/libxft ; go get modernc.org/libc@latest modernc.org/libfontconfig@latest modernc.org/libfreetype@latest modernc.org/libX11@latest modernc.org/libXrender@latest"] in /tmp/libXft/libXft-2.3.2
+go: creating new go.mod: module example.com/libxft
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libX11 v0.11.20
+go: added modernc.org/libXau v0.9.15
+go: added modernc.org/libXdmcp v0.12.14
+go: added modernc.org/libXrender v0.9.21
+go: added modernc.org/libbsd v0.11.10
+go: added modernc.org/libc v1.66.9
+go: added modernc.org/libexpat v0.10.12
+go: added modernc.org/libfontconfig v0.8.11
+go: added modernc.org/libfreetype v0.9.24
+go: added modernc.org/libmd v0.12.17
+go: added modernc.org/libxcb v0.12.2
+go: added modernc.org/libz v0.16.20
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -w -mlong-doubl
+
+...
+
+pports -Wbad-function-cast... yes
+checking if gcc supports -Wold-style-definition... yes
+checking if gcc supports -Wdeclaration-after-statement... yes
+checking if gcc supports -Wunused... yes
+checking if gcc supports -Wuninitialized... yes
+checking if gcc supports -Wshadow... yes
+checking if gcc supports -Wmissing-noreturn... yes
+checking if gcc supports -Wmissing-format-attribute... yes
+checking if gcc supports -Wredundant-decls... yes
+checking if gcc supports -Wlogical-op... yes
+checking if gcc supports -Werror=implicit... yes
+checking if gcc supports -Werror=nonnull... yes
+checking if gcc supports -Werror=init-self... yes
+checking if gcc supports -Werror=main... yes
+checking if gcc supports -Werror=missing-braces... yes
+checking if gcc supports -Werror=sequence-point... yes
+checking if gcc supports -Werror=return-type... yes
+checking if gcc supports -Werror=trigraphs... yes
+checking if gcc supports -Werror=array-bounds... yes
+checking if gcc supports -Werror=write-strings... yes
+checking if gcc supports -Werror=address... yes
+checking if gcc supports -Werror=int-to-pointer-cast... yes
+checking if gcc supports -Werror=pointer-to-int-cast... yes
+checking if gcc supports -pedantic... yes
+checking if gcc supports -Werror... yes
+checking if gcc supports -Werror=attributes... yes
+./configure: line 17608: --print-errors: command not found
+checking whether make supports nested variables... (cached) yes
+checking for XRENDER... configure: error: in `/tmp/libXft/libXft-2.3.2':
+configure: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables XRENDER_CFLAGS
+and XRENDER_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See `config.log' for more details
+
+err: exit status 1
+exit status 1
+libxft.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

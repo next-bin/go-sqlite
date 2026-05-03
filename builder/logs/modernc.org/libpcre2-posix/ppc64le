@@ -1,0 +1,12 @@
+2023-10-19T02:13:55+02:00 commit bb4f757945d2fd14fd178827910c5e340e18f590, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test2005475821/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_linux_ppc64le.go"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libpcre2-posix
+package internal/pcre2test/ccgo_linux_ppc64le.go is not in std (/usr/local/go/src/internal/pcre2test/ccgo_linux_ppc64le.go)
+--- FAIL: Test (0.12s)
+    all_test.go:33: package internal/pcre2test/ccgo_linux_ppc64le.go is not in std (/usr/local/go/src/internal/pcre2test/ccgo_linux_ppc64le.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-posix	0.129s
+
+FAIL err=exit status 1

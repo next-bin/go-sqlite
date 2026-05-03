@@ -1,0 +1,7 @@
+go1.25.1 windows/arm64
+2025-09-19T08:18:04+02:00 commit e152b2196cd2e6247abaca6080f5073af820488a, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+PASS
+ok  	modernc.org/opt	29.308s
+go: unlinkat C:\Users\jnml\AppData\Local\Temp\go-build644096331\b001\opt.test.exe: Access is denied.
+
+FAIL err=exit status 1

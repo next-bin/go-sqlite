@@ -1,0 +1,7 @@
+go1.25.3 linux/arm
+2025-12-06T06:55:12+01:00 commit 958a824bbb0803fb7414c8597e7335f026f42ea0, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/sqlite [modernc.org/sqlite.test]
+./module_test.go:618:16: cannot use math.MaxInt32 + 1 (untyped int constant 2147483648) as int value in assignment (overflows)
+FAIL	modernc.org/sqlite [build failed]
+
+FAIL err=exit status 1

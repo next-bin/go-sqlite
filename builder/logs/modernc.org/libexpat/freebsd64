@@ -1,0 +1,71 @@
+go1.26.0 freebsd/amd64
+2026-03-09T06:51:13+01:00 commit 6c8cc29e5bca33e6ae0b1b2f0d7acc05fb293107, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libexpat/expat-2.5.0"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/internal/freebsd/amd64 -name \\*freebsd_amd64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+archivePath expat-2.5.0.tar.gz
+extractedArchivePath expat-2.5.0
+tempDir /tmp/libexpat
+libRoot /tmp/libexpat/expat-2.5.0
+makeRoot /tmp/libexpat/expat-2.5.0
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/internal/freebsd/amd64
+execute /usr/bin/tar ["xf" "expat-2.5.0.tar.gz" "-C" "/tmp/libexpat"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /bin/sh ["-c" "go mod init example.com/libexpat ; go get modernc.org/libc@latest modernc.org/libbsd@latest"] in /tmp/libexpat/expat-2.5.0
+go: creating new go.mod: module example.com/libexpat
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.40.0
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.69.0
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -w -mlong-double-64' ./configure --disable-shared "] in /tmp/libexpat/expat-2.5.0
+checking build system type... x86_64-unknown-freebsd15.0
+checking host system type... x86_64-unknown-freebsd15.0
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... ./conftools/install-sh -c -d
+checking for gawk... no
+checking for mawk... no
+checking for nawk... nawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variabl
+
+...
+
+mlwf-unixfilemap.o ../lib/libexpat.la 
+libtool: link: gcc -Wall -Wextra -fexceptions -fno-strict-aliasing -Wmissing-prototypes -Wstrict-prototypes -pedantic -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow -Wformat=2 -Wno-pedantic-ms-format -Wmisleading-indentation -fvisibility=hidden -DNDEBUG -w -mlong-double-64 -fno-strict-aliasing -o xmlwf xmlwf-xmlwf.o xmlwf-xmlfile.o xmlwf-codepage.o xmlwf-unixfilemap.o  ../lib/.libs/libexpat.a -lm
+Making check in doc
+--- expat_config.h ---
+execute /usr/local/bin/gsed ["-i" "s/\\<T__\\([a-zA-Z0-9][a-zA-Z0-9_]\\+\\)/t__\\1/g" "libexpat.go"] in /tmp/libexpat/expat-2.5.0
+execute /usr/local/bin/gsed ["-i" "s/\\<x_\\([a-zA-Z0-9_][a-zA-Z0-9_]\\+\\)/X\\1/g" "libexpat.go"] in /tmp/libexpat/expat-2.5.0
+execute /usr/local/go/bin/gofmt ["-l" "-s" "-w" "."] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /usr/local/go/bin/go ["test" "-vet=off" "-run" "@"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+# modernc.org/libexpat [modernc.org/libexpat.test]
+./libexpat_freebsd.go:10:14: undefined: libc.X__inline_isnanf
+FAIL	modernc.org/libexpat [build failed]
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x5e
+modernc.org/fileutil/ccgo.Fatalf(0xe0?, {0x96f140, 0x18}, {0x8709c5a98, 0x4, 0x4})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:313 +0x49
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x963c02, 0x2}, {0x870a08280, 0x4, 0x4})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:414 +0x17d
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/generator.go:200 +0x1376
+
+go [test -vet=off -run @]
+output: # modernc.org/libexpat [modernc.org/libexpat.test]
+./libexpat_freebsd.go:10:14: undefined: libc.X__inline_isnanf
+FAIL	modernc.org/libexpat [build failed]
+
+err: exit status 1
+exit status 1
+libexpat.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

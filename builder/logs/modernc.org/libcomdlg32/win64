@@ -1,0 +1,16 @@
+2024-07-31T03:26:38+02:00 commit 0840281cc570a459a8077c2fd1399de609759280, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libcomdlg32 [modernc.org/libcomdlg32.test]
+.\ccgo_windows_amd64.go:58975:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:58983:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:58991:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:58999:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:59150:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:59158:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:59220:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:59228:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:59236:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:59244:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:59244:7: too many errors
+FAIL	modernc.org/libcomdlg32 [build failed]
+
+FAIL err=exit status 1

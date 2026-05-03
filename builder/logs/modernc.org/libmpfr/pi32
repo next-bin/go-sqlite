@@ -1,0 +1,72 @@
+go1.24.2 linux/arm
+2025-05-10T08:17:29+02:00 commit aca78cbd875d4e42d39d65c97b4225f5b1d86de3, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (905.12s)
+    all_test.go:114: internal/linux/arm/tests/cmp_str.o.go: SKIP (no main)
+    all_test.go:114: internal/linux/arm/tests/memory.o.go: SKIP (no main)
+    all_test.go:114: internal/linux/arm/tests/random2.o.go: SKIP (no main)
+    all_test.go:114: internal/linux/arm/tests/rnd_mode.o.go: SKIP (no main)
+    all_test.go:102: internal/linux/arm/tests/tabort_defalloc1.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tabort_defalloc2.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tabort_prec_max.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tassert.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tcmp_ld.o.go: SKIP (list)
+    all_test.go:114: internal/linux/arm/tests/tests.o.go: SKIP (no main)
+    all_test.go:102: internal/linux/arm/tests/tget_set_d128.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tget_set_d64.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tget_str.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tset_float128.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tset_ld.o.go: SKIP (list)
+    all_test.go:102: internal/linux/arm/tests/tversion.o.go: SKIP (list)
+    all_test.go:126: 0 internal/linux/arm/tests/mpf_compat.o.go
+    all_test.go:126: 1 internal/linux/arm/tests/mpfr_compat.o.go
+    all_test.go:126: 2 internal/linux/arm/tests/reuse.o.go
+    all_test.go:126: 3 internal/linux/arm/tests/tabs.o.go
+    all_test.go:126: 4 internal/linux/arm/tests/tacos.o.go
+    all_test.go:126: 5 internal/linux/arm/tests/tacosh.o.go
+    all_test.go:126: 6 internal/linux/arm/tests/tacosu.o.go
+    all_test.go:126: 7 internal/linux/arm/tests/tadd.o.go
+    all_test.go:126: 8 internal/linux/arm/tests/tadd1sp.o.go
+    all_test.go:126: 9 internal/linux/arm/tests/tadd_d.o.go
+    all_test.go:126: 10 internal/linux/arm/tests/tadd_ui.o.go
+    all_test.go:126: 11 internal/linux/arm/tests/tagm.o.go
+    all_test.go:126: 12 internal/linux/arm/tests/tai.o.go
+    all_test.go:126: 13 intern
+
+...
+
+nternal/linux/arm/tests/tswap.o.go
+    all_test.go:126: 171 internal/linux/arm/tests/ttan.o.go
+    all_test.go:126: 172 internal/linux/arm/tests/ttanh.o.go
+    all_test.go:126: 173 internal/linux/arm/tests/ttanu.o.go
+    all_test.go:126: 174 internal/linux/arm/tests/ttotal_order.o.go
+    all_test.go:126: 175 internal/linux/arm/tests/ttrunc.o.go
+    all_test.go:126: 176 internal/linux/arm/tests/tui_div.o.go
+    all_test.go:126: 177 internal/linux/arm/tests/tui_pow.o.go
+    all_test.go:126: 178 internal/linux/arm/tests/tui_sub.o.go
+    all_test.go:126: 179 internal/linux/arm/tests/turandom.o.go
+    all_test.go:126: 180 internal/linux/arm/tests/tvalist.o.go
+    all_test.go:126: 181 internal/linux/arm/tests/ty0.o.go
+    all_test.go:126: 182 internal/linux/arm/tests/ty1.o.go
+    all_test.go:126: 183 internal/linux/arm/tests/tyn.o.go
+    all_test.go:126: 184 internal/linux/arm/tests/tzeta.o.go
+    all_test.go:126: 185 internal/linux/arm/tests/tzeta_ui.o.go
+    all_test.go:188: internal/linux/arm/tests/tzeta.o.go: ERROR! The versions of gmp.h (6.2.1) and libgmp (6.3.0) do not match.
+        The possible causes are:
+          * A bad configuration in your include/library search paths.
+          * An inconsistency in the include/library search paths of
+            your development environment; an example:
+              https://gcc.gnu.org/legacy-ml/gcc-help/2010-11/msg00359.html
+          * GMP has been upgraded after the first "make check".
+            In such a case, try again after a "make clean".
+          * A new or non-standard version naming is used in GMP.
+            In this case, a patch may already be available on the
+            MPFR web site.  Otherwise please report the problem.
+        In the first two cases, this may lead to errors, in particular with MPFR.
+        If some other tests fail, please solve that problem first.
+         FAIL signal: killed
+    all_test.go:191: files=202 skip=16 compileok=186 buildok=186 fail=1 pass=185
+FAIL
+exit status 1
+FAIL	modernc.org/libmpfr	905.169s
+
+FAIL err=exit status 1

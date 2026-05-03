@@ -1,0 +1,8 @@
+2023-05-12T17:43:39+02:00 commit 466b49aa80e0d091fd9fd7dc601f9632100d76e8, GOMAXPROCS 1, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestEBNFParser (22.06s)
+    all_test.go:199: /home/jnml/goroot/src/image/png/writer.go:647:10: syntax error (asm_386.s:1326:goexit: all_test.go:270:1: etc.go:1243:parse) (asm_386.s:1326:goexit: asm_386.s:1326:goexit: all_test.go:276:1)
+    all_test.go:201: TOTAL files 9,046, toks 13,055,999, skip 127, ok 8,918, fail 1
+    all_test.go:203: Shortest failing file: /home/jnml/goroot/src/image/png/writer.go, 4416 tokens
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v3/internal/ebnf	22.170s

@@ -1,0 +1,80 @@
+2023-03-13T04:12:15+01:00 commit c68535dc88dcb475b360c5dafaf88f633713a7b7, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuthware	0.045s
+ok  	modernc.org/knuthware/cmd/godvitype	0.040s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftodvi	0.039s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftopk	0.070s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftype	0.054s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomf	0.029s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomft	0.031s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopktype	0.029s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopltotf	0.046s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopooltype	0.030s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotangle	0.054s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotex	0.040s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotftopl	0.040s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govftovp	0.029s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govptovf	0.052s [no tests to run]
+ok  	modernc.org/knuthware/cmd/goweave	0.030s [no tests to run]
+ok  	modernc.org/knuthware/dvitype	0.158s
+ok  	modernc.org/knuthware/gftodvi	0.763s
+ok  	modernc.org/knuthware/gftopk	0.635s
+ok  	modernc.org/knuthware/gftype	1.394s
+--- FAIL: Test (2.54s)
+    all_test.go:48: "trap.72270gf": 1028
+    all_test.go:48: "trap.fot": 1711
+    all_test.go:48: "trap.log": 121710
+    all_test.go:48: "trap.mf": 11899
+    all_test.go:48: "trap.pl": 10388
+    all_test.go:48: "trap.typ": 4552
+    all_test.go:48: "trapin.fot": 2303
+    all_test.go:48: "trapin.log": 4593
+    all_test.go:198: 4600 bytes matches trapin.log OK
+    all_test.go:273: 1650 bytes matches trap.fot OK
+    all_test.go:341: 121624 bytes matches trap.log.0 OK
+    all_test.go:377: 4524 bytes matches trap.typ OK
+    all_test.go:411: 10388 bytes matches trap.pl OK
+    testing.go:1206: TempDir RemoveAll cleanup: remove C:\Users\jnml\AppData\Local\Temp\Test2997455418\001\trap.72270gf: The process cannot access the file because it is being used by another process.
+FAIL
+FAIL	modernc.org/knuthware/mf	2.578s
+ok  	modernc.org/knuthware/mf/internal/tra
+
+...
+
+ pltotf.web
+    all_test.go:140: fail: testdata\ctan.org\tex-archive\systems\knuth\dist\texware\pltotf.web: output: go: C:\Users\jnml\AppData\Local\Temp\TestGo2331368218\001\go.mod already exists
+        
+        error: exit status 1
+    all_test.go:448: 
+        339 Pascal lines for pooltype.web
+    all_test.go:140: fail: testdata\ctan.org\tex-archive\systems\knuth\dist\texware\pooltype.web: output: go: C:\Users\jnml\AppData\Local\Temp\TestGo2331368218\001\go.mod already exists
+        
+        error: exit status 1
+    all_test.go:448: 
+        1524 Pascal lines for tftopl.web
+    all_test.go:140: fail: testdata\ctan.org\tex-archive\systems\knuth\dist\texware\tftopl.web: output: go: C:\Users\jnml\AppData\Local\Temp\TestGo2331368218\001\go.mod already exists
+        
+        error: exit status 1
+    all_test.go:448: 
+        2661 Pascal lines for tangle.web
+    all_test.go:140: fail: testdata\ctan.org\tex-archive\systems\knuth\dist\web\tangle.web: output: go: C:\Users\jnml\AppData\Local\Temp\TestGo2331368218\001\go.mod already exists
+        
+        error: exit status 1
+    all_test.go:448: 
+        4318 Pascal lines for weave.web
+    all_test.go:140: fail: testdata\ctan.org\tex-archive\systems\knuth\dist\web\weave.web: output: go: C:\Users\jnml\AppData\Local\Temp\TestGo2331368218\001\go.mod already exists
+        
+        error: exit status 1
+    all_test.go:448: 
+        1134 Pascal lines for pktype.web
+    all_test.go:140: fail: testdata\ctan.org\tex-archive\systems\knuth\local\mfware\pktype.web: output: go: C:\Users\jnml\AppData\Local\Temp\TestGo2331368218\001\go.mod already exists
+        
+        error: exit status 1
+    all_test.go:448: 
+        1133 Pascal lines for pktype.web
+    all_test.go:140: fail: testdata\ctan.org\tex-archive\systems\knuth\local\mfware-sparc\pktype.web: output: go: C:\Users\jnml\AppData\Local\Temp\TestGo2331368218\001\go.mod already exists
+        
+        error: exit status 1
+    all_test.go:85: files 17, ignored 0, fails 17, ok 0
+FAIL
+FAIL	modernc.org/knuthware/web	12.734s
+FAIL

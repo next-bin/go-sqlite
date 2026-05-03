@@ -1,0 +1,13 @@
+2024-03-21T16:23:30+01:00 commit 8cf102d6f86051de488256676689d190df5b1796, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test3478253367/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_linux_ppc64le.go"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libpcre2-32
+execute ./RunTest [] in /tmp/Test3478253367/001
+RunTest: Failed to find internal link size
+--- FAIL: Test (1.38s)
+    all_test.go:49: time: 5.353579ms
+    all_test.go:52: RunTest: Failed to find internal link size
+    all_test.go:57: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-32	1.380s
+
+FAIL err=exit status 1

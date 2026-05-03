@@ -1,0 +1,7 @@
+go1.24.2 darwin/amd64
+2025-04-19T13:36:37+02:00 commit b39b34d7ec713c0769fe479e1033e1027dffc9d7, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: /Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.26.0/lib/compile.go:23:2: missing go.sum entry for module providing package golang.org/x/tools/go/packages (imported by modernc.org/ccgo/v4/lib); to add:
+	go get modernc.org/ccgo/v4/lib@v4.26.0
+libxau.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

@@ -1,0 +1,7 @@
+2025-01-23T12:06:35+01:00 commit dd20e5e1390183c13216d7ad29538cefd45d25fc, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/css
+/home/jnml/pkg/mod/modernc.org/gc/v3@v3.0.0-20230512134359-466b49aa80e0/parser.go:16:2: missing go.sum entry for module providing package modernc.org/mathutil (imported by modernc.org/gc/v3); to add:
+	go get modernc.org/gc/v3@v3.0.0-20230512134359-466b49aa80e0
+FAIL	modernc.org/css [setup failed]
+
+FAIL err=exit status 1

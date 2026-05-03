@@ -1,0 +1,13 @@
+2024-08-19T02:05:52+02:00 commit 283276b8b13e533a7b6f9c71bc56d11e11d93cec, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libfontconfig [modernc.org/libfontconfig.test]
+./ccgo_freebsd_amd64.go:11485:32: undefined: libc.X__maskrune
+./ccgo_freebsd_amd64.go:11515:33: undefined: libc.X__maskrune
+./ccgo_freebsd_amd64.go:13513:12: undefined: libc.Xgetprogname
+./ccgo_freebsd_amd64.go:20711:34: undefined: libc.X__maskrune
+./ccgo_freebsd_amd64.go:20754:35: undefined: libc.X__maskrune
+./ccgo_freebsd_amd64.go:39573:32: undefined: libc.X__maskrune
+./ccgo_freebsd_amd64.go:44645:12: undefined: libc.Xfstatfs
+./ccgo_freebsd_amd64.go:50656:21: undefined: libc.Xlocaleconv
+FAIL	modernc.org/libfontconfig [build failed]
+
+FAIL err=exit status 1

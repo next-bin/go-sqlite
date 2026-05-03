@@ -1,0 +1,48 @@
+go1.25.1 linux/ppc64le
+2025-10-08T04:59:19+02:00 commit 26d0615f27d2c3583040c700fd62b3a665751a66, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["mod" "init" "test"] in /tmp/TestExec223403235/001
+go: creating new go.mod: module test
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@v1.66.10"] in /tmp/TestExec223403235/001
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libc v1.66.10
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+04:57:57.590 all_test.go:644:testExec1: TRC `assets/github.com/vnmakarov/mir/c-tests/lacc/declaration-default-int.c`: {}, // EXEC FAIL: assets/github.com/vnmakarov/mir/c-tests/lacc/declaration-default-int.c: : FAIL: exit status 51
+gobinRC=51cbinRC=-1 (.:0:: .:0:: asm_ppc64x.s:1015:goexit: asm_ppc64x.s:1015:goexit: all_test.go:465:1: all_test.go:634:testExec1:)
+04:58:12.428 all_test.go:644:testExec1: TRC `assets/github.com/vnmakarov/mir/c-tests/lacc/function-implicit-declare.c`: {}, // EXEC FAIL: assets/github.com/vnmakarov/mir/c-tests/lacc/function-implicit-declare.c: : FAIL: exit status 42
+gobinRC=42cbinRC=-1 (.:0:: .:0:: asm_ppc64x.s:1015:goexit: asm_ppc64x.s:1015:goexit: all_test.go:465:1: all_test.go:634:testExec1:)
+04:59:05.003 all_test.go:644:testExec1: TRC `assets/github.com/vnmakarov/mir/c-tests/lacc/vararg-complex-2.c`: {}, // EXEC FAIL: assets/github.com/vnmakarov/mir/c-tests/lacc/vararg-complex-2.c: 0,0,0,0
+0:8
+0,0,0,0
+1:17
+0,0,0,0
+2:25
+0,0,0,0
+3:30
+0,0,0,0
+4:41
+0,0,0,0
+41,0,0,0
+: FAIL: exit status 41
+gobinRC=41cbinRC=-1 (.:0:: .:0:: asm_ppc64x.s:1015:goexit: asm_ppc64x.s:1015:goexit: all_test.go:465:1: all_test.go:634:testExec1:)
+--- FAIL: TestExec (2600.78s)
+    --- FAIL: TestExec/github.com/vnmakarov (163.39s)
+        all_test.go:424: assets/github.com/vnmakarov: copied 583 files, 149,066 bytes
+        all_test.go:159: "assets/github.com/vnmakarov/mir/c-tests/lacc/declaration-default-int.c: : FAIL: exit status 51"
+        all_test.go:159: "assets/github.com/vnmakarov/mir/c-tests/lacc/declaration-default-int.c: : FAIL: exit status 51"
+        all_test.go:159: "assets/github.com/vnmakarov/mir/c-tests/lacc/function-implicit-declare.c: : FAIL: exit status 42"
+        all_test.go:159: "assets/github.com/vnmakarov/mir/c-tests/lacc/function-implicit-declare.c: : FAIL: exit status 42"
+        all_test.go:159: "assets/github.com/vnmakarov/mir/c-tests/lacc/vararg-complex-2.c: 0,0,0,0"
+        all_test.go:159: "assets/github.com/vnmakarov/mir/c-tests/lacc/vararg-complex-2.c: 0,0,0,0"
+        all_test.go:162: TOTAL: files   330, skip    18, ok   309, fails     3: assets/github.com/vnmakarov
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v4/lib	2600.993s
+
+FAIL err=exit status 1

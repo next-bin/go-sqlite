@@ -1,0 +1,10 @@
+go1.24.1 linux/riscv64
+2025-05-01T08:05:23Z commit c615e5cee3576cd47f6fcc8e20f9151ac71510d5, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libtcl9.0 v0.16.5
+# modernc.org/tcl9.0
+tcl.go:20:2: modernc.org/libtcl9.0@v0.16.5: Get "https://proxy.golang.org/modernc.org/libtcl9.0/@v/v0.16.5.zip": dial tcp 142.250.198.81:443: i/o timeout
+# modernc.org/tcl9.0
+tcl.go:21:2: modernc.org/libtcl9.0@v0.16.5: Get "https://proxy.golang.org/modernc.org/libtcl9.0/@v/v0.16.5.zip": dial tcp 142.250.198.81:443: i/o timeout
+FAIL	modernc.org/tcl9.0 [setup failed]
+
+FAIL err=exit status 1

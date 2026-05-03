@@ -1,0 +1,12 @@
+2023-10-07T07:43:53+02:00 commit 31e58128e3e37b82da576e897970b9f2dd4776b8, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestParserBug (0.69s)
+    --- FAIL: TestParserBug/bug (0.69s)
+        all_test.go:1084: ..\v4\testdata\bug\11.c: ..\v4\testdata\bug\11.c:2:2: unexpected identifier, expected enumerator (parser.go:3348:enumerator: parser.go:3312:enumeratorList)
+            ..\v4\testdata\bug\11.c:6:2: unexpected identifier, expected enumerator (parser.go:3348:enumerator: parser.go:3312:enumeratorList)
+            ..\v4\testdata\bug\11.c:11:2: unexpected identifier, expected enumerator (parser.go:3348:enumerator: parser.go:3312:enumeratorList)
+            ..\v4\testdata\bug\11.c:12:2: unexpected identifier, expected enumerator (parser.go:3348:enumerator: parser.go:3324:enumeratorList)
+        all_test.go:1093: ..\v4\testdata\bug\11.c
+        all_test.go:1095: files 11, skip 0, ok 10, fails 1
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v5	175.858s

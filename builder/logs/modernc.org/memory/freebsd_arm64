@@ -1,0 +1,4 @@
+2022-09-14T16:17:37+02:00 commit 2fd15faf5f355c789ceb33e46e43f341b3eca7ed, GOMAXPROCS 2, GOGC "", CC ""
+# modernc.org/memory [modernc.org/memory.test]
+./mmap_unix.go:41:12: undefined: mmapSyscall
+FAIL	modernc.org/memory [build failed]

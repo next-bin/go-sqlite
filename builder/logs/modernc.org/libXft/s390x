@@ -1,0 +1,4 @@
+go1.25.1 linux/s390x
+2025-09-23T00:36:12+02:00 commit 3c5da4c7e565daf63ebf751bf765fbe7289ae4ee, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exit status 128

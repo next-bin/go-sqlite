@@ -1,0 +1,14 @@
+2023-10-15T02:06:01+02:00 commit eeb09a874245b41a6720d97279954f96f1c252ff, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc v1.22.6
+go: downloading modernc.org/ccgo/v3 v3.16.13
+go: downloading golang.org/x/tools v0.0.0-20201124115921-2c860bdd6e78
+go: downloading modernc.org/cc/v3 v3.40.0
+go: downloading golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+go: downloading modernc.org/token v1.0.1
+go: downloading golang.org/x/mod v0.3.0
+tcl.go:61:2: modernc.org/libc@v1.22.6: Get "https://proxy.golang.org/modernc.org/libc/@v/v1.22.6.zip": net/http: TLS handshake timeout
+vfs.go:26:2: modernc.org/libc@v1.22.6: Get "https://proxy.golang.org/modernc.org/libc/@v/v1.22.6.zip": net/http: TLS handshake timeout
+tcl_linux.go:15:2: modernc.org/libc@v1.22.6: Get "https://proxy.golang.org/modernc.org/libc/@v/v1.22.6.zip": net/http: TLS handshake timeout
+tcl_linux.go:16:2: modernc.org/libc@v1.22.6: Get "https://proxy.golang.org/modernc.org/libc/@v/v1.22.6.zip": net/http: TLS handshake timeout
+
+FAIL err=exit status 1

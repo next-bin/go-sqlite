@@ -1,0 +1,9 @@
+go1.26.2 netbsd/amd64
+2026-04-08T23:08:46+02:00 commit 064bbed25fd01995b905a87ce4836c818c344a24, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestWALMap (17.16s)
+    all_test.go:1652: files are different, expected equal
+FAIL
+exit status 1
+FAIL	modernc.org/file	313.719s
+
+FAIL err=exit status 1

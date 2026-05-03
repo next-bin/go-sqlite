@@ -1,0 +1,8 @@
+go1.25.4 netbsd/amd64
+2025-12-01T20:48:31+01:00 commit 930eab73858864fc20aa07d960d3be0580b80139, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/db
+package modernc.org/db (test)
+	imports modernc.org/file: build constraints exclude all Go files in /home/jnml/pkg/mod/modernc.org/file@v1.0.18
+FAIL	modernc.org/db [setup failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,9 @@
+2023-10-19T00:06:51+02:00 commit d6b8d8658e0127251c252afc7ed7103152723351, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libpcreposix
+package modernc.org/libpcreposix (test)
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/errno
+FAIL	modernc.org/libpcreposix [setup failed]
+
+FAIL err=exit status 1

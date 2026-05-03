@@ -1,0 +1,8 @@
+2024-01-14T11:50:12+08:00 commit 573471604cb600a31c7581f174257f48e875aa05, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestNewConfig (0.00s)
+    all_test.go:849: unsupported arch: mips64le
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v3	373.523s
+
+FAIL err=exit status 1

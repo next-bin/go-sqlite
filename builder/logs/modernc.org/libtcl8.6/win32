@@ -1,0 +1,114 @@
+go1.25.5 windows/386
+2026-01-28T13:16:10+01:00 commit 0d135a82572b0e2f18a359ac040edc157dd5f43b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc v1.67.7
+Tests running in interp:  C:/Users/jnml/AppData/Local/Temp/Test21071480821/001/tcltest.exe
+Tests located in:  C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/internal/tests
+Tests running in:  C:/Users/jnml/AppData/Local/Temp/Test21071480821/001
+Temporary files stored in C:/Users/jnml/AppData/Local/Temp/Test21071480821/001
+Test files run in separate interpreters
+Skipping tests that match:  Tcl_Main-5.10 clock-38.2 clock-40.1 clock-42.1 clock-49.2 cmdIL-5.7 cmdMZ-6.6 cmdinfo-4.* cmdinfo-5.* cmdinfo-6.* env-2.1 env-2.2 env-2.3 env-2.4 env-2.5 env-3.1 env-4.1 env-4.3 env-4.4 env-4.5 env-5.1 env-5.3 env-5.5 env-9.0 filename-10.7 filename-11.12 filesystem-1.38 filesystem-6.* filesystem-7.* interp-36.7 iortrans-3.1 package-15.1 package-15.2 package-15.3 package-15.4 safe-8.5 safe-8.6 safe-8.7 safe-stock-7.4 winTime-1.1 winTime-1.2 winpipe-4.2 winpipe-4.3 winpipe-4.4 winpipe-4.5
+Running tests that match:  *
+Skipping test files that match:  basic.test chan.test chanio.test cmdAH.test encoding.test event.test fCmd.test fileName.test http.test http11.test httpold.test io.test ioCmd.test socket.test tcltest.test winFCmd.test winNotify.test zlib.test
+Only running test files that match:  *.test
+Tests began at Wed Jan 28 13:14:23 +0100 2026
+aaa_exit.test
+append.test
+appendComp.test
+apply.test
+assemble.test
+assocd.test
+async.test
+autoMkindex.test
+binary.test
+case.test
+clock.test
+
+
+==== clock-33.8 clock clicks test, microsecond timing test FAILED
+---- Result was:
+0
+---- Result should have been (exact matching):
+1
+==== clock-33.8 FAILED
+
+cmdIL.test
+cmdInfo.test
+cmdMZ.test
+compExpr-old.test
+compExpr.test
+compile.test
+concat.test
+config.test
+coroutine.test
+dcall.test
+dict.test
+dstring.test
+env.test
+error.test
+eval.test
+exec.test
+execute.test
+expr-old.test
+expr.test
+fileSystem.test
+fileSystemEncoding.test
+for-old.test
+for.test
+foreach.test
+format.test
+get.test
+history.test
+httpPipeline.test
+if-old.test
+if.test
+inc
+
+...
+
+\tests\\all.tcl" "-debug" "0" "-errfile" "errfile" "-singleproc" "0" "-verbose" "el" "-skip" "Tcl_Main-5.10 clock-38.2 clock-40.1 clock-42.1 clock-49.2 cmdIL-5.7 cmdMZ-6.6 cmdinfo-4.* cmdinfo-5.* cmdinfo-6.* env-2.1 env-2.2 env-2.3 env-2.4 env-2.5 env-3.1 env-4.1 env-4.3 env-4.4 env-4.5 env-5.1 env-5.3 env-5.5 env-9.0 filename-10.7 filename-11.12 filesystem-1.38 filesystem-6.* filesystem-7.* interp-36.7 iortrans-3.1 package-15.1 package-15.2 package-15.3 package-15.4 safe-8.5 safe-8.6 safe-8.7 safe-stock-7.4 winTime-1.1 winTime-1.2 winpipe-4.2 winpipe-4.3 winpipe-4.4 winpipe-4.5" "-notfile" "basic.test chan.test chanio.test cmdAH.test encoding.test event.test fCmd.test fileName.test http.test http11.test httpold.test io.test ioCmd.test socket.test tcltest.test winFCmd.test winNotify.test zlib.test"]
+    all_test.go:1004: ==== clock-33.8 clock clicks test, microsecond timing test FAILED
+    all_test.go:1004: ==== clock-33.8 FAILED
+    all_test.go:1006: 
+        all.tcl:	Total	30703	Passed	27734	Skipped	2968	Failed	1
+        Sourced 133 Test Files.
+        Files with failing tests: clock.test
+        Number of tests skipped for each constraint:
+        	9	!ieeeFloatingPoint
+        	76	bigEndian
+        	5	bug-3057639
+        	23	cat32
+        	50	dde
+        	19	emptyTest
+        	56	fullutf
+        	2	hasIsoLocale
+        	1	interactive
+        	1	knownBadTest
+        	39	knownBug
+        	100	localeRegexp
+        	11	longIs64bit
+        	14	macosxFileAttr
+        	83	memory
+        	5	nonPortable
+        	1	pairsTo4bytes
+        	19	pkga.dllRequired
+        	20	pkgua.dllRequired
+        	2	pre388
+        	125	reg
+        	1996	serverNeeded
+        	1	slowTest
+        	1	tempNotWin
+        	1	testCPUID
+        	1	testexprparser && !ieeeFloatingPoint
+        	7	testfindexecutable
+        	1	testfork
+        	86	thread
+        	3	threaded
+        	74	unix
+        	17	utf16
+        	21	utf32
+        
+FAIL
+exit status 1
+FAIL	modernc.org/libtcl8.6	125.805s
+
+FAIL err=exit status 1

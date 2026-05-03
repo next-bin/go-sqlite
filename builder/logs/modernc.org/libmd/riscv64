@@ -1,0 +1,43 @@
+go1.25.1 linux/riscv64
+2025-09-17T04:28:32Z commit af35d97e815dcd324f2e2e793657a39318ada005, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libmd/libmd-1.1.0"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd/internal/linux/riscv64 -name *linux_riscv64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd
+archivePath libmd-1.1.0.tar.xz
+extractedArchivePath libmd-1.1.0
+tempDir /tmp/libmd
+libRoot /tmp/libmd/libmd-1.1.0
+makeRoot /tmp/libmd/libmd-1.1.0
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd/internal/linux/riscv64
+execute /usr/bin/tar ["xf" "libmd-1.1.0.tar.xz" "-C" "/tmp/libmd"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd
+execute /usr/bin/sh ["-c" "go mod init example.com/libmd ; go get modernc.org/libc@latest"] in /tmp/libmd/libmd-1.1.0
+go: creating new go.mod: module example.com/libmd
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: module modernc.org/libc: Get "https://proxy.golang.org/modernc.org/libc/@v/list": dial tcp 142.250.217.81:443: i/o timeout
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x6c
+modernc.org/fileutil/ccgo.Fatalf(0x0?, {0x49bb95, 0x18}, {0x3f7402f9f8, 0x4, 0x4})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.32/ccgo/util.go:313 +0x74
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x4902e0, 0x2}, {0x3f74036e20, 0x2, 0x2})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.32/ccgo/util.go:414 +0x15c
+main.main.func2()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd/generator.go:118 +0x154
+modernc.org/fileutil/ccgo.InDir({0x3f74026288, 0x16}, 0x3f7402fd78)
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.32/ccgo/util.go:365 +0xdc
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x3f74026288?, 0x3f740265d0?}, 0x4906d2?)
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.32/ccgo/util.go:370 +0x54
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd/generator.go:111 +0xa84
+
+sh [-c go mod init example.com/libmd ; go get modernc.org/libc@latest]
+output: go: creating new go.mod: module example.com/libmd
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: module modernc.org/libc: Get "https://proxy.golang.org/modernc.org/libc/@v/list": dial tcp 142.250.217.81:443: i/o timeout
+
+err: exit status 1
+exit status 1
+libmd.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

@@ -1,0 +1,119 @@
+go1.25.3 linux/ppc64le
+2025-10-28T07:13:22+01:00 commit faa6cb0542e537a927b8aebc52fc64ee832f8b92, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libmpfr/mpfr-4.2.2"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libmpfr
+archivePath mpfr-4.2.2.tar.gz
+extractedArchivePath mpfr-4.2.2
+tempDir /tmp/libmpfr
+libRoot /tmp/libmpfr/mpfr-4.2.2
+makeRoot /tmp/libmpfr/mpfr-4.2.2
+execute /usr/bin/tar ["xf" "mpfr-4.2.2.tar.gz" "-C" "/tmp/libmpfr"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libmpfr
+execute /usr/bin/sh ["-c" "cp /tmp/libmpfr/mpfr-4.2.2/COPYING* ."] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libmpfr
+execute /usr/bin/sh ["-c" "go mod init example.com/libmpfr; go get modernc.org/libc@latest modernc.org/libgmp@latest"] in /tmp/libmpfr/mpfr-4.2.2
+go: creating new go.mod: module example.com/libmpfr
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libc v1.66.10
+go: added modernc.org/libgmp v0.3.7
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -DNO_ASM -I ../libgmp/include/linux/ppc64le -UHAVE_NEARBYINT -mlong-double-64' ./configure --disable-shared --disable-assert --disable-thread-safe --enable-decimal-float=no --disable-float128 --enable-formally-proven-code "] in /tmp/libmpfr/mpfr-4.2.2
+checking build system type... powerpc64le-unknown-linux-gnu
+checking host system type... powerpc64le-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... 
+
+...
+
+oat128
+PASS: tset_ld
+PASS: tset_q
+PASS: tset_d
+PASS: tset_sj
+PASS: tset_str
+PASS: tset_si
+PASS: tset_z
+PASS: tsi_op
+PASS: tset_z_2exp
+PASS: tsin
+PASS: tsin_cos
+PASS: tsinh_cosh
+PASS: tsinh
+PASS: tsprintf
+PASS: tsqr
+PASS: tsinu
+PASS: tsqrt_ui
+PASS: tstckintc
+PASS: tstdint
+PASS: tstrtofr
+PASS: tsqrt
+PASS: tsub1sp
+PASS: tsub_d
+PASS: tsub_ui
+PASS: tsubnormal
+PASS: tsub
+PASS: tswap
+PASS: ttan
+PASS: ttanh
+PASS: tget_str
+PASS: ttotal_order
+PASS: ttrunc
+PASS: ttanu
+PASS: tui_pow
+PASS: tui_sub
+PASS: tui_div
+PASS: tvalist
+PASS: ty0
+PASS: ty1
+PASS: tyn
+PASS: turandom
+PASS: tzeta_ui
+PASS: tsum
+PASS: tzeta
+FAIL: trint
+============================================================================
+Testsuite summary for MPFR 4.2.2
+============================================================================
+# TOTAL: 198
+# PASS:  194
+# SKIP:  3
+# XFAIL: 0
+# FAIL:  1
+# XPASS: 0
+# ERROR: 0
+============================================================================
+See tests/test-suite.log for debugging.
+============================================================================
+make[3]: *** [Makefile:3027: test-suite.log] Error 1
+make[3]: Leaving directory '/tmp/libmpfr/mpfr-4.2.2/tests'
+make[2]: *** [Makefile:3162: check-TESTS] Error 2
+make[2]: Leaving directory '/tmp/libmpfr/mpfr-4.2.2/tests'
+make[1]: *** [Makefile:4613: check-am] Error 2
+make[1]: Leaving directory '/tmp/libmpfr/mpfr-4.2.2/tests'
+make: *** [Makefile:529: check-recursive] Error 1
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x6c
+modernc.org/ccgo/v3/lib.Fatal(0x0?, {0xc00d5b7a18, 0x1, 0x1})
+	/home/debian/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:322 +0x5c
+modernc.org/ccgo/v3/lib.MustInDir(0x1, {0xc000026300?, 0xc000026978?}, 0xc0000374a0?)
+	/home/debian/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:370 +0x8c
+main.main()
+	/home/debian/src/modernc.org/builder/.exclude/modernc.org/libmpfr/generator.go:107 +0xbe4
+
+exit status 2
+exit status 1
+libmpfr.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

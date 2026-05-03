@@ -1,0 +1,56 @@
+go1.24.3 linux/s390x
+2025-05-16T11:48:05+02:00 commit 5348a433958ab45b832fe3b6cd93b3c798fba2e8, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuth	0.277s
+ok  	modernc.org/knuth/cmd/godvitype	0.118s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftodvi	0.098s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftopk	0.169s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftype	0.111s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomf	0.106s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomft	0.192s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopktype	0.170s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopltotf	0.122s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopooltype	0.171s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotangle	0.122s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotex	0.311s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotftopl	0.309s [no tests to run]
+ok  	modernc.org/knuth/cmd/govftovp	0.110s [no tests to run]
+ok  	modernc.org/knuth/cmd/govptovf	0.173s [no tests to run]
+ok  	modernc.org/knuth/cmd/goweave	0.114s [no tests to run]
+ok  	modernc.org/knuth/dvi	0.258s
+ok  	modernc.org/knuth/dvitype	1.329s
+ok  	modernc.org/knuth/font/afm	0.182s
+ok  	modernc.org/knuth/font/fixed	0.094s
+ok  	modernc.org/knuth/font/pkf	0.126s
+--- FAIL: TestFont (0.01s)
+    --- FAIL: TestFont/testdata/simple.tfm (0.00s)
+panic: runtime error: invalid memory address or nil pointer dereference [recovered]
+	panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x0 pc=0x177d6a]
+
+goroutine 19 [running]:
+testing.tRunner.func1.2({0x1bad00, 0x385c40})
+	/usr/local/go/src/testing/testing.go:1734 +0x2b4
+testing.tRunner.func1()
+	/usr/local/go/src/testing/testing.go:1737 +0x3d6
+panic({0x1bad00, 0x385c40})
+	/usr/local/go/src/runtime/panic.go:792 +0x11a
+testing/internal/testdeps.(*testLog).add(0x38fbd0, {0x1e4efc, 0x4}, {0x1e8dda, 0x13})
+	/usr/local/go/src/testing/internal/testdeps/deps.go:94 +0x5a
+testing/internal/testdeps.(*testLog).Open(0x38fbd0, {0x1e8dda, 0x13})
+	/usr/local/go/src/testing/internal/testdeps/deps.go:81 +0x4e
+internal/testlog.Open({0x1e8dda, 0x13})
+	/usr/local/go/src/internal/testlog/log.go:59 +0x72
+os.OpenFile({0x1e8dda, 0x13}, 0x0, 0x0)
+	/usr/local/go/src/os/file.go:391 +0x36
+os.Open(...)
+	/usr/local/go/src/os/file.go:370
+modernc.org/knuth/font/tfm.TestFont.func1(0xc000082a80)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/knuth/font/tfm/font_test.go:65 +0x62
+testing.tRunner(0xc000082a80, 0xc0000ac490)
+	/usr/local/go/src/testing/testing.go:1792 +0x132
+created by testing.(*T).Run in goroutine 18
+	/usr/local/go/src/testing/testing.go:1851 +0x4e4
+FAIL	modernc.org/knuth/font/tfm	0.134s
+FAIL
+
+FAIL err=exit status 1

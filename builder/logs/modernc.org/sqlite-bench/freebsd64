@@ -1,0 +1,8 @@
+go1.25.5 freebsd/amd64
+2025-12-28T13:59:10+01:00 commit 1a68fb07187fe5458053dcf31c249eb3cd186915, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: Auto-merging results
+CONFLICT (content): Merge conflict in results
+Squash commit -- not updating HEAD
+Automatic merge failed; fix conflicts and then commit the result.
+
+FAIL err=AUTOTASKS: exit status 1

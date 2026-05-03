@@ -1,0 +1,43 @@
+go1.25.3 linux/arm
+2025-11-09T19:17:56+01:00 commit 106d0fe866d8667db60c6a5d8d66d12eced6c52c, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libXrender/libXrender-0.9.10"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/internal/linux/arm -name *linux_arm.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+archivePath libXrender-0.9.10.tar.gz
+extractedArchivePath libXrender-0.9.10
+tempDir /tmp/libXrender
+libRoot /tmp/libXrender/libXrender-0.9.10
+makeRoot /tmp/libXrender/libXrender-0.9.10
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/internal/linux/arm
+execute /usr/bin/tar ["xf" "libXrender-0.9.10.tar.gz" "-C" "/tmp/libXrender"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+execute /usr/bin/sh ["-c" "go mod init example.com/libxrender ; go get modernc.org/libc@latest modernc.org/libX11@latest"] in /tmp/libXrender/libXrender-0.9.10
+go: creating new go.mod: module example.com/libxrender
+go: to add module requirements and sums:
+	go mod tidy
+modernc.org/libX11@v0.11.24: verifying module: modernc.org/libX11@v0.11.24: Get "https://sum.golang.org/lookup/modernc.org/lib!x11@v0.11.24": net/http: TLS handshake timeout
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x78
+modernc.org/fileutil/ccgo.Fatalf(0x1, {0x538295, 0x18}, {0x1829c80, 0x4, 0x4})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:313 +0x20
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0, 0x0}, {0x52c7c5, 0x2}, {0x18105a0, 0x2, 0x2})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:414 +0x158
+main.main.func2()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/generator.go:112 +0x1a8
+modernc.org/fileutil/ccgo.InDir({0x1926270, 0x21}, 0x1829e58)
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:365 +0xdc
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x1926270, 0x21}, 0x1829e58)
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:370 +0x2c
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/generator.go:104 +0xf70
+
+sh [-c go mod init example.com/libxrender ; go get modernc.org/libc@latest modernc.org/libX11@latest]
+output: go: creating new go.mod: module example.com/libxrender
+go: to add module requirements and sums:
+	go mod tidy
+modernc.org/libX11@v0.11.24: verifying module: modernc.org/libX11@v0.11.24: Get "https://sum.golang.org/lookup/modernc.org/lib!x11@v0.11.24": net/http: TLS handshake timeout
+
+err: exit status 1
+exit status 1
+libxrender.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

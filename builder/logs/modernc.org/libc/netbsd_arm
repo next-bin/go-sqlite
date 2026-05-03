@@ -1,0 +1,9 @@
+2023-10-20T00:13:07Z commit b86eeb4ff13d20bb08b6dc271799311216d86c8c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libc [modernc.org/libc.test]
+./libc.go:1450:14: undefined: a_load_8
+./libc.go:1454:15: undefined: a_load_16
+./libc.go:1458:14: undefined: a_load_8
+./libc.go:1462:16: undefined: a_load_16
+FAIL	modernc.org/libc [build failed]
+
+FAIL err=exit status 1

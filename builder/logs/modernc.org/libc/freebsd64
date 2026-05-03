@@ -1,0 +1,29 @@
+2025-01-31T10:23:21+01:00 commit 45df9dc8e73faa68fe10c39b32ddb1335a08f356, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestIssue42 (0.37s)
+    all_test.go:44: FAIL err=exit status 1
+        Data written at large offset: 12 bytes
+        bytes_read: 12
+        Data read from large offset: 'large offset'
+        bytes_read: 3
+        Data read after lseek: 'END'
+        libc_unix.go:142:Xremove: TODOTODO 
+        goroutine 1 [running, locked to thread]:
+        runtime/debug.Stack()
+        	/usr/local/go/src/runtime/debug/stack.go:26 +0x5e
+        modernc.org/libc.todo({0x0?, 0x86c025ea0?}, {0x0?, 0x0?, 0x0?})
+        	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/etc.go:102 +0x136
+        modernc.org/libc.Xremove(...)
+        	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/libc_unix.go:142
+        main.main1(0x86c1900c0, 0x6c0a23c0?, 0x14?)
+        	/tmp/TestIssue421762844038/001/main.go:118 +0x80f
+        modernc.org/libc.Start(0x52b518)
+        	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc/libc.go:138 +0x16e
+        main.main()
+        	/tmp/TestIssue421762844038/001/main.go:123 +0x1a
+        
+        exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libc	0.382s
+
+FAIL err=exit status 1

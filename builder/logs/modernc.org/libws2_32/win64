@@ -1,0 +1,16 @@
+2024-07-30T02:57:02+02:00 commit 298fce0ba12e1a39414b53e63d7de08cdfbfcbfc, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libws2_32 [modernc.org/libws2_32.test]
+.\libws2_32_windows_amd64.go:61778:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:61958:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:62214:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:62280:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:62308:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:62336:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:62364:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:62601:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:62838:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:63062:7: undefined: libc.X__ccgo_SyscallFP
+.\libws2_32_windows_amd64.go:63062:7: too many errors
+FAIL	modernc.org/libws2_32 [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,6 @@
+2023-06-09T00:13:57+02:00 commit aa6404b3f038785fb4304e078c7ad6a8ce2430e0, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestWALMem (24.06s)
+    all_test.go:1652: files are different, expected equal
+FAIL
+exit status 1
+FAIL	modernc.org/file	329.883s

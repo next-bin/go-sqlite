@@ -1,0 +1,3 @@
+2025-03-24T03:14:40+01:00 commit 4b9fb3b6860005a7464f496d057adf0cc90f72f5, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+
+FAIL err=exec: "wget": executable file not found in %PATH%

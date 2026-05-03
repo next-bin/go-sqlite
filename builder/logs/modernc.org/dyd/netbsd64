@@ -1,0 +1,13 @@
+2025-01-21T02:24:30+01:00 commit 9261d4705e73922f0ba2148508cf990ce2a24dfe, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/net v0.33.0
+go: downloading modernc.org/sqlite v1.34.4
+go: downloading golang.org/x/mod v0.17.0
+go: downloading modernc.org/gc/v3 v3.0.0-20240304020402-f0dba7c97c2b
+go: downloading github.com/hashicorp/golang-lru/v2 v2.0.7
+# modernc.org/sqlite
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.34.4/sqlite.go:1509:30: undefined: sqlite3.Xsqlite3_is_interrupted
+FAIL	modernc.org/dyd [build failed]
+FAIL	modernc.org/dyd/dyd [build failed]
+FAIL
+
+FAIL err=exit status 1

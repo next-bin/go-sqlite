@@ -1,0 +1,4 @@
+go1.26.2 linux/amd64
+2026-04-10T15:04:54+02:00 commit 92bd1f70e3722db22d9a8fa97dde7599dc9c2508, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: open : no such file or directory

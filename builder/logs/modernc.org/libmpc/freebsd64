@@ -1,0 +1,8 @@
+2024-05-22T09:32:04+02:00 commit 63496543bcca9d927574abe0fa8a28f81692abca, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.00s)
+    all_test.go:61: lstat testdata/freebsd/amd64/tests: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libmpc	0.005s
+
+FAIL err=exit status 1

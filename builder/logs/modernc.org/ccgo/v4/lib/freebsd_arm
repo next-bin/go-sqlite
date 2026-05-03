@@ -1,0 +1,7 @@
+2023-10-14T00:04:55Z commit ff161e77dfa5761b7f6d803923e6523284b870ff, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/cc/v4 v4.14.12
+# modernc.org/ccgo/v4/lib [modernc.org/ccgo/v4/lib.test]
+./all_test.go:646:9: undefined: testExecKnownFails
+FAIL	modernc.org/ccgo/v4/lib [build failed]
+
+FAIL err=exit status 1

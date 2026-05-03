@@ -1,0 +1,12 @@
+2023-10-18T20:01:17+02:00 commit 02567b52aaf832daa5ce2f35d063687d06106764, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+execute /Users/jnml/bin/amd64/go/bin/go ["build" "-o" "/tmp/Test887460719/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_darwin_amd64.go"] in /Users/jnml/src/modernc.org/builder2/.exclude/modernc.org/libpcre2-32
+package internal/pcre2test/ccgo_darwin_amd64.go is not in std (/Users/jnml/bin/amd64/go/src/internal/pcre2test/ccgo_darwin_amd64.go)
+--- FAIL: Test (0.06s)
+    all_test.go:33: package internal/pcre2test/ccgo_darwin_amd64.go is not in std (/Users/jnml/bin/amd64/go/src/internal/pcre2test/ccgo_darwin_amd64.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-32	0.702s
+
+FAIL err=exit status 1

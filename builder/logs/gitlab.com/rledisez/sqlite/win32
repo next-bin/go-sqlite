@@ -1,0 +1,18 @@
+2024-02-24T01:53:33+01:00 commit 0a8da4bb8f4a084eb474d2cb79b86ecba3d2585c, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+# modernc.org/sqlite/lib
+lib\defs.go:13:35: undefined: sqlite3_index_constraint
+lib\defs.go:14:35: undefined: sqlite3_index_orderby
+lib\defs.go:15:35: undefined: sqlite3_index_constraint_usage
+lib\mutex.go:19:5: undefined: Xsqlite3_threadsafe
+lib\mutex.go:29:11: undefined: Xsqlite3_config
+lib\mutex.go:29:32: undefined: SQLITE_CONFIG_MUTEX
+lib\mutex.go:29:122: undefined: SQLITE_OK
+lib\mutex.go:30:8: undefined: Xsqlite3_errstr
+lib\mutex.go:40:17: undefined: Sqlite3_mutex_methods
+lib\mutex.go:239:46: undefined: SQLITE_OK
+lib\mutex.go:239:46: too many errors
+FAIL	modernc.org/sqlite [build failed]
+FAIL	modernc.org/sqlite/functest [build failed]
+FAIL
+
+FAIL err=exit status 1

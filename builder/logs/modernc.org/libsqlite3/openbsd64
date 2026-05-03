@@ -1,0 +1,10 @@
+go1.25.5 openbsd/amd64
+2026-01-16T10:48:15+01:00 commit 7bb4c83053ff950c0e3d2835802d9d0121c880ab, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: --2026-01-16 10:48:14--  https://www.sqlite.org/2025/sqlite-amalgamation-3510200.zip
+Resolving www.sqlite.org (www.sqlite.org)... 194.195.208.62, 2600:3c02::f03c:95ff:fe07:695
+Connecting to www.sqlite.org (www.sqlite.org)|194.195.208.62|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2026-01-16 10:48:15 ERROR 404: Not Found.
+
+
+FAIL err=AUTOTASKS: exit status 8

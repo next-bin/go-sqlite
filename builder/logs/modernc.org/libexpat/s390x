@@ -1,0 +1,73 @@
+go1.24.4 linux/s390x
+2025-07-09T11:34:20+02:00 commit f0f51c93ebe2f06cad90c41fd2c9fa3f14980724, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libexpat/expat-2.2.10"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/internal/linux/s390x -name \\*linux_s390x.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+archivePath expat-2.2.10.tar.gz
+extractedArchivePath expat-2.2.10
+tempDir /tmp/libexpat
+libRoot /tmp/libexpat/expat-2.2.10
+makeRoot /tmp/libexpat/expat-2.2.10
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/internal/linux/s390x
+execute /usr/bin/tar ["xf" "expat-2.2.10.tar.gz" "-C" "/tmp/libexpat"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /usr/bin/sh ["-c" "go mod init example.com/libexpat ; go get modernc.org/libc@latest modernc.org/libbsd@latest"] in /tmp/libexpat/expat-2.2.10
+go: creating new go.mod: module example.com/libexpat
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.33.0
+go: added modernc.org/libbsd v0.11.16
+go: added modernc.org/libc v1.66.3
+go: added modernc.org/libmd v0.12.21
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -w -mlong-double-64' ./configure --disable-shared "] in /tmp/libexpat/expat-2.2.10
+checking build system type... s390x-ibm-linux-gnu
+checking host system type... s390x-ibm-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports neste
+
+...
+
+e `D' is the default (see `U')
+/usr/bin/ar: `u' modifier ignored since `D' is the default (see `U')
+ranlib libruntests.a
+make  runtests runtestspp
+make[3]: Entering directory '/tmp/libexpat/expat-2.2.10/tests'
+gcc -DHAVE_CONFIG_H -I. -I..  -DHAVE_EXPAT_CONFIG_H -DXML_ENABLE_VISIBILITY=1 -I./../lib  -Wall -Wextra -fexceptions -fno-strict-aliasing -Wmissing-prototypes -Wstrict-prototypes -pedantic -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow -Wformat=2 -Wmisleading-indentation -fvisibility=hidden -DNDEBUG -w -mlong-double-64 -MT runtests.o -MD -MP -MF .deps/runtests.Tpo -c -o runtests.o runtests.c
+source='runtestspp.cpp' object='runtestspp.o' libtool=no \
+DEPDIR=.deps depmode=none /bin/bash ../conftools/depcomp \
+g++ -DHAVE_CONFIG_H -I. -I..  -DHAVE_EXPAT_CONFIG_H -DXML_ENABLE_VISIBILITY=1 -I./../lib    -c -o runtestspp.o runtestspp.cpp
+../conftools/depcomp: line 772: exec: g++: not found
+make[3]: *** [Makefile:759: runtestspp.o] Error 127
+make[3]: *** Waiting for unfinished jobs....
+mv -f .deps/runtests.Tpo .deps/runtests.Po
+make[3]: Leaving directory '/tmp/libexpat/expat-2.2.10/tests'
+make[2]: *** [Makefile:1111: check-am] Error 2
+make[2]: Leaving directory '/tmp/libexpat/expat-2.2.10/tests'
+make[1]: *** [Makefile:790: check-recursive] Error 1
+make[1]: Leaving directory '/tmp/libexpat/expat-2.2.10/tests'
+make: *** [Makefile:558: check-recursive] Error 1
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0xa0
+modernc.org/fileutil/ccgo.Fatal(0x1, {0xc00002faf8, 0x1, 0x1})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.8/ccgo/util.go:323 +0x30
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0xc000192000, 0x1a}, 0xc00002fc68)
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.8/ccgo/util.go:371 +0x9a
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/generator.go:109 +0x110e
+
+exit status 2
+exit status 1
+libexpat.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

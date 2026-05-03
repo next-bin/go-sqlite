@@ -1,0 +1,29 @@
+2022-10-29T01:29:58+02:00 commit 0aaf662a811b798cffff3c2a95530a5d5beaf8a1, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC "/usr/bin/cc"
+--- FAIL: TestPEG (194.45s)
+    all_test.go:177: /usr/local/go118/src/cmd/api/goapi.go:288:6: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/cgo/main.go:466:6: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/cgo/zdefaultcc.go:9:2: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/compile/internal/base/timings.go:99:7: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/compile/internal/dwarfgen/dwarf.go:217:12: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/compile/internal/escape/graph.go:241:6: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/compile/internal/inline/inl.go:1136:12: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/compile/internal/noder/noder.go:1046:5: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/compile/internal/ssa/likelyadjust.go:271:3: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/src/cmd/compile/internal/ssa/regalloc.go:1661:3: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit:
+
+...
+
+bugs/issue9731.go:18:5: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/goto.go:46:1: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/initempty.go:35:1: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/ken/convert.go:431:2: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/ken/rob2.go:59:4: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/stress/maps.go:99:3: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/typeparam/issue48716.dir/main.go:32:45: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/typeparam/mapsimp.dir/main.go:59:23: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/typeparam/mutualimp.dir/b.go:10:15: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+        /usr/local/go118/test/typeparam/orderedmapsimp.dir/main.go:14:25: syntax error (asm_arm.s:831:goexit: all_test.go:223:1: etc.go:588:parse) (asm_arm.s:831:goexit: asm_arm.s:831:goexit: all_test.go:229:1)
+    all_test.go:179: TOTAL files 8,208, skip 85, ok 7,989, fail 134
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v3/internal/ebnf	196.674s

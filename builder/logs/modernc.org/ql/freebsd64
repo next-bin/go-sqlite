@@ -1,0 +1,11 @@
+2024-12-27T00:58:17+01:00 commit 0fb834b1df236ed183d781ef868888b76fe148e2, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/db v1.0.10
+go: downloading modernc.org/b v1.1.0
+go: downloading modernc.org/golex v1.1.0
+go: downloading modernc.org/lldb v1.0.8
+go: downloading modernc.org/sortutil v1.1.1
+go: downloading modernc.org/zappy v1.0.9
+plan.go:12:2: modernc.org/b@v1.1.0: Get "https://proxy.golang.org/modernc.org/b/@v/v1.1.0.zip": net/http: TLS handshake timeout
+file2.go:15:2: modernc.org/db@v1.0.10: Get "https://proxy.golang.org/modernc.org/db/@v/v1.0.10.zip": net/http: TLS handshake timeout
+
+FAIL err=exit status 1

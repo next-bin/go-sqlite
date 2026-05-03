@@ -1,0 +1,71 @@
+go1.26.2 windows/386
+2026-04-11T16:43:14+02:00 commit b7a283e0592ca43c580ce5ac401f0a0a9bcfc3aa, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+tmpDir=C:\Users\jnml\AppData\Local\Temp\TestTclTest497270873\001
+execute C:\Program Files\Go\bin\go.exe ["build" "-o" "C:\\Users\\jnml\\AppData\\Local\\Temp\\TestTclTest497270873\\001\\testfixture.exe" "-tags=" ".\\internal\\testfixture"] in C:\Users\jnml\src\modernc.org\builder\.exclude\modernc.org\libsqlite3
+all_test.go:320:TestTclTest: TRC ["C:\\Users\\jnml\\AppData\\Local\\Temp\\TestTclTest497270873\\001\\test\\permutations.test" "full"]
+execute C:\Users\jnml\AppData\Local\Temp\TestTclTest497270873\001\testfixture.exe ["C:\\Users\\jnml\\AppData\\Local\\Temp\\TestTclTest497270873\\001\\test\\permutations.test" "full" "-verbose=0"] in C:\Users\jnml\AppData\Local\Temp\TestTclTest497270873\001
+Time: 8_3_names.test 20 ms
+Time: affinity2.test 46 ms
+Time: affinity3.test 44 ms
+Time: aggerror.test 109 ms
+Time: aggfault.test 998 ms
+Time: aggnested.test 104 ms
+Time: aggorderby.test 196 ms
+Time: alias.test 15 ms
+Time: alter.test 205 ms
+Time: alter2.test 86 ms
+Time: alter3.test 275 ms
+Time: alter4.test 95 ms
+Time: alterauth.test 18 ms
+Time: alterauth2.test 42 ms
+Time: altercol.test 524 ms
+Time: altercons.test 277 ms
+Time: altercons2.test 82 ms
+Time: altercorrupt.test 20 ms
+Time: alter
+
+...
+
+ime: zipfilefault.test 1229 ms
+        SQLite 2026-04-09 11:41:38 4525003a53a7fc63ca75c59b22c79608659ca12f0131f52c18637f829977alt1
+        21 errors out of 1011284 tests on win32 Windows NT 32-bit
+        !Failures on these tests: dbstatus-2.0-1.a dbstatus-2.0-2.a dbstatus-2.0-3.a dbstatus-2.0-4.a dbstatus-2.0-5.a dbstatus-2.0-7.a dbstatus-2.64-1.a dbstatus-2.64-2.a dbstatus-2.64-3.a dbstatus-2.64-4.a dbstatus-2.64-5.a dbstatus-2.64-7.a dbstatus-2.120-1.a dbstatus-2.120-2.a dbstatus-2.120-3.a dbstatus-2.120-4.a dbstatus-2.120-5.a dbstatus-2.120-7.a malloc5-6.2.2 malloc5-6.2.3 vtabH-3.1
+        WARNING: Multi-threaded tests skipped: Linked against a non-threadsafe Tcl build
+        All memory allocations freed - no leaks
+        Maximum memory usage: 9540408 bytes
+        Current memory usage: 0 bytes
+        Number of malloc()  : -1 calls
+    all_test.go:384: dbstatus-2.0-1.a: expected fail
+    all_test.go:384: dbstatus-2.0-2.a: expected fail
+    all_test.go:384: dbstatus-2.0-3.a: expected fail
+    all_test.go:384: dbstatus-2.0-4.a: expected fail
+    all_test.go:384: dbstatus-2.0-5.a: expected fail
+    all_test.go:384: dbstatus-2.0-7.a: expected fail
+    all_test.go:384: dbstatus-2.64-1.a: expected fail
+    all_test.go:384: dbstatus-2.64-2.a: expected fail
+    all_test.go:384: dbstatus-2.64-3.a: expected fail
+    all_test.go:384: dbstatus-2.64-4.a: expected fail
+    all_test.go:384: dbstatus-2.64-5.a: expected fail
+    all_test.go:384: dbstatus-2.64-7.a: expected fail
+    all_test.go:384: dbstatus-2.120-1.a: expected fail
+    all_test.go:384: dbstatus-2.120-2.a: expected fail
+    all_test.go:384: dbstatus-2.120-3.a: expected fail
+    all_test.go:384: dbstatus-2.120-4.a: expected fail
+    all_test.go:384: dbstatus-2.120-5.a: expected fail
+    all_test.go:384: dbstatus-2.120-7.a: expected fail
+    all_test.go:384: malloc5-6.2.2: expected fail
+    all_test.go:384: malloc5-6.2.3: expected fail
+    all_test.go:393: vtabH-3.1 FAIL
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	6204.401s
+
+FAIL err=exit status 1

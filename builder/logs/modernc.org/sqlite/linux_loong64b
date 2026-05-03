@@ -1,0 +1,65 @@
+go1.25.5 linux/loong64
+2025-12-27T17:03:50+01:00 commit 25fe049c2cca4fe906ab2305bd3dcfc3aa824aea, GOMAXPROCS 16, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for linux/loong64
+execute /usr/local/go/bin/go ["test" "-v" "-timeout" "1h" "-race" "-run" "TestConcurrentGoroutines" "-inner"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite
+test binary compiled for linux/loong64
+=== RUN   TestConcurrentGoroutines
+    all_test.go:739: 8 goroutines concurrently inserted 40000 rows in 4.951162111s
+--- PASS: TestConcurrentGoroutines (7.64s)
+PASS
+ok  	modernc.org/sqlite	8.671s
+unexpected fault address 0x7fff884a3058
+fatal error: fault
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x7fff884a3058 pc=0x1ccec0]
+
+goroutine 96033 gp=0xc00025cfc0 m=4 mp=0xc00006d808 [running]:
+runtime.throw({0x4646a0?, 0x7fff884fa448?})
+	/usr/local/go/src/runtime/panic.go:1094 +0x38 fp=0xc000194fb0 sp=0xc000194f88 pc=0x90ba8
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:939 +0x250 fp=0xc000195008 sp=0xc000194fb0 pc=0x92990
+modernc.org/sqlite/lib._pcache1Unpin(0xc0003040b0, 0x7fffa80a40a8, 0x7fff884c3028?, 0x0?)
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_loong64.go:28556 +0xc0 fp=0xc000195048 sp=0xc000195010 pc=0x1ccec0
+modernc.org/sqlite/lib._pcacheUnpin(...)
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_loong64.go:26735
+modernc.org/sqlite/lib._sqlite3PcacheMakeClean(0xc0003040b0, 0x7fff884c3060)
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_loong64.go:27091 +0x9c fp=0xc000195078 sp=0xc000195048 pc=0x1ca5ec
+modernc.org/sqlite/lib._sqlite3PcacheCleanAll(0xc0003040b0, 0x7fffa9263160)
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_loong64.go:27109 +0x34 fp=0xc000195090 sp=0xc000195078 pc=0x1ca654
+modernc.org/sqlite/lib._sqlite3PagerCommitPhaseOne(0xc0003040b0, 0x7fffa9263028, 0x0, 0x0)
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_loong64.go:35087 +0x198 fp=0xc0001950f8 sp=0xc000195090 pc=0x1d8dd8
+modernc.org/sqlite/lib._sqlite3BtreeCommitPhaseOne(0xc0003040b0, 0x7fff
+
+...
+
+0?, {0x4fb3c8, 0x7dc860}, {0x4fb748, 0xc000514370}, 0xc000678000, 0xc000510200, {0x47647c, 0x38}, {0x0, ...})
+	/usr/local/go/src/database/sql/sql.go:1781 +0x154 fp=0xc000365dc8 sp=0xc000365c28 pc=0x3790a4
+database/sql.(*Tx).QueryContext(0xc000506400, {0x4fb3c8, 0x7dc860}, {0x47647c, 0x38}, {0x0, 0x0, 0x0})
+	/usr/local/go/src/database/sql/sql.go:2535 +0x94 fp=0xc000365e30 sp=0xc000365dc8 pc=0x37b824
+database/sql.(*Tx).QueryRowContext(...)
+	/usr/local/go/src/database/sql/sql.go:2553
+modernc.org/sqlite.testIssue65.func1({0x4fb3c8, 0x7dc860})
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:2389 +0x108 fp=0xc000365f08 sp=0xc000365e30 pc=0x3bbd78
+modernc.org/sqlite.testIssue65.func3()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:2430 +0xb8 fp=0xc000365fd8 sp=0xc000365f08 pc=0x3bb838
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_loong64.s:700 +0x4 fp=0xc000365fd8 sp=0xc000365fd8 pc=0x98fa4
+created by modernc.org/sqlite.testIssue65 in goroutine 102344
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:2426 +0x2b8
+
+goroutine 102332 gp=0xc000440700 m=nil [select]:
+runtime.gopark(0xc00029a798?, 0x2?, 0x80?, 0x43?, 0xc00029a794?)
+	/usr/local/go/src/runtime/proc.go:460 +0xd8 fp=0xc00029a638 sp=0xc00029a620 pc=0x90cd8
+runtime.selectgo(0xc00029a798, 0xc00029a790, 0x0?, 0x0, 0x0?, 0x1)
+	/usr/local/go/src/runtime/select.go:351 +0x76c fp=0xc00029a758 sp=0xc00029a638 pc=0x6e54c
+database/sql.(*DB).connectionOpener(0xc00031c410, {0x4fb748, 0xc000419590})
+	/usr/local/go/src/database/sql/sql.go:1261 +0x88 fp=0xc00029a7b8 sp=0xc00029a758 pc=0x375d78
+database/sql.OpenDB.gowrap1()
+	/usr/local/go/src/database/sql/sql.go:841 +0x44 fp=0xc00029a7d8 sp=0xc00029a7b8 pc=0x374924
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_loong64.s:700 +0x4 fp=0xc00029a7d8 sp=0xc00029a7d8 pc=0x98fa4
+created by database/sql.OpenDB in goroutine 102330
+	/usr/local/go/src/database/sql/sql.go:841 +0x124
+exit status 2
+FAIL	modernc.org/sqlite	87.505s
+
+FAIL err=exit status 1

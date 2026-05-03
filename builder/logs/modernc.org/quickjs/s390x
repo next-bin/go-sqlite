@@ -1,0 +1,7 @@
+go1.25.1 linux/s390x
+2025-10-11T20:02:27+02:00 commit 2f58aa8b7b2a6aa12f3a067a880adf4d419c7d65, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: # command-line-arguments
+./generator.go:73:14: undefined: exec
+quickjs.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

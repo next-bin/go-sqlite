@@ -1,0 +1,8 @@
+2022-07-30T09:58:07+02:00 81b222527ac4fd4a244f128eb9fd561aee246ab3 GOMAXPROCS 1
+go: downloading github.com/google/uuid v1.3.0
+go: downloading github.com/mattn/go-isatty v0.0.12
+go: downloading golang.org/x/sys v0.0.0-20211007075335-d3039528d8ac
+go: downloading modernc.org/mathutil v1.4.1
+go: downloading modernc.org/memory v1.1.1
+go: downloading github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0
+/home/jnml/pkg/mod/github.com/mattn/go-isatty@v0.0.12/isatty_bsd.go:6:8: zip: not a valid zip file

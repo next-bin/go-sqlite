@@ -1,0 +1,7 @@
+2024-09-02T12:41:21+02:00 commit 66cf9ccda93cb874ddf09252330e7d7961f5f9b0, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libXdmcp
+/home/debian/pkg/mod/modernc.org/lib!xdmcp@v0.11.0/libxdmcp.go:13:6: _arc4random_buf redeclared in this block
+	/home/debian/pkg/mod/modernc.org/lib!xdmcp@v0.11.0/ccgo_linux_ppc64le.go:2182:6: other declaration of _arc4random_buf
+FAIL	modernc.org/libtk8.6 [build failed]
+
+FAIL err=exit status 1

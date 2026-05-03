@@ -1,0 +1,20 @@
+2024-02-02T00:52:47Z commit 0a8a35981ca6012072da14aed24fe1999d997c67, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libsamplerate v0.0.6
+go: downloading github.com/google/uuid v1.6.0
+go: downloading github.com/mattn/go-isatty v0.0.20
+go: downloading golang.org/x/sys v0.16.0
+# github.com/josharian/secretrabbit [github.com/josharian/secretrabbit.test]
+./src.go:16:46: undefined: libsamplerate.SRC_SINC_BEST_QUALITY
+./src.go:17:46: undefined: libsamplerate.SRC_SINC_MEDIUM_QUALITY
+./src.go:18:46: undefined: libsamplerate.SRC_SINC_FASTEST
+./src.go:19:46: undefined: libsamplerate.SRC_ZERO_ORDER_HOLD
+./src.go:20:46: undefined: libsamplerate.SRC_LINEAR
+./src.go:155:53: undefined: libsamplerate.SRC_ERR_MALLOC_FAILED
+./src.go:156:53: undefined: libsamplerate.SRC_ERR_BAD_STATE
+./src.go:157:53: undefined: libsamplerate.SRC_ERR_BAD_DATA
+./src.go:158:53: undefined: libsamplerate.SRC_ERR_BAD_DATA_PTR
+./src.go:159:53: undefined: libsamplerate.SRC_ERR_NO_PRIVATE
+./src.go:159:53: too many errors
+FAIL	github.com/josharian/secretrabbit [build failed]
+
+FAIL err=exit status 1

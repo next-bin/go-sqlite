@@ -1,0 +1,41 @@
+2023-06-09T00:33:22+02:00 commit db91cd867c4ec31840b434821811fee375dbd8cc, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc v1.24.1
+CC=/usr/bin/gcc
+Apple clang version 14.0.3 (clang-1403.0.22.14.1)
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v3/lib/sqlite"] in /private/tmp/ccgo-test-2298222117
+go: creating new go.mod: module example.com/ccgo/v3/lib/sqlite
+execute /usr/local/go/bin/go ["get" "modernc.org/libc"] in /private/tmp/ccgo-test-2298222117
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.3.0
+go: added github.com/mattn/go-isatty v0.0.16
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab
+go: added modernc.org/libc v1.24.1
+go: added modernc.org/mathutil v1.5.0
+go: added modernc.org/memory v1.6.0
+--- FAIL: TestBug (14.21s)
+    all_test.go:2870: /ccgo/bug/cpl_convert.c: skipped: /usr/bin/gcc [-w -lm] -o ./cpl_convert cpl_convert.c: system C compiler: exit status 1
+        cpl_convert.c:23:3: error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+          printf("%d\n", kIsInvisible);
+          ^
+        cpl_convert.c:23:3: note: include the header <stdio.h> or explicitly provide a declaration for 'printf'
+        1 error generated.
+        
+    all_test.go:2870: /ccgo/bug/dmesg.c: skipped: /usr/bin/gcc [-w -lm] -o ./dmesg dmesg.c: system C compiler: exit status 1
+        dmesg.c:2:2: error: call to undeclared function '__ccgo_dmesg'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+                __ccgo_dmesg("%s:%d: test", __FILE__, __LINE__);
+                ^
+        1 error generated.
+        
+    all_test.go:2872: /ccgo/bug/struct2.c: struct2.c: main2511.go:744:19: mixed named and unnamed parameters
+        main2511.go:747:166: expected ';', found F__ccgo_pad1
+        main2511.go:756:90: expected '}', found 'return'
+        main2511.go:757:2: expected '}', found 'return'
+        main2511.go:758:1: expected ')', found '}'
+        main2511.go:758:3: expected ')', found 'EOF'
+        : exit status 2
+    all_test.go:2904: files 42, ok 39, failed 1
+    all_test.go:2920: FAIL /ccgo/bug/struct2.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	605.325s

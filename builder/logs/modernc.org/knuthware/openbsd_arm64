@@ -1,0 +1,48 @@
+2023-02-01T00:23:23+01:00 commit b2a9b94acbb8760b9f0ae8246dcacd5b1ed0e24c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuthware	0.457s
+ok  	modernc.org/knuthware/cmd/godvitype	0.376s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftodvi	0.323s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftopk	0.523s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftype	0.490s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomf	0.295s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomft	0.583s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopktype	0.244s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopltotf	0.345s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopooltype	0.348s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotangle	0.315s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotex	0.375s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotftopl	0.259s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govftovp	1.044s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govptovf	0.270s [no tests to run]
+ok  	modernc.org/knuthware/cmd/goweave	0.244s [no tests to run]
+ok  	modernc.org/knuthware/dvitype	1.762s
+ok  	modernc.org/knuthware/gftodvi	20.531s
+ok  	modernc.org/knuthware/gftopk	19.627s
+ok  	modernc.org/knuthware/gftype	24.728s
+--- FAIL: Test (11.44s)
+    all_test.go:46: "trap.72270gf": 1028
+    all_test.go:46: "trap.fot": 1711
+    all_test.go:46: "trap.log": 121710
+    all_test.go:46: "trap.mf": 11899
+    all_test.go:46: "trap.pl": 10388
+    all_test.go:46: "trap.typ": 4552
+    all_test.go:46: "trapin.fot": 2303
+    all_test.go:46: "trapin.log": 4593
+    all_test.go:196: 4600 bytes matches trapin.log OK
+    all_test.go:247: timeout
+FAIL
+FAIL	modernc.org/knuthware/mf	11.743s
+ok  	modernc.org/knuthware/mf/internal/trap	0.303s
+ok  	modernc.org/knuthware/mft	0.322s
+ok  	modernc.org/knuthware/pktype	18.634s
+ok  	modernc.org/knuthware/pltotf	6.847s
+ok  	modernc.org/knuthware/pooltype	3.105s
+ok  	modernc.org/knuthware/tangle	76.063s
+ok  	modernc.org/knuthware/tex	26.671s
+ok  	modernc.org/knuthware/tex/internal/trip	0.526s
+ok  	modernc.org/knuthware/tftopl	1.157s
+ok  	modernc.org/knuthware/vftovp	1.778s
+ok  	modernc.org/knuthware/vptovf	8.208s
+ok  	modernc.org/knuthware/weave	29.501s
+ok  	modernc.org/knuthware/web	282.390s
+FAIL

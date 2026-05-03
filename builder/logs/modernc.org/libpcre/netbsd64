@@ -1,0 +1,12 @@
+2023-10-21T00:05:33+02:00 commit 7e22000a8c404da7cb07c666a38853e09e0439fe, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/home/jnml/tmpdir/Test3598206164/001/pcretest" "-tags=" "internal/pcretest/ccgo_netbsd_amd64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre
+package internal/pcretest/ccgo_netbsd_amd64.go is not in std (/usr/local/go/src/internal/pcretest/ccgo_netbsd_amd64.go)
+--- FAIL: Test (0.01s)
+    all_test.go:33: package internal/pcretest/ccgo_netbsd_amd64.go is not in std (/usr/local/go/src/internal/pcretest/ccgo_netbsd_amd64.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre	0.028s
+
+FAIL err=exit status 1

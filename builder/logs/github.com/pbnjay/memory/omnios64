@@ -1,0 +1,8 @@
+2024-03-21T03:28:39+01:00 commit 7b4eea64cf580186c0eceb10dc94ba3a098af46c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestNonZero (0.00s)
+    memory_test.go:7: TotalMemory returned 0
+FAIL
+exit status 1
+FAIL	github.com/pbnjay/memory	0.006s
+
+FAIL err=exit status 1

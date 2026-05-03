@@ -1,0 +1,53 @@
+2024-04-25T14:47:47+02:00 commit 1cce12caa836af4cc1bfc209f00c3a704cc32479, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["mod" "init" "test"] in /home/jnml/tmp/TestExec3956204967/001
+go: creating new go.mod: module test
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@latest"] in /home/jnml/tmp/TestExec3956204967/001
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.18.0
+go: added modernc.org/libc v1.50.2
+go: added modernc.org/mathutil v1.6.0
+go: added modernc.org/memory v1.8.0
+12:07:34.744 expr.go:130:convert: TRC struct-non-lval-2.c:6:3: struct foo {x char; y char; z array of 2 char} exprUintptr -> pointer to struct foo exprUintptr
+12:07:34.751 expr.go:130:convert: TRC struct-non-lval-2.c:6:3: struct foo {x char; y char; z array of 2 char} exprUintptr -> pointer to struct foo exprUintptr
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v4/lib/csmith"] in /home/jnml/tmp/ccgo-test-3518235295
+go: creating new go.mod: module example.com/ccgo/v4/lib/csmith
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@latest"] in /home/jnml/tmp/ccgo-test-3518235295
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.18.0
+go: added modernc.org/libc v1.50.2
+go: added modernc.org/mathutil v1.6.0
+go: added modernc.org/memory v1.8.0
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v4/lib/sqlitea"] in /home/jnml/tmp/ccgo-test-1672249020
+go: creating new go.mod: module example.com/ccgo/v4/lib/sqlitea
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@latest"] in /home/jnml/tmp/ccgo-test-1672249020
+go: downloading modernc.org/libc v1.50.3
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.18.0
+go: added modernc.org/libc v1.50.3
+go: added modernc.org/mathutil v1.6.0
+go: added modernc.org/memory v1.8.0
+--- FAIL: TestSQLite (13.22s)
+    --- FAIL: TestSQLite/simple (13.22s)
+        all_test.go:1184: "/usr/include/machine/endian.h:37:2: assembler statements not supported (decl.go:297:externalDeclaration: decl.go:358:functionDefinition: decl.go:388:functionDefinition0: stmt.go:330:compoundStatement:..."
+            "/usr/include/machine/endian.h:44:2: assembler statements not supported (decl.go:297:externalDeclaration: decl.go:358:functionDefinition: decl.go:388:functionDefinition0: stmt.go:330:compoundStatement:..."
+            "/usr/include/machine/endian.h:51:2: assembler statements not supported (decl.go:297:externalDeclaration: decl.go:358:functionDefinition: decl.go:388:functionDefinition0: stmt.go:330:compoundStatement:..."
+            "/usr/include/machine/endian.h:37:2: assembler statements not supported (decl.go:297:externalDeclaration: decl.go:358:functionDefinition: decl.go:388:functionDefinition0: stmt.go:330:compoundStatement:..."
+            "/usr/include/machine/endian.h:44:2: assembler statements not supported (decl.go:297:externalDeclaration: decl.go:358:functionDefinition: decl.go:388:functionDefinition0: stmt.go:330:compoundStatement:..."
+            "/usr/include/machine/endian.h:51:2: assembler statements not supported (decl.go:297:externalDeclaration: decl.go:358:functionDefinition: decl.go:388:functionDefinition0: stmt.go:330:compoundStatement:..."
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v4/lib	9873.457s
+
+FAIL err=exit status 1

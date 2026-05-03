@@ -1,0 +1,11 @@
+2023-12-19T16:21:11+01:00 commit cb1ec1f9b9a6b7d0238b00d4cd63942b89ae407d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute go ["build" "-o" "/tmp/TestMake3628644974/001/cc" "fakecc.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake3628644974/001/cc" "/tmp/TestMake3628644974/001/gcc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake3628644974/001/cc" "/tmp/TestMake3628644974/001/clang"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+--- FAIL: TestSingleBytewchar (0.36s)
+    all_test.go:2738: unexpected Translate error: /usr/include/machine/_types.h:126:27: unexpected identifier, expected external declaration (parser.go:438:externalDeclaration: parser.go:378:translationUnit)
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	272.002s
+
+FAIL err=exit status 1

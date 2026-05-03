@@ -1,0 +1,4 @@
+2024-12-01T01:59:54Z commit 17bd65f5a9d4b23c10859784e18507d280740f4f, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+no Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre2-posix
+
+FAIL err=exit status 1

@@ -1,0 +1,60 @@
+go1.25.5 linux/loong64
+2026-02-04T20:33:19+01:00 commit 7c38c362860ed9340ac40fde6c3b50b3c9e73799, GOMAXPROCS 16, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libsamplerate
+archivePath 4858fb016550d677de2356486bcceda5aed85a72.zip
+extractedArchivePath libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+tempDir /tmp/libsamplerate
+libRoot /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+makeRoot /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+execute /usr/bin/unzip ["4858fb016550d677de2356486bcceda5aed85a72.zip" "-d" "/tmp/libsamplerate"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libsamplerate
+Archive:  4858fb016550d677de2356486bcceda5aed85a72.zip
+4858fb016550d677de2356486bcceda5aed85a72
+   creating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/AUTHORS  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/CMakeLists.txt  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/COPYING  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/ChangeLog  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/INSTALL  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Makefile.am  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/NEWS  
+   creating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/Readme.md  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/generate_filter.m  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/make_filter.m  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550
+
+...
+
+e/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/tests/varispeed_test.c  
+execute /usr/bin/sh ["-c" "go mod init example.com/libsamplerate ; go get modernc.org/libc@latest modernc.org/libsamplerate@latest"] in /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+go: creating new go.mod: module example.com/libsamplerate
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libsamplerate@latest: unrecognized import path "modernc.org/libsamplerate": https fetch: Get "https://modernc.org/libsamplerate?go-get=1": net/http: TLS handshake timeout
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x70
+modernc.org/ccgo/v3/lib.Fatalf(0xc0?, {0x55c868, 0x18}, {0xc000035ac0, 0x4, 0x4})
+	/home/cznic/go/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:312 +0x40
+modernc.org/ccgo/v3/lib.MustShell(0x1, {0x55097b, 0x2}, {0xc000093460, 0x2, 0x2})
+	/home/cznic/go/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:408 +0x108
+main.main.func2()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libsamplerate/generator.go:102 +0x144
+modernc.org/ccgo/v3/lib.InDir({0xc00002e190, 0x49}, 0xc000035dd0)
+	/home/cznic/go/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:364 +0xc0
+modernc.org/ccgo/v3/lib.MustInDir(0x1, {0xc00002e190?, 0x5?}, 0xc0001b4120?)
+	/home/cznic/go/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:369 +0x30
+main.main()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libsamplerate/generator.go:97 +0x948
+
+sh [-c go mod init example.com/libsamplerate ; go get modernc.org/libc@latest modernc.org/libsamplerate@latest]
+output: go: creating new go.mod: module example.com/libsamplerate
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libsamplerate@latest: unrecognized import path "modernc.org/libsamplerate": https fetch: Get "https://modernc.org/libsamplerate?go-get=1": net/http: TLS handshake timeout
+
+err: exit status 1
+exit status 1
+libsamplerate.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

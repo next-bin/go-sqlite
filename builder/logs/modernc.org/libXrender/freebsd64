@@ -1,0 +1,104 @@
+go1.26.2 freebsd/amd64
+2026-05-03T17:36:34+02:00 commit d2d413008d7310261cc9a366a983b68a110cb44e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libXrender/libXrender-0.9.10"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+execute /bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/internal/freebsd/amd64 -name *freebsd_amd64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+archivePath libXrender-0.9.10.tar.gz
+extractedArchivePath libXrender-0.9.10
+tempDir /tmp/libXrender
+libRoot /tmp/libXrender/libXrender-0.9.10
+makeRoot /tmp/libXrender/libXrender-0.9.10
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/internal/freebsd/amd64
+execute /usr/bin/tar ["xf" "libXrender-0.9.10.tar.gz" "-C" "/tmp/libXrender"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+execute /bin/sh ["-c" "go mod init example.com/libxrender ; go get modernc.org/libc@latest modernc.org/libX11@latest"] in /tmp/libXrender/libXrender-0.9.10
+go: creating new go.mod: module example.com/libxrender
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libX11 v0.11.28
+go: added modernc.org/libXau v0.9.19
+go: added modernc.org/libXdmcp v0.12.23
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.72.1
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/libxcb v0.12.9
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -w -mlong-double-64' ./configure --disable-shared "] in /tmp/libXrender/libXrender-0.9.10
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... ./install-sh -c -d
+checking for gawk... no
+checking for mawk... no
+checking
+
+...
+
+r.lo
+--- Composite.lo ---
+  CC       Composite.lo
+--- Cursor.lo ---
+  CC       Cursor.lo
+--- FillRect.lo ---
+  CC       FillRect.lo
+--- FillRects.lo ---
+  CC       FillRects.lo
+--- Filter.lo ---
+  CC       Filter.lo
+--- Glyph.lo ---
+  CC       Glyph.lo
+Glyph.c: In function 'XRenderCompositeText8':
+Glyph.c:481:13: error: expected ';' before 'elt'
+  481 |             elt->len = this_chars;
+      |             ^~~
+Glyph.c: In function 'XRenderCompositeText16':
+Glyph.c:592:13: error: expected ';' before 'elt'
+  592 |             elt->len = this_chars;
+      |             ^~~
+Glyph.c: In function 'XRenderCompositeText32':
+Glyph.c:698:13: error: expected ';' before 'elt'
+  698 |             elt->len = this_chars;
+      |             ^~~
+--- Picture.lo ---
+  CC       Picture.lo
+--- Poly.lo ---
+  CC       Poly.lo
+--- Trap.lo ---
+  CC       Trap.lo
+--- Tri.lo ---
+  CC       Tri.lo
+--- Xrender.lo ---
+  CC       Xrender.lo
+--- libXrender.la ---
+  CCLD     libXrender.la
+/usr/bin/ar: error: Glyph.o: No such file or directory
+ranlib: error: unable to load '.libs/libXrender.a': No such file or directory
+*** [libXrender.la] Error code 1
+
+make[2]: stopped making "all" in /tmp/libXrender/libXrender-0.9.10/src
+make[2]: 1 error
+
+make[2]: stopped making "all" in /tmp/libXrender/libXrender-0.9.10/src
+
+make[1]: stopped making "all-recursive" in /tmp/libXrender/libXrender-0.9.10
+
+make: stopped making "all" in /tmp/libXrender/libXrender-0.9.10
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x5e
+modernc.org/fileutil/ccgo.Fatal(0xa0?, {0x2ec99a9dbb38, 0x1, 0x1})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:323 +0x2f
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x2ec99a9d05a0?, 0x2ec99ab32080?}, 0x9661a7?)
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:371 +0x57
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/generator.go:104 +0xe2d
+
+exit status 2
+exit status 1
+libxrender.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

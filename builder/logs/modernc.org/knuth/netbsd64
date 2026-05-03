@@ -1,0 +1,104 @@
+2023-09-17T00:01:00+02:00 commit 612625c407cd3f21cb07ebe0129cec952157ea5b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuth	0.011s
+ok  	modernc.org/knuth/cmd/godvitype	0.006s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftodvi	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftopk	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftype	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomf	0.007s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomft	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopktype	0.012s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopltotf	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopooltype	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotangle	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotex	0.006s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotftopl	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/govftovp	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/govptovf	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/goweave	0.004s [no tests to run]
+ok  	modernc.org/knuth/dvitype	0.180s
+ok  	modernc.org/knuth/gftodvi	0.230s
+ok  	modernc.org/knuth/gftopk	0.172s
+?   	modernc.org/knuth/internal/tds	[no test files]
+ok  	modernc.org/knuth/gftype	0.413s
+ok  	modernc.org/knuth/kpath	0.006s
+ok  	modernc.org/knuth/mf	0.531s
+ok  	modernc.org/knuth/mf/internal/trap	0.003s
+ok  	modernc.org/knuth/mft	0.004s
+ok  	modernc.org/knuth/pktype	0.269s
+ok  	modernc.org/knuth/pltotf	0.038s
+ok  	modernc.org/knuth/pooltype	0.024s
+ok  	modernc.org/knuth/tangle	1.253s
+ok  	modernc.org/knuth/tex	0.538s
+ok  	modernc.org/knuth/tex/internal/trip	0.004s
+ok  	modernc.org/knuth/tftopl	0.030s
+ok  	modernc.org/knuth/vftovp	0.090s
+ok  	modernc.org/knuth/vptovf	0.052s
+ok  	modernc.org/knuth/weave	0.337s
+SIGSEGV: segmentation violation
+PC=0x45652c m=7 sigcode=1
+
+goroutine 0 [idle]:
+runtime.updateTimer0When(...)
+	/usr/local/go/src/runtime/time.go:1009
+runtime.dodeltimer0(0x3?)
+	/usr/local/go/src/runtime/time.go:428 +0x10c fp=0x7f7fae5ffcc8 sp=0x7f7fae5ffc98 pc=0x45652c
+runtime.runOneTimer(0xc000026000, 0xc000016050, 0x2fba662c?)
+	/usr/local/go/src/runtime/time.go:868 +0x105 fp=
+
+...
+
+0 pc=0x57a259
+modernc.org/knuth/web.TestGo(0xc0000849c0)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/knuth/web/all_test.go:423 +0x1f7 fp=0xc000129f70 sp=0xc000129dc0 pc=0x57c277
+testing.tRunner(0xc0000849c0, 0x626d30)
+	/usr/local/go/src/testing/testing.go:1595 +0xff fp=0xc000129fc0 sp=0xc000129f70 pc=0x4ce8df
+testing.(*T).Run.func1()
+	/usr/local/go/src/testing/testing.go:1648 +0x25 fp=0xc000129fe0 sp=0xc000129fc0 pc=0x4cf865
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1650 +0x1 fp=0xc000129fe8 sp=0xc000129fe0 pc=0x469921
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:1648 +0x3ad
+
+goroutine 20 [GC worker (idle)]:
+runtime.gopark(0x437960416ae?, 0xc000070000?, 0x1a?, 0x14?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:398 +0xce fp=0xc000034750 sp=0xc000034730 pc=0x43978e
+runtime.gcBgMarkWorker()
+	/usr/local/go/src/runtime/mgc.go:1293 +0xe5 fp=0xc0000347e0 sp=0xc000034750 pc=0x41b9c5
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1650 +0x1 fp=0xc0000347e8 sp=0xc0000347e0 pc=0x469921
+created by runtime.gcBgMarkStartWorkers in goroutine 19
+	/usr/local/go/src/runtime/mgc.go:1217 +0x1c
+
+goroutine 5 [GC worker (idle)]:
+runtime.gopark(0x4379603e5e4?, 0xc000070020?, 0x1a?, 0x14?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:398 +0xce fp=0xc00003a750 sp=0xc00003a730 pc=0x43978e
+runtime.gcBgMarkWorker()
+	/usr/local/go/src/runtime/mgc.go:1293 +0xe5 fp=0xc00003a7e0 sp=0xc00003a750 pc=0x41b9c5
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1650 +0x1 fp=0xc00003a7e8 sp=0xc00003a7e0 pc=0x469921
+created by runtime.gcBgMarkStartWorkers in goroutine 19
+	/usr/local/go/src/runtime/mgc.go:1217 +0x1c
+
+rax    0xc000026000
+rbx    0x0
+rcx    0x0
+rdx    0x1
+rdi    0x2
+rsi    0xc000092050
+rbp    0x7f7fae5ffcb8
+rsp    0x7f7fae5ffc98
+r8     0xc000016050
+r9     0x0
+r10    0x626eb8
+r11    0xc000027278
+r12    0x7f7fae5ff378
+r13    0x7f7faeaabb80
+r14    0xc0000851e0
+r15    0x0
+rip    0x45652c
+rflags 0x10202
+cs     0x47
+fs     0x0
+gs     0x0
+FAIL	modernc.org/knuth/web	11.630s
+FAIL

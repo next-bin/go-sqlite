@@ -1,0 +1,8 @@
+2024-06-18T19:40:28Z commit 08dd4363897fdb25115adce008872a83e8aa4fc3, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/fsm v1.2.1
+go: downloading modernc.org/sortutil v1.2.0
+go: downloading modernc.org/mathutil v1.6.0
+dfa.go:13:2: modernc.org/fsm@v1.2.1: Get "https://proxy.golang.org/modernc.org/fsm/@v/v1.2.1.zip": dial tcp 172.217.160.113:443: i/o timeout
+dfa.go:15:2: modernc.org/sortutil@v1.2.0: Get "https://proxy.golang.org/modernc.org/sortutil/@v/v1.2.0.zip": dial tcp 172.217.160.113:443: i/o timeout
+
+FAIL err=exit status 1

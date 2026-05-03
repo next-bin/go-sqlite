@@ -1,0 +1,69 @@
+2023-05-06T01:02:07+02:00 commit 46bf47252790b343c131f2435b8245c216cc29c5, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+fatal error: runtime: out of memory
+
+runtime stack:
+runtime.throw({0x79cd9a?, 0x0?})
+	/home/jnml/goroot/src/runtime/panic.go:1047 +0x5d fp=0x7bcc512f1078 sp=0x7bcc512f1048 pc=0x43669d
+runtime.sysMapOS(0xc058c00000, 0x2000000?)
+	/home/jnml/goroot/src/runtime/mem_bsd.go:75 +0x11b fp=0x7bcc512f10c0 sp=0x7bcc512f1078 pc=0x41809b
+runtime.sysMap(0xc000000000?, 0xc3ffffffff?, 0x2703d3000?)
+	/home/jnml/goroot/src/runtime/mem.go:142 +0x35 fp=0x7bcc512f10f0 sp=0x7bcc512f10c0 pc=0x417e35
+runtime.(*mheap).grow(0xa923a0, 0x1000?)
+	/home/jnml/goroot/src/runtime/mheap.go:1522 +0x252 fp=0x7bcc512f1168 sp=0x7bcc512f10f0 pc=0x428252
+runtime.(*mheap).allocSpan(0xa923a0, 0x1000, 0x1, 0x9a?)
+	/home/jnml/goroot/src/runtime/mheap.go:1243 +0x2f3 fp=0x7bcc512f1210 sp=0x7bcc512f1168 pc=0x4279b3
+runtime.(*mheap).allocManual(0x0?, 0x0?, 0x0?)
+	/home/jnml/goroot/src/runtime/mheap.go:987 +0x1f fp=0x7bcc512f1238 sp=0x7bcc512f1210 pc=0x42735f
+runtime.stackalloc(0x2000000)
+	/home/jnml/goroot/src/runtime/stack.go:418 +0x151 fp=0x7bcc512f12b0 sp=0x7bcc512f1238 pc=0x44f051
+runtime.copystack(0xc026d22000, 0x8195f?)
+	/home/jnml/goroot/src/runtime/stack.go:875 +0xe8 fp=0x7bcc512f1468 sp=0x7bcc512f12b0 pc=0x44fe08
+runtime.shrinkstack(0xc026d22000)
+	/home/jnml/goroot/src/runtime/stack.go:1216 +0x134 fp=0x7bcc512f1488 sp=0x7bcc512f1468 pc=0x450ed4
+runtime.scanstack(0xc026d22000, 0xc000023238)
+	/home/jnml/goroot/src/runtime/mgcmark.go:775 +0xf2 fp=0x7bcc512f1690 sp=0x7bcc512f1488 pc=0x41e432
+runtime.markroot.func1()
+	/home/jnml/goroot/src/runtime/mgcmark.go:239 +0xb5 fp=0x7bcc512f16e0 sp=0x7bcc512f1690 pc=0x41d355
+runtime.markroot(0xc000023238, 0x1b3, 0x1)
+	/home/jnml/goroot/src/runtime/mgcmark.go:213 +0x1a5 fp=0x7bcc512f1780 sp=0x7bcc512f16e0 pc=0x41d005
+runtime.gcDrain(0xc000023238, 0xb)
+	/home/jnml/goroot/src/runtime/mgcmark.go:1069 +0x39f fp=0x7bcc512f17e0 sp=0x7bcc512f1780 pc=0x41f0df
+runtime.gcBgMarkWorker.func2()
+	/home/jnml/goroot/src/runtime/mgc.go:1365 +0x8f fp=0x7bcc512f1830 sp=0x7bcc512f17e0 pc=0x41b5ef
+runtime.systemstack()
+	/home/jnml/goroot
+
+...
+
+
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/parser_test.go:279 +0xa5 fp=0xc051e7ff70 sp=0xc051e7fef0 pc=0x6d5625
+testing.tRunner(0xc026d23ba0, 0xc00fd5d200)
+	/home/jnml/goroot/src/testing/testing.go:1576 +0x10b fp=0xc051e7ffc0 sp=0xc051e7ff70 pc=0x5139ab
+testing.(*T).Run.func1()
+	/home/jnml/goroot/src/testing/testing.go:1629 +0x2a fp=0xc051e7ffe0 sp=0xc051e7ffc0 pc=0x5149ea
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_amd64.s:1598 +0x1 fp=0xc051e7ffe8 sp=0xc051e7ffe0 pc=0x46b981
+created by testing.(*T).Run
+	/home/jnml/goroot/src/testing/testing.go:1629 +0x3ea
+
+goroutine 5357 [chan receive]:
+runtime.gopark(0x1?, 0xc0022ce780?, 0x0?, 0x0?, 0xc000477e78?)
+	/home/jnml/goroot/src/runtime/proc.go:381 +0xd6 fp=0xc001f17e10 sp=0xc001f17df0 pc=0x439316
+runtime.chanrecv(0xc02b67c780, 0x0, 0x1)
+	/home/jnml/goroot/src/runtime/chan.go:583 +0x49d fp=0xc001f17ea0 sp=0xc001f17e10 pc=0x406c7d
+runtime.chanrecv1(0xbb506ea800000000?, 0xc000477e58?)
+	/home/jnml/goroot/src/runtime/chan.go:442 +0x18 fp=0xc001f17ec8 sp=0xc001f17ea0 pc=0x406778
+modernc.org/cc/v3.(*cpp).send(...)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:2519
+modernc.org/cc/v3.(*ppTextLine).translationPhase4(0xc054935980?, 0xc054960000?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:2756 +0x58 fp=0xc001f17f00 sp=0xc001f17ec8 pc=0x66f938
+modernc.org/cc/v3.(*ppFile).translationPhase4(0xc00009c1c0?, 0xc054960000)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:3043 +0x72 fp=0xc001f17f38 sp=0xc001f17f00 pc=0x670ff2
+modernc.org/cc/v3.(*cpp).translationPhase4.func2()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:2611 +0x91 fp=0xc001f17fe0 sp=0xc001f17f38 pc=0x66e5b1
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_amd64.s:1598 +0x1 fp=0xc001f17fe8 sp=0xc001f17fe0 pc=0x46b981
+created by modernc.org/cc/v3.(*cpp).translationPhase4
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:2599 +0x18a
+exit status 2
+FAIL	modernc.org/cc/v3	7.769s

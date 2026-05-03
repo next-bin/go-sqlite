@@ -1,0 +1,9 @@
+2024-03-21T03:25:57+01:00 commit c2a94ebe3a3a9325f0942788614f812d968b4aa8, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestGoScanner (3.73s)
+    all_test.go:908: open /usr/local/go/test/fixedbugs/issue27836.dir/PaxHeaders.0/foo.go: permission denied
+FAIL
+FAIL	modernc.org/rec	5.509s
+ok  	modernc.org/rec/lib	0.008s
+FAIL
+
+FAIL err=exit status 1

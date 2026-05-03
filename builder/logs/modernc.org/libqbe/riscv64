@@ -1,0 +1,9 @@
+go1.25.1 linux/riscv64
+2025-09-23T04:11:53Z commit 295809e4dc5a3b0056f7a2d658d462c48667b837, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading github.com/pmezard/go-difflib v1.0.0
+go: downloading modernc.org/gc/v3 v3.1.1
+# modernc.org/libqbe
+all_test.go:19:2: github.com/pmezard/go-difflib@v1.0.0: Get "https://proxy.golang.org/github.com/pmezard/go-difflib/@v/v1.0.0.zip": dial tcp 142.250.217.113:443: i/o timeout
+FAIL	modernc.org/libqbe [setup failed]
+
+FAIL err=exit status 1

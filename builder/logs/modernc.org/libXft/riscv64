@@ -1,0 +1,86 @@
+go1.25.4 linux/riscv64
+2025-12-01T09:19:27Z commit b3255ed2c44868e248793a1fe0ed793ce32a2f60, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libXft/libXft-2.3.6"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft/internal/linux/riscv64 -name \\*linux_riscv64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft
+archivePath libXft-2.3.6.tar.gz
+extractedArchivePath libXft-2.3.6
+tempDir /tmp/libXft
+libRoot /tmp/libXft/libXft-2.3.6
+makeRoot /tmp/libXft/libXft-2.3.6
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft/internal/linux/riscv64
+execute /usr/bin/tar ["xf" "libXft-2.3.6.tar.gz" "-C" "/tmp/libXft"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft
+execute /usr/bin/sh ["-c" "go mod init example.com/libxft ; go get modernc.org/libc@latest modernc.org/libfontconfig@latest modernc.org/libfreetype@latest modernc.org/libX11@latest modernc.org/libXrender@latest"] in /tmp/libXft/libXft-2.3.6
+go: creating new go.mod: module example.com/libxft
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
+go: added golang.org/x/sys v0.37.0
+go: added modernc.org/libX11 v0.11.24
+go: added modernc.org/libXau v0.9.19
+go: added modernc.org/libXdmcp v0.12.20
+go: added modernc.org/libXrender v0.9.23
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.67.1
+go: added modernc.org/libexpat v0.10.23
+go: added modernc.org/libfontconfig v0.8.13
+go: added modernc.org/libfreetype v0.9.27
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/libxcb v0.12.5
+go: added modernc.org/libz v0.16.23
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -w' ./configure --disable
+
+...
+
+g if gcc supports -Wunused... yes
+checking if gcc supports -Wuninitialized... yes
+checking if gcc supports -Wshadow... yes
+checking if gcc supports -Wmissing-noreturn... yes
+checking if gcc supports -Wmissing-format-attribute... yes
+checking if gcc supports -Wredundant-decls... yes
+checking if gcc supports -Wlogical-op... yes
+checking if gcc supports -Werror=implicit... yes
+checking if gcc supports -Werror=nonnull... yes
+checking if gcc supports -Werror=init-self... yes
+checking if gcc supports -Werror=main... yes
+checking if gcc supports -Werror=missing-braces... yes
+checking if gcc supports -Werror=sequence-point... yes
+checking if gcc supports -Werror=return-type... yes
+checking if gcc supports -Werror=trigraphs... yes
+checking if gcc supports -Werror=array-bounds... yes
+checking if gcc supports -Werror=write-strings... yes
+checking if gcc supports -Werror=address... yes
+checking if gcc supports -Werror=int-to-pointer-cast... yes
+checking if gcc supports -Werror=pointer-to-int-cast... yes
+checking if gcc supports -pedantic... yes
+checking if gcc supports -Werror... yes
+checking if gcc supports -Werror=attributes... yes
+Package xorg-macros was not found in the pkg-config search path.
+Perhaps you should add the directory containing `xorg-macros.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'xorg-macros', required by 'virtual:world', not found
+checking whether make supports nested variables... (cached) yes
+checking for XRENDER... no
+configure: error: Package requirements (xrender >= 0.8.2 x11) were not met:
+
+Package 'xrender', required by 'virtual:world', not found
+Package 'x11', required by 'virtual:world', not found
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables XRENDER_CFLAGS
+and XRENDER_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+err: exit status 1
+exit status 1
+libxft.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

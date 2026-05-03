@@ -1,0 +1,23 @@
+2024-04-19T22:30:01+02:00 commit ddc27edef54e210b25f4c7e137bebba3e9c346bb, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/net v0.24.0
+go: downloading modernc.org/sqlite v1.29.8
+go: downloading golang.org/x/mod v0.17.0
+go: downloading modernc.org/gc/v3 v3.0.0-20240304020402-f0dba7c97c2b
+go: downloading modernc.org/libc v1.49.3
+# modernc.org/sqlite/lib
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/defs.go:13:35: undefined: sqlite3_index_constraint
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/defs.go:14:35: undefined: sqlite3_index_orderby
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/defs.go:15:35: undefined: sqlite3_index_constraint_usage
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/mutex.go:19:5: undefined: Xsqlite3_threadsafe
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/mutex.go:29:11: undefined: Xsqlite3_config
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/mutex.go:29:32: undefined: SQLITE_CONFIG_MUTEX
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/mutex.go:29:122: undefined: SQLITE_OK
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/mutex.go:30:8: undefined: Xsqlite3_errstr
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/mutex.go:40:17: undefined: Sqlite3_mutex_methods
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/mutex.go:239:46: undefined: SQLITE_OK
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.8/lib/mutex.go:239:46: too many errors
+FAIL	modernc.org/dyd [build failed]
+FAIL	modernc.org/dyd/dyd [build failed]
+FAIL
+
+FAIL err=exit status 1

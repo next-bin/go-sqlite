@@ -1,0 +1,97 @@
+2022-09-11T15:51:05+02:00 commit 274b2ca7011475ced53bfd7c62b6da5fcee00fd7, GOMAXPROCS 4, GOGC "10", CC ""
+go: downloading golang.org/x/exp v0.0.0-20191002040644-a1355ae1e2c3
+go: downloading gonum.org/v1/plot v0.10.1
+go: downloading github.com/google/go-cmp v0.5.7
+go: downloading golang.org/x/tools v0.1.9
+go: downloading golang.org/x/image v0.0.0-20220302094943-723b81ca9867
+?   	gonum.org/v1/gonum	[no test files]
+?   	gonum.org/v1/gonum/blas	[no test files]
+ok  	gonum.org/v1/gonum/blas/blas32	0.005s
+ok  	gonum.org/v1/gonum/blas/blas64	0.079s
+ok  	gonum.org/v1/gonum/blas/cblas128	7.709s
+ok  	gonum.org/v1/gonum/blas/cblas64	0.004s
+ok  	gonum.org/v1/gonum/blas/gonum	12.102s
+ok  	gonum.org/v1/gonum/blas/testblas	0.017s
+?   	gonum.org/v1/gonum/blas/testblas/benchautogen	[no test files]
+ok  	gonum.org/v1/gonum/cmplxs	0.053s
+ok  	gonum.org/v1/gonum/cmplxs/cscalar	0.046s
+ok  	gonum.org/v1/gonum/diff/fd	0.045s
+ok  	gonum.org/v1/gonum/dsp/fourier	59.834s
+ok  	gonum.org/v1/gonum/dsp/fourier/internal/fftpack	20.756s
+ok  	gonum.org/v1/gonum/dsp/window	0.039s
+?   	gonum.org/v1/gonum/dsp/window/cmd/leakage	[no test files]
+ok  	gonum.org/v1/gonum/floats	0.060s
+ok  	gonum.org/v1/gonum/floats/scalar	0.021s
+ok  	gonum.org/v1/gonum/graph	0.044s
+ok  	gonum.org/v1/gonum/graph/coloring	58.577s
+mspan.sweep: state=1 sweepgen=839 mheap.sweepgen=840
+fatal error: mspan.sweep: bad span state
+
+runtime stack:
+runtime.throw({0x85e16d6, 0x1b})
+	/usr/pkg/go118/src/runtime/panic.go:992 +0x64
+runtime.(*sweepLocked).sweep(0xa89ffee4, 0x0)
+	/usr/pkg/go118/src/runtime/mgcsweep.go:486 +0xa65
+runtime.(*mcentral).uncacheSpan(0x898d634, 0xaaafca10)
+	/usr/pkg/go118/src/runtime/mcentral.go:226 +0xf0
+runtime.(*mcache).releaseAll(0xbb89d2e0)
+	/usr/pkg/go118/src/runtime/mcache.go:259 +0x12a
+runtime.(*mcache).prepareForSweep(0xbb89d2e0)
+	/usr/pkg/go118/src/runtime/mcache.go:295 +0x36
+runtime.gcMarkTermination.func4.1(0x8c27300)
+	/usr/pkg/go118/src/runtime/mgc.go:1057 +0x1e
+runtime.forEachP(0x8620e94)
+	/usr/pkg/go118/src/runtime/proc.go:1603 +0x137
+runtime.gcMarkTermination.func4()
+	/usr/pkg/go118/src/runtime/mgc.go:1056 +0x1d
+runtime.systemstack()
+	/usr/pkg/go118/sr
+
+...
+
+d by cmd/go/internal/test.(*runCache).builderRunTest
+	/usr/pkg/go118/src/cmd/go/internal/test/test.go:1390 +0xdcf
+
+goroutine 2983 [syscall]:
+syscall.Syscall6(0x2085, 0x909af54, 0x0, 0x91ee820, 0x0, 0x0, 0x0)
+	/usr/pkg/go118/src/syscall/asm_unix_386.s:43 +0x5
+syscall.wait4(0x2085, 0x909af54, 0x0, 0x91ee820)
+	/usr/pkg/go118/src/syscall/zsyscall_netbsd_386.go:34 +0x5b
+syscall.Wait4(0x2085, 0x909af78, 0x0, 0x91ee820)
+	/usr/pkg/go118/src/syscall/syscall_bsd.go:144 +0x3b
+os.(*Process).wait(0x92f7ce0)
+	/usr/pkg/go118/src/os/exec_unix.go:43 +0x82
+os.(*Process).Wait(...)
+	/usr/pkg/go118/src/os/exec.go:132
+os/exec.(*Cmd).Wait(0x92cc8f0)
+	/usr/pkg/go118/src/os/exec/exec.go:510 +0x4d
+cmd/go/internal/test.(*runCache).builderRunTest.func2()
+	/usr/pkg/go118/src/cmd/go/internal/test/test.go:1391 +0x21
+created by cmd/go/internal/test.(*runCache).builderRunTest
+	/usr/pkg/go118/src/cmd/go/internal/test/test.go:1390 +0xdcf
+
+goroutine 2982 [IO wait]:
+internal/poll.runtime_pollWait(0xaab55400, 0x72)
+	/usr/pkg/go118/src/runtime/netpoll.go:302 +0x4c
+internal/poll.(*pollDesc).wait(0x9383294, 0x72, 0x1)
+	/usr/pkg/go118/src/internal/poll/fd_poll_runtime.go:83 +0x31
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/pkg/go118/src/internal/poll/fd_poll_runtime.go:88
+internal/poll.(*FD).Read(0x9383280, {0x938c000, 0x200, 0x200})
+	/usr/pkg/go118/src/internal/poll/fd_unix.go:167 +0x1da
+os.(*File).read(...)
+	/usr/pkg/go118/src/os/file_posix.go:31
+os.(*File).Read(0x91725a8, {0x938c000, 0x200, 0x200})
+	/usr/pkg/go118/src/os/file.go:119 +0x5c
+bytes.(*Buffer).ReadFrom(0x90be3d8, {0x86bcaa8, 0x91725a8})
+	/usr/pkg/go118/src/bytes/buffer.go:204 +0x8f
+io.copyBuffer({0x86bc148, 0x90be3d8}, {0x86bcaa8, 0x91725a8}, {0x0, 0x0, 0x0})
+	/usr/pkg/go118/src/io/io.go:412 +0x125
+io.Copy(...)
+	/usr/pkg/go118/src/io/io.go:385
+os/exec.(*Cmd).writerDescriptor.func1()
+	/usr/pkg/go118/src/os/exec/exec.go:311 +0x4e
+os/exec.(*Cmd).Start.func1(0x8c0ca30)
+	/usr/pkg/go118/src/os/exec/exec.go:444 +0x1e
+created by os/exec.(*Cmd).Start
+	/usr/pkg/go118/src/os/exec/exec.go:443 +0x702

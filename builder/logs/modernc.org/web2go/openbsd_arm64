@@ -1,0 +1,8 @@
+2022-10-13T00:52:14+02:00 commit b5506fad2e7595e9047f941c7783e0460e7eeb85, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/ccgo/v3 v3.16.10
+--- FAIL: TestScanner (0.01s)
+    all_test.go:92: 
+        exec: "tangle": executable file not found in $PATH
+FAIL
+exit status 1
+FAIL	modernc.org/web2go	0.612s

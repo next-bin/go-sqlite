@@ -1,0 +1,76 @@
+go1.26.2 linux/amd64
+2026-05-01T10:43:01+02:00 commit a2904e0232c13b2f262288e584fb3d2a6bd652f5, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["test" "-short=false" "-v" "-tags" "libc.memgrind" "-timeout" "12h" "-run" "TestMemgrind"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/quickjs
+=== RUN   TestMemgrind
+--- PASS: TestMemgrind (2244.86s)
+=== RUN   TestMemgrind2
+=== RUN   TestMemgrind2/eval1
+    all_test.go:64: 42*314;: int(42*314;) 13188
+    all_test.go:64: 'foo'+'bar';: string('foo'+'bar';) foobar
+    all_test.go:64: 42 < 314;: bool(42 < 314;) true
+    all_test.go:64: null;: <nil>(null;) <nil>
+    all_test.go:64: undefined;: quickjs.Undefined(undefined;) undefined
+    all_test.go:64: throw new Error('FAIL'): <nil>(throw new Error('FAIL')) <nil>
+=== RUN   TestMemgrind2/eval2
+    all_test.go:104: BigInt('1234567890123456789'): *big.Int(BigInt('1234567890123456789')) 1234567890123456789
+    all_test.go:104: BigInt('-1234567890123456789'): *big.Int(BigInt('-1234567890123456789')) -1234567890123456789
+    all_test.go:104: 1234567890123456789n: *big.Int(1234567890123456789n) 1234567890123456789
+    all_test.go:104: -1234567890123456789n: *big.Int(-1234567890123456789n) -1234567890123456789
+=== RUN   TestMemgrind2/eval3
+    all_test.go:140: js=`a = {}; a;`: v=*quickjs.Object({}) err=<nil>(<nil>)
+    all_test.go:140: js=`a = {foo: 'bar', baz: "qux", i: 42}; a;`: v=*quickjs.Object({"foo":"bar","baz":"qux","i":42}) err=<nil>(<nil>)
+    all_test.go:140: js=`a = []; a;`: v=*quickjs.Object([]) err=<nil>(<nil>)
+    all_test.go:140: js=`a = [1, 2, 3]; a;`: v=*quickjs.Object([1,2,3]) err=<nil>(<nil>)
+=== RUN   TestMemgrind2/call1
+    all_test.go:180: js=`42;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+    all_test.go:180: js=`var a = 42; a;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+    all_test.go:180: js=`var a = { }; a;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+=== RUN   TestMemgrind2/call2
+    all_test.go:209: js=`function f() { return null; }; f`: v=<nil>(<nil>) err=<nil>(<nil>)
+    all_test.go:209: js=`function f() { return undefined; }; 
+
+...
+
+_test.go:507: g2(obj): *quickjs.Object({"a":463,"b":"foo"})
+    all_test.go:507: g3(514, 'foo'): *quickjs.Object(["foo",514])
+    all_test.go:507: g4(515, 'foo'): *quickjs.Object([515,"foo"])
+    all_test.go:507: g5('hello %v %q', 516, 'foo'): string(hello 516 "foo")
+    all_test.go:507: g6(): *quickjs.Object([])
+    all_test.go:507: g7('hello %v'): string(hello %!v(MISSING))
+    all_test.go:507: var a = {foo: 5220, bar: g8}; a.bar();: *quickjs.Object([{"foo":522},null])
+    all_test.go:507: var a = {foo: 5260, bar: g9}; g9(a);: *quickjs.Object([{"foo":526},null])
+    all_test.go:507: var a = {foo: 5300, bar: g10}; a.bar();: *quickjs.Object({"foo":530})
+    all_test.go:507: var a = {foo: 42, bar: g11}; g11(a);: *quickjs.Object([534,{"foo":533}])
+=== RUN   TestMemgrind2/evalValue
+=== RUN   TestMemgrind2/atom
+    all_test.go:561: n=505 err=<nil>
+    all_test.go:567: n2=506 err=<nil>
+=== RUN   TestMemgrind2/setPropValue
+=== RUN   TestMemgrind2/setProp
+=== RUN   TestMemgrind2/getPropValue
+=== RUN   TestMemgrind2/getProp
+--- PASS: TestMemgrind2 (0.23s)
+    --- PASS: TestMemgrind2/eval1 (0.01s)
+    --- PASS: TestMemgrind2/eval2 (0.01s)
+    --- PASS: TestMemgrind2/eval3 (0.01s)
+    --- PASS: TestMemgrind2/call1 (0.01s)
+    --- PASS: TestMemgrind2/call2 (0.02s)
+    --- PASS: TestMemgrind2/call3 (0.02s)
+    --- PASS: TestMemgrind2/call4 (0.01s)
+    --- PASS: TestMemgrind2/fnFail (0.01s)
+    --- PASS: TestMemgrind2/fnOK (0.03s)
+    --- PASS: TestMemgrind2/evalValue (0.01s)
+    --- PASS: TestMemgrind2/atom (0.01s)
+    --- PASS: TestMemgrind2/setPropValue (0.01s)
+    --- PASS: TestMemgrind2/setProp (0.01s)
+    --- PASS: TestMemgrind2/getPropValue (0.01s)
+    --- PASS: TestMemgrind2/getProp (0.01s)
+PASS
+ok  	modernc.org/quickjs	2245.096s
+--- FAIL: TestBytecode (0.00s)
+    all_test.go:754: got 05000c000600a8010001000200000801aa01000000bf2ac03a019ccf28a8010400001b0600, expected 05000c000600a4010001000200000801a601000000bf2ac03a019ccf28a4010400001b0600
+FAIL
+exit status 1
+FAIL	modernc.org/quickjs	2279.303s
+
+FAIL err=exit status 1

@@ -1,0 +1,84 @@
+go1.26.2 windows/arm64
+2026-04-17T00:25:11+02:00 commit 200e59ffbe5d9bb93ed36263b47ba2c4974d3678, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptestmptest.exe mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptestmptest.exe mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+tmpDir=C:\Users\jnml\AppData\Local\Temp\TestTclTest2507177544\001
+execute C:\Program Files\Go\bin\go.exe ["build" "-o" "C:\\Users\\jnml\\AppData\\Local\\Temp\\TestTclTest2507177544\\001\\testfixture.exe" "-tags=" ".\\internal\\testfixture"] in C:\Users\jnml\src\modernc.org\builder\.exclude\modernc.org\libsqlite3
+all_test.go:320:TestTclTest: TRC ["C:\\Users\\jnml\\AppData\\Local\\Temp\\TestTclTest2507177544\\001\\test\\permutations.test" "full"]
+execute C:\Users\jnml\AppData\Local\Temp\TestTclTest2507177544\001\testfixture.exe ["C:\\Users\\jnml\\AppData\\Local\\Temp\\TestTclTest2507177544\\001\\test\\permutations.test" "full" "-verbose=0"] in C:\Users\jnml\AppData\Local\Temp\TestTclTest2507177544\001
+Time: 8_3_names.test 60 ms
+Time: affinity2.test 280 ms
+Time: affinity3.test 186 ms
+Time: aggerror.test 124 ms
+Time: aggfault.test 4316 ms
+Time: aggnested.test 473 ms
+Time: aggorderby.test 684 ms
+Time: alias.test 58 ms
+Time: alter.test 1118 ms
+Time: alter2.test 406 ms
+Time: alter3.test 1309 ms
+Time: alter4.test 395 ms
+Time: alterauth.test 90 ms
+Time: alterauth2.test 138 ms
+Time: altercol.test 2385 ms
+Time: altercons.test 1334 ms
+Time: altercons2.test 364 ms
+Time: altercorrupt.test 8
+
+...
+
+
+        Time: window9.test 588 ms
+        Time: windowA.test 167 ms
+        Time: windowB.test 726 ms
+        Time: windowC.test 831 ms
+        Time: windowD.test 219 ms
+        Time: windowE.test 224 ms
+        Time: windowerr.test 213 ms
+        Time: windowfault.test 53439 ms
+        C:\Users\jnml\AppData\Local\Temp\TestTclTest2507177544\001\testfixture.exe: couldn't read file "C:/Users/jnml/AppData/Local/Temp/TestTclTest2507177544/001/test/windowpushd.test": no such file or directory
+            while executing
+        "source C:/Users/jnml/AppData/Local/Temp/TestTclTest2507177544/001/test/windowpushd.test"
+            invoked from within
+        "interp eval tinterp $script"
+            (procedure "slave_test_script" line 30)
+            invoked from within
+        "slave_test_script [list source $zFile] "
+            invoked from within
+        "time { slave_test_script [list source $zFile] }"
+            (procedure "slave_test_file" line 23)
+            invoked from within
+        "slave_test_file $file"
+            (procedure "run_tests" line 36)
+            invoked from within
+        "run_tests full -presql {} -files {shared3.test sysfault.test func7.test writecrash.test upfrom4.test vacuum5.test func4.test tkt3731.test upfrom1.test..."
+            ("eval" body line 1)
+            invoked from within
+        "eval [list run_tests $suite] $S $extra"
+            (procedure "main" line 34)
+            invoked from within
+        "main $argv"
+            (file "C:\Users\jnml\AppData\Local\Temp\TestTclTest2507177544\001\test\permutations.test" line 1268)
+            invoked from within
+        "source $argv0"
+            invoked from within
+        "if {[llength $argv]>=1} {
+        set new [list]
+        foreach arg $argv {
+        if {[string match -* $arg] || [file exists $arg]} {
+        lappend new $arg
+        } else {
+        set once 0
+        ..."
+    all_test.go:370: final summary not detected (test crashed?)
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	24091.715s
+
+FAIL err=exit status 1

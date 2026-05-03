@@ -1,0 +1,7 @@
+2025-03-27T11:01:02+01:00 commit ae09024ca9594041ea70abb0c5dea578b6cde7d1, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: Auto-merging results
+CONFLICT (content): Merge conflict in results
+Squash commit -- not updating HEAD
+Automatic merge failed; fix conflicts and then commit the result.
+
+FAIL err=AUTOTASKS: exit status 1

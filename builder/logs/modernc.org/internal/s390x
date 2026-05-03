@@ -1,0 +1,11 @@
+go1.24.4 linux/s390x
+2025-07-06T19:42:09+02:00 commit 0c655adaaabf088b6ffe028e8d03d89d3e80c386, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading github.com/edsrzf/mmap-go v1.2.0
+go: downloading golang.org/x/sys v0.28.0
+--- FAIL: Test (0.03s)
+    nonrace_test.go:36: 1
+FAIL
+FAIL	modernc.org/internal/buffer	1.338s
+FAIL
+
+FAIL err=exit status 1

@@ -1,0 +1,10 @@
+2024-05-06T01:28:38+02:00 commit 00de7ca167314ca927005511593b1284efc5c091, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestBig_SetFloat64 (2728.97s)
+    big_test.go:1042: #1091575200:
+        wanted: 9.007232666015625
+        got   : 9.007232666015623
+FAIL
+exit status 1
+FAIL	github.com/ericlagergren/decimal	2729.767s
+
+FAIL err=exit status 1

@@ -1,0 +1,89 @@
+2023-05-03T00:18:51+02:00 commit 258a51e069623132f86d7efd2188b05d2578a92e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+?   	gonum.org/v1/gonum	[no test files]
+?   	gonum.org/v1/gonum/blas	[no test files]
+ok  	gonum.org/v1/gonum/blas/blas32	0.006s
+ok  	gonum.org/v1/gonum/blas/blas64	0.011s
+ok  	gonum.org/v1/gonum/blas/cblas128	2.843s
+ok  	gonum.org/v1/gonum/blas/cblas64	0.006s
+?   	gonum.org/v1/gonum/blas/testblas/benchautogen	[no test files]
+ok  	gonum.org/v1/gonum/blas/gonum	2.978s
+ok  	gonum.org/v1/gonum/blas/testblas	0.007s
+ok  	gonum.org/v1/gonum/cmplxs	0.010s
+ok  	gonum.org/v1/gonum/cmplxs/cscalar	0.020s
+ok  	gonum.org/v1/gonum/diff/fd	0.010s
+ok  	gonum.org/v1/gonum/dsp/fourier	18.963s
+ok  	gonum.org/v1/gonum/dsp/fourier/internal/fftpack	3.979s
+ok  	gonum.org/v1/gonum/dsp/window	0.007s
+?   	gonum.org/v1/gonum/dsp/window/cmd/leakage	[no test files]
+ok  	gonum.org/v1/gonum/floats	0.012s
+ok  	gonum.org/v1/gonum/floats/scalar	0.035s
+ok  	gonum.org/v1/gonum/graph	0.037s
+ok  	gonum.org/v1/gonum/graph/coloring	41.477s
+?   	gonum.org/v1/gonum/graph/formats/dot	[no test files]
+?   	gonum.org/v1/gonum/graph/formats/dot/internal/errors	[no test files]
+?   	gonum.org/v1/gonum/graph/formats/dot/internal/token	[no test files]
+?   	gonum.org/v1/gonum/graph/formats/dot/internal/util	[no test files]
+ok  	gonum.org/v1/gonum/graph/community	164.897s
+ok  	gonum.org/v1/gonum/graph/encoding	0.008s
+fatal error: out of memory allocating heap arena metadata
+
+runtime stack:
+runtime.throw({0x555ecc?, 0x0?})
+	/home/jnml/goroot/src/runtime/panic.go:1047 +0x5d fp=0x7ef6ce743c10 sp=0x7ef6ce743be0 pc=0x43473d
+runtime.(*mheap).sysAlloc(0x6681a0, 0xc3ffffffff?, 0x678338, 0x1)
+	/home/jnml/goroot/src/runtime/malloc.go:725 +0x370 fp=0x7ef6ce743ca8 sp=0x7ef6ce743c10 pc=0x40bed0
+runtime.(*mheap).grow(0x6681a0, 0x360?)
+	/home/jnml/goroot/src/runtime/mheap.go:1472 +0x7f fp=0x7ef6ce743d20 sp=0x7ef6ce743ca8 pc=0x42689f
+runtime.(*mheap).allocSpan(0x6681a0, 0x360, 0x0, 0xa0?)
+	/home/jnml/goroot/src/runtime/mheap.go:1243 +0x2f3 fp=0x7ef6ce743dc8 sp=0x7ef6ce743d20 pc=0x4261d3
+runtime.(*mheap).alloc.func1()
+	/home/jnml/goroot/src/runtime/mheap.go:961 +0x65 fp=0x7ef6ce743e
+
+...
+
+m.org/v1/gonum/integrate	0.109s
+ok  	gonum.org/v1/gonum/integrate/quad	0.078s
+ok  	gonum.org/v1/gonum/internal/asm/c128	0.072s
+ok  	gonum.org/v1/gonum/internal/asm/c64	0.029s
+ok  	gonum.org/v1/gonum/internal/asm/f32	0.013s
+ok  	gonum.org/v1/gonum/internal/asm/f64	0.096s
+ok  	gonum.org/v1/gonum/internal/cmplx64	0.008s
+ok  	gonum.org/v1/gonum/internal/math32	0.010s
+ok  	gonum.org/v1/gonum/internal/testrand	0.006s
+ok  	gonum.org/v1/gonum/interp	0.008s
+?   	gonum.org/v1/gonum/lapack/lapack64	[no test files]
+ok  	gonum.org/v1/gonum/lapack/gonum	59.861s
+ok  	gonum.org/v1/gonum/lapack/testlapack	0.017s
+ok  	gonum.org/v1/gonum/mat	36.067s
+ok  	gonum.org/v1/gonum/mathext	3.374s
+?   	gonum.org/v1/gonum/mathext/internal/cephes	[no test files]
+?   	gonum.org/v1/gonum/mathext/internal/gonum	[no test files]
+ok  	gonum.org/v1/gonum/mathext/internal/amos	5.347s
+ok  	gonum.org/v1/gonum/mathext/prng	0.007s
+ok  	gonum.org/v1/gonum/num/dual	0.016s
+ok  	gonum.org/v1/gonum/num/dualcmplx	0.026s
+ok  	gonum.org/v1/gonum/num/dualquat	0.007s
+ok  	gonum.org/v1/gonum/num/hyperdual	0.007s
+ok  	gonum.org/v1/gonum/num/quat	0.007s
+ok  	gonum.org/v1/gonum/optimize	24.423s
+ok  	gonum.org/v1/gonum/optimize/convex/lp	25.575s
+ok  	gonum.org/v1/gonum/optimize/functions	0.270s
+?   	gonum.org/v1/gonum/spatial/r1	[no test files]
+ok  	gonum.org/v1/gonum/spatial/barneshut	37.025s
+ok  	gonum.org/v1/gonum/spatial/kdtree	2.333s
+ok  	gonum.org/v1/gonum/spatial/r2	0.006s
+ok  	gonum.org/v1/gonum/spatial/r3	0.109s
+ok  	gonum.org/v1/gonum/spatial/vptree	2.392s
+ok  	gonum.org/v1/gonum/stat	0.011s
+ok  	gonum.org/v1/gonum/stat/card	21.201s
+ok  	gonum.org/v1/gonum/stat/combin	0.017s
+ok  	gonum.org/v1/gonum/stat/distmat	4.074s
+ok  	gonum.org/v1/gonum/stat/distmv	15.262s
+ok  	gonum.org/v1/gonum/stat/distuv	46.304s
+ok  	gonum.org/v1/gonum/stat/mds	0.006s
+ok  	gonum.org/v1/gonum/stat/samplemv	4.402s
+ok  	gonum.org/v1/gonum/stat/sampleuv	3.782s
+ok  	gonum.org/v1/gonum/stat/spatial	0.153s
+ok  	gonum.org/v1/gonum/unit	0.010s
+ok  	gonum.org/v1/gonum/unit/constant	0.006s
+FAIL

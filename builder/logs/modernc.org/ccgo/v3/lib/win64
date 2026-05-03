@@ -1,0 +1,29 @@
+2023-10-09T03:13:33+02:00 commit 7f917ff20429da853199f214fa50c71d96346245, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+CC=C:\ProgramData\chocolatey\bin\gcc.exe
+gcc.exe (GCC) 10.2.0
+execute C:\Program Files\Go\bin\go.exe ["mod" "init" "example.com/ccgo/v3/lib/sqlite"] in C:\Users\0xjnml\AppData\Local\Temp\ccgo-test-2812419845
+go: creating new go.mod: module example.com/ccgo/v3/lib/sqlite
+execute C:\Program Files\Go\bin\go.exe ["get" "modernc.org/libc"] in C:\Users\0xjnml\AppData\Local\Temp\ccgo-test-2812419845
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.3.0
+go: added github.com/mattn/go-isatty v0.0.16
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab
+go: added modernc.org/libc v1.24.1
+go: added modernc.org/mathutil v1.5.0
+go: added modernc.org/memory v1.6.0
+--- FAIL: TestSQLite (196.00s)
+    all_test.go:2767: # command-line-arguments
+        .\main.go:17927:8: undefined: IsValidCodePage
+        .\main.go:17935:27: undefined: GetConsoleOutputCP
+        .\main.go:17936:3: undefined: SetConsoleCP
+        .\main.go:17937:3: undefined: SetConsoleOutputCP
+        .\main.go:17952:3: undefined: SetConsoleCP
+        .\main.go:17953:3: undefined: SetConsoleOutputCP
+        .\main.go:18208:5: undefined: _fstat64i32
+        exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	4737.350s
+
+FAIL err=exit status 1

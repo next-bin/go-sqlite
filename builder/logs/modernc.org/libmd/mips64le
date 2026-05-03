@@ -1,0 +1,83 @@
+2024-01-14T10:44:37+08:00 commit 073e033cb8614b293ae400e26e5ce96041930499, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/errno
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/fcntl: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/fcntl
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/fts: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/fts
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/grp: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/grp
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/langinfo: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/langinfo
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/limits: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/limits
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/netdb: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/netdb
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/netinet/in: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/netinet/in
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/poll: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/poll
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/pthread: bui
+
+...
+
+all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/signal
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/stdio: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/stdio
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/stdlib: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/stdlib
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/socket: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/sys/socket
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/stat: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/sys/stat
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/types: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/sys/types
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/termios: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/termios
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/time: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/time
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/unistd: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/unistd
+package modernc.org/libmd
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/uuid/uuid: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/uuid/uuid
+
+FAIL err=exit status 1

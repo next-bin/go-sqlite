@@ -1,0 +1,13 @@
+2022-08-03T08:17:58+02:00 e5550d6044afaf49345a2a63dcf216df8940abe2 GOMAXPROCS 1
+go: downloading modernc.org/libc v1.16.7
+go: downloading modernc.org/sqlite v1.17.3
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x48 pc=0x711336]
+
+goroutine 42 [running]:
+net/http.(*http2clientConnReadLoop).run(0xc00005cf98)
+	/usr/local/go/src/net/http/h2_bundle.go:8877 +0x1b6
+net/http.(*http2ClientConn).readLoop(0xc000166900)
+	/usr/local/go/src/net/http/h2_bundle.go:8768 +0x6f
+created by net/http.(*http2Transport).newClientConn
+	/usr/local/go/src/net/http/h2_bundle.go:7475 +0xaaa

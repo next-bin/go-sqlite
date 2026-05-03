@@ -1,0 +1,7 @@
+2023-05-23T00:14:10+02:00 commit 0f3d8123c66f3f54b23c1bad103b5985f702910e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/sqlite v1.22.1
+ok  	modernc.org/dyd	0.393s
+# modernc.org/dyd/examples/static
+examples/static/main.go:16:12: undefined: dydStart
+?   	modernc.org/dyd/dyd	[no test files]
+FAIL

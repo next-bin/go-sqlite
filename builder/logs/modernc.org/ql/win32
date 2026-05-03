@@ -1,0 +1,17 @@
+go1.26.2 windows/386
+2026-04-27T11:13:53+02:00 commit 584dd0af6ccc03d1a779fdbddba749624b898208, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/ql	7.204s
+?   	modernc.org/ql/design	[no test files]
+ok  	modernc.org/ql/driver	0.059s
+?   	modernc.org/ql/ql	[no test files]
+--- FAIL: TestLock (0.02s)
+    lock_test.go:79: test lock, portable false
+    lock_test.go:92: First lock in child
+    lock_test.go:97: Crash child
+    lock_test.go:105: Locking+unlocking in child...
+    lock_test.go:107: lock in child process after crashing child: cannot acquire lock: file "C:\\Users\\jnml\\AppData\\Local\\Temp\\728212658\\foo.lock" already locked
+FAIL
+FAIL	modernc.org/ql/vendored/github.com/camlistore/go4/lock	0.046s
+FAIL
+
+FAIL err=exit status 1

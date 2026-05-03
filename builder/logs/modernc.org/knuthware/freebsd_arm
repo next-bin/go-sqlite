@@ -1,0 +1,48 @@
+2023-02-01T00:10:31+01:00 commit b2a9b94acbb8760b9f0ae8246dcacd5b1ed0e24c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC "/usr/bin/cc"
+ok  	modernc.org/knuthware	0.255s
+ok  	modernc.org/knuthware/cmd/godvitype	0.092s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftodvi	0.108s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftopk	0.148s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftype	0.085s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomf	0.105s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomft	0.118s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopktype	0.091s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopltotf	0.101s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopooltype	0.099s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotangle	0.088s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotex	0.094s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotftopl	0.096s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govftovp	0.097s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govptovf	0.092s [no tests to run]
+ok  	modernc.org/knuthware/cmd/goweave	0.099s [no tests to run]
+ok  	modernc.org/knuthware/dvitype	1.343s
+ok  	modernc.org/knuthware/gftodvi	14.459s
+ok  	modernc.org/knuthware/gftopk	17.790s
+ok  	modernc.org/knuthware/gftype	22.846s
+--- FAIL: Test (11.13s)
+    all_test.go:46: "trap.72270gf": 1028
+    all_test.go:46: "trap.fot": 1711
+    all_test.go:46: "trap.log": 121710
+    all_test.go:46: "trap.mf": 11899
+    all_test.go:46: "trap.pl": 10388
+    all_test.go:46: "trap.typ": 4552
+    all_test.go:46: "trapin.fot": 2303
+    all_test.go:46: "trapin.log": 4593
+    all_test.go:196: 4600 bytes matches trapin.log OK
+    all_test.go:247: timeout
+FAIL
+FAIL	modernc.org/knuthware/mf	11.253s
+ok  	modernc.org/knuthware/mf/internal/trap	0.099s
+ok  	modernc.org/knuthware/mft	0.142s
+ok  	modernc.org/knuthware/pktype	14.404s
+ok  	modernc.org/knuthware/pltotf	4.456s
+ok  	modernc.org/knuthware/pooltype	1.445s
+ok  	modernc.org/knuthware/tangle	52.248s
+ok  	modernc.org/knuthware/tex	23.810s
+ok  	modernc.org/knuthware/tex/internal/trip	0.106s
+ok  	modernc.org/knuthware/tftopl	0.561s
+ok  	modernc.org/knuthware/vftovp	1.605s
+ok  	modernc.org/knuthware/vptovf	4.532s
+ok  	modernc.org/knuthware/weave	21.286s
+ok  	modernc.org/knuthware/web	238.315s
+FAIL

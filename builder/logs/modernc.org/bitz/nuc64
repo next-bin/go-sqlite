@@ -1,0 +1,36 @@
+go1.26.0 linux/amd64
+2026-02-19T08:58:05+01:00 commit 0a09b6966ab6d76744a07c496de953c2f557a9f7, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: HEAD not tagged: modernc.org/dyd
+HEAD not tagged: modernc.org/egg
+HEAD not tagged: modernc.org/equ
+HEAD not tagged: modernc.org/libX11
+HEAD not tagged: modernc.org/libXdmcp
+HEAD not tagged: modernc.org/libXft
+HEAD not tagged: modernc.org/libXrender
+HEAD not tagged: modernc.org/libexpat
+HEAD not tagged: modernc.org/libfontconfig
+HEAD not tagged: modernc.org/libfreetype
+HEAD not tagged: modernc.org/libgmp
+HEAD not tagged: modernc.org/libmd
+HEAD not tagged: modernc.org/libmpc
+HEAD not tagged: modernc.org/libpcre
+HEAD not tagged: modernc.org/libpcre2-16
+HEAD not tagged: modernc.org/libpcre2-8
+HEAD not tagged: modernc.org/libpcre2-posix
+HEAD not tagged: modernc.org/libpcre32
+HEAD not tagged: modernc.org/libpcreposix
+HEAD not tagged: modernc.org/libquickjs
+HEAD not tagged: modernc.org/libsamplerate
+HEAD not tagged: modernc.org/libsqlite_vec
+HEAD not tagged: modernc.org/libtcl8.6
+HEAD not tagged: modernc.org/libtk9.0
+HEAD not tagged: modernc.org/libxcb
+HEAD not tagged: modernc.org/libz
+HEAD not tagged: modernc.org/quickjs
+HEAD not tagged: modernc.org/rec
+HEAD not tagged: modernc.org/sqlite
+HEAD not tagged: modernc.org/tk9.0
+HEAD not tagged: modernc.org/visualmd
+HEAD not tagged: zombiezen.com/go/sqlite
+
+FAIL err=AUTOTASKS: module modernc.org/tcl9.0 uses modernc.org/fileutil@v1.4.0 but the local clone is at v1.3.40

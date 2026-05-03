@@ -1,0 +1,152 @@
+2024-03-21T22:27:53+08:00 commit 5ded520c891acfeb1b728a48570e67f646ea1f65, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test1635301390/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_linux_loong64.go"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libpcre2-8
+execute ./RunTest [] in /tmp/Test1635301390/001
+
+PCRE2 C library tests using test data from ./testdata
+PCRE2 version 10.42 2022-12-11
+
+---- Testing 8-bit library ----
+
+Test 0: Unchecked pcre2test argument tests (to improve coverage)
+  OK
+Test 1: Main non-UTF, non-UCP functionality (compatible with Perl >= 5.10)
+  OK
+Test 2: API, errors, internals and non-Perl stuff (excluding UTF-8)
+  OK
+Test 3: Locale-specific features (using 'fr_FR' locale)
+** Locale test did not run successfully. The output did not match
+   ./testdata/testoutput3, ./testdata/testoutput3A or ./testdata/testoutput3B.
+   This may mean that there is a problem with the locale settings rather
+   than a bug in PCRE2.
+--- FAIL: Test (0.66s)
+    all_test.go:49: time: 203.530664ms
+    all_test.go:59: 
+        # This set of tests checks local-specific features, using the "fr_FR" locale. 
+        # It is not Perl-compatible. When run via RunTest, the locale is edited to
+        # be whichever of "fr_FR", "french", or "fr" is found to exist. There is
+        # different version of this file called wintestinput3 for use on Windows,
+        # where the locale is called "french" and the tests are run using
+        # RunTest.bat. 
+        
+        #forbid_utf
+        
+        /^[\w]+/
+        \= Expect no match
+            École
+        No match
+        
+        /^[\w]+/locale=fr_FR
+            École
+        No match
+        
+        /^[\w]+/
+        \= Expect no match
+            École
+        No match
+        
+        /^[\W]+/
+            École
+         0: \xc9
+        
+        /^[\W]+/locale=fr_FR
+        \= Expect no match
+            École
+         0: \xc9
+        
+        /[\b]/
+            \b
+         0: \x08
+        \= Expect no match
+            a
+        No match
+        
+        /[\b]/locale=fr_FR
+            \b
+         0: \x08
+        \= Expect no 
+
+...
+
+ 
+        Subject length lower bound = 1
+        
+        /\w/I,locale=fr_FR
+        Capture group count = 0
+        Starting code units: 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P 
+          Q R S T U V W X Y Z _ a b c d e f g h i j k l m n o p q r s t u v w x y z 
+        Subject length lower bound = 1
+        
+        # All remaining tests are in the fr_FR locale, so set the default.
+        
+        #pattern locale=fr_FR
+        
+        /^[\xc8-\xc9]/i
+            École
+         0: \xc9
+            école
+        No match
+        
+        /^[\xc8-\xc9]/
+            École
+         0: \xc9
+        \= Expect no match
+            école
+        No match
+        
+        /\W+/
+            >>>\xaa<<<
+         0: >>>\xaa<<<
+            >>>\xba<<< 
+         0: >>>\xba<<<
+        
+        /[\W]+/
+            >>>\xaa<<<
+         0: >>>\xaa<<<
+            >>>\xba<<< 
+         0: >>>\xba<<<
+        
+        /[^[:alpha:]]+/
+            >>>\xaa<<<
+         0: >>>\xaa<<<
+            >>>\xba<<< 
+         0: >>>\xba<<<
+        
+        /\w+/
+            >>>\xaa<<<
+        No match
+            >>>\xba<<< 
+        No match
+        
+        /[\w]+/
+            >>>\xaa<<<
+        No match
+            >>>\xba<<< 
+        No match
+        
+        /[[:alpha:]]+/
+            >>>\xaa<<<
+        No match
+            >>>\xba<<< 
+        No match
+            
+        /[[:alpha:]][[:lower:]][[:upper:]]/IB
+        ------------------------------------------------------------------
+                Bra
+                [A-Za-z]
+                [a-z]
+                [A-Z]
+                Ket
+                End
+        ------------------------------------------------------------------
+        Capture group count = 0
+        Starting code units: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+          a b c d e f g h i j k l m n o p q r s t u v w x y z 
+        Subject length lower bound = 3
+        
+        # End of testinput3 
+    all_test.go:61: <nil>
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-8	0.666s
+
+FAIL err=exit status 1

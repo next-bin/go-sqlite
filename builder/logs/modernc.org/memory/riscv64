@@ -1,0 +1,8 @@
+go1.25.3 linux/riscv64
+2025-10-19T22:01:02+02:00 commit 0a6f7544739330ad95572cc272626a60176f2faf, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/sys v0.31.0
+# modernc.org/memory
+mmap_unix.go:12:2: golang.org/x/sys@v0.31.0: Get "https://proxy.golang.org/golang.org/x/sys/@v/v0.31.0.zip": dial tcp 142.250.73.145:443: i/o timeout
+FAIL	modernc.org/memory [setup failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,44 @@
+2024-01-28T16:42:37Z commit 822c20b9a96c1457f5bac3de57b11a3204169c22, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test169945612/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_linux_arm64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre2-32
+execute ./RunTest [] in /tmp/Test169945612/001
+
+PCRE2 C library tests using test data from ./testdata
+PCRE2 version 10.42 2022-12-11
+
+---- Testing 32-bit library ----
+
+Test 0: Unchecked pcre2test argument tests (to improve coverage)
+  OK
+Test 1: Main non-UTF, non-UCP functionality (compatible with Perl >= 5.10)
+  OK
+Test 2: API, errors, internals and non-Perl stuff (excluding UTF-32)
+  OK
+Cannot test locale-specific features - none of the 'fr_FR', 'fr_CA',
+'fr' or 'french' locales can be set, or the "locale" command is
+not available to check for them.
+ 
+Test 4: UTF-32 and Unicode property support (compatible with Perl >= 5.10)
+  OK
+Test 5: API, internals, and non-Perl stuff for UTF-32 and UCP support
+--- ./testdata/testoutput5	2022-01-14 12:19:41.000000000 +0000
++++ testtry	2024-01-28 16:42:37.568061730 +0000
+@@ -4896,7 +4896,7 @@
+ /(?'𑠅ABC'...)/I,utf
+ Capture group count = 1
+ Named capture groups:
+-  𑠅ABC   1
++  𑠅eABC   1
+ Options: utf
+ Subject length lower bound = 3
+    abcde\=copy=𑠅ABC
+
+** Test 5 failed
+--- FAIL: Test (17.30s)
+    all_test.go:49: time: 3.798144245s
+    all_test.go:52: ** Test 5 failed
+    all_test.go:57: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-32	17.316s
+
+FAIL err=exit status 1

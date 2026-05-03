@@ -1,0 +1,28 @@
+2023-11-25T03:51:01Z commit 29b00b2828f28f719a9fd3f27a6fbf0b170f9e84, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test1790826801/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_linux_riscv64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre2-8
+# command-line-arguments
+internal/pcre2test/ccgo_linux_riscv64.go:10042:17: undefined: _clock
+internal/pcre2test/ccgo_linux_riscv64.go:10044:18: undefined: _clock
+internal/pcre2test/ccgo_linux_riscv64.go:10070:19: undefined: _clock
+internal/pcre2test/ccgo_linux_riscv64.go:10072:20: undefined: _clock
+internal/pcre2test/ccgo_linux_riscv64.go:11677:18: undefined: _clock
+internal/pcre2test/ccgo_linux_riscv64.go:11690:19: undefined: _clock
+internal/pcre2test/ccgo_linux_riscv64.go:11702:19: undefined: _clock
+internal/pcre2test/ccgo_linux_riscv64.go:11715:10: undefined: _clock
+--- FAIL: Test (9.14s)
+    all_test.go:35: # command-line-arguments
+        internal/pcre2test/ccgo_linux_riscv64.go:10042:17: undefined: _clock
+        internal/pcre2test/ccgo_linux_riscv64.go:10044:18: undefined: _clock
+        internal/pcre2test/ccgo_linux_riscv64.go:10070:19: undefined: _clock
+        internal/pcre2test/ccgo_linux_riscv64.go:10072:20: undefined: _clock
+        internal/pcre2test/ccgo_linux_riscv64.go:11677:18: undefined: _clock
+        internal/pcre2test/ccgo_linux_riscv64.go:11690:19: undefined: _clock
+        internal/pcre2test/ccgo_linux_riscv64.go:11702:19: undefined: _clock
+        internal/pcre2test/ccgo_linux_riscv64.go:11715:10: undefined: _clock
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-8	9.175s
+
+FAIL err=exit status 1

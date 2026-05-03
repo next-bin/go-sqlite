@@ -1,0 +1,10 @@
+2023-08-29T00:03:57Z commit 497ec2c82575e7dff2750c3eaf647fc24dd3df4c, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/ccgo/v3 v3.16.15
+go: downloading modernc.org/memory v1.7.1
+--- FAIL: Test (0.02s)
+    all_test.go:26: 
+        stat example/example_linux_riscv64.go: no such file or directory
+    all_test.go:28: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/z/v2	0.055s

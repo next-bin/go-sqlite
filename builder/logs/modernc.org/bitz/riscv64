@@ -1,0 +1,7 @@
+2024-06-18T15:25:27Z commit 0007b7c0ff596679ca6478c2671f011b6706e29d, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading github.com/dustin/go-humanize v1.0.1
+go: downloading github.com/dgryski/go-bitstream v0.0.0-20180413035011-3522498ce2c8
+go: downloading github.com/icza/huffman v0.0.0-20230330133829-d543610fbdd2
+etc.go:11:2: github.com/dustin/go-humanize@v1.0.1: Get "https://proxy.golang.org/github.com/dustin/go-humanize/@v/v1.0.1.zip": dial tcp 172.217.160.113:443: i/o timeout
+
+FAIL err=exit status 1

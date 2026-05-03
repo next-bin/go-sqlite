@@ -1,0 +1,87 @@
+go1.25.1 freebsd/amd64
+2025-09-16T14:43:13+02:00 commit 90b196223d36b49edfb422b9254f364cf05c9802, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libX11/libX11-1.8.9"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+execute /bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11/internal/freebsd/amd64 -name *freebsd_amd64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+archivePath libX11-1.8.9.tar.gz
+extractedArchivePath libX11-1.8.9
+tempDir /tmp/libX11
+libRoot /tmp/libX11/libX11-1.8.9
+makeRoot /tmp/libX11/libX11-1.8.9
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11/internal/freebsd/amd64
+execute /usr/bin/tar ["xf" "libX11-1.8.9.tar.gz" "-C" "/tmp/libX11"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+execute /usr/local/bin/gsed ["-i" "s/&& (tmp_ctext\\[0\\] & 0x80) && (tmp_ctext\\[0\\] & 0x80))/\\&\\& (tmp_ctext[0] \\& 0x80))/" "src/xlibi18n/lcCT.c"] in /tmp/libX11/libX11-1.8.9
+execute /bin/sh ["-c" "go mod init example.com/libx11 ; go get modernc.org/libc@latest modernc.org/libxcb@latest"] in /tmp/libX11/libX11-1.8.9
+go: creating new go.mod: module example.com/libx11
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libXau v0.9.18
+go: added modernc.org/libXdmcp v0.12.18
+go: added modernc.org/libbsd v0.11.15
+go: added modernc.org/libc v1.66.8
+go: added modernc.org/libmd v0.12.21
+go: added modernc.org/libxcb v0.12.4
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -w -mlong-double-64' ./configure --disable-loadable-i18n --disable-loadable-xcursor --disable-shared --disable-specs "] in /tmp/libX11/libX11-1.8.9
+checking build system type... x86_64-unknown-free
+
+...
+
+mlto... no
+configure: WARNING: xmlto not found - documentation targets will be skipped
+checking for xsltproc... /usr/local/bin/xsltproc
+checking for X.Org SGML entities >= 1.10... no
+checking how to run the C preprocessor... gcc -E
+checking for cpp... /usr/bin/cpp
+checking if /usr/bin/cpp requires -undef... yes
+checking if /usr/bin/cpp requires -traditional... yes
+checking for perl... /usr/local/bin/perl
+checking for pkg-config... no
+checking for pkg-config... no
+checking if Xtrans should support UNIX socket connections... yes
+checking if Xtrans should support TCP socket connections... yes
+checking for library containing socket... none required
+checking for library containing gethostbyname... none required
+checking for getaddrinfo... yes
+checking if IPv6 support should be built... yes
+checking for struct sockaddr_in.sin_len... yes
+checking for socklen_t... yes
+checking for struct msghdr.msg_control... yes
+checking if Xtrans should support os-specific local connections... no
+checking for strcasecmp... yes
+checking for strlcpy... yes
+checking for library containing dlopen... none required
+checking for dlfcn.h... (cached) yes
+checking if run-time linking is supported... yes
+checking if loadable i18n module support should be enabled... no
+checking if loadable Xcursor library support should be enabled... no
+checking for sys/filio.h... yes
+checking for sys/select.h... yes
+checking for sys/ioctl.h... yes
+checking for sys/socket.h... yes
+checking for __builtin_popcountl... yes
+checking for strtol... yes
+checking for seteuid... yes
+checking for reallocarray... yes
+checking whether issetugid is declared... yes
+checking for issetugid... yes
+checking for getresuid... yes
+checking for shmat... yes
+checking for launchd... no
+checking for getpwuid_r in -lc... yes
+checking for poll... yes
+checking keysym definitions... ./configure: --variable=includedir: not found
+configure: error: /X11 doesn't exist or isn't a directory
+
+err: exit status 1
+exit status 1
+libx11.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

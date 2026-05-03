@@ -1,0 +1,75 @@
+go1.26.0 darwin/amd64
+2026-03-30T02:06:31+02:00 commit a79ae92595c9a84528cdad2db9865172d3b38dd5, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6
+dev false
+xdgDir /Users/jnml/Library/Application Support/ccgo/v4/libtcl8.6/darwin/amd64
+archivePath tcl8.6.13-src.tar.gz
+extractedArchivePath tcl8.6.13
+tempDir /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6
+libRoot /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13
+makeRoot /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13/unix
+execute /bin/sh ["-c" "\ngo mod init example.com/libtcl8.6\ngo get \\\n\tmodernc.org/libc@latest \\\n\tmodernc.org/libz@latest\n"] in /private/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13/unix
+go: creating new go.mod: module example.com/libtcl8.6
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.70.0
+go: added modernc.org/libz v0.17.3
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H -mlong-double-64' ./configure --disable-threads --disable-shared --disable-load --disable-corefoundation"] in /private/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13/unix
+checking whether to use symlinks for manpages... no
+checking whether to compress the manpages... no
+checking whether to add a package name suffix for the manpages... no
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking wheth
+
+...
+
+
+	494	win
+	1	winLessThan10
+	4	winVista
+	6	xdev
+/Users/jnml/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615:scan: TODOTODO /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/ccgo-tmp-ar-157245728/__.SYMDEF SORTED:1:1: U+0000
+panic: /Users/jnml/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615:scan: TODOTODO /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/ccgo-tmp-ar-157245728/__.SYMDEF SORTED:1:1: U+0000
+
+goroutine 1 [running]:
+modernc.org/gc/v2.(*Scanner).scan(0x76cf366820)
+	/Users/jnml/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615 +0xaf9
+modernc.org/gc/v2.(*Scanner).Scan(0x76cf366820)
+	/Users/jnml/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:341 +0x65
+modernc.org/gc/v2.newParser(...)
+	/Users/jnml/pkg/mod/modernc.org/gc/v2@v2.6.5/parser.go:29
+modernc.org/gc/v2.ParseSourceFile(0x76cf396468, {0x76cf672000?, 0x57?}, {0x76cf3c6400?, 0x8?, 0x200?})
+	/Users/jnml/pkg/mod/modernc.org/gc/v2@v2.6.5/gc.go:36 +0x105
+modernc.org/ccgo/v4/lib.(*Task).getFileSymbols(0x76cf714d88, 0x0?, {0x76cf672000, 0x57})
+	/Users/jnml/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/link.go:460 +0x12d
+modernc.org/ccgo/v4/lib.(*Task).link(0x76cf714d88)
+	/Users/jnml/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/link.go:271 +0x3a8
+modernc.org/ccgo/v4/lib.(*Task).main(0x76cf714d88)
+	/Users/jnml/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/ccgo.go:687 +0x85e8
+modernc.org/ccgo/v4/lib.(*Task).Main(0x76cf714d88)
+	/Users/jnml/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/ccgo.go:209 +0x95
+main.main.func3()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/generator.go:317 +0x209f
+modernc.org/fileutil/ccgo.InDir({0x76cf412050, 0x49}, 0x76cf2cbee8)
+	/Users/jnml/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:365 +0xc2
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x76cf412050?, 0x76cf6723c0?}, 0x5f921a8?)
+	/Users/jnml/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:370 +0x25
+main.main()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/generator.go:148 +0x10fb
+exit status 2
+libtcl.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

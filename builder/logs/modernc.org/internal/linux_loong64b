@@ -1,0 +1,9 @@
+go1.24.5 linux/loong64
+2025-08-04T18:25:37+08:00 commit f63533fad4e375bf1d542fc83fc45a1ddfc4cb43, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.00s)
+    nonrace_test.go:36: 615
+FAIL
+FAIL	modernc.org/internal/buffer	0.100s
+FAIL
+
+FAIL err=exit status 1

@@ -1,0 +1,23 @@
+2024-05-04T23:39:56+02:00 commit a8ad27a0e6b4c69c48a148a604f51e58245fb81e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/sqlite/lib
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/defs.go:13:35: undefined: sqlite3_index_constraint
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/defs.go:14:35: undefined: sqlite3_index_orderby
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/defs.go:15:35: undefined: sqlite3_index_constraint_usage
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/mutex.go:19:5: undefined: Xsqlite3_threadsafe
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/mutex.go:29:11: undefined: Xsqlite3_config
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/mutex.go:29:32: undefined: SQLITE_CONFIG_MUTEX
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/mutex.go:29:122: undefined: SQLITE_OK
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/mutex.go:30:8: undefined: Xsqlite3_errstr
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/mutex.go:40:17: undefined: Sqlite3_mutex_methods
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/mutex.go:239:46: undefined: SQLITE_OK
+/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/mutex.go:239:46: too many errors
+FAIL	zombiezen.com/go/sqlite [build failed]
+FAIL	zombiezen.com/go/sqlite/ext/generateseries [build failed]
+FAIL	zombiezen.com/go/sqlite/ext/refunc [build failed]
+FAIL	zombiezen.com/go/sqlite/shell [build failed]
+FAIL	zombiezen.com/go/sqlite/sqlitefile [build failed]
+FAIL	zombiezen.com/go/sqlite/sqlitemigration [build failed]
+FAIL	zombiezen.com/go/sqlite/sqlitex [build failed]
+FAIL
+
+FAIL err=exit status 1

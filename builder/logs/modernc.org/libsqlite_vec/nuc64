@@ -1,0 +1,14 @@
+go1.26.2 linux/amd64
+2026-04-21T16:49:46+02:00 commit 17660424de6815217893cde8ada04746ec6f278f, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.00s)
+    all_test.go:86: ["rowid" "distance"]
+        [["2" "2.386873722076416"] ["1" "2.3897850513458252"]]
+    all_test.go:88: got ["rowid" "distance"]
+        [["2" "2.386873722076416"] ["1" "2.3897850513458252"]]
+        exp ["rowid" "distance"]
+        [["2" "2.38687372207642"] ["1" "2.38978505134583"]]
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite_vec	0.009s
+
+FAIL err=exit status 1

@@ -1,0 +1,11 @@
+go1.26.2 linux/amd64
+2026-04-19T07:26:28+02:00 commit e6f8cc0903d50c754e71aa94607b6bfd49c3a3df, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
+** ./configure aborting.
+--- FAIL: TestZlib (0.51s)
+    all_test.go:825: FAIL err=exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/qbecc/lib	2873.689s
+
+FAIL err=exit status 1

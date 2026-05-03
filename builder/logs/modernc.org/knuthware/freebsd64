@@ -1,0 +1,83 @@
+2023-01-31T00:00:50+01:00 commit 3be1befa4e1c730a3b501071187d684a706d661d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuthware	0.007s
+ok  	modernc.org/knuthware/cmd/godvitype	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftodvi	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftopk	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftype	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomf	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomft	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopktype	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopltotf	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopooltype	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotangle	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotftopl	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govftovp	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govptovf	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/goweave	0.003s [no tests to run]
+ok  	modernc.org/knuthware/dvitype	0.114s
+ok  	modernc.org/knuthware/gftodvi	0.173s
+ok  	modernc.org/knuthware/gftopk	0.327s
+ok  	modernc.org/knuthware/gftype	1.105s
+ok  	modernc.org/knuthware/mf	0.388s
+ok  	modernc.org/knuthware/mf/internal/trap	0.008s
+ok  	modernc.org/knuthware/mft	0.003s
+ok  	modernc.org/knuthware/pktype	0.291s
+ok  	modernc.org/knuthware/pltotf	0.101s
+ok  	modernc.org/knuthware/pooltype	0.035s
+ok  	modernc.org/knuthware/tangle	1.987s
+ok  	modernc.org/knuthware/tex	0.002s
+ok  	modernc.org/knuthware/tftopl	0.030s
+ok  	modernc.org/knuthware/vftovp	0.037s
+ok  	modernc.org/knuthware/vptovf	0.120s
+ok  	modernc.org/knuthware/weave	0.482s
+--- FAIL: TestGo (24.37s)
+    all_test.go:467: 
+        2154 Pascal lines for vftovp.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/etc/vftovp.web: output: go: modernc.org/knuthware@master: unrecognized import path "modernc.org/knuthware": https fetch: Get "https://modernc.org/knuthware?go-get=1": dial tcp: lookup modernc.org on 127.0.0.1:53: read udp 127.0.0.1:17581->127.0.0.1:53: i/o timeout
+        
+        er
+
+...
+
+rchive/systems/knuth/dist/texware/dvitype.web: output: go: /tmp/TestGo2402838384/001/go.mod already exists
+        
+        error: exit status 1
+    all_test.go:467: 
+        2355 Pascal lines for pltotf.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/texware/pltotf.web: output: go: /tmp/TestGo2402838384/001/go.mod already exists
+        
+        error: exit status 1
+    all_test.go:467: 
+        339 Pascal lines for pooltype.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/texware/pooltype.web: output: go: /tmp/TestGo2402838384/001/go.mod already exists
+        
+        error: exit status 1
+    all_test.go:467: 
+        1524 Pascal lines for tftopl.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/texware/tftopl.web: output: go: /tmp/TestGo2402838384/001/go.mod already exists
+        
+        error: exit status 1
+    all_test.go:467: 
+        2661 Pascal lines for tangle.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/web/tangle.web: output: go: /tmp/TestGo2402838384/001/go.mod already exists
+        
+        error: exit status 1
+    all_test.go:467: 
+        4318 Pascal lines for weave.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/web/weave.web: output: go: /tmp/TestGo2402838384/001/go.mod already exists
+        
+        error: exit status 1
+    all_test.go:467: 
+        1134 Pascal lines for pktype.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/local/mfware/pktype.web: output: go: /tmp/TestGo2402838384/001/go.mod already exists
+        
+        error: exit status 1
+    all_test.go:467: 
+        1133 Pascal lines for pktype.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/local/mfware-sparc/pktype.web: output: go: /tmp/TestGo2402838384/001/go.mod already exists
+        
+        error: exit status 1
+    all_test.go:85: files 17, ignored 0, fails 17, ok 0
+FAIL
+FAIL	modernc.org/knuthware/web	28.521s
+FAIL

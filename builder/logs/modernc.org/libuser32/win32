@@ -1,0 +1,16 @@
+2024-07-30T20:12:08+02:00 commit a53b32c764b4b764269cb5a61e4b92e282346025, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libuser32 [modernc.org/libuser32.test]
+.\libuser32_windows_386.go:32414:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:32423:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:32432:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:32593:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:32602:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:33822:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:33831:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:34330:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:34339:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:34348:7: undefined: libc.X__ccgo_SyscallFP
+.\libuser32_windows_386.go:34348:7: too many errors
+FAIL	modernc.org/libuser32 [build failed]
+
+FAIL err=exit status 1

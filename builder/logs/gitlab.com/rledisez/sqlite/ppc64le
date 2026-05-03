@@ -1,0 +1,14 @@
+2024-02-22T19:27:42+01:00 commit 0a8da4bb8f4a084eb474d2cb79b86ecba3d2585c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for linux/ppc64le
+--- FAIL: TestIssue20 (59.24s)
+    all_test.go:875: Query: database is locked (5) (SQLITE_BUSY)
+    all_test.go:875: Query: database is locked (5) (SQLITE_BUSY)
+    all_test.go:875: Query: database is locked (5) (SQLITE_BUSY)
+    all_test.go:875: Query: database is locked (5) (SQLITE_BUSY)
+    all_test.go:875: Query: database is locked (5) (SQLITE_BUSY)
+FAIL
+FAIL	modernc.org/sqlite	81.210s
+ok  	modernc.org/sqlite/functest	404.175s
+FAIL
+
+FAIL err=exit status 1

@@ -1,0 +1,49 @@
+2024-04-17T15:11:21+02:00 commit e86789b285552c15a1ef775b6291d66c75d07b0b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	github.com/ncruces/go-sqlite3	4.354s
+?   	github.com/ncruces/go-sqlite3/embed	[no test files]
+ok  	github.com/ncruces/go-sqlite3/driver	4.388s
+ok  	github.com/ncruces/go-sqlite3/ext/array	5.130s
+ok  	github.com/ncruces/go-sqlite3/ext/blobio	5.076s
+ok  	github.com/ncruces/go-sqlite3/ext/csv	4.296s
+ok  	github.com/ncruces/go-sqlite3/ext/fileio	4.358s
+ok  	github.com/ncruces/go-sqlite3/ext/hash	4.328s
+ok  	github.com/ncruces/go-sqlite3/ext/lines	40.148s
+ok  	github.com/ncruces/go-sqlite3/ext/pivot	4.103s
+ok  	github.com/ncruces/go-sqlite3/ext/statement	4.180s
+ok  	github.com/ncruces/go-sqlite3/ext/stats	4.005s
+ok  	github.com/ncruces/go-sqlite3/ext/unicode	4.174s
+ok  	github.com/ncruces/go-sqlite3/ext/zorder	4.072s
+ok  	github.com/ncruces/go-sqlite3/internal/util	0.006s
+ok  	github.com/ncruces/go-sqlite3/tests	12.040s
+ok  	github.com/ncruces/go-sqlite3/tests/bradfitz	5.210s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/empty	0.006s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/missing	0.007s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/nil	0.006s
+?   	github.com/ncruces/go-sqlite3/tests/testcfg	[no test files]
+?   	github.com/ncruces/go-sqlite3/util/osutil	[no test files]
+?   	github.com/ncruces/go-sqlite3/util/vtabutil	[no test files]
+ok  	github.com/ncruces/go-sqlite3/tests/parallel	28.872s
+ok  	github.com/ncruces/go-sqlite3/util/fsutil	0.005s
+ok  	github.com/ncruces/go-sqlite3/util/ioutil	0.006s
+ok  	github.com/ncruces/go-sqlite3/vfs	4.778s
+ok  	github.com/ncruces/go-sqlite3/vfs/memdb	4.699s
+ok  	github.com/ncruces/go-sqlite3/vfs/readervfs	4.701s
+panic: Please use Git LFS to clone this repo: https://git-lfs.com/
+
+goroutine 1 [running]:
+github.com/ncruces/go-sqlite3/vfs/tests/mptest.TestMain(0xc000094280)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/ncruces/go-sqlite3/vfs/tests/mptest/mptest_test.go:54 +0x305
+main.main()
+	_testmain.go:63 +0x195
+FAIL	github.com/ncruces/go-sqlite3/vfs/tests/mptest	0.014s
+panic: Please use Git LFS to clone this repo: https://git-lfs.com/
+
+goroutine 1 [running]:
+github.com/ncruces/go-sqlite3/vfs/tests/speedtest1.TestMain(0xc0000a4280)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/ncruces/go-sqlite3/vfs/tests/speedtest1/speedtest1_test.go:51 +0x329
+main.main()
+	_testmain.go:49 +0x195
+FAIL	github.com/ncruces/go-sqlite3/vfs/tests/speedtest1	0.009s
+FAIL
+
+FAIL err=exit status 1

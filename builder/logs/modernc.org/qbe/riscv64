@@ -1,0 +1,76 @@
+2024-05-10T13:26:22Z commit ec0df77803d9e60c983c38de5890f2fa14f77ec2, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+qbe: [/tmp/go-build3049842850/b088/qbe.test -test.paniconexit0 -test.v=true -test.failfast=true -test.timeout=24h0m0s -bestof 1 -gcc 7,8,9,10,11]
+: exec: "gcc-7": executable file not found in $PATH
+: exec: "gcc-8": executable file not found in $PATH
+: exec: "gcc-9": executable file not found in $PATH
+qbe: [/tmp/go-build3049842850/b088/qbe.test -test.paniconexit0 -test.v=true -test.failfast=true -test.timeout=24h0m0s -bestof 1]
+CC=/usr/bin/gcc-10
+gcc-10 (Ubuntu 10.3.0-11ubuntu1) 10.3.0
+=== RUN   TestSize
+--- PASS: TestSize (0.00s)
+=== RUN   TestScan
+=== RUN   TestScan/states
+    all_test.go:265: 297474 test cases
+=== RUN   TestScan/testdata
+=== RUN   TestScan/errchk
+--- PASS: TestScan (5.88s)
+    --- PASS: TestScan/states (5.60s)
+    --- PASS: TestScan/testdata (0.27s)
+    --- PASS: TestScan/errchk (0.00s)
+=== RUN   TestParser
+--- PASS: TestParser (0.65s)
+=== RUN   TestParserErrChk
+--- PASS: TestParserErrChk (0.02s)
+=== RUN   TestAST
+--- PASS: TestAST (1.70s)
+=== RUN   TestASTErrChk
+--- PASS: TestASTErrChk (0.01s)
+=== RUN   TestC
+    all_test.go:773: testdata/c9x.me/qbe/_alt.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_bf99.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_bfmandel.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_dragon.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_fix1.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_fix2.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_fix3.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_fix4.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_live.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_rpo.ssa: unknown/usupported target linux/riscv64
+    all_test.go:773: testdata/c9x.me/qbe/_slow.qbe: unknown/usupported target l
+
+...
+
+/tests/tests2/46_grep.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/47_switch_return.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/48_nested_break.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/49_bracket_evaluation.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/50_logical_second_arg.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/51_static.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/52_unnamed_enum.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/54_goto.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/55_lshift_type.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/64_macro_nesting.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/67_macro_concat.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/70_floating_point_literals.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/71_macro_empty_arg.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/72_long_long_constant.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/75_array_in_struct_init.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/76_dollars_in_identifiers.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/81_types.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/82_attribs_position.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/84_hex-float.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/86_memory-model.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/87_dead_code.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/88_codeopt.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/89_nocode_wanted.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/91_ptr_longlong_arith32.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/92_enum_bitfield.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/93_integer_promotion.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/95_bitfields.c
+    all_test.go:1051: FAIL /tcc-0.9.27/tests/tests2/97_utf8_string_literal.c
+--- FAIL: TestTCC (17.54s)
+FAIL
+FAIL	modernc.org/qbe/cc	35.439s
+FAIL
+
+FAIL err=exit status 1

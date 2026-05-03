@@ -1,0 +1,9 @@
+go1.25.4 linux/riscv64
+2025-11-15T12:17:39Z commit 17ed309d7fab13001f0361dc0b5531e1e240f0b3, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: Connection closed by 172.65.251.78 port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+FAIL err=AUTOTASKS: exit status 1

@@ -1,0 +1,50 @@
+2023-01-17T00:57:50+01:00 commit 5253a955293dc9686cd7fdeb068573e8e610b063, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\errno
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/fcntl: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\fcntl
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/limits: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\limits
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/pthread: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\pthread
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/signal: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\signal
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/stdio: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\stdio
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/stat: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\sys\stat
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc/sys/types: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\sys\types
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/time: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\time
+package git.sr.ht/~jackmordaunt/go-libwebp/cmd
+	imports git.sr.ht/~jackmordaunt/go-libwebp/webp
+	imports git.sr.ht/~jackmordaunt/go-libwebp/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/unistd: build constraints exclude all Go files in C:\Users\jnml\go\pkg\mod\modernc.org\libc@v1.14.5\unistd

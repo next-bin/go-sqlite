@@ -1,0 +1,42 @@
+go1.25.5 linux/loong64
+2025-12-30T11:11:20+01:00 commit c5a50f773986958022a152dc6ad86ef8933bbc7a, GOMAXPROCS 16, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libgmp/gmp-6.3.0"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libgmp
+archivePath gmp-6.3.0.tar.xz
+extractedArchivePath gmp-6.3.0
+tempDir /tmp/libgmp
+libRoot /tmp/libgmp/gmp-6.3.0
+makeRoot /tmp/libgmp/gmp-6.3.0
+execute /usr/bin/tar ["xf" "gmp-6.3.0.tar.xz" "-C" "/tmp/libgmp"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libgmp
+execute /usr/bin/sh ["-c" "cp /tmp/libgmp/gmp-6.3.0/COPYING* ."] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libgmp
+execute /usr/bin/sh ["-c" "go mod init example.com/libgmp; go get modernc.org/libc@latest"] in /tmp/libgmp/gmp-6.3.0
+go: creating new go.mod: module example.com/libgmp
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: module modernc.org/libc: Get "https://goproxy.cn/modernc.org/libc/@v/list": net/http: TLS handshake timeout
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x70
+modernc.org/ccgo/v3/lib.Fatalf(0x0?, {0x55c8a3, 0x18}, {0xc0000339a0, 0x4, 0x4})
+	/home/cznic/go/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:312 +0x40
+modernc.org/ccgo/v3/lib.MustShell(0x1, {0x55099b, 0x2}, {0xc000091700, 0x2, 0x2})
+	/home/cznic/go/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:408 +0x108
+main.main.func2()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libgmp/generator.go:106 +0x14c
+modernc.org/ccgo/v3/lib.InDir({0xc00002a360, 0x15}, 0xc000033d20)
+	/home/cznic/go/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:364 +0xc0
+modernc.org/ccgo/v3/lib.MustInDir(0x1, {0xc00002a360?, 0x2?}, 0xc000091640?)
+	/home/cznic/go/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:369 +0x30
+main.main()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libgmp/generator.go:99 +0x8d4
+
+sh [-c go mod init example.com/libgmp; go get modernc.org/libc@latest]
+output: go: creating new go.mod: module example.com/libgmp
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: module modernc.org/libc: Get "https://goproxy.cn/modernc.org/libc/@v/list": net/http: TLS handshake timeout
+
+err: exit status 1
+exit status 1
+libgmp.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

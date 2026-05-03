@@ -1,0 +1,27 @@
+2024-10-11T18:43:00+02:00 commit a5e7903c1ed279fe7fbcdf4ff63f3347d151d409, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuth	0.058s
+ok  	modernc.org/knuth/cmd/godvitype	0.007s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftodvi	0.008s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftopk	0.008s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftype	0.007s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomf	0.008s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomft	0.012s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopktype	0.009s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopltotf	0.009s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopooltype	0.011s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotangle	0.007s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotex	0.017s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotftopl	0.008s [no tests to run]
+ok  	modernc.org/knuth/cmd/govftovp	0.011s [no tests to run]
+ok  	modernc.org/knuth/cmd/govptovf	0.012s [no tests to run]
+ok  	modernc.org/knuth/cmd/goweave	0.011s [no tests to run]
+ok  	modernc.org/knuth/dvi	0.035s
+ok  	modernc.org/knuth/dvitype	0.369s
+--- FAIL: TestInt16_16 (0.00s)
+    --- FAIL: TestInt16_16/#04 (0.00s)
+        font_test.go:75: invalid 16:16 value: got=0, want=-1.2 (diff=1.200000e+00)
+FAIL
+FAIL	modernc.org/knuth/font/afm	0.022s
+FAIL
+
+FAIL err=exit status 1

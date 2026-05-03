@@ -1,0 +1,46 @@
+2024-03-21T01:10:08+01:00 commit f0dba7c97c2b9a339c26efa9f85898b1d4d62c59, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+TODO U+003B ';' (parser.go:194:constDecl: parser.go:210:constSpecs: parser.go:255:constSpec:)
+TODO identifier (parser.go:210:constSpecs: parser.go:259:constSpec: parser.go:136:semi:)
+TODO identifier (parser.go:154:topLevelDecls: parser.go:194:constDecl: parser.go:136:semi:)
+TODO U+003B ';' (parser.go:154:topLevelDecls: parser.go:197:constDecl: parser.go:255:constSpec:)
+TODO const (parser.go:154:topLevelDecls: parser.go:197:constDecl: parser.go:136:semi:)
+TODO U+007E '~' (parser.go:679:varSpecs: parser.go:720:varSpec: parser.go:136:semi:)
+TODO U+003B ';' (parser.go:663:varDecl: parser.go:679:varSpecs: parser.go:711:varSpec:)
+TODO U+007E '~' (parser.go:679:varSpecs: parser.go:720:varSpec: parser.go:136:semi:)
+TODO integer literal (parser.go:704:varSpec: parser.go:1577:type1: parser.go:1635:type1:)
+TODO U+007E '~' (parser.go:679:varSpecs: parser.go:720:varSpec: parser.go:136:semi:)
+TODO U+003B ';' (parser.go:663:varDecl: parser.go:679:varSpecs: parser.go:711:varSpec:)
+TODO U+007E '~' (parser.go:679:varSpecs: parser.go:720:varSpec: parser.go:136:semi:)
+TODO U+003B ';' (parser.go:663:varDecl: parser.go:679:varSpecs: parser.go:711:varSpec:)
+TODO U+007E '~' (parser.go:679:varSpecs: parser.go:720:varSpec: parser.go:136:semi:)
+TODO U+003B ';' (parser.go:663:varDecl: parser.go:679:varSpecs: parser.go:711:varSpec:)
+TODO end of file (parser.go:170:topLevelDecls: parser.go:663:varDecl: parser.go:136:semi:)
+TODO *gc.Index (parser.go:845:statement: parser.go:1507:exprOrSimpleStmt: parser.go:1564:exprListToIDList:)
+TODO identifier (parser.go:922:statement2: parser.go:277:typeDecl: parser.go:336:typeSpec:)
+TODO U+005D ']' (parser.go:922:statement2: parser.go:277:typeDecl: parser.go:136:semi:)
+TODO U+003B ';' (parser.go:2000:multiplicativeExpression: parser.go:2020:unaryExpression: parser.go:2141:primaryExpression:)
+TODO identifier (parser.go:168:topLevelDecls: parser.go:277:typeDecl: parser.go:336:typeSpec:)
+TODO U+005D ']' (parser.go:168:topLevelDecls: parser.go:277:typeDecl: parser.go:136:semi:)
+TODO U+005D ']' (parser.go:2006:
+
+...
+
+parser.go:845:statement: parser.go:1498:exprOrSimpleStmt: parser.go:1564:exprListToIDList:)
+        /usr/local/go/test/fixedbugs/bug388a.go:18:2: TODO *gc.QualifiedIdent (parser.go:845:statement: parser.go:1498:exprOrSimpleStmt: parser.go:1564:exprListToIDList:)
+        /usr/local/go/test/fixedbugs/issue11614.go:22:19: TODO U+003B ';' (parser.go:2000:multiplicativeExpression: parser.go:2020:unaryExpression: parser.go:2116:primaryExpression:)
+        /usr/local/go/test/fixedbugs/issue20233.go:11:20: TODO U+003B ';' (parser.go:2000:multiplicativeExpression: parser.go:2020:unaryExpression: parser.go:2154:primaryExpression:)
+        /usr/local/go/test/fixedbugs/issue20233.go:11:44: TODO end of file (parser.go:170:topLevelDecls: parser.go:666:varDecl: parser.go:136:semi:)
+        /usr/local/go/test/fixedbugs/issue20245.go:11:25: TODO U+003B ';' (parser.go:2000:multiplicativeExpression: parser.go:2020:unaryExpression: parser.go:2141:primaryExpression:)
+        /usr/local/go/test/fixedbugs/issue20245.go:11:50: TODO end of file (parser.go:170:topLevelDecls: parser.go:666:varDecl: parser.go:136:semi:)
+        open /usr/local/go/test/fixedbugs/issue27836.dir/PaxHeaders.0/foo.go: permission denied
+        open /usr/local/go/test/fixedbugs/issue27836.dir/PaxHeaders.0/main.go: permission denied
+        /usr/local/go/test/syntax/typesw.go:10:9: TODO *gc.Arguments (parser.go:1158:switchStmt: parser.go:1498:exprOrSimpleStmt: parser.go:1564:exprListToIDList:)
+        /usr/local/go/test/syntax/typesw.go:10:43: TODO body (parser.go:880:statement: parser.go:920:statement2: parser.go:1173:switchStmt:)
+        /usr/local/go/test/syntax/typesw.go:11:2: expected U+007D '}', got default (parser.go:451:functionDecl: parser.go:461:block: parser.go:64:must:)
+        /usr/local/go/test/syntax/typesw.go:11:9: TODO U+003A ':' (parser.go:159:topLevelDecls: parser.go:453:functionDecl: parser.go:136:semi:)
+    all_test.go:642: TOTAL files 9,719, skip 115, ok 9,582, fails 22
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v2	21.312s
+
+FAIL err=exit status 1

@@ -1,0 +1,5 @@
+go1.25.3 linux/amd64
+2025-12-02T05:02:57+01:00 commit efb031171562facf1d2b5d23d20a41a1cf016200, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: fatal: '' is not a valid tag name.
+
+FAIL err=AUTOTASKS: exit status 128

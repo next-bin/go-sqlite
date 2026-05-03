@@ -1,0 +1,36 @@
+go1.24.3 linux/amd64
+2025-05-14T07:03:44+02:00 commit 28129eec384c30a304561c3c8779e4bb29cbff12, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: HEAD not tagged: modernc.org/doomgeneric
+HEAD not tagged: modernc.org/equ
+HEAD not tagged: modernc.org/internal
+HEAD not tagged: modernc.org/libX11
+HEAD not tagged: modernc.org/libXau
+HEAD not tagged: modernc.org/libXdmcp
+HEAD not tagged: modernc.org/libXrender
+HEAD not tagged: modernc.org/libbsd
+HEAD not tagged: modernc.org/libexpat
+HEAD not tagged: modernc.org/libfreetype
+HEAD not tagged: modernc.org/libgmp
+HEAD not tagged: modernc.org/libmd
+HEAD not tagged: modernc.org/libmpc
+HEAD not tagged: modernc.org/libpcre
+HEAD not tagged: modernc.org/libpcre16
+HEAD not tagged: modernc.org/libqbe
+HEAD not tagged: modernc.org/libquickjs
+HEAD not tagged: modernc.org/libsamplerate
+HEAD not tagged: modernc.org/libsqlite3
+HEAD not tagged: modernc.org/libsqlite_vec
+HEAD not tagged: modernc.org/libtcl8.6
+HEAD not tagged: modernc.org/libtcl9.0
+HEAD not tagged: modernc.org/libtk9.0
+HEAD not tagged: modernc.org/libxcb
+HEAD not tagged: modernc.org/libz
+HEAD not tagged: modernc.org/sqlite
+HEAD not tagged: modernc.org/tcl8.6
+HEAD not tagged: modernc.org/tcl9.0
+HEAD not tagged: modernc.org/tfs
+HEAD not tagged: modernc.org/tk9.0
+HEAD not tagged: modernc.org/visualmd
+HEAD not tagged: zombiezen.com/go/sqlite
+
+FAIL err=AUTOTASKS: module modernc.org/nerdamer uses modernc.org/quickjs@v0.15.0 but the local clone is at v0.14.0

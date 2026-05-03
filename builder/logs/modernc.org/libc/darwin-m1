@@ -1,0 +1,10 @@
+2025-01-31T12:18:20+01:00 commit 45df9dc8e73faa68fe10c39b32ddb1335a08f356, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestIssue42 (0.38s)
+    all_test.go:39: _structs.h:538:1: unsupported alignment 16 of struct __darwin_arm_neon_state64 {__v array of 32 unsigned __int128; __fpsr __uint32_t; __fpcr __uint32_t}
+        _structs.h:545:1: unsupported alignment 16 of struct __darwin_arm_neon_state {__v array of 16 unsigned __int128; __fpsr __uint32_t; __fpcr __uint32_t}
+        _mcontext.h:64:1: unsupported alignment 16 of struct __darwin_mcontext64 {__es struct __darwin_arm_exception_state64; __ss struct __darwin_arm_thread_state64; __ns struct __darwin_arm_neon_state64}
+FAIL
+exit status 1
+FAIL	modernc.org/libc	0.658s
+
+FAIL err=exit status 1

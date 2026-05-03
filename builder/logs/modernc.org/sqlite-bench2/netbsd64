@@ -1,0 +1,58 @@
+go1.26.2 netbsd/amd64
+2026-05-03T09:19:52+02:00 commit 9fdbb8410817bc1248f406fcc3c20e3eb5594a48, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: --- FAIL: TestBenchmarks (28.09s)
+    all_test.go:169: build /tmp/TestBenchmarks3897686503/001/craw
+    all_test.go:174: craw: out=# command-line-arguments
+        /usr/local/go/pkg/tool/netbsd_amd64/link: running gcc failed: exit status 1
+        /usr/bin/gcc -m64 -Wl,--build-id=0xf3b0c30a905ce8bedde230f5b91b890d049a999d -o $WORK/b001/exe/a.out -rdynamic -Wl,--compress-debug-sections=zlib /tmp/go-link-91381292/go.o /tmp/go-link-91381292/000000.o /tmp/go-link-91381292/000001.o /tmp/go-link-91381292/000002.o /tmp/go-link-91381292/000003.o /tmp/go-link-91381292/000004.o /tmp/go-link-91381292/000005.o /tmp/go-link-91381292/000006.o /tmp/go-link-91381292/000007.o /tmp/go-link-91381292/000008.o /tmp/go-link-91381292/000009.o /tmp/go-link-91381292/000010.o /tmp/go-link-91381292/000011.o /tmp/go-link-91381292/000012.o /tmp/go-link-91381292/000013.o /tmp/go-link-91381292/000014.o /tmp/go-link-91381292/000015.o /tmp/go-link-91381292/000016.o /tmp/go-link-91381292/000017.o /tmp/go-link-91381292/000018.o /tmp/go-link-91381292/000019.o /tmp/go-link-91381292/000020.o /tmp/go-link-91381292/000021.o /tmp/go-link-91381292/000022.o -O2 -g -O2 -g -lpthread -no-pie
+        ld: /tmp/go-link-91381292/000010.o: in function `fts5Bm25GetData':
+        /home/jnml/pkg/mod/crawshaw.io/sqlite@v0.3.2/./c/sqlite3.c:210528: undefined reference to `log'
+        
+        
+        FAIL err=exit status 1
+    all_test.go:169: build /tmp/TestBenchmarks3897686503/002/eaton
+    all_test.go:174: eaton: out=# command-line-arguments
+        /usr/local/go/pkg/tool/netbsd_amd64/link: running gcc failed: exit status 1
+        /usr/bin/gcc -m64 -Wl,--build-id=0xcac33041afe1956af817e9b5b0ea7e9ea6559521 -o $WORK/b001/exe/a.out -rdynamic -Wl,--compress-debug-sections=zlib /tmp/go-link-2943798689/go.o /tmp/go-link-2943798689/000000.o /tmp/go-link-2943798689/000001.o /tmp/go-link-2943798689/000002.o /tmp/go-link-2943798689/000003.o /tmp/go-link-2943798689/000004.o /tmp/go-link-2943798689/000005.o /tmp/go-link-2943798689/000006.o /tmp/go-link-2943798689
+
+...
+
+zombie     -   25354240
+        3_many/0010 - insert - zombie     -          0
+        3_many/0010 - query  - zombie     -         24
+        3_many/0010 - dbsize - zombie     -      36864
+        3_many/0100 - insert - zombie     -          0
+        3_many/0100 - query  - zombie     -         47
+        3_many/0100 - dbsize - zombie     -      36864
+        3_many/1000 - insert - zombie     -          1
+        3_many/1000 - query  - zombie     -        308
+        3_many/1000 - dbsize - zombie     -      94208
+        4_large/050000 - insert - zombie     -       2170
+        4_large/050000 - query  - zombie     -       1485
+        4_large/050000 - dbsize - zombie     -  501981184
+        4_large/100000 - insert - zombie     -       4225
+        4_large/100000 - query  - zombie     -       2863
+        4_large/100000 - dbsize - zombie     - 1003761664
+        panic: must be nil but was &fmt.wrapError{msg:"sqlite: step: database or disk is full", err:(*sqlite.extendedError)(0x23528b7ae000)}
+        
+        goroutine 1 [running]:
+        modernc.org/sqlite-bench2/app.MustBeNil(...)
+        	/home/jnml/pkg/mod/modernc.org/sqlite-bench2@v0.2.0/app/util.go:29
+        main.(*dbImpl).InsertUsers(0x23528b75a098, {0x6ffdfd, 0x3a}, {0x2352fc872000, 0x2710, 0x23528b75a098?})
+        	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite-bench2/vendors/zombie/zombie.go:49 +0x2d4
+        modernc.org/sqlite-bench2/app.benchLarge({0x7f7fffffed7a, 0x9}, 0x0, 0x30d40, 0x70fbe0)
+        	/home/jnml/pkg/mod/modernc.org/sqlite-bench2@v0.2.0/app/app.go:339 +0x47f
+        modernc.org/sqlite-bench2/app.Run(0x70fbe0)
+        	/home/jnml/pkg/mod/modernc.org/sqlite-bench2@v0.2.0/app/app.go:59 +0x325
+        main.main()
+        	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite-bench2/vendors/zombie/zombie.go:9 +0x1a
+        
+        FAIL err=exit status 2
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite-bench2	28.097s
+exit status 1
+exit status 1
+bench.go:1: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

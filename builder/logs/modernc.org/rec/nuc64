@@ -1,0 +1,13 @@
+2023-05-10T15:55:28+02:00 commit 3a08a3e63377d09da153d2ac10b799206d028277, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/regexp v1.4.0
+ok  	modernc.org/rec	3.747s
+--- FAIL: TestCorpus (5.84s)
+    --- FAIL: TestCorpus/corpus (5.84s)
+        all_test.go:357: 5 2023-05-10 15:55:22
+        all_test.go:359: match1058: re `"(.a|.b).*|.*(.a|.b)"` input "xa" got false exp true
+            exit status 1
+            
+            FAIL: err exit status 1
+FAIL
+FAIL	modernc.org/rec/lib	5.843s
+FAIL

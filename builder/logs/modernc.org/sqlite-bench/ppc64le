@@ -1,0 +1,77 @@
+go1.25.5 linux/ppc64le
+2025-12-27T20:52:26+01:00 commit 6236b88cee111777bec30e74813c05b59f7d9f96, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: --- FAIL: TestBenchmarks (2048.62s)
+    all_test.go:147: build /tmp/TestBenchmarks361513783/001/mattn
+    all_test.go:158: exec 0: /tmp/TestBenchmarks361513783/001/mattn
+    all_test.go:158: exec 1: /tmp/TestBenchmarks361513783/001/mattn
+    all_test.go:147: build /tmp/TestBenchmarks361513783/002/modernc
+    all_test.go:158: exec 0: /tmp/TestBenchmarks361513783/002/modernc
+    all_test.go:163: modernc: out=
+        1_simple - insert - modernc    -       8877
+        1_simple - query  - modernc    -       2779
+        1_simple - dbsize - modernc    -   58687488
+        2_complex - insert - modernc    -       5867
+        2_complex - query  - modernc    -       3535
+        2_complex - dbsize - modernc    -   25354240
+        3_many/0010 - insert - modernc    -          0
+        3_many/0010 - query  - modernc    -         69
+        3_many/0010 - dbsize - modernc    -      36864
+        3_many/0100 - insert - modernc    -          0
+        3_many/0100 - query  - modernc    -        286
+        3_many/0100 - dbsize - modernc    -      36864
+        3_many/1000 - insert - modernc    -          7
+        3_many/1000 - query  - modernc    -       2586
+        3_many/1000 - dbsize - modernc    -      94208
+        4_large/050000 - insert - modernc    -        488
+        4_large/050000 - query  - modernc    -        255
+        4_large/050000 - dbsize - modernc    -  125526016
+        4_large/100000 - insert - modernc    -        751
+        4_large/100000 - query  - modernc    -        416
+        4_large/100000 - dbsize - modernc    -  250970112
+        4_large/200000 - insert - modernc    -       1305
+        4_large/200000 - query  - modernc    -        721
+        4_large/200000 - dbsize - modernc    -  501862400
+        panic: runtime error: invalid memory address or nil pointer dereference
+        [signal SIGSEGV: segmentation violation code=0x1 addr=0x18 pc=0x165084]
+        
+        goroutine 55 [running]:
+        modernc.org/sqlite/lib._pcache1RemoveFromHash(0xc01de00000?, 0x3fff508c15a8?, 0x16be8
+
+...
+
+2.0/lib/sqlite_linux_ppc64le.go:67922 +0x2c34
+        modernc.org/sqlite/lib._sqlite3Step(0xc01de00000, 0x3fff50787558)
+        	/home/debian/pkg/mod/modernc.org/sqlite@v1.42.0/lib/sqlite_linux_ppc64le.go:60118 +0x80
+        modernc.org/sqlite/lib.Xsqlite3_step(0xc01de00000, 0x3fff50787558)
+        	/home/debian/pkg/mod/modernc.org/sqlite@v1.42.0/lib/sqlite_linux_ppc64le.go:60181 +0xec
+        modernc.org/sqlite.(*conn).step(0xc016ac6050, 0x3fff50787558)
+        	/home/debian/pkg/mod/modernc.org/sqlite@v1.42.0/conn.go:246 +0x4c
+        modernc.org/sqlite.(*rows).Next(0xc0050340f0, {0xc005036100, 0x4, 0x3fff50304800?})
+        	/home/debian/pkg/mod/modernc.org/sqlite@v1.42.0/rows.go:91 +0x84
+        database/sql.(*Rows).nextLocked(0xc01537f040)
+        	/usr/local/go/src/database/sql/sql.go:3066 +0x158
+        database/sql.(*Rows).Next.func1()
+        	/usr/local/go/src/database/sql/sql.go:3041 +0x38
+        database/sql.withLock({0x3f3f40, 0xc01537f078}, 0xc01de87cf8)
+        	/usr/local/go/src/database/sql/sql.go:3572 +0x9c
+        database/sql.(*Rows).Next(0xc01537f040)
+        	/usr/local/go/src/database/sql/sql.go:3040 +0x98
+        modernc.org/sqlite-bench/app.(*SqlDb).FindUsers(0xc016afe000?, {0x38a075?, 0xc000182960?})
+        	/home/debian/pkg/mod/modernc.org/sqlite-bench@v1.1.6/app/sqldb.go:83 +0x12c
+        modernc.org/sqlite-bench/app.benchConcurrent.func1()
+        	/home/debian/pkg/mod/modernc.org/sqlite-bench@v1.1.6/app/app.go:403 +0x124
+        created by modernc.org/sqlite-bench/app.benchConcurrent in goroutine 1
+        	/home/debian/pkg/mod/modernc.org/sqlite-bench@v1.1.6/app/app.go:395 +0x4e4
+        
+        FAIL err=exit status 2
+    all_test.go:147: build /tmp/TestBenchmarks361513783/003/ncruces
+    all_test.go:158: exec 0: /tmp/TestBenchmarks361513783/003/ncruces
+    all_test.go:158: exec 1: /tmp/TestBenchmarks361513783/003/ncruces
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite-bench	2048.620s
+exit status 1
+exit status 1
+bench.go:1: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

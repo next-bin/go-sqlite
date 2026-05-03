@@ -1,0 +1,5 @@
+2024-12-01T14:29:23+08:00 commit af56c31bead3808daf2a7cd49b8cbaaf6c833c38, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/tk9.0 v0.53.1
+gui.go:23:2: modernc.org/tk9.0@v0.53.1: read "https://goproxy.cn/modernc.org/tk9.0/@v/v0.53.1.zip": stream error: stream ID 1; INTERNAL_ERROR; received from peer
+
+FAIL err=exit status 1

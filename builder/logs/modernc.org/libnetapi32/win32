@@ -1,0 +1,16 @@
+2024-07-13T19:02:13+02:00 commit fa855c56def73548b2168b91b53a0e149c0a76a2, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libnetapi32 [modernc.org/libnetapi32.test]
+.\libnetapi32_windows_386.go:61422:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61441:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61460:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61479:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61498:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61517:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61536:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61555:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61574:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61593:7: tls.SetLastError undefined (type *libc.TLS has no field or method SetLastError)
+.\libnetapi32_windows_386.go:61593:7: too many errors
+FAIL	modernc.org/libnetapi32 [build failed]
+
+FAIL err=exit status 1

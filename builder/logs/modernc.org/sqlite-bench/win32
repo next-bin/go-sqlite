@@ -1,0 +1,8 @@
+go1.26.0 windows/386
+2026-02-11T15:00:50+01:00 commit d40e8f792e98d5c6828b295e449ff31ea09a5815, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: Auto-merging results
+CONFLICT (content): Merge conflict in results
+Squash commit -- not updating HEAD
+Automatic merge failed; fix conflicts and then commit the result.
+
+FAIL err=AUTOTASKS: exit status 1

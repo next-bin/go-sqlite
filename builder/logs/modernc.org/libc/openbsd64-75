@@ -1,0 +1,7 @@
+2024-04-07T11:51:33+02:00 commit 68ec082c95f51fbe5eb7765702dfdef55c838b41, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+libc.test:/tmp/go-build3657022485/b001/libc.test: undefined symbol 'syscall'
+ld.so: libc.test: lazy binding failed!
+signal: killed
+FAIL	modernc.org/libc	0.012s
+
+FAIL err=exit status 1

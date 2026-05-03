@@ -1,0 +1,15 @@
+go1.25.5 openbsd/amd64
+2026-01-02T15:58:50+01:00 commit 1bee5316f38897b90febb19b6d4642fb2b3f0d95, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test21750955609/001/minigzip" "/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/internal/minigzip/ccgo_openbsd_amd64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test21750955609/001/example" "/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/internal/example/ccgo_openbsd_amd64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz
+execute /bin/sh ["-c" "echo hello world | ./minigzip | ./minigzip -d && ./example tmp"] in /tmp/Test21750955609/001
+fread: strerror(0)
+--- FAIL: Test2 (1.56s)
+    all_test.go:116: fread: strerror(0)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libz	2.359s
+
+FAIL err=exit status 1

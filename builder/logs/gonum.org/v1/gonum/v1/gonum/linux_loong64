@@ -1,0 +1,55 @@
+2023-08-20T01:52:37+02:00 commit 82e11dfec82f254ff49e0aaafd9ba59736542a35, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+?   	gonum.org/v1/gonum	[no test files]
+?   	gonum.org/v1/gonum/blas	[no test files]
+ok  	gonum.org/v1/gonum/blas/blas32	0.089s
+ok  	gonum.org/v1/gonum/blas/blas64	0.161s
+ok  	gonum.org/v1/gonum/blas/cblas128	15.583s
+ok  	gonum.org/v1/gonum/blas/cblas64	0.084s
+?   	gonum.org/v1/gonum/blas/testblas/benchautogen	[no test files]
+ok  	gonum.org/v1/gonum/blas/gonum	20.283s
+ok  	gonum.org/v1/gonum/blas/testblas	0.125s
+ok  	gonum.org/v1/gonum/cmplxs	0.133s
+ok  	gonum.org/v1/gonum/cmplxs/cscalar	0.081s
+ok  	gonum.org/v1/gonum/diff/fd	0.164s
+--- FAIL: TestCmplxFFT (115.48s)
+    --- FAIL: TestCmplxFFT/Reset_FFT (115.21s)
+        fourier_test.go:166: unexpected result for complex sequence(coefficients(x)) for length 479
+        fourier_test.go:166: unexpected result for complex sequence(coefficients(x)) for length 491
+        fourier_test.go:166: unexpected result for complex sequence(coefficients(x)) for length 1301
+FAIL
+FAIL	gonum.org/v1/gonum/dsp/fourier	115.830s
+?   	gonum.org/v1/gonum/dsp/window/cmd/leakage	[no test files]
+--- FAIL: TestRfft (172.64s)
+    fftpack_test.go:97: unexpected coefficients for n=119: got:[(-0.028755+0.000000i) (-0.029570+0.029066i) (-0.032029+0.058339i) (-0.036175+0.088035i) (-0.042080+0.118379i) (-0.049850+0.149616i) (-0.059631+0.182018i) (-0.071613+0.215894i) (-0.086040+0.251603i) (-0.103225+0.289567i) (-0.123569+0.330300i) (-0.147585+0.374428i) (-0.175933+0.422739i) (-0.209477+0.476236i) (-0.249361+0.536225i) (-0.297123+0.604447i) (-0.354883+0.683277i) (-0.425636+0.776050i) (-0.513749+0.887612i) (-0.625839+1.025288i) (-0.772438+1.200712i) (-0.971367+1.433550i) (-1.255358+1.759896i) (-1.691753+2.253984i) (-2.444647+3.096668i) (-4.046006+4.874185i) (-9.740522+11.162151i) (37.428581-40.804788i) (6.997033-7.257266i) (4.039272-3.985460i) (2.923467-2.743521i) (2.338787-2.086919i) (1.979723-1.678971i) (1.737380-1.399661i) (1.563233-1.195496i) (1.432387-1.039025i) (1.330754-0.914709i) (1.249768-0.813088i) (1.183918-0.728072i) (1.129502-0.655564i) (1.083941-0.592702i) (1.045383-0.537426i) (1.012466-
+
+...
+
+phes/lanczos.go:125
+gonum.org/v1/gonum/mathext/internal/cephes.igamFac(0x4028000000000000, 0x402e000000000000)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/mathext/internal/cephes/igam.go:159 +0x108
+gonum.org/v1/gonum/mathext/internal/cephes.igamCContinuedFraction(0x4028000000000000, 0x402e000000000000)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/mathext/internal/cephes/igam.go:173 +0x38
+gonum.org/v1/gonum/mathext/internal/cephes.IgamC(0x4028000000000000, 0x402e000000000000)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/mathext/internal/cephes/igam.go:127 +0x178
+gonum.org/v1/gonum/mathext.GammaIncRegComp(...)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/mathext/gamma_inc.go:33
+gonum.org/v1/gonum/stat/distuv.Poisson.CDF({0x402e000000000000, {0x1fcfe0, 0xc000050140}}, 0x4026000000000000)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/stat/distuv/poisson.go:36 +0x6c
+gonum.org/v1/gonum/stat/distuv.Poisson.Survival(...)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/stat/distuv/poisson.go:139
+gonum.org/v1/gonum/stat/distuv.testPoisson(0xc0000e04e0, {0x402e000000000000, {0x1fcfe0, 0xc000050140}}, 0x1)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/stat/distuv/poisson_test.go:157 +0x620
+gonum.org/v1/gonum/stat/distuv.TestPoisson(0xc0000e04e0)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/stat/distuv/poisson_test.go:117 +0x1a0
+testing.tRunner(0xc0000e04e0, 0x1cce30)
+	/usr/local/go/src/testing/testing.go:1595 +0x11c
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:1648 +0x41c
+FAIL	gonum.org/v1/gonum/stat/distuv	555.398s
+ok  	gonum.org/v1/gonum/stat/mds	0.090s
+ok  	gonum.org/v1/gonum/stat/samplemv	39.887s
+ok  	gonum.org/v1/gonum/stat/sampleuv	20.530s
+ok  	gonum.org/v1/gonum/stat/spatial	3.612s
+ok  	gonum.org/v1/gonum/unit	0.143s
+ok  	gonum.org/v1/gonum/unit/constant	0.091s
+FAIL

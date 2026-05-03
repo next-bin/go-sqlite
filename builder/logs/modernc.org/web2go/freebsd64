@@ -1,0 +1,8 @@
+2023-03-13T05:27:07+01:00 commit dc32f9f39f66658cba8c01d6459182a4f1270acd, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/bin/pltotf ["trip.pl" "trip.tfm"] in /tmp/go-test-web2go-3719354191
+execute /usr/local/bin/tftopl ["trip.tfm" "tmp.pl"] in /tmp/go-test-web2go-3719354191
+--- FAIL: TestTrip (1.41s)
+    all_test.go:221: EOF
+FAIL
+exit status 1
+FAIL	modernc.org/web2go	2.887s

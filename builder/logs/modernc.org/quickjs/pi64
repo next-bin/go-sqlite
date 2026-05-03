@@ -1,0 +1,8 @@
+go1.25.3 linux/arm64
+2025-10-22T15:25:21+02:00 commit 1cdbd95312dfb280183e05c3ad7588faf3bd39bc, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: Auto-merging quickjs.go
+CONFLICT (content): Merge conflict in quickjs.go
+Squash commit -- not updating HEAD
+Automatic merge failed; fix conflicts and then commit the result.
+
+FAIL err=AUTOTASKS: exit status 1

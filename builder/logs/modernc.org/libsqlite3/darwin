@@ -1,0 +1,52 @@
+go1.26.2 darwin/amd64
+2026-04-11T12:59:05+02:00 commit 1100102d2dbfad20e5c77cbb83cba5718e9835b6, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: archivePath sqlite-amalgamation-3530000.zip
+extractedArchivePath sqlite-amalgamation-3530000
+tempDir /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3
+libRoot /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000
+makeRoot /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000
+execute /usr/bin/unzip ["-q" "sqlite-amalgamation-3530000.zip" "-d" "/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /usr/bin/patch ["/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c" "internal/sqlite_issue173.patch"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+patching file '/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c'
+execute /usr/bin/patch ["/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c" "internal/issue1.patch"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+patching file '/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c'
+execute /opt/homebrew/bin/gsed ["-i" "s/sqlite3Config.bUseLongDouble = hasHighPrecisionDouble(rc);/\\/\\/ disabled/" "/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /opt/homebrew/bin/gsed ["-i" "0,/int isInit;*True after/{s/int isInit/volatile int isInit/}" "/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /opt/homebrew/bin/gsed ["-i" "s/#if (defined(__GNUC__) || defined(__clang__)) \\\\/#if 0 \\&\\& (defined(__GNUC__) || defined(__clang__)) \\\\/" "/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-amalgamation-3530000/
+
+...
+
+ex-19ed65.o
+  "_Tcl_UnregisterChannel", referenced from:
+      _closeIncrblobChannels in tclsqlite-ex-19ed65.o
+  "_Tcl_UnsetVar2", referenced from:
+      _tclQuotaCallback in test_quota-c6964c.o
+      _tclvarUpdate in test_tclvar-68ae00.o
+      _tclvarUpdate in test_tclvar-68ae00.o
+      _tclvarUpdate in test_tclvar-68ae00.o
+      _DbEvalNextCmd in tclsqlite-ex-19ed65.o
+  "_Tcl_UtfToLower", referenced from:
+      _processDevSymArgs in test6-d2e7b7.o
+  "_Tcl_VarEval", referenced from:
+      _DbBusyHandler in tclsqlite-ex-19ed65.o
+  "_Tcl_WrongNumArgs", referenced from:
+      _test_sqlite3_db_config in test1-54147b.o
+      _test_sqlite3_txn_state in test1-54147b.o
+      _test_register_dbstat_vtab in test1-54147b.o
+      _get_sqlite_pointer in test1-54147b.o
+      _test_bind_zeroblob in test1-54147b.o
+      _test_bind_zeroblob64 in test1-54147b.o
+      _test_bind_value_from_select in test1-54147b.o
+      ...
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+unexpected/unsupported argument: CoreFoundation
+execute /opt/homebrew/bin/gsed ["-i" "/func _guess_number_of_cores(/,/^}/d" "testfixture.go"] in /private/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3530000
+/opt/homebrew/bin/gsed: can't read testfixture.go: No such file or directory
+execute /opt/homebrew/bin/gsed ["-i" "s/strcmp(sqlite3_sourceid()/0 \\&\\& strcmp(sqlite3_sourceid()/" "/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3530000/mptest/mptest.c"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /bin/sh ["-c" "cp /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3530000/mptest/*.*test mptest/"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+stat /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3530000/testfixture.go: no such file or directory
+exit status 1
+libsqlite3.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

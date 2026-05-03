@@ -1,0 +1,99 @@
+go1.26.0 linux/riscv64
+2026-03-14T05:49:13+01:00 commit d5c4300541f479eb48cd0da9f55ae2c1b0893540, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+tmpDir=/tmp/TestTclTest728227175/001
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/TestTclTest728227175/001/testfixture" "-tags=" "internal/testfixture/ccgo_linux_riscv64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+all_test.go:337:TestTclTest: TRC ["/tmp/TestTclTest728227175/001/test/permutations.test" "full"]
+execute /tmp/TestTclTest728227175/001/testfixture ["/tmp/TestTclTest728227175/001/test/permutations.test" "full" "-verbose=0"] in /tmp/TestTclTest728227175/001
+Time: 8_3_names.test 100 ms
+Time: affinity2.test 149 ms
+Time: affinity3.test 152 ms
+Time: aggerror.test 113 ms
+Time: aggfault.test 2202 ms
+Time: aggnested.test 239 ms
+Time: aggorderby.test 1553 ms
+Time: alias.test 110 ms
+Time: alter.test 522 ms
+Time: alter2.test 230 ms
+Time: alter3.test 531 ms
+Time: alter4.test 388 ms
+Time: alterauth.test 131 ms
+Time: alterauth2.test 153 ms
+Time: altercol.test 1265 ms
+Time: altercorrupt.test 123 ms
+Time: alterdropcol.test 3131 ms
+Time: alterdropcol2.test 244 ms
+Time: alterfault.test 7207 ms
+Time: alterlegacy.test 403 ms
+Time: altermalloc.test 307333 ms
+Time: altermalloc2.test 81942 ms
+Time: altermalloc3.test 43389 ms
+Time: alterqf.test 128 ms
+Time: altertab.test 797 ms
+Time: altertab2.test 439 ms
+Time: altertab3.test 1513 ms
+Time: altertrig.t
+
+...
+
+ng
+        "sqlite_orig db ./test.db"
+            ("uplevel" body line 1)
+            invoked from within
+        "uplevel 1 sqlite_orig $args"
+            (procedure "sqlite3" line 12)
+            invoked from within
+        "sqlite3 db ./test.db"
+            (procedure "reset_db" line 6)
+            invoked from within
+        "reset_db"
+            (file "/tmp/TestTclTest728227175/001/test/tester.tcl" line 562)
+            invoked from within
+        "source $testdir/tester.tcl"
+            (file "/tmp/TestTclTest728227175/001/test/walro.test" line 16)
+            invoked from within
+        "source /tmp/TestTclTest728227175/001/test/walro.test"
+            invoked from within
+        "interp eval tinterp $script"
+            (procedure "slave_test_script" line 30)
+            invoked from within
+        "slave_test_script [list source $zFile] "
+            invoked from within
+        "time { slave_test_script [list source $zFile] }"
+            (procedure "slave_test_file" line 23)
+            invoked from within
+        "slave_test_file $file"
+            (procedure "run_tests" line 36)
+            invoked from within
+        "run_tests full -presql {} -files {shared3.test sysfault.test func7.test writecrash.test upfrom4.test vacuum5.test func4.test tkt3731.test upfrom1.test..."
+            ("eval" body line 1)
+            invoked from within
+        "eval [list run_tests $suite] $S $extra"
+            (procedure "main" line 34)
+            invoked from within
+        "main $argv"
+            (file "/tmp/TestTclTest728227175/001/test/permutations.test" line 1268)
+            invoked from within
+        "source $argv0"
+            invoked from within
+        "if {[llength $argv]>=1} {
+        set argv0 [lindex $argv 0]
+        set argv [lrange $argv 1 end]
+        source $argv0
+        } else {
+        set line {}
+        while {![eof stdin]} {
+        if {$line..."
+    all_test.go:387: final summary not detected (test crashed?)
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	22932.244s
+
+FAIL err=exit status 1

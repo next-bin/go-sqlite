@@ -1,0 +1,4 @@
+2024-01-03T22:41:57+08:00 commit 6a559e0848b4d8ed06491d48086f4fc3fc8ba4cb, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: modernc.org/mathutil@v1.1.1: Get "https://proxy.golang.org/modernc.org/mathutil/@v/v1.1.1.mod": dial tcp 172.217.160.81:443: i/o timeout
+
+FAIL err=exit status 1

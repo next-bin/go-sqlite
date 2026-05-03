@@ -1,0 +1,12 @@
+2023-10-19T00:10:33+02:00 commit bb4f757945d2fd14fd178827910c5e340e18f590, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/home/jnml/tmp/tmpdir/Test3175406636/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_freebsd_amd64.go"] in /usr/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre2-posix
+package internal/pcre2test/ccgo_freebsd_amd64.go is not in std (/usr/local/go/src/internal/pcre2test/ccgo_freebsd_amd64.go)
+--- FAIL: Test (0.07s)
+    all_test.go:33: package internal/pcre2test/ccgo_freebsd_amd64.go is not in std (/usr/local/go/src/internal/pcre2test/ccgo_freebsd_amd64.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-posix	0.072s
+
+FAIL err=exit status 1

@@ -1,0 +1,14 @@
+2023-09-20T00:02:35+02:00 commit 53ba32c899bb48fd643f7d0c1d449fd5a710575d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libpcre2-8 [modernc.org/libpcre2-8.test]
+./ccgo_linux_amd64.go:5899:11: undefined: libc.Bool
+./ccgo_linux_amd64.go:6206:28: undefined: libc.Bool
+./ccgo_linux_amd64.go:6670:31: undefined: libc.Bool
+./ccgo_linux_amd64.go:17764:62: undefined: libc.Bool
+./ccgo_linux_amd64.go:29650:15: undefined: libc.Bool
+./ccgo_linux_amd64.go:29676:15: undefined: libc.Bool
+./ccgo_linux_amd64.go:29702:15: undefined: libc.Bool
+./ccgo_linux_amd64.go:29728:15: undefined: libc.Bool
+./ccgo_linux_amd64.go:29754:15: undefined: libc.Bool
+./ccgo_linux_amd64.go:29780:15: undefined: libc.Bool
+./ccgo_linux_amd64.go:29780:15: too many errors
+FAIL	modernc.org/libpcre2-8 [build failed]

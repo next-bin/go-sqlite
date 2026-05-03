@@ -1,0 +1,61 @@
+go1.25.5 linux/amd64
+2025-12-27T16:40:20+01:00 commit 25fe049c2cca4fe906ab2305bd3dcfc3aa824aea, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for linux/amd64
+execute /usr/local/go/bin/go ["test" "-v" "-timeout" "1h" "-race" "-run" "TestConcurrentGoroutines" "-inner"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite
+test binary compiled for linux/amd64
+=== RUN   TestConcurrentGoroutines
+    all_test.go:739: 8 goroutines concurrently inserted 40000 rows in 4.639213319s
+--- PASS: TestConcurrentGoroutines (8.00s)
+PASS
+ok  	modernc.org/sqlite	9.024s
+unexpected fault address 0x7ff9c17a5058
+fatal error: fault
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x7ff9c17a5058 pc=0x5b7810]
+
+goroutine 10161 gp=0xc0001ae700 m=14 mp=0xc0001e3008 [running]:
+runtime.throw({0x848cfe?, 0xc0002aaf20?})
+	/usr/local/go/src/runtime/panic.go:1094 +0x48 fp=0xc0002aaee8 sp=0xc0002aaeb8 pc=0x47b1e8
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:939 +0x26c fp=0xc0002aaf48 sp=0xc0002aaee8 pc=0x47ce0c
+modernc.org/sqlite/lib._pcache1PinPage(...)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_amd64.go:27967
+modernc.org/sqlite/lib._pcache1TruncateUnsafe(0xc0002ab008?, 0x5ca3ac?, 0x1)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_amd64.go:28076 +0xf0 fp=0xc0002aaf88 sp=0xc0002aaf48 pc=0x5b7810
+modernc.org/sqlite/lib._pcache1Truncate(0xc0000be630, 0x7ff9c18fc4a8, 0x1)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_amd64.go:28520 +0x58 fp=0xc0002aafb0 sp=0xc0002aaf88 pc=0x5b8618
+modernc.org/sqlite/lib._sqlite3PcacheTruncate(0xc0000be630, 0xc0000be630?, 0x0)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_amd64.go:27134 +0xd7 fp=0xc0002aaff0 sp=0xc0002aafb0 pc=0x5b6437
+modernc.org/sqlite/lib._sqlite3PcacheClear(...)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_amd64.go:27153
+modernc.org/sqlite/lib._pager_reset(0xc0000be630?, 0x7ff9c17d4428?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/lib/sqlite_linux_amd64.go:30525 +0x45 fp=0xc0002ab018 sp=0xc
+
+...
+
+ilder/.exclude/modernc.org/sqlite/stmt.go:149 +0x105 fp=0xc0001cdb58 sp=0xc0001cdac8 pc=0x7944a5
+modernc.org/sqlite.(*stmt).exec(0xc00009a348, {0x8d3b68, 0xbb27a0}, {0xc00045c930, 0x1, 0x1})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/stmt.go:162 +0x1ae fp=0xc0001cdc28 sp=0xc0001cdb58 pc=0x793cae
+modernc.org/sqlite.(*stmt).ExecContext(0x0?, {0x8d3b68?, 0xbb27a0?}, {0xc00045c930?, 0xc0001cdcb8?, 0x479565?})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/stmt.go:451 +0x25 fp=0xc0001cdc68 sp=0xc0001cdc28 pc=0x7956c5
+database/sql.ctxDriverStmtExec({0x8d3b68, 0xbb27a0}, {0x8d3d98, 0xc00009a348}, {0xc00045c930, 0x1, 0xc0003448f0?})
+	/usr/local/go/src/database/sql/ctxutil.go:65 +0xa3 fp=0xc0001cdce0 sp=0xc0001cdc68 pc=0x75e8e3
+database/sql.resultFromStatement({0x8d3b68, 0xbb27a0}, {0x8d38e0, 0xc0000d2230}, 0xc000016240, {0xc0001cdf90, 0x1, 0x1})
+	/usr/local/go/src/database/sql/sql.go:2680 +0x125 fp=0xc0001cdd90 sp=0xc0001cdce0 pc=0x768485
+database/sql.(*Stmt).ExecContext.func1(0x0?)
+	/usr/local/go/src/database/sql/sql.go:2654 +0x9f fp=0xc0001cde28 sp=0xc0001cdd90 pc=0x76827f
+database/sql.(*DB).retry(0x76ba46?, 0xc0001cded0)
+	/usr/local/go/src/database/sql/sql.go:1576 +0x42 fp=0xc0001cde70 sp=0xc0001cde28 pc=0x763b62
+database/sql.(*Stmt).ExecContext(0x64?, {0x8d3b68?, 0xbb27a0?}, {0xc0001cdf90?, 0xc000310fc0?, 0xc0000a2400?})
+	/usr/local/go/src/database/sql/sql.go:2648 +0x165 fp=0xc0001cdf28 sp=0xc0001cde70 pc=0x768125
+database/sql.(*Stmt).Exec(...)
+	/usr/local/go/src/database/sql/sql.go:2668
+modernc.org/sqlite.TestIssue20.func2()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:1051 +0x19b fp=0xc0001cdfe0 sp=0xc0001cdf28 pc=0x7a177b
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc0001cdfe8 sp=0xc0001cdfe0 pc=0x482dc1
+created by modernc.org/sqlite.TestIssue20 in goroutine 10257
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:1040 +0x44b
+exit status 2
+FAIL	modernc.org/sqlite	29.414s
+
+FAIL err=exit status 1

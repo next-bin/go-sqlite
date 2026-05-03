@@ -1,0 +1,71 @@
+2024-10-15T01:50:52+02:00 commit a5e7903c1ed279fe7fbcdf4ff63f3347d151d409, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuth	0.411s
+ok  	modernc.org/knuth/cmd/godvitype	0.415s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftodvi	0.386s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftopk	0.449s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftype	0.370s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomf	0.404s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomft	0.375s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopktype	0.437s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopltotf	0.394s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopooltype	0.382s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotangle	0.384s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotex	0.377s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotftopl	0.392s [no tests to run]
+ok  	modernc.org/knuth/cmd/govftovp	0.381s [no tests to run]
+ok  	modernc.org/knuth/cmd/govptovf	0.449s [no tests to run]
+ok  	modernc.org/knuth/cmd/goweave	0.399s [no tests to run]
+ok  	modernc.org/knuth/dvi	0.441s
+--- FAIL: Test (0.20s)
+    all_test.go:49: stdout:
+        This is DVItype, Version 3.6 (godvitype v0.0-prerelease)
+        Options selected:
+          Starting page = * 
+          Maximum number of pages = 1000000
+          Output level = 4 (the works)
+          Resolution = 300.00000000 pixels per inch
+        numerator/denominator=25400000/473628672
+        magnification=1000;       0.00006334 pixels per DVI unit
+        ' TeX output 2024.09.08:2046'
+        Postamble starts at byte 4505.
+        maxv=43725786, maxh=30785863, maxstackdepth=4, totalpages=1
+        Font 51: cmtex10---loaded at size 655360 DVI units 
+        Font 36: cmti10---loaded at size 655360 DVI units 
+        Font 23: cmbx10---loaded at size 655360 DVI units 
+        Font 17: cmsy5---loaded at size 327680 DVI units 
+        Font 15: cmsy7---loaded at size 458752 DVI units 
+        Font 12: cmsy10---loaded at size 655360 DVI units 
+        Font 9: cmmi7---loaded at size 458752 DVI units 
+        Font 6: cmmi10---loaded at size 655360 DVI units 
+        Font 3: cmr7---loaded at size 45875
+
+...
+
+d 30 2c 76 3d 34 32 31  35 32 39 32 32 2c 77 3d  |=0,v=42152922,w=|
+        00025370  30 2c 78 3d 30 2c 79 3d  30 2c 7a 3d 30 2c 68 68  |0,x=0,y=0,z=0,hh|
+        00025380  3d 30 2c 76 76 3d 32 36  37 30 29 20 0a 34 34 39  |=0,vv=2670) .449|
+        00025390  32 3a 20 64 6f 77 6e 33  20 31 35 37 32 38 36 34  |2: down3 1572864|
+        000253a0  20 76 3a 3d 34 32 31 35  32 39 32 32 2b 31 35 37  | v:=42152922+157|
+        000253b0  32 38 36 34 3d 34 33 37  32 35 37 38 36 2c 20 76  |2864=43725786, v|
+        000253c0  76 3a 3d 32 37 37 30 20  0a 34 34 39 36 3a 20 70  |v:=2770 .4496: p|
+        000253d0  75 73 68 20 0a 6c 65 76  65 6c 20 30 3a 28 68 3d  |ush .level 0:(h=|
+        000253e0  30 2c 76 3d 34 33 37 32  35 37 38 36 2c 77 3d 30  |0,v=43725786,w=0|
+        000253f0  2c 78 3d 30 2c 79 3d 30  2c 7a 3d 30 2c 68 68 3d  |,x=0,y=0,z=0,hh=|
+        00025400  30 2c 76 76 3d 32 37 37  30 29 20 0a 34 34 39 37  |0,vv=2770) .4497|
+        00025410  3a 20 72 69 67 68 74 34  20 31 35 32 32 39 30 39  |: right4 1522909|
+        00025420  31 20 68 3a 3d 30 2b 31  35 32 32 39 30 39 31 3d  |1 h:=0+15229091=|
+        00025430  31 35 32 32 39 30 39 31  2c 20 68 68 3a 3d 39 36  |15229091, hh:=96|
+        00025440  35 20 0a 34 35 30 32 3a  20 73 65 74 63 68 61 72  |5 .4502: setchar|
+        00025450  34 39 20 68 3a 3d 31 35  32 32 39 30 39 31 2b 33  |49 h:=15229091+3|
+        00025460  32 37 36 38 31 3d 31 35  35 35 36 37 37 32 2c 20  |27681=15556772, |
+        00025470  68 68 3a 3d 39 38 36 20  0a 5b 20 31 5d 0a 34 35  |hh:=986 .[ 1].45|
+        00025480  30 33 3a 20 70 6f 70 20  0a 6c 65 76 65 6c 20 30  |03: pop .level 0|
+        00025490  3a 28 68 3d 30 2c 76 3d  34 33 37 32 35 37 38 36  |:(h=0,v=43725786|
+        000254a0  2c 77 3d 30 2c 78 3d 30  2c 79 3d 30 2c 7a 3d 30  |,w=0,x=0,y=0,z=0|
+        000254b0  2c 68 68 3d 30 2c 76 76  3d 32 37 37 30 29 20 0a  |,hh=0,vv=2770) .|
+        000254c0  34 35 30 34 3a 20 65 6f  70 20 0a                 |4504: eop .|
+FAIL
+FAIL	modernc.org/knuth/dvitype	0.611s
+FAIL
+
+FAIL err=exit status 1

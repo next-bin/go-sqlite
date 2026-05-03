@@ -1,0 +1,11 @@
+2022-10-01T01:12:50+02:00 commit 6f99555d1388bc4eb033c17c61c343b542711b74, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+CC=/usr/local/bin/gcc
+gcc (FreeBSD Ports Collection) 11.3.0
+--- FAIL: TestMirBenchmarks (1218.36s)
+    all_test.go:1290: /github.com/vnmakarov/mir/c-benchmarks/mandelbrot.c: executing ccgo binary ./mandelbrot158 [7000]: signal: killed (rc -1, expected 0)
+        
+    all_test.go:1322: files 14, ok 13, failed 1
+    all_test.go:1338: FAIL /github.com/vnmakarov/mir/c-benchmarks/mandelbrot.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	1512.909s

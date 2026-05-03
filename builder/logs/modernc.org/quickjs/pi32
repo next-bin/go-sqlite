@@ -1,0 +1,63 @@
+go1.26.2 linux/arm
+2026-04-13T06:27:45+02:00 commit 20baec7b1c5cc393599fec1f3f417f723d0d8ef8, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["test" "-short=false" "-v" "-tags" "libc.memgrind" "-timeout" "12h" "-run" "TestMemgrind"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/quickjs
+=== RUN   TestMemgrind
+--- PASS: TestMemgrind (3353.19s)
+=== RUN   TestMemgrind2
+=== RUN   TestMemgrind2/eval1
+    all_test.go:63: 42*314;: int(42*314;) 13188
+    all_test.go:63: 'foo'+'bar';: string('foo'+'bar';) foobar
+    all_test.go:63: 42 < 314;: bool(42 < 314;) true
+    all_test.go:63: null;: <nil>(null;) <nil>
+    all_test.go:63: undefined;: quickjs.Undefined(undefined;) undefined
+    all_test.go:63: throw new Error('FAIL'): <nil>(throw new Error('FAIL')) <nil>
+=== RUN   TestMemgrind2/eval2
+    all_test.go:103: BigInt('1234567890123456789'): *big.Int(BigInt('1234567890123456789')) 1234567890123456789
+    all_test.go:103: BigInt('-1234567890123456789'): *big.Int(BigInt('-1234567890123456789')) -1234567890123456789
+    all_test.go:103: 1234567890123456789n: *big.Int(1234567890123456789n) 1234567890123456789
+    all_test.go:103: -1234567890123456789n: *big.Int(-1234567890123456789n) -1234567890123456789
+=== RUN   TestMemgrind2/eval3
+    all_test.go:139: js=`a = {}; a;`: v=*quickjs.Object({}) err=<nil>(<nil>)
+    all_test.go:139: js=`a = {foo: 'bar', baz: "qux", i: 42}; a;`: v=*quickjs.Object({"foo":"bar","baz":"qux","i":42}) err=<nil>(<nil>)
+    all_test.go:139: js=`a = []; a;`: v=*quickjs.Object([]) err=<nil>(<nil>)
+    all_test.go:139: js=`a = [1, 2, 3]; a;`: v=*quickjs.Object([1,2,3]) err=<nil>(<nil>)
+=== RUN   TestMemgrind2/call1
+    all_test.go:179: js=`42;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+    all_test.go:179: js=`var a = 42; a;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+    all_test.go:179: js=`var a = { }; a;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+=== RUN   TestMemgrind2/call2
+    all_test.go:208: js=`function f() { return null; }; f`: v=<nil>(<nil>) err=<nil>(<nil>)
+    all_test.go:208: js=`function f() { return undefined; }; 
+
+...
+
+({0x351a10, 0x5bfde0})
+	/usr/local/go/src/runtime/panic.go:860 +0x104
+modernc.org/libquickjs._js_create_module_bytecode_function(0x2c7e2a0, 0xf55e0110, 0x2c7e2a0)
+	/home/jnml/pkg/mod/modernc.org/libquickjs@v0.12.4/ccgo_linux_arm.go:49805 +0x74
+modernc.org/libquickjs._js_create_module_function(0x2c7e2a0, 0xf55e0110, 0x2c7e2a0)
+	/home/jnml/pkg/mod/modernc.org/libquickjs@v0.12.4/ccgo_linux_arm.go:49911 +0x68
+modernc.org/libquickjs._js_create_module_function(0x2c7e2a0, 0xf55e0110, 0xf55e3510)
+	/home/jnml/pkg/mod/modernc.org/libquickjs@v0.12.4/ccgo_linux_arm.go:49923 +0xe8
+modernc.org/libquickjs._JS_EvalFunctionInternal(0x2c7e2a0, 0xf55e0110, 0xfffffffdf55e3510, 0xfffffffff67af490, 0x0, 0x0)
+	/home/jnml/pkg/mod/modernc.org/libquickjs@v0.12.4/ccgo_linux_arm.go:58239 +0x90
+modernc.org/libquickjs.___JS_EvalInternal(0x2c7e2a0, 0xf55e0110, 0xfffffffff67af490, 0xf676bd10, 0x4f, 0x590680, 0x1, 0xffffffff)
+	/home/jnml/pkg/mod/modernc.org/libquickjs@v0.12.4/ccgo_linux_arm.go:58400 +0x540
+modernc.org/libquickjs._JS_EvalInternal(0x2c7e2a0, 0xf55e0110, 0xfffffffff67af490, 0xf676bd10, 0x4f, 0x590680, 0x1, 0xffffffff)
+	/home/jnml/pkg/mod/modernc.org/libquickjs@v0.12.4/ccgo_linux_arm.go:58439 +0xbc
+modernc.org/libquickjs.XJS_EvalThis(0x2c7e2a0, 0xf55e0110, 0xfffffffff67af490, 0xf676bd10, 0x4f, 0x590680, 0x1)
+	/home/jnml/pkg/mod/modernc.org/libquickjs@v0.12.4/ccgo_linux_arm.go:58487 +0x5c
+modernc.org/libquickjs.XJS_Eval(...)
+	/home/jnml/pkg/mod/modernc.org/libquickjs@v0.12.4/ccgo_linux_arm.go:58492
+modernc.org/quickjs.(*VM).Eval(0x2c62280, {0x38452b, 0x4f}, 0x1)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/quickjs/quickjs.go:502 +0x17c
+modernc.org/quickjs.TestCustomModuleLoader(0x2c05cc8)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/quickjs/all_test.go:804 +0xec
+testing.tRunner(0x2c05cc8, 0x38a094)
+	/usr/local/go/src/testing/testing.go:2036 +0x11c
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:2101 +0x4f8
+exit status 2
+FAIL	modernc.org/quickjs	3360.631s
+
+FAIL err=exit status 1

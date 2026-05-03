@@ -1,0 +1,10 @@
+2022-07-17T08:03:56Z 13eb762b9e049c7343d1cc921388d3e2431265e3
+# github.com/remyoudompheng/bigfft
+/home/jnml/go/pkg/mod/github.com/remyoudompheng/bigfft@v0.0.0-20200410134404-eec4a21b6bb0/arith_decl.go:10:6: missing function body
+/home/jnml/go/pkg/mod/github.com/remyoudompheng/bigfft@v0.0.0-20200410134404-eec4a21b6bb0/arith_decl.go:11:6: missing function body
+/home/jnml/go/pkg/mod/github.com/remyoudompheng/bigfft@v0.0.0-20200410134404-eec4a21b6bb0/arith_decl.go:12:6: missing function body
+/home/jnml/go/pkg/mod/github.com/remyoudompheng/bigfft@v0.0.0-20200410134404-eec4a21b6bb0/arith_decl.go:13:6: missing function body
+/home/jnml/go/pkg/mod/github.com/remyoudompheng/bigfft@v0.0.0-20200410134404-eec4a21b6bb0/arith_decl.go:14:6: missing function body
+/home/jnml/go/pkg/mod/github.com/remyoudompheng/bigfft@v0.0.0-20200410134404-eec4a21b6bb0/arith_decl.go:15:6: missing function body
+/home/jnml/go/pkg/mod/github.com/remyoudompheng/bigfft@v0.0.0-20200410134404-eec4a21b6bb0/arith_decl.go:16:6: missing function body
+FAIL	modernc.org/hash [build failed]

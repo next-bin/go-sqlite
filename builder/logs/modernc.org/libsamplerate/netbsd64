@@ -1,0 +1,74 @@
+2025-03-24T20:50:09+01:00 commit 17148d0db38da65ca55b961e7d463fcaecc6cd4c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /bin/sh ["-c" "rm -rf /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate
+archivePath 4858fb016550d677de2356486bcceda5aed85a72.zip
+extractedArchivePath libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+tempDir /tmp/libsamplerate
+libRoot /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+makeRoot /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+execute /usr/bin/unzip ["4858fb016550d677de2356486bcceda5aed85a72.zip" "-d" "/tmp/libsamplerate"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate
+Archive:  4858fb016550d677de2356486bcceda5aed85a72.zip
+   creating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/AUTHORS
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/CMakeLists.txt
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/COPYING
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/ChangeLog
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/INSTALL
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Makefile.am
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/NEWS
+   creating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/Readme.md
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/generate_filter.m
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/make_filter.m
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/measure_filter.m
+ extracting: /tmp/libsamp
+
+...
+
+.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20230315142452-642cacee5cc0
+go: added golang.org/x/sys v0.28.0
+go: added modernc.org/libc v1.61.13
+go: added modernc.org/libsamplerate v0.0.11
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.8.2
+execute /bin/sh ["./autogen.sh"] in /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+checking for autoconf... 
+checking for automake... yes
+checking for libtool... nope.
+
+You must have libtool installed to compile libsamplerate.
+Download the appropriate package for your system,
+or get the source from one of the GNU ftp sites
+listed in http://www.gnu.org/order/ftp.html
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x5e
+modernc.org/ccgo/v3/lib.Fatalf(0x0?, {0x9581a5, 0x18}, {0xc000037a78, 0x4, 0x4})
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:312 +0x49
+modernc.org/ccgo/v3/lib.MustShell(0x1, {0x94d0d3, 0x2}, {0xc0004180b0, 0x1, 0x1})
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:408 +0x16c
+main.main.func2()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate/generator.go:106 +0x208
+modernc.org/ccgo/v3/lib.InDir({0xc000030190, 0x49}, 0xc000037da8)
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:364 +0xc7
+modernc.org/ccgo/v3/lib.MustInDir(0x1, {0xc000030190?, 0x5?}, 0xc000402000?)
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:369 +0x25
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate/generator.go:97 +0xadb
+
+sh [./autogen.sh]
+output: checking for autoconf... 
+checking for automake... yes
+checking for libtool... nope.
+
+You must have libtool installed to compile libsamplerate.
+Download the appropriate package for your system,
+or get the source from one of the GNU ftp sites
+listed in http://www.gnu.org/order/ftp.html
+
+err: exit status 1
+exit status 1
+libsamplerate.go:5: running "go": exit status 1
+
+FAIL err=exit status 1

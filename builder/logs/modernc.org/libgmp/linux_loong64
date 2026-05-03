@@ -1,0 +1,8 @@
+2023-12-12T03:25:15+01:00 commit 03079e953a18b2536688004296dfebe806b3d165, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.01s)
+    all_test.go:67: lstat internal/linux/loong64/tests: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libgmp	0.098s
+
+FAIL err=exit status 1

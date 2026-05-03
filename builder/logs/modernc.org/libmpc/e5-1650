@@ -1,0 +1,95 @@
+2023-10-08T13:15:30+02:00 commit cf9b1edb46b20af70c38ba5d965f5e108fc1b88d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /bin/sh ["-c" "rm -rf /tmp/libmpc/mpc-1.2.0"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmpc
+archivePath mpc-1.2.0.tar.gz
+extractedArchivePath mpc-1.2.0
+tempDir /tmp/libmpc
+libRoot /tmp/libmpc/mpc-1.2.0
+makeRoot /tmp/libmpc/mpc-1.2.0
+execute /bin/tar ["xf" "mpc-1.2.0.tar.gz" "-C" "/tmp/libmpc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmpc
+execute /bin/sh ["-c" "cp /tmp/libmpc/mpc-1.2.0/COPYING* ."] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmpc
+execute /bin/sh ["-c" "go mod init example.com/libmpc; go get modernc.org/libc/v2@latest modernc.org/libgmp@latest modernc.org/libmpfr@latest"] in /tmp/libmpc/mpc-1.2.0
+go: creating new go.mod: module example.com/libmpc
+go: to add module requirements and sums:
+	go mod tidy
+go: downloading modernc.org/libmpfr v0.0.3
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/mod v0.11.0
+go: added golang.org/x/sys v0.9.0
+go: added golang.org/x/tools v0.10.0
+go: added modernc.org/cc/v4 v4.14.9
+go: added modernc.org/ccgo/v4 v4.0.22
+go: added modernc.org/gc/v2 v2.3.0
+go: added modernc.org/libc/v2 v2.1.18
+go: added modernc.org/libgmp v0.0.6
+go: added modernc.org/libmpfr v0.0.3
+go: added modernc.org/mathutil v1.6.0
+go: added modernc.org/memory v1.7.2
+go: added modernc.org/opt v0.1.3
+go: added modernc.org/sortutil v1.2.0
+go: added modernc.org/strutil v1.2.0
+go: added modernc.org/token v1.1.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -mlong-double-64' ./configure --disable-shared "] in /tmp/libmpc/mpc-1.2.0
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking build system type... i686-pc-linux-gnu
+checking host system type... i686-pc-linux-gn
+
+...
+
+-fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking for gmp.h... yes
+checking for ANSI C header files... (cached) yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking for inttypes.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking for unistd.h... (cached) yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking sys/resource.h usability... yes
+checking sys/resource.h presence... yes
+checking for sys/resource.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking complex.h usability... yes
+checking complex.h presence... yes
+checking for complex.h... yes
+checking for library containing creal... -lm
+checking whether creal, cimag and I can be used... yes
+checking for an ANSI C-conforming const... yes
+checking for size_t... yes
+checking for gettimeofday... yes
+checking for localeconv... yes
+checking for setlocale... yes
+checking for getrusage... yes
+checking for dup... yes
+checking for dup2... yes
+checking for __gmpz_init in -lgmp... yes
+checking for MPFR... no
+configure: error: libmpfr not found or uses a different ABI (including static vs shared).
+
+err: exit status 1
+exit status 1
+libmpc.go:5: running "go": exit status 1

@@ -1,0 +1,99 @@
+2022-09-22T00:03:00+02:00 commit 24c0ea4d558471892d93e57a855beb834bed494c, GOMAXPROCS 2, GOGC "", CC ""
+go: downloading modernc.org/lldb v1.0.4
+go: downloading modernc.org/sortutil v1.1.0
+runtime: invalid pc-encoded table f=modernc.org/mathutil.init.0 pc=0x8135bb2 targetpc=0x8135e53 tab=[0/0]0x0
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+	value=-1 until pc=0x8135b80
+
+...
+
+:337 fp=0x843b8e4 sp=0x843b8e0 pc=0x80a6650
+runtime.addOneOpenDeferFrame(0x84001e0, 0x8135e53, 0x843b95c)
+	/usr/pkg/go118/src/runtime/panic.go:598 +0x69 fp=0x843b900 sp=0x843b8e4 pc=0x807b169
+panic({0x8192e40, 0x81e2be8})
+	/usr/pkg/go118/src/runtime/panic.go:798 +0xcf fp=0x843b95c sp=0x843b900 pc=0x807b87f
+runtime: unexpected return pc for modernc.org/mathutil.init.0 called from 0x192e4008
+stack: frame={sp:0x843b95c, fp:0x843b95f} stack=[0x843b000,0x843c000)
+0x0843b8dc:  0x080a6683 <runtime.systemstack+0x00000023>  0x0807b169 <runtime.addOneOpenDeferFrame+0x00000069>  0x0843b8e8  0x0807b180 <runtime.addOneOpenDeferFrame.func1+0x00000000> 
+0x0843b8ec:  0x08135e53 <modernc.org/mathutil.init.0+0x000002d3>  0x0843b95c  0x084001e0  0x00000000 
+0x0843b8fc:  0x0807b87f <runtime.gopanic+0x000000cf>  0x084001e0  0x08135e53 <modernc.org/mathutil.init.0+0x000002d3>  0x0843b95c 
+0x0843b90c:  0x00000018  0x0000001f  0x0840e228  0x08133de7 <math/big.(*Int).setFromScanner+0x00000037> 
+0x0843b91c:  0x0840c070  0x084001e0  0x08492000  0x00000000 
+0x0843b92c:  0x00000000  0x0000000a  0x081e2fcc  0x084001f0 
+0x0843b93c:  0x00000000  0x08192e40  0x081e2be8  0x00000000 
+0x0843b94c:  0x00000000  0x00000000  0x00000000  0x08135e53 <modernc.org/mathutil.init.0+0x000002d3> 
+0x0843b95c: <0x08192e40  0x081e2be8  0x00000025  0x00000000 
+0x0843b96c:  0x00000000  0x08133a00 <math/big.(*Int).SetInt64+0x00000030>  0x0840c060  0x00000002 
+0x0843b97c:  0x00000000  0x0840c060  0x0813759a <modernc.org/mathutil.init+0x0000005a>  0x00000002 
+0x0843b98c:  0x00000000  0x0840c060  0x0808b1e2 <runtime.doInit+0x000000f2>  0x082a1e00 
+0x0843b99c:  0x08468ce4  0x0843b9b8  0x0843b9b4  0x0843b9b0 
+0x0843b9ac:  0x08484264  0x00000003  0x08484284  0x084842dc 
+0x0843b9bc:  0x08484594  0x00000001  0x00000000  0x00000000 
+0x0843b9cc:  0x08058788 <runtime.growWork_faststr+0x00000068>  0x08193a60  0x08410220  0x00000001 
+0x0843b9dc:  0x00000003 
+modernc.org/mathutil.init.0()
+	?:0 +0x2d3 fp=0x843b95f sp=0x843b95c pc=0x8135e53
+exit status 2
+FAIL	modernc.org/kv	0.107s

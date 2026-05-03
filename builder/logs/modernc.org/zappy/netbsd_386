@@ -1,0 +1,99 @@
+2022-09-22T00:00:20+02:00 commit 6d73235fc4161239f357fdeb5646289b1d329483, GOMAXPROCS 2, GOGC "", CC ""
+go: downloading modernc.org/internal v1.0.5
+go: downloading github.com/golang/snappy v0.0.3
+runtime: invalid pc-encoded table f=modernc.org/mathutil.init.0 pc=0x829f9c2 targetpc=0x829fc63 tab=[0/0]0x0
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0x829f990
+	value=-1 until pc=0
+
+...
+
+usr/pkg/go118/src/runtime/asm_386.s:337 fp=0x88a38e4 sp=0x88a38e0 pc=0x80a9fe0
+runtime.addOneOpenDeferFrame(0x88001e0, 0x829fc63, 0x88a395c)
+	/usr/pkg/go118/src/runtime/panic.go:598 +0x69 fp=0x88a3900 sp=0x88a38e4 pc=0x807c719
+panic({0x82c66a0, 0x836a014})
+	/usr/pkg/go118/src/runtime/panic.go:798 +0xcf fp=0x88a395c sp=0x88a3900 pc=0x807ce2f
+runtime: unexpected return pc for modernc.org/mathutil.init.0 called from 0x2c66a008
+stack: frame={sp:0x88a395c, fp:0x88a395f} stack=[0x88a0000,0x88a4000)
+0x088a38dc:  0x080aa013 <runtime.systemstack+0x00000023>  0x0807c719 <runtime.addOneOpenDeferFrame+0x00000069>  0x088a38e8  0x0807c730 <runtime.addOneOpenDeferFrame.func1+0x00000000> 
+0x088a38ec:  0x0829fc63 <modernc.org/mathutil.init.0+0x000002d3>  0x088a395c  0x088001e0  0x00000000 
+0x088a38fc:  0x0807ce2f <runtime.gopanic+0x000000cf>  0x088001e0  0x0829fc63 <modernc.org/mathutil.init.0+0x000002d3>  0x088a395c 
+0x088a390c:  0x00000018  0x0000001f  0x0880e230  0x08155da7 <math/big.(*Int).setFromScanner+0x00000037> 
+0x088a391c:  0x0880c1c0  0x088001e0  0x088a4120  0x00000000 
+0x088a392c:  0x00000000  0x0000000a  0x0836a5b8  0x088001f0 
+0x088a393c:  0x00000000  0x082c66a0  0x0836a014  0x00000000 
+0x088a394c:  0x00000000  0x00000000  0x00000000  0x0829fc63 <modernc.org/mathutil.init.0+0x000002d3> 
+0x088a395c: <0x082c66a0  0x0836a014  0x00000025  0x00000000 
+0x088a396c:  0x00000000  0x08155200 <math/big.(*Int).SetInt64+0x000000a0>  0x0880c1b0  0x00000002 
+0x088a397c:  0x00000000  0x0880c1b0  0x0829ffda <modernc.org/mathutil.init+0x0000005a>  0x00000002 
+0x088a398c:  0x00000000  0x0880c1b0  0x0808c852 <runtime.doInit+0x000000f2>  0x084ba920 
+0x088a399c:  0x00000000  0x00000022  0x00000000  0x00000000 
+0x088a39ac:  0x00000005  0x00000000  0x00000008  0x0000000c 
+0x088a39bc:  0x00000000  0x00000022  0x00000000  0x00000000 
+0x088a39cc:  0x00000002  0x00000005  0x00000000  0x00000001 
+0x088a39dc:  0x00000003 
+modernc.org/mathutil.init.0()
+	?:0 +0x2d3 fp=0x88a395f sp=0x88a395c pc=0x829fc63
+exit status 2
+FAIL	modernc.org/zappy	0.040s

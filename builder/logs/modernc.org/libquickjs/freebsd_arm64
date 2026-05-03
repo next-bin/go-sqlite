@@ -1,0 +1,4 @@
+go1.26.2 freebsd/arm64
+2026-04-30T18:24:21+02:00 commit 7ebda1ccb2db9571b83eef42b88b33a8e9ad2e83, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exit status 128

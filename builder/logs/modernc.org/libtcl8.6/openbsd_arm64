@@ -1,0 +1,14 @@
+2023-10-07T00:47:01+02:00 commit 6a7ccdac7425c52a9ca185a1c76aa8307fa99ddf, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc/v2 v2.1.18
+# modernc.org/libc/v2
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:27:19: undefined: TLS
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:27:26: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:54:19: undefined: TLS
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:54:26: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:81:20: undefined: TLS
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:81:38: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:98:17: undefined: TLS
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:109:31: undefined: TLS
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:109:50: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:125:23: undefined: MemAuditError
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.18/mem.go:125:23: too many errors

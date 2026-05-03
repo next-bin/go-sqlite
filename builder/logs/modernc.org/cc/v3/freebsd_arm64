@@ -1,0 +1,7 @@
+2022-10-29T00:09:45+02:00 commit 45998e37f544d3b2502802f59484519b396cc6b3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/cc/v3 [modernc.org/cc/v3.test]
+./cc.go:809:23: cmd.Environ undefined (type *exec.Cmd has no field or method Environ)
+./cc.go:817:23: cmd.Environ undefined (type *exec.Cmd has no field or method Environ)
+./cc.go:872:24: cmd.Environ undefined (type *exec.Cmd has no field or method Environ)
+./cc.go:893:24: cmd.Environ undefined (type *exec.Cmd has no field or method Environ)
+FAIL	modernc.org/cc/v3 [build failed]

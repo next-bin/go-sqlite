@@ -1,0 +1,41 @@
+2023-06-09T00:50:52+02:00 commit db91cd867c4ec31840b434821811fee375dbd8cc, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc v1.24.1
+CC=/usr/bin/gcc
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/4.2.1
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v3/lib/sqlite"] in /private/tmp/ccgo-test-3442500614
+go: creating new go.mod: module example.com/ccgo/v3/lib/sqlite
+execute /usr/local/go/bin/go ["get" "modernc.org/libc"] in /private/tmp/ccgo-test-3442500614
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.3.0
+go: added github.com/mattn/go-isatty v0.0.16
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab
+go: added modernc.org/libc v1.24.1
+go: added modernc.org/mathutil v1.5.0
+go: added modernc.org/memory v1.6.0
+--- FAIL: TestBug (19.57s)
+    all_test.go:2870: /ccgo/bug/dmesg.c: skipped: /usr/bin/gcc [-w -lm] -o ./dmesg dmesg.c: system C compiler: exit status 1
+        Undefined symbols for architecture x86_64:
+          "___ccgo_dmesg", referenced from:
+              _main in dmesg-1a2bb5.o
+        ld: symbol(s) not found for architecture x86_64
+        clang: error: linker command failed with exit code 1 (use -v to see invocation)
+        
+    all_test.go:2870: /ccgo/bug/sqlite2.c: skipped: /usr/bin/gcc [-w -lm] -o ./sqlite2 sqlite2.c: system C compiler: exit status 1
+        sqlite2.c:132:17: error: use of unknown builtin '__builtin_malloc' [-Wimplicit-function-declaration]
+                Column *cols = __builtin_malloc(3*sizeof(Column));
+                               ^
+        1 error generated.
+        
+    all_test.go:2872: /ccgo/bug/struct2.c: struct2.c: main3582.go:746:19: mixed named and unnamed parameters
+        main3582.go:749:166: expected ';', found F__ccgo_pad1
+        main3582.go:758:90: expected '}', found 'return'
+        main3582.go:759:2: expected '}', found 'return'
+        main3582.go:760:1: expected ')', found '}'
+        main3582.go:760:3: expected ')', found 'EOF'
+        : exit status 2
+    all_test.go:2904: files 42, ok 39, failed 1
+    all_test.go:2920: FAIL /ccgo/bug/struct2.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	1022.187s

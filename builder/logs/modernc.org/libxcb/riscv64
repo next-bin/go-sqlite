@@ -1,0 +1,80 @@
+go1.25.5 linux/riscv64
+2026-01-01T14:18:16+01:00 commit 75c7a889018b9d3295e4a507828e90617183dba8, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libxcb/libxcb-1.16"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb/internal/linux/riscv64 -name \\*linux_riscv64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb
+archivePath libxcb-1.16.tar.gz
+extractedArchivePath libxcb-1.16
+tempDir /tmp/libxcb
+libRoot /tmp/libxcb/libxcb-1.16
+makeRoot /tmp/libxcb/libxcb-1.16
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb/internal/linux/riscv64
+execute /usr/bin/tar ["xf" "libxcb-1.16.tar.gz" "-C" "/tmp/libxcb"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb
+execute /usr/bin/sh ["-c" "go mod init example.com/libxcb ; go get modernc.org/libc@latest modernc.org/libXau@latest  modernc.org/libXdmcp@latest"] in /tmp/libxcb/libxcb-1.16
+go: creating new go.mod: module example.com/libxcb
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
+go: added golang.org/x/sys v0.37.0
+go: added modernc.org/libXau v0.9.19
+go: added modernc.org/libXdmcp v0.12.22
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.67.3
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -w' ./configure --disable-shared --enable-devel-docs=no --enable-ge --enable-xevie --enable-xprint "] in /tmp/libxcb/libxcb-1.16
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whe
+
+...
+
+f, self.namespace)
+  File "/usr/lib/python3/dist-packages/xcbgen/matcher.py", line 127, in execute
+    funcs[elt.tag](elt, module, namespace)
+  File "/usr/lib/python3/dist-packages/xcbgen/matcher.py", line 30, in import_
+    execute(module, new_namespace)
+  File "/usr/lib/python3/dist-packages/xcbgen/matcher.py", line 127, in execute
+    funcs[elt.tag](elt, module, namespace)
+  File "/usr/lib/python3/dist-packages/xcbgen/matcher.py", line 30, in import_
+    execute(module, new_namespace)
+  File "/usr/lib/python3/dist-packages/xcbgen/matcher.py", line 127, in execute
+    funcs[elt.tag](elt, module, namespace)
+  File "/usr/lib/python3/dist-packages/xcbgen/matcher.py", line 29, in import_
+    new_namespace = state.Namespace(new_file)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/xcbgen/state.py", line 37, in __init__
+    self.root = parse(filename).getroot()
+                ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/xml/etree/ElementTree.py", line 1204, in parse
+    tree.parse(source, parser)
+  File "/usr/lib/python3.12/xml/etree/ElementTree.py", line 569, in parse
+    self._root = parser._parse_whole(source)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+xml.etree.ElementTree.ParseError: not well-formed (invalid token): line 3362, column 10
+make[1]: *** [Makefile:1425: xvmc.c] Error 1
+make[1]: Leaving directory '/tmp/libxcb/libxcb-1.16/src'
+make: *** [Makefile:799: check-recursive] Error 1
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x6c
+modernc.org/fileutil/ccgo.Fatal(0x88?, {0x32e8033b18, 0x1, 0x1})
+	/home/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:323 +0x58
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x32e8158288?, 0x32e815c380?}, 0x4e35aa?)
+	/home/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:371 +0x84
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb/generator.go:113 +0xd88
+
+exit status 2
+exit status 1
+libxcb.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

@@ -1,0 +1,15 @@
+2024-03-02T02:15:53+01:00 commit 5b58799480cedc74e9b07141c716c83f7ebefd2d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/fileutil v1.3.0
+test binary compiled for freebsd/386
+execute /usr/local/go/bin/go ["test" "-v" "-timeout" "1h" "-race" "-run" "TestConcurrentGoroutines" "-inner"] in /usr/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite
+-race is not supported on freebsd/386
+--- FAIL: TestConcurrentGoroutines (1.13s)
+    all_test.go:699: 8 goroutines concurrently inserted 40000 rows in 519.142055ms
+    all_test.go:702: recursively invoking this test with -race
+    all_test.go:708: FAIL err=exit status 2 out=-race is not supported on freebsd/386
+FAIL
+FAIL	modernc.org/sqlite	6.807s
+ok  	modernc.org/sqlite/functest	400.481s
+FAIL
+
+FAIL err=exit status 1

@@ -1,0 +1,23 @@
+go1.25.7 linux/386
+2026-02-10T16:17:22+01:00 commit b8975b7dcf269f7c09929073c1feb64701066f41, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for linux/386
+--- FAIL: TestIssue118 (2.39s)
+    all_test.go:245: Memory leak via libc.NewTLS:
+        modernc.org/libc.NewTLS (/home/jnml/pkg/mod/modernc.org/libc@v1.67.6/libc_musl.go:291)
+        modernc.org/sqlite.newConn (/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/conn.go:56)
+        modernc.org/sqlite.(*Driver).Open (/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/driver.go:82)
+        database/sql.dsnConnector.Connect (/usr/local/go/src/database/sql/sql.go:809)
+        database/sql.(*DB).conn (/usr/local/go/src/database/sql/sql.go:1431)
+        database/sql.(*DB).exec (/usr/local/go/src/database/sql/sql.go:1689)
+        database/sql.(*DB).ExecContext.func1 (/usr/local/go/src/database/sql/sql.go:1672)
+        database/sql.(*DB).retry (/usr/local/go/src/database/sql/sql.go:1576)
+        database/sql.(*DB).ExecContext (/usr/local/go/src/database/sql/sql.go:1671)
+        database/sql.(*DB).Exec (/usr/local/go/src/database/sql/sql.go:1685)
+        modernc.org/sqlite.TestIssue118.func1 (/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:192)
+        modernc.org/sqlite.TestIssue118 (/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:204)
+        testing.tRunner (/usr/local/go/src/testing/testing.go:1934)
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite	2.393s
+
+FAIL err=exit status 1

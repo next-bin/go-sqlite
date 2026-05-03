@@ -1,0 +1,5 @@
+2023-03-13T04:51:32+01:00 commit ac31da6bec65c9b07b36e949dacccb75dd8827ca, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/z
+all_test.go:19:2: missing go.sum entry for module providing package modernc.org/ccgo/v3/lib (imported by modernc.org/z); to add:
+	go get -t modernc.org/z
+FAIL	modernc.org/z [setup failed]

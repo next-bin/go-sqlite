@@ -1,0 +1,11 @@
+2024-08-19T01:52:59+02:00 commit 310b004e0200607edbc07977aaf914631a97e01c, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libgdi32 [modernc.org/libgdi32.test]
+.\libgdi32.go:30:90: undefined: TLPARAM
+.\libgdi32.go:54:78: undefined: TLPARAM
+.\libgdi32.go:108:45: undefined: THDC
+.\libgdi32.go:108:62: undefined: TLPCWSTR
+.\libgdi32.go:108:80: undefined: TFONTENUMPROCW
+.\libgdi32.go:108:104: undefined: TLPARAM
+FAIL	modernc.org/libgdi32 [build failed]
+
+FAIL err=exit status 1

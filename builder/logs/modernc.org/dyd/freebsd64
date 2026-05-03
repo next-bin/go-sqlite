@@ -1,0 +1,14 @@
+2023-05-26T11:24:46+02:00 commit 4f98ab0fbfd1782b28d85f57cd0f8535e4cfeb56, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/sqlite v1.22.1
+go: downloading golang.org/x/net v0.10.0
+go: downloading golang.org/x/mod v0.8.0
+go: downloading modernc.org/gc/v3 v3.0.0-20230521172100-5faad14c481a
+go: downloading golang.org/x/sys v0.8.0
+ok  	modernc.org/dyd	0.002s
+# modernc.org/dyd/examples/dynamicstyles
+examples/dynamicstyles/main.go:16:12: undefined: dydStart
+ok  	modernc.org/dyd/dyd	0.005s
+?   	modernc.org/dyd/examples/db2	[no test files]
+# modernc.org/dyd/examples/static
+examples/static/main.go:16:12: undefined: dydStart
+FAIL

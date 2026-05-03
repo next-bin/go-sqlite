@@ -1,0 +1,20 @@
+2024-03-08T15:24:34+01:00 commit 463cc8db8728121f8b5d26436ac4888c7329ad40, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/ccgo/v3 v3.16.15
+go: downloading modernc.org/libc v1.29.0
+go: downloading modernc.org/ccgo/v4 v4.0.31
+go: downloading golang.org/x/mod v0.11.0
+go: downloading golang.org/x/tools v0.10.0
+go: downloading modernc.org/cc/v4 v4.14.12
+go: downloading modernc.org/gc/v2 v2.3.0
+go: downloading golang.org/x/sys v0.9.0
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test2539853870/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_darwin_arm64.go"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre2-16
+package internal/pcre2test/ccgo_darwin_arm64.go is not in std (/usr/local/go/src/internal/pcre2test/ccgo_darwin_arm64.go)
+--- FAIL: Test (0.02s)
+    all_test.go:35: package internal/pcre2test/ccgo_darwin_arm64.go is not in std (/usr/local/go/src/internal/pcre2test/ccgo_darwin_arm64.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-16	0.292s
+
+FAIL err=exit status 1

@@ -1,0 +1,17 @@
+go1.25.5 linux/loong64
+2025-12-31T09:26:15+01:00 commit e47ddcf787322fb24042bb832c7e28745f25819e, GOMAXPROCS 16, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/db v1.0.29
+# modernc.org/ql
+file2.go:15:2: modernc.org/db@v1.0.29: Get "https://goproxy.cn/modernc.org/db/@v/v1.0.29.zip": net/http: TLS handshake timeout
+FAIL	modernc.org/ql [setup failed]
+# modernc.org/ql/driver
+file2.go:15:2: modernc.org/db@v1.0.29: Get "https://goproxy.cn/modernc.org/db/@v/v1.0.29.zip": net/http: TLS handshake timeout
+FAIL	modernc.org/ql/driver [setup failed]
+# modernc.org/ql/ql
+file2.go:15:2: modernc.org/db@v1.0.29: Get "https://goproxy.cn/modernc.org/db/@v/v1.0.29.zip": net/http: TLS handshake timeout
+FAIL	modernc.org/ql/ql [setup failed]
+?   	modernc.org/ql/design	[no test files]
+ok  	modernc.org/ql/vendored/github.com/camlistore/go4/lock	0.015s
+FAIL
+
+FAIL err=exit status 1

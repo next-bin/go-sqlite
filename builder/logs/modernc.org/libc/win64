@@ -1,0 +1,10 @@
+2025-01-31T05:53:08+01:00 commit 45df9dc8e73faa68fe10c39b32ddb1335a08f356, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestIssue42 (10.27s)
+    all_test.go:39: pread_test.o.go:1006:28: undefined: "pwrite" external
+        pread_test.o.go:1036:25: undefined: "pread" external
+        pread_test.o.go:1164:2: undefined: "remove" external
+FAIL
+exit status 1
+FAIL	modernc.org/libc	12.110s
+
+FAIL err=exit status 1

@@ -1,0 +1,16 @@
+2024-01-31T11:04:27+01:00 commit d372f2380da44768208de476f863543fac119af0, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# github.com/josharian/secretrabbit [github.com/josharian/secretrabbit.test]
+./src.go:16:46: undefined: libsamplerate.SRC_SINC_BEST_QUALITY
+./src.go:17:46: undefined: libsamplerate.SRC_SINC_MEDIUM_QUALITY
+./src.go:18:46: undefined: libsamplerate.SRC_SINC_FASTEST
+./src.go:19:46: undefined: libsamplerate.SRC_ZERO_ORDER_HOLD
+./src.go:20:46: undefined: libsamplerate.SRC_LINEAR
+./src.go:155:53: undefined: libsamplerate.SRC_ERR_MALLOC_FAILED
+./src.go:156:53: undefined: libsamplerate.SRC_ERR_BAD_STATE
+./src.go:157:53: undefined: libsamplerate.SRC_ERR_BAD_DATA
+./src.go:158:53: undefined: libsamplerate.SRC_ERR_BAD_DATA_PTR
+./src.go:159:53: undefined: libsamplerate.SRC_ERR_NO_PRIVATE
+./src.go:159:53: too many errors
+FAIL	github.com/josharian/secretrabbit [build failed]
+
+FAIL err=exit status 1

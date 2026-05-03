@@ -1,0 +1,12 @@
+2023-10-18T01:06:02+02:00 commit 02567b52aaf832daa5ce2f35d063687d06106764, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute C:\Program Files\Go\bin\go.exe ["build" "-o" "C:\\Users\\jnml\\AppData\\Local\\Temp\\Test2551261456\\001\\pcre2test" "-tags=" "internal\\pcre2test\\ccgo_windows_arm64.go"] in C:\Users\jnml\go\src\modernc.org\builder\.exclude\modernc.org\libpcre2-32
+package internal/pcre2test/ccgo_windows_arm64.go is not in std (C:\Program Files\Go\src\internal\pcre2test\ccgo_windows_arm64.go)
+--- FAIL: Test (0.18s)
+    all_test.go:33: package internal/pcre2test/ccgo_windows_arm64.go is not in std (C:\Program Files\Go\src\internal\pcre2test\ccgo_windows_arm64.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-32	0.282s
+
+FAIL err=exit status 1

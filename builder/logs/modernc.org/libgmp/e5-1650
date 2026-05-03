@@ -1,0 +1,70 @@
+2024-12-18T01:09:41+01:00 commit bba5d174fc830819ee6e74148213dfd7e90293f3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (287.18s)
+    all_test.go:92: internal/linux/386/tests/memory.o.go: SKIP (no main)
+    all_test.go:80: internal/linux/386/tests/misc/t-printf.o.go: SKIP (list)
+    all_test.go:92: internal/linux/386/tests/misc.o.go: SKIP (no main)
+    all_test.go:80: internal/linux/386/tests/mpn/t-get_d.o.go: SKIP (list)
+    all_test.go:92: internal/linux/386/tests/refmpf.o.go: SKIP (no main)
+    all_test.go:92: internal/linux/386/tests/refmpn.o.go: SKIP (no main)
+    all_test.go:92: internal/linux/386/tests/refmpq.o.go: SKIP (no main)
+    all_test.go:92: internal/linux/386/tests/refmpz.o.go: SKIP (no main)
+    all_test.go:92: internal/linux/386/tests/spinner.o.go: SKIP (no main)
+    all_test.go:92: internal/linux/386/tests/trace.o.go: SKIP (no main)
+    all_test.go:104: 0 internal/linux/386/tests/misc/t-locale.o.go
+    all_test.go:104: 1 internal/linux/386/tests/misc/t-scanf.o.go
+    all_test.go:104: 2 internal/linux/386/tests/mpf/reuse.o.go
+    all_test.go:104: 3 internal/linux/386/tests/mpf/t-add.o.go
+    all_test.go:104: 4 internal/linux/386/tests/mpf/t-cmp_d.o.go
+    all_test.go:104: 5 internal/linux/386/tests/mpf/t-cmp_si.o.go
+    all_test.go:104: 6 internal/linux/386/tests/mpf/t-conv.o.go
+    all_test.go:104: 7 internal/linux/386/tests/mpf/t-div.o.go
+    all_test.go:104: 8 internal/linux/386/tests/mpf/t-dm2exp.o.go
+    all_test.go:104: 9 internal/linux/386/tests/mpf/t-eq.o.go
+    all_test.go:104: 10 internal/linux/386/tests/mpf/t-fits.o.go
+    all_test.go:104: 11 internal/linux/386/tests/mpf/t-get_d.o.go
+    all_test.go:104: 12 internal/linux/386/tests/mpf/t-get_d_2exp.o.go
+    all_test.go:104: 13 internal/linux/386/tests/mpf/t-get_si.o.go
+    all_test.go:104: 14 internal/linux/386/tests/mpf/t-get_ui.o.go
+    all_test.go:104: 15 internal/linux/386/tests/mpf/t-gsprec.o.go
+    all_test.go:104: 16 internal/linux/386/tests/mpf/t-inp_str.o.go
+    all_test.go:104: 17 internal/linux/386/tests/mpf/t-int_p.o.go
+    all_test.go:104: 18 internal/linux/386/tests/mpf/t-mul_ui.o.go
+    all_test.go:104: 19 internal/linux/3
+
+...
+
+ve.o.go
+    all_test.go:104: 148 internal/linux/386/tests/mpz/t-root.o.go
+    all_test.go:104: 149 internal/linux/386/tests/mpz/t-scan.o.go
+    all_test.go:104: 150 internal/linux/386/tests/mpz/t-set_d.o.go
+    all_test.go:104: 151 internal/linux/386/tests/mpz/t-set_f.o.go
+    all_test.go:104: 152 internal/linux/386/tests/mpz/t-set_si.o.go
+    all_test.go:104: 153 internal/linux/386/tests/mpz/t-set_str.o.go
+    all_test.go:104: 154 internal/linux/386/tests/mpz/t-sizeinbase.o.go
+    all_test.go:104: 155 internal/linux/386/tests/mpz/t-sqrtrem.o.go
+    all_test.go:104: 156 internal/linux/386/tests/mpz/t-tdiv.o.go
+    all_test.go:104: 157 internal/linux/386/tests/mpz/t-tdiv_ui.o.go
+    all_test.go:104: 158 internal/linux/386/tests/rand/t-iset.o.go
+    all_test.go:104: 159 internal/linux/386/tests/rand/t-lc2exp.o.go
+    all_test.go:104: 160 internal/linux/386/tests/rand/t-mt.o.go
+    all_test.go:104: 161 internal/linux/386/tests/rand/t-rand.o.go
+    all_test.go:104: 162 internal/linux/386/tests/rand/t-urbui.o.go
+    all_test.go:104: 163 internal/linux/386/tests/rand/t-urmui.o.go
+    all_test.go:104: 164 internal/linux/386/tests/rand/t-urndmm.o.go
+    all_test.go:104: 165 internal/linux/386/tests/t-bswap.o.go
+    all_test.go:104: 166 internal/linux/386/tests/t-constants.o.go
+    all_test.go:104: 167 internal/linux/386/tests/t-count_zeros.o.go
+    all_test.go:104: 168 internal/linux/386/tests/t-hightomask.o.go
+    all_test.go:104: 169 internal/linux/386/tests/t-modlinv.o.go
+    all_test.go:104: 170 internal/linux/386/tests/t-parity.o.go
+    all_test.go:104: 171 internal/linux/386/tests/t-popc.o.go
+    all_test.go:104: 172 internal/linux/386/tests/t-sub.o.go
+    all_test.go:165: internal/linux/386/tests/mpn/t-instrument.o.go: # command-line-arguments
+        /tmp/Test3061715744/001/test50.go:12:2: "modernc.org/libgmp" imported and not used
+         FAIL exit status 1
+    all_test.go:168: files=183 skip=10 compileok=173 buildok=172 fail=0 pass=172
+FAIL
+exit status 1
+FAIL	modernc.org/libgmp	287.184s
+
+FAIL err=exit status 1

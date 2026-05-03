@@ -1,0 +1,6 @@
+2025-02-20T01:03:05+01:00 commit 65632fb27d769791c1a97d621cc30f7faa632b2c, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/tk9.0 v0.61.0
+gui.go:23:2: modernc.org/tk9.0@v0.61.0: Get "https://proxy.golang.org/modernc.org/tk9.0/@v/v0.61.0.zip": net/http: TLS handshake timeout
+gui.go:24:2: modernc.org/tk9.0@v0.61.0: Get "https://proxy.golang.org/modernc.org/tk9.0/@v/v0.61.0.zip": net/http: TLS handshake timeout
+
+FAIL err=exit status 1

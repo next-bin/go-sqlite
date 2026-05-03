@@ -1,0 +1,12 @@
+go1.25.3 linux/loong64
+2025-12-01T00:22:12+01:00 commit 66a7b98167f323b5e47e6a755da7fe3e518d0c28, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Example (0.01s)
+got:
+2.10.1 <nil>
+want:
+2.10.0 <nil>
+FAIL
+exit status 1
+FAIL	modernc.org/tcl9.0	0.102s
+
+FAIL err=exit status 1

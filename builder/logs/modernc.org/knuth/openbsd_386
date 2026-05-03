@@ -1,0 +1,81 @@
+2023-06-26T14:04:38+02:00 commit c9113f06a03d2f61055c6420fda0ca2d4e54708d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuth	0.071s
+ok  	modernc.org/knuth/cmd/godvitype	0.056s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftodvi	0.052s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftopk	0.044s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftype	0.043s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomf	0.044s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomft	0.042s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopktype	0.120s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopltotf	0.077s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopooltype	0.080s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotangle	0.098s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotex	0.073s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotftopl	0.042s [no tests to run]
+ok  	modernc.org/knuth/cmd/govftovp	0.046s [no tests to run]
+# modernc.org/knuth/cmd/govptovf [modernc.org/knuth/cmd/govptovf.test]
+unexpected fault address 0x2bb778b6
+fatal error: fault
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x2bb778b6 pc=0x83c44fe]
+
+goroutine 5 [running]:
+runtime.throw({0x89c7076, 0x5})
+	runtime/panic.go:1077 +0x4d fp=0x6dc7c6e4 sp=0x6dc7c6d0 pc=0x808d76d
+runtime.sigpanic()
+	runtime/signal_unix.go:875 +0x2bf fp=0x6dc7c710 sp=0x6dc7c6e4 pc=0x80a55bf
+cmd/compile/internal/ssa.memcombineStores(0x6dc66000)
+	cmd/compile/internal/ssa/memcombine.go:366 +0x30e fp=0x6dc7c7ac sp=0x6dc7c710 pc=0x83c44fe
+cmd/compile/internal/ssa.memcombine(0x6dc66000)
+	cmd/compile/internal/ssa/memcombine.go:25 +0x34 fp=0x6dc7c7b4 sp=0x6dc7c7ac pc=0x83c2584
+cmd/compile/internal/ssa.Compile(0x6dc66000)
+	cmd/compile/internal/ssa/compile.go:97 +0xb20 fp=0x6dc7fb58 sp=0x6dc7c7b4 pc=0x8372270
+cmd/compile/internal/ssagen.buildssa(0x6dec1bc0, 0x0)
+	cmd/compile/internal/ssagen/ssa.go:568 +0x2b0e fp=0x6dc7fea8 sp=0x6dc7fb58 pc=0x86eb26e
+cmd/compile/internal/ssagen.Compile(0x6dec1bc0, 0x0)
+	cmd/compile/internal/ssagen/pgen.go:187 +0x48 fp=0x6dc7ffc0 sp=0x6dc7fea8 pc=0x86e2268
+cmd/compile/internal/gc.compileFunctions.func5.1(0x0)
+	cmd/compile/internal/gc/compile.go:184 +0x34 fp=0
+
+...
+
+50, 0x6e1afb20, 0x0)
+	cmd/compile/internal/ssa/expand_calls.go:1140 +0x9ec fp=0x6e2461bc sp=0x6e24609c pc=0x839ed4c
+cmd/compile/internal/ssa.expandCalls(0x6e1ff1e0)
+	cmd/compile/internal/ssa/expand_calls.go:1247 +0x42f9 fp=0x6e2467b4 sp=0x6e2461bc pc=0x83a3909
+cmd/compile/internal/ssa.Compile(0x6e1ff1e0)
+	cmd/compile/internal/ssa/compile.go:97 +0xb20 fp=0x6e249b58 sp=0x6e2467b4 pc=0x8372270
+cmd/compile/internal/ssagen.buildssa(0x6dec1ec0, 0x1)
+	cmd/compile/internal/ssagen/ssa.go:568 +0x2b0e fp=0x6e249ea8 sp=0x6e249b58 pc=0x86eb26e
+cmd/compile/internal/ssagen.Compile(0x6dec1ec0, 0x1)
+	cmd/compile/internal/ssagen/pgen.go:187 +0x48 fp=0x6e249fc0 sp=0x6e249ea8 pc=0x86e2268
+cmd/compile/internal/gc.compileFunctions.func5.1(0x1)
+	cmd/compile/internal/gc/compile.go:184 +0x34 fp=0x6e249fdc sp=0x6e249fc0 pc=0x88f4794
+cmd/compile/internal/gc.compileFunctions.func3.1()
+	cmd/compile/internal/gc/compile.go:166 +0x2c fp=0x6e249ff0 sp=0x6e249fdc pc=0x88f4afc
+runtime.goexit()
+	runtime/asm_386.s:1363 +0x1 fp=0x6e249ff4 sp=0x6e249ff0 pc=0x80c5301
+created by cmd/compile/internal/gc.compileFunctions.func3 in goroutine 22
+	cmd/compile/internal/gc/compile.go:165 +0x208
+FAIL	modernc.org/knuth/cmd/govptovf [build failed]
+ok  	modernc.org/knuth/cmd/goweave	0.040s [no tests to run]
+ok  	modernc.org/knuth/dvitype	0.565s
+ok  	modernc.org/knuth/gftodvi	4.480s
+ok  	modernc.org/knuth/gftopk	3.208s
+?   	modernc.org/knuth/internal/tds	[no test files]
+ok  	modernc.org/knuth/gftype	3.220s
+ok  	modernc.org/knuth/kpath	0.046s
+ok  	modernc.org/knuth/mf	2.347s
+ok  	modernc.org/knuth/mf/internal/trap	0.039s
+ok  	modernc.org/knuth/mft	0.043s
+ok  	modernc.org/knuth/pktype	2.632s
+ok  	modernc.org/knuth/pltotf	1.008s
+ok  	modernc.org/knuth/pooltype	0.381s
+ok  	modernc.org/knuth/tangle	13.221s
+ok  	modernc.org/knuth/tex	3.823s
+ok  	modernc.org/knuth/tex/internal/trip	0.057s
+ok  	modernc.org/knuth/tftopl	0.203s
+ok  	modernc.org/knuth/vftovp	0.302s
+ok  	modernc.org/knuth/vptovf	1.137s
+ok  	modernc.org/knuth/weave	4.256s
+ok  	modernc.org/knuth/web	45.591s
+FAIL

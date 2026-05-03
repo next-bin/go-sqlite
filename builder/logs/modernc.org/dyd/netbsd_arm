@@ -1,0 +1,18 @@
+2024-01-23T01:11:35Z commit b70b42cb85e55d5ad93514e2b43fd78b4e21257c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/sqlite/lib
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/defs.go:13:35: undefined: sqlite3_index_constraint
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/defs.go:14:35: undefined: sqlite3_index_orderby
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/defs.go:15:35: undefined: sqlite3_index_constraint_usage
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/mutex.go:19:5: undefined: Xsqlite3_threadsafe
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/mutex.go:29:11: undefined: Xsqlite3_config
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/mutex.go:29:32: undefined: SQLITE_CONFIG_MUTEX
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/mutex.go:29:122: undefined: SQLITE_OK
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/mutex.go:30:8: undefined: Xsqlite3_errstr
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/mutex.go:40:17: undefined: Sqlite3_mutex_methods
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/mutex.go:239:46: undefined: SQLITE_OK
+/home/jnml/pkg/mod/modernc.org/sqlite@v1.27.0/lib/mutex.go:239:46: too many errors
+FAIL	modernc.org/dyd [build failed]
+FAIL	modernc.org/dyd/dyd [build failed]
+FAIL
+
+FAIL err=exit status 1

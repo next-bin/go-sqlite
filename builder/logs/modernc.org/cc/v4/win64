@@ -1,0 +1,116 @@
+2024-10-20T14:20:09+02:00 commit 49f7ac383b0dde8012fb05a943c08d83a4e50f70, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestCPPExpand (0.36s)
+    all_test.go:696: --- testdata\cpp-expand\000.h.expect
+        +++ testdata\cpp-expand\000.h
+        @@ -1,9 +1,9 @@
+        -b
+        -b2
+        -b3
+        -b4
+        -b5 c5
+        -b6 c6
+        -b7 c7
+        -b8 c8
+        -b9 c9
+        +b 
+        +b2 
+        +b3 
+        +b4 
+        +b5 c5 
+        +b6 c6 
+        +b7 c7 
+        +b8 c8 
+        +b9 c9 
+        
+        got
+        b 
+        b2 
+        b3 
+        b4 
+        b5 c5 
+        b6 c6 
+        b7 c7 
+        b8 c8 
+        b9 c9 
+        b10 c10
+        exp
+        b
+        b2
+        b3
+        b4
+        b5 c5
+        b6 c6
+        b7 c7
+        b8 c8
+        b9 c9
+        b10 c10
+        got
+        00000000  62 20 0a 62 32 20 0a 62  33 20 0a 62 34 20 0a 62  |b .b2 .b3 .b4 .b|
+        00000010  35 20 63 35 20 0a 62 36  20 63 36 20 0a 62 37 20  |5 c5 .b6 c6 .b7 |
+        00000020  63 37 20 0a 62 38 20 63  38 20 0a 62 39 20 63 39  |c7 .b8 c8 .b9 c9|
+        00000030  20 0a 62 31 30 20 63 31  30                       | .b10 c10|
+        
+        exp
+        00000000  62 0a 62 32 0a 62 33 0a  62 34 0a 62 35 20 63 35  |b.b2.b3.b4.b5 c5|
+        00000010  0a 62 36 20 63 36 0a 62  37 20 63 37 0a 62 38 20  |.b6 c6.b7 c7.b8 |
+        00000020  63 38 0a 62 39 20 63 39  0a 62 31 30 20 63 31 30  |c8.b9 c9.b10 c10|
+    all_test.go:696: --- testdata\cpp-expand\001.h.expect
+        +++ testdata\cpp-expand\001.h
+        @@ -1 +1 @@
+        -f(2*f(2*42))
+        +f(2*f(2*42)) 
+        
+        got
+        f(2*f(2*42)) 
+        f(2*24)
+        exp
+        f(2*f(2*42))
+        f(2*24)
+        got
+        00000000  66 28 32 2a 66 28 32 2a  34 32 29 29 20 0a 66 28  |f(2*f(2*42)) .f(|
+        00000010  32 2a 32 34 29                                    |2*24)|
+        
+        exp
+        00000000  66 28 32 2a 66 28 32 2a  34 32 29 29 0a 66 28 32  |f(2*f(2*42)).f(2|
+        00000010  2a 32 34 29                                       |*24)|
+    all_test.go:696: --- testdata\cpp-expand\004.h.expect
+        +++ testdata\cp
+
+...
+
+00080  72 69 6e 74 66 28 22 78  20 69 73 20 25 64 20 62  |rintf("x is %d b|
+        00000090  75 74 20 79 20 69 73 20  25 64 22 2c 20 78 2c 20  |ut y is %d", x, |
+        000000a0  79 29 29 3b                                       |y));|
+        
+        exp
+        00000000  66 70 72 69 6e 74 66 28  73 74 64 65 72 72 2c 20  |fprintf(stderr, |
+        00000010  22 46 6c 61 67 22 29 3b  0a 66 70 72 69 6e 74 66  |"Flag");.fprintf|
+        00000020  28 73 74 64 65 72 72 2c  20 22 58 20 3d 20 25 64  |(stderr, "X = %d|
+        00000030  5c 6e 22 2c 20 78 29 3b  0a 70 75 74 73 28 22 54  |\n", x);.puts("T|
+        00000040  68 65 20 66 69 72 73 74  2c 20 73 65 63 6f 6e 64  |he first, second|
+        00000050  2c 20 61 6e 64 20 74 68  69 72 64 20 69 74 65 6d  |, and third item|
+        00000060  73 2e 22 29 3b 0a 28 28  78 3e 79 29 3f 70 75 74  |s.");.((x>y)?put|
+        00000070  73 28 22 78 3e 79 22 29  3a 20 70 72 69 6e 74 66  |s("x>y"): printf|
+        00000080  28 22 78 20 69 73 20 25  64 20 62 75 74 20 79 20  |("x is %d but y |
+        00000090  69 73 20 25 64 22 2c 20  78 2c 20 79 29 29 3b     |is %d", x, y));|
+    all_test.go:703: testdata\cpp-expand\000.h
+    all_test.go:703: testdata\cpp-expand\001.h
+    all_test.go:703: testdata\cpp-expand\004.h
+    all_test.go:703: testdata\cpp-expand\009.c
+    all_test.go:703: testdata\cpp-expand\010.c
+    all_test.go:703: testdata\cpp-expand\011.c
+    all_test.go:703: testdata\cpp-expand\015.c
+    all_test.go:703: testdata\cpp-expand\016.h
+    all_test.go:703: testdata\cpp-expand\017.h
+    all_test.go:703: testdata\cpp-expand\example-6.10.2-7.h
+    all_test.go:703: testdata\cpp-expand\example-6.10.3.5-4.h
+    all_test.go:703: testdata\cpp-expand\example-6.10.3.5-5.h
+    all_test.go:703: testdata\cpp-expand\example-6.10.3.5-6.h
+    all_test.go:703: testdata\cpp-expand\example-6.10.3.5-7.h
+    all_test.go:703: testdata\cpp-expand\example-6.10.3.5-9.h
+    all_test.go:705: files 31, skip 0, ok 16, fails 15
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	7.472s
+
+FAIL err=exit status 1

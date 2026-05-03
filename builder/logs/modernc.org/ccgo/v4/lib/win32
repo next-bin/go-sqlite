@@ -1,0 +1,21 @@
+go1.26.0 windows/386
+2026-04-02T10:32:55+02:00 commit ae1b7cc9a79d057e2e4ed20a703db45145d930d2, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute C:\Program Files\Go\bin\go.exe ["mod" "init" "test"] in C:\Users\jnml\AppData\Local\Temp\TestExec3295849050\001
+go: creating new go.mod: module test
+execute C:\Program Files\Go\bin\go.exe ["get" "modernc.org/libc@v1.70.0"] in C:\Users\jnml\AppData\Local\Temp\TestExec3295849050\001
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.70.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+--- FAIL: TestExec (8442.40s)
+    all_test.go:786: write testdata\test_exec_windows_386.golden: There is not enough space on the disk.
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v4/lib	8442.762s
+
+FAIL err=exit status 1

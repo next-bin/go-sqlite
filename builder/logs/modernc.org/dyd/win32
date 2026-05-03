@@ -1,0 +1,10 @@
+2024-12-03T05:04:25+01:00 commit dd733e5d53ee46d560f86488b1087e5d0cf0e73b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/sqlite v1.34.1
+ok  	modernc.org/dyd	0.462s
+--- FAIL: TestKV (1.88s)
+    testing.go:1232: TempDir RemoveAll cleanup: remove C:\Users\jnml\AppData\Local\Temp\TestKV1985950549\001\dyd.sqlite: The process cannot access the file because it is being used by another process.
+FAIL
+FAIL	modernc.org/dyd/dyd	2.009s
+FAIL
+
+FAIL err=exit status 1

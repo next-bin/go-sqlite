@@ -1,0 +1,84 @@
+go1.26.0 openbsd/amd64
+2026-03-21T16:01:23+01:00 commit 25d44354d7262721973a9b464668511cb0a5131e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+Building static library libz.a version 1.2.11 with qbecc.
+Checking for size_t... Yes.
+Checking for off64_t... No.
+Checking for fseeko... Yes.
+Checking for strerror... Yes.
+Checking for unistd.h... Yes.
+Checking for stdarg.h... Yes.
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+Checking for vsnprintf() in stdio.h... Yes.
+Checking for return value of vsnprintf()... Yes.
+qbecc -O -I. -c -o example.o test/example.c
+qbecc -O  -c -o adler32.o adler32.c
+qbecc -O  -c -o crc32.o crc32.c
+qbecc -O  -c -o deflate.o deflate.c
+qbecc -O  -c -o infback.o infback.c
+qbecc -O  -c -o inffast.o inffast.c
+qbecc -O  -c -o inflate.o inflate.c
+qbecc -O  -c -o inftrees.o inftrees.c
+qbecc -O  -c -o trees.o trees.c
+qbecc -O  -c -o zutil.o zutil.c
+qbecc -O  -c -o compress.o compress.c
+qbecc -O  -c -o uncompr.o uncompr.c
+qbecc -O  -c -o gzclose.o gzclose.c
+qbecc -O  -c -o gzlib.o gzlib.c
+qbecc -O  -c -o gzread.o gzread.c
+qbecc -O  -c -o gzwrite.o gzwrite.c
+ar rc libz.a adler32.o crc32.o deflate.o infback.o inffast.o inflate.o inftrees.o trees.o zutil.o compress.o uncompr.o gzclose.o gzlib.o gzread.o gzwrite.o 
+qbecc -O -o example example.o -L. libz.a
+qbecc -O -I. -c -o minigzip.o test/minigzip.c
+qbecc -O -o minigzip minigzip.o -L. libz.a
+hello world
+zlib version 1.2.11 = 0x12b0, compile flags = 0xa9
+uncompress(): hello, hello!
+gzread(): hello, hello!
+gzgets() after gzseek:  hello!
+inflate(): hello, hello!
+large_inflate(): OK
+after inflateSync(): hello, hello!
+inflate with dictionary: hello, hello!
+		*** zlib test OK ***
+-- Speedtest1 for SQLite 3.50.4 2025-07-30 19:33:53 4d8adfb30e03f9cf27f800a2c1ba
+ 100 - 50000 INSERTs into table with no index......................    0.117s
+ 110 - 50000 ordered INSERTS with one index/PK.....................    0.204s
+ 120 - 50000 unordered INSERTS with one index/PK...................    0.235s
+ 130 - 25 SELECTS, numeric BETWEEN, unindexed......................    0.236s
+ 140 - 10 SELECTS, LIKE, unindexed.................................    0.302s
+ 142 - 10 SELECTS w/ORDER BY,
+
+...
+
+............    0.268s
+ 125 - 2000 custom geometry callback queries.......................    0.263s
+ 130 - 4000 three-dimensional intersect box queries................    0.087s
+ 140 - 5000 rowid queries..........................................    0.064s
+ 150 - 500 UPDATEs using rowid.....................................    0.029s
+ 155 - 50 UPDATEs using one-dimensional overlap....................    0.151s
+ 160 - 500 DELETEs using rowid.....................................    0.023s
+ 165 - 50 DELETEs using one-dimensional overlap....................    0.072s
+ 170 - Restore deleted entries using INSERT OR IGNORE..............    0.076s
+ 999 - Reset the database..........................................    0.001s
+       Begin testset "star"
+ 100 - Create a fact table with 5000 entries.......................    0.019s
+ 110 - Create indexes on all attributes columns....................    0.035s
+ 120 - Create dimension tables.....................................    0.003s
+ 130 - Star query over the entire fact table.......................    0.077s
+ 130 - Star query with LEFT JOINs..................................    0.011s
+ 999 - Reset the database..........................................    0.003s
+       Begin testset "app"
+ 100 - Generate a Fossil-like database schema......................    0.008s
+ 110 - Open and use the database 300 times.........................    0.273s
+       TOTAL.......................................................   13.796s
+--- FAIL: TestCSmith (3787.51s)
+    all_test.go:1125: using C compiler at /usr/bin/cc
+    all_test.go:1126: valgrind: 
+    all_test.go:1224: csmith FAIL: err=exit status 16777215 out=invalid option args=--bitfields at: 1
+    all_test.go:1207: C EQUAL FAIL: args=--max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid -s 5833087786076579514 #
+    all_test.go:1209: files=0 gcc fails=2 skipped=0 failed=1 passed=77
+FAIL
+exit status 1
+FAIL	modernc.org/qbecc/lib	4057.111s
+
+FAIL err=exit status 1

@@ -1,0 +1,24 @@
+2023-04-17T04:54:39Z commit 74594f6c8b0e06e51d8c661be1e8a91481275569, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestCompileGlob (0.00s)
+panic: runtime error: unsafe.Slice: ptr is nil and len is not zero [recovered]
+	panic: runtime error: unsafe.Slice: ptr is nil and len is not zero
+
+goroutine 21 [running]:
+testing.tRunner.func1.2({0x175aa0, 0x1d33d8})
+	/home/jnml/goroot/src/testing/testing.go:1526 +0x1e0
+testing.tRunner.func1()
+	/home/jnml/goroot/src/testing/testing.go:1529 +0x2f0
+panic({0x175aa0, 0x1d33d8})
+	/home/jnml/goroot/src/runtime/panic.go:884 +0x1d8
+go.arsenm.dev/pcre.ConvertGlob({0x195c18, 0x7})
+	/home/jnml/src/modernc.org/builder/.exclude/gitea.arsenm.dev/Arsen6331/pcre/glob.go:56 +0x280
+go.arsenm.dev/pcre.CompileGlob({0x195c18?, 0x0?})
+	/home/jnml/src/modernc.org/builder/.exclude/gitea.arsenm.dev/Arsen6331/pcre/glob.go:66 +0x34
+go.arsenm.dev/pcre_test.TestCompileGlob(0x3fac083380)
+	/home/jnml/src/modernc.org/builder/.exclude/gitea.arsenm.dev/Arsen6331/pcre/glob_test.go:11 +0x3c
+testing.tRunner(0x3fac083380, 0x1abe50)
+	/home/jnml/goroot/src/testing/testing.go:1576 +0x11c
+created by testing.(*T).Run
+	/home/jnml/goroot/src/testing/testing.go:1629 +0x3a0
+exit status 2
+FAIL	go.arsenm.dev/pcre	0.028s

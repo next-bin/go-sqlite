@@ -1,0 +1,25 @@
+go1.26.2 linux/riscv64
+2026-04-21T18:12:34+02:00 commit fe575e48232629112cce2e8bea368358e35c1616, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for linux/riscv64
+--- FAIL: TestIssue118 (24.49s)
+    all_test.go:246: Memory leak via libc.NewTLS:
+        syscall.init.func1 (/usr/local/go/src/syscall/env_unix.go:32)
+        syscall.init.OnceFunc.func3.1 (/usr/local/go/src/sync/oncefunc.go:33)
+        sync.(*Once).doSlow (/usr/local/go/src/sync/once.go:78)
+        sync.(*Once).Do (/usr/local/go/src/sync/once.go:69)
+        syscall.init.OnceFunc.func3 (/usr/local/go/src/sync/oncefunc.go:22)
+        syscall.Environ (/usr/local/go/src/syscall/env_unix.go:136)
+        os.Environ (/usr/local/go/src/os/env.go:140)
+        modernc.org/libc.NewTLS.func1 (/home/jnml/go/pkg/mod/modernc.org/libc@v1.72.0/libc_musl.go:283)
+        sync.(*Once).doSlow (/usr/local/go/src/sync/once.go:78)
+        sync.(*Once).Do (/usr/local/go/src/sync/once.go:69)
+        modernc.org/libc.NewTLS (/home/jnml/go/pkg/mod/modernc.org/libc@v1.72.0/libc_musl.go:282)
+        modernc.org/sqlite/vec.init.0 (/home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/vec/patches.go:11)
+        runtime.doInit1 (/usr/local/go/src/runtime/proc.go:8103)
+        runtime.doInit (/usr/local/go/src/runtime/proc.go:8070)
+        runtime.main (/usr/local/go/src/runtime/proc.go:258)
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite	24.550s
+
+FAIL err=exit status 1

@@ -1,0 +1,14 @@
+2024-05-05T00:29:54+02:00 commit a8ad27a0e6b4c69c48a148a604f51e58245fb81e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libc
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_unix.go:1316:34: (*ctime.Tm)(unsafe.Pointer(tm)).Ftm_gmtoff undefined (type *struct{Ftm_sec int32; Ftm_min int32; Ftm_hour int32; Ftm_mday int32; Ftm_mon int32; Ftm_year int32; Ftm_wday int32; Ftm_yday int32; Ftm_isdst int32} has no field or method Ftm_gmtoff)
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_unix.go:1317:34: (*ctime.Tm)(unsafe.Pointer(tm)).Ftm_zone undefined (type *struct{Ftm_sec int32; Ftm_min int32; Ftm_hour int32; Ftm_mday int32; Ftm_mon int32; Ftm_year int32; Ftm_wday int32; Ftm_yday int32; Ftm_isdst int32} has no field or method Ftm_zone)
+FAIL	zombiezen.com/go/sqlite [build failed]
+FAIL	zombiezen.com/go/sqlite/ext/generateseries [build failed]
+FAIL	zombiezen.com/go/sqlite/ext/refunc [build failed]
+FAIL	zombiezen.com/go/sqlite/shell [build failed]
+FAIL	zombiezen.com/go/sqlite/sqlitefile [build failed]
+FAIL	zombiezen.com/go/sqlite/sqlitemigration [build failed]
+FAIL	zombiezen.com/go/sqlite/sqlitex [build failed]
+FAIL
+
+FAIL err=exit status 1

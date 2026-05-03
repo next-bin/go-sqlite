@@ -1,0 +1,7 @@
+go1.24.2 windows/arm64
+2025-05-20T15:53:29+02:00 commit c4269f7278d6291bab281dc6fa0e0fd8347cc7d5, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/qbecc/lib
+qbecc.go:31:13: pattern builtin.h: no matching files found
+FAIL	modernc.org/qbecc/lib [setup failed]
+
+FAIL err=exit status 1

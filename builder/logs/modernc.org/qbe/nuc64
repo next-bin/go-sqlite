@@ -1,0 +1,79 @@
+2024-05-10T10:55:30+02:00 commit ec0df77803d9e60c983c38de5890f2fa14f77ec2, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+qbe: [/tmp/go-build2707774326/b089/qbe.test -test.paniconexit0 -test.v=true -test.failfast=true -test.timeout=24h0m0s -bestof 1 -gcc 7,8,9,10,11]
+: exec: "gcc-7": executable file not found in $PATH
+: exec: "gcc-8": executable file not found in $PATH
+: exec: "gcc-9": executable file not found in $PATH
+qbe: [/tmp/go-build2707774326/b089/qbe.test -test.paniconexit0 -test.v=true -test.failfast=true -test.timeout=24h0m0s -bestof 1]
+CC=/usr/bin/gcc-10
+gcc-10 (Debian 10.2.1-6) 10.2.1 20210110
+=== RUN   TestSize
+--- PASS: TestSize (0.00s)
+=== RUN   TestScan
+=== RUN   TestScan/states
+    all_test.go:265: 297474 test cases
+=== RUN   TestScan/testdata
+=== RUN   TestScan/errchk
+--- PASS: TestScan (0.90s)
+    --- PASS: TestScan/states (0.84s)
+    --- PASS: TestScan/testdata (0.06s)
+    --- PASS: TestScan/errchk (0.00s)
+=== RUN   TestParser
+--- PASS: TestParser (0.10s)
+=== RUN   TestParserErrChk
+--- PASS: TestParserErrChk (0.00s)
+=== RUN   TestAST
+--- PASS: TestAST (0.26s)
+=== RUN   TestASTErrChk
+--- PASS: TestASTErrChk (0.00s)
+=== RUN   TestC
+--- PASS: TestC (0.50s)
+=== RUN   TestC2
+--- PASS: TestC2 (12.49s)
+=== RUN   TestExec
+    all_test.go:1058: files 32, ok 32
+--- PASS: TestExec (4.95s)
+PASS
+: exec: "gcc-11": executable file not found in $PATH
+ok  	modernc.org/qbe	19.261s
+?   	modernc.org/qbe/ecc	[no test files]
+?   	modernc.org/qbe/qbec	[no test files]
+qbe/cc: [/tmp/go-build2707774326/b241/cc.test -test.paniconexit0 -test.v=true -test.failfast=true -test.timeout=24h0m0s -bestof 1 -gcc 7,8,9,10,11]
+: exec: "gcc-7": executable file not found in $PATH
+: exec: "gcc-8": executable file not found in $PATH
+: exec: "gcc-9": executable file not found in $PATH
+qbe/cc: [/tmp/go-build2707774326/b241/cc.test -test.paniconexit0 -test.v=true -test.failfast=true -test.timeout=24h0m0s -bestof 1]
+QBEC_CC=/usr/bin/gcc-10
+gcc-10 (Debian 10.2.1-6) 10.2.1 20210110
+=== RUN   TestTCC
+WARNING 82_attribs_position.c:16:1: warning: 'stdcall' attribute ignored [-Wattributes]
+   16 | {
+      | ^  
+82_attribs_position.c:16:1: warning: 'stdcall' attribute ignored [-Wattributes]
+82_attribs_position.c:16:1: warning: 'stdcall' attribute ignored [-Wattributes]
+   16 | {
+      | ^  
+82_attribs_position.c:16:1: warning: 'stdcall' attribute ignored [-Wattributes]
+
+    all_test.go:1040: files 74, ok 74, failed 0
+--- PASS: TestTCC (10.51s)
+=== RUN   TestCCGo
+    all_test.go:1140: /ccgo/bug/dmesg.c: skipped: /usr/bin/gcc-10 [-lm -O1] -o ./dmesg dmesg.c: system C compiler: exit status 1
+        dmesg.c: In function ‘main’:
+        dmesg.c:2:2: warning: implicit declaration of function ‘__ccgo_dmesg’ [-Wimplicit-function-declaration]
+            2 |  __ccgo_dmesg("%s:%d: test", __FILE__, __LINE__);
+              |  ^~~~~~~~~~~~
+        /usr/bin/ld: /tmp/ccoUEWC2.o: in function `main':
+        dmesg.c:(.text+0x1d): undefined reference to `__ccgo_dmesg'
+        collect2: error: ld returned 1 exit status
+        
+    all_test.go:1142: /ccgo/bug/init2.c: executing ecc binary ./init2 []: exit status 77 (rc 77, expected 0)
+        
+    all_test.go:1173: files 42, ok 40, failed 1
+    all_test.go:1184: FAIL /ccgo/bug/init2.c
+--- FAIL: TestCCGo (3.98s)
+FAIL
+: exec: "gcc-11": executable file not found in $PATH
+FAIL	modernc.org/qbe/cc	14.545s
+FAIL
+
+FAIL err=exit status 1

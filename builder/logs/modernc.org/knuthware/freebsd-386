@@ -1,0 +1,18 @@
+2023-01-20T02:06:09+01:00 commit b90713cd8b2b1e31c02c40f353c73ef09e91362f, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuthware	0.002s
+ok  	modernc.org/knuthware/cmd/govftovp	0.002s [no tests to run]
+ok  	modernc.org/knuthware/vftovp	0.061s
+--- FAIL: TestGo (6.88s)
+    all_test.go:145: pass: testdata/ctan.org/tex-archive/systems/knuth/dist/etc/vftovp.web
+    all_test.go:513: FAIL
+        output: # example.com/knuth
+        ./test.go:1264:16: prg.vplFile.Readln undefined (type knuth.File has no field or method Readln)
+        ./test.go:1274:52: prg.vplFile.EOLN undefined (type knuth.File has no field or method EOLN)
+        ./test.go:1279:29: prg.vplFile.EOLN undefined (type knuth.File has no field or method EOLN)
+        
+        error: exit status 1
+    all_test.go:145: pass: testdata/ctan.org/tex-archive/systems/knuth/dist/etc/vptovf.web
+    all_test.go:85: files 46, ignored 44, fails 0, ok 2
+FAIL
+FAIL	modernc.org/knuthware/web	13.785s
+FAIL

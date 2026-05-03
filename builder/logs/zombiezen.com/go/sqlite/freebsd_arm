@@ -1,0 +1,75 @@
+2023-09-17T00:43:21Z commit a49e149934bdd210ea4781b4bd3632883fdd4b63, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+unexpected fault address 0x20bf9000
+fatal error: fault
+[signal SIGBUS: bus error code=0x3 addr=0x20bf9000 pc=0x24c044]
+
+goroutine 80 [running]:
+runtime.throw({0x50a6af, 0x5})
+	/usr/local/go/src/runtime/panic.go:1077 +0x4c fp=0x299eb590 sp=0x299eb57c pc=0x53ad8
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:858 +0x1c0 fp=0x299eb5c0 sp=0x299eb590 pc=0x6e8c4
+modernc.org/libc.Xmemset(0x298e2d70, 0x20bf108c, 0x0, 0x7f78)
+	/home/jnml/go/pkg/mod/modernc.org/libc@v1.22.3/libc.go:808 +0x124 fp=0x299eb5d0 sp=0x299eb5c4 pc=0x24c044
+modernc.org/sqlite/lib.walIndexAppend(0x298e2d70, 0x29511318, 0x1, 0x1)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.21.1/lib/sqlite_freebsd_arm.go:24981 +0x100 fp=0x299eb60c sp=0x299eb5d0 pc=0x2851a4
+modernc.org/sqlite/lib.Xsqlite3WalFrames(0x298e2d70, 0x29511318, 0x1000, 0x4a00b038, 0x2, 0x1, 0xa)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.21.1/lib/sqlite_freebsd_arm.go:26854 +0xac8 fp=0x299eb6a8 sp=0x299eb60c pc=0x28b910
+modernc.org/sqlite/lib.pagerWalFrames(0x298e2d70, 0x49f00418, 0x4a00b038, 0x2, 0x1)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.21.1/lib/sqlite_freebsd_arm.go:21606 +0x124 fp=0x299eb6e4 sp=0x299eb6a8 pc=0x27bb4c
+modernc.org/sqlite/lib.Xsqlite3PagerCommitPhaseOne(0x298e2d70, 0x49f00418, 0x0, 0x0)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.21.1/lib/sqlite_freebsd_arm.go:23802 +0x1ec fp=0x299eb720 sp=0x299eb6e4 pc=0x282644
+modernc.org/sqlite/lib.Xsqlite3BtreeCommitPhaseOne(0x298e2d70, 0x49b3f858, 0x0)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.21.1/lib/sqlite_freebsd_arm.go:30460 +0x13c fp=0x299eb740 sp=0x299eb720 pc=0x2960e8
+modernc.org/sqlite/lib.vdbeCommit(0x298e2d70, 0x49f00018, 0x29511418)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.21.1/lib/sqlite_freebsd_arm.go:40520 +0xedc fp=0x299eb7e0 sp=0x299eb740 pc=0x2b74d0
+modernc.org/sqlite/lib.Xsqlite3VdbeHalt(0x298e2d70, 0x29511418)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.21.1/lib/sqlite_freebsd_arm.go:40784 +0x3a4 fp=0x299eb804 sp=0x299eb7e0 pc=0x2b7cec
+modernc.org/sqlite/lib.Xsqlite3VdbeExec(0x298e2d7
+
+...
+
+cfec pc=0x890c8
+created by runtime.init.5 in goroutine 1
+	/usr/local/go/src/runtime/proc.go:310 +0x1c
+
+goroutine 3 [GC sweep wait]:
+runtime.gopark(0x37a1d0, 0x5a5010, 0xc, 0x14, 0x1)
+	/usr/local/go/src/runtime/proc.go:398 +0x104 fp=0x2942d7c4 sp=0x2942d7b0 pc=0x52980
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:404
+runtime.bgsweep(0x29418040)
+	/usr/local/go/src/runtime/mgcsweep.go:280 +0xa8 fp=0x2942d7e4 sp=0x2942d7c4 pc=0x3ab70
+runtime.gcenable.func1()
+	/usr/local/go/src/runtime/mgc.go:200 +0x28 fp=0x2942d7ec sp=0x2942d7e4 pc=0x2b238
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_arm.s:859 +0x4 fp=0x2942d7ec sp=0x2942d7ec pc=0x890c8
+created by runtime.gcenable in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:200 +0x74
+
+goroutine 4 [GC scavenge wait]:
+runtime.gopark(0x37a1d0, 0x5a5280, 0xd, 0x14, 0x2)
+	/usr/local/go/src/runtime/proc.go:398 +0x104 fp=0x2942dfb4 sp=0x2942dfa0 pc=0x52980
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:404
+runtime.(*scavengerState).park(0x5a5280)
+	/usr/local/go/src/runtime/mgcscavenge.go:425 +0x68 fp=0x2942dfc8 sp=0x2942dfb4 pc=0x37df0
+runtime.bgscavenge(0x29418040)
+	/usr/local/go/src/runtime/mgcscavenge.go:653 +0x3c fp=0x2942dfe4 sp=0x2942dfc8 pc=0x3850c
+runtime.gcenable.func2()
+	/usr/local/go/src/runtime/mgc.go:201 +0x28 fp=0x2942dfec sp=0x2942dfe4 pc=0x2b1e4
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_arm.s:859 +0x4 fp=0x2942dfec sp=0x2942dfec pc=0x890c8
+created by runtime.gcenable in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:201 +0xbc
+
+goroutine 18 [finalizer wait]:
+runtime.gopark(0x37a074, 0x5b5e8c, 0x10, 0x14, 0x1)
+	/usr/local/go/src/runtime/proc.go:398 +0x104 fp=0x29428788 sp=0x29428774 pc=0x52980
+runtime.runfinq()
+	/usr/local/go/src/runtime/mfinal.go:193 +0x110 fp=0x294287ec sp=0x29428788 pc=0x2a098
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_arm.s:859 +0x4 fp=0x294287ec sp=0x294287ec pc=0x890c8
+created by runtime.createfing in goroutine 1
+	/usr/local/go/src/runtime/mfinal.go:163 +0x5c
+FAIL	zombiezen.com/go/sqlite/sqlitex	0.670s
+FAIL

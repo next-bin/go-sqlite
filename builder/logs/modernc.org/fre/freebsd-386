@@ -1,0 +1,6 @@
+2023-03-14T00:06:18+01:00 commit 8616459ce6e885834c6150a38f75685e04706de7, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestDeepEqual (0.00s)
+    all_test.go:1010: DeepEqual(re1, re2) = false, want true
+FAIL
+exit status 1
+FAIL	modernc.org/fre	0.444s

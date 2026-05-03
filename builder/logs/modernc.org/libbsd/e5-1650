@@ -1,0 +1,64 @@
+go1.25.0 linux/386
+2025-08-15T14:50:58+02:00 commit 00e3155836981f52ec27d907a7d35297b4cb73b5, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libbsd/libbsd-0.11.7"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd
+execute /bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd/internal/tests -name \\*linux_386.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd
+archivePath libbsd-0.11.7.tar.xz
+extractedArchivePath libbsd-0.11.7
+tempDir /tmp/libbsd
+libRoot /tmp/libbsd/libbsd-0.11.7
+makeRoot /tmp/libbsd/libbsd-0.11.7
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd/internal/tests
+execute /bin/tar ["xf" "libbsd-0.11.7.tar.xz" "-C" "/tmp/libbsd"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd
+execute /bin/sh ["-c" "go mod init example.com/libbsd ; go get modernc.org/libc@latest modernc.org/libmd@latest modernc.org/libbsd@latest"] in /tmp/libbsd/libbsd-0.11.7
+go: creating new go.mod: module example.com/libbsd
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.33.0
+go: added modernc.org/libbsd v0.11.16
+go: added modernc.org/libc v1.66.7
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -mlong-double-64' ./configure --disable-static --disable-fast-install "] in /tmp/libbsd/libbsd-0.11.7
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports nested variables... (cached) yes
+checkin
+
+...
+
+_NRSHIFT)) | libc.Uint32FromInt64(4) << (libc.Int32FromInt32(m__IOC_NRSHIFT) + libc.Int32FromInt32(m__IOC_NRBITS) + libc.Int32FromInt32(m__IOC_TYPEBITS))) (value of type uint32) as int32 value in argument to libc.Xioctl
+./ccgo_linux_386.go:20104:37: cannot use *(*t__SOCKADDR_ARG)(unsafe.Pointer(&struct{__ccgo uintptr}{…})) (variable of struct type t__SOCKADDR_ARG) as uintptr value in argument to libc.Xgetpeername
+FAIL	modernc.org/libbsd [build failed]
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x83
+modernc.org/fileutil/ccgo.Fatalf(0x1, {0x850f63c, 0x18}, {0x8c2dd4c, 0x4, 0x4})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.19/ccgo/util.go:313 +0x2b
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0, 0x0}, {0x8503e9c, 0x2}, {0x8d30f60, 0x3, 0x3})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.19/ccgo/util.go:414 +0x170
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd/generator.go:340 +0x185b
+
+go [test -run @]
+output: # modernc.org/libbsd [modernc.org/libbsd.test]
+./ccgo_linux_386.go:19638:26: cannot use uint32(libc.Uint32FromUint32(2) << (libc.Int32FromInt32(m__IOC_NRSHIFT) + libc.Int32FromInt32(m__IOC_NRBITS) + libc.Int32FromInt32(m__IOC_TYPEBITS) + libc.Int32FromInt32(m__IOC_SIZEBITS)) | libc.Uint32FromInt32(libc.Int32FromUint8('R') << (libc.Int32FromInt32(m__IOC_NRSHIFT) + libc.Int32FromInt32(m__IOC_NRBITS))) | libc.Uint32FromInt32(libc.Int32FromInt32(0x00) << libc.Int32FromInt32(m__IOC_NRSHIFT)) | libc.Uint32FromInt64(4) << (libc.Int32FromInt32(m__IOC_NRSHIFT) + libc.Int32FromInt32(m__IOC_NRBITS) + libc.Int32FromInt32(m__IOC_TYPEBITS))) (value of type uint32) as int32 value in argument to libc.Xioctl
+./ccgo_linux_386.go:20104:37: cannot use *(*t__SOCKADDR_ARG)(unsafe.Pointer(&struct{__ccgo uintptr}{…})) (variable of struct type t__SOCKADDR_ARG) as uintptr value in argument to libc.Xgetpeername
+FAIL	modernc.org/libbsd [build failed]
+
+err: exit status 1
+exit status 1
+libbsd.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

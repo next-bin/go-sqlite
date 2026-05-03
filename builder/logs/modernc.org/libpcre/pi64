@@ -1,0 +1,24 @@
+2023-11-24T15:32:16Z commit 307a91e57a0bfc4da0bef4a355fb41e81ef91a23, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test1635938429/001/pcretest" "-tags=" "internal/pcretest/ccgo_linux_arm64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre
+# command-line-arguments
+internal/pcretest/ccgo_linux_arm64.go:5496:16: undefined: _clock
+internal/pcretest/ccgo_linux_arm64.go:5510:10: undefined: _clock
+internal/pcretest/ccgo_linux_arm64.go:5572:18: undefined: _clock
+internal/pcretest/ccgo_linux_arm64.go:5583:11: undefined: _clock
+internal/pcretest/ccgo_linux_arm64.go:6645:19: undefined: _clock
+internal/pcretest/ccgo_linux_arm64.go:6676:12: undefined: _clock
+--- FAIL: Test (1.72s)
+    all_test.go:35: # command-line-arguments
+        internal/pcretest/ccgo_linux_arm64.go:5496:16: undefined: _clock
+        internal/pcretest/ccgo_linux_arm64.go:5510:10: undefined: _clock
+        internal/pcretest/ccgo_linux_arm64.go:5572:18: undefined: _clock
+        internal/pcretest/ccgo_linux_arm64.go:5583:11: undefined: _clock
+        internal/pcretest/ccgo_linux_arm64.go:6645:19: undefined: _clock
+        internal/pcretest/ccgo_linux_arm64.go:6676:12: undefined: _clock
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre	1.728s
+
+FAIL err=exit status 1

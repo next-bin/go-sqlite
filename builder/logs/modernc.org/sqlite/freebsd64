@@ -1,0 +1,23 @@
+go1.25.3 freebsd/amd64
+2025-12-06T14:55:56+01:00 commit 958a824bbb0803fb7414c8597e7335f026f42ea0, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for freebsd/amd64
+execute /usr/local/go/bin/go ["test" "-v" "-timeout" "1h" "-race" "-run" "TestConcurrentGoroutines" "-inner"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite
+test binary compiled for freebsd/amd64
+=== RUN   TestConcurrentGoroutines
+    all_test.go:700: 8 goroutines concurrently inserted 40000 rows in 4.948060977s
+--- PASS: TestConcurrentGoroutines (5.79s)
+PASS
+ok  	modernc.org/sqlite	6.834s
+[foo.* seafood]
+[foo.* fruit]
+[foo.* seafood]
+[foo.* fruit]
+[a(b seafood]
+[a(b 1]
+--- FAIL: TestRegisteredFunctions (454.22s)
+    func_test.go:933: expected error
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite	532.373s
+
+FAIL err=exit status 1

@@ -1,0 +1,17 @@
+2023-05-20T00:13:07+02:00 commit 51cc966c4a93396bd6b733dd1fc6b90fe4e7f856, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading lukechampine.com/uint128 v1.2.0
+go: downloading modernc.org/token v1.1.0
+go: downloading github.com/dustin/go-humanize v1.0.1
+go: downloading github.com/google/go-cmp v0.5.9
+# lukechampine.com/uint128
+fatal error: float64nan1
+runtime: panic before malloc heap initialized
+
+runtime stack:
+runtime.throw({0xa87a6c, 0xb})
+	/home/jnml/goroot/src/runtime/panic.go:1047 +0x54 fp=0x7ffffbd6f690 sp=0x7ffffbd6f668 pc=0x4db7c
+runtime.check()
+	/home/jnml/goroot/src/runtime/runtime1.go:260 +0x43c fp=0x7ffffbd6f6d0 sp=0x7ffffbd6f690 pc=0x62044
+runtime.rt0_go()
+	/home/jnml/goroot/src/runtime/asm_loong64.s:54 +0x7c fp=0x7ffffbd6f6f0 sp=0x7ffffbd6f6d0 pc=0x84784
+FAIL	modernc.org/cc/v3 [build failed]

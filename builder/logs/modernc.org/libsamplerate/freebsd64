@@ -1,0 +1,70 @@
+2025-03-25T10:48:50+01:00 commit bffdb7f436a0165536cd98f74c8042da3851c9cc, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /bin/sh ["-c" "rm -rf /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate
+archivePath 4858fb016550d677de2356486bcceda5aed85a72.zip
+extractedArchivePath libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+tempDir /tmp/libsamplerate
+libRoot /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+makeRoot /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+execute /usr/bin/unzip ["4858fb016550d677de2356486bcceda5aed85a72.zip" "-d" "/tmp/libsamplerate"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate
+Archive:  4858fb016550d677de2356486bcceda5aed85a72.zip
+   creating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/AUTHORS
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/CMakeLists.txt
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/COPYING
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/ChangeLog
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/INSTALL
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Makefile.am
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/NEWS
+   creating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/Readme.md
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/generate_filter.m
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/make_filter.m
+ extracting: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/measure_filter.m
+ extracting: /tmp/libsamp
+
+...
+
+n.sh"] in /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+checking for autoconf... 
+checking for automake... yes
+checking for libtool... libtoolize
+Generating configuration files for libsamplerate, please wait....
+  aclocal 
+configure.ac:54: error: macro PKG_INSTALLDIR is not defined; is a m4 file missing?
+m4/ax_require_defined.m4:35: AX_REQUIRE_DEFINED is expanded from...
+configure.ac:54: the top level
+autom4te2.72: error: /usr/local/bin/gm4 failed with exit status: 1
+aclocal: error: autom4te failed with exit status: 1
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x5e
+modernc.org/ccgo/v3/lib.Fatalf(0x0?, {0x95b878, 0x18}, {0x870035a78, 0x4, 0x4})
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:312 +0x49
+modernc.org/ccgo/v3/lib.MustShell(0x1, {0x950773, 0x2}, {0x8700220f0, 0x1, 0x1})
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:408 +0x16c
+main.main.func2()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate/generator.go:106 +0x208
+modernc.org/ccgo/v3/lib.InDir({0x8701de140, 0x49}, 0x870035da8)
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:364 +0xc7
+modernc.org/ccgo/v3/lib.MustInDir(0x1, {0x8701de140?, 0x5?}, 0x8701e0120?)
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:369 +0x25
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate/generator.go:97 +0xadb
+
+sh [./autogen.sh]
+output: checking for autoconf... 
+checking for automake... yes
+checking for libtool... libtoolize
+Generating configuration files for libsamplerate, please wait....
+  aclocal 
+configure.ac:54: error: macro PKG_INSTALLDIR is not defined; is a m4 file missing?
+m4/ax_require_defined.m4:35: AX_REQUIRE_DEFINED is expanded from...
+configure.ac:54: the top level
+autom4te2.72: error: /usr/local/bin/gm4 failed with exit status: 1
+aclocal: error: autom4te failed with exit status: 1
+
+err: exit status 1
+exit status 1
+libsamplerate.go:5: running "go": exit status 1
+
+FAIL err=exit status 1

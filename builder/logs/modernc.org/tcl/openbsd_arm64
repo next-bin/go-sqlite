@@ -1,0 +1,162 @@
+2023-09-18T00:42:43+02:00 commit eeb09a874245b41a6720d97279954f96f1c252ff, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for openbsd/arm64
+Tests running in interp:  /tmp/tcl-test-2911489400/tcltest
+Tests located in:  /tmp/tcl-test-2911489400
+Tests running in:  /tmp/tcl-test-2911489400
+Temporary files stored in /tmp/tcl-test-2911489400
+Test files run in separate interpreters
+Skipping tests that match:  Tcl_Main-1.3 Tcl_Main-1.4 Tcl_Main-1.5 Tcl_Main-1.6 chan-16.9 chan-io-28.7 chan-io-29.34 chan-io-29.35 chan-io-39.18 chan-io-39.19 chan-io-39.20 chan-io-39.21 chan-io-39.23 chan-io-39.24 chan-io-51.1 chan-io-53.10 chan-io-53.5 chan-io-54.1 chan-io-54.2 chan-io-57.1 chan-io-57.2 event-11.5 exit-1.1 fCmd-9.4.b http11-1.0 http11-1.1 http11-1.10 http11-1.11 http11-1.12 http11-1.13 http11-1.2 http11-1.3 http11-1.4 http11-1.5 http11-1.6 http11-1.7 http11-1.8 http11-1.9 http11-2.0 http11-2.1 http11-2.10 http11-2.11 http11-2.12 http11-2.2 http11-2.3 http11-2.4 http11-2.4.1 http11-2.5 http11-2.6 http11-2.7 http11-2.8 http11-2.9 http11-3.0 http11-3.1 http11-3.2 http11-3.3 http11-3.4 http11-3.5 http11-3.6 http11-3.7 http11-3.8 http11-3.9 http11-4.0 http11-4.1 http11-4.2 http11-4.3 io-29.34 io-29.35 io-39.18 io-39.19 io-39.20 io-39.21 io-39.23 io-39.24 io-51.1 io-53.10 io-53.5 io-54.1 io-54.2 io-57.1 io-57.2 iocmd-8.15.1 iocmd-8.16 unixFCmd-2.4 unixInit-1.2 zlib-10.0 zlib-10.1 zlib-10.2 zlib-8.3 zlib-9.10 zlib-9.11 zlib-9.2 zlib-9.3 zlib-9.4 zlib-9.5 zlib-9.6 zlib-9.7 zlib-9.8 zlib-9.9
+Running tests that match:  *
+Skipping test files that match:  socket.test
+Only running test files that match:  *.test
+Tests began at Mon Sep 18 00:15:36 CEST 2023
+aaa_exit.test
+
+
+==== exit-1.2 full-finalized exit FAILED
+==== Contents of test case:
+
+     set f [open "|[interpreter] << \"exec [interpreter] << {set ::env(TCL_FINALIZE_ON_EXIT) 1;exit}\"" r]
+     set aft [after 1000 {set done "Full-finalized exit hangs !!!"}]
+     fileevent $f readable {after cancel $aft;set done OK}
+     vwait done
+     if {$done != "OK"} {
+     	fconfigure $f -blocking 0
+	close $f
+     } else {
+	if {[catch {close $f} err]} {
+	    set done "Full-finalized exit misb
+
+...
+
+t
+lmap.test
+load.test
+lrange.test
+lrepeat.test
+lreplace.test
+lsearch.test
+lset.test
+lsetComp.test
+macOSXFCmd.test
+macOSXLoad.test
+main.test
+mathop.test
+misc.test
+msgcat.test
+namespace-old.test
+namespace.test
+notify.test
+nre.test
+obj.test
+oo.test
+ooNext2.test
+opt.test
+package.test
+parse.test
+parseExpr.test
+parseOld.test
+pid.test
+pkgMkIndex.test
+platform.test
+proc-old.test
+proc.test
+pwd.test
+reg.test
+regexp.test
+regexpComp.test
+registry.test
+rename.test
+resolver.test
+result.test
+safe-stock.test
+safe.test
+scan.test
+security.test
+set-old.test
+set.test
+source.test
+split.test
+stack.test
+string.test
+stringComp.test
+stringObj.test
+subst.test
+switch.test
+tailcall.test
+tcltest.test
+thread.test
+timer.test
+tm.test
+trace.test
+unixFCmd.test
+unixFile.test
+unixForkEvent.test
+unixInit.test
+unixNotfy.test
+unknown.test
+unload.test
+uplevel.test
+upvar.test
+utf.test
+util.test
+var.test
+while-old.test
+while.test
+winConsole.test
+winDde.test
+winFCmd.test
+winFile.test
+winNotify.test
+winPipe.test
+winTime.test
+zlib.test
+
+Tests ended at Mon Sep 18 00:42:41 CEST 2023
+all.tcl:	Total	33700	Passed	30203	Skipped	3496	Failed	1
+Sourced 150 Test Files.
+Files with failing tests: aaa_exit.test
+Number of tests skipped for each constraint:
+	9	!ieeeFloatingPoint
+	3	asyncPipeChan
+	76	bigEndian
+	5	bug-3057639
+	49	dde
+	4	dontCopyLinks
+	64	emptyTest
+	58	fullutf
+	2	hasIsoLocale
+	1	knownBadTest
+	40	knownBug
+	100	localeRegexp
+	52	longIs32bit
+	14	macosxFileAttr
+	82	memory
+	44	nonPortable
+	5	notNetworkFilesystem
+	1	notValgrind
+	4	nt
+	1	pairsTo4bytes
+	19	pkgaRequired
+	20	pkguaRequired
+	2	pre388
+	1996	serverNeeded
+	1	testCPUID
+	1	testWithLimit
+	1	testexprparser && !ieeeFloatingPoint
+	1	testwinclock
+	187	thread
+	3	threaded
+	21	ucs4
+	16	utf16
+	2	wideBiggerThanInt
+	491	win
+	1	winLessThan10
+	4	winVista
+	6	xdev
+--- FAIL: TestTclTest (1668.24s)
+    all_test.go:1232: writing results to /home/jnml/src/modernc.org/builder/.exclude/modernc.org/tcl/testdata/tcltest_openbsd_arm64.golden
+    all_test.go:1212: failure(s) detected
+FAIL
+exit status 1
+FAIL	modernc.org/tcl	1669.014s

@@ -1,0 +1,12 @@
+2024-08-19T03:09:32+02:00 commit 5b0575adaa1ca8c0f768a2951af7b9aaaaf8fdad, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libole32 [modernc.org/libole32.test]
+.\libole32.go:66:21: undefined: TGUID
+.\libole32.go:73:16: undefined: TGUID
+.\libole32.go:75:22: undefined: TGUID
+.\libole32.go:83:23: undefined: TGUID
+.\libole32.go:98:30: undefined: TGUID
+.\libole32.go:113:26: undefined: TGUID
+.\libole32.go:128:26: undefined: TGUID
+FAIL	modernc.org/libole32 [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,14 @@
+go1.24.3 darwin/arm64
+2025-05-22T16:57:54+02:00 commit 3cf5108a69f6758b256a848250736a9da4c6f236, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libqbe v0.1.45
+--- FAIL: TestPOC (0.29s)
+    all_test.go:106: using C compiler at /usr/bin/cc
+    --- FAIL: TestPOC/tcc-0.9.27/tests/tests2 (0.29s)
+        all_test.go:262: COMPILE FAIL: ~/src/modernc.org/ccorpus2/assets/tcc-0.9.27/tests/tests2/00_assignment.c
+        all_test.go:202: -: PANIC: stmt.go:52:statement TODO /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h:362:2: StatementSelection if (--_p->_w >= 0 || (_p->_w >= _p->_lbfsize && (char)_c != '\n')) return (*_p->_p++ = _c); else return (__swbuf(_c, _p));
+        all_test.go:204: tcc-0.9.27/tests/tests2: gcc fails=0 files=1 skipped=1 failed=0 passed=0
+FAIL
+exit status 1
+FAIL	modernc.org/qbecc/lib	1.171s
+
+FAIL err=exit status 1

@@ -1,0 +1,4 @@
+go1.25.1 windows/amd64
+2025-09-17T07:26:05+02:00 commit 69bf07897af59d12fccda64650fe799ee6dc785c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exec: "wget": executable file not found in %PATH%

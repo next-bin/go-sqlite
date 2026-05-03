@@ -1,0 +1,7 @@
+2024-02-14T00:35:51+01:00 commit c7dcdc7b1f0c3deeb65db7351fe2f95d15e63d30, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libc [modernc.org/libc.test]
+./libc_unix.go:1316:34: (*ctime.Tm)(unsafe.Pointer(tm)).Ftm_gmtoff undefined (type *struct{Ftm_sec int32; Ftm_min int32; Ftm_hour int32; Ftm_mday int32; Ftm_mon int32; Ftm_year int32; Ftm_wday int32; Ftm_yday int32; Ftm_isdst int32} has no field or method Ftm_gmtoff)
+./libc_unix.go:1317:34: (*ctime.Tm)(unsafe.Pointer(tm)).Ftm_zone undefined (type *struct{Ftm_sec int32; Ftm_min int32; Ftm_hour int32; Ftm_mday int32; Ftm_mon int32; Ftm_year int32; Ftm_wday int32; Ftm_yday int32; Ftm_isdst int32} has no field or method Ftm_zone)
+FAIL	modernc.org/libc [build failed]
+
+FAIL err=exit status 1

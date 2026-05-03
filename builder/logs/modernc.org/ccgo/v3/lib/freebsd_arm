@@ -1,0 +1,39 @@
+2023-10-10T01:02:05Z commit 7f419475d38ba851595b963e037ba17a4f71d0e9, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# os/user
+cgo-gcc-prolog:95:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:89:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:89:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+cgo-gcc-prolog:117:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:111:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:111:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+CC=/usr/local/bin/gcc
+gcc (FreeBSD Ports Collection) 12.2.0
+--- FAIL: TestTCC (332.15s)
+    all_test.go:953: /tcc-0.9.27/tests/tests2/34_array_assignment.c: skipped: /usr/local/bin/gcc [-w -lm -O1] -o ./34_array_assignment 34_array_assignment.c: system C compiler: exit status 1
+        34_array_assignment.c: In function 'main':
+        34_array_assignment.c:16:6: error: assignment to expression with array type
+           16 |    b = a;
+              |      ^
+        
+    all_test.go:955: /tcc-0.9.27/tests/tests2/86_memory-model.c: /tcc-0.9.27/tests/tests2/86_memory-model.c: text output differs:
+        --- expected
+        +++ got
+        @@ -1 +1 @@
+        -KO no __*LP*__ defined.
+        +Ok
+        
+        ---- x.c
+        got
+        00000000  4f 6b                                             |Ok|
+        
+        exp
+        00000000  4b 4f 20 6e 6f 20 5f 5f  2a 4c 50 2a 5f 5f 20 64  |KO no __*LP*__ d|
+        00000010  65 66 69 6e 65 64 2e                              |efined.|
+        
+        got
+        Ok
+        exp
+        KO no __*LP*__ defined.
+    all_test.go:987: files 72, ok 70, failed 1
+    all_test.go:1003: FAIL /tcc-0.9.27/tests/tests2/86_memory-model.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	334.909s
+
+FAIL err=exit status 1

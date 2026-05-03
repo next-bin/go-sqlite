@@ -1,0 +1,11 @@
+go1.24.2 freebsd/arm64
+2025-05-20T05:49:45+02:00 commit f8f328e7e64a035a88bb72a34db64fa52a99c680, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading github.com/google/pprof v0.0.0-20250317173921-a4b03ec1a45e
+test binary compiled for freebsd/arm64
+--- FAIL: TestIssue100 (0.01s)
+    all_test.go:226: sql: Scan error on column index 0, name "v": converting driver.Value type []uint8 ("") to a uint8: invalid syntax
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite	29.416s
+
+FAIL err=exit status 1

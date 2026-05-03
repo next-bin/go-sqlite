@@ -1,0 +1,19 @@
+go1.24.3 darwin/arm64
+2025-05-27T15:12:41+02:00 commit 71c95c4b1679dbe3a8cb73a3537faa23011db449, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/make ["-C" "c9x.me/qbe" "clean"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libqbe
+rm -f *.o */*.o qbe
+find -name \*.go -delete
+find: illegal option -- n
+usage: find [-H | -L | -P] [-EXdsx] [-f path] path ... [expression]
+       find [-H | -L | -P] [-EXdsx] -f path [path ...] [expression]
+make: *** [clean] Error 1
+err=exit status 2 out=rm -f *.o */*.o qbe
+find -name \*.go -delete
+find: illegal option -- n
+usage: find [-H | -L | -P] [-EXdsx] [-f path] path ... [expression]
+       find [-H | -L | -P] [-EXdsx] -f path [path ...] [expression]
+make: *** [clean] Error 1
+exit status 1
+libqbe.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

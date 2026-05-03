@@ -1,0 +1,14 @@
+2025-02-25T14:12:21+01:00 commit 2db1fde51ea480b495456831d83d4dfe07c77c79, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestParser (26.03s)
+    all_test.go:551: C:\Program Files\Go\src\internal\types\testdata\fixedbugs\issue69576.go:9:15: syntax error
+        C:\Program Files\Go\src\internal\types\testdata\fixedbugs\issue70417.go:20:16: syntax error
+        C:\Program Files\Go\src\internal\types\testdata\fixedbugs\issue71198.go:9:15: syntax error
+        C:\Program Files\Go\src\internal\types\testdata\spec\receivers.go:12:15: syntax error
+        C:\Program Files\Go\test\fixedbugs\issue68526.dir\a\a.go:9:15: syntax error
+    all_test.go:553: TOTAL files 10,382, toks 16,080,227, skip 170, ok 10,207, fail 5
+    all_test.go:555: Shortest failing file: C:\Program Files\Go\src\internal\types\testdata\fixedbugs\issue69576.go, 10 tokens
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v3	66.753s
+
+FAIL err=exit status 1

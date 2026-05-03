@@ -1,0 +1,5 @@
+2023-11-22T19:31:32+01:00 commit 910d3630f1cdb2898f3e4273a28c481e05150aa5, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/lex v1.1.1
+scannertest.go:18:2: modernc.org/lex@v1.1.1: Get "https://proxy.golang.org/modernc.org/lex/@v/v1.1.1.zip": net/http: TLS handshake timeout
+
+FAIL err=exit status 1

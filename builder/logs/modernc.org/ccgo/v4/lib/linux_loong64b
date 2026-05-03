@@ -1,0 +1,34 @@
+go1.25.1 linux/loong64
+2025-09-18T11:07:29+08:00 commit eb0e0ad1691d101ff58ab7d5c908406db2cbeb57, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/mod v0.28.0
+go: downloading golang.org/x/tools v0.37.0
+go: downloading modernc.org/ccorpus2 v1.5.5
+go: downloading golang.org/x/sys v0.36.0
+go: downloading golang.org/x/sync v0.17.0
+execute /usr/local/go/bin/go ["mod" "init" "test"] in /tmp/TestExec3264825043/001
+go: creating new go.mod: module test
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@v1.66.9"] in /tmp/TestExec3264825043/001
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libc v1.66.9
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+11:07:10.021 all_test.go:644:testExec1: TRC `assets/ccgo/bug/bool.c`: {}, // EXEC FAIL: assets/ccgo/bug/bool.c: Assertion failed: a == 1 (bug/bool.c: literal: 7)
+: FAIL: signal: aborted (core dumped)
+gobinRC=-1cbinRC=0 (.:0:: .:0:: asm_loong64.s:700:goexit: asm_loong64.s:700:goexit: all_test.go:465:1: all_test.go:634:testExec1:)
+--- FAIL: TestExec (67.11s)
+    --- FAIL: TestExec/ccgo (22.11s)
+        all_test.go:424: assets/ccgo: copied 64 files, 33,713 bytes
+        all_test.go:159: "assets/ccgo/bug/bool.c: Assertion failed: a == 1 (bug/bool.c: literal: 7)"
+        all_test.go:159: "assets/ccgo/bug/bool.c: Assertion failed: a == 1 (bug/bool.c: literal: 7)"
+        all_test.go:162: TOTAL: files    45, skip     2, ok    42, fails     1: assets/ccgo
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v4/lib	67.153s
+
+FAIL err=exit status 1

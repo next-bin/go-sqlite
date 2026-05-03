@@ -1,0 +1,95 @@
+2025-03-26T10:44:38+01:00 commit 1a110d2bbf28f32de07a2667a590e7df165b3fe1, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libxcb/libxcb-1.17.0"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb
+execute /bin/sh ["-c" "find /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb/internal/darwin/arm64 -name \\*darwin_arm64.go -delete"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb
+archivePath libxcb-1.17.0.tar.gz
+extractedArchivePath libxcb-1.17.0
+tempDir /tmp/libxcb
+libRoot /tmp/libxcb/libxcb-1.17.0
+makeRoot /tmp/libxcb/libxcb-1.17.0
+tests /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb/internal/darwin/arm64
+execute /usr/bin/tar ["xf" "libxcb-1.17.0.tar.gz" "-C" "/tmp/libxcb"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb
+execute /bin/sh ["-c" "go mod init example.com/libxcb ; go get modernc.org/libc@latest modernc.org/libXau@latest  modernc.org/libXdmcp@latest"] in /private/tmp/libxcb/libxcb-1.17.0
+go: creating new go.mod: module example.com/libxcb
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20230315142452-642cacee5cc0
+go: added golang.org/x/sys v0.30.0
+go: added modernc.org/libXau v0.9.14
+go: added modernc.org/libXdmcp v0.12.13
+go: added modernc.org/libbsd v0.11.9
+go: added modernc.org/libc v1.61.13
+go: added modernc.org/libmd v0.12.16
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.8.2
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -w' ./configure --disable-shared --enable-devel-docs=no --enable-ge --enable-xevie --enable-xprint "] in /private/tmp/libxcb/libxcb-1.17.0
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... ./build-aux/install-sh -c -d
+checking for gawk... no
+checking for mawk... no
+chec
+
+...
+
+CC       xtest.lo
+  CCLD     libxcb-xtest.la
+  CC       xv.lo
+  CCLD     libxcb-xv.la
+  CC       xvmc.lo
+  CCLD     libxcb-xvmc.la
+  CC       ge.lo
+  CCLD     libxcb-ge.la
+Making check in tests
+/Library/Developer/CommandLineTools/usr/bin/make -k 
+make[4]: Nothing to be done for `all-am'.
+/Library/Developer/CommandLineTools/usr/bin/make -k check-TESTS check-local
+============================================================================
+Testsuite summary for libxcb 1.17.0
+============================================================================
+# TOTAL: 0
+# PASS:  0
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+============================================================================
+make[3]: Nothing to be done for `check-local'.
+Making check in doc
+make[1]: Nothing to be done for `check'.
+Making check in man
+  GEN      xcb-examples.3
+  GEN      xcb-requests.3
+/Library/Developer/CommandLineTools/usr/bin/make  check-TESTS
+PASS: check-pc-requires
+============================================================================
+Testsuite summary for libxcb 1.17.0
+============================================================================
+# TOTAL: 1
+# PASS:  1
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+============================================================================
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x64
+modernc.org/fileutil/ccgo.Fatal(0x0?, {0x1400043fae8, 0x1, 0x1})
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.0/ccgo/util.go:323 +0x30
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x14000204000?, 0x14000204180?}, 0x104419705?)
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.0/ccgo/util.go:371 +0x5c
+main.main()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libxcb/generator.go:109 +0xe30
+
+/tmp/ccgo-tmp-ar-4227378341/xcb_conn.o.go:1:1: TODO end of file (link.go:270:link: link.go:459:getFileSymbols: gc.go:42:ParseSourceFile:)
+exit status 1
+libxcb.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

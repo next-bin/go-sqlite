@@ -1,0 +1,21 @@
+go1.25.1 windows/arm64
+2025-09-25T13:03:22+02:00 commit dd3ee1ff2bcb2a3b3ac8e9edc7fb64a14fee1083, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/ccgo/v4 v4.28.1
+go: downloading modernc.org/libc v1.66.9
+go: downloading modernc.org/fileutil v1.3.40
+go: downloading golang.org/x/mod v0.27.0
+go: downloading golang.org/x/tools v0.36.0
+go: downloading modernc.org/cc/v4 v4.26.4
+go: downloading modernc.org/gc/v2 v2.6.5
+go: downloading modernc.org/opt v0.1.4
+go: downloading modernc.org/sortutil v1.2.1
+go: downloading modernc.org/token v1.1.0
+go: downloading golang.org/x/sync v0.16.0
+go: downloading golang.org/x/sys v0.35.0
+--- FAIL: Test262 (0.03s)
+    all_test.go:228: FAIL: err=exec: "git-bash": executable file not found in %PATH% out=
+FAIL
+exit status 1
+FAIL	modernc.org/libquickjs	3.333s
+
+FAIL err=exit status 1

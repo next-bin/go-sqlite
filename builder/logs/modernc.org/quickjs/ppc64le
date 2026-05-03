@@ -1,0 +1,7 @@
+go1.25.3 linux/ppc64le
+2025-11-16T05:22:49+01:00 commit f5afa70adf39eca44fa687c146b0d72a24b9ba8b, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: go: updates to go.mod needed; to update it:
+	go mod tidy
+quickjs.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

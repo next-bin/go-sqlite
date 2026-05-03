@@ -1,0 +1,7 @@
+2023-05-24T00:00:27+02:00 commit 5df7efd0c224f74db128d639c123d7670dbcd9c7, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/dyd	0.003s
+# modernc.org/dyd/examples/static
+examples/static/main.go:16:12: undefined: dydStart
+ok  	modernc.org/dyd/dyd	0.004s
+?   	modernc.org/dyd/examples/db2	[no test files]
+FAIL

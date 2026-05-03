@@ -1,0 +1,59 @@
+go1.25.4 linux/riscv64
+2025-11-26T11:33:32Z commit a69c34482f41b6d0ac5efecc4718a4f58ff17c25, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: make make
+sed sed
+xdgDir /home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64
+archivePath tcl-core9.0.3-src.tar.gz
+extractedArchivePath tcl-core9.0.3
+libRoot /home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64/tcl9.0.3
+makeRoot /home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64/tcl9.0.3/unix
+OK
+execute /usr/bin/sed ["-i" "s/#if defined(i386)/#if 0 \\/\\//" "/home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64/tcl9.0.3/generic/tclStrToD.c"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl9.0
+execute /usr/bin/sh ["-c" "\ngo mod init example.com/libtcl9.0\ngo get \\\n\tmodernc.org/libc@latest \\\n\tmodernc.org/libz@latest\n"] in /home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64/tcl9.0.3/unix
+go: creating new go.mod: module example.com/libtcl9.0
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
+go: added golang.org/x/sys v0.37.0
+go: added modernc.org/libc v1.67.1
+go: added modernc.org/libz v0.17.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -UHAVE_EVENTFD -UHAVE_FTS -UHAVE_SYS_EPOLL_H -UHAVE_SYS_EVENTFD_H -UHAVE_TERMIOS_H -UNOTIFIER_EPOLL -U__SIZEOF_INT128__' ./configure --disable-dll-unloading --disable-load --disable-shared --enable-64bit "] in /home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64/tcl9.0.3/unix
+checking whether to use symlinks for manpages... no
+checking whether to compress the manpages... no
+checking whether to add a package name suffix for the manpages... no
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffi
+
+...
+
+compr.o Zzutil.o bn_s_mp_reverse.o bn_s_mp_mul_digs_fast.o bn_s_mp_sqr_fast.o bn_mp_add.o bn_mp_and.o bn_mp_add_d.o bn_mp_clamp.o bn_mp_clear.o bn_mp_clear_multi.o bn_mp_cmp.o bn_mp_cmp_d.o bn_mp_cmp_mag.o bn_mp_cnt_lsb.o bn_mp_copy.o bn_mp_count_bits.o bn_mp_div.o bn_mp_div_d.o bn_mp_div_2.o bn_mp_div_2d.o bn_s_mp_div_3.o bn_mp_exch.o bn_mp_expt_n.o bn_mp_get_mag_u64.o bn_mp_grow.o bn_mp_init.o bn_mp_init_copy.o bn_mp_init_multi.o bn_mp_init_set.o bn_mp_init_size.o bn_s_mp_karatsuba_mul.o bn_mp_init_i64.o bn_mp_init_u64.o bn_s_mp_karatsuba_sqr.o bn_s_mp_balance_mul.o bn_mp_lshd.o bn_mp_mod.o bn_mp_mod_2d.o bn_mp_mul.o bn_mp_mul_2.o bn_mp_mul_2d.o bn_mp_mul_d.o bn_mp_neg.o bn_mp_or.o bn_mp_pack.o bn_mp_pack_count.o bn_mp_radix_size.o bn_mp_radix_smap.o bn_mp_set_i64.o bn_mp_read_radix.o bn_mp_rshd.o bn_mp_set_u64.o bn_mp_shrink.o bn_mp_sqr.o bn_mp_sqrt.o bn_mp_sub.o bn_mp_sub_d.o bn_mp_signed_rsh.o bn_mp_to_ubin.o bn_mp_unpack.o bn_s_mp_toom_mul.o bn_s_mp_toom_sqr.o bn_mp_to_radix.o bn_mp_ubin_size.o bn_mp_xor.o bn_mp_zero.o bn_s_mp_add.o bn_s_mp_mul_digs.o bn_s_mp_sqr.o bn_s_mp_sub.o ; ranlib libtcl9.0.a
+/usr/bin/ar: tclEvent.o: No such file or directory
+ranlib: 'libtcl9.0.a': No such file
+make: *** [Makefile:805: libtcl9.0.a] Error 1
+panic: generator.go:382:copyFile
+		TODO stat /home/jnml/.config/ccgo/v4/libtcl9.0/linux/riscv64/tcl9.0.3/unix/tcltest.go: no such file or directory 
+
+goroutine 1 [running]:
+main.copyFile.func1()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl9.0/generator.go:301 +0x80
+main.copyFile({0x34068e3a40, 0x2b}, {0x33b6acebe0, 0x4b}, 0x0)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl9.0/generator.go:382 +0x66c
+main.mustCopyFile({0x34068e3a40?, 0x12?}, {0x33b6acebe0?, 0x2?}, 0x2?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl9.0/generator.go:290 +0x50
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl9.0/generator.go:201 +0xf00
+exit status 2
+libtcl.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

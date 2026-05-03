@@ -1,0 +1,7 @@
+go1.26.2 linux/386
+2026-04-15T14:53:30+02:00 commit b8b0ca46c1b0a82dae1ac5284ec82b7f6cd502e0, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/tk9.0 [modernc.org/tk9.0.test]
+./tk_ccgo.go:354:5: e.args undefined (type *Event has no field or method args, but does have field Args)
+FAIL	modernc.org/tk9.0 [build failed]
+
+FAIL err=exit status 1

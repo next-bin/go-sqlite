@@ -1,0 +1,42 @@
+go1.24.4 linux/amd64
+2025-07-03T11:44:56+02:00 commit 5d6de7ae752cfe65ad6cd459086e001b910e1375, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: HEAD not tagged: modernc.org/b
+HEAD not tagged: modernc.org/db
+HEAD not tagged: modernc.org/doomgeneric
+HEAD not tagged: modernc.org/go0
+HEAD not tagged: modernc.org/internal
+HEAD not tagged: modernc.org/libXau
+HEAD not tagged: modernc.org/libXdmcp
+HEAD not tagged: modernc.org/libXft
+HEAD not tagged: modernc.org/libXrender
+HEAD not tagged: modernc.org/libbsd
+HEAD not tagged: modernc.org/libc
+HEAD not tagged: modernc.org/libexpat
+HEAD not tagged: modernc.org/libfontconfig
+HEAD not tagged: modernc.org/libgmp
+HEAD not tagged: modernc.org/libmd
+HEAD not tagged: modernc.org/libmpc
+HEAD not tagged: modernc.org/libmpfr
+HEAD not tagged: modernc.org/libpcre
+HEAD not tagged: modernc.org/libpcre2-16
+HEAD not tagged: modernc.org/libpcre2-32
+HEAD not tagged: modernc.org/libpcre2-8
+HEAD not tagged: modernc.org/libpcre2-posix
+HEAD not tagged: modernc.org/libqbe
+HEAD not tagged: modernc.org/libquickjs
+HEAD not tagged: modernc.org/libsamplerate
+HEAD not tagged: modernc.org/libsqlite_vec
+HEAD not tagged: modernc.org/libtcl8.6
+HEAD not tagged: modernc.org/libtcl9.0
+HEAD not tagged: modernc.org/libtk9.0
+HEAD not tagged: modernc.org/libxcb
+HEAD not tagged: modernc.org/libz
+HEAD not tagged: modernc.org/nerdamer
+HEAD not tagged: modernc.org/qbecc
+HEAD not tagged: modernc.org/quickjs
+HEAD not tagged: modernc.org/tcl8.6
+HEAD not tagged: modernc.org/tcl9.0
+HEAD not tagged: modernc.org/tk9.0
+HEAD not tagged: modernc.org/visualmd
+
+FAIL err=AUTOTASKS: module modernc.org/libqbe uses modernc.org/goabi0@v0.2.0 but the local clone is at v0.1.2

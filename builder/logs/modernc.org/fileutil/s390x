@@ -1,0 +1,5 @@
+2024-03-21T17:48:04+01:00 commit 6d586c7b1f619b62ccc79f7e14bfecc8398b31c7, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+signal: illegal instruction
+FAIL	modernc.org/fileutil	0.031s
+
+FAIL err=exit status 1

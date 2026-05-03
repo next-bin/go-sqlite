@@ -1,0 +1,12 @@
+2023-10-07T00:41:14+02:00 commit bd527778574274601fa3b5da87c6b87ce5cf4b6e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/ccgo/v4 v4.0.21
+go: downloading modernc.org/libtcl8.6 v0.0.13
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/TestTclTest2886458713/001/testfixture" "-tags=" "internal/testfixture/ccgo_openbsd_arm64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+package internal/testfixture/ccgo_openbsd_arm64.go is not in std (/usr/local/go/src/internal/testfixture/ccgo_openbsd_arm64.go)
+--- FAIL: TestTclTest (4.71s)
+    all_test.go:64: package internal/testfixture/ccgo_openbsd_arm64.go is not in std (/usr/local/go/src/internal/testfixture/ccgo_openbsd_arm64.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	5.321s

@@ -1,0 +1,192 @@
+go1.26.0 linux/s390x
+2026-02-28T23:15:42+01:00 commit 01bcadfeb70a2d2c28d6309ef6be2c1847d59c3a, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+Tests running in interp:  /tmp/Test21837870440/001/tcltest
+Tests located in:  /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/internal/tests
+Tests running in:  /tmp/Test21837870440/001
+Temporary files stored in /tmp/Test21837870440/001
+Test files run in separate interpreters
+Skipping tests that match:  cmdIL-5.7 cmdMZ-6.6 iortrans-3.1 unixInit-3.1 unixInit-3.2 string-2.20.1
+Running tests that match:  *
+Skipping test files that match:  socket.test
+Only running test files that match:  *.test
+Tests began at Sat Feb 28 22:58:11 CET 2026
+aaa_exit.test
+append.test
+appendComp.test
+apply.test
+assemble.test
+assocd.test
+async.test
+autoMkindex.test
+basic.test
+binary.test
+case.test
+chan.test
+chanio.test
+clock.test
+cmdAH.test
+cmdIL.test
+cmdInfo.test
+cmdMZ.test
+compExpr-old.test
+compExpr.test
+compile.test
+concat.test
+config.test
+coroutine.test
+dcall.test
+dict.test
+dstring.test
+encoding.test
+env.test
+error.test
+eval.test
+event.test
+exec.test
+execute.test
+expr-old.test
+expr.test
+fCmd.test
+fileName.test
+fileSystem.test
+fileSystemEncoding.test
+for-old.test
+for.test
+foreach.test
+format.test
+get.test
+history.test
+http.test
+http11.test
+
+
+==== http11-4.3 normal post request, check channel query length FAILED
+---- Result was:
+status timeout code {} crc {crc32 mismatch:  ne 0} connection {} query-length {}
+---- Result should have been (exact matching):
+status ok code {HTTP/1.1 200 OK} crc ok connection close query-length 122880
+==== http11-4.3 FAILED
+
+httpPipeline.test
+httpold.test
+if-old.test
+if.test
+incr-old.test
+incr.test
+indexObj.test
+info.test
+init.test
+interp.test
+io.test
+ioCmd.test
+ioTrans.test
+iogt.test
+join.test
+lindex.test
+link.test
+linsert.test
+list.test
+listObj.test
+llength.test
+lmap.test
+load.test
+lrange.test
+lrepeat.test
+lreplace.test
+lsearch.test
+lset.test
+lsetComp.test
+macOSXFCmd.test
+macOSXLoad.test
+main.test
+mathop.test
+misc.test
+msgcat.test
+namespace-old.test
+namespace.test
+notify.test
+nre.test
+obj.test
+oo.test
+ooNext2.test
+opt.test
+package.test
+parse.test
+parseExpr.test
+parseOld.test
+pid.test
+pkgMkI
+
+...
+
+To4bytes
+	19	pkgaRequired
+	20	pkguaRequired
+	2	pre388
+	4	readonlyAttr
+	1996	serverNeeded
+	1	testCPUID
+	1	testexprparser && !ieeeFloatingPoint
+	1	testwinclock
+	187	thread
+	2	unthreaded
+	17	utf16
+	21	utf32
+	2	wideBiggerThanInt
+	493	win
+	1	winLessThan10
+	4	winVista
+	6	xdev
+--- FAIL: Test2 (1216.36s)
+    all_test.go:940: TCL_LIBRARY=/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/library/assets
+    all_test.go:976: "/tmp/Test21837870440/001/tcltest" ["/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/internal/tests/all.tcl" "-debug" "0" "-errfile" "errfile" "-singleproc" "0" "-verbose" "el" "-skip" "cmdIL-5.7 cmdMZ-6.6 iortrans-3.1 unixInit-3.1 unixInit-3.2 string-2.20.1" "-notfile" "socket.test"]
+    all_test.go:1004: ==== http11-4.3 normal post request, check channel query length FAILED
+    all_test.go:1004: ==== http11-4.3 FAILED
+    all_test.go:1006: 
+        all.tcl:	Total	34418	Passed	31007	Skipped	3410	Failed	1
+        Sourced 150 Test Files.
+        Files with failing tests: http11.test
+        Number of tests skipped for each constraint:
+        	9	!ieeeFloatingPoint
+        	3	asyncPipeChan
+        	5	bug-3057639
+        	49	dde
+        	4	dontCopyLinks
+        	64	emptyTest
+        	58	fullutf
+        	2	hasIsoLocale
+        	1	knownBadTest
+        	41	knownBug
+        	77	littleEndian
+        	100	localeRegexp
+        	48	longIs32bit
+        	14	macosxFileAttr
+        	85	memory
+        	45	nonPortable
+        	5	notNetworkFilesystem
+        	1	notValgrind
+        	4	nt
+        	1	pairsTo4bytes
+        	19	pkgaRequired
+        	20	pkguaRequired
+        	2	pre388
+        	4	readonlyAttr
+        	1996	serverNeeded
+        	1	testCPUID
+        	1	testexprparser && !ieeeFloatingPoint
+        	1	testwinclock
+        	187	thread
+        	2	unthreaded
+        	17	utf16
+        	21	utf32
+        	2	wideBiggerThanInt
+        	493	win
+        	1	winLessThan10
+        	4	winVista
+        	6	xdev
+        
+FAIL
+exit status 1
+FAIL	modernc.org/libtcl8.6	1216.667s
+
+FAIL err=exit status 1

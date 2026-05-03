@@ -1,0 +1,72 @@
+2023-02-23T03:02:10+01:00 commit c68535dc88dcb475b360c5dafaf88f633713a7b7, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuthware	0.123s
+ok  	modernc.org/knuthware/cmd/godvitype	0.080s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftodvi	0.071s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftopk	0.076s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftype	0.081s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomf	0.075s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomft	0.076s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopktype	0.087s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopltotf	0.087s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopooltype	0.112s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotangle	0.078s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotex	0.079s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotftopl	0.079s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govftovp	0.098s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govptovf	0.079s [no tests to run]
+ok  	modernc.org/knuthware/cmd/goweave	0.078s [no tests to run]
+ok  	modernc.org/knuthware/dvitype	0.326s
+ok  	modernc.org/knuthware/gftodvi	2.394s
+ok  	modernc.org/knuthware/gftopk	2.430s
+ok  	modernc.org/knuthware/gftype	4.133s
+--- FAIL: Test (4.05s)
+    all_test.go:48: "trap.72270gf": 1028
+    all_test.go:48: "trap.fot": 1711
+    all_test.go:48: "trap.log": 121710
+    all_test.go:48: "trap.mf": 11899
+    all_test.go:48: "trap.pl": 10388
+    all_test.go:48: "trap.typ": 4552
+    all_test.go:48: "trapin.fot": 2303
+    all_test.go:48: "trapin.log": 4593
+    all_test.go:198: 4600 bytes matches trapin.log OK
+    all_test.go:273: 1650 bytes matches trap.fot OK
+    all_test.go:341: 121624 bytes matches trap.log.0 OK
+    all_test.go:377: 4524 bytes matches trap.typ OK
+    all_test.go:411: 10388 bytes matches trap.pl OK
+    testing.go:1206: TempDir RemoveAll cleanup: remove C:\Users\0xjnml\AppData\Local\Temp\Test956178098\001\trap.tfm: The process cannot access the file because it is being used by another process.
+FAIL
+FAIL	modernc.org/knuthware/mf	4.141s
+ok  	modernc.org/knuthware/mf/internal/trap	0.097s
+ok  	modernc.org/knuthware/mft	0.082s
+ok  	modernc.org/knuthware/pktype	2.411s
+ok  	modernc.org/knuthware/pltotf	0.810s
+ok  	modernc.org/knuthware/pooltype	0.374s
+ok  	modernc.org/knuthware/tangle	10.160s
+--- FAIL: Test (5.57s)
+    all_test.go:47: "trip.dvi": 2920
+    all_test.go:47: "trip.fot": 2445
+    all_test.go:47: "trip.log": 184018
+    all_test.go:47: "trip.pl": 16990
+    all_test.go:47: "trip.tex": 22677
+    all_test.go:47: "trip.tfm": 3116
+    all_test.go:47: "trip.typ": 18060
+    all_test.go:47: "tripin.fot": 2834
+    all_test.go:47: "tripin.log": 12900
+    all_test.go:47: "tripos.tex": 59
+    all_test.go:122: 16990 bytes matches trip.pl OK
+    all_test.go:202: 12907 bytes matches tripin.log OK
+    all_test.go:262: 2438 bytes matches trip.fot OK
+    all_test.go:280: 59 bytes matches tripos.tex OK
+    all_test.go:294: 2920 bytes matches trip.dvi OK
+    all_test.go:348: 184025 bytes matches trip.log.0 OK
+    all_test.go:400: 18088 bytes matches trip.typ.0 OK
+    testing.go:1206: TempDir RemoveAll cleanup: remove C:\Users\0xjnml\AppData\Local\Temp\Test1952243288\001\trip.tfm: The process cannot access the file because it is being used by another process.
+FAIL
+FAIL	modernc.org/knuthware/tex	5.669s
+ok  	modernc.org/knuthware/tex/internal/trip	0.092s
+ok  	modernc.org/knuthware/tftopl	0.214s
+ok  	modernc.org/knuthware/vftovp	0.353s
+ok  	modernc.org/knuthware/vptovf	1.485s
+ok  	modernc.org/knuthware/weave	3.625s
+ok  	modernc.org/knuthware/web	50.935s
+FAIL

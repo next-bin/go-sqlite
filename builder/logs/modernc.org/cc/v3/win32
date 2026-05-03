@@ -1,0 +1,63 @@
+2022-08-22T13:23:13+02:00 commit c47a4b1f7491b7d1d01ba69884c482fca9c398ba, GOMAXPROCS 2, GOGC ""
+runtime: out of memory: cannot allocate 16777216-byte block (1742077952 in use)
+fatal error: out of memory
+
+goroutine 25831 [running]:
+runtime.throw({0x6f3e7f, 0xd})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x4d fp=0x11c46e6c sp=0x11c46e58 pc=0x3dbacd
+runtime.(*mcache).allocLarge(0xbb02d8, 0xc94000, 0x0)
+	C:/Program Files/Go/src/runtime/mcache.go:235 +0x208 fp=0x11c46e94 sp=0x11c46e6c pc=0x3b5278
+runtime.mallocgc(0xc94000, 0x6d9e20, 0x1)
+	C:/Program Files/Go/src/runtime/malloc.go:1029 +0x446 fp=0x11c46edc sp=0x11c46e94 pc=0x3ac836
+runtime.growslice(0x6d9e20, {0x73400000, 0x50700, 0x50700}, 0x50701)
+	C:/Program Files/Go/src/runtime/slice.go:290 +0x413 fp=0x11c46f08 sp=0x11c46edc pc=0x3f1793
+modernc.org/cc/v3.parse.func1()
+	C:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/cc/v3/ast2.go:215 +0x444 fp=0x11c46ff0 sp=0x11c46f08 pc=0x5ae334
+runtime.goexit()
+	C:/Program Files/Go/src/runtime/asm_386.s:1326 +0x1 fp=0x11c46ff4 sp=0x11c46ff0 pc=0x40bda1
+created by modernc.org/cc/v3.parse
+	C:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/cc/v3/ast2.go:171 +0x632
+
+goroutine 1 [chan receive]:
+runtime.gopark(0x779fa0, 0x3ee260b0, 0xe, 0x17, 0x2)
+	C:/Program Files/Go/src/runtime/proc.go:363 +0xff fp=0x11c4dbcc sp=0x11c4dbb8 pc=0x3de78f
+runtime.chanrecv(0x3ee26080, 0x17529c4b, 0x1)
+	C:/Program Files/Go/src/runtime/chan.go:583 +0x3f2 fp=0x11c4dc14 sp=0x11c4dbcc pc=0x3a61f2
+runtime.chanrecv1(0x3ee26080, 0x17529c4b)
+	C:/Program Files/Go/src/runtime/chan.go:442 +0x1c fp=0x11c4dc28 sp=0x11c4dc14 pc=0x3a5dcc
+testing.(*T).Run(0x11828f00, {0x6f51fd, 0x10}, 0x779e90)
+	C:/Program Files/Go/src/testing/testing.go:1494 +0x393 fp=0x11c4dc74 sp=0x11c4dc28 pc=0x4b5d43
+testing.runTests.func1(0x11828f00)
+	C:/Program Files/Go/src/testing/testing.go:1846 +0x5e fp=0x11c4dc98 sp=0x11c4dc74 pc=0x4b7b9e
+testing.tRunner(0x11828f00, 0x11837d30)
+	C:/Program Files/Go/src/testing/testing.go:1446 +0x113 fp=0x11c4dce0 sp=0x11c4dc98 pc=0x4b4fc3
+testing.runTests(0x16378cc0, {0x9bbb80, 0x26, 0x26}, {0xc0b976254a1b9ce8, 0x75df051657
+
+...
+
+.(*parser).translationUnit(0x22031810)
+	C:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/cc/v3/parser.go:3792 +0x6e fp=0x59ad5040 sp=0x59ad5028 pc=0x62612e
+modernc.org/cc/v3.parse(0x3a6dcea0, {0x119ca3c0, 0x5, 0x6}, {0x1181edc0, 0x3, 0x3}, {0x4e7451a8, 0x3, 0x3})
+	C:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/cc/v3/ast2.go:241 +0x63e fp=0x59ad5100 sp=0x59ad5040 pc=0x5ad9ee
+modernc.org/cc/v3.testTranslateDir.func1({0x38ff79e0, 0x84}, {0x7e6c78, 0x34cdb260}, {0x0, 0x0})
+	C:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/cc/v3/type_test.go:260 +0x67f fp=0x59ad51ec sp=0x59ad5100 pc=0x66636f
+path/filepath.walk({0x38ff79e0, 0x84}, {0x7e6c78, 0x34cdb260}, 0x4e747ee8)
+	C:/Program Files/Go/src/path/filepath/path.go:433 +0xfb fp=0x59ad5254 sp=0x59ad51ec pc=0x4a057b
+path/filepath.walk({0x3643a180, 0x7a}, {0x7e6c78, 0x293569c0}, 0x59ad7ee8)
+	C:/Program Files/Go/src/path/filepath/path.go:457 +0x25b fp=0x59ad52bc sp=0x59ad5254 pc=0x4a06db
+path/filepath.Walk({0x3643a180, 0x7a}, 0x13db9ee8)
+	C:/Program Files/Go/src/path/filepath/path.go:520 +0x92 fp=0x59ad52e8 sp=0x59ad52bc pc=0x4a0842
+modernc.org/cc/v3.testTranslateDir(0x14173950, 0x16f29ae0, {0x11990000, 0x32c2}, {0x3643a180, 0x7a}, 0x1)
+	C:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/cc/v3/type_test.go:216 +0x2fc fp=0x59ad7f54 sp=0x59ad52e8 pc=0x66582c
+modernc.org/cc/v3.TestTranslateGCC.func1(0x14173950)
+	C:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/cc/v3/type_test.go:144 +0x10f fp=0x59ad7f9c sp=0x59ad7f54 pc=0x66550f
+testing.tRunner(0x14173950, 0x35d80858)
+	C:/Program Files/Go/src/testing/testing.go:1446 +0x113 fp=0x59ad7fe4 sp=0x59ad7f9c pc=0x4b4fc3
+testing.(*T).Run.func1()
+	C:/Program Files/Go/src/testing/testing.go:1493 +0x2e fp=0x59ad7ff0 sp=0x59ad7fe4 pc=0x4b5dbe
+runtime.goexit()
+	C:/Program Files/Go/src/runtime/asm_386.s:1326 +0x1 fp=0x59ad7ff4 sp=0x59ad7ff0 pc=0x40bda1
+created by testing.(*T).Run
+	C:/Program Files/Go/src/testing/testing.go:1493 +0x374
+exit status 2
+FAIL	modernc.org/cc/v3	77.462s

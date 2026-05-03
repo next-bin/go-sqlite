@@ -1,0 +1,14 @@
+2022-10-30T03:15:08+01:00 commit 0aaf662a811b798cffff3c2a95530a5d5beaf8a1, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/gc/v2 v2.0.0-20220516112824-550e07b9c9dd
+go: downloading modernc.org/ebnf v1.1.0
+go: downloading modernc.org/ebnfutil v1.0.3
+go: downloading modernc.org/token v1.0.0
+all_test.go:381: TRC FAIL /home/jnml/go/pkg/mod/golang.org/x/tools@v0.0.0-20201124115921-2c860bdd6e78/go/analysis/passes/unreachable/testdata/src/a/a.go: /home/jnml/go/pkg/mod/golang.org/x/tools@v0.0.0-20201124115921-2c860bdd6e78/go/analysis/passes/unreachable/testdata/src/a/a.go:5:1: "package" package (/home/jnml/go/pkg/mod/golang.org/x/tools@v0.0.0-20201124115921-2c860bdd6e78/go/analysis/passes/unreachable/testdata/src/a/a.go:2124:1: "}" U+007D '}'), enters 3011802, token tests 874913, maxIndex 6826
+all_test.go:381: TRC FAIL /home/jnml/go/pkg/mod/golang.org/x/tools@v0.1.12/go/analysis/passes/unreachable/testdata/src/a/a.go: /home/jnml/go/pkg/mod/golang.org/x/tools@v0.1.12/go/analysis/passes/unreachable/testdata/src/a/a.go:5:1: "package" package (/home/jnml/go/pkg/mod/golang.org/x/tools@v0.1.12/go/analysis/passes/unreachable/testdata/src/a/a.go:2124:1: "}" U+007D '}'), enters 3011802, token tests 874913, maxIndex 6826
+--- FAIL: TestParse (2375.34s)
+    all_test.go:313: /home/jnml/go/pkg/mod/golang.org/x/tools@v0.0.0-20201124115921-2c860bdd6e78/go/analysis/passes/unreachable/testdata/src/a/a.go:5:1: "package" package (/home/jnml/go/pkg/mod/golang.org/x/tools@v0.0.0-20201124115921-2c860bdd6e78/go/analysis/passes/unreachable/testdata/src/a/a.go:2124:1: "}" U+007D '}'), enters 3011802, token tests 874913, maxIndex 6826
+        /home/jnml/go/pkg/mod/golang.org/x/tools@v0.1.12/go/analysis/passes/unreachable/testdata/src/a/a.go:5:1: "package" package (/home/jnml/go/pkg/mod/golang.org/x/tools@v0.1.12/go/analysis/passes/unreachable/testdata/src/a/a.go:2124:1: "}" U+007D '}'), enters 3011802, token tests 874913, maxIndex 6826
+    all_test.go:315: TOTAL files 16,787, tokens 24,586,542, bytes 273,802,206, skip 206, ok 16,579, fails 2
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v2/internal/ebnf	2385.011s

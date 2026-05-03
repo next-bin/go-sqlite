@@ -1,0 +1,94 @@
+go1.25.1 linux/ppc64le
+2025-09-24T04:19:17Z commit 520d7a1dc280e33805e72b95e4f5c5af4fbcdaa4, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libfreetype/freetype-2.10.4"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libfreetype
+archivePath freetype-2.10.4.tar.gz
+extractedArchivePath freetype-2.10.4
+tempDir /tmp/libfreetype
+libRoot /tmp/libfreetype/freetype-2.10.4
+makeRoot /tmp/libfreetype/freetype-2.10.4
+includeDir /tmp/libfreetype/freetype-2.10.4/ccgo
+execute /usr/bin/sh ["-c" "go mod init example.com/libfreetype ; go get modernc.org/libc@latest modernc.org/libz@latest"] in /tmp/libfreetype/freetype-2.10.4
+go: creating new go.mod: module example.com/libfreetype
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libc v1.66.9
+go: added modernc.org/libz v0.16.22
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "\nCFLAGS='-DFT_CONFIG_OPTION_NO_ASSEMBLER' ./configure \\\n\t--disable-shared \\\n\t--with-brotli=no \\\n\t--with-bzip2=no \\\n\t--with-harfbuzz=no \\\n\t--with-png=no \\\n\t--with-zlib=yes \\\n"] in /tmp/libfreetype/freetype-2.10.4
+
+FreeType build system -- automatic system detection
+
+The following settings are used:
+
+  platform                    unix
+  compiler                    cc
+  configuration directory     ./builds/unix
+  configuration rules         ./builds/unix/unix.mk
+
+If this does not correspond to your system or settings please remove the file
+`config.mk' from this directory then read the INSTALL file for help.
+
+Otherwise, simply type `make' again to build the library,
+or `make refdoc' to build the API reference (this needs Python >= 3.5).
+
+Generating modules list in ./objs/ftmodule.h...
+done.
+* module: truetype  (Windows/Mac font files with ex
+
+...
+
+linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking windows.h usability... no
+checking windows.h presence... no
+checking for windows.h... no
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for ANSI C header files... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking for unistd.h... (cached) yes
+checking for an ANSI C-conforming const... yes
+checking size of int... 4
+checking size of long... 8
+checking for unsigned long long int... yes
+checking for long long int... yes
+checking whether cpp computation of bit length in ftconfig.h.in works... yes
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for stdlib.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for sys/param.h... yes
+checking for getpagesize... yes
+checking for working mmap... yes
+checking whether munmap is declared... yes
+checking for munmap's first parameter type... void *
+checking for memcpy... yes
+checking for memmove... yes
+checking gcc compiler flag -pedantic to assure ANSI C works correctly... ok, adding to XX_ANSIFLAGS
+checking gcc compiler flag -ansi to assure ANSI C works correctly... ok, adding to XX_ANSIFLAGS
+checking for -fvisibility=hidden compiler flag... yes
+checking for ZLIB... no
+checking for gzsetparams in -lz... no
+configure: error: external zlib support requested but library not found
+make: *** [builds/unix/detect.mk:91: setup] Error 1
+
+err: exit status 2
+exit status 1
+libfreetype.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

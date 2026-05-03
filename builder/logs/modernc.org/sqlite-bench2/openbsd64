@@ -1,0 +1,79 @@
+go1.26.2 openbsd/amd64
+2026-05-03T07:08:52+02:00 commit 9fdbb8410817bc1248f406fcc3c20e3eb5594a48, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: --- FAIL: TestBenchmarks (36.51s)
+    all_test.go:169: build /tmp/TestBenchmarks2841061224/001/craw
+    all_test.go:180: exec 0: /tmp/TestBenchmarks2841061224/001/craw
+    all_test.go:185: craw: out=
+        1_simple - insert - craw       -       2211
+        1_simple - query  - craw       -        745
+        1_simple - dbsize - craw       -   58687488
+        2_complex - insert - craw       -       1259
+        2_complex - query  - craw       -        821
+        2_complex - dbsize - craw       -   25354240
+        3_many/0010 - insert - craw       -          1
+        3_many/0010 - query  - craw       -         20
+        3_many/0010 - dbsize - craw       -      36864
+        3_many/0100 - insert - craw       -          0
+        3_many/0100 - query  - craw       -         75
+        3_many/0100 - dbsize - craw       -      36864
+        3_many/1000 - insert - craw       -          3
+        3_many/1000 - query  - craw       -        636
+        3_many/1000 - dbsize - craw       -      94208
+        4_large/050000 - insert - craw       -       1119
+        4_large/050000 - query  - craw       -        569
+        4_large/050000 - dbsize - craw       -  501981184
+        fatal error: runtime: out of memory
+        
+        runtime stack:
+        runtime.throw({0x239c53?, 0x2ff1?})
+        	/usr/local/go/src/runtime/panic.go:1229 +0x48 fp=0x7a8e8a02ed20 sp=0x7a8e8a02ecf0 pc=0x3c3568
+        runtime.sysMapOS(0x3fc6fa800000, 0x400000, {0xd?, 0xdf480?})
+        	/usr/local/go/src/runtime/mem_bsd.go:81 +0x116 fp=0x7a8e8a02ed60 sp=0x7a8e8a02ed20 pc=0x36b6d6
+        runtime.sysMap(0x3fc6fa800000, 0x400000, 0x0?, {0x235fb6, 0x4})
+        	/usr/local/go/src/runtime/mem.go:184 +0x45 fp=0x7a8e8a02ed90 sp=0x7a8e8a02ed60 pc=0x36b445
+        runtime.(*mheap).grow(0x579308?, 0xd?)
+        	/usr/local/go/src/runtime/mheap.go:1634 +0x2c5 fp=0x7a8e8a02ee20 sp=0x7a8e8a02ed90 pc=0x381985
+        runtime.(*mheap).allocSpan(0x579300, 0xd, 0x0, 0x1)
+        	/usr/local/go/src/runtime/mheap.go:1299 +0x2e6 fp=0x7a8e8a02eed8 
+
+...
+
+fp=0x9508748e7e0 sp=0x9508748e7a0 pc=0x421b25
+        runtime.goexit({})
+        	/usr/local/go/src/runtime/asm_amd64.s:1771 +0x1 fp=0x9508748e7e8 sp=0x9508748e7e0 pc=0x481fe1
+        created by runtime.(*cleanupQueue).createGs in goroutine 1
+        	/usr/local/go/src/runtime/mcleanup.go:672 +0xa5
+        
+        goroutine 20 gp=0x95087508780 m=nil [GC worker (idle)]:
+        runtime.gopark(0x950874a5fa0?, 0x0?, 0x0?, 0x0?, 0x0?)
+        	/usr/local/go/src/runtime/proc.go:462 +0xce fp=0x950874a5f40 sp=0x950874a5f20 pc=0x47b0ce
+        runtime.gcBgMarkWorker(0x950875022a0)
+        	/usr/local/go/src/runtime/mgc.go:1791 +0xeb fp=0x950874a5fc8 sp=0x950874a5f40 pc=0x427aeb
+        runtime.gcBgMarkStartWorkers.gowrap1()
+        	/usr/local/go/src/runtime/mgc.go:1695 +0x17 fp=0x950874a5fe0 sp=0x950874a5fc8 pc=0x4279d7
+        runtime.goexit({})
+        	/usr/local/go/src/runtime/asm_amd64.s:1771 +0x1 fp=0x950874a5fe8 sp=0x950874a5fe0 pc=0x481fe1
+        created by runtime.gcBgMarkStartWorkers in goroutine 1
+        	/usr/local/go/src/runtime/mgc.go:1695 +0x105
+        
+        goroutine 5 gp=0x95087461a40 m=nil [GC worker (idle)]:
+        runtime.gopark(0x950874d1fa0?, 0x3?, 0x28?, 0x28?, 0x60?)
+        	/usr/local/go/src/runtime/proc.go:462 +0xce fp=0x950874d1f40 sp=0x950874d1f20 pc=0x47b0ce
+        runtime.gcBgMarkWorker(0x950875022a0)
+        	/usr/local/go/src/runtime/mgc.go:1791 +0xeb fp=0x950874d1fc8 sp=0x950874d1f40 pc=0x427aeb
+        runtime.gcBgMarkStartWorkers.gowrap1()
+        	/usr/local/go/src/runtime/mgc.go:1695 +0x17 fp=0x950874d1fe0 sp=0x950874d1fc8 pc=0x4279d7
+        runtime.goexit({})
+        	/usr/local/go/src/runtime/asm_amd64.s:1771 +0x1 fp=0x950874d1fe8 sp=0x950874d1fe0 pc=0x481fe1
+        created by runtime.gcBgMarkStartWorkers in goroutine 1
+        	/usr/local/go/src/runtime/mgc.go:1695 +0x105
+        
+        FAIL err=exit status 2
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite-bench2	36.515s
+exit status 1
+exit status 1
+bench.go:1: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

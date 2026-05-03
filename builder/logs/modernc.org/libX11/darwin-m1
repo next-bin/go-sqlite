@@ -1,0 +1,76 @@
+go1.24.2 darwin/arm64
+2025-04-20T16:29:41+02:00 commit 1e4c325c2da69beef7327b80bf407f3136cb4642, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libX11/libX11-1.8.10"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+execute /bin/sh ["-c" "find /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11/internal/darwin/arm64 -name *darwin_arm64.go -delete"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+archivePath libX11-1.8.10.tar.gz
+extractedArchivePath libX11-1.8.10
+tempDir /tmp/libX11
+libRoot /tmp/libX11/libX11-1.8.10
+makeRoot /tmp/libX11/libX11-1.8.10
+tests /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11/internal/darwin/arm64
+execute /usr/bin/tar ["xf" "libX11-1.8.10.tar.gz" "-C" "/tmp/libX11"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+execute /opt/homebrew/bin/gsed ["-i" "s/&& (tmp_ctext\\[0\\] & 0x80) && (tmp_ctext\\[0\\] & 0x80))/\\&\\& (tmp_ctext[0] \\& 0x80))/" "src/xlibi18n/lcCT.c"] in /private/tmp/libX11/libX11-1.8.10
+execute /bin/sh ["-c" "go mod init example.com/libx11 ; go get modernc.org/libc@latest modernc.org/libxcb@latest"] in /private/tmp/libX11/libX11-1.8.10
+go: creating new go.mod: module example.com/libx11
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250408133849-7e4ce0ab07d0
+go: added golang.org/x/sys v0.32.0
+go: added modernc.org/libXau v0.9.14
+go: added modernc.org/libXdmcp v0.12.13
+go: added modernc.org/libbsd v0.11.9
+go: added modernc.org/libc v1.63.0
+go: added modernc.org/libmd v0.12.16
+go: added modernc.org/libxcb v0.12.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.10.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -w' ./configure --disable-loadable-i18n --disable-loadable-xcursor --disable-shared --disable-specs "] in /private/tmp/libX11/libX11-1.8.10
+checking build system type...
+
+...
+
+efined: _xcb_get_maximum_request_length
+./ccgo_darwin_arm64.go:37540:3: undefined: _xcb_disconnect
+./ccgo_darwin_arm64.go:52947:7: undefined: _xcb_parse_display
+./ccgo_darwin_arm64.go:52956:7: undefined: _xcb_connect_to_display_with_auth_info
+./ccgo_darwin_arm64.go:52958:7: undefined: _xcb_connect
+./ccgo_darwin_arm64.go:52963:41: undefined: _xcb_get_file_descriptor
+./ccgo_darwin_arm64.go:52965:96: undefined: _xcb_generate_id
+./ccgo_darwin_arm64.go:52973:26: undefined: _xcb_connection_has_error
+./ccgo_darwin_arm64.go:52973:26: too many errors
+FAIL	modernc.org/libX11 [build failed]
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x64
+modernc.org/fileutil/ccgo.Fatalf(0x0?, {0x100c1d214, 0x18}, {0x14013099b28, 0x4, 0x4})
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.0/ccgo/util.go:313 +0x3c
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x100c12629, 0x2}, {0x14004138240, 0x3, 0x3})
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.0/ccgo/util.go:414 +0x120
+main.main()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11/generator.go:188 +0x10b8
+
+go [test -run @]
+output: # modernc.org/libX11 [modernc.org/libX11.test]
+./ccgo_darwin_arm64.go:11399:2: undefined: _xcb_disconnect
+./ccgo_darwin_arm64.go:37016:13: undefined: _xcb_get_setup
+./ccgo_darwin_arm64.go:37266:57: undefined: _xcb_get_maximum_request_length
+./ccgo_darwin_arm64.go:37540:3: undefined: _xcb_disconnect
+./ccgo_darwin_arm64.go:52947:7: undefined: _xcb_parse_display
+./ccgo_darwin_arm64.go:52956:7: undefined: _xcb_connect_to_display_with_auth_info
+./ccgo_darwin_arm64.go:52958:7: undefined: _xcb_connect
+./ccgo_darwin_arm64.go:52963:41: undefined: _xcb_get_file_descriptor
+./ccgo_darwin_arm64.go:52965:96: undefined: _xcb_generate_id
+./ccgo_darwin_arm64.go:52973:26: undefined: _xcb_connection_has_error
+./ccgo_darwin_arm64.go:52973:26: too many errors
+FAIL	modernc.org/libX11 [build failed]
+
+err: exit status 1
+exit status 1
+libx11.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

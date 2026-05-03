@@ -1,0 +1,43 @@
+2024-07-29T03:47:58+02:00 commit f2744e90f4a1088f1f914fe12ec21d15ac572cdd, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libole32
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:66:21: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:73:16: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:75:22: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:83:23: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:98:30: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:113:26: undefined: TGUID
+C:\Users\jnml\pkg\mod\modernc.org\libole32@v0.1.1\libole32.go:128:26: undefined: TGUID
+# modernc.org/libgdi32
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:30:90: undefined: TLPARAM
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:54:78: undefined: TLPARAM
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:108:45: undefined: THDC
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:108:62: undefined: TLPCWSTR
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:108:80: undefined: TFONTENUMPROCW
+C:\Users\jnml\pkg\mod\modernc.org\libgdi32@v0.1.1\libgdi32.go:108:104: undefined: TLPARAM
+# modernc.org/libuser32
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:32948:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:32957:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:32966:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:33127:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:33136:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:34356:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:34365:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:34864:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:34873:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:34882:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libuser32@v0.1.4\libuser32_windows_arm64.go:34882:7: too many errors
+# modernc.org/libkernel32
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32.go:112:14: undefined: libc.CreateThread
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:25622:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:27822:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:27831:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:27901:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:27929:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:27957:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:28952:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:28999:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:30220:7: undefined: libc.X__ccgo_SyscallFP
+C:\Users\jnml\pkg\mod\modernc.org\libkernel32@v0.1.2\libkernel32_windows_arm64.go:30220:7: too many errors
+FAIL	modernc.org/libtk9.0 [build failed]
+
+FAIL err=exit status 1

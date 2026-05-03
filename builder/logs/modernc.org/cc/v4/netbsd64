@@ -1,0 +1,31 @@
+2023-12-20T00:56:46+01:00 commit cb1ec1f9b9a6b7d0238b00d4cd63942b89ae407d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute go ["build" "-o" "/home/jnml/tmpdir/TestMake3203001582/001/cc" "fakecc.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/home/jnml/tmpdir/TestMake3203001582/001/cc" "/home/jnml/tmpdir/TestMake3203001582/001/gcc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/home/jnml/tmpdir/TestMake3203001582/001/cc" "/home/jnml/tmpdir/TestMake3203001582/001/clang"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute ./configure ["--disable-cpp"] in /home/jnml/tmpdir/TestMakepcre4130897349/001/pcre
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakepcre4130897349/001/pcre
+execute ./configure [] in /home/jnml/tmpdir/TestMakepcre2846540862/001/pcre2
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakepcre2846540862/001/pcre2
+execute ./configure [] in /home/jnml/tmpdir/TestMakezlib2889568732/001/zlib
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakezlib2889568732/001/zlib
+execute ./configure ["--enable-corefoundation=no"] in /home/jnml/tmpdir/TestMaketclunix3778688753/001/tcl/unix
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMaketclunix3778688753/001/tcl/unix
+execute ./configure [] in /home/jnml/tmpdir/TestMakegmp-6.2.12306307349/001/gmp-6.2.1
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakegmp-6.2.12306307349/001/gmp-6.2.1
+execute ./configure [] in /home/jnml/tmpdir/TestMakempfr-4.1.03844195684/001/mpfr-4.1.0
+execute ./configure [] in /home/jnml/tmpdir/TestMakempc-1.2.1106894156/001/mpc-1.2.1
+execute ./configure [] in /home/jnml/tmpdir/TestMakehdf5-1.12.11468397211/001/hdf5-1.12.1
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakehdf5-1.12.11468397211/001/hdf5-1.12.1
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakegit-2.35.11311229798/001/git-2.35.1
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakequickjs-master514893993/001/quickjs-master
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakeqbe2761140432/001/qbe
+execute ./configure [] in /home/jnml/tmpdir/TestMakepostgresql1928553667/001/postgresql
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakepostgresql1928553667/001/postgresql
+execute gmake ["-j2"] in /home/jnml/tmpdir/TestMakelua-5.4.41213061964/001/lua-5.4.4
+--- FAIL: TestSingleBytewchar (0.04s)
+    all_test.go:2745: value should be of type StringValue, but was of type cc.Int64Value
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	1618.132s
+
+FAIL err=exit status 1

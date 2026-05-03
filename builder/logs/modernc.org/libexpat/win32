@@ -1,0 +1,9 @@
+2024-03-09T02:55:03+01:00 commit 0780931e07f903252b8b4c83be5941ccffe25792, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.04s)
+    all_test.go:34: out=package internal/windows/386/tests/runtests.go is not in std (C:\Program Files\Go\src\internal\windows\386\tests\runtests.go)
+         FAIL err=exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libexpat	0.054s
+
+FAIL err=exit status 1

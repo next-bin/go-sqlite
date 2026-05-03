@@ -1,0 +1,138 @@
+2023-06-15T00:10:56+02:00 commit 6e7d0289df63878f27c2f1ab05d4c16f56c59ae4, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestParserCSmith (14.51s)
+    parser_test.go:576: -s 1236173074
+        /*
+         * This is a RANDOMLY GENERATED PROGRAM.
+         *
+         * Generator: csmith 2.3.0
+         * Git version: 30dccd7
+         * Options:   --bitfields --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid --max-nested-struct-level 10 -s 1236173074
+         * Seed:      1236173074
+         */
+        
+        #include "csmith.h"
+        
+        
+        static long __undefined;
+        
+        /* --- Struct/Union Declarations --- */
+        struct S0 {
+           uint8_t  f0;
+           int32_t  f1;
+           int32_t  f2;
+           uint32_t  f3;
+           int32_t  f4;
+           int32_t  f5;
+           int32_t  f6;
+           uint16_t  f7;
+        };
+        
+        struct S1 {
+           int32_t  f0;
+           int16_t  f1;
+           uint16_t  f2;
+           uint32_t  f3;
+           int32_t  f4;
+           int8_t  f5;
+           struct S0  f6;
+           uint64_t  f7;
+           uint32_t  f8;
+        };
+        
+        struct S2 {
+           uint8_t  f0;
+           uint8_t  f1;
+           struct S1  f2;
+        };
+        
+        struct S3 {
+           int32_t  f0;
+           struct S2  f1;
+           struct S0  f2;
+           uint16_t  f3;
+           uint16_t  f4;
+        };
+        
+        struct S4 {
+           signed f0 : 27;
+           signed f1 : 30;
+           unsigned f2 : 16;
+           signed f3 : 23;
+           signed f4 : 20;
+           unsigned f5 : 2;
+           unsigned f6 : 5;
+           unsigned f7 : 28;
+           unsigned f8 : 6;
+           struct S3  f9;
+        };
+        
+        struct S5 {
+           struct S2  f0;
+           signed f1 : 7;
+           uint64_t  f2;
+           int32_t  f3;
+           int8_t  f4;
+           int16_t  f5;
+           int32_t  f6;
+           uint32_t  f7;
+        };
+        
+        struct S6 {
+           struct S2  f0;
+           uint32_t  f1;
+           uint32_t  f2;
+           struct S4  f3;
+           unsigned
+
+...
+
+ 5, occurrence: 5
+        XXX number of pointers point to pointers: 194
+        XXX number of pointers point to scalars: 206
+        XXX number of pointers point to structs: 98
+        XXX percent of pointers has null in alias set: 28.5
+        XXX average alias set size: 1.91
+        
+        XXX times a non-volatile is read: 1917
+        XXX times a non-volatile is write: 1076
+        XXX times a volatile is read: 0
+        XXX    times read thru a pointer: 0
+        XXX times a volatile is write: 0
+        XXX    times written thru a pointer: 0
+        XXX times a volatile is available for access: 0
+        XXX percentage of non-volatile access: 100
+        
+        XXX forward jumps: 0
+        XXX backward jumps: 5
+        
+        XXX stmts: 394
+        XXX max block depth: 5
+        breakdown:
+           depth: 0, occurrence: 34
+           depth: 1, occurrence: 31
+           depth: 2, occurrence: 48
+           depth: 3, occurrence: 65
+           depth: 4, occurrence: 98
+           depth: 5, occurrence: 118
+        
+        XXX percentage a fresh-made variable is used: 18.1
+        XXX percentage an existing variable is used: 81.9
+        FYI: the random generator makes assumptions about the integer size. See platform.info for more details.
+        ********************* end of statistics **********************/
+        
+        
+        test.c:10:1: include file not found: csmith.h (wd /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3)
+        search paths:
+        	/usr/include/csmith
+        	@
+        	/usr/include
+        test.c:17:4: `uint8_t`: expected specifier-qualifier-list: IDENTIFIER
+        test.c:18:4: `int32_t`: expected }
+        test.c:19:13: `f2`: expected declaration: IDENTIFIER
+        test.c:20:14: `f3`: expected declaration: IDENTIFIER
+        test.c:21:13: `f4`: expected declaration: IDENTIFIER
+        test.c:22:13: `f5`: expected declaration: IDENTIFIER
+    parser_test.go:586: files 1, bytes 1,195,836, ok 0 in 14.506057534s
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v3	71.055s

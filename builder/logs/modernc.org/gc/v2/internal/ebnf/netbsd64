@@ -1,0 +1,16 @@
+2022-07-07T13:42:01+02:00 2e37d5166a198de3ddb82796829b68fca8d2c42e
+go: downloading modernc.org/gc/v2 v2.0.0-20220516112824-550e07b9c9dd
+go: downloading modernc.org/ebnfutil v1.0.2
+all_test.go:381: TRC FAIL /home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/decls0.go: /home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/decls0.go:9:1: "package" package (/home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/decls0.go:54:7: "..." ...), enters 8206, token tests 2364, maxIndex 181
+all_test.go:381: TRC FAIL /home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/expr0.go: /home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/expr0.go:7:1: "package" package (/home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/expr0.go:184:6: "~" U+007E '~'), enters 71333, token tests 20668, maxIndex 842
+all_test.go:381: TRC FAIL /home/jnml/goroot/src/go/types/testdata/check/decls0.go: /home/jnml/goroot/src/go/types/testdata/check/decls0.go:9:1: "package" package (/home/jnml/goroot/src/go/types/testdata/check/decls0.go:54:7: "..." ...), enters 8206, token tests 2364, maxIndex 181
+all_test.go:381: TRC FAIL /home/jnml/goroot/src/go/types/testdata/check/expr0.go: /home/jnml/goroot/src/go/types/testdata/check/expr0.go:7:1: "package" package (/home/jnml/goroot/src/go/types/testdata/check/expr0.go:184:6: "~" U+007E '~'), enters 71333, token tests 20668, maxIndex 842
+--- FAIL: TestParse (78.92s)
+    all_test.go:313: /home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/decls0.go:9:1: "package" package (/home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/decls0.go:54:7: "..." ...), enters 8206, token tests 2364, maxIndex 181
+        /home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/expr0.go:7:1: "package" package (/home/jnml/goroot/src/cmd/compile/internal/types2/testdata/check/expr0.go:184:6: "~" U+007E '~'), enters 71333, token tests 20668, maxIndex 842
+        /home/jnml/goroot/src/go/types/testdata/check/decls0.go:9:1: "package" package (/home/jnml/goroot/src/go/types/testdata/check/decls0.go:54:7: "..." ...), enters 8206, token tests 2364, maxIndex 181
+        /home/jnml/goroot/src/go/types/testdata/check/expr0.go:7:1: "package" package (/home/jnml/goroot/src/go/types/testdata/check/expr0.go:184:6: "~" U+007E '~'), enters 71333, token tests 20668, maxIndex 842
+    all_test.go:315: TOTAL files 8,884, tokens 12,554,316, bytes 70,115,986, skip 140, ok 8,740, fails 4
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v2/internal/ebnf	78.928s

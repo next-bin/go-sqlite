@@ -1,0 +1,7 @@
+2024-07-30T02:53:32+02:00 commit b12895c1a7fc1323b3c3a35082196f512db14d1d, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libuserenv [modernc.org/libuserenv.test]
+.\libuserenv_windows_arm64.go:63239:7: undefined: libc.X__ccgo_SyscallFP
+.\libuserenv_windows_arm64.go:63248:7: undefined: libc.X__ccgo_SyscallFP
+FAIL	modernc.org/libuserenv [build failed]
+
+FAIL err=exit status 1

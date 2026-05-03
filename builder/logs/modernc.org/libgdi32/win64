@@ -1,0 +1,16 @@
+2024-07-30T02:30:12+02:00 commit 8f95df89b4e4a6a7b856341adad3bd58bd682ce7, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libgdi32 [modernc.org/libgdi32.test]
+.\ccgo_windows_amd64.go:31702:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:31711:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:31720:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:31729:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:31738:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:31747:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:33766:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:35025:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:35150:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:35857:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:35857:7: too many errors
+FAIL	modernc.org/libgdi32 [build failed]
+
+FAIL err=exit status 1

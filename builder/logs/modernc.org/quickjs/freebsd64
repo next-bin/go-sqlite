@@ -1,0 +1,80 @@
+go1.25.3 freebsd/amd64
+2025-11-28T18:49:07+01:00 commit 7c79908afb65587d2f6320012bee201c5b023b1f, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["test" "-short=false" "-v" "-tags" "libc.memgrind" "-timeout" "12h" "-run" "TestMemgrind"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/quickjs
+=== RUN   TestMemgrind
+--- PASS: TestMemgrind (1025.49s)
+=== RUN   TestMemgrind2
+=== RUN   TestMemgrind2/eval1
+    all_test.go:62: 42*314;: int(42*314;) 13188
+    all_test.go:62: 'foo'+'bar';: string('foo'+'bar';) foobar
+    all_test.go:62: 42 < 314;: bool(42 < 314;) true
+    all_test.go:62: null;: <nil>(null;) <nil>
+    all_test.go:62: undefined;: quickjs.Undefined(undefined;) undefined
+    all_test.go:62: throw new Error('FAIL'): <nil>(throw new Error('FAIL')) <nil>
+=== RUN   TestMemgrind2/eval2
+    all_test.go:102: BigInt('1234567890123456789'): *big.Int(BigInt('1234567890123456789')) 1234567890123456789
+    all_test.go:102: BigInt('-1234567890123456789'): *big.Int(BigInt('-1234567890123456789')) -1234567890123456789
+    all_test.go:102: 1234567890123456789n: *big.Int(1234567890123456789n) 1234567890123456789
+    all_test.go:102: -1234567890123456789n: *big.Int(-1234567890123456789n) -1234567890123456789
+=== RUN   TestMemgrind2/eval3
+    all_test.go:138: js=`a = {}; a;`: v=*quickjs.Object({}) err=<nil>(<nil>)
+    all_test.go:138: js=`a = {foo: 'bar', baz: "qux", i: 42}; a;`: v=*quickjs.Object({"foo":"bar","baz":"qux","i":42}) err=<nil>(<nil>)
+    all_test.go:138: js=`a = []; a;`: v=*quickjs.Object([]) err=<nil>(<nil>)
+    all_test.go:138: js=`a = [1, 2, 3]; a;`: v=*quickjs.Object([1,2,3]) err=<nil>(<nil>)
+=== RUN   TestMemgrind2/call1
+    all_test.go:178: js=`42;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+    all_test.go:178: js=`var a = 42; a;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+    all_test.go:178: js=`var a = { }; a;`: v=<nil>(<nil>) err=*errors.errorString(cannot call a non-function)
+=== RUN   TestMemgrind2/call2
+    all_test.go:207: js=`function f() { return null; }; f`: v=<nil>(<nil>) err=<nil>(<nil>)
+    all_test.go:207: js=`function f() { return undefined; }; 
+
+...
+
+ all_test.go:505: var a = {foo: 512, bar: g1}; a.bar();: *quickjs.Object({"foo":512})
+    all_test.go:505: g2(obj): *quickjs.Object({"a":463,"b":"foo"})
+    all_test.go:505: g3(514, 'foo'): *quickjs.Object(["foo",514])
+    all_test.go:505: g4(515, 'foo'): *quickjs.Object([515,"foo"])
+    all_test.go:505: g5('hello %v %q', 516, 'foo'): string(hello 516 "foo")
+    all_test.go:505: g6(): *quickjs.Object([])
+    all_test.go:505: g7('hello %v'): string(hello %!v(MISSING))
+    all_test.go:505: var a = {foo: 5220, bar: g8}; a.bar();: *quickjs.Object([{"foo":522},null])
+    all_test.go:505: var a = {foo: 5260, bar: g9}; g9(a);: *quickjs.Object([{"foo":526},null])
+    all_test.go:505: var a = {foo: 5300, bar: g10}; a.bar();: *quickjs.Object({"foo":530})
+    all_test.go:505: var a = {foo: 42, bar: g11}; g11(a);: *quickjs.Object([534,{"foo":533}])
+=== RUN   TestMemgrind2/evalValue
+=== RUN   TestMemgrind2/atom
+    all_test.go:559: n=477 err=<nil>
+    all_test.go:565: n2=478 err=<nil>
+=== RUN   TestMemgrind2/setPropValue
+=== RUN   TestMemgrind2/setProp
+=== RUN   TestMemgrind2/getPropValue
+=== RUN   TestMemgrind2/getProp
+--- PASS: TestMemgrind2 (2.47s)
+    --- PASS: TestMemgrind2/eval1 (0.01s)
+    --- PASS: TestMemgrind2/eval2 (0.01s)
+    --- PASS: TestMemgrind2/eval3 (0.01s)
+    --- PASS: TestMemgrind2/call1 (0.01s)
+    --- PASS: TestMemgrind2/call2 (0.01s)
+    --- PASS: TestMemgrind2/call3 (0.01s)
+    --- PASS: TestMemgrind2/call4 (0.01s)
+    --- PASS: TestMemgrind2/fnFail (0.01s)
+    --- PASS: TestMemgrind2/fnOK (0.03s)
+    --- PASS: TestMemgrind2/evalValue (0.00s)
+    --- PASS: TestMemgrind2/atom (0.00s)
+    --- PASS: TestMemgrind2/setPropValue (0.28s)
+    --- PASS: TestMemgrind2/setProp (1.85s)
+    --- PASS: TestMemgrind2/getPropValue (0.01s)
+    --- PASS: TestMemgrind2/getProp (0.02s)
+PASS
+ok  	modernc.org/quickjs	1027.994s
+--- FAIL: ExampleVM_Interrupt (1.91s)
+got:
+<nil> InternalError: interrupted 1.8s
+want:
+<nil> InternalError: interrupted 1s
+FAIL
+exit status 1
+FAIL	modernc.org/quickjs	1034.778s
+
+FAIL err=exit status 1

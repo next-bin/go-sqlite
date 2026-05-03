@@ -1,0 +1,30 @@
+2022-10-28T21:03:11+02:00 commit 5e03cf341702549431c75f4437f809d51852396e, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/exp v0.0.0-20221026153819-32f3d567a233
+--- FAIL: TestPEG (84.04s)
+    all_test.go:221: /home/jnml/go/misc/android/go_android_exec.go:29:40: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        ebnflint.go:62:67: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        etc.go:152:17: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/misc/cgo/gmp/fib.go:28:5: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/misc/cgo/errors/ptr_test.go:574:48: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/misc/cgo/life/testdata/life.go:16:11: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/misc/cgo/life/testdata/main.go:29:11: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/misc/cgo/nocgo/nocgo.go:18:5: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/misc/cgo/stdio/testdata/chain.go:23:23: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/misc/cgo/stdio/testdata/fib.go:30:5: syntax error (asm_riscv64.s:516:goexit: all_
+
+...
+
+:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/uintptrescapes.dir/main.go:53:6: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/uintptrescapes2.go:22:16: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/uintptrescapes3.go:31:8: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/uintptrkeepalive.go:10:28: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/used.go:26:20: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/utf.go:22:11: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/writebarrier.go:219:23: syntax error (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:330:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/fixedbugs/issue29312.go: resources exhausted (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:325:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+        /home/jnml/go/test/fixedbugs/issue29264.go: resources exhausted (asm_riscv64.s:516:goexit: all_test.go:267:1: all_test.go:325:parse) (asm_riscv64.s:516:goexit: asm_riscv64.s:516:goexit: all_test.go:268:1)
+    all_test.go:223: TOTAL files 8,901, skip 0, ok 5,349, fail 3,552
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v3/internal/ebnf	85.042s

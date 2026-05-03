@@ -1,0 +1,15 @@
+go1.26.0 netbsd/amd64
+2026-03-20T18:46:34+01:00 commit 8317dbd51c6ed8545a6b8e20af8fb1814565a596, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestExec (118.33s)
+    all_test.go:469: using C compiler at /usr/bin/cc
+    all_test.go:470: valgrind: 
+    --- FAIL: TestExec/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute (108.15s)
+        all_test.go:658: C EXEC FAIL: ~/src/modernc.org/ccorpus2/assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/20001031-1.c
+            err=signal: abort trap (core dumped)
+        all_test.go:556: signal: abort trap (core dumped)
+        all_test.go:558: gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute: files=1506 gcc fails=22 skipped=244 failed=1 passed=1239
+FAIL
+exit status 1
+FAIL	modernc.org/qbecc/lib	118.354s
+
+FAIL err=exit status 1

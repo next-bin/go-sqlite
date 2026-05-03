@@ -1,0 +1,8 @@
+2023-08-28T23:40:42Z commit 085ca768d9db71cb41c5f0f168b3e7915f37120c, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libc/v2
+./rtl.go:179:2: undefined: a_store_8
+./rtl.go:184:2: undefined: a_store_8
+./rtl.go:224:14: undefined: a_load_8
+./rtl.go:228:15: undefined: a_load_16
+./rtl.go:240:14: undefined: a_load_8
+./rtl.go:244:16: undefined: a_load_16

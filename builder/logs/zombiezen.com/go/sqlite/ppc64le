@@ -1,0 +1,57 @@
+2024-05-06T01:54:52+02:00 commit a8ad27a0e6b4c69c48a148a604f51e58245fb81e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading github.com/chzyer/readline v1.5.0
+go: downloading modernc.org/libc v1.41.0
+go: downloading modernc.org/sqlite v1.29.1
+go: downloading crawshaw.io/iox v0.0.0-20181124134642-c51c3df30797
+go: downloading github.com/google/go-cmp v0.5.9
+ok  	zombiezen.com/go/sqlite	7.815s
+ok  	zombiezen.com/go/sqlite/ext/generateseries	0.003s
+ok  	zombiezen.com/go/sqlite/ext/refunc	0.003s
+ok  	zombiezen.com/go/sqlite/shell	0.003s [no tests to run]
+ok  	zombiezen.com/go/sqlite/sqlitefile	8.137s
+ok  	zombiezen.com/go/sqlite/sqlitemigration	53.918s
+--- FAIL: TestSharedCacheLock (2.43s)
+    pool_test.go:226: second connection insert not completing
+panic: runtime error: invalid memory address or nil pointer dereference [recovered]
+	panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x36 pc=0x18c9b4]
+
+goroutine 264 [running]:
+testing.tRunner.func1.2({0x34b9a0, 0x5e49b0})
+	/usr/local/go/src/testing/testing.go:1631 +0x1f8
+testing.tRunner.func1()
+	/usr/local/go/src/testing/testing.go:1634 +0x34c
+panic({0x34b9a0?, 0x5e49b0?})
+	/usr/local/go/src/runtime/panic.go:770 +0x154
+modernc.org/sqlite/lib._sqlite3PagerUnrefNotNull(0xc00009de00?, 0x7fff66a03028?)
+	/home/debian/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_linux_ppc64le.go:39955 +0x34
+modernc.org/sqlite/lib._sqlite3PagerUnref(...)
+	/home/debian/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_linux_ppc64le.go:39967
+modernc.org/sqlite/lib._sqlite3PagerCommitPhaseOne(0xc00009de00, 0x7fff66a03028, 0x0, 0x0)
+	/home/debian/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_linux_ppc64le.go:40696 +0x1bc
+modernc.org/sqlite/lib._sqlite3BtreeCommitPhaseOne(0xc00009de00, 0x7fff66e544a8, 0x0)
+	/home/debian/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_linux_ppc64le.go:51317 +0xc4
+modernc.org/sqlite/lib._vdbeCommit(0xc00009de00, 0x7fff66a02c28, 0x7fff66801828)
+	/home/debian/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_linux_ppc64le.go:64088 +0xd74
+modernc.org/sqlite/lib._sqlite3VdbeHalt(0xc00009de00, 0x7fff66801828)
+	/home/debian/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_linux_ppc64le.go:64495 +0x2fc
+modernc.org/sqlite/lib._sqlite3VdbeReset(0xc00009de00, 0x7fff66801828)
+	/home/debian/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_linux_ppc64le.go:64671 +0x54
+modernc.org/sqlite/lib.Xsqlite3_finalize(0xc00009de00, 0x7fff66801828)
+	/home/debian/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_linux_ppc64le.go:66623 +0x100
+zombiezen.com/go/sqlite.(*Stmt).Finalize(0xc00014d2c0)
+	/home/debian/src/modernc.org/builder/.exclude/zombiezen.com/go/sqlite/sqlite.go:705 +0x88
+zombiezen.com/go/sqlite.(*Conn).Close(0xc000165630)
+	/home/debian/src/modernc.org/builder/.exclude/zombiezen.com/go/sqlite/sqlite.go:218 +0x114
+zombiezen.com/go/sqlite/sqlitex_test.TestSharedCacheLock.func2()
+	/home/debian/src/modernc.org/builder/.exclude/zombiezen.com/go/sqlite/sqlitex/pool_test.go:179 +0x30
+zombiezen.com/go/sqlite/sqlitex_test.TestSharedCacheLock(0xc000145520)
+	/home/debian/src/modernc.org/builder/.exclude/zombiezen.com/go/sqlite/sqlitex/pool_test.go:231 +0x490
+testing.tRunner(0xc000145520, 0x392a40)
+	/usr/local/go/src/testing/testing.go:1689 +0x120
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:1742 +0x390
+FAIL	zombiezen.com/go/sqlite/sqlitex	4.014s
+FAIL
+
+FAIL err=exit status 1

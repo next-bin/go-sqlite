@@ -1,0 +1,87 @@
+2023-09-19T02:46:40+02:00 commit 9edcd36bc870ad95228fa574bbca61bc05f9cc3e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+CC=/usr/bin/gcc
+gcc (Debian 10.2.1-6) 10.2.1 20210110
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v3/lib/sqlite"] in /tmp/ccgo-test-1778956448
+go: creating new go.mod: module example.com/ccgo/v3/lib/sqlite
+execute /usr/local/go/bin/go ["get" "modernc.org/libc"] in /tmp/ccgo-test-1778956448
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.3.0
+go: added github.com/mattn/go-isatty v0.0.16
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab
+go: added modernc.org/libc v1.24.1
+go: added modernc.org/mathutil v1.5.0
+go: added modernc.org/memory v1.6.0
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v3/lib/csmith"] in /tmp/ccgo-test-3526312103
+go: creating new go.mod: module example.com/ccgo/v3/lib/csmith
+execute /usr/local/go/bin/go ["get" "modernc.org/libc"] in /tmp/ccgo-test-3526312103
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.3.0
+go: added github.com/mattn/go-isatty v0.0.16
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab
+go: added modernc.org/libc v1.24.1
+go: added modernc.org/mathutil v1.5.0
+go: added modernc.org/memory v1.6.0
+--- FAIL: TestCSmith (351.17s)
+    all_test.go:3032: --bitfields --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid --max-nested-struct-level 10 -s 1906742816
+    all_test.go:3032: --bitfields --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid --max-nested-struct-level 10 -s 612971101
+    all_test.go:3032: --bitfields --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid --max-nested-struct-level 10 -s 3629008936
+    all_test.go:3032: --bitfields --max-nested-struct-level 10 --no-const-pointers --no-consts --no-packed-struct --no-volatile-pointers --no-volatiles --paranoid 
+
+...
+
+a pointer is compared with null: 29
+        XXX times a pointer is compared with address of another variable: 8
+        XXX times a pointer is compared with another pointer: 12
+        XXX times a pointer is qualified to be dereferenced: 4385
+        
+        XXX max dereference level: 4
+        breakdown:
+           level: 0, occurrence: 0
+           level: 1, occurrence: 1674
+           level: 2, occurrence: 139
+           level: 3, occurrence: 71
+           level: 4, occurrence: 6
+        XXX number of pointers point to pointers: 126
+        XXX number of pointers point to scalars: 216
+        XXX number of pointers point to structs: 27
+        XXX percent of pointers has null in alias set: 30.1
+        XXX average alias set size: 1.57
+        
+        XXX times a non-volatile is read: 1607
+        XXX times a non-volatile is write: 715
+        XXX times a volatile is read: 0
+        XXX    times read thru a pointer: 0
+        XXX times a volatile is write: 0
+        XXX    times written thru a pointer: 0
+        XXX times a volatile is available for access: 0
+        XXX percentage of non-volatile access: 100
+        
+        XXX forward jumps: 0
+        XXX backward jumps: 7
+        
+        XXX stmts: 149
+        XXX max block depth: 5
+        breakdown:
+           depth: 0, occurrence: 30
+           depth: 1, occurrence: 16
+           depth: 2, occurrence: 17
+           depth: 3, occurrence: 19
+           depth: 4, occurrence: 24
+           depth: 5, occurrence: 43
+        
+        XXX percentage a fresh-made variable is used: 19
+        XXX percentage an existing variable is used: 81
+        FYI: the random generator makes assumptions about the integer size. See platform.info for more details.
+        ********************* end of statistics **********************/
+        
+        
+        ccgo: <nil>
+        got: checksum = 5AB585FE
+        
+        exp: checksum = DDF194BC
+    all_test.go:3137: files 44, bytes 7,981,408, ok 43 in 5m50.863348769s
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	1579.665s

@@ -1,0 +1,76 @@
+2023-05-06T01:04:25+02:00 commit 46bf47252790b343c131f2435b8245c216cc29c5, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+runtime: remapping stack memory 0x4051fa6000 33554432 a=0x0 err=12
+fatal error: remapping stack memory failed
+
+runtime stack:
+runtime.throw({0x369944?, 0x5f22c?})
+	/home/jnml/goroot/src/runtime/panic.go:1047 +0x40 fp=0x68301bfab0 sp=0x68301bfa80 pc=0x44bc0
+runtime.osStackRemap(0x465d80d98, 0x36ca8?)
+	/home/jnml/goroot/src/runtime/os_openbsd.go:294 +0x10c fp=0x68301bfb00 sp=0x68301bfab0 pc=0x4210c
+runtime.osStackFree(...)
+	/home/jnml/goroot/src/runtime/os_openbsd.go:280
+runtime.freeStackSpans()
+	/home/jnml/goroot/src/runtime/stack.go:1244 +0xfc fp=0x68301bfb70 sp=0x68301bfb00 pc=0x5f23c
+runtime.systemstack()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:243 +0x6c fp=0x68301bfb80 sp=0x68301bfb70 pc=0x7638c
+
+goroutine 9 [running]:
+runtime.systemstack_switch()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:200 +0x8 fp=0x4000036d00 sp=0x4000036cf0 pc=0x76308
+runtime.gcMarkTermination()
+	/home/jnml/goroot/src/runtime/mgc.go:1102 +0x698 fp=0x4000036ee0 sp=0x4000036d00 pc=0x29028
+runtime.gcMarkDone()
+	/home/jnml/goroot/src/runtime/mgc.go:918 +0x290 fp=0x4000036f40 sp=0x4000036ee0 pc=0x28890
+runtime.gcBgMarkWorker()
+	/home/jnml/goroot/src/runtime/mgc.go:1407 +0x390 fp=0x4000036fd0 sp=0x4000036f40 pc=0x29b30
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:1172 +0x4 fp=0x4000036fd0 sp=0x4000036fd0 pc=0x787d4
+created by runtime.gcBgMarkStartWorkers
+	/home/jnml/goroot/src/runtime/mgc.go:1199 +0x28
+
+goroutine 1 [chan receive, 1 minutes]:
+runtime.gopark(0x4014758018?, 0x0?, 0x8?, 0xb8?, 0x1ca2c?)
+	/home/jnml/goroot/src/runtime/proc.go:381 +0xe0 fp=0x40000cb780 sp=0x40000cb760 pc=0x47570
+runtime.chanrecv(0x4024878150, 0x40000cb88f, 0x1)
+	/home/jnml/goroot/src/runtime/chan.go:583 +0x464 fp=0x40000cb810 sp=0x40000cb780 pc=0x15c94
+runtime.chanrecv1(0x649460?, 0x2fe5a0?)
+	/home/jnml/goroot/src/runtime/chan.go:442 +0x14 fp=0x40000cb840 sp=0x40000cb810 pc=0x157f4
+testing.(*T).Run(0x40000984e0, {0x35fa76?, 0x40000cb938?}, 0x3e5820)
+	/home/jnml/goroot/src/testing/testing.go:1630 +0x384 fp=0x40000cb900 sp=0x40000cb840 pc=0x116294
+te
+
+...
+
+003455f20 pc=0x23f604
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:1172 +0x4 fp=0x4003455fd0 sp=0x4003455fd0 pc=0x787d4
+created by modernc.org/cc/v3.(*cpp).translationPhase4
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:2599 +0x18c
+
+goroutine 5368 [runnable]:
+runtime.asyncPreempt2()
+	/home/jnml/goroot/src/runtime/preempt.go:307 +0x3c fp=0x402b307920 sp=0x402b307900 pc=0x45d6c
+runtime.asyncPreempt()
+	/home/jnml/goroot/src/runtime/preempt_arm64.s:47 +0x9c fp=0x402b307b10 sp=0x402b307920 pc=0x793ac
+modernc.org/cc/v3.(*cpp).write(0x30fba0, {{0x402b256210, {0xb3, 0x8c0, 0x28, 0x28, 0x0}}, 0x403159bb30})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:400 +0x10 fp=0x402b307b20 sp=0x402b307b20 pc=0x232f10
+modernc.org/cc/v3.(*cpp).expand(0x4006674c00, {0x448f48, 0x4006674c00}, {0x448090, 0x4006674c00}, 0x0)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:709 +0x6c fp=0x402b307f70 sp=0x402b307b20 pc=0x233b1c
+modernc.org/cc/v3.(*cpp).translationPhase4.func1()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:2596 +0x6c fp=0x402b307fd0 sp=0x402b307f70 pc=0x23f83c
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:1172 +0x4 fp=0x402b307fd0 sp=0x402b307fd0 pc=0x787d4
+created by modernc.org/cc/v3.(*cpp).translationPhase4
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cpp.go:2593 +0x114
+
+goroutine 5367 [runnable]:
+modernc.org/cc/v3.StringID.String(0x20?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/cc.go:263 +0x148 fp=0x40058ebe20 sp=0x40058ebe20 pc=0x20ab18
+modernc.org/cc/v3.parse.func1()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/ast2.go:197 +0x4dc fp=0x40058ebfd0 sp=0x40058ebe20 pc=0x20606c
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:1172 +0x4 fp=0x40058ebfd0 sp=0x40058ebfd0 pc=0x787d4
+created by modernc.org/cc/v3.parse
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v3/ast2.go:171 +0x68c
+exit status 2
+FAIL	modernc.org/cc/v3	161.462s

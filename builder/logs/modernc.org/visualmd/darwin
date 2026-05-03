@@ -1,0 +1,7 @@
+go1.24.3 darwin/amd64
+2025-05-23T01:17:13+02:00 commit cb648aedc7a85983303970f6206d3ce7186c3f6b, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/visualmd.test
+link: duplicated definition of symbol dlopen, from github.com/ebitengine/purego and github.com/ebitengine/purego
+FAIL	modernc.org/visualmd [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,8 @@
+go1.25.0 linux/riscv64
+2025-08-29T01:53:09Z commit fea6432ef07c73c95218e3aa3a9dfbd08ecc05c2, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/db v1.0.22
+# modernc.org/ql
+file2.go:15:2: modernc.org/db@v1.0.22: Get "https://proxy.golang.org/modernc.org/db/@v/v1.0.22.zip": dial tcp 142.250.73.113:443: i/o timeout
+FAIL	modernc.org/ql [setup failed]
+
+FAIL err=exit status 1

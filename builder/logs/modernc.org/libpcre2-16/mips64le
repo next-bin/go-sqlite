@@ -1,0 +1,9 @@
+2024-01-14T23:48:10+08:00 commit 463cc8db8728121f8b5d26436ac4888c7329ad40, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libpcre2-16
+package modernc.org/libpcre2-16 (test)
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/errno
+FAIL	modernc.org/libpcre2-16 [setup failed]
+
+FAIL err=exit status 1

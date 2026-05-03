@@ -1,0 +1,44 @@
+2024-07-29T02:58:31+02:00 commit f2744e90f4a1088f1f914fe12ec21d15ac572cdd, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libcomdlg32
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:58975:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:58983:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:58991:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:58999:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:59150:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:59158:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:59220:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:59228:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:59236:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:59244:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomdlg32@v0.1.7\ccgo_windows_amd64.go:59244:7: too many errors
+# modernc.org/libcomctl32
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomctl32@v0.1.5\ccgo_windows_amd64.go:63169:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomctl32@v0.1.5\ccgo_windows_amd64.go:63178:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomctl32@v0.1.5\ccgo_windows_amd64.go:65659:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomctl32@v0.1.5\ccgo_windows_amd64.go:65706:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomctl32@v0.1.5\ccgo_windows_amd64.go:65869:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libcomctl32@v0.1.5\ccgo_
+
+...
+
+ows_amd64.go:61958:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:62214:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:62280:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:62308:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:62336:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:62364:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:62601:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:62838:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:63062:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libws2_32@v0.1.1\libws2_32_windows_amd64.go:63062:7: too many errors
+# modernc.org/libuserenv
+..\..\..\..\..\..\pkg\mod\modernc.org\libuserenv@v0.1.1\libuserenv_windows_amd64.go:63239:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libuserenv@v0.1.1\libuserenv_windows_amd64.go:63248:7: undefined: libc.X__ccgo_SyscallFP
+# modernc.org/libadvapi32
+..\..\..\..\..\..\pkg\mod\modernc.org\libadvapi32@v0.1.1\libadvapi32_windows_amd64.go:64554:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libadvapi32@v0.1.1\libadvapi32_windows_amd64.go:64563:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libadvapi32@v0.1.1\libadvapi32_windows_amd64.go:65076:7: undefined: libc.X__ccgo_SyscallFP
+..\..\..\..\..\..\pkg\mod\modernc.org\libadvapi32@v0.1.1\libadvapi32_windows_amd64.go:65085:7: undefined: libc.X__ccgo_SyscallFP
+FAIL	modernc.org/libtk9.0 [build failed]
+
+FAIL err=exit status 1

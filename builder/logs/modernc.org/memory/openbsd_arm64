@@ -1,0 +1,4 @@
+2022-08-01T12:48:35+02:00 5b777f1f9f35b7508d29ba7b1c27d6e91aef45a0 GOMAXPROCS 1
+# modernc.org/memory [modernc.org/memory.test]
+./mmap_unix.go:41:12: undefined: mmapSyscall
+FAIL	modernc.org/memory [build failed]

@@ -1,0 +1,7 @@
+2024-06-18T17:43:49Z commit f4c290107e9e43b1bb4a8bc7dcd154eb9b565cd8, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/mathutil v1.6.0
+# modernc.org/strutil
+all_test.go:11:2: modernc.org/mathutil@v1.6.0: Get "https://proxy.golang.org/modernc.org/mathutil/@v/v1.6.0.zip": dial tcp 172.217.160.113:443: i/o timeout
+FAIL	modernc.org/strutil [setup failed]
+
+FAIL err=exit status 1

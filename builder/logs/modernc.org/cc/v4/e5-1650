@@ -1,0 +1,32 @@
+go1.26.0 linux/386
+2026-03-24T13:30:16+01:00 commit 00922ae87b60d22ff494175c64ea3c67539a2a25, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute go ["build" "-o" "/tmp/TestMake3209513312/001/cc" "fakecc.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake3209513312/001/cc" "/tmp/TestMake3209513312/001/gcc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake3209513312/001/cc" "/tmp/TestMake3209513312/001/clang"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute ./configure ["--disable-cpp"] in /tmp/TestMakepcre3551524813/001/pcre
+execute make ["-j2"] in /tmp/TestMakepcre3551524813/001/pcre
+execute ./configure [] in /tmp/TestMakepcre2186906673/001/pcre2
+execute make ["-j2"] in /tmp/TestMakepcre2186906673/001/pcre2
+execute ./configure [] in /tmp/TestMakezlib819058437/001/zlib
+execute make ["-j2"] in /tmp/TestMakezlib819058437/001/zlib
+execute ./configure ["--enable-corefoundation=no"] in /tmp/TestMaketclunix2542927542/001/tcl/unix
+execute make ["-j2"] in /tmp/TestMaketclunix2542927542/001/tcl/unix
+execute ./configure [] in /tmp/TestMakegmp-6.2.11881236657/001/gmp-6.2.1
+execute make ["-j2"] in /tmp/TestMakegmp-6.2.11881236657/001/gmp-6.2.1
+execute ./configure [] in /tmp/TestMakempfr-4.1.01706770923/001/mpfr-4.1.0
+execute make ["-j2"] in /tmp/TestMakempfr-4.1.01706770923/001/mpfr-4.1.0
+execute ./configure [] in /tmp/TestMakempc-1.2.1684752466/001/mpc-1.2.1
+execute ./configure [] in /tmp/TestMakehdf5-1.12.12301683059/001/hdf5-1.12.1
+execute make ["-j2"] in /tmp/TestMakehdf5-1.12.12301683059/001/hdf5-1.12.1
+execute ./configure [] in /tmp/TestMakemusl-1.2.42507390154/001/musl-1.2.4
+execute make ["-j2"] in /tmp/TestMakemusl-1.2.42507390154/001/musl-1.2.4
+execute make ["-j2"] in /tmp/TestMakegit-2.35.1650450737/001/git-2.35.1
+--- FAIL: TestMake (895.77s)
+    --- FAIL: TestMake/quickjs-master (0.00s)
+        all_test.go:1666: open assets/github.com/bellard/quickjs/archive/refs/heads/quickjs-master/quickjs-master.tar.gz: file does not exist
+    all_test.go:1918: TOTAL: files 5479, skip 279, ok 5200, fails 0
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	1077.976s
+
+FAIL err=exit status 1

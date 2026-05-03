@@ -1,0 +1,33 @@
+2023-06-09T00:15:37+02:00 commit db91cd867c4ec31840b434821811fee375dbd8cc, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc v1.24.1
+CC=/usr/local/bin/gcc
+gcc (FreeBSD Ports Collection) 12.2.0
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v3/lib/sqlite"] in /tmp/ccgo-test-617757471
+go: creating new go.mod: module example.com/ccgo/v3/lib/sqlite
+execute /usr/local/go/bin/go ["get" "modernc.org/libc"] in /tmp/ccgo-test-617757471
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.3.0
+go: added github.com/mattn/go-isatty v0.0.16
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab
+go: added modernc.org/libc v1.24.1
+go: added modernc.org/mathutil v1.5.0
+go: added modernc.org/memory v1.6.0
+--- FAIL: TestBug (36.35s)
+    all_test.go:2870: /ccgo/bug/dmesg.c: skipped: /usr/local/bin/gcc [-w -lm -O1] -o ./dmesg dmesg.c: system C compiler: exit status 1
+        /usr/local/bin/ld: /tmp//cceXW8N8.o: in function `main':
+        dmesg.c:(.text+0x19): undefined reference to `__ccgo_dmesg'
+        collect2: error: ld returned 1 exit status
+        
+    all_test.go:2872: /ccgo/bug/struct2.c: struct2.c: main3612.go:551:19: mixed named and unnamed parameters
+        main3612.go:554:166: expected ';', found F__ccgo_pad1
+        main3612.go:563:90: expected '}', found 'return'
+        main3612.go:564:2: expected '}', found 'return'
+        main3612.go:565:1: expected ')', found '}'
+        main3612.go:565:3: expected ')', found 'EOF'
+        : exit status 2
+    all_test.go:2904: files 42, ok 40, failed 1
+    all_test.go:2920: FAIL /ccgo/bug/struct2.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	873.900s

@@ -1,0 +1,49 @@
+go1.26.2 darwin/arm64
+2026-04-11T23:26:56+02:00 commit b7a283e0592ca43c580ce5ac401f0a0a9bcfc3aa, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: archivePath sqlite-amalgamation-3530000.zip
+extractedArchivePath sqlite-amalgamation-3530000
+tempDir /tmp/libsqlite3
+libRoot /tmp/libsqlite3/sqlite-amalgamation-3530000
+makeRoot /tmp/libsqlite3/sqlite-amalgamation-3530000
+execute /usr/bin/unzip ["-q" "sqlite-amalgamation-3530000.zip" "-d" "/tmp/libsqlite3"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /usr/bin/patch ["/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c" "internal/sqlite_issue173.patch"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+patching file '/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c'
+execute /usr/bin/patch ["/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c" "internal/issue1.patch"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+patching file '/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c'
+execute /opt/homebrew/bin/gsed ["-i" "s/sqlite3Config.bUseLongDouble = hasHighPrecisionDouble(rc);/\\/\\/ disabled/" "/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /opt/homebrew/bin/gsed ["-i" "0,/int isInit;*True after/{s/int isInit/volatile int isInit/}" "/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /opt/homebrew/bin/gsed ["-i" "s/#if (defined(__GNUC__) || defined(__clang__)) \\\\/#if 0 \\&\\& (defined(__GNUC__) || defined(__clang__)) \\\\/" "/tmp/libsqlite3/sqlite-amalgamation-3530000/sqlite3.c"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /bin/sh ["-c" "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.72.0 modernc.org/libz@v0.17.3 modernc.org/libtcl8.6@v0.17.4"] in /private/tmp/libsqlite3/sqlite-amalgamation-3530000
+go: creating new go.mod: module example.com/libsqlite3
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added 
+
+...
+
+ter of type 'Tcl_WideInt *' (aka 'long *') [-Wincompatible-pointer-types]
+ 1736 |        || TCL_OK!=Tcl_GetWideIntFromObj(interp, objv[4], &iVal)
+      |                                                          ^~~~~
+/opt/homebrew/Cellar/tcl-tk/8.6.14/include/tcl-tk/tclDecls.h:1407:35: note: passing argument to parameter 'widePtr' here
+ 1407 |                                 Tcl_Obj *objPtr, Tcl_WideInt *widePtr);
+      |                                                               ^
+1 warning generated.
+/private/tmp/libsqlite3/sqlite-src-3530000/ext/rbu/test_rbu.c:222:50: warning: incompatible pointer types passing 'sqlite3_int64 *' (aka 'long long *') to parameter of type 'Tcl_WideInt *' (aka 'long *') [-Wincompatible-pointer-types]
+  222 |       if( Tcl_GetWideIntFromObj(interp, objv[2], &nLimit) ){
+      |                                                  ^~~~~~~
+/opt/homebrew/Cellar/tcl-tk/8.6.14/include/tcl-tk/tclDecls.h:1407:35: note: passing argument to parameter 'widePtr' here
+ 1407 |                                 Tcl_Obj *objPtr, Tcl_WideInt *widePtr);
+      |                                                               ^
+1 warning generated.
+ld: warning: ignoring duplicate libraries: '-lz'
+unexpected/unsupported argument: CoreFoundation
+execute /opt/homebrew/bin/gsed ["-i" "/func _guess_number_of_cores(/,/^}/d" "testfixture.go"] in /private/tmp/libsqlite3/sqlite-src-3530000
+/opt/homebrew/bin/gsed: can't read testfixture.go: No such file or directory
+execute /opt/homebrew/bin/gsed ["-i" "s/strcmp(sqlite3_sourceid()/0 \\&\\& strcmp(sqlite3_sourceid()/" "/tmp/libsqlite3/sqlite-src-3530000/mptest/mptest.c"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+execute /bin/sh ["-c" "cp /tmp/libsqlite3/sqlite-src-3530000/mptest/*.*test mptest/"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+stat /tmp/libsqlite3/sqlite-src-3530000/testfixture.go: no such file or directory
+exit status 1
+libsqlite3.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

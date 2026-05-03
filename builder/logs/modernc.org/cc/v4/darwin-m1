@@ -1,0 +1,15 @@
+go1.26.2 darwin/arm64
+2026-04-18T22:29:33+02:00 commit 02fdc91c49e998427f774572794818473b58c149, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestTranslate (83.67s)
+    --- FAIL: TestTranslate/sqlite-amalgamation (5.06s)
+        all_test.go:1536: assets/sqlite-amalgamation/sqlite3.c:
+            /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/message.h:543:1: assertion failed: struct changed size unexpectedly (check.go:1219:check:)
+            /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/message.h:569:1: assertion failed: struct changed size unexpectedly (check.go:1219:check:)
+        all_test.go:1607: FAIL: assets/sqlite-amalgamation/sqlite3.c
+        all_test.go:1610: files 2, skip 0, ok 1, fails 1
+    all_test.go:1491: TOTAL: files 5636, skip 12, ok 5623, fails 1
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	149.775s
+
+FAIL err=exit status 1

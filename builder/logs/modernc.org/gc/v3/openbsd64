@@ -1,0 +1,72 @@
+go1.26.2 openbsd/amd64
+2026-05-03T08:55:28+02:00 commit c114d5b2703eca545729d05306bfe204076fe1d4, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+fatal error: runtime: out of memory
+
+runtime stack:
+runtime.throw({0x7909bd?, 0x253b?})
+	/usr/local/go/src/runtime/panic.go:1229 +0x48 fp=0x22343ab20 sp=0x22343aaf0 pc=0x4813c8
+runtime.sysMapOS(0x14efcdc00000, 0x400000, {0x0?, 0x0?})
+	/usr/local/go/src/runtime/mem_bsd.go:81 +0x116 fp=0x22343ab60 sp=0x22343ab20 pc=0x423a16
+runtime.sysMap(0x14efcdc00000, 0x400000, 0x0?, {0x788b65, 0x4})
+	/usr/local/go/src/runtime/mem.go:184 +0x45 fp=0x22343ab90 sp=0x22343ab60 pc=0x423785
+runtime.(*mheap).grow(0xa29de8?, 0x8?)
+	/usr/local/go/src/runtime/mheap.go:1634 +0x2c5 fp=0x22343ac20 sp=0x22343ab90 pc=0x439e45
+runtime.(*mheap).allocSpan(0xa29de0, 0x8, 0x0, 0x0)
+	/usr/local/go/src/runtime/mheap.go:1299 +0x2e6 fp=0x22343acd8 sp=0x22343ac20 pc=0x439426
+runtime.(*mheap).alloc.func1()
+	/usr/local/go/src/runtime/mheap.go:1017 +0x5c fp=0x22343ad20 sp=0x22343acd8 pc=0x438dbc
+runtime.systemstack(0x14ef74bdb2c0)
+	/usr/local/go/src/runtime/asm_amd64.s:562 +0x4a fp=0x22343ad30 sp=0x22343ad20 pc=0x486dea
+
+goroutine 40399 gp=0x14ef74dc2780 m=3 mp=0x14ef74c1f008 [running]:
+runtime.systemstack_switch()
+	/usr/local/go/src/runtime/asm_amd64.s:516 +0x8 fp=0x14efc59e21b8 sp=0x14efc59e21a8 pc=0x486d88
+runtime.(*mheap).alloc(0x10000?, 0x8?, 0x58?)
+	/usr/local/go/src/runtime/mheap.go:1011 +0x57 fp=0x14efc59e2200 sp=0x14efc59e21b8 pc=0x438d17
+runtime.(*mcache).allocLarge(0x14efcdbf42c0?, 0xe400, 0x0)
+	/usr/local/go/src/runtime/mcache.go:257 +0x7f fp=0x14efc59e2250 sp=0x14efc59e2200 pc=0x42115f
+runtime.mallocgcLarge(0x7b1858?, 0x73ab60, 0x1)
+	/usr/local/go/src/runtime/malloc.go:1755 +0x79 fp=0x14efc59e22a8 sp=0x14efc59e2250 pc=0x41e359
+runtime.mallocgc(0xe400, 0x73ab60, 0x1)
+	/usr/local/go/src/runtime/malloc.go:1208 +0xd3 fp=0x14efc59e22d8 sp=0x14efc59e22a8 pc=0x47f7d3
+runtime.newarray(0x14efcdbf4200?, 0x14efcda75028?)
+	/usr/local/go/src/runtime/malloc.go:2259 +0x45 fp=0x14efc59e2300 sp=0x14efc59e22d8 pc=0x47f985
+internal/runtime/maps.newarray(0x20?, 0x765e40?)
+	/usr/local/go/src/runtime/malloc.go:2283 +0x13 fp=0x14efc59e2320 sp=0x14efc59e2300 pc=0x47f
+
+...
+
+.func1(0x14ef74ce06c8?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/all_test.go:1159 +0x2c fp=0x14ef7501bf70 sp=0x14ef7501bf38 pc=0x6d144c
+testing.tRunner(0x14ef74ce06c8, 0x14ef74c88040)
+	/usr/local/go/src/testing/testing.go:2036 +0xea fp=0x14ef7501bfc0 sp=0x14ef7501bf70 pc=0x50848a
+testing.(*T).Run.gowrap1()
+	/usr/local/go/src/testing/testing.go:2101 +0x1b fp=0x14ef7501bfe0 sp=0x14ef7501bfc0 pc=0x50961b
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1771 +0x1 fp=0x14ef7501bfe8 sp=0x14ef7501bfe0 pc=0x488861
+created by testing.(*T).Run in goroutine 36512
+	/usr/local/go/src/testing/testing.go:2101 +0x4c5
+
+goroutine 36512 gp=0x14ef7553ed20 m=nil [chan receive]:
+runtime.gopark(0x10300ef74c06fb0?, 0x3000249825420?, 0x20?, 0x54?, 0x24981ca00?)
+	/usr/local/go/src/runtime/proc.go:462 +0xce fp=0x14ef74c06f60 sp=0x14ef74c06f40 pc=0x4814ee
+runtime.chanrecv(0x14ef74cbe300, 0x14ef74c07047, 0x1)
+	/usr/local/go/src/runtime/chan.go:667 +0x4ae fp=0x14ef74c06fd8 sp=0x14ef74c06f60 pc=0x41592e
+runtime.chanrecv1(0xa1fa00?, 0x7b7a80?)
+	/usr/local/go/src/runtime/chan.go:509 +0x12 fp=0x14ef74c07000 sp=0x14ef74c06fd8 pc=0x415472
+testing.(*T).Run(0x14ef74ce0008, {0x78923b?, 0x41de65?}, 0x14ef74c88040)
+	/usr/local/go/src/testing/testing.go:2109 +0x4e5 fp=0x14ef74c070d8 sp=0x14ef74c07000 pc=0x5094a5
+modernc.org/gc/v3.TestGoTypeCheck(0x14ef74ce0008)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/all_test.go:1159 +0x258 fp=0x14ef74c09f70 sp=0x14ef74c070d8 pc=0x6d0df8
+testing.tRunner(0x14ef74ce0008, 0x7a3030)
+	/usr/local/go/src/testing/testing.go:2036 +0xea fp=0x14ef74c09fc0 sp=0x14ef74c09f70 pc=0x50848a
+testing.(*T).Run.gowrap1()
+	/usr/local/go/src/testing/testing.go:2101 +0x1b fp=0x14ef74c09fe0 sp=0x14ef74c09fc0 pc=0x50961b
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1771 +0x1 fp=0x14ef74c09fe8 sp=0x14ef74c09fe0 pc=0x488861
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:2101 +0x4c5
+exit status 2
+FAIL	modernc.org/gc/v3	30.390s
+
+FAIL err=exit status 1

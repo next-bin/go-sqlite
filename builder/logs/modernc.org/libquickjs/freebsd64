@@ -1,0 +1,20 @@
+go1.26.2 freebsd/amd64
+2026-04-26T02:27:28+02:00 commit 2a5c263403657f5d233da65192e8a9fb14ce44b3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/unzip ["-q" "de4d3927b8edff5fbfee1f69cfeef840844259e9.zip" "-d" "tmp"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs
+unzip: Failed to open 'de4d3927b8edff5fbfee1f69cfeef840844259e9.zip'
+FAIL: err=exit status 1 out=unzip: Failed to open 'de4d3927b8edff5fbfee1f69cfeef840844259e9.zip'
+panic: 1
+
+goroutine 1 [running]:
+main.fail(0x1, {0x96804b?, 0x50?}, {0x86e575a38, 0x2, 0x2})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs/generator.go:78 +0xc7
+main.shell({0x964506?, 0xd?}, {0x86e664380?, 0x5?, 0x8ca4e0?})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs/generator.go:211 +0x90
+main.unzip(...)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs/generator.go:244
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libquickjs/generator.go:145 +0x985
+exit status 2
+libquickjs.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

@@ -1,0 +1,28 @@
+2024-03-21T01:51:33+01:00 commit eeb09a874245b41a6720d97279954f96f1c252ff, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+test binary compiled for windows/386
+panic: TODO
+
+goroutine 1 [running, locked to thread]:
+modernc.org/tcl/lib.XTcl_MakeFileChannel(...)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/tcl/lib/patch_windows_386.go:12
+modernc.org/tcl/lib.XTclpGetDefaultStdChannel(0x185e140, 0x8)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/tcl/lib/tcl_windows_386.go:417528 +0xaa
+modernc.org/tcl/lib.XTcl_GetStdChannel(0x185e140, 0x8)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/tcl/lib/tcl_windows_386.go:297916 +0x145
+modernc.org/tcl/lib.XTcl_MainExW(0x185e140, 0xffffffff, 0x17d0128, 0x6093a0, 0x21b70410)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/tcl/lib/tcl_windows_386.go:327473 +0x48a
+main.main1(0x185e140, 0x6, 0x17f0270)
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/tcl/internal/tcltest/tcltest_windows_386.go:41953 +0xf9
+modernc.org/libc.Start(0x60956c)
+	C:/Users/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/libc.go:125 +0x173
+main.main()
+	c:/Users/jnml/go/src/modernc.org/builder/.exclude/modernc.org/tcl/internal/tcltest/tcltest_windows_386.go:20 +0x21
+--- FAIL: TestTclTest (3.95s)
+    all_test.go:1232: writing results to c:\Users\jnml\go\src\modernc.org\builder\.exclude\modernc.org\tcl\testdata\tcltest_windows_386.golden
+    all_test.go:1205: exit status 2
+    all_test.go:1212: failure(s) detected
+FAIL
+exit status 1
+FAIL	modernc.org/tcl	3.997s
+
+FAIL err=exit status 1

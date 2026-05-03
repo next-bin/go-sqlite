@@ -1,0 +1,7 @@
+2024-02-28T15:44:08+08:00 commit 7941dcbaf8f6dbe4b257cdcc1be9b36c44572708, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+auth.go:11:2: modernc.org/sqlite@v1.29.1: Get "https://proxy.golang.org/modernc.org/sqlite/@v/v1.29.1.mod": dial tcp: lookup proxy.golang.org on 127.0.0.53:53: read udp 127.0.0.1:44412->127.0.0.53:53: i/o timeout
+blocking_step.go:26:2: modernc.org/sqlite@v1.29.1: Get "https://proxy.golang.org/modernc.org/sqlite/@v/v1.29.1.mod": dial tcp: lookup proxy.golang.org on 127.0.0.53:53: read udp 127.0.0.1:44412->127.0.0.53:53: i/o timeout
+auth.go:12:2: modernc.org/sqlite@v1.29.1: Get "https://proxy.golang.org/modernc.org/sqlite/@v/v1.29.1.mod": dial tcp: lookup proxy.golang.org on 127.0.0.53:53: read udp 127.0.0.1:44412->127.0.0.53:53: i/o timeout
+shell/shell.go:15:2: modernc.org/sqlite@v1.29.1: Get "https://proxy.golang.org/modernc.org/sqlite/@v/v1.29.1.mod": dial tcp: lookup proxy.golang.org on 127.0.0.53:53: read udp 127.0.0.1:44412->127.0.0.53:53: i/o timeout
+
+FAIL err=exit status 1

@@ -1,0 +1,28 @@
+2024-03-21T08:56:56+08:00 commit 9a517e8160aa91dd46a479f09eb3a75d24e9b918, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test344627534/001/pcretest" "-tags=" "internal/pcretest/ccgo_linux_loong64.go"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libpcre
+execute ./RunTest [] in /tmp/Test344627534/001
+
+PCRE C library tests using test data from ./testdata
+PCRE version 8.45 2021-06-15
+
+---- Testing 8-bit library ----
+
+Test 1: Main functionality (Compatible with Perl >= 5.10)
+  OK
+  OK with study
+Test 2: API, errors, internals, and non-Perl stuff (not UTF-8)
+  OK
+  OK with study
+Test 3: Locale-specific features (using 'french' locale)
+** Locale test did not run successfully. The output did not match
+   test3output, test3outputA or test3outputB.
+   This may mean that there is a problem with the locale settings rather
+   than a bug in PCRE.
+--- FAIL: Test (1.00s)
+    all_test.go:49: time: 571.097905ms
+    all_test.go:57: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre	1.004s
+
+FAIL err=exit status 1

@@ -1,0 +1,11 @@
+go1.25.0 linux/riscv64
+2025-08-28T23:26:35Z commit 70644f483ee3c6e1f85f7fb5c3b1c0cb8d6c00ae, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/fileutil v1.3.27
+# modernc.org/internal/file
+file/file.go:16:2: modernc.org/fileutil@v1.3.27: Get "https://proxy.golang.org/modernc.org/fileutil/@v/v1.3.27.zip": dial tcp 142.250.73.113:443: i/o timeout
+FAIL	modernc.org/internal/file [setup failed]
+ok  	modernc.org/internal/buffer	0.642s
+ok  	modernc.org/internal/slice	0.397s
+FAIL
+
+FAIL err=exit status 1

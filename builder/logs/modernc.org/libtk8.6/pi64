@@ -1,0 +1,6 @@
+2024-06-03T05:59:55+02:00 commit 99f9472f843629bc055618a8e7069f9abd621a1c, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libtk8.6 [modernc.org/libtk8.6.test]
+./all_test.go:50:44: undefined: library.Zip
+FAIL	modernc.org/libtk8.6 [build failed]
+
+FAIL err=exit status 1

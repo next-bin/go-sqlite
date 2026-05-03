@@ -1,0 +1,4 @@
+go1.26.2 linux/riscv64
+2026-04-26T16:02:41+02:00 commit 3bf4bccbe4f3644540564255dbb825a55a2d1bff, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exit status 1

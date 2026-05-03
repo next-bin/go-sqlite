@@ -1,0 +1,15 @@
+2024-02-05T11:36:45+08:00 commit 79f1791a2b4e8e8cb2895ccc155165e115fc6f25, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+can't find package tcltest 2.5
+    while executing
+"package require tcltest 2.5"
+    (file "/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/internal/tests/all.tcl" line 14)
+--- FAIL: Test2 (309.98s)
+    all_test.go:661: TCL_LIBRARY=/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/library/assets
+    all_test.go:697: "/tmp/Test2654785698/001/tcltest" ["/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/internal/tests/all.tcl" "-debug" "0" "-errfile" "errfile" "-singleproc" "0" "-verbose" "el" "-skip" "iortrans-3.1"]
+    all_test.go:704: exit status 1
+    all_test.go:714: final summary not detected (test crashed?)
+FAIL
+exit status 1
+FAIL	modernc.org/libtcl8.6	310.195s
+
+FAIL err=exit status 1

@@ -1,0 +1,100 @@
+2023-12-15T13:03:37+01:00 commit aa47ae955cddb986b4b8b5dd533deee375276712, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute go ["build" "-o" "/tmp/TestMake817480264/001/cc" "fakecc.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake817480264/001/cc" "/tmp/TestMake817480264/001/gcc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake817480264/001/cc" "/tmp/TestMake817480264/001/clang"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute ./configure ["--disable-cpp"] in /tmp/TestMakepcre700084050/001/pcre
+execute ./configure [] in /tmp/TestMakepcre2591954951/001/pcre2
+execute ./configure [] in /tmp/TestMakezlib3514559943/001/zlib
+execute make [] in /tmp/TestMakezlib3514559943/001/zlib
+execute ./configure ["--enable-corefoundation=no"] in /tmp/TestMaketclunix4150150450/001/tcl/unix
+execute make [] in /tmp/TestMaketclunix4150150450/001/tcl/unix
+--- FAIL: TestMake (2056.13s)
+    --- FAIL: TestMake/tcl/unix (1867.52s)
+        all_test.go:1937: FAIL /tmp/TestMaketclunix4150150450/001/tcl/unix [-c conftest.c] 
+            src
+            ----
+            /* confdefs.h.  */
+            
+            #define PACKAGE_NAME "tcl"
+            #define PACKAGE_TARNAME "tcl"
+            #define PACKAGE_VERSION "8.6"
+            #define PACKAGE_STRING "tcl 8.6"
+            #define PACKAGE_BUGREPORT ""
+            #define STDC_HEADERS 1
+            #define HAVE_SYS_TYPES_H 1
+            #define HAVE_SYS_STAT_H 1
+            #define HAVE_STDLIB_H 1
+            #define HAVE_STRING_H 1
+            #define HAVE_MEMORY_H 1
+            #define HAVE_STRINGS_H 1
+            #define HAVE_INTTYPES_H 1
+            #define HAVE_STDINT_H 1
+            #define HAVE_UNISTD_H 1
+            /* end confdefs.h.  */
+            #include <stdio.h>
+            #if HAVE_SYS_TYPES_H
+            # include <sys/types.h>
+            #endif
+            #if HAVE_SYS_STAT_H
+            # include <sys/stat.h>
+            #endif
+            #if STDC_HEADERS
+            # include <stdlib.h>
+            # include <stddef.h>
+            #else
+            # if HAVE_STDLIB_H
+  
+
+...
+
+);
+            #elif defined(SIGTRAP)
+                  raise(SIGTRAP);
+            #endif
+                }
+              }
+            #endif
+            
+              /* Call sqlite3_shutdown() once before doing anything else. This is to
+              ** test that sqlite3_shutdown() can be safely called by a process before
+              ** sqlite3_initialize() is. */
+              sqlite3_shutdown();
+            
+              Tcl_FindExecutable(argv[0]);
+              Tcl_SetSystemEncoding(NULL, "utf-8");
+              interp = Tcl_CreateInterp();
+              Sqlite3_Init(interp);
+            
+              sqlite3_snprintf(sizeof(zArgc), zArgc, "%d", argc-1);
+              Tcl_SetVar2(interp,"argc", NULL, zArgc, TCL_GLOBAL_ONLY);
+              Tcl_SetVar2(interp,"argv0", NULL, argv[0],TCL_GLOBAL_ONLY);
+              Tcl_SetVar2(interp,"argv", NULL, "", TCL_GLOBAL_ONLY);
+              for(i=1; i<argc; i++){
+                Tcl_SetVar2(interp, "argv", NULL, argv[i],
+                    TCL_GLOBAL_ONLY | TCL_LIST_ELEMENT | TCL_APPEND_VALUE);
+              }
+            #if defined(TCLSH_INIT_PROC)
+              zScript = TCLSH_INIT_PROC(interp);
+            #endif
+              if( zScript==0 ){
+                zScript = tclsh_main_loop();
+              }
+              if( Tcl_EvalEx(interp, zScript, -1, TCL_EVAL_GLOBAL)!=TCL_OK ){
+                const char *zInfo = Tcl_GetVar2(interp, "errorInfo", NULL, TCL_GLOBAL_ONLY);
+                if( zInfo==0 ) zInfo = Tcl_GetString(Tcl_GetObjResult(interp));
+                fprintf(stderr,"%s: %s\n", *argv, zInfo);
+                return 1;
+              }
+              return 0;
+            }
+            #endif /* TCLSH */
+            
+            ----
+            TODO *cc.DeclarationSpecifiers missed/failed type check: [TypeSpecifierInt128 TypeSpecifierSigned]
+        all_test.go:1947: files 592, skip 90, ok 326, fails 176
+    all_test.go:1828: TOTAL: files 639, skip 91, ok 372, fails 176
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	3068.449s
+
+FAIL err=exit status 1

@@ -1,0 +1,20 @@
+2024-03-20T14:04:52+01:00 commit ec0df77803d9e60c983c38de5890f2fa14f77ec2, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+qbe: [/home/jnml/tmp/go-build1697628790/b088/qbe.test -test.paniconexit0 -test.v=true -test.failfast=true -test.timeout=24h0m0s -bestof 1 -gcc 7,8,9,10,11]
+: exec: "gcc-7": executable file not found in $PATH
+: exec: "gcc-8": executable file not found in $PATH
+: exec: "gcc-9": executable file not found in $PATH
+: exec: "gcc-10": executable file not found in $PATH
+: exec: "gcc-11": executable file not found in $PATH
+ok  	modernc.org/qbe	0.009s
+# modernc.org/qbe/cc [modernc.org/qbe/cc.test]
+CLOSURE [/home/jnml/src/modernc.org/builder/.exclude/modernc.org/qbe/cc/all_test.go:3399:17:var argCh chan string cc/all_test.go:3401:10:var doneCh chan struct{} cc/all_test.go:3413:16:var blacklist map[string]struct{} cc/all_test.go:3418:32:var iFile int cc/all_test.go:3422:15:var results chan *modernc.org/qbe/cc.runResult cc/all_test.go:3423:4:var res int cc/all_test.go:3424:6:var limiter chan struct{} cc/all_test.go:3428:5:var ok int cc/all_test.go:3429:12:var failed map[string]string cc/all_test.go:3445:4:var rq int cc/all_test.go:3449:31:var csmith string cc/all_test.go:3462:25:var csp string]
+<unknown line number>: internal compiler error: assertion failed
+
+Please file a bug report including a short program that triggers the error.
+https://go.dev/issue/new
+FAIL	modernc.org/qbe/cc [build failed]
+?   	modernc.org/qbe/ecc	[no test files]
+?   	modernc.org/qbe/qbec	[no test files]
+FAIL
+
+FAIL err=exit status 1

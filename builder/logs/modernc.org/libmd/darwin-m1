@@ -1,0 +1,76 @@
+go1.26.0 darwin/arm64
+2026-03-31T21:18:12+02:00 commit 05851b435ae1fc2c810dc8f4deaf9a7e39e95974, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libmd/libmd-1.1.0"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd
+execute /bin/sh ["-c" "find /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd/internal/darwin/arm64 -name *darwin_arm64.go -delete"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd
+archivePath libmd-1.1.0.tar.xz
+extractedArchivePath libmd-1.1.0
+tempDir /tmp/libmd
+libRoot /tmp/libmd/libmd-1.1.0
+makeRoot /tmp/libmd/libmd-1.1.0
+tests /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd/internal/darwin/arm64
+execute /usr/bin/tar ["xf" "libmd-1.1.0.tar.xz" "-C" "/tmp/libmd"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd
+execute /bin/sh ["-c" "go mod init example.com/libmd ; go get modernc.org/libc@latest"] in /private/tmp/libmd/libmd-1.1.0
+go: creating new go.mod: module example.com/libmd
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.70.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG' ./configure --disable-shared "] in /private/tmp/libmd/libmd-1.1.0
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... ./build-aux/install-sh -c -d
+checking for gawk... no
+checking for mawk... no
+checking for nawk... no
+checking for awk... awk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports nested variables... (cached) yes
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler
+
+...
+
+===========================
+make[1]: Nothing to be done for `check-am'.
+/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615:scan: TODOTODO /tmp/ccgo-tmp-ar-1813963771/__.SYMDEF SORTED:1:1: U+0000
+panic: /Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615:scan: TODOTODO /tmp/ccgo-tmp-ar-1813963771/__.SYMDEF SORTED:1:1: U+0000
+
+goroutine 1 [running]:
+modernc.org/gc/v2.(*Scanner).scan(0x5908c0e04280)
+	/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615 +0x9b8
+modernc.org/gc/v2.(*Scanner).Scan(0x5908c0e04280)
+	/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:341 +0x88
+modernc.org/gc/v2.newParser(...)
+	/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/parser.go:29
+modernc.org/gc/v2.ParseSourceFile(0x5908c0da8630, {0x5908c0dda180?, 0x2c?}, {0x5908c0e32200?, 0x8?, 0x200?})
+	/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/gc.go:36 +0xc4
+modernc.org/ccgo/v4/lib.(*Task).getFileSymbols(0x5908c0db6488, 0x10d8fe0e8?, {0x5908c0dda180, 0x2c})
+	/Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/link.go:460 +0xdc
+modernc.org/ccgo/v4/lib.(*Task).link(0x5908c0db6488)
+	/Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/link.go:271 +0x2c0
+modernc.org/ccgo/v4/lib.(*Task).main(0x5908c0db6488)
+	/Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/ccgo.go:687 +0x6f50
+modernc.org/ccgo/v4/lib.(*Task).Main(0x5908c0db6488)
+	/Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/ccgo.go:209 +0x9c
+main.main.func2()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd/generator.go:159 +0x73c
+modernc.org/fileutil/ccgo.InDir({0x5908c0be8300, 0x16}, 0x5908c0bf5d40)
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:365 +0xac
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x5908c0be8300?, 0x5908c0be8588?}, 0x104714de7?)
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:370 +0x30
+main.main()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libmd/generator.go:111 +0x9dc
+exit status 2
+libmd.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

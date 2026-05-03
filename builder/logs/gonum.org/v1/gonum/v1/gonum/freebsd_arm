@@ -1,0 +1,84 @@
+2023-08-20T03:03:17Z commit 82e11dfec82f254ff49e0aaafd9ba59736542a35, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+?   	gonum.org/v1/gonum	[no test files]
+?   	gonum.org/v1/gonum/blas	[no test files]
+ok  	gonum.org/v1/gonum/blas/blas32	0.099s
+ok  	gonum.org/v1/gonum/blas/blas64	0.223s
+ok  	gonum.org/v1/gonum/blas/cblas128	45.044s
+ok  	gonum.org/v1/gonum/blas/cblas64	0.095s
+?   	gonum.org/v1/gonum/blas/testblas/benchautogen	[no test files]
+ok  	gonum.org/v1/gonum/blas/gonum	48.283s
+ok  	gonum.org/v1/gonum/blas/testblas	0.107s
+ok  	gonum.org/v1/gonum/cmplxs	0.125s
+ok  	gonum.org/v1/gonum/cmplxs/cscalar	0.104s
+ok  	gonum.org/v1/gonum/diff/fd	0.388s
+?   	gonum.org/v1/gonum/dsp/window/cmd/leakage	[no test files]
+ok  	gonum.org/v1/gonum/dsp/fourier	402.046s
+ok  	gonum.org/v1/gonum/dsp/fourier/internal/fftpack	274.281s
+ok  	gonum.org/v1/gonum/dsp/window	0.135s
+ok  	gonum.org/v1/gonum/floats	0.166s
+ok  	gonum.org/v1/gonum/floats/scalar	0.094s
+ok  	gonum.org/v1/gonum/graph	0.343s
+ok  	gonum.org/v1/gonum/graph/coloring	468.765s
+ok  	gonum.org/v1/gonum/graph/community	762.513s
+ok  	gonum.org/v1/gonum/graph/encoding	0.088s
+ok  	gonum.org/v1/gonum/graph/encoding/digraph6	330.310s
+ok  	gonum.org/v1/gonum/graph/encoding/dot	0.211s
+?   	gonum.org/v1/gonum/graph/formats/dot	[no test files]
+?   	gonum.org/v1/gonum/graph/formats/dot/internal/errors	[no test files]
+?   	gonum.org/v1/gonum/graph/formats/dot/internal/token	[no test files]
+?   	gonum.org/v1/gonum/graph/formats/dot/internal/util	[no test files]
+# os/user
+cgo-gcc-prolog:95:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:89:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:89:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+cgo-gcc-prolog:117:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:111:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:111:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+ok  	gonum.org/v1/gonum/graph/encoding/graph6	156.267s
+ok  	gonum.org/v1/gonum/graph/encoding/graphql	0.164s
+ok  	g
+
+...
+
+te	2.422s
+ok  	gonum.org/v1/gonum/integrate/quad	3.971s
+ok  	gonum.org/v1/gonum/internal/asm/c128	0.469s
+ok  	gonum.org/v1/gonum/internal/asm/c64	0.337s
+ok  	gonum.org/v1/gonum/internal/asm/f32	0.191s
+ok  	gonum.org/v1/gonum/internal/asm/f64	0.629s
+ok  	gonum.org/v1/gonum/internal/cmplx64	0.091s
+ok  	gonum.org/v1/gonum/internal/math32	0.094s
+ok  	gonum.org/v1/gonum/internal/testrand	0.089s
+ok  	gonum.org/v1/gonum/interp	0.149s
+?   	gonum.org/v1/gonum/lapack/lapack64	[no test files]
+ok  	gonum.org/v1/gonum/lapack/gonum	1655.626s
+ok  	gonum.org/v1/gonum/lapack/testlapack	0.117s
+?   	gonum.org/v1/gonum/mathext/internal/cephes	[no test files]
+?   	gonum.org/v1/gonum/mathext/internal/gonum	[no test files]
+ok  	gonum.org/v1/gonum/mat	1089.250s
+ok  	gonum.org/v1/gonum/mathext	201.357s
+ok  	gonum.org/v1/gonum/mathext/internal/amos	153.095s
+ok  	gonum.org/v1/gonum/mathext/prng	0.098s
+ok  	gonum.org/v1/gonum/num/dual	0.104s
+ok  	gonum.org/v1/gonum/num/dualcmplx	0.114s
+ok  	gonum.org/v1/gonum/num/dualquat	0.129s
+ok  	gonum.org/v1/gonum/num/hyperdual	0.126s
+ok  	gonum.org/v1/gonum/num/quat	0.121s
+ok  	gonum.org/v1/gonum/optimize	446.008s
+ok  	gonum.org/v1/gonum/optimize/convex/lp	749.111s
+ok  	gonum.org/v1/gonum/optimize/functions	4.656s
+?   	gonum.org/v1/gonum/spatial/r1	[no test files]
+ok  	gonum.org/v1/gonum/spatial/barneshut	2395.248s
+ok  	gonum.org/v1/gonum/spatial/kdtree	35.098s
+ok  	gonum.org/v1/gonum/spatial/r2	0.116s
+ok  	gonum.org/v1/gonum/spatial/r3	0.190s
+ok  	gonum.org/v1/gonum/spatial/vptree	30.008s
+ok  	gonum.org/v1/gonum/stat	0.262s
+ok  	gonum.org/v1/gonum/stat/card	441.934s
+ok  	gonum.org/v1/gonum/stat/combin	0.246s
+ok  	gonum.org/v1/gonum/stat/distmat	188.471s
+ok  	gonum.org/v1/gonum/stat/distmv	324.601s
+ok  	gonum.org/v1/gonum/stat/distuv	1865.019s
+ok  	gonum.org/v1/gonum/stat/mds	0.100s
+ok  	gonum.org/v1/gonum/stat/samplemv	76.409s
+ok  	gonum.org/v1/gonum/stat/sampleuv	65.576s
+ok  	gonum.org/v1/gonum/stat/spatial	8.178s
+ok  	gonum.org/v1/gonum/unit	0.161s
+ok  	gonum.org/v1/gonum/unit/constant	0.120s
+FAIL

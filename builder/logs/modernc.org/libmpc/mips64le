@@ -1,0 +1,9 @@
+2024-01-14T20:21:09+08:00 commit 63496543bcca9d927574abe0fa8a28f81692abca, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libmpc
+package modernc.org/libmpc (test)
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/errno
+FAIL	modernc.org/libmpc [setup failed]
+
+FAIL err=exit status 1

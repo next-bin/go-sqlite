@@ -1,0 +1,85 @@
+2022-08-15T16:44:39+02:00 5253a955293dc9686cd7fdeb068573e8e610b063 GOMAXPROCS 1 GOGC "10"
+go: downloading modernc.org/libc v1.14.5
+go: downloading golang.org/x/image v0.0.0-20211028202545-6944b10bf410
+go: downloading github.com/mattn/go-isatty v0.0.14
+go: downloading golang.org/x/sys v0.0.0-20220114195835-da31bd327af9
+fatal error: unexpected signal during runtime execution
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x0 pc=0x41f5d1]
+
+runtime stack:
+runtime.throw({0x9f8f28?, 0x0?})
+	/usr/local/go/src/runtime/panic.go:992 +0x71
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:802 +0x396
+runtime.scanframeworker(0x2f5dc7268, 0x2f5dc7350, 0x1?)
+	/usr/local/go/src/runtime/mgcmark.go:965 +0x1d1
+runtime.scanstack.func1(0xcb82a0?, 0xd88da0?)
+	/usr/local/go/src/runtime/mgcmark.go:780 +0x25
+runtime.gentraceback(0x0?, 0x0?, 0x0?, 0x0?, 0x0, 0x0, 0x7fffffff, 0x2f5dc74b0, 0x0?, 0x0)
+	/usr/local/go/src/runtime/traceback.go:334 +0xc47
+runtime.scanstack(0xc0000021a0, 0xc000031238)
+	/usr/local/go/src/runtime/mgcmark.go:783 +0x1ba
+runtime.markroot.func1()
+	/usr/local/go/src/runtime/mgcmark.go:241 +0xc5
+runtime.markroot(0xc000031238, 0x14, 0x0)
+	/usr/local/go/src/runtime/mgcmark.go:214 +0x1a5
+runtime.gcDrainN(0xc000031238, 0x790c2)
+	/usr/local/go/src/runtime/mgcmark.go:1160 +0x152
+runtime.gcAssistAlloc1(0xc000140000, 0xc0000c9af8?)
+	/usr/local/go/src/runtime/mgcmark.go:558 +0xd5
+runtime.gcAssistAlloc.func1()
+	/usr/local/go/src/runtime/mgcmark.go:469 +0x25
+runtime.systemstack()
+	/usr/local/go/src/runtime/asm_amd64.s:469 +0x49
+
+goroutine 7 [GC assist marking]:
+runtime.systemstack_switch()
+	/usr/local/go/src/runtime/asm_amd64.s:436 fp=0xc0000cae88 sp=0xc0000cae80 pc=0x461ee0
+runtime.gcAssistAlloc(0xc000140000)
+	/usr/local/go/src/runtime/mgcmark.go:468 +0x18b fp=0xc0000caee8 sp=0xc0000cae88 pc=0x41e4eb
+runtime.mallocgc(0x8000, 0x93d560, 0x1)
+	/usr/local/go/src/runtime/malloc.go:973 +0x11f fp=0xc0000caf60 sp=0xc0000caee8 pc=0x40dfff
+runtime.makeslice(0x100c000010058?, 0x28c9c84d8?, 0xc000173980?)
+	/usr/local/go/src/runtime/slice.go:103 +0x52 fp=0xc0000caf88 sp=0xc0000caf60 pc=0x44abd2
+io.copyBuffer({0x28
+
+...
+
+?, 0xc00018e000?, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:83 +0x32
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:88
+internal/poll.(*FD).Read(0xc0000ac880, {0xc00018e000, 0x94ba, 0x94ba})
+	/usr/local/go/src/internal/poll/fd_unix.go:167 +0x25a
+net.(*netFD).Read(0xc0000ac880, {0xc00018e000?, 0x27?, 0x52?})
+	/usr/local/go/src/net/fd_posix.go:55 +0x29
+net.(*conn).Read(0xc000010248, {0xc00018e000?, 0x3c22417aa058e146?, 0xc00007bb60?})
+	/usr/local/go/src/net/net.go:183 +0x45
+crypto/tls.(*atLeastReader).Read(0xc0001bf470, {0xc00018e000?, 0x0?, 0xdf8c60?})
+	/usr/local/go/src/crypto/tls/conn.go:785 +0x3d
+bytes.(*Buffer).ReadFrom(0xc000112278, {0xad94e0, 0xc0001bf470})
+	/usr/local/go/src/bytes/buffer.go:204 +0x98
+crypto/tls.(*Conn).readFromUntil(0xc000112000, {0x2261c5318?, 0xc000010248}, 0x478a80?)
+	/usr/local/go/src/crypto/tls/conn.go:807 +0xe5
+crypto/tls.(*Conn).readRecordOrCCS(0xc000112000, 0x0)
+	/usr/local/go/src/crypto/tls/conn.go:614 +0x116
+crypto/tls.(*Conn).readRecord(...)
+	/usr/local/go/src/crypto/tls/conn.go:582
+crypto/tls.(*Conn).Read(0xc000112000, {0xc000243000, 0x1000, 0x11?})
+	/usr/local/go/src/crypto/tls/conn.go:1285 +0x16f
+bufio.(*Reader).Read(0xc000225b00, {0xc000223620, 0x9, 0xc00008dd18?})
+	/usr/local/go/src/bufio/bufio.go:236 +0x1b4
+io.ReadAtLeast({0xad8d00, 0xc000225b00}, {0xc000223620, 0x9, 0x9}, 0x9)
+	/usr/local/go/src/io/io.go:331 +0x9a
+io.ReadFull(...)
+	/usr/local/go/src/io/io.go:350
+net/http.http2readFrameHeader({0xc000223620?, 0x9?, 0xc00008ddf0?}, {0xad8d00?, 0xc000225b00?})
+	/usr/local/go/src/net/http/h2_bundle.go:1566 +0x6e
+net/http.(*http2Framer).ReadFrame(0xc0002235e0)
+	/usr/local/go/src/net/http/h2_bundle.go:1830 +0x95
+net/http.(*http2clientConnReadLoop).run(0xc00008df98)
+	/usr/local/go/src/net/http/h2_bundle.go:8815 +0x130
+net/http.(*http2ClientConn).readLoop(0xc00025a180)
+	/usr/local/go/src/net/http/h2_bundle.go:8711 +0x6f
+created by net/http.(*http2Transport).newClientConn
+	/usr/local/go/src/net/http/h2_bundle.go:7439 +0xa65

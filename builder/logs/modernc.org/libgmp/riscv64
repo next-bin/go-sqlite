@@ -1,0 +1,67 @@
+go1.26.2 linux/riscv64
+2026-05-02T23:10:05+02:00 commit 5563db93ed69ab5dbefb8831a3efbb3df1ebe8c9, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (2678.42s)
+    all_test.go:104: internal/linux/riscv64/tests/memory.o.go: SKIP (no main)
+    all_test.go:92: internal/linux/riscv64/tests/misc/t-printf.o.go: SKIP (list)
+    all_test.go:104: internal/linux/riscv64/tests/misc.o.go: SKIP (no main)
+    all_test.go:92: internal/linux/riscv64/tests/mpn/t-addaddmul.o.go: SKIP (list)
+    all_test.go:92: internal/linux/riscv64/tests/mpn/t-get_d.o.go: SKIP (list)
+    all_test.go:104: internal/linux/riscv64/tests/refmpf.o.go: SKIP (no main)
+    all_test.go:104: internal/linux/riscv64/tests/refmpn.o.go: SKIP (no main)
+    all_test.go:104: internal/linux/riscv64/tests/refmpq.o.go: SKIP (no main)
+    all_test.go:104: internal/linux/riscv64/tests/refmpz.o.go: SKIP (no main)
+    all_test.go:104: internal/linux/riscv64/tests/spinner.o.go: SKIP (no main)
+    all_test.go:104: internal/linux/riscv64/tests/trace.o.go: SKIP (no main)
+    all_test.go:116: 0 internal/linux/riscv64/tests/misc/t-locale.o.go
+    all_test.go:116: 1 internal/linux/riscv64/tests/misc/t-scanf.o.go
+    all_test.go:116: 2 internal/linux/riscv64/tests/mpf/reuse.o.go
+    all_test.go:116: 3 internal/linux/riscv64/tests/mpf/t-add.o.go
+    all_test.go:116: 4 internal/linux/riscv64/tests/mpf/t-cmp_d.o.go
+    all_test.go:116: 5 internal/linux/riscv64/tests/mpf/t-cmp_si.o.go
+    all_test.go:116: 6 internal/linux/riscv64/tests/mpf/t-conv.o.go
+    all_test.go:116: 7 internal/linux/riscv64/tests/mpf/t-div.o.go
+    all_test.go:116: 8 internal/linux/riscv64/tests/mpf/t-dm2exp.o.go
+    all_test.go:116: 9 internal/linux/riscv64/tests/mpf/t-eq.o.go
+    all_test.go:116: 10 internal/linux/riscv64/tests/mpf/t-fits.o.go
+    all_test.go:116: 11 internal/linux/riscv64/tests/mpf/t-get_d.o.go
+    all_test.go:116: 12 internal/linux/riscv64/tests/mpf/t-get_d_2exp.o.go
+    all_test.go:116: 13 internal/linux/riscv64/tests/mpf/t-get_si.o.go
+    all_test.go:116: 14 internal/linux/riscv64/tests/mpf/t-get_ui.o.go
+    all_test.go:116: 15 internal/linux/riscv64/tests/mpf/t-gsprec.o.go
+    all_test.go:116: 16 internal/linux/riscv6
+
+...
+
+t-root.o.go
+    all_test.go:116: 151 internal/linux/riscv64/tests/mpz/t-scan.o.go
+    all_test.go:116: 152 internal/linux/riscv64/tests/mpz/t-set_d.o.go
+    all_test.go:116: 153 internal/linux/riscv64/tests/mpz/t-set_f.o.go
+    all_test.go:116: 154 internal/linux/riscv64/tests/mpz/t-set_si.o.go
+    all_test.go:116: 155 internal/linux/riscv64/tests/mpz/t-set_str.o.go
+    all_test.go:116: 156 internal/linux/riscv64/tests/mpz/t-sizeinbase.o.go
+    all_test.go:116: 157 internal/linux/riscv64/tests/mpz/t-sqrtrem.o.go
+    all_test.go:116: 158 internal/linux/riscv64/tests/mpz/t-tdiv.o.go
+    all_test.go:116: 159 internal/linux/riscv64/tests/mpz/t-tdiv_ui.o.go
+    all_test.go:116: 160 internal/linux/riscv64/tests/rand/t-iset.o.go
+    all_test.go:116: 161 internal/linux/riscv64/tests/rand/t-lc2exp.o.go
+    all_test.go:116: 162 internal/linux/riscv64/tests/rand/t-mt.o.go
+    all_test.go:116: 163 internal/linux/riscv64/tests/rand/t-rand.o.go
+    all_test.go:116: 164 internal/linux/riscv64/tests/rand/t-urbui.o.go
+    all_test.go:116: 165 internal/linux/riscv64/tests/rand/t-urmui.o.go
+    all_test.go:116: 166 internal/linux/riscv64/tests/rand/t-urndmm.o.go
+    all_test.go:116: 167 internal/linux/riscv64/tests/t-bswap.o.go
+    all_test.go:116: 168 internal/linux/riscv64/tests/t-constants.o.go
+    all_test.go:116: 169 internal/linux/riscv64/tests/t-count_zeros.o.go
+    all_test.go:116: 170 internal/linux/riscv64/tests/t-hightomask.o.go
+    all_test.go:116: 171 internal/linux/riscv64/tests/t-modlinv.o.go
+    all_test.go:116: 172 internal/linux/riscv64/tests/t-parity.o.go
+    all_test.go:116: 173 internal/linux/riscv64/tests/t-popc.o.go
+    all_test.go:116: 174 internal/linux/riscv64/tests/t-sub.o.go
+    all_test.go:183: internal/linux/riscv64/tests/mpz/reuse.o.go:  FAIL signal: killed
+    all_test.go:183: internal/linux/riscv64/tests/mpz/t-powm_ui.o.go:  FAIL signal: killed
+    all_test.go:186: files=186 skip=11 compileok=175 buildok=175 fail=2 pass=173
+FAIL
+exit status 1
+FAIL	modernc.org/libgmp	2678.518s
+
+FAIL err=exit status 1

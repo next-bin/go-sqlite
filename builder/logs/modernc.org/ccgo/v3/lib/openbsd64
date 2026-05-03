@@ -1,0 +1,66 @@
+2023-08-09T01:06:44+02:00 commit 16af4ca7da6f0d94ef65cc6112684c03f7a7e771, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+CC=/home/jnml/bin/gcc
+gcc (GCC) 11.2.0
+--- FAIL: TestGCCExecute (563.35s)
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/20040409-1w.c: skipped: executing CC binary ./20040409-1w []: signal: abort trap (core dumped) (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/20040409-2w.c: skipped: executing CC binary ./20040409-2w []: signal: abort trap (core dumped) (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/20040409-3w.c: skipped: executing CC binary ./20040409-3w []: signal: abort trap (core dumped) (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/920612-1.c: skipped: executing CC binary ./920612-1 []: signal: abort trap (core dumped) (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/980608-1.c: skipped: /home/jnml/bin/gcc [-w -lm -O1] -o ./980608-1 980608-1.c: system C compiler: exit status 1
+        ld: error: undefined symbol: debug
+        >>> referenced by 980608-1.c
+        >>>               /tmp//ccpMDFr1.o:(main)
+        collect2: error: ld returned 1 exit status
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/bcp-1.c: skipped: /home/jnml/bin/gcc [-w -lm -O1] -o ./bcp-1 bcp-1.c: system C compiler: exit status 1
+        ld: error: undefined symbol: bad4
+        >>> referenced by bcp-1.c
+        >>>               /tmp//ccE97UXy.o:(bad_t2)
+        >>> did you mean: bad0
+        >>> defined in: /tmp//ccE97UXy.o
+        
+        ld: error: undefined symbol: bad2
+        >>> referenced by bcp-1.c
+        >>>               /tmp//ccE97UXy.o:(bad_t1)
+        >>> did you mean: bad0
+        >>> defined in: /tmp//ccE97UXy.o
+        
+        ld: error: undefined symbol: bad3
+        >>> referenced by bcp-1.c
+        >>>               /tmp//ccE97UXy.o:(bad_t1)
+        
+        ld: er
+
+...
+
+: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/widechar-2.c: widechar-2.c: # command-line-arguments
+        /usr/local/go/pkg/tool/openbsd_amd64/link: resize output file failed: truncate $WORK/b001/exe/a.out: no space left on device
+        
+        	FAIL: exit status 1
+    all_test.go:2299: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/zerolen-1.c: zerolen-1.c: # command-line-arguments
+        /usr/local/go/pkg/tool/openbsd_amd64/link: resize output file failed: truncate $WORK/b001/exe/a.out: no space left on device
+        
+        	FAIL: exit status 1
+    all_test.go:2329: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/zero-struct-1.c: zero-struct-1.c: # command-line-arguments
+        /usr/local/go/pkg/tool/openbsd_amd64/link: resize output file failed: truncate $WORK/b001/exe/a.out: no space left on device
+        
+        	FAIL: exit status 1
+    all_test.go:2329: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/zerolen-2.c: zerolen-2.c: # command-line-arguments
+        /usr/local/go/pkg/tool/openbsd_amd64/link: resize output file failed: truncate $WORK/b001/exe/a.out: no space left on device
+        
+        	FAIL: exit status 1
+    all_test.go:2332: files 1296, ok 1279, failed 7
+    all_test.go:2348: FAIL /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/wchar_t-1.c
+    all_test.go:2348: FAIL /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/widechar-1.c
+    all_test.go:2348: FAIL /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/widechar-2.c
+    all_test.go:2348: FAIL /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/widechar-3.c
+    all_test.go:2348: FAIL /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/zero-struct-1.c
+    all_test.go:2348: FAIL /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/zerolen-1.c
+    all_test.go:2348: FAIL /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/zerolen-2.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	840.033s

@@ -1,0 +1,10 @@
+go1.26.0 linux/amd64
+2026-02-28T07:41:50+01:00 commit 9a1672b9316868b96405a24fdef164229fb91032, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: kex_exchange_identification: read: Connection reset by peer
+Connection reset by 172.65.251.78 port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+FAIL err=AUTOTASKS: exit status 1

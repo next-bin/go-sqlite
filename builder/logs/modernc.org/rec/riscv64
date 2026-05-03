@@ -1,0 +1,9 @@
+2024-06-18T16:09:52Z commit c2a94ebe3a3a9325f0942788614f812d968b4aa8, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/regexp v1.7.3
+go: downloading modernc.org/gc/v3 v3.0.0-20230512134359-466b49aa80e0
+go: downloading github.com/dustin/go-humanize v1.0.1
+lib/rec.go:18:2: modernc.org/gc/v3@v3.0.0-20230512134359-466b49aa80e0: Get "https://proxy.golang.org/modernc.org/gc/v3/@v/v3.0.0-20230512134359-466b49aa80e0.zip": dial tcp 172.217.160.113:443: i/o timeout
+lib/lex.go:12:2: modernc.org/regexp@v1.7.3: Get "https://proxy.golang.org/modernc.org/regexp/@v/v1.7.3.zip": dial tcp 172.217.160.113:443: i/o timeout
+lib/match.go:14:2: modernc.org/regexp@v1.7.3: Get "https://proxy.golang.org/modernc.org/regexp/@v/v1.7.3.zip": dial tcp 172.217.160.113:443: i/o timeout
+
+FAIL err=exit status 1

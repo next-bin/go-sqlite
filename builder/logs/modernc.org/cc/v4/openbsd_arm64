@@ -1,0 +1,68 @@
+2022-08-24T00:49:20+02:00 commit c47a4b1f7491b7d1d01ba69884c482fca9c398ba, GOMAXPROCS 4, GOGC ""
+go: downloading github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58
+runtime: remapping stack memory 0x4038a00000 268435456 a=0x0 err=12
+fatal error: remapping stack memory failed
+
+runtime stack:
+runtime.throw({0x292b14?, 0x41634d418?})
+	/usr/local/go/src/runtime/panic.go:992 +0x50
+runtime.osStackRemap(0x41634d418, 0x7e1a0?)
+	/usr/local/go/src/runtime/os_openbsd.go:292 +0x114
+runtime.osStackAlloc(0x4ad5fc4c4e97e1dd?)
+	/usr/local/go/src/runtime/os_openbsd.go:273 +0x24
+runtime.stackalloc(0x10000000)
+	/usr/local/go/src/runtime/stack.go:418 +0x178
+runtime.copystack(0x40001bc4e0, 0x10000000)
+	/usr/local/go/src/runtime/stack.go:871 +0x11c
+runtime.newstack()
+	/usr/local/go/src/runtime/stack.go:1110 +0x37c
+runtime.morestack()
+	/usr/local/go/src/runtime/asm_arm64.s:314 +0x70
+
+goroutine 24203 [copystack]:
+modernc.org/cc/v4.(*cpp).macro(0x4000676000, {0x40005c28c0, 0x3a, 0x52fe, 0x0, 0x44, 0x44, 0x1}, {0x5a80310, 0x1})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/cpp.go:1158 +0x1734 fp=0x402135a830 sp=0x402135a830 pc=0x1a6644
+modernc.org/cc/v4.(*cpp).expand(0x4000676000, 0x1, 0x0, {0x58f76e8?, 0x4000a1cf48?}, 0x40007e1a20)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/cpp.go:823 +0x234 fp=0x402135ad00 sp=0x402135a830 pc=0x1a10e4
+modernc.org/cc/v4.(*tokenizer).token(0x40007e1a00)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/cpp.go:624 +0x50 fp=0x402135ad60 sp=0x402135ad00 pc=0x1a02e0
+modernc.org/cc/v4.(*cpp).rune(0x4000676000)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/cpp.go:763 +0x50 fp=0x402135adb0 sp=0x402135ad60 pc=0x1a0e10
+modernc.org/cc/v4.(*parser).next(0x40001d5880)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:177 +0xc0 fp=0x402135aee0 sp=0x402135adb0 pc=0x1baaf0
+modernc.org/cc/v4.(*parser).rune(0x40001d5880, 0x0)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:203 +0x30 fp=0x402135af20 sp=0x402135aee0 pc=0x1bb050
+modernc.org/cc/v4.(*parser).shift0(0x0?)
+	/home/jnml/src/modernc.org/bui
+
+...
+
+ude/modernc.org/cc/v4/parser.go:2503 +0x1b8
+modernc.org/cc/v4.(*parser).directDeclarator2.func1(0x400ed82080, 0x40117f12d8)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:2413 +0x298
+modernc.org/cc/v4.(*parser).directDeclarator2(0x400ed82080, 0x1bd200?, 0x4?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:2416 +0x1228
+modernc.org/cc/v4.(*parser).directDeclarator(0x400ed82080, 0x1?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:2396 +0x45c
+modernc.org/cc/v4.(*parser).declarator(0x400ed82080, 0x4011451900?, 0x4011451e00, 0x1)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:2363 +0x4c
+modernc.org/cc/v4.(*parser).externalDeclaration(0x400ed82080)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:427 +0x124
+modernc.org/cc/v4.(*parser).translationUnit(0x400ed92000?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:387 +0x54
+modernc.org/cc/v4.(*parser).parse(0x400ed82080)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/parser.go:351 +0xc0
+modernc.org/cc/v4.Parse(0x40001caca8?, {0x4011e737a0, 0x3, 0x3})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/cc.go:634 +0x6c
+modernc.org/cc/v4.Translate(0x400009f000?, {0x4011e737a0?, 0x40001cad08?, 0x50744?})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/cc.go:640 +0x24
+modernc.org/cc/v4.testTranslate.func1.1.2(0x40117f1e38, {0x4001764050, 0x44}, 0x4000384c60, 0x400037eb78)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/all_test.go:1439 +0x1fc
+modernc.org/cc/v4.testTranslate.func1.1()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/all_test.go:1450 +0x158
+modernc.org/cc/v4.(*parallel).exec.func1()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/all_test.go:257 +0x5c
+created by modernc.org/cc/v4.(*parallel).exec
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/all_test.go:251 +0x9c
+exit status 2
+FAIL	modernc.org/cc/v4	1255.633s

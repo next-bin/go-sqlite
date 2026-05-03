@@ -1,0 +1,19 @@
+2024-03-21T01:39:15+01:00 commit ec0df77803d9e60c983c38de5890f2fa14f77ec2, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/qbe/cc
+package modernc.org/qbe/cc (test)
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.21.2/errno
+FAIL	modernc.org/qbe/cc [setup failed]
+?   	modernc.org/qbe/ecc	[no test files]
+qbe: [/tmp/go-build3244258096/b088/qbe.test -test.paniconexit0 -test.v=true -test.failfast=true -test.timeout=24h0m0s -bestof 1 -gcc 7,8,9,10,11]
+: exec: "gcc-7": executable file not found in $PATH
+: exec: "gcc-8": executable file not found in $PATH
+: exec: "gcc-9": executable file not found in $PATH
+: exec: "gcc-10": executable file not found in $PATH
+: exec: "gcc-11": executable file not found in $PATH
+ok  	modernc.org/qbe	0.013s
+?   	modernc.org/qbe/qbec	[no test files]
+FAIL
+
+FAIL err=exit status 1

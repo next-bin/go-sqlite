@@ -1,0 +1,8 @@
+go1.24.1 linux/riscv64
+2025-05-09T16:04:45Z commit 380219080cd4e674fa8c2d2657b3b7f5aea42032, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/tk9.0 v0.70.1
+# modernc.org/visualmd
+/home/jnml/pkg/mod/modernc.org/htmlview@v0.2.0/preview.go:33:2: modernc.org/tk9.0@v0.70.1: Get "https://proxy.golang.org/modernc.org/tk9.0/@v/v0.70.1.zip": dial tcp 142.251.215.241:443: i/o timeout
+FAIL	modernc.org/visualmd [setup failed]
+
+FAIL err=exit status 1

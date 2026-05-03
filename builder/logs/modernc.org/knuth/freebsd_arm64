@@ -1,0 +1,55 @@
+go1.24.1 freebsd/arm64
+2025-04-15T13:17:58+02:00 commit 32b7ee7c630ce5bb1605296f213f30f362722a31, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuth	1.716s
+ok  	modernc.org/knuth/cmd/godvitype	0.295s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftodvi	0.176s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftopk	0.108s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftype	0.110s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomf	0.538s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomft	0.588s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopktype	0.247s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopltotf	0.765s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopooltype	0.149s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotangle	0.129s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotex	0.120s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotftopl	0.205s [no tests to run]
+ok  	modernc.org/knuth/cmd/govftovp	0.107s [no tests to run]
+ok  	modernc.org/knuth/cmd/govptovf	0.160s [no tests to run]
+ok  	modernc.org/knuth/cmd/goweave	0.149s [no tests to run]
+ok  	modernc.org/knuth/dvi	0.175s
+ok  	modernc.org/knuth/dvitype	1.198s
+ok  	modernc.org/knuth/font/afm	0.107s
+ok  	modernc.org/knuth/font/fixed	0.089s
+ok  	modernc.org/knuth/font/pkf	0.118s
+ok  	modernc.org/knuth/font/tfm	0.198s
+ok  	modernc.org/knuth/gftodvi	12.259s
+ok  	modernc.org/knuth/gftopk	3.330s
+ok  	modernc.org/knuth/gftype	30.207s
+?   	modernc.org/knuth/internal/iobuf	[no test files]
+?   	modernc.org/knuth/internal/tds	[no test files]
+ok  	modernc.org/knuth/kpath	0.121s
+ok  	modernc.org/knuth/mf	9.939s
+ok  	modernc.org/knuth/mf/internal/trap	3.070s
+ok  	modernc.org/knuth/mft	0.154s
+ok  	modernc.org/knuth/pktype	18.056s
+ok  	modernc.org/knuth/pltotf	1.708s
+ok  	modernc.org/knuth/pooltype	2.795s
+ok  	modernc.org/knuth/tangle	17.134s
+ok  	modernc.org/knuth/tex	15.746s
+ok  	modernc.org/knuth/tex/internal/trip	2.351s
+ok  	modernc.org/knuth/tftopl	0.732s
+ok  	modernc.org/knuth/vftovp	0.626s
+ok  	modernc.org/knuth/vptovf	1.659s
+ok  	modernc.org/knuth/weave	14.252s
+--- FAIL: TestPascalScannerIfdef (0.12s)
+    all_test.go:269: testdata/tex-ifdef.pas:3293:13: unexpected rune U+0040 '@'
+        testdata/tex-ifdef.pas:3293:14: unexpected rune U+0024 '$'
+        testdata/tex-ifdef.pas:20472:10: unexpected rune U+0040 '@'
+        testdata/tex-ifdef.pas:20472:11: unexpected rune U+0024 '$'
+        testdata/tex-ifdef.pas:21547:7: unexpected rune U+0040 '@'
+        testdata/tex-ifdef.pas:21547:8: unexpected rune U+0024 '$'
+FAIL
+FAIL	modernc.org/knuth/web	21.912s
+FAIL
+
+FAIL err=exit status 1

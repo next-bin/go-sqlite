@@ -1,0 +1,4 @@
+go1.26.0 linux/arm
+2026-03-28T13:43:43+01:00 commit e80a8970b87e2d132e23ea8251c33bdbed952a0b, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exit status 128

@@ -1,0 +1,9 @@
+2023-12-13T00:02:05+01:00 commit 0780931e07f903252b8b4c83be5941ccffe25792, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.07s)
+    all_test.go:34: out=package internal/linux/loong64/tests/runtests.go is not in std (/usr/local/go/src/internal/linux/loong64/tests/runtests.go)
+         FAIL err=exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libexpat	0.144s
+
+FAIL err=exit status 1

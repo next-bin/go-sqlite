@@ -1,0 +1,6 @@
+2024-04-08T11:40:15+02:00 commit 93d586550569997fbfbafd415887079042f441a9, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# github.com/ericlagergren/decimal [github.com/ericlagergren/decimal.test]
+./context.go:12:25: undefined: c.MaxScale
+FAIL	github.com/ericlagergren/decimal [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,8 @@
+2024-12-30T09:21:32+01:00 commit 2f26e3ea48160775c12aa541984b91f45c4c2f60, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/internal v1.1.1
+# modernc.org/db
+/home/jnml/pkg/mod/modernc.org/internal@v1.1.1/file/file.go:15:2: missing go.sum entry for module providing package github.com/edsrzf/mmap-go (imported by modernc.org/internal/file); to add:
+	go get modernc.org/internal/file@v1.1.1
+FAIL	modernc.org/db [setup failed]
+
+FAIL err=exit status 1

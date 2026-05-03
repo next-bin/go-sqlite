@@ -1,0 +1,45 @@
+2023-06-26T13:35:14+02:00 commit e697855efbdc64c0e22487c26352b3f672dfb448, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+fatal error: concurrent map writes
+
+goroutine 41 [running]:
+modernc.org/fsm.transitions.newEdge(...)
+	/home/jnml/pkg/mod/modernc.org/fsm@v1.2.0/nfa.go:537
+modernc.org/fsm.(*State).NewEdge(...)
+	/home/jnml/pkg/mod/modernc.org/fsm@v1.2.0/nfa.go:476
+modernc.org/regexp.(*Regexp).compileNFA(0x6d0d85a0, 0x6d046380)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/regexp/dfa.go:250 +0x906
+modernc.org/regexp.(*Regexp).compileDFA(0x6d0d85a0, 0x6d046380)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/regexp/dfa.go:778 +0x37
+modernc.org/regexp.compile({0x6d01e160, 0x1a}, 0xd4, 0x0)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/regexp/regexp.go:213 +0x2dc
+modernc.org/regexp.Compile(...)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/regexp/regexp.go:146
+modernc.org/regexp.tryCompile({0x6d01e160, 0x1a})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/regexp/exec_test.go:276 +0x88
+modernc.org/regexp.testRE2(0x6d1034a0, {0x81e3df5, 0x1f})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/regexp/exec_test.go:143 +0xd0a
+modernc.org/regexp.TestRE2Exhaustive(0x6d1034a0)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/regexp/exec2_test.go:25 +0x9e
+testing.tRunner(0x6d1034a0, 0x81eab84)
+	/usr/local/go/src/testing/testing.go:1595 +0x11a
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:1648 +0x3d7
+
+goroutine 1 [chan receive, 1 minutes]:
+testing.(*T).Run(0x6d102000, {0x81df205, 0x11}, 0x81eab84)
+	/usr/local/go/src/testing/testing.go:1649 +0x3f6
+testing.runTests.func1(0x6d102000)
+	/usr/local/go/src/testing/testing.go:2054 +0x45
+testing.tRunner(0x6d102000, 0x6d0d1dbc)
+	/usr/local/go/src/testing/testing.go:1595 +0x11a
+testing.runTests(0x6d091f90, {0x830b3c0, 0x30, 0x30}, {0xc11fcd4aa9fbeebc, 0x13a5245bb1a80, 0x830eba0})
+	/usr/local/go/src/testing/testing.go:2052 +0x39d
+testing.(*M).Run(0x6d0a11d0)
+	/usr/local/go/src/testing/testing.go:1925 +0x6b3
+modernc.org/regexp.TestMain(0x6d0a11d0)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/regexp/all_test.go:69 +0x69
+main.main()
+	_testmain.go:265 +0x16f
+FAIL	modernc.org/regexp	71.751s
+ok  	modernc.org/regexp/syntax	3.485s
+FAIL

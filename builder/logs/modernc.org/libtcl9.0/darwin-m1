@@ -1,0 +1,26 @@
+2024-07-04T16:31:12+02:00 commit a52b03333273f1c7dfeb3a3660172d10e416895b, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libtcl9.0 [modernc.org/libtcl9.0.test]
+./libtcl9_0_darwin_arm64.go:20:7: ABSIZE redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:20:7: other declaration of ABSIZE
+./libtcl9_0_darwin_arm64.go:21:7: ACCESSPERMS redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:21:7: other declaration of ACCESSPERMS
+./libtcl9_0_darwin_arm64.go:22:7: ACCESSX_MAX_DESCRIPTORS redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:22:7: other declaration of ACCESSX_MAX_DESCRIPTORS
+./libtcl9_0_darwin_arm64.go:23:7: ACCESSX_MAX_TABLESIZE redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:23:7: other declaration of ACCESSX_MAX_TABLESIZE
+./libtcl9_0_darwin_arm64.go:24:7: AF_APPLETALK redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:24:7: other declaration of AF_APPLETALK
+./libtcl9_0_darwin_arm64.go:25:7: AF_CCITT redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:25:7: other declaration of AF_CCITT
+./libtcl9_0_darwin_arm64.go:26:7: AF_CHAOS redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:26:7: other declaration of AF_CHAOS
+./libtcl9_0_darwin_arm64.go:27:7: AF_CNT redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:27:7: other declaration of AF_CNT
+./libtcl9_0_darwin_arm64.go:28:7: AF_COIP redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:28:7: other declaration of AF_COIP
+./libtcl9_0_darwin_arm64.go:29:7: AF_DATAKIT redeclared in this block
+	./libctcl_9_0_darwin_arm64.go:29:7: other declaration of AF_DATAKIT
+./libtcl9_0_darwin_arm64.go:29:7: too many errors
+FAIL	modernc.org/libtcl9.0 [build failed]
+
+FAIL err=exit status 1

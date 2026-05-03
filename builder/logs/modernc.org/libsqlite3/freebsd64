@@ -1,0 +1,24 @@
+go1.26.0 freebsd/amd64
+2026-03-14T02:19:11+01:00 commit d5c4300541f479eb48cd0da9f55ae2c1b0893540, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode WAL]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode PERSIST]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 120000 --journalmode TRUNCATE]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 120000 --journalmode DELETE]
+tmpDir=/tmp/TestTclTest900000507/001
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/TestTclTest900000507/001/testfixture" "-tags=" "internal/testfixture/ccgo_freebsd_amd64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+# command-line-arguments
+internal/testfixture/ccgo_freebsd_amd64.go:94350:7: undefined: ___inline_isnan
+--- FAIL: TestTclTest (1.46s)
+    all_test.go:304: # command-line-arguments
+        internal/testfixture/ccgo_freebsd_amd64.go:94350:7: undefined: ___inline_isnan
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	347.098s
+
+FAIL err=exit status 1

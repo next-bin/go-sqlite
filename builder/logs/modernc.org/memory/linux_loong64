@@ -1,0 +1,6 @@
+2023-05-18T19:38:46+02:00 commit 93bf078bc8d6adb7f31db2b81355b62eb168b17f, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/memory [modernc.org/memory.test]
+./memory.go:234:10: undefined: rawmem
+./memory.go:384:9: undefined: rawmem
+./mmap_unix.go:41:12: undefined: mmapSyscall
+FAIL	modernc.org/memory [build failed]

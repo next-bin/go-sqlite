@@ -1,0 +1,33 @@
+2024-09-12T12:28:17+02:00 commit ae048fa880aeaaeec860db992faab272bd1c7b92, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestEval (0.08s)
+    all_test.go:25: failed to initialize the Tcl interpreter
+--- FAIL: Example (0.00s)
+panic: runtime error: invalid memory address or nil pointer dereference [recovered]
+	panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x0 pc=0x453e80]
+
+goroutine 1 [running]:
+testing.(*InternalExample).processRunResult(0x4000027ba8, {0x0, 0x0}, 0x0?, 0x0, {0x47f160, 0x8dd060})
+	/usr/local/go/src/testing/example.go:91 +0x4b0
+testing.runExample.func2()
+	/usr/local/go/src/testing/run_example.go:59 +0xfc
+panic({0x47f160?, 0x8dd060?})
+	/usr/local/go/src/runtime/panic.go:785 +0x124
+modernc.org/tcl9%2e0.(*Interp).Eval(0x0, {0x4b17fb?, 0x15}, 0x20000)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/tcl9.0/tcl.go:177 +0x60
+modernc.org/tcl9%2e0.Example()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/tcl9.0/all_test.go:48 +0xd0
+testing.runExample({{0x4ad9b5, 0x7}, 0x5ed570, {0x4af302, 0xd}, 0x0})
+	/usr/local/go/src/testing/run_example.go:63 +0x244
+testing.runExamples(0x6460d0?, {0x8e24c0, 0x2, 0x1?})
+	/usr/local/go/src/testing/example.go:40 +0x104
+testing.(*M).Run(0x4000112500)
+	/usr/local/go/src/testing/testing.go:2036 +0x638
+modernc.org/tcl9%2e0.TestMain(0x4000112500)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/tcl9.0/all_test.go:19 +0x6c
+main.main()
+	_testmain.go:51 +0x98
+exit status 2
+FAIL	modernc.org/tcl9.0	0.085s
+
+FAIL err=exit status 1

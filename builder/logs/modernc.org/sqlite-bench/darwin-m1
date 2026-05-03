@@ -1,0 +1,7 @@
+go1.26.2 darwin/arm64
+2026-04-19T03:00:05+02:00 commit 96029bd6054563f0fc45a6b7b494785d5a70f613, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+crypto/internal/sysrand: /usr/local/go/src/crypto/internal/fips140/drbg/rand.go:14:2: cannot find package
+crypto/internal/boring/sig: /usr/local/go/src/crypto/internal/boring/notboring.go:12:2: cannot find package
+FAIL	modernc.org/sqlite-bench [build failed]
+
+FAIL err=exit status 1

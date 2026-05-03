@@ -1,0 +1,15 @@
+go1.26.1 linux/amd64
+2026-03-20T15:08:34+01:00 commit f02096fd96c1504663cd9038c8e3f7315208aa1a, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libmpc/mpc-1.3.1"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmpc
+archivePath mpc-1.3.1.tar.gz
+extractedArchivePath mpc-1.3.1
+tempDir /tmp/libmpc
+libRoot /tmp/libmpc/mpc-1.3.1
+makeRoot /tmp/libmpc/mpc-1.3.1
+execute /bin/tar ["xf" "mpc-1.3.1.tar.gz" "-C" "/tmp/libmpc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmpc
+execute /bin/sh ["-c" "cp /tmp/libmpc/mpc-1.3.1/COPYING* ."] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libmpc
+stat ../libgmp/include/linux/amd64: no such file or directory
+exit status 1
+libmpc.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

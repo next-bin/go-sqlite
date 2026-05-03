@@ -1,0 +1,2 @@
+2022-10-02T00:38:22+02:00 commit dd2784585db76b491ed4ddc298b52becd824b720, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "2GiB", CC ""
+verifying golang.org/x/exp@v0.0.0-20181106170214-d68db9428509: zip: not a valid zip file

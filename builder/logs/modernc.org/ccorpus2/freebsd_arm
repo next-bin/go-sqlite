@@ -1,0 +1,4 @@
+2022-09-05T17:10:36+02:00 commit 003aa452f7424b96baad6d598aa42a34f107b1f7, GOMAXPROCS 4, GOGC ""
+# modernc.org/ccorpus2.test
+/usr/local/go118/pkg/tool/freebsd_arm/link: resize output file failed: truncate $WORK/b001/ccorpus2.test: no space left on device
+FAIL	modernc.org/ccorpus2 [build failed]

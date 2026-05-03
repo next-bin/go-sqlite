@@ -1,0 +1,6 @@
+2024-08-11T17:07:28+02:00 commit d72a657c4d0df3e5972687c451c86d0821b10534, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libtcl8.6 v0.15.0
+tcl.go:20:2: modernc.org/libtcl8.6@v0.15.0: Get "https://proxy.golang.org/modernc.org/libtcl8.6/@v/v0.15.0.zip": net/http: TLS handshake timeout
+tcl.go:21:2: modernc.org/libtcl8.6@v0.15.0: Get "https://proxy.golang.org/modernc.org/libtcl8.6/@v/v0.15.0.zip": net/http: TLS handshake timeout
+
+FAIL err=exit status 1

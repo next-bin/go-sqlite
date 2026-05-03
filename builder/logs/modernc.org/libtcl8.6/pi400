@@ -1,0 +1,109 @@
+go1.26.2 windows/arm64
+2026-04-20T21:11:32+02:00 commit 87f0e6e7b737adedca3d347f1ab3e042059c9a9d, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+Tests running in interp:  C:/Users/jnml/AppData/Local/Temp/Test271062572/001/tcltest.exe
+Tests located in:  C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/internal/tests
+Tests running in:  C:/Users/jnml/AppData/Local/Temp/Test271062572/001
+Temporary files stored in C:/Users/jnml/AppData/Local/Temp/Test271062572/001
+Test files run in separate interpreters
+Skipping tests that match:  Tcl_Main-5.10 chan-16.* chan-io-28.* chan-io-29.* chan-io-39.* cmdIL-5.7 clock-38.2 clock-40.1 clock-42.1 clock-49.2 env-2.1 env-2.2 env-2.3 env-2.4 env-2.5 env-3.1 env-4.1 env-4.3 env-4.4 env-4.5 env-5.1 env-5.3 env-5.5 env-9.0 event-11.* exit-1.1 fCmd-10.3.1 fCmd-10.5 fCmd-10.6 fCmd-10.8.1 fCmd-16.6 fCmd-6.17 fCmd-9.14 fCmd-9.14.3 filename-10.7 filename-11.12 filesystem-1.38 filesystem-1.39 interp-34.11 io-29.* io-39.* io-40.17 io-46.1 io-50.* iocmd-8.* iortrans-3.1 package-15.1 package-15.2 package-15.3 package-15.4 safe-8.5 safe-8.6 safe-8.7 safe-stock-7.4 tcltest-21.11 tcltest-21.5 tcltest-5.* tcltest-8.4 winFCmd-1.11 winFCmd-1.20 winFCmd-1.23 winFCmd-1.27 winFCmd-1.3 winFCmd-1.38 winFCmd-1.4 winFCmd-6.1 winFCmd-6.13 winFCmd-6.9 winFCmd-7.11 winFCmd-7.19 winFCmd-8.2 winFCmd-9.3 winNotify-3.* winTime-1.1 winTime-1.2 winTime-2.1 winpipe-4.2 winpipe-4.3 winpipe-4.4 winpipe-4.5 zlib-10.* zlib-8.* zlib-9.*
+Running tests that match:  *
+Skipping test files that match:  http.test http11.test httpold.test socket.test chanio.test io.test zlib.test
+Only running test files that match:  *.test
+Tests began at Mon Apr 20 21:06:48 +0200 2026
+aaa_exit.test
+
+
+==== exit-1.2 full-finalized exit FAILED
+---- Result was:
+Full-finalized exit hangs !!!
+---- Result should have been (exact matching):
+OK
+==== exit-1.2 FAILED
+
+append.test
+appendComp.test
+apply.test
+assemble.test
+assocd.test
+async.test
+autoMkindex.test
+basic.test
+binary.test
+case.test
+chan.test
+clock.test
+cmdAH.test
+cmdIL.test
+cmdInfo.test
+cmdMZ.test
+compExpr-old.test
+compExpr.test
+compile.test
+concat.test
+config.test
+coroutine.tes
+
+...
+
+fe-8.7 safe-stock-7.4 tcltest-21.11 tcltest-21.5 tcltest-5.* tcltest-8.4 winFCmd-1.11 winFCmd-1.20 winFCmd-1.23 winFCmd-1.27 winFCmd-1.3 winFCmd-1.38 winFCmd-1.4 winFCmd-6.1 winFCmd-6.13 winFCmd-6.9 winFCmd-7.11 winFCmd-7.19 winFCmd-8.2 winFCmd-9.3 winNotify-3.* winTime-1.1 winTime-1.2 winTime-2.1 winpipe-4.2 winpipe-4.3 winpipe-4.4 winpipe-4.5 zlib-10.* zlib-8.* zlib-9.*" "-notfile" "http.test http11.test httpold.test socket.test chanio.test io.test zlib.test"]
+    all_test.go:1004: ==== exit-1.2 full-finalized exit FAILED
+    all_test.go:1004: ==== exit-1.2 FAILED
+    all_test.go:1006: 
+        all.tcl:	Total	32595	Passed	29292	Skipped	3302	Failed	1
+        Sourced 144 Test Files.
+        Files with failing tests: aaa_exit.test
+        Number of tests skipped for each constraint:
+        	9	!ieeeFloatingPoint
+        	76	bigEndian
+        	5	bug-3057639
+        	23	cat32
+        	9	cdrom
+        	50	dde
+        	1	dontCopyLinks
+        	51	emptyTest
+        	2	exdev
+        	58	fullutf
+        	2	hasIsoLocale
+        	1	interactive
+        	1	knownBadTest
+        	39	knownBug
+        	2	loaddll
+        	100	localeRegexp
+        	11	longIs64bit
+        	14	macosxFileAttr
+        	85	memory
+        	13	nonPortable
+        	5	notNetworkFilesystem
+        	1	notValgrind
+        	1	pairsTo4bytes
+        	19	pkga.dllRequired
+        	20	pkgua.dllRequired
+        	2	pre388
+        	126	reg
+        	1996	serverNeeded
+        	2	sharedCdrive
+        	1	slowTest
+        	1	symbolicLinkFile
+        	2	tempNotWin
+        	1	testCPUID
+        	1	testexprparser && !ieeeFloatingPoint
+        	22	testfilehandler
+        	2	testfilewait
+        	7	testfindexecutable
+        	1	testfork
+        	1	testgetdefenc
+        	183	thread
+        	3	threaded
+        	163	unix
+        	7	unixExecs
+        	17	utf16
+        	21	utf32
+        	6	win2000orXP
+        	3	winOlderThan2000
+        	6	xdev
+        
+FAIL
+exit status 1
+FAIL	modernc.org/libtcl8.6	339.450s
+
+FAIL err=exit status 1

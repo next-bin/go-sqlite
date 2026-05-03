@@ -1,0 +1,9 @@
+2024-04-03T17:41:45+02:00 commit dda74182ee99cca437f9abb436d906192e090c70, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/mathutil v1.6.0
+go: downloading github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+memory.test:/tmp/go-build4255855076/b001/memory.test: undefined symbol 'syscall'
+ld.so: memory.test: lazy binding failed!
+signal: killed
+FAIL	modernc.org/memory	0.004s
+
+FAIL err=exit status 1

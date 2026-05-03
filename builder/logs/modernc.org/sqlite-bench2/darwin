@@ -1,0 +1,9 @@
+2025-03-27T10:53:50+01:00 commit ae09024ca9594041ea70abb0c5dea578b6cde7d1, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: kex_exchange_identification: read: Operation timed out
+banner exchange: Connection to 172.65.251.78 port 22: Operation timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+FAIL err=AUTOTASKS: exit status 1

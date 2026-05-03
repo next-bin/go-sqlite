@@ -1,0 +1,8 @@
+2024-01-14T14:48:37+08:00 commit f24137013fa2f15c71f544b27ef99e1a91cb17ae, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.00s)
+    all_test.go:69: lstat internal/linux/mips64le/tests: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libmpfr	0.019s
+
+FAIL err=exit status 1

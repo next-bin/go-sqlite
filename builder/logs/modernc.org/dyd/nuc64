@@ -1,0 +1,6 @@
+go1.26.2 linux/amd64
+2026-04-10T03:54:53+02:00 commit 90aa2135d4c6451cbd327c061e3c0aa73ca8fb6c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: go: downloading modernc.org/sqlite v1.48.2
+go: modernc.org/sqlite@v1.48.2: verifying module: modernc.org/sqlite@v1.48.2: Get "https://sum.golang.org/lookup/modernc.org/sqlite@v1.48.2": net/http: TLS handshake timeout
+
+FAIL err=AUTOTASKS: exit status 1

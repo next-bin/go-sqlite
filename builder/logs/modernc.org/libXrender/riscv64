@@ -1,0 +1,84 @@
+go1.25.4 linux/riscv64
+2025-11-29T00:40:35Z commit 721db152f2a7abf0536529f4e823fac952309b56, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libXrender/libXrender-0.9.10"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/internal/linux/riscv64 -name *linux_riscv64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+archivePath libXrender-0.9.10.tar.gz
+extractedArchivePath libXrender-0.9.10
+tempDir /tmp/libXrender
+libRoot /tmp/libXrender/libXrender-0.9.10
+makeRoot /tmp/libXrender/libXrender-0.9.10
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/internal/linux/riscv64
+execute /usr/bin/tar ["xf" "libXrender-0.9.10.tar.gz" "-C" "/tmp/libXrender"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+execute /usr/bin/sh ["-c" "go mod init example.com/libxrender ; go get modernc.org/libc@latest modernc.org/libX11@latest"] in /tmp/libXrender/libXrender-0.9.10
+go: creating new go.mod: module example.com/libxrender
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
+go: added golang.org/x/sys v0.37.0
+go: added modernc.org/libX11 v0.11.24
+go: added modernc.org/libXau v0.9.19
+go: added modernc.org/libXdmcp v0.12.20
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.67.1
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/libxcb v0.12.5
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -w' ./configure --disable-shared "] in /tmp/libXrender/libXrender-0.9.10
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir
+
+...
+
+ng if gcc supports -Wunused... yes
+checking if gcc supports -Wuninitialized... yes
+checking if gcc supports -Wshadow... yes
+checking if gcc supports -Wmissing-noreturn... yes
+checking if gcc supports -Wmissing-format-attribute... yes
+checking if gcc supports -Wredundant-decls... yes
+checking if gcc supports -Wlogical-op... yes
+checking if gcc supports -Werror=implicit... yes
+checking if gcc supports -Werror=nonnull... yes
+checking if gcc supports -Werror=init-self... yes
+checking if gcc supports -Werror=main... yes
+checking if gcc supports -Werror=missing-braces... yes
+checking if gcc supports -Werror=sequence-point... yes
+checking if gcc supports -Werror=return-type... yes
+checking if gcc supports -Werror=trigraphs... yes
+checking if gcc supports -Werror=array-bounds... yes
+checking if gcc supports -Werror=write-strings... yes
+checking if gcc supports -Werror=address... yes
+checking if gcc supports -Werror=int-to-pointer-cast... yes
+checking if gcc supports -Werror=pointer-to-int-cast... yes
+checking if gcc supports -pedantic... yes
+checking if gcc supports -Werror... yes
+checking if gcc supports -Werror=attributes... yes
+Package xorg-macros was not found in the pkg-config search path.
+Perhaps you should add the directory containing `xorg-macros.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'xorg-macros', required by 'virtual:world', not found
+checking whether make supports nested variables... (cached) yes
+checking whether malloc(0) returns NULL... yes
+checking for RENDER... no
+configure: error: Package requirements (x11 >= 1.6 renderproto >= 0.9) were not met:
+
+Package 'x11', required by 'virtual:world', not found
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables RENDER_CFLAGS
+and RENDER_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+err: exit status 1
+exit status 1
+libxrender.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

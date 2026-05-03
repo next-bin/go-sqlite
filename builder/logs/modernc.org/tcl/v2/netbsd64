@@ -1,0 +1,2 @@
+2023-09-03T01:02:56+02:00 commit 0077910740ad733ba23691d3a9100431cdd97c59, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package modernc.org/tcl/v2: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/tcl/v2

@@ -1,0 +1,10 @@
+2025-03-24T03:20:22+01:00 commit 4b9fb3b6860005a7464f496d057adf0cc90f72f5, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+SYSTEM_WGETRC = c:/progra~1/wget/etc/wgetrc
+syswgetrc = C:\Program Files\GnuWin32/etc/wgetrc
+--2025-03-24 03:20:22--  https://github.com/libsndfile/libsamplerate/archive/20819b6d31907b402d33c30e4a0295ce439c06e6.zip
+Auflösen des Hostnamen »github.com«.... 140.82.121.4
+Verbindungsaufbau zu github.com|140.82.121.4|:443... verbunden.
+OpenSSL: error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version
+Es ist nicht möglich, eine SSL-Verbindung herzustellen.
+
+FAIL err=exit status 1

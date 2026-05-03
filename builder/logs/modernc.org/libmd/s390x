@@ -1,0 +1,4 @@
+go1.24.3 linux/s390x
+2025-06-02T20:15:01+02:00 commit 680efd80fa76097de530fd43fb72796de86c8d1e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: signal: killed

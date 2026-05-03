@@ -1,0 +1,4 @@
+go1.24.2 linux/arm64
+2025-05-07T00:02:33+02:00 commit dd56a2a2b539bf43b29a7bd8df77de25ea809def, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: signal: killed

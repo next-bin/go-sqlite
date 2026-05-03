@@ -1,0 +1,16 @@
+2024-07-28T07:09:41+02:00 commit f2744e90f4a1088f1f914fe12ec21d15ac572cdd, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libtk9.0 [modernc.org/libtk9.0.test]
+./ccgo_darwin_arm64.go:13334:4: undefined: _XFillPolygon
+./ccgo_darwin_arm64.go:13405:3: undefined: _XFillRectangle
+./ccgo_darwin_arm64.go:13436:2: undefined: _XFillPolygon
+./ccgo_darwin_arm64.go:14405:10: undefined: _XInternAtom
+./ccgo_darwin_arm64.go:14454:8: undefined: _XGetAtomName
+./ccgo_darwin_arm64.go:14464:4: undefined: _XFree
+./ccgo_darwin_arm64.go:20325:5: undefined: _XForceScreenSaver
+./ccgo_darwin_arm64.go:20455:4: undefined: _XForceScreenSaver
+./ccgo_darwin_arm64.go:21146:9: undefined: _XStringToKeysym
+./ccgo_darwin_arm64.go:21193:9: undefined: _XKeysymToString
+./ccgo_darwin_arm64.go:21193:9: too many errors
+FAIL	modernc.org/libtk9.0 [build failed]
+
+FAIL err=exit status 1

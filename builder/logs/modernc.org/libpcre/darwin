@@ -1,0 +1,6 @@
+2024-03-14T20:30:37+01:00 commit f5005cb9cedfefa8bd120b70141c111296b8087d, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libpcre [modernc.org/libpcre.test]
+compile: writing output: write $WORK/b090/_pkg_.a: no space left on device
+FAIL	modernc.org/libpcre [build failed]
+
+FAIL err=exit status 1

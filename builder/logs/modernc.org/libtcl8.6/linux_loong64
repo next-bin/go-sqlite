@@ -1,0 +1,17 @@
+2023-10-19T00:07:03+02:00 commit 13a7b5ebaf5db0aa31c4fbc315c7e9635a64fb8b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc/v2 v2.1.21
+# modernc.org/libc/v2
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:25:11: undefined: m_ENOENT
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:140:20: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:148:20: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:158:5: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:212:23: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:259:24: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:539:48: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:543:52: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:567:56: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:574:54: undefined: Tsize_t
+/home/jnml/go/pkg/mod/modernc.org/libc/v2@v2.1.21/libc_linux_loong64.go:574:54: too many errors
+FAIL	modernc.org/libtcl8.6 [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,63 @@
+go1.26.0 linux/s390x
+2026-03-08T05:16:29+01:00 commit dfb5042e96169d4513cca083535d10309ecb4335, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/bin/sh ["-c" "rm -rf /tmp/TestLibc597455875/001/*"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc
+execute /usr/local/go/bin/go ["mod" "init" "example.com/libc_test"] in /tmp/TestLibc597455875/001/libc-test
+go: creating new go.mod: module example.com/libc_test
+go: to add module requirements and sums:
+	go mod tidy
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@latest"] in /tmp/TestLibc597455875/001/libc-test
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.40.0
+go: added modernc.org/libc v1.69.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/local/go/bin/go ["work" "init"] in /tmp/TestLibc597455875/001/libc-test
+execute /usr/local/go/bin/go ["work" "use" "." "/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libc"] in /tmp/TestLibc597455875/001/libc-test
+make: Entering directory '/tmp/TestLibc597455875/001/libc-test'
+cp config.mak.def config.mak
+cc -E - <src/common/options.h.in | awk ' \
+	/optiongroups_unistd_end/ {s=1; next} \
+	!s || !NF || /^#/ {next} \
+	!a {a=$1; if(NF==1)next} \
+	{print "#define "a" "$NF; a=""}' >src/common/options.h.tmp
+cc -Isrc/common -Isrc/common -pipe -std=c99 -D_POSIX_C_SOURCE=200809L -Wall -Wno-unused-function -Wno-missing-braces -Wno-unused -Wno-overflow -Wno-unknown-pragmas -fno-builtin -frounding-math -Werror=implicit-function-declaration -Werror=implicit-int -Werror=pointer-sign -Werror=pointer-arith -g -D_FILE_OFFSET_BITS=64  -c -o src/common/fdfill.o src/common/fdfill.c 2>src/common/fdfill.o.err || echo BUILDERROR src/common/fdfill.o; cat src/common/fdfill.o.err
+cc -Isrc/common -Isrc/common -pipe -std=c99 -D_POSIX_C_SOURCE=200809L -Wall -Wno-unused-function -Wno-missing-braces -Wno-unused -Wno-overflow -Wno-unknown-pragmas -fno-builtin -frounding-math -Werror=impli
+
+...
+
+imit-open-files-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/rlimit-open-files.exe.go
+    all_musl_test.go:2612: PASS src/regression/scanf-bytes-consumed-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/scanf-bytes-consumed.exe.go
+    all_musl_test.go:2612: PASS src/regression/scanf-match-literal-eof-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/scanf-match-literal-eof.exe.go
+    all_musl_test.go:2612: PASS src/regression/scanf-nullbyte-char-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/scanf-nullbyte-char.exe.go
+    all_musl_test.go:2612: PASS src/regression/setvbuf-unget-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/setvbuf-unget.exe.go
+    all_musl_test.go:2612: PASS src/regression/sigprocmask-internal-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/sigprocmask-internal.exe.go
+    all_musl_test.go:2612: PASS src/regression/sscanf-eof-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/sscanf-eof.exe.go
+    all_musl_test.go:2612: PASS src/regression/statvfs-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/statvfs.exe.go
+    all_musl_test.go:2612: PASS src/regression/strverscmp-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/strverscmp.exe.go
+    all_musl_test.go:2612: PASS src/regression/syscall-sign-extend-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/syscall-sign-extend.exe.go
+    all_musl_test.go:2612: PASS src/regression/uselocale-0-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/uselocale-0.exe.go
+    all_musl_test.go:2612: PASS src/regression/wcsncpy-read-overflow-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/wcsncpy-read-overflow.exe.go
+    all_musl_test.go:2612: PASS src/regression/wcsstr-false-negative-static.exe.go
+    all_musl_test.go:2612: PASS src/regression/wcsstr-false-negative.exe.go
+    all_musl_test.go:2614: files=477 buildFails=0 skip=274 execFails=1 pass=202
+FAIL
+exit status 1
+FAIL	modernc.org/libc	5530.978s
+
+FAIL err=exit status 1

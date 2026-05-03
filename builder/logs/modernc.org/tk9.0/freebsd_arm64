@@ -1,0 +1,16 @@
+go1.26.0 freebsd/arm64
+2026-04-08T15:35:23+02:00 commit d061e59c31a39a22dff0848592b9db529d423ab5, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestExamples (5232.69s)
+    all_test.go:166: DISPLAY=:6060 XVFB_DISPLAY=:6060 display=:6060
+    all_test.go:254: FAIL "_examples/busy.go" err=exit status 1 out=# command-line-arguments
+        _examples/busy.go:15:12: cannot use Watch (constant "watch" of string type tk9_0.cursor) as tk9_0.Opt value in argument to b.Busy: tk9_0.cursor does not implement tk9_0.Opt (missing method optionStringV)
+    all_test.go:236: SKIP _examples/demo.go (30/112)
+    all_test.go:236: SKIP _examples/fontmetrics.go (40/112)
+    all_test.go:236: SKIP _examples/insert_ml.go (46/112)
+    all_test.go:236: SKIP _examples/ring.go (88/112)
+    all_test.go:236: SKIP _examples/themedetector.go (97/112)
+FAIL
+exit status 1
+FAIL	modernc.org/tk9.0	5237.667s
+
+FAIL err=exit status 1

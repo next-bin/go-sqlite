@@ -1,0 +1,30 @@
+2022-10-29T01:11:10+02:00 commit 0aaf662a811b798cffff3c2a95530a5d5beaf8a1, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/exp v0.0.0-20221026153819-32f3d567a233
+--- FAIL: TestPEG (34.61s)
+    all_test.go:177: /usr/local/go/src/cmd/api/goapi.go:301:6: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/cgo/main.go:472:6: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/cgo/zdefaultcc.go:9:2: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/compile/internal/base/timings.go:99:7: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/compile/internal/dwarfgen/dwarf.go:217:12: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/compile/internal/escape/graph.go:241:6: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/compile/internal/inline/inl.go:1154:12: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/compile/internal/ssa/likelyadjust.go:271:3: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/compile/internal/ssa/regalloc.go:1663:3: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/src/cmd/compile/internal/
+
+...
+
+all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/goto.go:46:1: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/initempty.go:35:1: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/ken/convert.go:431:2: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/ken/rob2.go:59:4: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/stress/maps.go:99:3: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/typeparam/issue48716.dir/main.go:32:45: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/typeparam/mapsimp.dir/main.go:59:23: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/typeparam/mutualimp.dir/b.go:10:15: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+        /usr/local/go/test/typeparam/orderedmapsimp.dir/main.go:14:25: syntax error (asm_amd64.s:1594:goexit: all_test.go:223:1: etc.go:588:parse) (asm_amd64.s:1594:goexit: asm_amd64.s:1594:goexit: all_test.go:229:1)
+    all_test.go:179: TOTAL files 8,901, skip 145, ok 8,608, fail 148
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v3/internal/ebnf	34.872s

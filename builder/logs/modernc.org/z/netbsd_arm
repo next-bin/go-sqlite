@@ -1,0 +1,18 @@
+2024-01-20T01:37:20Z commit 031c2c3b9f17ae274d93b5ed06624f69695c7ff3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-tags" "non.existent.tag" "-o" "/tmp/go-test-zlib-2741459244/minigzip" "/home/jnml/src/modernc.org/builder/.exclude/modernc.org/z/internal/minigzip_netbsd_arm.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/z
+stat /home/jnml/src/modernc.org/builder/.exclude/modernc.org/z/internal/minigzip_netbsd_arm.go: directory not found
+execute /usr/local/go/bin/go ["build" "-tags" "non.existent.tag" "-o" "/tmp/go-test-zlib-2741459244/example" "/home/jnml/src/modernc.org/builder/.exclude/modernc.org/z/internal/example_netbsd_arm.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/z
+stat /home/jnml/src/modernc.org/builder/.exclude/modernc.org/z/internal/example_netbsd_arm.go: directory not found
+execute /bin/sh ["-c" "echo hello world | ./minigzip | ./minigzip -d && ./example tmp"] in /tmp/go-test-zlib-2741459244
+sh: ./minigzip: not found
+sh: ./minigzip: not found
+--- FAIL: Test (0.40s)
+    all_test.go:125: sh: ./minigzip: not found
+        sh: ./minigzip: not found
+        
+        FAIL: exit status 127
+FAIL
+exit status 1
+FAIL	modernc.org/z	1.066s
+
+FAIL err=exit status 1

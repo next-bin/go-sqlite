@@ -1,0 +1,9 @@
+go1.24.1 linux/riscv64
+2025-06-01T13:32:09Z commit 6cf1d4c13b42e69c02f07e98a446f70d9aa08e2c, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestReallocBigMap (65.27s)
+    all_test.go:1298: corrupted data
+FAIL
+exit status 1
+FAIL	modernc.org/file	2330.930s
+
+FAIL err=exit status 1

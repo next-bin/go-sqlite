@@ -1,0 +1,6 @@
+2025-03-24T00:49:22+01:00 commit 4b9fb3b6860005a7464f496d057adf0cc90f72f5, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+cannot open archive: open c81375f070f3c6764969a738eacded64f53a076e.zip: no such file or directory
+exit status 1
+libsamplerate.go:5: running "go": exit status 1
+
+FAIL err=exit status 1

@@ -1,0 +1,8 @@
+2024-05-09T17:59:49+02:00 commit 03079e953a18b2536688004296dfebe806b3d165, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.01s)
+    all_test.go:67: lstat internal/darwin/amd64/tests: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libgmp	1.242s
+
+FAIL err=exit status 1

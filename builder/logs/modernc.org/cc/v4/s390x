@@ -1,0 +1,55 @@
+2023-12-20T22:43:23+01:00 commit 08cf27b1dedd79eab32fb52c093579e6ac9a8528, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute go ["build" "-o" "/tmp/TestMake763893000/001/cc" "fakecc.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake763893000/001/cc" "/tmp/TestMake763893000/001/gcc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake763893000/001/cc" "/tmp/TestMake763893000/001/clang"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute ./configure ["--disable-cpp"] in /tmp/TestMakepcre842760177/001/pcre
+execute make ["-j2"] in /tmp/TestMakepcre842760177/001/pcre
+execute ./configure [] in /tmp/TestMakepcre22203853232/001/pcre2
+execute make ["-j2"] in /tmp/TestMakepcre22203853232/001/pcre2
+execute ./configure [] in /tmp/TestMakezlib4292505225/001/zlib
+execute make ["-j2"] in /tmp/TestMakezlib4292505225/001/zlib
+execute ./configure ["--enable-corefoundation=no"] in /tmp/TestMaketclunix2845161156/001/tcl/unix
+execute make ["-j2"] in /tmp/TestMaketclunix2845161156/001/tcl/unix
+execute ./configure [] in /tmp/TestMakegmp-6.2.13393077358/001/gmp-6.2.1
+execute ./configure [] in /tmp/TestMakempfr-4.1.094250727/001/mpfr-4.1.0
+execute ./configure [] in /tmp/TestMakempc-1.2.13523003067/001/mpc-1.2.1
+execute ./configure [] in /tmp/TestMakehdf5-1.12.12545154187/001/hdf5-1.12.1
+execute make ["-j2"] in /tmp/TestMakehdf5-1.12.12545154187/001/hdf5-1.12.1
+execute ./configure [] in /tmp/TestMakemusl-1.2.43052882563/001/musl-1.2.4
+execute make ["-j2"] in /tmp/TestMakemusl-1.2.43052882563/001/musl-1.2.4
+execute make ["-j2"] in /tmp/TestMakegit-2.35.11022676713/001/git-2.35.1
+execute make ["-j2"] in /tmp/TestMakequickjs-master3208436918/001/quickjs-master
+execute make ["-j2"] in /tmp/TestMakeredis-6.2.6353747424/001/redis-6.2.6
+--- FAIL: TestMake (21582.09s)
+    --- FAIL: TestMake/redis-6.2.6 (2347.93s)
+        all_test.go:1941: FAIL /tmp/TestMakeredis-6.2.6353747424/001/redis-6.2.6/deps/jemalloc [-std=gnu99 -Wall -pipe -g3 -O3 -funroll-loops -c -D_GNU_SOURCE -D_REENTRANT -Iinclude -Iinclude -DJEMALLOC_NO_PRIVATE_NAMESPACE -o src/sz.sym.o src/sz
+
+...
+
+n, pgs, lg_delta_lookup) \
+            	S2B_##lg_delta_lookup(index)
+            	SIZE_CLASSES
+            #undef S2B_3
+            #undef S2B_4
+            #undef S2B_5
+            #undef S2B_6
+            #undef S2B_7
+            #undef S2B_8
+            #undef S2B_9
+            #undef S2B_10
+            #undef S2B_11
+            #undef S2B_no
+            #undef SC
+            };
+            
+            ----
+            src/sz.c:5:14: -: conflicting attributes: (&{alias: aliasDecl:<nil> aligned:0 vectorSize:0 visibility: visibilityDecl:<nil> customAttributes:map[] alwaysInline:false gnuInline:false hasConst:false isNonZero:true isVolatile:false weak:false}), (&{alias: aliasDecl:<nil> aligned:64 vectorSize:-1 visibility: visibilityDecl:<nil> customAttributes:map[aligned:[64]] alwaysInline:false gnuInline:false hasConst:true isNonZero:true isVolatile:false weak:false})
+            include/jemalloc/internal/sz.h:40:22: -: conflicting attributes: (&{alias: aliasDecl:<nil> aligned:64 vectorSize:-1 visibility: visibilityDecl:<nil> customAttributes:map[aligned:[64]] alwaysInline:false gnuInline:false hasConst:true isNonZero:true isVolatile:false weak:false}), (&{alias: aliasDecl:<nil> aligned:0 vectorSize:0 visibility: visibilityDecl:<nil> customAttributes:map[] alwaysInline:false gnuInline:false hasConst:true isNonZero:true isVolatile:false weak:false})
+            src/sz.c:19:14: -: conflicting attributes: (&{alias: aliasDecl:<nil> aligned:0 vectorSize:0 visibility: visibilityDecl:<nil> customAttributes:map[] alwaysInline:false gnuInline:false hasConst:false isNonZero:true isVolatile:false weak:false}), (&{alias: aliasDecl:<nil> aligned:64 vectorSize:-1 visibility: visibilityDecl:<nil> customAttributes:map[aligned:[64]] alwaysInline:false gnuInline:false hasConst:true isNonZero:true isVolatile:false weak:false})
+        all_test.go:1951: files 374, skip 30, ok 340, fails 4
+    all_test.go:1832: TOTAL: files 3986, skip 227, ok 3755, fails 4
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	23869.655s
+
+FAIL err=exit status 1

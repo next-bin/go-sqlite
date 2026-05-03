@@ -1,0 +1,38 @@
+2023-02-01T14:33:21+01:00 commit e28a62b37acca03609e57b96305c24a98ed567cc, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuthware	0.022s
+ok  	modernc.org/knuthware/cmd/godvitype	0.004s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftodvi	0.004s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftopk	0.008s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftype	0.011s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomf	0.010s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomft	0.004s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopktype	0.008s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopltotf	0.004s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopooltype	0.014s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotangle	0.026s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotex	0.012s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotftopl	0.004s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govftovp	0.004s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govptovf	0.008s [no tests to run]
+ok  	modernc.org/knuthware/cmd/goweave	0.003s [no tests to run]
+ok  	modernc.org/knuthware/dvitype	0.138s
+ok  	modernc.org/knuthware/gftodvi	0.938s
+ok  	modernc.org/knuthware/gftopk	0.906s
+ok  	modernc.org/knuthware/gftype	1.680s
+# modernc.org/knuthware/mf [modernc.org/knuthware/mf.test]
+mf/all_test.go:23:27: time.Minute undefined (type untyped int has no field or method Minute)
+FAIL	modernc.org/knuthware/mf [build failed]
+ok  	modernc.org/knuthware/mf/internal/trap	0.006s
+ok  	modernc.org/knuthware/mft	0.006s
+ok  	modernc.org/knuthware/pktype	0.947s
+ok  	modernc.org/knuthware/pltotf	0.296s
+ok  	modernc.org/knuthware/pooltype	0.135s
+ok  	modernc.org/knuthware/tangle	4.032s
+ok  	modernc.org/knuthware/tex	2.449s
+ok  	modernc.org/knuthware/tex/internal/trip	0.004s
+ok  	modernc.org/knuthware/tftopl	0.067s
+ok  	modernc.org/knuthware/vftovp	0.102s
+ok  	modernc.org/knuthware/vptovf	0.485s
+ok  	modernc.org/knuthware/weave	1.828s
+ok  	modernc.org/knuthware/web	36.483s
+FAIL

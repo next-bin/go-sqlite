@@ -1,0 +1,5 @@
+2024-01-23T01:19:56Z commit eeb09a874245b41a6720d97279954f96f1c252ff, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package modernc.org/tcl
+	imports modernc.org/tcl/lib: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/tcl/lib
+
+FAIL err=exit status 1

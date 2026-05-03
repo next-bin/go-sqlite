@@ -1,0 +1,50 @@
+2024-03-21T18:29:57+01:00 commit 0c4ab30c51759a33828874fad7588cd675b7ebc0, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestTranslationPhase4 (2.57s)
+    --- FAIL: TestTranslationPhase4/CompCert-3.6/test/c (2.57s)
+        all_test.go:823: assets/CompCert-3.6/test/c/chomp.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/fannkuch.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/binarytrees.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/fft.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/fftsp.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/bisect.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/almabench.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:866: assets/CompCert-3.6/test/c/aes.c: skip: /usr/bin/cc: /tmp/TestTranslationPhase4CompCert-3.6testc991710581/001/aes.c:30:10: fatal error: '../endian.h' file not found
+            #include "../endian.h"
+                     ^~~~~~~~~~~~~
+            1 error generated.
+             exit status 1
+        all_test.go:823: assets/CompCert-3.6/test/c/fib.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/integr.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size
+
+...
+
+Cert-3.6/test/c/qsort.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/sha1.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/vmach.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:823: assets/CompCert-3.6/test/c/spectral.c: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:40:2: "Missing definition of size_t!"
+        all_test.go:879: assets/CompCert-3.6/test/c/chomp.c
+        all_test.go:879: assets/CompCert-3.6/test/c/fannkuch.c
+        all_test.go:879: assets/CompCert-3.6/test/c/binarytrees.c
+        all_test.go:879: assets/CompCert-3.6/test/c/fft.c
+        all_test.go:879: assets/CompCert-3.6/test/c/fftsp.c
+        all_test.go:879: assets/CompCert-3.6/test/c/bisect.c
+        all_test.go:879: assets/CompCert-3.6/test/c/almabench.c
+        all_test.go:879: assets/CompCert-3.6/test/c/fib.c
+        all_test.go:879: assets/CompCert-3.6/test/c/integr.c
+        all_test.go:879: assets/CompCert-3.6/test/c/lists.c
+        all_test.go:879: assets/CompCert-3.6/test/c/knucleotide.c
+        all_test.go:879: assets/CompCert-3.6/test/c/nbody.c
+        all_test.go:879: assets/CompCert-3.6/test/c/mandelbrot.c
+        all_test.go:879: assets/CompCert-3.6/test/c/nsieve.c
+        all_test.go:879: assets/CompCert-3.6/test/c/nsievebits.c
+        all_test.go:879: assets/CompCert-3.6/test/c/qsort.c
+        all_test.go:879: assets/CompCert-3.6/test/c/sha1.c
+        all_test.go:879: assets/CompCert-3.6/test/c/vmach.c
+        all_test.go:879: assets/CompCert-3.6/test/c/spectral.c
+        all_test.go:881: files 24, skip 1, ok 4, fails 19
+    all_test.go:779: TOTAL: files 24, skip 1, ok 4, fails 19
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	18.407s
+
+FAIL err=exit status 1

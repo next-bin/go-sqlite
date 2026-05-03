@@ -1,0 +1,19 @@
+go1.25.0 linux/riscv64
+2025-08-18T07:48:45Z commit 9b93952beaf04fae2b6180072d29bc08a5181fa4, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestExec (44.79s)
+    all_test.go:138: using C compiler at /usr/bin/cc
+    all_test.go:139: valgrind: 
+    --- FAIL: TestExec/ccgo/bug (13.77s)
+        all_test.go:315: C COMPILE FAIL: ~/src/modernc.org/ccorpus2/assets/ccgo/bug/struct2.c
+            err=tmp/main0055.c:45:5: type SubtreeInlineData has no field child_index
+            tmp/main0055.c:46:5: type SubtreeInlineData has no field byte_offset
+            -: PANIC: expr.go:304:convert TODO tmp/main0055.c:44:13: _Bool(_Bool, 1) <- Subtree(union, 8) (Subtree){.data.visible = 1}
+        all_test.go:220: tmp/main0055.c:45:5: type SubtreeInlineData has no field child_index
+            tmp/main0055.c:46:5: type SubtreeInlineData has no field byte_offset
+            -: PANIC: expr.go:304:convert TODO tmp/main0055.c:44:13: _Bool(_Bool, 1) <- Subtree(union, 8) (Subtree){.data.visible = 1}
+        all_test.go:222: ccgo/bug: files=44 gcc fails=3 skipped=0 failed=1 passed=40
+FAIL
+exit status 1
+FAIL	modernc.org/qbecc/lib	44.842s
+
+FAIL err=exit status 1

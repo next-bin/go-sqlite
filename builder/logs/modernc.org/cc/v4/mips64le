@@ -1,0 +1,11 @@
+2024-01-07T01:15:22+08:00 commit b8e3ee16191e6598c324825ad59861b63876fd05, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58
+panic: NewConfig: unsupported arch: mips64le (all_test.go:96:2:)
+
+goroutine 1 [running]:
+modernc.org/cc/v4.init.2()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4/all_test.go:96 +0xc10
+exit status 2
+FAIL	modernc.org/cc/v4	0.137s
+
+FAIL err=exit status 1

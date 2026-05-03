@@ -1,0 +1,13 @@
+2023-10-19T00:03:28+02:00 commit 2fa4e14522afc0a33efefd15fd455d5466bf4601, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libtcl8.6 v0.0.20
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/TestTclTest841608709/001/testfixture" "-tags=" "internal/testfixture/ccgo_linux_loong64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+package internal/testfixture/ccgo_linux_loong64.go is not in std (/usr/local/go/src/internal/testfixture/ccgo_linux_loong64.go)
+--- FAIL: TestTclTest (0.78s)
+    all_test.go:87: package internal/testfixture/ccgo_linux_loong64.go is not in std (/usr/local/go/src/internal/testfixture/ccgo_linux_loong64.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	1.006s
+
+FAIL err=exit status 1

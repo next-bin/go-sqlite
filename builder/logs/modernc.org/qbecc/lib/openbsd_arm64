@@ -1,0 +1,56 @@
+go1.25.5 openbsd/arm64
+2026-01-19T01:14:19+01:00 commit 2cc7184c0a66beed1ef0511049ddc853aa6a8f2c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+Building static library libz.a version 1.2.11 with qbecc.
+Checking for size_t... Yes.
+Checking for off64_t... No.
+Checking for fseeko... Yes.
+Checking for strerror... Yes.
+Checking for unistd.h... Yes.
+Checking for stdarg.h... Yes.
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+Checking for vsnprintf() in stdio.h... Yes.
+Checking for return value of vsnprintf()... Yes.
+qbecc -O -I. -c -o example.o test/example.c
+qbecc -O  -c -o adler32.o adler32.c
+qbecc -O  -c -o crc32.o crc32.c
+qbecc -O  -c -o deflate.o deflate.c
+qbecc -O  -c -o infback.o infback.c
+qbecc -O  -c -o inffast.o inffast.c
+qbecc -O  -c -o inflate.o inflate.c
+qbecc -O  -c -o inftrees.o inftrees.c
+qbecc -O  -c -o trees.o trees.c
+qbecc -O  -c -o zutil.o zutil.c
+qbecc -O  -c -o compress.o compress.c
+qbecc -O  -c -o uncompr.o uncompr.c
+qbecc -O  -c -o gzclose.o gzclose.c
+qbecc -O  -c -o gzlib.o gzlib.c
+qbecc -O  -c -o gzread.o gzread.c
+qbecc -O  -c -o gzwrite.o gzwrite.c
+ar rc libz.a adler32.o crc32.o deflate.o infback.o inffast.o inflate.o inftrees.o trees.o zutil.o compress.o uncompr.o gzclose.o gzlib.o gzread.o gzwrite.o 
+qbecc -O -o example example.o -L. libz.a
+qbecc -O -I. -c -o minigzip.o test/minigzip.c
+qbecc -O -o minigzip minigzip.o -L. libz.a
+hello world
+zlib version 1.2.11 = 0x12b0, compile flags = 0xa9
+uncompress(): hello, hello!
+gzread(): hello, hello!
+gzgets() after gzseek:  hello!
+inflate(): hello, hello!
+large_inflate(): OK
+after inflateSync(): hello, hello!
+inflate with dictionary: hello, hello!
+		*** zlib test OK ***
+all_test.go: 872:         TestQuickJS: TRC dir=tmp/quickjs
+mkdir -p .obj .obj/examples .obj/tests
+qbecc -g -Wall -MMD -MF .obj/qjs.o.d -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion -fwrapv  -D_GNU_SOURCE -DCONFIG_VERSION=\"2025-09-13\" -O2 -c -o .obj/qjs.o qjs.c
+compile.go: 357:                 err: TRC arguments in '%s' do not match signature '%s' (missing prototype?) [malloc_usable_size((void *)ptr) function() returning int]
+qbecc.go: 197:                 err: TRC arguments in '%s' do not match signature '%s' (missing prototype?) [malloc_usable_size((void *)ptr) function() returning int]
+qjs.c:145:12: arguments in 'malloc_usable_size((void *)ptr)' do not match signature 'function() returning int' (missing prototype?)
+gmake: *** [Makefile:329: .obj/qjs.o] Error 1
+--- FAIL: TestQuickJS (14.39s)
+    all_test.go:946: FAIL err=exit status 2
+FAIL
+exit status 1
+FAIL	modernc.org/qbecc/lib	12850.668s
+
+FAIL err=exit status 1

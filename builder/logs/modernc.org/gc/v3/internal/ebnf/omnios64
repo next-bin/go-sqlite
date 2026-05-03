@@ -1,0 +1,11 @@
+2024-03-21T02:37:28+01:00 commit f0dba7c97c2b9a339c26efa9f85898b1d4d62c59, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestEBNFParser (8.13s)
+    all_test.go:199: /usr/local/go/test/fixedbugs/issue27836.dir/PaxHeaders.0/foo.go: open /usr/local/go/test/fixedbugs/issue27836.dir/PaxHeaders.0/foo.go: permission denied (asm_amd64.s:1695:goexit: asm_amd64.s:1695:goexit: all_test.go:260:1)
+        /usr/local/go/test/fixedbugs/issue27836.dir/PaxHeaders.0/main.go: open /usr/local/go/test/fixedbugs/issue27836.dir/PaxHeaders.0/main.go: permission denied (asm_amd64.s:1695:goexit: asm_amd64.s:1695:goexit: all_test.go:260:1)
+    all_test.go:201: TOTAL files 9,718, toks 13,794,799, skip 130, ok 9,586, fail 2
+    all_test.go:203: Shortest failing file: , 0 tokens
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v3/internal/ebnf	8.175s
+
+FAIL err=exit status 1

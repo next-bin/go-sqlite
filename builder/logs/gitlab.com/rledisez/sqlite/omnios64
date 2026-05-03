@@ -1,0 +1,9 @@
+2024-02-24T00:18:51+01:00 commit 0a8da4bb8f4a084eb474d2cb79b86ecba3d2585c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libc
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_unix.go:1316:34: (*ctime.Tm)(unsafe.Pointer(tm)).Ftm_gmtoff undefined (type *struct{Ftm_sec int32; Ftm_min int32; Ftm_hour int32; Ftm_mday int32; Ftm_mon int32; Ftm_year int32; Ftm_wday int32; Ftm_yday int32; Ftm_isdst int32} has no field or method Ftm_gmtoff)
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc_unix.go:1317:34: (*ctime.Tm)(unsafe.Pointer(tm)).Ftm_zone undefined (type *struct{Ftm_sec int32; Ftm_min int32; Ftm_hour int32; Ftm_mday int32; Ftm_mon int32; Ftm_year int32; Ftm_wday int32; Ftm_yday int32; Ftm_isdst int32} has no field or method Ftm_zone)
+FAIL	modernc.org/sqlite [build failed]
+FAIL	modernc.org/sqlite/functest [build failed]
+FAIL
+
+FAIL err=exit status 1

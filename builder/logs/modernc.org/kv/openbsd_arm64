@@ -1,0 +1,74 @@
+2023-06-10T01:38:07+02:00 commit b77416c2774bbe9ac6d5909ad253c625d5f33a98, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+unexpected fault address 0x365c3c
+fatal error: fault
+[signal SIGSEGV: segmentation violation code=0x2 addr=0x365c3c pc=0x365a84]
+
+goroutine 13 [running]:
+runtime.throw({0x23c632?, 0x3985ec?})
+	/home/jnml/goroot/src/runtime/panic.go:1047 +0x40 fp=0x4000047800 sp=0x40000477d0 pc=0x37afc0
+runtime.sigpanic()
+	/home/jnml/goroot/src/runtime/signal_unix.go:855 +0x1a8 fp=0x4000047840 sp=0x4000047800 pc=0x3905e8
+runtime.(*gcControllerState).startCycle(0x249228?, 0x0?, 0x40000478d8?, {0x366ab0?, 0x40000478e8?, 0x400000?})
+	/home/jnml/goroot/src/runtime/mgcpacer.go:429 +0x144 fp=0x40000478a0 sp=0x4000047850 pc=0x365a84
+runtime.gcStart({0x400000e690?, 0x20000?, 0x1?})
+	/home/jnml/goroot/src/runtime/mgc.go:679 +0x3bc fp=0x4000047940 sp=0x40000478a0 pc=0x35ef5c
+runtime.mallocgc(0x20000, 0x211760, 0x1)
+	/home/jnml/goroot/src/runtime/malloc.go:1172 +0x7a4 fp=0x40000479b0 sp=0x4000047940 pc=0x353ce4
+runtime.makeslice(0x4000047a28?, 0x3b1b70?, 0x40000479d8?)
+	/home/jnml/goroot/src/runtime/slice.go:103 +0x50 fp=0x40000479e0 sp=0x40000479b0 pc=0x3914d0
+modernc.org/internal/slice.newBytes.func1(0x20000)
+	/home/jnml/go/pkg/mod/modernc.org/internal@v1.0.7/slice/pool.go:46 +0x40 fp=0x4000047a10 sp=0x40000479e0 pc=0x43c880
+modernc.org/internal/slice.NewPool.func1()
+	/home/jnml/go/pkg/mod/modernc.org/internal@v1.0.7/slice/pool.go:127 +0x28 fp=0x4000047a30 sp=0x4000047a10 pc=0x43c608
+sync.(*Pool).Get(0x40000d02b8)
+	/home/jnml/goroot/src/sync/pool.go:151 +0xc0 fp=0x4000047a70 sp=0x4000047a30 pc=0x3b1bb0
+modernc.org/internal/slice.(*Pool).Get(0x40000d0000, 0x1010f)
+	/home/jnml/go/pkg/mod/modernc.org/internal@v1.0.7/slice/pool.go:157 +0x70 fp=0x4000047ab0 sp=0x4000047a70 pc=0x43c700
+modernc.org/internal/buffer.Get(...)
+	/home/jnml/go/pkg/mod/modernc.org/internal@v1.0.7/buffer/buffer.go:50
+modernc.org/lldb.btree.put2(0x4000047cb8?, {0x4000400000?, 0x4000047cb8?, 0x43c720?}, {0x2718b0, 0x400007b340}, 0x40000d02b8?, {0x4000017668, 0x8, 0x8}, ...)
+	/home/jnml/go/pkg/mod/modernc.org/lldb@v1.0.6/btree.go:1913 +0x274 fp=0x4000047c70 sp=0x4000047ab0 
+
+...
+
+cavenge.go:400 +0x5c fp=0x4000035f80 sp=0x4000035f50 pc=0x36758c
+runtime.bgscavenge(0x0?)
+	/home/jnml/goroot/src/runtime/mgcscavenge.go:628 +0x44 fp=0x4000035fb0 sp=0x4000035f80 pc=0x367ac4
+runtime.gcenable.func2()
+	/home/jnml/goroot/src/runtime/mgc.go:179 +0x28 fp=0x4000035fd0 sp=0x4000035fb0 pc=0x35e688
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:1172 +0x4 fp=0x4000035fd0 sp=0x4000035fd0 pc=0x3abde4
+created by runtime.gcenable
+	/home/jnml/goroot/src/runtime/mgc.go:179 +0xac
+
+goroutine 18 [finalizer wait]:
+runtime.gopark(0x40000345a8?, 0x353cd0?, 0x60?, 0x36?, 0x4502d15e0?)
+	/home/jnml/goroot/src/runtime/proc.go:381 +0xe0 fp=0x4000034580 sp=0x4000034560 pc=0x37d990
+runtime.runfinq()
+	/home/jnml/goroot/src/runtime/mfinal.go:193 +0x100 fp=0x40000347d0 sp=0x4000034580 pc=0x35d7b0
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:1172 +0x4 fp=0x40000347d0 sp=0x40000347d0 pc=0x3abde4
+created by runtime.createfing
+	/home/jnml/goroot/src/runtime/mfinal.go:163 +0x80
+
+goroutine 20 [GC worker (idle)]:
+runtime.gopark(0x0?, 0x4000076808?, 0x0?, 0x0?, 0x0?)
+	/home/jnml/goroot/src/runtime/proc.go:381 +0xe0 fp=0x4000036740 sp=0x4000036720 pc=0x37d990
+runtime.gcBgMarkWorker()
+	/home/jnml/goroot/src/runtime/mgc.go:1275 +0xe4 fp=0x40000367d0 sp=0x4000036740 pc=0x3604a4
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:1172 +0x4 fp=0x40000367d0 sp=0x40000367d0 pc=0x3abde4
+created by runtime.gcBgMarkStartWorkers
+	/home/jnml/goroot/src/runtime/mgc.go:1199 +0x28
+
+goroutine 14 [GC worker (idle)]:
+runtime.gopark(0x0?, 0x401924?, 0xa8?, 0x6f?, 0x40283c?)
+	/home/jnml/goroot/src/runtime/proc.go:381 +0xe0 fp=0x4000036f40 sp=0x4000036f20 pc=0x37d990
+runtime.gcBgMarkWorker()
+	/home/jnml/goroot/src/runtime/mgc.go:1275 +0xe4 fp=0x4000036fd0 sp=0x4000036f40 pc=0x3604a4
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_arm64.s:1172 +0x4 fp=0x4000036fd0 sp=0x4000036fd0 pc=0x3abde4
+created by runtime.gcBgMarkStartWorkers
+	/home/jnml/goroot/src/runtime/mgc.go:1199 +0x28
+exit status 2
+FAIL	modernc.org/kv	0.747s

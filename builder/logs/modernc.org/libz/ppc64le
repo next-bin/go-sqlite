@@ -1,0 +1,4 @@
+go1.25.1 linux/ppc64le
+2025-09-16T07:01:05Z commit 59baf7b0bf22c59c289256bdb43cc08bb58828c9, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exit status 128

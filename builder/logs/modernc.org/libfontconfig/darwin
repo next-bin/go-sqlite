@@ -1,0 +1,67 @@
+go1.26.0 darwin/amd64
+2026-03-30T08:56:23+02:00 commit 3fe674cec6c85f5c0cd32e41a455ca62e37869c6, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libfontconfig/fontconfig-2.14.1"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libfontconfig
+execute /bin/sh ["-c" "find /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libfontconfig/internal/darwin/amd64 -name \\*darwin_amd64.go -delete"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libfontconfig
+archivePath fontconfig-2.14.1.tar.gz
+extractedArchivePath fontconfig-2.14.1
+tempDir /tmp/libfontconfig
+libRoot /tmp/libfontconfig/fontconfig-2.14.1
+makeRoot /tmp/libfontconfig/fontconfig-2.14.1
+tests /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libfontconfig/internal/darwin/amd64
+execute /usr/bin/tar ["xf" "fontconfig-2.14.1.tar.gz" "-C" "/tmp/libfontconfig"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libfontconfig
+execute /opt/homebrew/bin/gsed ["-i" "s/if (os2->achVendID && os2->achVendID\\[0\\] != 0)/if (os2->achVendID[0])/" "src/fcfreetype.c"] in /private/tmp/libfontconfig/fontconfig-2.14.1
+execute /bin/sh ["-c" "go mod init example.com/libfontconfig ; go get modernc.org/libc@latest modernc.org/libexpat@latest modernc.org/libfreetype@latest"] in /private/tmp/libfontconfig/fontconfig-2.14.1
+go: creating new go.mod: module example.com/libfontconfig
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.70.0
+go: added modernc.org/libexpat v0.10.26
+go: added modernc.org/libfreetype v0.9.28
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/libz v0.17.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /bin/sh ["-c" "CFLAGS='-DFC_NO_MT -DNDEBUG -mlong-double-64' ./configure --disable-docs --disable-dynamic --disable
+
+...
+
+: panic.go:860:gopanic: panic.go:860:gopanic:)
+/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615:scan: TODOTODO /tmp/ccgo-tmp-ar-843253701/__.SYMDEF SORTED:1:1: U+0000
+panic: /Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615:scan: TODOTODO /tmp/ccgo-tmp-ar-843253701/__.SYMDEF SORTED:1:1: U+0000
+
+goroutine 1 [running]:
+modernc.org/gc/v2.(*Scanner).scan(0x37da6db8cb40)
+	/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:615 +0xaf9
+modernc.org/gc/v2.(*Scanner).Scan(0x37da6db8cb40)
+	/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/scanner.go:341 +0x65
+modernc.org/gc/v2.newParser(...)
+	/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/parser.go:29
+modernc.org/gc/v2.ParseSourceFile(0x37da6a1c6df8, {0x37da62813170?, 0x2b?}, {0x37da6287e200?, 0x8?, 0x200?})
+	/Users/jnml/go/pkg/mod/modernc.org/gc/v2@v2.6.5/gc.go:36 +0x105
+modernc.org/ccgo/v4/lib.(*Task).getFileSymbols(0x37da62890488, 0x37da62a2b5f8?, {0x37da62813170, 0x2b})
+	/Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/link.go:460 +0x12d
+modernc.org/ccgo/v4/lib.(*Task).link(0x37da62890488)
+	/Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/link.go:271 +0x3a8
+modernc.org/ccgo/v4/lib.(*Task).main(0x37da62890488)
+	/Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/ccgo.go:687 +0x85e8
+modernc.org/ccgo/v4/lib.(*Task).Main(0x37da62890488)
+	/Users/jnml/go/pkg/mod/modernc.org/ccgo/v4@v4.32.3/lib/ccgo.go:209 +0x95
+main.main.func2()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libfontconfig/generator.go:174 +0xc53
+modernc.org/fileutil/ccgo.InDir({0x37da62812000, 0x24}, 0x37da62673c60)
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:365 +0xc2
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x37da62812000?, 0x37da62826200?}, 0x42eb50f?)
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:370 +0x25
+main.main()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libfontconfig/generator.go:110 +0xfde
+exit status 2
+libfontconfig.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

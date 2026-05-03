@@ -1,0 +1,15 @@
+2023-10-10T00:55:57Z commit d752cd520ca274663e2b9f0f0ce0b9a9cd6ae5e1, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# os/user
+cgo-gcc-prolog:95:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:89:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:89:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+cgo-gcc-prolog:117:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:111:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:111:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test2434114052/001/pcretest" "-tags=" "internal/pcretest/ccgo_freebsd_arm.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre16
+package internal/pcretest/ccgo_freebsd_arm.go is not in std (/usr/local/go/src/internal/pcretest/ccgo_freebsd_arm.go)
+--- FAIL: Test (0.10s)
+    all_test.go:33: package internal/pcretest/ccgo_freebsd_arm.go is not in std (/usr/local/go/src/internal/pcretest/ccgo_freebsd_arm.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre16	0.249s
+
+FAIL err=exit status 1

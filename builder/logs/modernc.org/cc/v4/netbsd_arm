@@ -1,0 +1,11 @@
+2023-12-23T01:42:59Z commit 1c4622617883399afbae024f6f37798fbc09c4d6, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute go ["build" "-o" "/tmp/TestMake2036009889/001/cc" "fakecc.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake2036009889/001/cc" "/tmp/TestMake2036009889/001/gcc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake2036009889/001/cc" "/tmp/TestMake2036009889/001/clang"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+--- FAIL: TestSingleBytewchar (0.73s)
+    all_test.go:2962: value should be of type StringValue, but was of type cc.Int64Value
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	2150.552s
+
+FAIL err=exit status 1

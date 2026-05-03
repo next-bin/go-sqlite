@@ -1,0 +1,60 @@
+2023-10-10T12:29:14+02:00 commit 7f419475d38ba851595b963e037ba17a4f71d0e9, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+CC=/usr/bin/gcc
+gcc (Debian 10.2.1-6) 10.2.1 20210110
+--- FAIL: TestGCCExecute (11194.23s)
+    all_test.go:2299: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/20040331-1.c: executing ccgo binary ./20040331-11210 []: exit status 2 (rc 2, expected 0)
+        panic: runtime error: negative shift amount
+        
+        goroutine 1 [running, locked to thread]:
+        modernc.org/libc.PostDecBitFieldPtr32Int32(...)
+        	/home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/ccgo.go:1479
+        main.main1(0xc0000c6620, 0x1, 0x3ff64c00020)
+        	/tmp/ccgo-test-2489427608/main1208.go:41 +0x94
+        modernc.org/libc.Start(0x146640)
+        	/home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/libc.go:125 +0x20e
+        main.main()
+        	/tmp/ccgo-test-2489427608/main1208.go:22 +0x30
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/20040409-1w.c: skipped: executing CC binary ./20040409-1w []: signal: aborted (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/20040409-2w.c: skipped: executing CC binary ./20040409-2w []: signal: aborted (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/20040409-3w.c: skipped: executing CC binary ./20040409-3w []: signal: aborted (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/920612-1.c: skipped: executing CC binary ./920612-1 []: signal: aborted (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/980608-1.c: skipped: /usr/bin/gcc [-w -lm -O1] -o ./980608-1 980608-1.c: system C compiler: exit status 1
+        /usr/bin/ld: /tmp/ccq1iX7V.o: in function `main':
+        980608-1.c:(.text+0x38): undefined reference to `debug'
+        collect2: error: ld returned 1 exit status
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/bcp-1.c: skipped: /usr/bin/gcc [-w -lm -O1] -o ./bcp-1 bcp-1.c: system C compiler: exit status 1
+        /usr/bin/ld: /tmp/ccxOveJs.o:(.data.rel+0x0): undefined reference to `bad2'
+        /usr/bin/ld: /tmp/ccxOveJs.o:(.data.rel+0x8): undefined reference to `bad3'
+        /usr/bin/ld: /tmp/ccxOveJs.o:(.data.rel+0x10): undefined reference to `bad6'
+        /usr/bin/ld: /tmp/ccxOveJs.o:(.data.rel+0x18): undefined reference to `bad4'
+        collect2: error: ld returned 1 exit status
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/pr22493-1.c: skipped: executing CC binary ./pr22493-1 []: signal: aborted (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/pr23047.c: skipped: executing CC binary ./pr23047 []: signal: aborted (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/pr99079.c: skipped: executing CC binary ./pr99079 []: signal: aborted (rc -1, expected 0)
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/va-arg-7.c: skipped: /usr/bin/gcc [-w -lm -O1] -o ./va-arg-7 va-arg-7.c: system C compiler: exit status 1
+        /usr/bin/ld: /tmp/ccmsmmD9.o: in function `main':
+        va-arg-7.c:(.text+0x7e): undefined reference to `debug'
+        collect2: error: ld returned 1 exit status
+        
+    all_test.go:2297: /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/va-arg-8.c: skipped: /usr/bin/gcc [-w -lm -O1] -o ./va-arg-8 va-arg-8.c: system C compiler: exit status 1
+        /usr/bin/ld: /tmp/ccnDGksO.o: in function `main':
+        va-arg-8.c:(.text+0x4c): undefined reference to `debug'
+        collect2: error: ld returned 1 exit status
+        
+    all_test.go:2332: files 1294, ok 1282, failed 1
+    all_test.go:2348: FAIL /github.com/gcc-mirror/gcc/gcc/testsuite/gcc.c-torture/execute/20040331-1.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	17817.706s
+
+FAIL err=exit status 1

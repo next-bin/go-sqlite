@@ -1,0 +1,4 @@
+2023-12-06T15:40:08+01:00 commit 8da6b5fe17deb29ed5ed3c86f9af47e15b47b9e9, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+lexer.go:199:2: golang.org/x/exp@v0.0.0-20181106170214-d68db9428509: Get "https://proxy.golang.org/golang.org/x/exp/@v/v0.0.0-20181106170214-d68db9428509.mod": net/http: TLS handshake timeout
+
+FAIL err=exit status 1

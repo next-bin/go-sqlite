@@ -1,0 +1,16 @@
+2024-07-31T02:23:04+02:00 commit 5db4dec954d0a3c6b0246f0ffdc219f452c4b15a, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libole32 [modernc.org/libole32.test]
+.\ccgo_windows_amd64.go:46485:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46494:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46615:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46681:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46899:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46908:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46917:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46926:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46935:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46989:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:46989:7: too many errors
+FAIL	modernc.org/libole32 [build failed]
+
+FAIL err=exit status 1

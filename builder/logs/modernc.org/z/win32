@@ -1,0 +1,18 @@
+2024-03-21T04:30:56+01:00 commit 031c2c3b9f17ae274d93b5ed06624f69695c7ff3, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+execute C:\Program Files\Go\bin\go.exe ["build" "-tags" "non.existent.tag" "-o" "C:\\Users\\jnml\\AppData\\Local\\Temp\\go-test-zlib-446675537\\minigzip.exe" "c:\\Users\\jnml\\go\\src\\modernc.org\\builder\\.exclude\\modernc.org\\z\\internal\\minigzip_windows_386.go"] in c:\Users\jnml\go\src\modernc.org\builder\.exclude\modernc.org\z
+stat c:\Users\jnml\go\src\modernc.org\builder\.exclude\modernc.org\z\internal\minigzip_windows_386.go: directory not found
+execute C:\Program Files\Go\bin\go.exe ["build" "-tags" "non.existent.tag" "-o" "C:\\Users\\jnml\\AppData\\Local\\Temp\\go-test-zlib-446675537\\example.exe" "c:\\Users\\jnml\\go\\src\\modernc.org\\builder\\.exclude\\modernc.org\\z\\internal\\example_windows_386.go"] in c:\Users\jnml\go\src\modernc.org\builder\.exclude\modernc.org\z
+stat c:\Users\jnml\go\src\modernc.org\builder\.exclude\modernc.org\z\internal\example_windows_386.go: directory not found
+execute C:\Windows\system32\cmd.exe ["/c" "echo hello world | minigzip.exe | minigzip.exe -d"] in C:\Users\jnml\AppData\Local\Temp\go-test-zlib-446675537
+'minigzip.exe' is not recognized as an internal or external command,
+operable program or batch file.
+--- FAIL: Test (0.06s)
+    all_test.go:113: 'minigzip.exe' is not recognized as an internal or external command,
+        operable program or batch file.
+        
+        FAIL: exit status 255
+FAIL
+exit status 1
+FAIL	modernc.org/z	0.078s
+
+FAIL err=exit status 1

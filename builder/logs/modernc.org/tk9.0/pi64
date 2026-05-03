@@ -1,0 +1,30 @@
+go1.26.2 linux/arm64
+2026-05-02T06:38:33+02:00 commit f3eff0e1c0b81b4acb68f01e89bac9338b9e65e1, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading gitlab.com/cznic/purego v0.9.1
+go: downloading modernc.org/libtk9.0 v0.17.6
+go: downloading github.com/adrg/xdg v0.5.3
+go: downloading github.com/expr-lang/expr v1.17.2
+go: downloading modernc.org/ngrab v0.1.0
+go: downloading modernc.org/rec v0.3.7
+go: downloading modernc.org/regexp v1.7.10
+go: downloading modernc.org/fsm v1.3.2
+--- FAIL: TestExamples (3334.67s)
+    all_test.go:166: DISPLAY=:6060 XVFB_DISPLAY=:6060 display=:6060
+    all_test.go:236: SKIP _examples/demo.go (30/113)
+    all_test.go:236: SKIP _examples/fontmetrics.go (41/113)
+    all_test.go:236: SKIP _examples/insert_ml.go (47/113)
+    all_test.go:236: SKIP _examples/ring.go (89/113)
+    all_test.go:268: _examples/themedetector.go: FAIL process crashed within the check duration (after 11.12798ms).
+        stdout=
+        stderr=panic: there was an error reading the preference
+        	gdbusReader encountered an error: received an unexpected value during read: stderr 'Error connecting: Could not connect: No such file or directory'
+        
+        goroutine 1 [running]:
+        main.main()
+        	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/tk9.0/_examples/themedetector.go:15 +0x2e4
+         (tries=1)
+FAIL
+exit status 1
+FAIL	modernc.org/tk9.0	3334.887s
+
+FAIL err=exit status 1

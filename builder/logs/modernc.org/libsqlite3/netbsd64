@@ -1,0 +1,7 @@
+go1.26.2 netbsd/amd64
+2026-05-03T08:38:57+02:00 commit 200e59ffbe5d9bb93ed36263b47ba2c4974d3678, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: cannot open zip file: open sqlite-amalgamation-3530000.zip: no such file or directory
+exit status 1
+libsqlite3.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

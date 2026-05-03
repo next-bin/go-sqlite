@@ -1,0 +1,15 @@
+go1.26.1 linux/arm64
+2026-03-20T18:56:40+01:00 commit 8317dbd51c6ed8545a6b8e20af8fb1814565a596, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestExec (792.81s)
+    all_test.go:469: using C compiler at /usr/bin/cc
+    all_test.go:470: valgrind: /usr/bin/valgrind
+    --- FAIL: TestExec/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute (677.01s)
+        all_test.go:658: C EXEC FAIL: ~/src/modernc.org/ccorpus2/assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/20001031-1.c
+            err=signal: aborted
+        all_test.go:556: signal: aborted
+        all_test.go:558: gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute: files=1506 gcc fails=29 skipped=244 failed=1 passed=1232
+FAIL
+exit status 1
+FAIL	modernc.org/qbecc/lib	792.818s
+
+FAIL err=exit status 1

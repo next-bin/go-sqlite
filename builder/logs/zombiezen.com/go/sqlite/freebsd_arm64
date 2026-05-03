@@ -1,0 +1,5 @@
+2024-05-10T10:52:30Z commit a8ad27a0e6b4c69c48a148a604f51e58245fb81e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+auth.go:12:2: no required module provides package modernc.org/sqlite/lib; to add it:
+	go get modernc.org/sqlite/lib
+
+FAIL err=exit status 1

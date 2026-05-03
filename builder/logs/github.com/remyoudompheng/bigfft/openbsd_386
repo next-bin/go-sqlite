@@ -1,0 +1,82 @@
+2022-09-27T16:37:30+02:00 commit ef77025ab5aadea78f09a5d1daa395241dcd9c5e, GOMAXPROCS 2, GOGC "", CC ""
+fatal error: runtime: out of memory
+
+runtime stack:
+runtime.throw({0x817afcb, 0x16})
+	/home/jnml/goroot/src/runtime/panic.go:1047 +0x4d fp=0xcf7bf48c sp=0xcf7bf478 pc=0x807e82d
+runtime.sysMapOS(0x81800000, 0xa800000)
+	/home/jnml/goroot/src/runtime/mem_bsd.go:71 +0x144 fp=0xcf7bf4b8 sp=0xcf7bf48c pc=0x805bcf4
+runtime.sysMap(0x81800000, 0xa800000, 0x8276ff0)
+	/home/jnml/goroot/src/runtime/mem.go:142 +0x3f fp=0xcf7bf4c8 sp=0xcf7bf4b8 pc=0x805bb2f
+runtime.(*mheap).grow(0x8269e20, 0x5373)
+	/home/jnml/goroot/src/runtime/mheap.go:1459 +0x2b1 fp=0xcf7bf51c sp=0xcf7bf4c8 pc=0x806f6c1
+runtime.(*mheap).allocSpan(0x8269e20, 0x5373, 0x0, 0x1)
+	/home/jnml/goroot/src/runtime/mheap.go:1191 +0x2f2 fp=0xcf7bf5ac sp=0xcf7bf51c pc=0x806ecf2
+runtime.(*mheap).alloc.func1()
+	/home/jnml/goroot/src/runtime/mheap.go:910 +0x7c fp=0xcf7bf5d0 sp=0xcf7bf5ac pc=0x806e66c
+runtime.systemstack()
+	/home/jnml/goroot/src/runtime/asm_386.s:370 +0x35 fp=0xcf7bf5d4 sp=0xcf7bf5d0 pc=0x80ad3e5
+
+goroutine 6 [running]:
+runtime.systemstack_switch()
+	/home/jnml/goroot/src/runtime/asm_386.s:337 fp=0x6dc8bdec sp=0x6dc8bde8 pc=0x80ad3a0
+runtime.(*mheap).alloc(0x8269e20, 0x5373, 0x1)
+	/home/jnml/goroot/src/runtime/mheap.go:904 +0x59 fp=0x6dc8be0c sp=0x6dc8bdec pc=0x806e5d9
+runtime.(*mcache).allocLarge(0x139c7088, 0xa6e49c0, 0x1)
+	/home/jnml/goroot/src/runtime/mcache.go:233 +0x6c fp=0x6dc8be34 sp=0x6dc8be0c pc=0x805ab2c
+runtime.mallocgc(0xa6e49c0, 0x815ed40, 0x1)
+	/home/jnml/goroot/src/runtime/malloc.go:1029 +0x434 fp=0x6dc8be7c sp=0x6dc8be34 pc=0x8053264
+runtime.makeslice(0x815ed40, 0x29b9270, 0x29b9270)
+	/home/jnml/goroot/src/runtime/slice.go:103 +0x49 fp=0x6dc8be90 sp=0x6dc8be7c pc=0x8093e79
+github.com/remyoudompheng/bigfft.TestFourierSizes(0x6dc961e0)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/remyoudompheng/bigfft/fft_test.go:66 +0x1ed fp=0x6dc8bf9c sp=0x6dc8be90 pc=0x814aa4d
+testing.tRunner(0x6dc961e0, 0x8182394)
+	/home/jnml/goroot/src/testing/testing.go:1446 +0x10d fp=0x6dc8bfe4 sp=0x6dc8bf9c pc=0x80fe78d
+testing.(*T).Run.func1()
+	/home/jnml/g
+
+...
+
+dc31f5c pc=0x80695f2
+runtime.bgscavenge(0x6dc46000)
+	/home/jnml/goroot/src/runtime/mgcscavenge.go:626 +0xa7 fp=0x6dc31fe8 sp=0x6dc31fcc pc=0x8069b97
+runtime.gcenable.func2()
+	/home/jnml/goroot/src/runtime/mgc.go:179 +0x21 fp=0x6dc31ff0 sp=0x6dc31fe8 pc=0x805ce51
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_386.s:1326 +0x1 fp=0x6dc31ff4 sp=0x6dc31ff0 pc=0x80ae6f1
+created by runtime.gcenable
+	/home/jnml/goroot/src/runtime/mgc.go:179 +0xbb
+
+goroutine 17 [finalizer wait, 3 minutes]:
+runtime.gopark(0x81824fc, 0x82765a0, 0x10, 0x14, 0x1)
+	/home/jnml/goroot/src/runtime/proc.go:363 +0xf6 fp=0x6dc30790 sp=0x6dc3077c pc=0x8081726
+runtime.goparkunlock(...)
+	/home/jnml/goroot/src/runtime/proc.go:369
+runtime.runfinq()
+	/home/jnml/goroot/src/runtime/mfinal.go:180 +0xef fp=0x6dc307f0 sp=0x6dc30790 pc=0x805c0ef
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_386.s:1326 +0x1 fp=0x6dc307f4 sp=0x6dc307f0 pc=0x80ae6f1
+created by runtime.createfing
+	/home/jnml/goroot/src/runtime/mfinal.go:157 +0x4e
+
+goroutine 22 [GC worker (idle)]:
+runtime.gopark(0x818245c, 0x6dc1e078, 0x18, 0x14, 0x0)
+	/home/jnml/goroot/src/runtime/proc.go:363 +0xf6 fp=0x6dc2cf94 sp=0x6dc2cf80 pc=0x8081726
+runtime.gcBgMarkWorker()
+	/home/jnml/goroot/src/runtime/mgc.go:1235 +0xf1 fp=0x6dc2cff0 sp=0x6dc2cf94 pc=0x805f621
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_386.s:1326 +0x1 fp=0x6dc2cff4 sp=0x6dc2cff0 pc=0x80ae6f1
+created by runtime.gcBgMarkStartWorkers
+	/home/jnml/goroot/src/runtime/mgc.go:1159 +0x1f
+
+goroutine 5 [GC worker (idle)]:
+runtime.gopark(0x818245c, 0x6dc1e090, 0x18, 0x14, 0x0)
+	/home/jnml/goroot/src/runtime/proc.go:363 +0xf6 fp=0x6dc32794 sp=0x6dc32780 pc=0x8081726
+runtime.gcBgMarkWorker()
+	/home/jnml/goroot/src/runtime/mgc.go:1235 +0xf1 fp=0x6dc327f0 sp=0x6dc32794 pc=0x805f621
+runtime.goexit()
+	/home/jnml/goroot/src/runtime/asm_386.s:1326 +0x1 fp=0x6dc327f4 sp=0x6dc327f0 pc=0x80ae6f1
+created by runtime.gcBgMarkStartWorkers
+	/home/jnml/goroot/src/runtime/mgc.go:1159 +0x1f
+exit status 2
+FAIL	github.com/remyoudompheng/bigfft	278.874s

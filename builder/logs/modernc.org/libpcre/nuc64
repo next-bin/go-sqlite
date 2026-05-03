@@ -1,0 +1,4 @@
+go1.25.2 linux/amd64
+2025-10-14T04:16:12+02:00 commit 5a1f7326c719f596ed5d2ccc399fce18fc98c58b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exit status 128

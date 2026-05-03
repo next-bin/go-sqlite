@@ -1,0 +1,15 @@
+2023-10-15T05:37:41+02:00 commit 765c12c96a661a599266ac18e94fe439bda73b44, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+panic: check.go:557:check
+	TODO (TypeCheckNone )
+
+goroutine 28287 [running]:
+modernc.org/gc/v3.(*ImportSpecNode).check(0x30c7c480, 0x30d3e7c0)
+	/usr/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/check.go:557 +0x22d
+modernc.org/gc/v3.(*ImportDeclNode).check.func1(0x30c780c0, 0x30c11180)
+	/usr/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/check.go:504 +0x82
+created by modernc.org/gc/v3.(*ImportDeclNode).check in goroutine 28286
+	/usr/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/check.go:499 +0x68
+exit status 2
+FAIL	modernc.org/gc/v3	17.011s
+
+FAIL err=exit status 1

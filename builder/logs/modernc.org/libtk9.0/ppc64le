@@ -1,0 +1,60 @@
+go1.25.3 linux/ppc64le
+2025-11-26T08:30:32+01:00 commit be22e722bcc0703b9d14bdebbcccaf03e156725d, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: xdgDir /home/debian/.config/ccgo/v4/libtk9.0/linux/ppc64le
+archivePath tk9.0.1-src.tar.gz
+libRoot /home/debian/.config/ccgo/v4/libtk9.0/linux/ppc64le/tk9.0.1
+makeRoot /home/debian/.config/ccgo/v4/libtk9.0/linux/ppc64le/tk9.0.1/unix
+tkDocs /home/debian/.config/ccgo/v4/libtk9.0/linux/ppc64le/tk9.0.1/doc
+execute /usr/bin/sh ["-c" "find internal/tests -name *linux_ppc64le.go -delete"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libtk9.0
+execute /usr/bin/sh ["-c" "go mod init example.com/libtk9.0 ; go get modernc.org/libX11@latest modernc.org/libXft@latest modernc.org/libc@latest modernc.org/libfontconfig@latest modernc.org/libtcl9.0@latest modernc.org/libtk9.0@latest"] in /home/debian/.config/ccgo/v4/libtk9.0/linux/ppc64le/tk9.0.1/unix
+go: creating new go.mod: module example.com/libtk9.0
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
+go: added golang.org/x/sys v0.37.0
+go: added modernc.org/libX11 v0.11.24
+go: added modernc.org/libXau v0.9.19
+go: added modernc.org/libXdmcp v0.12.20
+go: added modernc.org/libXft v0.10.40
+go: added modernc.org/libXrender v0.9.23
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.67.1
+go: added modernc.org/libexpat v0.10.23
+go: added modernc.org/libfontconfig v0.8.13
+go: added modernc.org/libfreetype v0.9.27
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/libtcl9.0 v0.16.15
+go: added modernc.org/libtk9.0 v0.16.13
+go: added modernc.org/libxcb v0.12.5
+go: added modernc.org/libz v0.16.23
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -I /home/debian/.config/ccgo/v4/libtcl9.0/linux/ppc64le/tcl9.0.1/generic -mlong-double-64' ./configure --disable-libcups --disable-shared --disable-xss --enable-64bit --x-includes=/usr/include --with-tcl=\"/home/debian/.config/ccgo/v4/libtcl9.0/linux/ppc64le/tcl9.0.1/unix\" "] in /home/debian/.config/ccgo/v4/libtk9.0/linux/ppc64le/tk9.0.1/unix
+checking for Tcl configuration... configure: error: /home/debian/.config/ccgo/v4/libtcl9.0/linux/ppc64le/tcl9.0.1/unix directory doesn't contain tclConfig.sh
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x6c
+modernc.org/fileutil/ccgo.Fatalf(0x40?, {0x8c1c61, 0x18}, {0xc0000314d8, 0x4, 0x4})
+	/home/debian/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:313 +0x78
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x8b5e7d, 0x2}, {0xc000102100, 0x2, 0x2})
+	/home/debian/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:414 +0x184
+main.main.func1()
+	/home/debian/src/modernc.org/builder/.exclude/modernc.org/libtk9.0/generator.go:145 +0x5dc
+modernc.org/fileutil/ccgo.InDir({0xc000166200, 0x40}, 0xc0001edab8)
+	/home/debian/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:365 +0xf4
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0xc000166200?, 0x0?}, 0xc000372460?)
+	/home/debian/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:370 +0x58
+main.main()
+	/home/debian/src/modernc.org/builder/.exclude/modernc.org/libtk9.0/generator.go:108 +0xd38
+
+sh [-c CFLAGS='-DNDEBUG -I /home/debian/.config/ccgo/v4/libtcl9.0/linux/ppc64le/tcl9.0.1/generic -mlong-double-64' ./configure --disable-libcups --disable-shared --disable-xss --enable-64bit --x-includes=/usr/include --with-tcl="/home/debian/.config/ccgo/v4/libtcl9.0/linux/ppc64le/tcl9.0.1/unix" ]
+output: checking for Tcl configuration... configure: error: /home/debian/.config/ccgo/v4/libtcl9.0/linux/ppc64le/tcl9.0.1/unix directory doesn't contain tclConfig.sh
+
+err: exit status 1
+exit status 1
+libtk.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

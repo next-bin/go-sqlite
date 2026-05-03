@@ -1,0 +1,34 @@
+go1.25.1 linux/ppc64le
+2025-09-30T08:19:15Z commit 83dbdf895e9a62ef0d0bf2b77f2bad189677ce8f, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libgmp/gmp-6.3.0"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libgmp
+archivePath gmp-6.3.0.tar.xz
+extractedArchivePath gmp-6.3.0
+tempDir /tmp/libgmp
+libRoot /tmp/libgmp/gmp-6.3.0
+makeRoot /tmp/libgmp/gmp-6.3.0
+execute /usr/bin/tar ["xf" "gmp-6.3.0.tar.xz" "-C" "/tmp/libgmp"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libgmp
+xz: (stdin): Unexpected end of input
+/usr/bin/tar: Unexpected EOF in archive
+/usr/bin/tar: Unexpected EOF in archive
+/usr/bin/tar: Error is not recoverable: exiting now
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x6c
+modernc.org/ccgo/v3/lib.Fatalf(0x0?, {0x569f71, 0x18}, {0xc00002fb38, 0x4, 0x4})
+	/home/debian/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:312 +0x78
+modernc.org/ccgo/v3/lib.MustShell(0x1, {0x55e726, 0x3}, {0xc0000b6640, 0x4, 0x4})
+	/home/debian/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:408 +0x164
+main.main()
+	/home/debian/src/modernc.org/builder/.exclude/modernc.org/libgmp/generator.go:96 +0x7f8
+
+tar [xf gmp-6.3.0.tar.xz -C /tmp/libgmp]
+output: xz: (stdin): Unexpected end of input
+/usr/bin/tar: Unexpected EOF in archive
+/usr/bin/tar: Unexpected EOF in archive
+/usr/bin/tar: Error is not recoverable: exiting now
+
+err: exit status 2
+exit status 1
+libgmp.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

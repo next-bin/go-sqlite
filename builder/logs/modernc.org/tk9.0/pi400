@@ -1,0 +1,7 @@
+go1.26.2 windows/arm64
+2026-04-15T14:28:02+02:00 commit b8b0ca46c1b0a82dae1ac5284ec82b7f6cd502e0, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/tk9.0 [modernc.org/tk9.0.test]
+.\tk_windows.go:498:21: e.args undefined (type *Event has no field or method args, but does have field Args)
+FAIL	modernc.org/tk9.0 [build failed]
+
+FAIL err=exit status 1

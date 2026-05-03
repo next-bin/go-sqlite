@@ -1,0 +1,8 @@
+go1.26.0 linux/loong64
+2026-02-11T15:53:32+01:00 commit c94f9841efbab79998fd562d91728754d7939fb3, GOMAXPROCS 16, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: Auto-merging results
+CONFLICT (content): Merge conflict in results
+Squash commit -- not updating HEAD
+Automatic merge failed; fix conflicts and then commit the result.
+
+FAIL err=AUTOTASKS: exit status 1

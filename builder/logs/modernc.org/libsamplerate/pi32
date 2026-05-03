@@ -1,0 +1,70 @@
+go1.25.5 linux/arm
+2026-01-21T06:13:33+01:00 commit 93619d21ba4deae6f02e5f473366f4b4cf551973, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate
+archivePath 4858fb016550d677de2356486bcceda5aed85a72.zip
+extractedArchivePath libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+tempDir /tmp/libsamplerate
+libRoot /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+makeRoot /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72
+execute /usr/bin/unzip ["4858fb016550d677de2356486bcceda5aed85a72.zip" "-d" "/tmp/libsamplerate"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate
+Archive:  4858fb016550d677de2356486bcceda5aed85a72.zip
+4858fb016550d677de2356486bcceda5aed85a72
+   creating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/AUTHORS  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/CMakeLists.txt  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/COPYING  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/ChangeLog  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/INSTALL  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Makefile.am  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/NEWS  
+   creating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/Readme.md  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/generate_filter.m  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d677de2356486bcceda5aed85a72/Octave/make_filter.m  
+  inflating: /tmp/libsamplerate/libsamplerate-4858fb016550d6
+
+...
+
+me/asm_arm.s:877 +0x4 fp=0x203efec sp=0x203efec pc=0x9e5b8
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x14c
+
+goroutine 23 gp=0x21070e8 m=nil [GC worker (idle)]:
+runtime.gopark(0x5a575c, 0x2191000, 0x1c, 0xa, 0x0)
+	/usr/local/go/src/runtime/proc.go:460 +0x104 fp=0x2051f88 sp=0x2051f74 pc=0x97d60
+runtime.gcBgMarkWorker(0x2102c40)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xf4 fp=0x2051fe4 sp=0x2051f88 pc=0x39de4
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x28 fp=0x2051fec sp=0x2051fe4 pc=0x39cc4
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_arm.s:877 +0x4 fp=0x2051fec sp=0x2051fec pc=0x9e5b8
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x14c
+
+goroutine 24 gp=0x2107208 m=nil [GC worker (idle)]:
+runtime.gopark(0x5a575c, 0x2191200, 0x1c, 0xa, 0x0)
+	/usr/local/go/src/runtime/proc.go:460 +0x104 fp=0x203ff88 sp=0x203ff74 pc=0x97d60
+runtime.gcBgMarkWorker(0x2102c40)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xf4 fp=0x203ffe4 sp=0x203ff88 pc=0x39de4
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x28 fp=0x203ffec sp=0x203ffe4 pc=0x39cc4
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_arm.s:877 +0x4 fp=0x203ffec sp=0x203ffec pc=0x9e5b8
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x14c
+make: *** [Makefile:832: src/libsamplerate.la] Chyba 2
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x78
+modernc.org/ccgo/v3/lib.Fatal(0x1, {0xc2be1c, 0x1, 0x1})
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:322 +0x20
+modernc.org/ccgo/v3/lib.MustInDir(0x1, {0xc92000, 0x49}, 0xc2bedc)
+	/home/jnml/pkg/mod/modernc.org/ccgo/v3@v3.17.0/lib/util.go:370 +0x7c
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsamplerate/generator.go:97 +0xbc8
+
+exit status 2
+exit status 1
+libsamplerate.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

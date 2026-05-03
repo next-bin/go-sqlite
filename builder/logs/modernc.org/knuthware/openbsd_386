@@ -1,0 +1,3 @@
+2023-03-09T00:08:18+01:00 commit c4cc1f54dfecbcad40821e6dbbb6d7f77a9a7da3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: warning: "./..." matched no packages
+no packages to test

@@ -1,0 +1,34 @@
+2023-10-10T00:34:44Z commit 7f419475d38ba851595b963e037ba17a4f71d0e9, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+CC=/usr/bin/gcc
+gcc (nb4 20200810) 7.5.0
+--- FAIL: TestTCC (524.35s)
+    all_test.go:955: /tcc-0.9.27/tests/tests2/30_hanoi.c: 30_hanoi.c: # command-line-arguments
+        ./main61.go:551:2: bp declared and not used
+        ./main61.go:570:2: bp declared and not used
+        
+        	FAIL: exit status 1
+    all_test.go:955: /tcc-0.9.27/tests/tests2/32_led.c: 32_led.c: # command-line-arguments
+        ./main65.go:333:2: bp declared and not used
+        ./main65.go:352:2: bp declared and not used
+        
+        	FAIL: exit status 1
+    all_test.go:953: /tcc-0.9.27/tests/tests2/34_array_assignment.c: skipped: /usr/bin/gcc [-w -lm -O1] -o ./34_array_assignment 34_array_assignment.c: system C compiler: exit status 1
+        34_array_assignment.c: In function 'main':
+        34_array_assignment.c:16:6: error: assignment to expression with array type
+            b = a;
+              ^
+        
+    all_test.go:955: /tcc-0.9.27/tests/tests2/46_grep.c: 46_grep.c: # command-line-arguments
+        ./main91.go:551:2: bp declared and not used
+        ./main91.go:570:2: bp declared and not used
+        
+        	FAIL: exit status 1
+    all_test.go:987: files 72, ok 68, failed 3
+    all_test.go:1003: FAIL /tcc-0.9.27/tests/tests2/30_hanoi.c
+    all_test.go:1003: FAIL /tcc-0.9.27/tests/tests2/32_led.c
+    all_test.go:1003: FAIL /tcc-0.9.27/tests/tests2/46_grep.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	529.133s
+
+FAIL err=exit status 1

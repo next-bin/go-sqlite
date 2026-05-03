@@ -1,0 +1,7 @@
+go1.24.1 linux/riscv64
+2025-04-19T16:55:01Z commit 7561592223791575fbfee8cdee10350b05eaec64, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: /home/jnml/pkg/mod/modernc.org/ccgo/v4@v4.26.0/lib/compile.go:23:2: missing go.sum entry for module providing package golang.org/x/tools/go/packages (imported by modernc.org/ccgo/v4/lib); to add:
+	go get modernc.org/ccgo/v4/lib@v4.26.0
+libbsd.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

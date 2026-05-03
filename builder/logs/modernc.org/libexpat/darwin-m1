@@ -1,0 +1,64 @@
+go1.26.0 darwin/arm64
+2026-04-01T03:39:04+02:00 commit 32a93ad215eb0d9589878ed35e6d6fdde0771dcd, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libexpat/expat-2.5.0"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /bin/sh ["-c" "find /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/internal/darwin/arm64 -name \\*darwin_arm64.go -delete"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+archivePath expat-2.5.0.tar.gz
+extractedArchivePath expat-2.5.0
+tempDir /tmp/libexpat
+libRoot /tmp/libexpat/expat-2.5.0
+makeRoot /tmp/libexpat/expat-2.5.0
+tests /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/internal/darwin/arm64
+execute /usr/bin/tar ["xf" "expat-2.5.0.tar.gz" "-C" "/tmp/libexpat"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /bin/sh ["-c" "go mod init example.com/libexpat ; go get modernc.org/libc@latest modernc.org/libbsd@latest"] in /private/tmp/libexpat/expat-2.5.0
+go: creating new go.mod: module example.com/libexpat
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.70.0
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -w' ./configure --disable-shared "] in /private/tmp/libexpat/expat-2.5.0
+checking build system type... aarch64-apple-darwin25.4.0
+checking host system type... aarch64-apple-darwin25.4.0
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... ./conftools/install-sh -c -d
+checking for gawk... no
+checking for mawk... no
+checking for nawk... no
+checking for awk... awk
+checking whether make sets $(MAKE)... yes
+checking whether make 
+
+...
+
+bbsd/include/darwin/arm64 -extended-errors -ignore-unsupported-alignment -ignore-link-errors -lbsd -pedantic -DNDEBUG -w -o xmlwf.go xmlwf-xmlwf.o.go xmlwf-xmlfile.o.go xmlwf-codepage.o.go xmlwf-unixfilemap.o.go ../lib/.libs/libexpat.a]: /usr/bin/ar: ar: ../lib/.libs/libexpat.ago: No such file or directory
+
+FAIL: exit status 1 (exec.go:169:execed: exec.go:635:cc: ccgo.go:409:main: opt.go:144:Parse: opt.go:144:Parse: ccgo.go:706:arExtract:) (proc.go:290:main: generator.go:43:main: ccgo.go:206:Main: exec.go:169:execed: exec.go:635:cc: ccgo.go:458:main:)
+Making check in doc
+make[1]: Nothing to be done for `check'.
+make[1]: Nothing to be done for `check-am'.
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x64
+modernc.org/fileutil/ccgo.Fatal(0x0?, {0xeaeb64c5ab8, 0x1, 0x1})
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:323 +0x30
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0xeaeb6664200?, 0xeaeb66643e0?}, 0x100aa4167?)
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:371 +0x58
+main.main()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libexpat/generator.go:109 +0xbe0
+
+parsing [--prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -I /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd/include/darwin/arm64 -extended-errors -ignore-unsupported-alignment -ignore-link-errors -lbsd -o libexpat.go --package-name libexpat lib/.libs/libexpat.a]: ar: ar: lib/.libs/libexpat.ago: No such file or directory
+
+FAIL: exit status 1 (util.go:365:InDir: ccgo.go:209:Main: ccgo.go:409:main: opt.go:144:Parse: opt.go:144:Parse: ccgo.go:706:arExtract:) (generator.go:109:main: util.go:370:MustInDir: util.go:365:InDir: util.go:365:InDir: ccgo.go:209:Main: ccgo.go:458:main:)
+exit status 1
+libexpat.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

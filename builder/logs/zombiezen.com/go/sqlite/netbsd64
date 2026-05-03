@@ -1,0 +1,71 @@
+2024-05-05T00:46:24+02:00 commit a8ad27a0e6b4c69c48a148a604f51e58245fb81e, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+unexpected fault address 0x7f7ff7a2708b
+fatal error: fault
+[signal SIGBUS: bus error code=0x2 addr=0x7f7ff7a2708b pc=0x65ea31]
+
+goroutine 75 gp=0xc0007221c0 m=3 mp=0xc000047008 [running]:
+runtime.throw({0x915f89?, 0xc0007530c0?})
+	/usr/local/go/src/runtime/panic.go:1023 +0x5c fp=0xc0003c0a38 sp=0xc0003c0a08 pc=0x43e05c
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:878 +0x196 fp=0xc0003c0a98 sp=0xc0003c0a38 pc=0x456ad6
+modernc.org/libc.Xmemcpy(...)
+	/home/jnml/go/pkg/mod/modernc.org/libc@v1.41.0/libc.go:1509
+modernc.org/sqlite/lib.walIndexTryHdr(0xc000764fa0, 0x7f7fae31c028, 0x7f7fae103fc0)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_netbsd_amd64.go:25486 +0xb1 fp=0xc0003c0b18 sp=0xc0003c0a98 pc=0x65ea31
+modernc.org/sqlite/lib.walIndexReadHdr(0xc000764fa0, 0x7f7fae31c028, 0x7f7fae103fc0)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_netbsd_amd64.go:25548 +0x212 fp=0xc0003c0b88 sp=0xc0003c0b18 pc=0x65ef52
+modernc.org/sqlite/lib.walTryBeginRead(0xc000764fa0, 0x7f7fae31c028, 0x7f7fae103fc0, 0x0, 0x1)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_netbsd_amd64.go:25759 +0xba fp=0xc0003c0bd0 sp=0xc0003c0b88 pc=0x65f7ba
+modernc.org/sqlite/lib.Xsqlite3WalBeginReadTransaction(0xc000764fa0, 0x7f7fae31c028, 0x7f7fae103fc0)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_netbsd_amd64.go:25957 +0x70 fp=0xc0003c0c18 sp=0xc0003c0bd0 pc=0x65fcf0
+modernc.org/sqlite/lib.pagerBeginReadTransaction(0xc000764fa0, 0x7f7fadf01028)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_netbsd_amd64.go:21308 +0xa5 fp=0xc0003c0c70 sp=0xc0003c0c18 pc=0x653da5
+modernc.org/sqlite/lib.Xsqlite3PagerSharedLock(0xc000764fa0, 0x7f7fadf01028)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_netbsd_amd64.go:22733 +0x4af fp=0xc0003c0d08 sp=0xc0003c0c70 pc=0x657b0f
+modernc.org/sqlite/lib.lockBtree(0xc000764fa0, 0x7f7fae31bf28)
+	/home/jnml/go/pkg/mod/modernc.org/sqlite@v1.29.1/lib/sqlite_netbsd_amd64.go:29148 +0x9a fp=0xc0003c0d98 sp=0xc0003c0d08 pc=0x6686fa
+mod
+
+...
+
+l/go/src/runtime/mgcscavenge.go:658 +0x59 fp=0xc000041fc8 sp=0xc000041fa8 pc=0x424e59
+runtime.gcenable.gowrap2()
+	/usr/local/go/src/runtime/mgc.go:204 +0x25 fp=0xc000041fe0 sp=0xc000041fc8 pc=0x41b7a5
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1695 +0x1 fp=0xc000041fe8 sp=0xc000041fe0 pc=0x471181
+created by runtime.gcenable in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:204 +0xa5
+
+goroutine 18 gp=0xc000084380 m=nil [finalizer wait]:
+runtime.gopark(0xc000040648?, 0x40f1c5?, 0xa8?, 0x1?, 0x737260?)
+	/usr/local/go/src/runtime/proc.go:402 +0xce fp=0xc000040620 sp=0xc000040600 pc=0x43c30e
+runtime.runfinq()
+	/usr/local/go/src/runtime/mfinal.go:194 +0x107 fp=0xc0000407e0 sp=0xc000040620 pc=0x41a847
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1695 +0x1 fp=0xc0000407e8 sp=0xc0000407e0 pc=0x471181
+created by runtime.createfing in goroutine 1
+	/usr/local/go/src/runtime/mfinal.go:164 +0x3d
+
+goroutine 19 gp=0xc000084540 m=nil [GC worker (idle)]:
+runtime.gopark(0xb9a5b2839f14?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:402 +0xce fp=0xc00003c750 sp=0xc00003c730 pc=0x43c30e
+runtime.gcBgMarkWorker()
+	/usr/local/go/src/runtime/mgc.go:1310 +0xe5 fp=0xc00003c7e0 sp=0xc00003c750 pc=0x41d8e5
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1695 +0x1 fp=0xc00003c7e8 sp=0xc00003c7e0 pc=0x471181
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1234 +0x1c
+
+goroutine 20 gp=0xc000084700 m=nil [GC worker (idle)]:
+runtime.gopark(0xb9a5b285447c?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:402 +0xce fp=0xc00003cf50 sp=0xc00003cf30 pc=0x43c30e
+runtime.gcBgMarkWorker()
+	/usr/local/go/src/runtime/mgc.go:1310 +0xe5 fp=0xc00003cfe0 sp=0xc00003cf50 pc=0x41d8e5
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1695 +0x1 fp=0xc00003cfe8 sp=0xc00003cfe0 pc=0x471181
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1234 +0x1c
+FAIL	zombiezen.com/go/sqlite/sqlitex	0.577s
+FAIL
+
+FAIL err=exit status 1

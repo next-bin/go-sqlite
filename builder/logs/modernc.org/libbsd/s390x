@@ -1,0 +1,84 @@
+go1.25.0 linux/s390x
+2025-08-13T15:22:33+02:00 commit 2b37de834bab493817aca30dfc448d04181bb003, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libbsd/libbsd-0.11.3"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd/internal/tests -name \\*linux_s390x.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd
+archivePath libbsd-0.11.3.tar.xz
+extractedArchivePath libbsd-0.11.3
+tempDir /tmp/libbsd
+libRoot /tmp/libbsd/libbsd-0.11.3
+makeRoot /tmp/libbsd/libbsd-0.11.3
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd/internal/tests
+execute /usr/bin/tar ["xf" "libbsd-0.11.3.tar.xz" "-C" "/tmp/libbsd"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libbsd
+execute /usr/bin/sh ["-c" "go mod init example.com/libbsd ; go get modernc.org/libc@latest modernc.org/libmd@latest modernc.org/libbsd@latest"] in /tmp/libbsd/libbsd-0.11.3
+go: creating new go.mod: module example.com/libbsd
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.33.0
+go: added modernc.org/libbsd v0.11.16
+go: added modernc.org/libc v1.66.7
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -mlong-double-64' ./configure --disable-static --disable-fast-install "] in /tmp/libbsd/libbsd-0.11.3
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports nested variables... (cached) yes
+che
+
+...
+
+ciate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf64_s390) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking if ld supports --version-script flag... yes
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking whether gcc understands -c and -o together... (cached) yes
+checking dependency style of gcc... (cached) gcc3
+checking whether ln -s works... yes
+checking for unif01_CreateExternGenBits in -ltestu01... no
+checking for library containing dlsym... none required
+checking for library containing MD5Update... no
+configure: error: cannot find required MD5 functions in libc or libmd
+
+err: exit status 1
+exit status 1
+libbsd.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

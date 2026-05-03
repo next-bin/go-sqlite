@@ -1,0 +1,45 @@
+go1.25.5 linux/loong64
+2026-02-05T23:21:20+01:00 commit 4291a74cd835baf3cd337a03d13c1d4da512bbeb, GOMAXPROCS 16, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libexpat/expat-2.5.0"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /usr/bin/sh ["-c" "find /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libexpat/internal/linux/loong64 -name \\*linux_loong64.go -delete"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libexpat
+archivePath expat-2.5.0.tar.gz
+extractedArchivePath expat-2.5.0
+tempDir /tmp/libexpat
+libRoot /tmp/libexpat/expat-2.5.0
+makeRoot /tmp/libexpat/expat-2.5.0
+tests /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libexpat/internal/linux/loong64
+execute /usr/bin/tar ["xf" "expat-2.5.0.tar.gz" "-C" "/tmp/libexpat"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libexpat
+execute /usr/bin/sh ["-c" "go mod init example.com/libexpat ; go get modernc.org/libc@latest modernc.org/libbsd@latest"] in /tmp/libexpat/expat-2.5.0
+go: creating new go.mod: module example.com/libexpat
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: unrecognized import path "modernc.org/libc": https fetch: Get "https://modernc.org/libc?go-get=1": net/http: TLS handshake timeout
+go: modernc.org/libbsd@latest: unrecognized import path "modernc.org/libbsd": https fetch: Get "https://modernc.org/libbsd?go-get=1": net/http: TLS handshake timeout
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x70
+modernc.org/fileutil/ccgo.Fatalf(0x0?, {0x50eafc, 0x18}, {0xc0000338c8, 0x4, 0x4})
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:313 +0x40
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x5031a0, 0x2}, {0xc000091240, 0x2, 0x2})
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:414 +0x118
+main.main.func2()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libexpat/generator.go:117 +0x180
+modernc.org/fileutil/ccgo.InDir({0xc0000282c0, 0x19}, 0xc000033c70)
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:365 +0xc0
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0xc0000282c0?, 0xc0000284a0?}, 0x5035fe?)
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:370 +0x30
+main.main()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libexpat/generator.go:109 +0xc9c
+
+sh [-c go mod init example.com/libexpat ; go get modernc.org/libc@latest modernc.org/libbsd@latest]
+output: go: creating new go.mod: module example.com/libexpat
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: unrecognized import path "modernc.org/libc": https fetch: Get "https://modernc.org/libc?go-get=1": net/http: TLS handshake timeout
+go: modernc.org/libbsd@latest: unrecognized import path "modernc.org/libbsd": https fetch: Get "https://modernc.org/libbsd?go-get=1": net/http: TLS handshake timeout
+
+err: exit status 1
+exit status 1
+libexpat.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

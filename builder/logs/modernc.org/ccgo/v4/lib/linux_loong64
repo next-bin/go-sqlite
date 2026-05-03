@@ -1,0 +1,8 @@
+2023-12-22T00:05:59+01:00 commit 4832fd4d177af964dbc01c1d4442c962307098cf, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/tools v0.16.1
+go: downloading modernc.org/cc/v4 v4.18.0
+# modernc.org/ccgo/v4/lib [modernc.org/ccgo/v4/lib.test]
+./all_test.go:663:9: undefined: testExecKnownFails
+FAIL	modernc.org/ccgo/v4/lib [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,86 @@
+2023-11-10T00:04:56+01:00 commit 612625c407cd3f21cb07ebe0129cec952157ea5b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuth	0.017s
+ok  	modernc.org/knuth/cmd/godvitype	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftodvi	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftopk	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftype	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomf	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomft	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopktype	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopltotf	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopooltype	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotangle	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotex	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotftopl	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/govftovp	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/govptovf	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/goweave	0.002s [no tests to run]
+ok  	modernc.org/knuth/dvitype	0.057s
+ok  	modernc.org/knuth/gftodvi	0.301s
+ok  	modernc.org/knuth/gftopk	0.278s
+?   	modernc.org/knuth/internal/tds	[no test files]
+ok  	modernc.org/knuth/gftype	0.999s
+ok  	modernc.org/knuth/kpath	0.003s
+ok  	modernc.org/knuth/mf	0.492s
+ok  	modernc.org/knuth/mf/internal/trap	0.003s
+ok  	modernc.org/knuth/mft	0.004s
+ok  	modernc.org/knuth/pktype	0.651s
+ok  	modernc.org/knuth/pltotf	0.124s
+ok  	modernc.org/knuth/pooltype	0.059s
+ok  	modernc.org/knuth/tangle	2.331s
+ok  	modernc.org/knuth/tex	0.721s
+ok  	modernc.org/knuth/tex/internal/trip	0.003s
+ok  	modernc.org/knuth/tftopl	0.024s
+ok  	modernc.org/knuth/vftovp	0.058s
+ok  	modernc.org/knuth/vptovf	0.201s
+ok  	modernc.org/knuth/weave	0.985s
+--- FAIL: TestGo (2.94s)
+    all_test.go:437: 
+        2154 Pascal lines for vftovp.web
+    all_test.go:129: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/etc/vftovp.web: output: main module (example.com/tmp) does not contain package example.com/tmp/tmpdir/TestGo75051946/001
+        
+        error: exit status 1
+    all_test.go:437: 
+        3050 Pascal lines for vpto
+
+...
+
+com/tmp) does not contain package example.com/tmp/tmpdir/TestGo75051946/001
+        
+        error: exit status 1
+    all_test.go:437: 
+        339 Pascal lines for pooltype.web
+    all_test.go:129: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/texware/pooltype.web: output: main module (example.com/tmp) does not contain package example.com/tmp/tmpdir/TestGo75051946/001
+        
+        error: exit status 1
+    all_test.go:437: 
+        1524 Pascal lines for tftopl.web
+    all_test.go:129: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/texware/tftopl.web: output: main module (example.com/tmp) does not contain package example.com/tmp/tmpdir/TestGo75051946/001
+        
+        error: exit status 1
+    all_test.go:437: 
+        2661 Pascal lines for tangle.web
+    all_test.go:129: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/web/tangle.web: output: main module (example.com/tmp) does not contain package example.com/tmp/tmpdir/TestGo75051946/001
+        
+        error: exit status 1
+    all_test.go:437: 
+        4318 Pascal lines for weave.web
+    all_test.go:129: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/web/weave.web: output: main module (example.com/tmp) does not contain package example.com/tmp/tmpdir/TestGo75051946/001
+        
+        error: exit status 1
+    all_test.go:437: 
+        1134 Pascal lines for pktype.web
+    all_test.go:129: fail: testdata/ctan.org/tex-archive/systems/knuth/local/mfware/pktype.web: output: main module (example.com/tmp) does not contain package example.com/tmp/tmpdir/TestGo75051946/001
+        
+        error: exit status 1
+    all_test.go:437: 
+        1133 Pascal lines for pktype.web
+    all_test.go:129: fail: testdata/ctan.org/tex-archive/systems/knuth/local/mfware-sparc/pktype.web: output: main module (example.com/tmp) does not contain package example.com/tmp/tmpdir/TestGo75051946/001
+        
+        error: exit status 1
+    all_test.go:74: files 17, ignored 0, fails 17, ok 0
+FAIL
+FAIL	modernc.org/knuth/web	6.434s
+FAIL
+
+FAIL err=exit status 1

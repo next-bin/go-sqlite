@@ -1,0 +1,32 @@
+2023-02-01T00:04:36+01:00 commit 3be1befa4e1c730a3b501071187d684a706d661d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuthware	0.020s
+ok  	modernc.org/knuthware/cmd/godvitype	0.004s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftodvi	0.011s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftopk	0.017s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftype	0.004s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomf	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomft	0.061s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopktype	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopltotf	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopooltype	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotangle	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotftopl	0.095s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govftovp	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govptovf	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/goweave	0.003s [no tests to run]
+ok  	modernc.org/knuthware/dvitype	0.181s
+ok  	modernc.org/knuthware/gftodvi	0.331s
+ok  	modernc.org/knuthware/gftopk	0.219s
+ok  	modernc.org/knuthware/gftype	0.514s
+ok  	modernc.org/knuthware/mf	1.040s
+ok  	modernc.org/knuthware/mf/internal/trap	0.003s
+ok  	modernc.org/knuthware/mft	0.004s
+ok  	modernc.org/knuthware/pktype	0.630s
+ok  	modernc.org/knuthware/pltotf	0.048s
+ok  	modernc.org/knuthware/pooltype	0.027s
+ok  	modernc.org/knuthware/tangle	1.743s
+ok  	modernc.org/knuthware/tex	0.003s
+ok  	modernc.org/knuthware/tftopl	0.022s
+ok  	modernc.org/knuthware/vftovp	0.052s
+ok  	modernc.org/knuthware/vptovf	0.068s
+ok  	modernc.org/knuthware/weave	0.468s

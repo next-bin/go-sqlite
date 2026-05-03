@@ -1,0 +1,107 @@
+go1.26.2 linux/s390x
+2026-04-12T06:56:13+02:00 commit 66d2eca3949cbe90fe669b74908fbbec05d7ae49, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+tmpDir=/tmp/TestTclTest1165653639/001
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/TestTclTest1165653639/001/testfixture" "-tags=" "internal/testfixture/ccgo_linux_s390x.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+all_test.go:343:TestTclTest: TRC ["/tmp/TestTclTest1165653639/001/test/permutations.test" "full"]
+execute /tmp/TestTclTest1165653639/001/testfixture ["/tmp/TestTclTest1165653639/001/test/permutations.test" "full" "-verbose=0"] in /tmp/TestTclTest1165653639/001
+Time: 8_3_names.test 210 ms
+Time: affinity2.test 474 ms
+Time: affinity3.test 393 ms
+Time: aggerror.test 250 ms
+Time: aggfault.test 6991 ms
+Time: aggnested.test 925 ms
+Time: aggorderby.test 2282 ms
+Time: alias.test 143 ms
+Time: alter.test 1685 ms
+Time: alter2.test 728 ms
+Time: alter3.test 1717 ms
+Time: alter4.test 940 ms
+Time: alterauth.test 208 ms
+Time: alterauth2.test 317 ms
+Time: altercol.test 3748 ms
+Time: altercons.test 1925 ms
+Time: altercons2.test 634 ms
+Time: altercorrupt.test 210 ms
+Time: alterdropcol.test 5793 ms
+Time: alterdropcol2.test 735 ms
+Time: alterfault.test 100506 ms
+Time: alterlegacy.test 1500 ms
+Time: altermalloc.test 465413 ms
+Time: altermalloc2.test 264107 ms
+Time: altermalloc3.test 119669 ms
+Time: alterqf.test 289 ms
+Time: altertab.test 2446 ms
+Time: altertab2.test 1167 ms
+Time: altertab3.test 3591 ms
+Time: altertrig.test 799 ms
+Time: amatch1.test 130 ms
+Time: analyze.test 923 ms
+Time: analyze3.test 1608 ms
+Time: analyze4.test 464 ms
+Time: analyze5.test 6457 ms
+Time: analyze6.test 393 ms
+Time: analyze7.test 227 ms
+Time: analyze8.test 6778 ms
+ (nByte=3200 nByte2=4224)Time: analyze9.test 27573 ms
+Time: analyzeC.test 427 ms
+Time: analyzeD.test 5841 ms
+Time: analyzeE.test 628 ms
+Time: analyzeF.test 926 ms
+Time: analyzeG.test 208 ms
+analyzer1 cannot run because /tmp/TestTclTest1165653639/001/sqlite3_analyzer is not available
+Time: analyzer1.test 145 ms
+Time: atof1.test 60491 ms
+Time: atof2.test 292 ms
+No f2fs atomic-batch-write support. Skipping tests...
+Time: atomic.test 170 ms
+No f2fs atomic-b
+
+...
+
+owerr.test 188 ms
+        Time: windowfault.test 86842 ms
+        Time: windowpushd.test 413 ms
+        Time: with1.test 13595 ms
+        Time: with2.test 906 ms
+        Time: with3.test 304 ms
+        Time: with4.test 156 ms
+        Time: with5.test 304 ms
+        Time: with6.test 371 ms
+        Time: withM.test 5680 ms
+        Time: without_rowid1.test 1109 ms
+        Time: without_rowid2.test 266 ms
+        Time: without_rowid3.test 5760 ms
+        Time: without_rowid4.test 4092 ms
+        Time: without_rowid5.test 420 ms
+        Time: without_rowid6.test 376 ms
+        Time: without_rowid7.test 246 ms
+        Time: writecrash.test 177554 ms
+        Time: zeroblob.test 646 ms
+        Time: zeroblobfault.test 1165 ms
+        Time: zerodamage.test 320 ms
+        Time: zipfile.test 4312 ms
+        Time: zipfile2.test 509 ms
+        Time: zipfilefault.test 11906 ms
+        SQLite 2026-04-09 11:41:38 4525003a53a7fc63ca75c59b22c79608659ca12f0131f52c18637f829977alt1
+        10 errors out of 1051066 tests on linux-s390x Linux 64-bit big-endian
+        !Failures on these tests: dbstatus-4.0.1 dbstatus-4.1.1 dbstatus-4.2.1 dbstatus-4.2.2 dbstatus-4.2.3 dbstatus-4.2.4 like-14.2 malloc5-6.2.2 malloc5-6.2.3 walrestart-1.4
+        WARNING: Multi-threaded tests skipped: SQLite build uses SQLITE_MUTEX_NOOP
+        All memory allocations freed - no leaks
+        Maximum memory usage: 9320928 bytes
+        Current memory usage: 0 bytes
+        Number of malloc()  : -1 calls
+    all_test.go:407: dbstatus-4.0.1: expected fail
+    all_test.go:407: dbstatus-4.1.1: expected fail
+    all_test.go:407: dbstatus-4.2.1: expected fail
+    all_test.go:407: dbstatus-4.2.2: expected fail
+    all_test.go:407: dbstatus-4.2.3: expected fail
+    all_test.go:407: dbstatus-4.2.4: expected fail
+    all_test.go:416: like-14.2 FAIL
+    all_test.go:407: malloc5-6.2.2: expected fail
+    all_test.go:407: malloc5-6.2.3: expected fail
+    all_test.go:416: walrestart-1.4 FAIL
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	59381.010s
+
+FAIL err=exit status 1

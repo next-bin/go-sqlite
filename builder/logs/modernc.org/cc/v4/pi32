@@ -1,0 +1,85 @@
+2023-08-20T03:39:35+02:00 commit c1b04ac7857d3e90b1080e621ebadf6c31b19864, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+execute go ["build" "-o" "/tmp/TestMake4040264872/001/cc" "fakecc.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake4040264872/001/cc" "/tmp/TestMake4040264872/001/gcc"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute cp ["/tmp/TestMake4040264872/001/cc" "/tmp/TestMake4040264872/001/clang"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/cc/v4
+execute ./configure ["--disable-cpp"] in /tmp/TestMakepcre66011847/001/pcre
+execute make [] in /tmp/TestMakepcre66011847/001/pcre
+execute ./configure [] in /tmp/TestMakepcre23472308440/001/pcre2
+execute make [] in /tmp/TestMakepcre23472308440/001/pcre2
+execute ./configure [] in /tmp/TestMakezlib4084170855/001/zlib
+execute make [] in /tmp/TestMakezlib4084170855/001/zlib
+execute ./configure ["--enable-corefoundation=no"] in /tmp/TestMaketclunix3610976848/001/tcl/unix
+execute make [] in /tmp/TestMaketclunix3610976848/001/tcl/unix
+execute ./configure [] in /tmp/TestMakegmp-6.2.11865794750/001/gmp-6.2.1
+execute make [] in /tmp/TestMakegmp-6.2.11865794750/001/gmp-6.2.1
+execute ./configure [] in /tmp/TestMakempfr-4.1.0118511086/001/mpfr-4.1.0
+execute make [] in /tmp/TestMakempfr-4.1.0118511086/001/mpfr-4.1.0
+execute ./configure [] in /tmp/TestMakempc-1.2.12204836880/001/mpc-1.2.1
+execute ./configure [] in /tmp/TestMakehdf5-1.12.11172448114/001/hdf5-1.12.1
+execute make [] in /tmp/TestMakehdf5-1.12.11172448114/001/hdf5-1.12.1
+execute ./configure [] in /tmp/TestMakemusl-1.2.43534742186/001/musl-1.2.4
+execute make [] in /tmp/TestMakemusl-1.2.43534742186/001/musl-1.2.4
+--- FAIL: TestMake (6028.68s)
+    --- FAIL: TestMake/musl-1.2.4 (591.55s)
+        all_test.go:1917: FAIL /tmp/TestMakemusl-1.2.43534742186/001/musl-1.2.4 [-std=c99 -nostdinc -ffreestanding -fexcess-precision=standard -frounding-math -fno-strict-aliasing -Wa,--noexecstack -D_XOPEN_SOURCE=700 -I./arch/arm -I./arch/generic -Iobj/src/internal -I./src/include -I./src/internal -Iobj/include -I./include -Os -pipe -fomit-frame-pointer -fno-unwind-t
+
+...
+
+y, __ldso_atfork);
+            
+            static void dummy_0(void) { }
+            weak_alias(dummy_0, __tl_lock);
+            weak_alias(dummy_0, __tl_unlock);
+            
+            pid_t fork(void)
+            {
+            	sigset_t set;
+            	__fork_handler(-1);
+            	__block_app_sigs(&set);
+            	int need_locks = libc.need_locks > 0;
+            	if (need_locks) {
+            		__ldso_atfork(-1);
+            		__pthread_key_atfork(-1);
+            		__aio_atfork(-1);
+            		__inhibit_ptc();
+            		for (int i=0; i<sizeof atfork_locks/sizeof *atfork_locks; i++)
+            			if (*atfork_locks[i]) LOCK(*atfork_locks[i]);
+            		__malloc_atfork(-1);
+            		__tl_lock();
+            	}
+            	pthread_t self=__pthread_self(), next=self->next;
+            	pid_t ret = _Fork();
+            	int errno_save = errno;
+            	if (need_locks) {
+            		if (!ret) {
+            			for (pthread_t td=next; td!=self; td=td->next)
+            				td->tid = -1;
+            			if (__vmlock_lockptr) {
+            				__vmlock_lockptr[0] = 0;
+            				__vmlock_lockptr[1] = 0;
+            			}
+            		}
+            		__tl_unlock();
+            		__malloc_atfork(!ret);
+            		for (int i=0; i<sizeof atfork_locks/sizeof *atfork_locks; i++)
+            			if (*atfork_locks[i])
+            				if (ret) UNLOCK(*atfork_locks[i]);
+            				else **atfork_locks[i] = 0;
+            		__release_ptc();
+            		if (ret) __aio_atfork(0);
+            		__pthread_key_atfork(!ret);
+            		__ldso_atfork(!ret);
+            	}
+            	__restore_sigs(&set);
+            	__fork_handler(!ret);
+            	if (ret<0) errno = errno_save;
+            	return ret;
+            }
+            
+            ----
+            TODO src/process/fork.c:23:21: *cc.ArrayType
+        all_test.go:1927: files 2854, skip 6, ok 2846, fails 2
+    all_test.go:1808: TOTAL: files 6938, skip 284, ok 6652, fails 2
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	6598.265s

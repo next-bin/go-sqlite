@@ -1,0 +1,63 @@
+2022-11-21T00:12:34+01:00 commit bba7d38d3198040a15c7471d96e66069535939c3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+fatal error: runtime: out of memory
+
+runtime stack:
+runtime.throw({0x1d51fa?, 0x10?})
+	/usr/local/go/src/runtime/panic.go:1047 +0x40 fp=0x46f46d140 sp=0x46f46d110 pc=0x44ad0
+runtime.sysMapOS(0x4058400000, 0x400000?)
+	/usr/local/go/src/runtime/mem_bsd.go:71 +0xec fp=0x46f46d190 sp=0x46f46d140 pc=0x25edc
+runtime.sysMap(0x39ec0?, 0x46f46d1b0?, 0x46f46d238?)
+	/usr/local/go/src/runtime/mem.go:142 +0x34 fp=0x46f46d1c0 sp=0x46f46d190 pc=0x25d44
+runtime.(*mheap).grow(0x32b9c0, 0x2000?)
+	/usr/local/go/src/runtime/mheap.go:1459 +0x27c fp=0x46f46d240 sp=0x46f46d1c0 pc=0x3708c
+runtime.(*mheap).allocSpan(0x32b9c0, 0x1, 0x0?, 0x8)
+	/usr/local/go/src/runtime/mheap.go:1191 +0x254 fp=0x46f46d2f0 sp=0x46f46d240 pc=0x366c4
+runtime.(*mheap).alloc.func1()
+	/usr/local/go/src/runtime/mheap.go:910 +0x6c fp=0x46f46d340 sp=0x46f46d2f0 pc=0x3609c
+runtime.systemstack()
+	/usr/local/go/src/runtime/asm_arm64.s:243 +0x6c fp=0x46f46d350 sp=0x46f46d340 pc=0x7230c
+
+goroutine 10845 [running]:
+runtime.systemstack_switch()
+	/usr/local/go/src/runtime/asm_arm64.s:200 +0x8 fp=0x403f4a1ba0 sp=0x403f4a1b90 pc=0x72288
+runtime.(*mheap).alloc(0x47e9d7108?, 0x20?, 0x38?)
+	/usr/local/go/src/runtime/mheap.go:904 +0x54 fp=0x403f4a1bf0 sp=0x403f4a1ba0 pc=0x35ff4
+runtime.(*mcentral).grow(0x1?)
+	/usr/local/go/src/runtime/mcentral.go:244 +0x5c fp=0x403f4a1c40 sp=0x403f4a1bf0 pc=0x255fc
+runtime.(*mcentral).cacheSpan(0x33c200)
+	/usr/local/go/src/runtime/mcentral.go:164 +0x33c fp=0x403f4a1cb0 sp=0x403f4a1c40 pc=0x2544c
+runtime.(*mcache).refill(0x47e9d7108, 0x8?)
+	/usr/local/go/src/runtime/mcache.go:181 +0x1d0 fp=0x403f4a1d00 sp=0x403f4a1cb0 pc=0x24a00
+runtime.(*mcache).nextFree(0x47e9d7108, 0x8)
+	/usr/local/go/src/runtime/malloc.go:819 +0x84 fp=0x403f4a1d50 sp=0x403f4a1d00 pc=0x1b214
+runtime.mallocgc(0x20, 0x1ab7a0, 0x1)
+	/usr/local/go/src/runtime/malloc.go:1018 +0x490 fp=0x403f4a1dc0 sp=0x403f4a1d50 pc=0x1b800
+runtime.newobject(0x4057bb1500?)
+	/usr/local/go/src/runtime/malloc.go:1192 +0x2c fp=0x403f4a1df0 sp=0x403f4a1dc0 pc=0x1bd4c
+modernc.org/gc/v3/internal/ebnf.(*pa
+
+...
+
+740 pc=0x139268
+modernc.org/gc/v3/internal/ebnf.nodeSource0(0x4054e61bd0, 0x4054e61bf0, {0x1b9960?, 0x4057e2c960?})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1534 +0x298 fp=0x4054e618e0 sp=0x4054e61810 pc=0x1391c8
+modernc.org/gc/v3/internal/ebnf.nodeSource0(0x4000235bd0, 0x4000235bf0, {0x19f720?, 0x4057e2c910?})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1530 +0x250 fp=0x4054e619b0 sp=0x4054e618e0 pc=0x139180
+modernc.org/gc/v3/internal/ebnf.nodeSource0(0x4054e61bd0, 0x4054e61bf0, {0x1ab700?, 0x4057e0de18?})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1534 +0x298 fp=0x4054e61a80 sp=0x4054e619b0 pc=0x1391c8
+modernc.org/gc/v3/internal/ebnf.nodeSource0(0x4000235bd0, 0x4000235bf0, {0x19c220?, 0x4057e0de00?})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1530 +0x250 fp=0x4054e61b50 sp=0x4054e61a80 pc=0x139180
+modernc.org/gc/v3/internal/ebnf.nodeSource({0x2152f0?, 0x4057e0de00?}, 0x19?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1497 +0x50 fp=0x4054e61c30 sp=0x4054e61b50 pc=0x138cb0
+modernc.org/gc/v3/internal/ebnf.(*AST).Source(...)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:1446
+modernc.org/gc/v3/internal/ebnf.testParser.func1.1()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/all_test.go:423 +0x45c fp=0x4054e61f80 sp=0x4054e61c30 pc=0x16cd5c
+modernc.org/gc/v3/internal/ebnf.(*parallel).exec.func1()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:626 +0x5c fp=0x4054e61fd0 sp=0x4054e61f80 pc=0x13461c
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_arm64.s:1172 +0x4 fp=0x4054e61fd0 sp=0x4054e61fd0 pc=0x747e4
+created by modernc.org/gc/v3/internal/ebnf.(*parallel).exec
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/gc/v3/internal/ebnf/etc.go:620 +0xa8
+exit status 2
+FAIL	modernc.org/gc/v3/internal/ebnf	193.214s

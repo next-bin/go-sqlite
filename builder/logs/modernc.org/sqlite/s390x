@@ -1,0 +1,19 @@
+go1.25.5 linux/s390x
+2025-12-27T16:23:22+01:00 commit b26df5eba71e0c78ffd10eb1e30a21240ae27d0a, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for linux/s390x
+execute /usr/local/go/bin/go ["test" "-v" "-timeout" "1h" "-race" "-run" "TestConcurrentGoroutines" "-inner"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite
+test binary compiled for linux/s390x
+=== RUN   TestConcurrentGoroutines
+    all_test.go:739: 8 goroutines concurrently inserted 40000 rows in 42.555967385s
+--- PASS: TestConcurrentGoroutines (64.00s)
+PASS
+ok  	modernc.org/sqlite	65.661s
+--- FAIL: TestIssue65 (81.61s)
+    all_test.go:2432: readFunc(true): read error: database is locked (5) (SQLITE_BUSY)
+    all_test.go:2447: writeFunc(false): database is locked (5) (SQLITE_BUSY)
+    all_test.go:2460: writeFunc(false): database is locked (5) (SQLITE_BUSY)
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite	395.599s
+
+FAIL err=exit status 1

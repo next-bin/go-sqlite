@@ -1,0 +1,24 @@
+2023-12-14T14:55:05+01:00 commit 88d5fb3cb238027817665c7e285e1f36ed73733c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/home/jnml/tmp/Test2187438202/001/pcretest" "-tags=" "internal/pcretest/ccgo_openbsd_amd64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre
+# command-line-arguments
+internal/pcretest/ccgo_openbsd_amd64.go:5365:21: undefined: libc.Xclock
+internal/pcretest/ccgo_openbsd_amd64.go:5379:15: undefined: libc.Xclock
+internal/pcretest/ccgo_openbsd_amd64.go:5455:23: undefined: libc.Xclock
+internal/pcretest/ccgo_openbsd_amd64.go:5466:16: undefined: libc.Xclock
+internal/pcretest/ccgo_openbsd_amd64.go:6835:24: undefined: libc.Xclock
+internal/pcretest/ccgo_openbsd_amd64.go:6866:17: undefined: libc.Xclock
+--- FAIL: Test (0.53s)
+    all_test.go:35: # command-line-arguments
+        internal/pcretest/ccgo_openbsd_amd64.go:5365:21: undefined: libc.Xclock
+        internal/pcretest/ccgo_openbsd_amd64.go:5379:15: undefined: libc.Xclock
+        internal/pcretest/ccgo_openbsd_amd64.go:5455:23: undefined: libc.Xclock
+        internal/pcretest/ccgo_openbsd_amd64.go:5466:16: undefined: libc.Xclock
+        internal/pcretest/ccgo_openbsd_amd64.go:6835:24: undefined: libc.Xclock
+        internal/pcretest/ccgo_openbsd_amd64.go:6866:17: undefined: libc.Xclock
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre	0.549s
+
+FAIL err=exit status 1

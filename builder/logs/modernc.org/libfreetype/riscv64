@@ -1,0 +1,87 @@
+go1.26.0 linux/riscv64
+2026-03-14T11:21:46+01:00 commit ae52dab6c3302a70ad8ac2e8e062a4bb0b9ed488, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libfreetype/freetype-2.13.2"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libfreetype
+archivePath freetype-2.13.2.tar.gz
+extractedArchivePath freetype-2.13.2
+tempDir /tmp/libfreetype
+libRoot /tmp/libfreetype/freetype-2.13.2
+makeRoot /tmp/libfreetype/freetype-2.13.2
+includeDir /tmp/libfreetype/freetype-2.13.2/ccgo
+execute /usr/bin/sh ["-c" "go mod init example.com/libfreetype ; go get modernc.org/libc@latest modernc.org/libz@latest"] in /tmp/libfreetype/freetype-2.13.2
+go: creating new go.mod: module example.com/libfreetype
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.41.0
+go: added modernc.org/libc v1.70.0
+go: added modernc.org/libz v0.17.3
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "\nCFLAGS='-DFT_CONFIG_OPTION_NO_ASSEMBLER' ./configure \\\n\t--disable-shared \\\n\t--with-brotli=no \\\n\t--with-bzip2=no \\\n\t--with-harfbuzz=no \\\n\t--with-png=no \\\n\t--with-zlib=yes \\\n"] in /tmp/libfreetype/freetype-2.13.2
+
+FreeType build system -- automatic system detection
+
+The following settings are used:
+
+  platform                    unix
+  compiler                    cc
+  configuration directory     ./builds/unix
+  configuration rules         ./builds/unix/unix.mk
+
+If this does not correspond to your system or settings please remove the file
+`config.mk' from this directory then read the INSTALL file for help.
+
+Otherwise, simply type `make' again to build the library,
+or `make refdoc' to build the API reference (this needs Python >= 3.5).
+
+Generating modules list in ./objs/ftmodule.h...
+done.
+* module: truetype  (Windows/Mac font files with extension *.ttf or *.ttc)
+* module: type1     (Postscript font file
+
+...
+
+er (idle)]:
+runtime.gopark(0x1?, 0x0?, 0xd8?, 0x27?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:462 +0xe0 fp=0x33c86c0748 sp=0x33c86c0730 pc=0x77b10
+runtime.gcBgMarkWorker(0x33c86d8150)
+	/usr/local/go/src/runtime/mgc.go:1791 +0xc8 fp=0x33c86c07c8 sp=0x33c86c0748 pc=0x34a98
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1695 +0x20 fp=0x33c86c07d8 sp=0x33c86c07c8 pc=0x349c8
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_riscv64.s:630 +0x4 fp=0x33c86c07d8 sp=0x33c86c07d8 pc=0x7c7fc
+created by runtime.gcBgMarkStartWorkers in goroutine 21
+	/usr/local/go/src/runtime/mgc.go:1695 +0x112
+
+goroutine 45 gp=0x33c86b8a80 m=nil [GC worker (idle)]:
+runtime.gopark(0x18a564d895a012?, 0x1?, 0xec?, 0x96?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:462 +0xe0 fp=0x33c86c1748 sp=0x33c86c1730 pc=0x77b10
+runtime.gcBgMarkWorker(0x33c86d8150)
+	/usr/local/go/src/runtime/mgc.go:1791 +0xc8 fp=0x33c86c17c8 sp=0x33c86c1748 pc=0x34a98
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1695 +0x20 fp=0x33c86c17d8 sp=0x33c86c17c8 pc=0x349c8
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_riscv64.s:630 +0x4 fp=0x33c86c17d8 sp=0x33c86c17d8 pc=0x7c7fc
+created by runtime.gcBgMarkStartWorkers in goroutine 21
+	/usr/local/go/src/runtime/mgc.go:1695 +0x112
+make: *** [/tmp/libfreetype/freetype-2.13.2/src/sfnt/rules.mk:71: /tmp/libfreetype/freetype-2.13.2/objs/sfnt.lo] Error 1
+make: *** Waiting for unfinished jobs....
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x56
+modernc.org/fileutil/ccgo.Fatal(0x40?, {0x33a5ea3be0, 0x1, 0x1})
+	/home/jnml/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:323 +0x40
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x33a5cc4040?, 0x0?}, 0x33a5e580a0?)
+	/home/jnml/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:371 +0x5e
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libfreetype/generator.go:111 +0x968
+
+exit status 2
+exit status 1
+libfreetype.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

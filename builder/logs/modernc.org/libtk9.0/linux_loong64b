@@ -1,0 +1,38 @@
+go1.26.0 linux/loong64
+2026-03-11T09:59:27+01:00 commit 9d11389c390ca7181239681bbfdf41613287f23a, GOMAXPROCS 16, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: xdgDir /home/cznic/.config/ccgo/v4/libtk9.0/linux/loong64
+archivePath tk9.0.3-src.tar.gz
+libRoot /home/cznic/.config/ccgo/v4/libtk9.0/linux/loong64/tk9.0.3
+makeRoot /home/cznic/.config/ccgo/v4/libtk9.0/linux/loong64/tk9.0.3/unix
+tkDocs /home/cznic/.config/ccgo/v4/libtk9.0/linux/loong64/tk9.0.3/doc
+execute /usr/bin/sh ["-c" "find internal/tests -name *linux_loong64.go -delete"] in /home/cznic/src/modernc.org/builder/.exclude/modernc.org/libtk9.0
+execute /usr/bin/sh ["-c" "go mod init example.com/libtk9.0 ; go get modernc.org/libX11@latest modernc.org/libXft@latest modernc.org/libc@latest modernc.org/libfontconfig@latest modernc.org/libtcl9.0@latest modernc.org/libtk9.0@latest"] in /home/cznic/.config/ccgo/v4/libtk9.0/linux/loong64/tk9.0.3/unix
+go: creating new go.mod: module example.com/libtk9.0
+go: downloading modernc.org/libtcl9.0 v0.17.4
+go: modernc.org/libtcl9.0@latest: unrecognized import path "modernc.org/libtcl9.0": https fetch: Get "https://modernc.org/libtcl9.0?go-get=1": read tcp 10.180.200.94:34752->216.239.34.21:443: read: connection timed out
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x70
+modernc.org/fileutil/ccgo.Fatalf(0x80?, {0x89de9d, 0x18}, {0x241d29ad3590, 0x4, 0x4})
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:313 +0x40
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x891fae, 0x2}, {0x241d29b3e000, 0x2, 0x2})
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:414 +0x134
+main.main.func1()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libtk9.0/generator.go:125 +0x2d4
+modernc.org/fileutil/ccgo.InDir({0x241d29ac63c0, 0x3f}, 0x241d2a085ae0)
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:365 +0xb8
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x241d29ac63c0?, 0x0?}, 0x241d29dfe640?)
+	/home/cznic/go/pkg/mod/modernc.org/fileutil@v1.4.0/ccgo/util.go:370 +0x30
+main.main()
+	/home/cznic/src/modernc.org/builder/.exclude/modernc.org/libtk9.0/generator.go:108 +0xcfc
+
+sh [-c go mod init example.com/libtk9.0 ; go get modernc.org/libX11@latest modernc.org/libXft@latest modernc.org/libc@latest modernc.org/libfontconfig@latest modernc.org/libtcl9.0@latest modernc.org/libtk9.0@latest]
+output: go: creating new go.mod: module example.com/libtk9.0
+go: downloading modernc.org/libtcl9.0 v0.17.4
+go: modernc.org/libtcl9.0@latest: unrecognized import path "modernc.org/libtcl9.0": https fetch: Get "https://modernc.org/libtcl9.0?go-get=1": read tcp 10.180.200.94:34752->216.239.34.21:443: read: connection timed out
+
+err: exit status 1
+exit status 1
+libtk.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

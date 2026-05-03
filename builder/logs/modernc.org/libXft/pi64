@@ -1,0 +1,9 @@
+go1.26.2 linux/arm64
+2026-04-20T04:40:25+02:00 commit 2d6a2995be259a7f7991f1fda09422bec77dd841, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: ssh: Could not resolve hostname gitlab.com: Temporary failure in name resolution
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+FAIL err=AUTOTASKS: exit status 1

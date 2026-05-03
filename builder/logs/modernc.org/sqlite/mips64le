@@ -1,0 +1,65 @@
+2024-01-24T01:59:38+08:00 commit 0242c27033a2788d2f1fd45e00d6a22bac5ba326, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/errno
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/fcntl: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/fcntl
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/fts: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/fts
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/grp: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/grp
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/langinfo: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/langinfo
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/limits: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/limits
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/netdb: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/netdb
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/netinet/in: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/netinet/in
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/poll: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/poll
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/pthread: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/pthread
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/pwd: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/pwd
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/signal: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/signal
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/stdio: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/stdio
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/stdlib: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/stdlib
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/socket: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/sys/socket
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/stat: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/sys/stat
+package modernc.org/sqlite
+	imports modernc.org/libc/sys/types: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/sys/types
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/termios: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/termios
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/time: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/time
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/unistd: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/unistd
+package modernc.org/sqlite
+	imports modernc.org/libc
+	imports modernc.org/libc/uuid/uuid: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.29.0/uuid/uuid
+
+FAIL err=exit status 1

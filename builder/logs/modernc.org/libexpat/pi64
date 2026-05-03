@@ -1,0 +1,4 @@
+go1.25.1 linux/arm64
+2025-10-06T11:48:54+02:00 commit 05ba6940f57f23db4ac8fe9bddbd43d44c3d21ec, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: exit status 128

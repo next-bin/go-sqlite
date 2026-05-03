@@ -1,0 +1,82 @@
+2024-05-07T00:14:11+02:00 commit 57686a2cf3f8911306aed16e0310918cb361b69c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/crypto v0.23.0
+go: downloading golang.org/x/text v0.15.0
+go: downloading golang.org/x/sys v0.20.0
+?   	github.com/ncruces/go-sqlite3/embed	[no test files]
+ok  	github.com/ncruces/go-sqlite3	0.242s
+ok  	github.com/ncruces/go-sqlite3/driver	0.211s
+ok  	github.com/ncruces/go-sqlite3/ext/array	0.170s
+ok  	github.com/ncruces/go-sqlite3/ext/blobio	0.220s
+ok  	github.com/ncruces/go-sqlite3/ext/csv	0.167s
+ok  	github.com/ncruces/go-sqlite3/ext/fileio	0.286s
+ok  	github.com/ncruces/go-sqlite3/ext/hash	0.130s
+ok  	github.com/ncruces/go-sqlite3/ext/lines	0.176s
+ok  	github.com/ncruces/go-sqlite3/ext/pivot	0.227s
+ok  	github.com/ncruces/go-sqlite3/ext/statement	0.154s
+ok  	github.com/ncruces/go-sqlite3/ext/stats	0.178s
+ok  	github.com/ncruces/go-sqlite3/ext/unicode	0.145s
+ok  	github.com/ncruces/go-sqlite3/ext/zorder	0.144s
+ok  	github.com/ncruces/go-sqlite3/internal/util	0.004s
+runtime: out of memory: cannot allocate 1002438656-byte block (2125791232 in use)
+fatal error: out of memory
+
+goroutine 92 gp=0xae78b48 m=0 mp=0x864ebe0 [running]:
+runtime.throw({0x8322229, 0xd})
+	/usr/local/go/src/runtime/panic.go:1023 +0x4d fp=0x8d61e74 sp=0x8d61e60 pc=0x80842fd
+runtime.(*mcache).allocLarge(0xbb88e2e0, 0x3b9aca01, 0x1)
+	/usr/local/go/src/runtime/mcache.go:236 +0x1c1 fp=0x8d61ea0 sp=0x8d61e74 pc=0x805e931
+runtime.mallocgc(0x3b9aca01, 0x0, 0x0)
+	/usr/local/go/src/runtime/malloc.go:1165 +0x622 fp=0x8d61f08 sp=0x8d61ea0 pc=0x8056802
+runtime.slicebytetostring(0x8d61f48, 0x28c00000, 0x3b9aca01)
+	/usr/local/go/src/runtime/string.go:112 +0x72 fp=0x8d61f20 sp=0x8d61f08 pc=0x80a1292
+github.com/ncruces/go-sqlite3/tests.TestStmt_Error(0xaedcc08)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/ncruces/go-sqlite3/tests/stmt_test.go:628 +0x276 fp=0x8d61f98 sp=0x8d61f20 pc=0x82ac606
+testing.tRunner(0xaedcc08, 0x8336b18)
+	/usr/local/go/src/testing/testing.go:1689 +0x11f fp=0x8d61fe4 sp=0x8d61f98 pc=0x81404df
+testing.(*T).Run.gowrap1()
+	/usr/local/go/src/testing/testing.go:1742 +0x28 fp=0x8d61ff0 sp=0x8d61fe4 pc=
+
+...
+
+91cbec4 pc=0x82aed3b
+testing.tRunner(0xaedd108, 0x8336acc)
+	/usr/local/go/src/testing/testing.go:1689 +0x11f fp=0x91cbfe4 sp=0x91cbf98 pc=0x81404df
+testing.(*T).Run.gowrap1()
+	/usr/local/go/src/testing/testing.go:1742 +0x28 fp=0x91cbff0 sp=0x91cbfe4 pc=0x81414c8
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_386.s:1363 +0x1 fp=0x91cbff4 sp=0x91cbff0 pc=0x80bbe41
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:1742 +0x3b3
+FAIL	github.com/ncruces/go-sqlite3/tests	4.672s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/empty	0.004s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/missing	0.004s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/nil	0.004s
+?   	github.com/ncruces/go-sqlite3/tests/testcfg	[no test files]
+?   	github.com/ncruces/go-sqlite3/util/osutil	[no test files]
+?   	github.com/ncruces/go-sqlite3/util/vtabutil	[no test files]
+ok  	github.com/ncruces/go-sqlite3/tests/parallel	127.121s
+ok  	github.com/ncruces/go-sqlite3/util/fsutil	0.254s
+ok  	github.com/ncruces/go-sqlite3/util/ioutil	0.584s
+ok  	github.com/ncruces/go-sqlite3/vfs	0.277s
+ok  	github.com/ncruces/go-sqlite3/vfs/adiantum	0.005s
+ok  	github.com/ncruces/go-sqlite3/vfs/memdb	1.101s
+ok  	github.com/ncruces/go-sqlite3/vfs/readervfs	0.674s
+panic: Please use Git LFS to clone this repo: https://git-lfs.com/
+
+goroutine 1 [running]:
+github.com/ncruces/go-sqlite3/vfs/tests/mptest.TestMain(0x889a050)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/ncruces/go-sqlite3/vfs/tests/mptest/mptest_test.go:55 +0x379
+main.main()
+	_testmain.go:67 +0x13f
+FAIL	github.com/ncruces/go-sqlite3/vfs/tests/mptest	0.043s
+panic: Please use Git LFS to clone this repo: https://git-lfs.com/
+
+goroutine 1 [running]:
+github.com/ncruces/go-sqlite3/vfs/tests/speedtest1.TestMain(0x889c050)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/ncruces/go-sqlite3/vfs/tests/speedtest1/speedtest1_test.go:51 +0x321
+main.main()
+	_testmain.go:51 +0x13f
+FAIL	github.com/ncruces/go-sqlite3/vfs/tests/speedtest1	0.043s
+FAIL
+
+FAIL err=exit status 1

@@ -1,0 +1,37 @@
+2023-10-09T12:15:06+02:00 commit 41b4c4b6d435a34d7213a9c22ad49fd33d0c1644, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+cc -E - <src/common/options.h.in | awk ' \
+	/optiongroups_unistd_end/ {s=1; next} \
+	!s || !NF || /^#/ {next} \
+	!a {a=$1; if(NF==1)next} \
+	{print "#define "a" "$NF; a=""}' >src/common/options.h.tmp
+mv src/common/options.h.tmp src/common/options.h
+cc -Isrc/common -Isrc/common -pipe -std=c99 -D_POSIX_C_SOURCE=200809L -Wall -Wno-unused-function -Wno-missing-braces -Wno-unused -Wno-overflow -Wno-unknown-pragmas -fno-builtin -frounding-math -Werror=implicit-function-declaration -Werror=implicit-int -Werror=pointer-sign -Werror=pointer-arith -g -D_FILE_OFFSET_BITS=64 -pedantic-errors -Werror -Wno-unused -D_XOPEN_SOURCE=700  -c -o src/api/main.o src/api/main.c 2>src/api/main.o.err || echo BUILDERROR src/api/main.o; cat src/api/main.o.err
+cc -Isrc/common -Isrc/common -pipe -std=c99 -D_POSIX_C_SOURCE=200809L -Wall -Wno-unused-function -Wno-missing-braces -Wno-unused -Wno-overflow -Wno-unknown-pragmas -fno-builtin -frounding-math -Werror=implicit-function-declaration -Werror=implicit-int -Werror=pointer-sign -Werror=pointer-arith -g -D_FILE_OFFSET_BITS=64  -c -o src/common/fdfill.o src/common/fdfill.c 2>src/common/fdfill.o.err || echo BUILDERROR src/common/fdfill.o; cat src/common/fdfill.o.err
+cc -Isrc/common -Isrc/common -pipe -std=c99 -D_POSIX_C_SOURCE=200809L -Wall -Wno-unused-function -Wno-missing-braces -Wno-unused -Wno-overflow -Wno-unknown-pragmas -fno-builtin -frounding-math -Werror=implicit-function-declaration -Werror=implicit-int -Werror=pointer-sign -Werror=pointer-arith -g -D_FILE_OFFSET_BITS=64  -c -o src/common/memfill.o src/common/memfill.c 2>src/common/memfill.o.err || echo BUILDERROR src/common/memfill.o; cat src/common/memfill.o.err
+cc -Isrc/common -Isrc/common -pipe -std=c99 -D_POSIX_C_SOURCE=200809L -Wall -Wno-unused-function -Wno-missing-braces -Wno-unused -Wno-overflow -Wno-unknown-pragmas -fno-builtin -frounding-math -Werror=implicit-function-declaration -Werror=implicit-int -Werror=pointer-sign -Werror=pointer-arith -g -D_FILE_OFFSET_BITS=64  -c -o src/common/mtest.o src/common/mtest.c 2>src/comm
+
+...
+
+go:820: testdata/nsz.repo.hu/libc-test/src/regression/rlimit-open-files.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/scanf-bytes-consumed.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/scanf-match-literal-eof.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/scanf-nullbyte-char.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/sem_close-unmap.exe.go: PASS
+    all_linux_386_test.go:803: testdata/nsz.repo.hu/libc-test/src/regression/setvbuf-unget.exe.go: cbin fail=signal: killed
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/setvbuf-unget.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/sigprocmask-internal.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/sscanf-eof.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/statvfs.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/strverscmp.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/syscall-sign-extend.exe.go: PASS
+    all_linux_386_test.go:820: testdata/nsz.repo.hu/libc-test/src/regression/uselocale-0.exe.go: PASS
+    all_linux_386_test.go:817: src/common/runtest.c:37: usage: /tmp/TestLibc4000494552/001/main [-t timeoutsec] [-w wrapcmd] cmd [args..]
+         testdata/nsz.repo.hu/libc-test/src/regression/wcsncpy-read-overflow.exe.go: EXEC FAIL=exit status 255
+    all_linux_386_test.go:817: src/common/runtest.c:37: usage: /tmp/TestLibc4000494552/001/main [-t timeoutsec] [-w wrapcmd] cmd [args..]
+         testdata/nsz.repo.hu/libc-test/src/regression/wcsstr-false-negative.exe.go: EXEC FAIL=exit status 255
+    all_linux_386_test.go:824: files=334 skip=238 cfail=15 buildfail=0 buildok=96 fail=4 pass=92
+FAIL
+exit status 1
+FAIL	modernc.org/libc/v2	407.419s
+
+FAIL err=exit status 1

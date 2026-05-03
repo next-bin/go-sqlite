@@ -1,0 +1,23 @@
+go1.25.1 linux/s390x
+2025-10-10T11:56:21+02:00 commit f27cca447e372bc601377bcec848cd7eb5185c19, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/db v1.0.27
+go: downloading modernc.org/file v1.0.18
+panic: sync: negative WaitGroup counter
+
+goroutine 191 [running]:
+sync.(*WaitGroup).Add(0xc000196410, 0xffffffffffffffff)
+	/usr/local/go/src/sync/waitgroup.go:118 +0x2b4
+sync.(*WaitGroup).Done(...)
+	/usr/local/go/src/sync/waitgroup.go:156
+modernc.org/ql.TestWhereExists.func1(0x0, 0xc000196410)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/ql/all_test.go:3969 +0x2e2
+created by modernc.org/ql.TestWhereExists in goroutine 188
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/ql/all_test.go:3954 +0x322
+FAIL	modernc.org/ql	581.809s
+?   	modernc.org/ql/design	[no test files]
+ok  	modernc.org/ql/driver	0.673s
+?   	modernc.org/ql/ql	[no test files]
+ok  	modernc.org/ql/vendored/github.com/camlistore/go4/lock	0.541s
+FAIL
+
+FAIL err=exit status 1

@@ -1,0 +1,83 @@
+go1.25.5 linux/riscv64
+2026-01-01T13:48:20+01:00 commit 9930ebf30b3fa500e086bc1be35274f9299e2a04, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libtcl8.6/tcl8.6.13"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6
+dev false
+xdgDir /home/jnml/.config/ccgo/v4/libtcl8.6/linux/riscv64
+archivePath tcl8.6.13-src.tar.gz
+extractedArchivePath tcl8.6.13
+tempDir /tmp/libtcl8.6
+libRoot /tmp/libtcl8.6/tcl8.6.13
+makeRoot /tmp/libtcl8.6/tcl8.6.13/unix
+execute /usr/bin/sh ["-c" "\ngo mod init example.com/libtcl8.6\ngo get \\\n\tmodernc.org/libc@latest \\\n\tmodernc.org/libz@latest\n"] in /tmp/libtcl8.6/tcl8.6.13/unix
+go: creating new go.mod: module example.com/libtcl8.6
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v1.0.0
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546
+go: added golang.org/x/sys v0.37.0
+go: added modernc.org/libc v1.67.3
+go: added modernc.org/libz v0.17.2
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H' ./configure --enable-threads --disable-shared --disable-load --disable-corefoundation"] in /tmp/libtcl8.6/tcl8.6.13/unix
+checking whether to use symlinks for manpages... no
+checking whether to compress the manpages... no
+checking whether to add a package name suffix for the manpages... no
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ANSI C... none needed
+checking for inline... inline
+checking how to run the C preprocessor... gcc -E
+checking for egrep... grep -E
+
+...
+
+idle)]:
+runtime.gopark(0x28d2cd8403a80?, 0x3?, 0xec?, 0xba?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0x108 fp=0x364c061f38 sp=0x364c061f20 pc=0x823a0
+runtime.gcBgMarkWorker(0x364c45a000)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xf4 fp=0x364c061fc8 sp=0x364c061f38 pc=0x338f4
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x2c fp=0x364c061fd8 sp=0x364c061fc8 pc=0x337dc
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_riscv64.s:531 +0x4 fp=0x364c061fd8 sp=0x364c061fd8 pc=0x88744
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x150
+
+goroutine 36 gp=0x364c45e1c0 m=nil [GC worker (idle)]:
+runtime.gopark(0x28d2cd8363800?, 0x3?, 0x44?, 0xc4?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0x108 fp=0x364c0b1f38 sp=0x364c0b1f20 pc=0x823a0
+runtime.gcBgMarkWorker(0x364c45a000)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xf4 fp=0x364c0b1fc8 sp=0x364c0b1f38 pc=0x338f4
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x2c fp=0x364c0b1fd8 sp=0x364c0b1fc8 pc=0x337dc
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_riscv64.s:531 +0x4 fp=0x364c0b1fd8 sp=0x364c0b1fd8 pc=0x88744
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x150
+
+goroutine 37 gp=0x364c45e380 m=nil [GC worker (idle)]:
+runtime.gopark(0x28d2836228461?, 0x3?, 0x6c?, 0x2f?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0x108 fp=0x364c0ae738 sp=0x364c0ae720 pc=0x823a0
+runtime.gcBgMarkWorker(0x364c45a000)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xf4 fp=0x364c0ae7c8 sp=0x364c0ae738 pc=0x338f4
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x2c fp=0x364c0ae7d8 sp=0x364c0ae7c8 pc=0x337dc
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_riscv64.s:531 +0x4 fp=0x364c0ae7d8 sp=0x364c0ae7d8 pc=0x88744
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x150
+exit status 2
+libtcl.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

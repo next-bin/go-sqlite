@@ -1,0 +1,39 @@
+2022-08-17T09:36:46+02:00 5bd9666e3d14b1485894dd23b4126932f78af852 GOMAXPROCS 1 GOGC ""
+# modernc.org/cc/v3 [modernc.org/cc/v3.test]
+./abi.go:242:10: internal compiler error: '(*ABI).layout': panic during nilcheckelim while compiling (*ABI).layout:
+
+runtime error: invalid memory address or nil pointer dereference
+
+goroutine 1 [running]:
+cmd/compile/internal/ssa.Compile.func1()
+	/usr/local/go/src/cmd/compile/internal/ssa/compile.go:50 +0x71
+panic({0xcc3c40, 0x133a7d0})
+	/usr/local/go/src/runtime/panic.go:884 +0x212
+cmd/compile/internal/ssa.(*xposmap).clear(...)
+	/usr/local/go/src/cmd/compile/internal/ssa/xposmap.go:41
+cmd/compile/internal/ssa.nilcheckelim(0xc0083b5500)
+	/usr/local/go/src/cmd/compile/internal/ssa/nilcheck.go:115 +0x6bd
+cmd/compile/internal/ssa.Compile(0xc0083b5500)
+	/usr/local/go/src/cmd/compile/internal/ssa/compile.go:98 +0x9be
+cmd/compile/internal/ssagen.buildssa(0xc001e4adc0, 0x0)
+	/usr/local/go/src/cmd/compile/internal/ssagen/ssa.go:574 +0x2007
+cmd/compile/internal/ssagen.Compile(0xc001e4adc0, 0xc000941480?)
+	/usr/local/go/src/cmd/compile/internal/ssagen/pgen.go:183 +0x4c
+cmd/compile/internal/gc.compileFunctions.func4.1(0xc0060a5a01?)
+	/usr/local/go/src/cmd/compile/internal/gc/compile.go:153 +0x3a
+cmd/compile/internal/gc.compileFunctions.func2(0x0?)
+	/usr/local/go/src/cmd/compile/internal/gc/compile.go:125 +0x1e
+cmd/compile/internal/gc.compileFunctions.func4({0xc003206a80, 0xb65, 0xd50?})
+	/usr/local/go/src/cmd/compile/internal/gc/compile.go:152 +0x53
+cmd/compile/internal/gc.compileFunctions()
+	/usr/local/go/src/cmd/compile/internal/gc/compile.go:163 +0x162
+cmd/compile/internal/gc.Main(0xd684a8)
+	/usr/local/go/src/cmd/compile/internal/gc/main.go:306 +0x1154
+main.main()
+	/usr/local/go/src/cmd/compile/main.go:57 +0xdd
+
+
+
+Please file a bug report including a short program that triggers the error.
+https://go.dev/issue/new
+FAIL	modernc.org/cc/v3 [build failed]

@@ -1,0 +1,12 @@
+2024-06-18T15:39:46Z commit ab8535d85d1a50f9158e2201e2df5ee72ff790f2, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/fileutil v1.2.0
+go: downloading modernc.org/mathutil v1.6.0
+# modernc.org/b
+all_test.go:19:2: modernc.org/mathutil@v1.6.0: Get "https://proxy.golang.org/modernc.org/mathutil/@v/v1.6.0.zip": dial tcp 172.217.160.113:443: i/o timeout
+FAIL	modernc.org/b [setup failed]
+# modernc.org/b/example
+example/all_test.go:13:2: modernc.org/fileutil@v1.2.0: Get "https://proxy.golang.org/modernc.org/fileutil/@v/v1.2.0.zip": dial tcp 172.217.160.113:443: i/o timeout
+FAIL	modernc.org/b/example [setup failed]
+FAIL
+
+FAIL err=exit status 1

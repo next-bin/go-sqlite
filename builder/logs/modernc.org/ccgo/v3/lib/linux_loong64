@@ -1,0 +1,30 @@
+2023-10-10T01:28:23+02:00 commit 7f419475d38ba851595b963e037ba17a4f71d0e9, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+CC=/usr/bin/gcc
+gcc (GCC) 13.2.1 20230801
+--- FAIL: TestMirLacc (598.91s)
+    all_test.go:1587: /github.com/vnmakarov/mir/c-tests/lacc/comment.c: skipped: executing CC binary ./comment []: exit status 41 (rc 41, expected 39)
+        24, 24, w ??=*/ /*t???, a"/*b"\\, 34, 39
+        
+    all_test.go:1589: /github.com/vnmakarov/mir/c-tests/lacc/compare.c: compare.c: fatal error: float64nan1
+        runtime: panic before malloc heap initialized
+        
+        runtime stack:
+        runtime.throw({0x23b947, 0xb})
+        	runtime/panic.go:1077 +0x58 fp=0x7ffffbb58da0 sp=0x7ffffbb58d78 pc=0x4c0b8
+        runtime.check()
+        	runtime/runtime1.go:260 +0x444 fp=0x7ffffbb58de0 sp=0x7ffffbb58da0 pc=0x60f04
+        runtime.rt0_go()
+        	runtime/asm_loong64.s:54 +0x80 fp=0x7ffffbb58e00 sp=0x7ffffbb58de0 pc=0x7f2c0
+        go: error obtaining buildID for go tool asm: exit status 2
+        
+        	FAIL: exit status 1
+    all_test.go:1587: /github.com/vnmakarov/mir/c-tests/lacc/line-directive.c: skipped: executing CC binary ./line-directive []: exit status 35 (rc 35, expected 50)
+        14, 3, 10, line-directive.c, bar.c
+        
+    all_test.go:1621: files 173, ok 170, failed 1
+    all_test.go:1637: FAIL /github.com/vnmakarov/mir/c-tests/lacc/compare.c
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	2881.758s
+
+FAIL err=exit status 1

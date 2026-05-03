@@ -1,0 +1,8 @@
+go1.25.5 darwin/amd64
+2026-01-10T09:24:14+01:00 commit 7bb9d6a178cf4712f0f665358ce400e2a8d979ed, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading gitlab.com/cznic/purego v0.9.1
+# modernc.org/tk9.0
+tk_darwin_amd64.go:35:12: pattern embed/darwin/amd64/tcl_library.zip: no matching files found
+FAIL	modernc.org/tk9.0 [setup failed]
+
+FAIL err=exit status 1

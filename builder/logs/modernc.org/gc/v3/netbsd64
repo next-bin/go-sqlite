@@ -1,0 +1,86 @@
+2023-12-12T02:31:43+01:00 commit 9a4851b8a136c043f0ff4671676ee4c296eb0809, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestGoNewPackage (2.62s)
+    --- FAIL: TestGoNewPackage/GOROOT (2.61s)
+        all_test.go:1073: err: exit status 2: stderr: SIGSEGV: segmentation violation
+            PC=0x40e5a9 m=2 sigcode=1
+            
+            goroutine 0 [idle]:
+            runtime.unlock2(0xd654?)
+            	runtime/lock_sema.go:115 +0x49 fp=0xc00005fda0 sp=0xc00005fd78 pc=0x40e5a9
+            runtime.unlockWithRank(...)
+            	runtime/lockrank_off.go:34
+            runtime.unlock(...)
+            	runtime/lock_sema.go:96
+            runtime.updateTimerPMask(0xc00003a000)
+            	runtime/proc.go:6082 +0xa7 fp=0xc00005fdc8 sp=0xc00005fda0 pc=0x4475a7
+            runtime.pidleput(0xc00003a000, 0x4403cf?)
+            	runtime/proc.go:6105 +0x79 fp=0xc00005fdf0 sp=0xc00005fdc8 pc=0x447659
+            runtime.findRunnable()
+            	runtime/proc.go:3081 +0x616 fp=0xc00005ff00 sp=0xc00005fdf0 pc=0x440636
+            runtime.schedule()
+            	runtime/proc.go:3582 +0xb1 fp=0xc00005ff38 sp=0xc00005ff00 pc=0x4419b1
+            runtime.goexit0(0xc0009ee4e0)
+            	runtime/proc.go:3921 +0x266 fp=0xc00005ff78 sp=0xc00005ff38 pc=0x4428c6
+            traceback: unexpected SPWRITE function runtime.mcall
+            runtime.mcall()
+            	runtime/asm_amd64.s:458 +0x4e fp=0xc00005ff90 sp=0xc00005ff78 pc=0x46aeee
+            
+            goroutine 1 [semacquire]:
+            runtime.gopark(0x80?, 0xa0d000?, 0xc0?, 0xdb?, 0x7f7fb108f1f0?)
+            	runtime/proc.go:398 +0xce fp=0xc000bad030 sp=0xc000bad010 pc=0x43b58e
+            runtime.goparkunlock(...)
+            	runtime/proc.go:404
+            runtime.semacquire1(0xc000912298, 0x30?, 0x1, 0x0, 0xeb?)
+            	runtime/sema.go:160 +0x218 fp=0xc000bad098 sp=0xc000bad030 pc=0x44c9d8
+            sync.runtime_Semacquire(0xc000846930?)
+            	runtime/sema.go:62 +0x25 fp=0xc000bad0d0 sp=0xc000bad098 pc=0x4691e5
+            sync.(*WaitGroup).Wait(0xc0009bdc80?)
+            	sync/waitgroup.go:116 +0x48 fp=0xc000bad0f8 sp=0xc000bad0d0 pc=0x4794e8
+      
+
+...
+
+rk/exec.go:2585 +0xc5 fp=0xc000ba8c28 sp=0xc000ba8ba0 pc=0x8f6a85
+            cmd/go/internal/work.(*Builder).cgo(0xc000c2b5c0?, 0xc000eb7e40, {0xc00002fc80, 0x27}, {0xc000ea7b90, 0x2a}, {0x0, 0x0, 0xc000c10f30?}, {0x0, ...}, ...)
+            	cmd/go/internal/work/exec.go:3332 +0x22b2 fp=0xc000ba9270 sp=0xc000ba8c28 pc=0x8fde92
+            cmd/go/internal/work.(*Builder).build(0xc000a4c8f0, {0xc0002ead30?, 0x0?}, 0xc000eb7e40)
+            	cmd/go/internal/work/exec.go:744 +0x4bcd fp=0xc000ba9d40 sp=0xc000ba9270 pc=0x8e998d
+            cmd/go/internal/work.ActorFunc.Act(0xb806d0?, 0xf1a8a0?, {0xb806d0?, 0xf1a8a0?}, 0x0?)
+            	cmd/go/internal/work/action.go:78 +0x2d fp=0xc000ba9d70 sp=0xc000ba9d40 pc=0x8d432d
+            cmd/go/internal/work.(*Builder).Do.func3({0xb806d0, 0xf1a8a0}, 0xc000eb7e40)
+            	cmd/go/internal/work/exec.go:151 +0x7e4 fp=0xc000ba9f20 sp=0xc000ba9d70 pc=0x8e2ac4
+            cmd/go/internal/work.(*Builder).Do.func4()
+            	cmd/go/internal/work/exec.go:219 +0xa8 fp=0xc000ba9fe0 sp=0xc000ba9f20 pc=0x8e2108
+            runtime.goexit()
+            	runtime/asm_amd64.s:1650 +0x1 fp=0xc000ba9fe8 sp=0xc000ba9fe0 pc=0x46cd61
+            created by cmd/go/internal/work.(*Builder).Do in goroutine 1
+            	cmd/go/internal/work/exec.go:205 +0x405
+            
+            rax    0xc00003c280
+            rbx    0xffffffff
+            rcx    0x0
+            rdx    0x0
+            rdi    0x3
+            rsi    0xfffffffe
+            rbp    0xc00005fd90
+            rsp    0xc00005fd78
+            r8     0x1
+            r9     0xc00001200c
+            r10    0x1
+            r11    0x202
+            r12    0xc00003a000
+            r13    0xc000052400
+            r14    0xc0000069c0
+            r15    0x10
+            rip    0x40e5a9
+            rflags 0x10246
+            cs     0x47
+            fs     0x0
+            gs     0x0
+            
+    all_test.go:1032: TOTAL packages 625, files 0, skip 0, ok 0, fail 0
+FAIL
+exit status 1
+FAIL	modernc.org/gc/v3	23.431s
+
+FAIL err=exit status 1

@@ -1,0 +1,12 @@
+2024-03-20T17:48:25+01:00 commit 463cc8db8728121f8b5d26436ac4888c7329ad40, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/Test160483810/001/pcre2test" "-tags=" "internal/pcre2test/ccgo_linux_386.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libpcre2-16
+package internal/pcre2test/ccgo_linux_386.go is not in std (/usr/local/go/src/internal/pcre2test/ccgo_linux_386.go)
+--- FAIL: Test (0.00s)
+    all_test.go:35: package internal/pcre2test/ccgo_linux_386.go is not in std (/usr/local/go/src/internal/pcre2test/ccgo_linux_386.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libpcre2-16	0.006s
+
+FAIL err=exit status 1

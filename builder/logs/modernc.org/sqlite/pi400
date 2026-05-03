@@ -1,0 +1,20 @@
+go1.25.3 windows/arm64
+2025-12-08T13:09:46+01:00 commit 981f9f1e09f2a7d5baa74deb48cef202f6245721, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for windows/arm64
+execute C:\Program Files\Go\bin\go.exe ["test" "-v" "-timeout" "1h" "-race" "-run" "TestConcurrentGoroutines" "-inner"] in C:\Users\jnml\src\modernc.org\builder\.exclude\modernc.org\sqlite
+-race is not supported on windows/arm64
+C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3559:TestIssue236: [13:09:44.563 TRACE] ==== prepared Exec
+C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3566:TestIssue236: [13:09:44.569 TRACE] ----
+C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3571:TestIssue236: [13:09:44.569 TRACE] ==== prepared Query
+C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3581:TestIssue236: [13:09:44.569 TRACE] 0 
+C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3581:TestIssue236: [13:09:44.569 TRACE] 1 
+C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3581:TestIssue236: [13:09:44.570 TRACE] 0 
+C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3581:TestIssue236: [13:09:44.570 TRACE] 1 
+C:/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/sqlite/all_test.go:3584:TestIssue236: [13:09:44.570 TRACE] ----
+--- FAIL: TestIssue236 (1.43s)
+    testing.go:1369: TempDir RemoveAll cleanup: unlinkat C:\Users\jnml\AppData\Local\Temp\TestIssue2361263387809\001\db.db: The process cannot access the file because it is being used by another process.
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite	103.061s
+
+FAIL err=exit status 1

@@ -1,0 +1,71 @@
+2025-02-19T15:35:39+01:00 commit b7ba105fc88eb100de1c31f1ba2ef2dbc54b299e, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# Name: example.com/fib.init
+# Package: example.com/fib
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: example.com/fib.fib
+# Package: example.com/fib
+# Location: /tmp/Test814662371/001/fib.go:3:6
+func fib(a int) int:
+0:                                                                entry P:0 S:2
+	t0 = a < 2:int                                                     bool
+	if t0 goto 1 else 2
+1:                                                              if.then P:1 S:0
+	return a
+2:                                                              if.done P:1 S:0
+	t1 = a - 1:int                                                      int
+	t2 = fib(t1)                                                        int
+	t3 = a - 2:int                                                      int
+	t4 = fib(t3)                                                        int
+	t5 = t2 + t4                                                        int
+	return t5
+
+# Name: example.com/fib.main
+# Package: example.com/fib
+# Location: /tmp/Test814662371/001/fib.go:10:6
+func main():
+0:                                                                entry P:0 S:0
+	t0 = fib(42:int)                                                    int
+	t1 = println(t0)                                                     ()
+	return
+
+--- FAIL: Test (0.10s)
+panic: 
+	out=-rwxr-xr-x 1 jnml jnml 70480 Feb 19 15:35 /tmp/Test814662371/001/fib
+	/tmp/Test814662371/001/fib: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=12c33c170989f4a575ac2ad88ac9586e71049ad8, for GNU/Linux 3.7.0, not stripped
+	sh: 1: time: not found
+	 FAIL err=exit status 127 [recovered]
+	panic: 
+	out=-rwxr-xr-x 1 jnml jnml 70480 Feb 19 15:35 /tmp/Test814662371/001/fib
+	/tmp/Test814662371/001/fib: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=12c33c170989f4a575ac2ad88ac9586e71049ad8, for GNU/Linux 3.7.0, not stripped
+	sh: 1: time: not found
+	 FAIL err=exit status 127
+
+goroutine 22 [running]:
+testing.tRunner.func1.2({0x3429a0, 0x4000210360})
+	/usr/local/go/src/testing/testing.go:1632 +0x1bc
+testing.tRunner.func1()
+	/usr/local/go/src/testing/testing.go:1635 +0x334
+panic({0x3429a0?, 0x4000210360?})
+	/usr/local/go/src/runtime/panic.go:785 +0x124
+modernc.org/go0.main0({0x40000d6108, 0x16}, {0x428668, 0x40000ca740})
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/go0/main.go:109 +0x88c
+modernc.org/go0.Test(0x40000d2820)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/go0/all_test.go:21 +0x58
+testing.tRunner(0x40000d2820, 0x3c7bc8)
+	/usr/local/go/src/testing/testing.go:1690 +0xe4
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:1743 +0x314
+exit status 2
+FAIL	modernc.org/go0	0.108s
+
+FAIL err=exit status 1

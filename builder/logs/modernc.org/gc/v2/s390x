@@ -1,0 +1,7 @@
+2024-12-18T19:30:29+01:00 commit 3bc300f6d0c938a3deb2580297a9b2be9db1639a, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/scannertest v1.0.2
+# modernc.org/gc/v2
+all_test.go:32:2: modernc.org/scannertest@v1.0.2: Get "https://proxy.golang.org/modernc.org/scannertest/@v/v1.0.2.zip": net/http: TLS handshake timeout
+FAIL	modernc.org/gc/v2 [setup failed]
+
+FAIL err=exit status 1

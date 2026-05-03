@@ -1,0 +1,57 @@
+2024-01-14T06:04:52+08:00 commit 6d5f8191794dde14db0ddaf8c9172352305daaa7, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/ccgo/v4 v4.7.2
+go: downloading golang.org/x/tools v0.17.0
+go: downloading modernc.org/cc/v4 v4.19.1
+# golang.org/x/tools/internal/pkgbits
+compile: writing output: write $WORK/b114/_pkg_.a: no space left on device
+golang.org/x/tools/go/internal/packagesdriver: mkdir /tmp/go-build949592011/b117/: no space left on device
+golang.org/x/tools/internal/packagesinternal: mkdir /tmp/go-build949592011/b127/: no space left on device
+hash/maphash: mkdir /tmp/go-build949592011/b130/: no space left on device
+io/ioutil: mkdir /tmp/go-build949592011/b131/: no space left on device
+lukechampine.com/uint128: mkdir /tmp/go-build949592011/b133/: no space left on device
+github.com/remyoudompheng/bigfft: mkdir /tmp/go-build949592011/b135/: no space left on device
+encoding/base32: mkdir /tmp/go-build949592011/b137/: no space left on device
+modernc.org/token: mkdir /tmp/go-build949592011/b138/: no space left on device
+crypto/internal/randutil: mkdir /tmp/go-build949592011/b141/: no space left on device
+github.com/dustin/go-humanize: mkdir /tmp/go-build949592011/b142/: no space left on device
+crypto/sha1: mkdir /tmp/go-build949592011/b144/: no space left on device
+database/sql/driver: mkdir /tmp/go-build949592011/b145/: no space left on device
+encoding/hex: mkdir /tmp/go-build949592011/b146/: no space left on device
+vendor/golang.org/x/net/dns/dnsmessage: mkdir /tmp/go-build949592011/b148/: no space left on device
+internal/nettrace: mkdir /tmp/go-build949592011/b149/: no space left on device
+internal/singleflight: mkdir /tmp/go-build949592011/b150/: no space left on device
+internal/intern: mkdir /tmp/go-build949592011/b152/: no space left on device
+github.com/mattn/go-isatty: mkdir /tmp/go-build949592011/b153/: no space left on device
+modernc.org/libc/errno: mkdir /tmp/go-build949592011/b154/: no space left on device
+modernc.org/libc/fcntl: mkdir /tmp/go-build949592011/b155/: no space left on device
+modernc.org/libc/fts: mkdir /tmp/go-build949592011/b156/: no space left on device
+modernc.org/libc/grp: mkdir /tm
+
+...
+
+ /tmp/go-build949592011/b103/vet.cfg: no space left on device
+container/heap: write /tmp/go-build949592011/b106/vet.cfg: no space left on device
+math/big: write /tmp/go-build949592011/b108/vet.cfg: no space left on device
+go/constant: write /tmp/go-build949592011/b107/vet.cfg: no space left on device
+internal/types/errors: write /tmp/go-build949592011/b109/vet.cfg: no space left on device
+crypto: write /tmp/go-build949592011/b062/vet.cfg: no space left on device
+crypto/md5: write /tmp/go-build949592011/b115/vet.cfg: no space left on device
+golang.org/x/tools/internal/tokeninternal: write /tmp/go-build949592011/b116/vet.cfg: no space left on device
+golang.org/x/mod/semver: write /tmp/go-build949592011/b119/vet.cfg: no space left on device
+golang.org/x/tools/internal/event/label: write /tmp/go-build949592011/b123/vet.cfg: no space left on device
+golang.org/x/tools/internal/event/keys: write /tmp/go-build949592011/b122/vet.cfg: no space left on device
+golang.org/x/tools/internal/event/core: write /tmp/go-build949592011/b121/vet.cfg: no space left on device
+golang.org/x/tools/internal/event: write /tmp/go-build949592011/b120/vet.cfg: no space left on device
+golang.org/x/tools/internal/event/tag: write /tmp/go-build949592011/b124/vet.cfg: no space left on device
+golang.org/x/tools/internal/gocommand: write /tmp/go-build949592011/b118/vet.cfg: no space left on device
+crypto/internal/alias: write /tmp/go-build949592011/b066/vet.cfg: no space left on device
+crypto/subtle: write /tmp/go-build949592011/b067/vet.cfg: no space left on device
+crypto/cipher: write /tmp/go-build949592011/b065/vet.cfg: no space left on device
+crypto/internal/boring/sig: write /tmp/go-build949592011/b069/vet.cfg: no space left on device
+crypto/internal/boring: write /tmp/go-build949592011/b064/vet.cfg: no space left on device
+os/signal: write /tmp/go-build949592011/b080/vet.cfg: no space left on device
+# go/types
+compile: writing output: write $WORK/b105/_pkg_.a: no space left on device
+FAIL	modernc.org/libz [build failed]
+
+FAIL err=exit status 1

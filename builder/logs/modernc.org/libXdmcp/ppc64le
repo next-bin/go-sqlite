@@ -1,0 +1,86 @@
+go1.25.1 linux/ppc64le
+2025-09-24T04:05:28Z commit b7c9217c711612685c577c3e1b411913ed1e4600, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libXdmcp/libXdmcp-1.1.2"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXdmcp
+execute /usr/bin/sh ["-c" "find /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXdmcp/internal/linux/ppc64le -name \\*linux_ppc64le.go -delete"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXdmcp
+archivePath libXdmcp-1.1.2.tar.gz
+extractedArchivePath libXdmcp-1.1.2
+tempDir /tmp/libXdmcp
+libRoot /tmp/libXdmcp/libXdmcp-1.1.2
+makeRoot /tmp/libXdmcp/libXdmcp-1.1.2
+tests /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXdmcp/internal/linux/ppc64le
+execute /usr/bin/tar ["xf" "libXdmcp-1.1.2.tar.gz" "-C" "/tmp/libXdmcp"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libXdmcp
+execute /usr/bin/sh ["-c" "go mod init example.com/libXdmcp ; go get modernc.org/libc@latest modernc.org/libbsd@latest"] in /tmp/libXdmcp/libXdmcp-1.1.2
+go: creating new go.mod: module example.com/libXdmcp
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.66.9
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -mlong-double-64' ./configure --disable-shared "] in /tmp/libXdmcp/libXdmcp-1.1.2
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g..
+
+...
+
+t-self... yes
+checking if gcc supports -Werror=main... yes
+checking if gcc supports -Werror=missing-braces... yes
+checking if gcc supports -Werror=sequence-point... yes
+checking if gcc supports -Werror=return-type... yes
+checking if gcc supports -Werror=trigraphs... yes
+checking if gcc supports -Werror=array-bounds... yes
+checking if gcc supports -Werror=write-strings... yes
+checking if gcc supports -Werror=address... yes
+checking if gcc supports -Werror=int-to-pointer-cast... yes
+checking if gcc supports -Werror=pointer-to-int-cast... yes
+checking if gcc supports -pedantic... yes
+checking if gcc supports -Werror... yes
+checking if gcc supports -Werror=attributes... yes
+./configure: line 18179: --print-errors: command not found
+checking whether make supports nested variables... (cached) yes
+checking whether to build documentation... yes
+checking for xmlto... no
+configure: WARNING: xmlto not found - documentation targets will be skipped
+checking for fop... no
+configure: WARNING: fop not found - documentation targets will be skipped
+checking for xsltproc... no
+configure: WARNING: xsltproc not found - cannot transform XML documents
+checking for X.Org SGML entities >= 1.8... no
+checking whether ln -s works... yes
+checking for library containing recvfrom... none required
+checking for arc4random_buf in -lbsd... no
+checking for srand48... yes
+checking for lrand48... yes
+checking for arc4random_buf... yes
+checking for XDMCP... configure: error: in `/tmp/libXdmcp/libXdmcp-1.1.2':
+configure: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables XDMCP_CFLAGS
+and XDMCP_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See `config.log' for more details
+
+err: exit status 1
+exit status 1
+libxdmcp.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

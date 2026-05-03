@@ -1,0 +1,7 @@
+2023-10-07T06:04:49+02:00 commit 2abcc68430facade17d7a13d5e5704f67161ce16, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libpcreposix [modernc.org/libpcreposix.test]
+./ccgo_linux_386.go:1289:74: undefined: libpcre.Xpcre_free
+./ccgo_linux_386.go:1339:55: undefined: libpcre.Xpcre_compile2
+./ccgo_linux_386.go:1351:10: undefined: libpcre.Xpcre_fullinfo
+./ccgo_linux_386.go:1432:15: undefined: libpcre.Xpcre_exec
+FAIL	modernc.org/libpcreposix [build failed]

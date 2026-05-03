@@ -1,0 +1,6 @@
+2023-10-07T01:12:30+02:00 commit def0b1b418f5f51f0a670c16a36be4744aee027b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.03s)
+    all_test.go:64: lstat internal/openbsd/arm64/tests: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libgmp	0.388s

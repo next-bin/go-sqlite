@@ -1,0 +1,10 @@
+{
+	"autogen": "abc",
+	"autotag": "def",
+	"autoupdate": "ghi",
+	"download": [
+		{"re": "abc", "files": ["a", "b"]},
+		{"re": "def", "files": ["c", "d"]}
+	],
+	"test": "jkl"
+}

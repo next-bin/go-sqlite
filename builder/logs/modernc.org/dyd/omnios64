@@ -1,0 +1,14 @@
+2024-04-20T01:57:35+02:00 commit ddc27edef54e210b25f4c7e137bebba3e9c346bb, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/net v0.24.0
+go: downloading modernc.org/sqlite v1.29.8
+go: downloading golang.org/x/mod v0.17.0
+go: downloading modernc.org/gc/v3 v3.0.0-20240304020402-f0dba7c97c2b
+go: downloading modernc.org/libc v1.49.3
+# modernc.org/libc
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.49.3/libc_unix.go:1310:34: (*ctime.Tm)(unsafe.Pointer(tm)).Ftm_gmtoff undefined (type *struct{Ftm_sec int32; Ftm_min int32; Ftm_hour int32; Ftm_mday int32; Ftm_mon int32; Ftm_year int32; Ftm_wday int32; Ftm_yday int32; Ftm_isdst int32} has no field or method Ftm_gmtoff)
+/home/jnml/go/pkg/mod/modernc.org/libc@v1.49.3/libc_unix.go:1311:34: (*ctime.Tm)(unsafe.Pointer(tm)).Ftm_zone undefined (type *struct{Ftm_sec int32; Ftm_min int32; Ftm_hour int32; Ftm_mday int32; Ftm_mon int32; Ftm_year int32; Ftm_wday int32; Ftm_yday int32; Ftm_isdst int32} has no field or method Ftm_zone)
+FAIL	modernc.org/dyd [build failed]
+FAIL	modernc.org/dyd/dyd [build failed]
+FAIL
+
+FAIL err=exit status 1

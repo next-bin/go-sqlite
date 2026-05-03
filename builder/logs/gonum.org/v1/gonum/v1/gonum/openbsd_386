@@ -1,0 +1,81 @@
+2023-08-16T20:23:11+02:00 commit 03669d05add8cfe2b7f149eca20ca4a077c022da, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/exp v0.0.0-20230321023759-10a507213a29
+go: downloading gonum.org/v1/plot v0.10.1
+go: downloading github.com/google/go-cmp v0.5.8
+go: downloading golang.org/x/tools v0.7.0
+go: downloading golang.org/x/image v0.6.0
+go: downloading rsc.io/pdf v0.1.1
+go: downloading github.com/go-fonts/liberation v0.3.0
+go: downloading github.com/go-latex/latex v0.0.0-20230307184459-12ec69307ad9
+go: downloading git.sr.ht/~sbinet/gg v0.3.1
+go: downloading github.com/go-pdf/fpdf v0.6.0
+go: downloading github.com/ajstarks/svgo v0.0.0-20211024235047-1546f124cd8b
+go: downloading golang.org/x/text v0.8.0
+go: downloading github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
+?   	gonum.org/v1/gonum/blas	[no test files]
+?   	gonum.org/v1/gonum	[no test files]
+ok  	gonum.org/v1/gonum/blas/blas32	0.050s
+ok  	gonum.org/v1/gonum/blas/blas64	0.067s
+ok  	gonum.org/v1/gonum/blas/cblas128	4.875s
+ok  	gonum.org/v1/gonum/blas/cblas64	0.041s
+?   	gonum.org/v1/gonum/blas/testblas/benchautogen	[no test files]
+ok  	gonum.org/v1/gonum/blas/gonum	5.644s
+ok  	gonum.org/v1/gonum/blas/testblas	0.059s
+ok  	gonum.org/v1/gonum/cmplxs	0.047s
+ok  	gonum.org/v1/gonum/cmplxs/cscalar	0.043s
+ok  	gonum.org/v1/gonum/diff/fd	0.073s
+--- FAIL: TestCoefficients (5.84s)
+    --- FAIL: TestCoefficients/Radix2/131072#08 (0.11s)
+        radix24_test.go:33: unexpected result for n=131072 |got-want|^2=5.858268537519433e+262
+FAIL
+FAIL	gonum.org/v1/gonum/dsp/fourier	13.769s
+ok  	gonum.org/v1/gonum/dsp/fourier/internal/fftpack	21.153s
+ok  	gonum.org/v1/gonum/dsp/window	0.047s
+?   	gonum.org/v1/gonum/dsp/window/cmd/leakage	[no test files]
+ok  	gonum.org/v1/gonum/floats	0.065s
+ok  	gonum.org/v1/gonum/floats/scalar	0.055s
+ok  	gonum.org/v1/gonum/graph	0.112s
+ok  	gonum.org/v1/gonum/graph/coloring	66.584s
+ok  	gonum.org/v1/gonum/graph/community	88.029s
+ok  	gonum.org/v1/gonum/graph/encoding	0.040s
+?   	gonum.org/v1/gonum/graph/formats/dot	[no test files]
+?   	gonum.org/v1/gonum/graph/formats/dot/internal/errors	[no test files]
+?   	gonum.org/v1/gonum/g
+
+...
+
+got: 18
+    laplace_test.go:88: StdDev mismatch case 0: want: 3.6321088514747614e+89, got: 4.242640687119286
+    laplace_test.go:89: Entropy mismatch case 0: want: 6.98999674387746e+85, got: 2.791759469228055
+    laplace_test.go:90: ExKurtosis mismatch case 0: want: NaN, got: 3
+    laplace_test.go:91: Skewness mismatch case 0: want: 1.0867469656751567e+270, got: 0
+panic: x data are not sorted [recovered]
+	panic: x data are not sorted
+
+goroutine 62 [running]:
+testing.tRunner.func1.2({0x819ac80, 0x81f7aa4})
+	/usr/local/go/src/testing/testing.go:1545 +0x2a5
+testing.tRunner.func1()
+	/usr/local/go/src/testing/testing.go:1548 +0x438
+panic({0x819ac80, 0x81f7aa4})
+	/usr/local/go/src/runtime/panic.go:914 +0x1e0
+gonum.org/v1/gonum/stat.Quantile(0x3fe0000000000000, 0x1, {0x6dbd8000, 0x2dc6c0, 0x2dc6c0}, {0x0, 0x0, 0x0})
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/stat/stat.go:1095 +0x287
+gonum.org/v1/gonum/stat/distuv.checkMedian(0x6c0e2a50, 0x0, {0x6dbd8000, 0x2dc6c0, 0x2dc6c0}, {0x81f87f8, 0x6c0b2018}, 0x3f847ae147ae147b)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/stat/distuv/distribution_test.go:83 +0x6b
+gonum.org/v1/gonum/stat/distuv.testLaplace(0x6c0e2a50, {0x0, 0x4008000000000000, {0x81f8498, 0x6c0b2120}}, 0x0)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/stat/distuv/laplace_test.go:92 +0x3b3
+gonum.org/v1/gonum/stat/distuv.TestLaplace(0x6c0e2a50)
+	/home/jnml/src/modernc.org/builder/.exclude/gonum.org/v1/gonum/v1/gonum/stat/distuv/laplace_test.go:73 +0x150
+testing.tRunner(0x6c0e2a50, 0x81caa98)
+	/usr/local/go/src/testing/testing.go:1595 +0x11a
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:1648 +0x3d7
+FAIL	gonum.org/v1/gonum/stat/distuv	59.657s
+ok  	gonum.org/v1/gonum/stat/mds	0.094s
+ok  	gonum.org/v1/gonum/stat/samplemv	7.013s
+ok  	gonum.org/v1/gonum/stat/sampleuv	8.420s
+ok  	gonum.org/v1/gonum/stat/spatial	1.117s
+ok  	gonum.org/v1/gonum/unit	0.085s
+ok  	gonum.org/v1/gonum/unit/constant	0.108s
+FAIL

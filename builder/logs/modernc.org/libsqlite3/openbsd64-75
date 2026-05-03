@@ -1,0 +1,100 @@
+2024-04-14T22:03:01+02:00 commit ee6912d598a6d9a58b238575681282fc75717cb0, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading golang.org/x/sys v0.18.0
+go: downloading modernc.org/libc v1.49.3
+go: downloading modernc.org/ccgo/v4 v4.16.0
+go: downloading modernc.org/fileutil v1.3.0
+go: downloading modernc.org/libtcl8.6 v0.8.1
+go: downloading golang.org/x/mod v0.16.0
+go: downloading golang.org/x/tools v0.19.0
+go: downloading modernc.org/cc/v4 v4.20.0
+go: downloading modernc.org/gc/v2 v2.4.1
+go: downloading modernc.org/mathutil v1.6.0
+go: downloading modernc.org/opt v0.1.3
+go: downloading github.com/dustin/go-humanize v1.0.1
+go: downloading github.com/google/uuid v1.6.0
+go: downloading github.com/mattn/go-isatty v0.0.20
+go: downloading github.com/ncruces/go-strftime v0.1.9
+go: downloading modernc.org/memory v1.8.0
+go: downloading modernc.org/sortutil v1.2.0
+go: downloading modernc.org/token v1.1.0
+go: downloading github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 60000 --journalmode DELETE]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 60000 --journalmode WAL]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 60000 --journalmode WAL]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 60000 --journalmode PERSIST]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 60000 --journalmode PERSIST]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 60000 --journalmode TRUNCATE]
+execute [./mptest mptest.db crash01.test --repeat 20 --timeout 60000 --journalmode TRUNCATE]
+execute [./mptest mptest.db multiwrite01.test --repeat 20 --timeout 60000 --journalmode DELETE]
+tmpDir=/tmp/TestTclTest3621362582/001
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/TestTclTest3621362582/001/testfixture" "-tags=" "internal/testfixture/ccgo_openbsd_amd64.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+go: downloading modernc.org/libz v0.9.1
+all_test.go:297:TestTclTest: TRC ["/tmp/TestTclTest3621362582/001/test/permutations.test" "full"]
+execute /tmp/TestTclTest3621362
+
+...
+
+test 8 ms
+/tmp/TestTclTest3621362582/001/testfixture: error copying "test.db-mjD8092E993": no such file or directory
+    while executing
+"file copy -force $from $to"
+    (procedure "do_copy_file" line 27)
+    invoked from within
+"do_copy_file true $from $to"
+    (procedure "forcecopy" line 2)
+    invoked from within
+"forcecopy $f $f2"
+    (procedure "db_save" line 5)
+    invoked from within
+"db_save"
+    (procedure "db_save_and_close" line 2)
+    invoked from within
+"db_save_and_close"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel db_save_and_close $args "
+    (procedure "faultsim_save_and_close" line 1)
+    invoked from within
+"faultsim_save_and_close"
+    (file "/tmp/TestTclTest3621362582/001/test/exprfault.test" line 22)
+    invoked from within
+"source /tmp/TestTclTest3621362582/001/test/exprfault.test"
+    invoked from within
+"interp eval tinterp $script"
+    (procedure "slave_test_script" line 30)
+    invoked from within
+"slave_test_script [list source $zFile] "
+    invoked from within
+"time { slave_test_script [list source $zFile] }"
+    (procedure "slave_test_file" line 23)
+    invoked from within
+"slave_test_file $file"
+    (procedure "run_tests" line 36)
+    invoked from within
+"run_tests full -presql {} -files {shared3.test func7.test sysfault.test writecrash.test upfrom4.test vacuum5.test func4.test tkt3731.test upfrom1.test..."
+    ("eval" body line 1)
+    invoked from within
+"eval [list run_tests $suite] $S $extra"
+    (procedure "main" line 34)
+    invoked from within
+"main $argv"
+    (file "/tmp/TestTclTest3621362582/001/test/permutations.test" line 1256)
+    invoked from within
+"source $argv0"
+    invoked from within
+"if {[llength $argv]>=1} {
+set argv0 [lindex $argv 0]
+set argv [lrange $argv 1 end]
+source $argv0
+} else {
+set line {}
+while {![eof stdin]} {
+if {$line..."
+--- FAIL: TestTclTest (406.95s)
+    all_test.go:322: fail: exit status 1
+    all_test.go:341: final summary not detected (test crashed?)
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	985.634s
+
+FAIL err=exit status 1

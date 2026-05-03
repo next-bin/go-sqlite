@@ -1,0 +1,127 @@
+2024-05-02T01:42:23+02:00 commit eeb09a874245b41a6720d97279954f96f1c252ff, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for windows/arm64
+Tests running in interp:  C:/Users/jnml/AppData/Local/Temp/tcl-test-1736998960/tcltest.exe
+Tests located in:  C:/Users/jnml/AppData/Local/Temp/tcl-test-1736998960
+Tests running in:  C:/Users/jnml/AppData/Local/Temp/tcl-test-1736998960
+Temporary files stored in C:/Users/jnml/AppData/Local/Temp/tcl-test-1736998960
+Test files run in separate interpreters
+Skipping tests that match:  Tcl_Main-4.* Tcl_Main-5.* chan-16.9 chan-io-2* chan-io-3* chan-io-4* chan-io-5* clock-38.2 clock-40.1 clock-42.1 clock-49.2 cmdAH-16* cmdAH-17* cmdAH-19* cmdAH-2.5 cmdAH-20* cmdAH-24* cmdAH-25* event-11* event-12.4 event-7.5 fCmd-10.* fCmd-16.6 fCmd-27.* fCmd-29.* fCmd-3.* fCmd-4.* fCmd-5.* fCmd-6.17 fCmd-9.* filename-10.7 filename-11.* filename-15.* filesystem-1.* filesystem-6.* filesystem-7.* filesystem-9.* info-16.* interp-34.* iocmd-31.* iocmd-32.* iocmd-8.* package-15.* platform-3.1 regexp-22.* safe-8.5 safe-8.6 safe-8.7 safe-stock-7.4 tcltest-5.* tcltest-8.* tcltest-9.5 timer-11.* timer-3.* timer-6.* timer-9.* winFCmd-1.* winFCmd-2.* winFCmd-3.* winFCmd-6.* winFCmd-7.* winFCmd-8.* winFCmd-9.* winNotify-3.* winTime-1.2 winTime-2.1 winpipe-4.* zlib-10.* zlib-8.* zlib-9.*
+Running tests that match:  *
+Skipping test files that match:  env.test exec.test http.test http11.test httpold.test io.test socket.test
+Only running test files that match:  *.test
+Tests began at Thu Jan 01 01:00:00 +0100 1970
+aaa_exit.test
+append.test
+appendComp.test
+apply.test
+assemble.test
+assocd.test
+async.test
+autoMkindex.test
+basic.test
+scanf.go:361:scanfConversion: TODOTODO 
+goroutine 1 [running, locked to thread]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:24 +0x64
+modernc.org/libc.todo({0x0?, 0x1c5e6bab008?}, {0x0?, 0x0?, 0x0?})
+	C:/Users/jnml/pkg/mod/modernc.org/libc@v1.22.6/etc.go:100 +0x108
+modernc.org/libc.scanfConversion(0x40000717d8, 0x0?, 0x4000071788)
+	C:/Users/jnml/pkg/mod/modernc.org/libc@v1.22.6/scanf.go:361 +0x778
+modernc.org/libc.scanf(0x40000717d8, 0x4000
+
+...
+
+ result
+    cacls $fname /E /P $user:N
+    cacls $fname /E /G $user:F
+    test_access $fname 1 1
+
+---- Test generated error; Return code was: 1
+---- Return code should have been one of: 0 2
+---- errorInfo: No mapping between account names and security IDs was done.
+
+    while executing
+"exec cacls test.dat /E /P {WORKGROUP\jnml:N} <<y"
+    ("eval" body line 1)
+    invoked from within
+"eval [list exec cacls [file nativename $fname]] $args <<y"
+    (procedure "cacls" line 2)
+    invoked from within
+"cacls $fname /E /P $user:N"
+    ("uplevel" body line 3)
+    invoked from within
+"uplevel 1 $script"
+---- errorCode: CHILDSTATUS 2944 1332
+==== winFile-4.4 FAILED
+
+winNotify.test
+winPipe.test
+winTime.test
+zlib.test
+
+Tests ended at Thu May 02 01:42:23 +0200 2024
+all.tcl:	Total	32432	Passed	28350	Skipped	4077	Failed	5
+Sourced 144 Test Files.
+Files with failing tests: winFile.test
+Number of tests skipped for each constraint:
+	9	!ieeeFloatingPoint
+	76	bigEndian
+	5	bug-3057639
+	22	cat32
+	3	cdrom
+	50	dde
+	1	dontCopyLinks
+	27	emptyTest
+	58	fullutf
+	2	hasIsoLocale
+	1	interactive
+	1	knownBadTest
+	39	knownBug
+	100	localeRegexp
+	15	longIs64bit
+	14	macosxFileAttr
+	80	memory
+	11	nonPortable
+	3	notNetworkFilesystem
+	1	notValgrind
+	1	pairsTo4bytes
+	19	pkga.dllRequired
+	20	pkgua.dllRequired
+	2	pre388
+	126	reg
+	1996	serverNeeded
+	2	sharedCdrive
+	1	slowTest
+	1	testWithLimit
+	1	testexprparser && !ieeeFloatingPoint
+	22	testfilehandler
+	2	testfilewait
+	7	testfindexecutable
+	1	testfork
+	1	testgetdefenc
+	184	thread
+	3	threaded
+	21	ucs4
+	122	unix
+	7	unixExecs
+	16	utf16
+	1	win2000orXP
+	6	xdev
+
+Test files exiting with errors:  
+
+  basic.test
+
+  cmdInfo.test
+
+  link.test
+
+  obj.test
+
+--- FAIL: TestTclTest (724.86s)
+    all_test.go:1232: writing results to C:\Users\jnml\src\modernc.org\builder\.exclude\modernc.org\tcl\testdata\tcltest_windows_arm64.golden
+    all_test.go:1212: failure(s) detected
+exit status 1
+FAIL	modernc.org/tcl	725.095s
+
+FAIL err=exit status 1

@@ -1,0 +1,63 @@
+2022-08-03T08:44:38+02:00 b92365762bc1283de2770db8dc21590a3c1fbacb GOMAXPROCS 1
+fatal error: unexpected signal during runtime execution
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x48 pc=0x426265]
+
+runtime stack:
+runtime.throw({0x585d53?, 0x7f7ffffcd720?})
+	/usr/local/go/src/runtime/panic.go:992 +0x71
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:802 +0x3a9
+runtime.(*mSpanList).insert(0x43fab6?, 0x0?)
+	/usr/local/go/src/runtime/mheap.go:1618 +0x45
+runtime.getempty()
+	/usr/local/go/src/runtime/mgcwork.go:369 +0x86
+runtime.(*gcWork).init(0xc000025238)
+	/usr/local/go/src/runtime/mgcwork.go:100 +0x1c
+runtime.(*gcWork).tryGet(0xc000025238)
+	/usr/local/go/src/runtime/mgcwork.go:205 +0x2a
+runtime.gcDrainN(0xc000025238, 0x10000)
+	/usr/local/go/src/runtime/mgcmark.go:1146 +0xe5
+runtime.gcAssistAlloc1(0xc000084680, 0xc000455880?)
+	/usr/local/go/src/runtime/mgcmark.go:558 +0xd5
+runtime.gcAssistAlloc.func1()
+	/usr/local/go/src/runtime/mgcmark.go:469 +0x25
+runtime.systemstack()
+	/usr/local/go/src/runtime/asm_amd64.s:469 +0x49
+
+goroutine 125 [GC assist marking]:
+runtime.systemstack_switch()
+	/usr/local/go/src/runtime/asm_amd64.s:436 fp=0xc000455d30 sp=0xc000455d28 pc=0x460140
+runtime.gcAssistAlloc(0xc000084680)
+	/usr/local/go/src/runtime/mgcmark.go:468 +0x18b fp=0xc000455d90 sp=0xc000455d30 pc=0x41bb2b
+runtime.mallocgc(0x20, 0x564b40, 0x1)
+	/usr/local/go/src/runtime/malloc.go:973 +0x11f fp=0xc000455e08 sp=0xc000455d90 pc=0x40c2df
+runtime.newobject(0xc0002ec000?)
+	/usr/local/go/src/runtime/malloc.go:1259 +0x27 fp=0xc000455e30 sp=0xc000455e08 pc=0x40cbe7
+math/big.NewInt(...)
+	/usr/local/go/src/math/big/int.go:69
+modernc.org/mathutil.TestQuadPolyFactorsBig(0xc0002e3d40?)
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/mathutil/all_test.go:5361 +0x305 fp=0xc000455f70 sp=0xc000455e30 pc=0x53e9e5
+testing.tRunner(0xc0002ec000, 0x588e48)
+	/usr/local/go/src/testing/testing.go:1439 +0x102 fp=0xc000455fc0 sp=0xc000455f70 pc=0x4b3c02
+testing.(*T).Run.func1()
+	/usr/local/go/src/testing/testing.go:1486 +0x2a fp=0xc000455fe0 sp=0xc000455fc0 pc=0x4b4aaa
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1571 +0x1 fp=0xc000455fe8 sp=0xc000455fe0 pc=0x462241
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:1486 +0x35f
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc000084340, {0x58083f?, 0xc00009bbb0?}, 0x588e48)
+	/usr/local/go/src/testing/testing.go:1487 +0x37a
+testing.runTests.func1(0xc000084340?)
+	/usr/local/go/src/testing/testing.go:1839 +0x6e
+testing.tRunner(0xc000084340, 0xc00009bcd8)
+	/usr/local/go/src/testing/testing.go:1439 +0x102
+testing.runTests(0xc00007c140?, {0x6a5aa0, 0x9b, 0x9b}, {0x2551df108?, 0x40?, 0x6a8780?})
+	/usr/local/go/src/testing/testing.go:1837 +0x457
+testing.(*M).Run(0xc00007c140)
+	/usr/local/go/src/testing/testing.go:1719 +0x5d9
+main.main()
+	_testmain.go:587 +0x1aa
+exit status 2
+FAIL	modernc.org/mathutil	16.424s

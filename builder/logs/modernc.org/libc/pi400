@@ -1,0 +1,19 @@
+go1.26.0 windows/arm64
+2026-02-13T22:42:13+01:00 commit b70fb7ce24a7dd71057906ba7fe0731a2ce451d0, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestStrtod (0.00s)
+    all_non_musl_test.go:116: 1: "+1": 0 1
+    all_non_musl_test.go:116: 2: "+2": 0 2
+    all_non_musl_test.go:116: 4: "-1": 0 -1
+    all_non_musl_test.go:116: 5: "-2": 0 -2
+    all_non_musl_test.go:116: 6: ".5": 0 0.5
+    all_non_musl_test.go:116: 8: "1": 0 1
+    all_non_musl_test.go:116: 9: "1.": 0 1
+    all_non_musl_test.go:116: 10: "1.024e3": 0 1024
+    all_non_musl_test.go:116: 11: "16": 0 16
+    all_non_musl_test.go:116: 12: "2": 0 2
+    all_non_musl_test.go:116: 13: "32": 0 32
+FAIL
+exit status 1
+FAIL	modernc.org/libc	0.098s
+
+FAIL err=exit status 1

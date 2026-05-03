@@ -1,0 +1,50 @@
+go1.24.2 linux/ppc64le
+2025-04-15T11:45:34+02:00 commit 33bea37ece6366b0a3f00d011fa51b8b8bab5c72, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuth	0.020s
+ok  	modernc.org/knuth/cmd/godvitype	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftodvi	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftopk	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gogftype	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomf	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gomft	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopktype	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopltotf	0.008s [no tests to run]
+ok  	modernc.org/knuth/cmd/gopooltype	0.003s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotangle	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotex	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/gotftopl	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/govftovp	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/govptovf	0.002s [no tests to run]
+ok  	modernc.org/knuth/cmd/goweave	0.002s [no tests to run]
+ok  	modernc.org/knuth/dvi	0.038s
+ok  	modernc.org/knuth/dvitype	0.171s
+ok  	modernc.org/knuth/font/afm	0.031s
+ok  	modernc.org/knuth/font/fixed	0.002s
+ok  	modernc.org/knuth/font/pkf	0.004s
+ok  	modernc.org/knuth/font/tfm	0.037s
+ok  	modernc.org/knuth/gftodvi	0.436s
+ok  	modernc.org/knuth/gftopk	0.374s
+ok  	modernc.org/knuth/gftype	0.800s
+?   	modernc.org/knuth/internal/iobuf	[no test files]
+?   	modernc.org/knuth/internal/tds	[no test files]
+ok  	modernc.org/knuth/kpath	0.003s
+ok  	modernc.org/knuth/mf	0.904s
+ok  	modernc.org/knuth/mf/internal/trap	0.002s
+ok  	modernc.org/knuth/mft	0.012s
+ok  	modernc.org/knuth/pktype	0.483s
+ok  	modernc.org/knuth/pltotf	0.127s
+ok  	modernc.org/knuth/pooltype	0.061s
+ok  	modernc.org/knuth/tangle	1.530s
+ok  	modernc.org/knuth/tex	1.319s
+ok  	modernc.org/knuth/tex/internal/trip	0.002s
+ok  	modernc.org/knuth/tftopl	0.044s
+ok  	modernc.org/knuth/vftovp	0.080s
+ok  	modernc.org/knuth/vptovf	0.167s
+ok  	modernc.org/knuth/weave	0.659s
+--- FAIL: TestPascalScannerIfdef (0.00s)
+    all_test.go:262: open testdata/tex-ifdef.pas: no such file or directory
+FAIL
+FAIL	modernc.org/knuth/web	4.068s
+FAIL
+
+FAIL err=exit status 1

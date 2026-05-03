@@ -1,0 +1,19 @@
+go1.25.4 netbsd/amd64
+2025-12-02T23:13:37+01:00 commit dfaf0e6a61e8bf73357f45a34059784418244a9d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/ql
+package modernc.org/ql
+	imports modernc.org/file: build constraints exclude all Go files in /home/jnml/pkg/mod/modernc.org/file@v1.0.18
+FAIL	modernc.org/ql [setup failed]
+# modernc.org/ql/driver
+package modernc.org/ql
+	imports modernc.org/file: build constraints exclude all Go files in /home/jnml/pkg/mod/modernc.org/file@v1.0.18
+FAIL	modernc.org/ql/driver [setup failed]
+# modernc.org/ql/ql
+package modernc.org/ql
+	imports modernc.org/file: build constraints exclude all Go files in /home/jnml/pkg/mod/modernc.org/file@v1.0.18
+FAIL	modernc.org/ql/ql [setup failed]
+?   	modernc.org/ql/design	[no test files]
+ok  	modernc.org/ql/vendored/github.com/camlistore/go4/lock	0.010s
+FAIL
+
+FAIL err=exit status 1

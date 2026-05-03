@@ -1,0 +1,69 @@
+2024-04-09T00:05:53+02:00 commit 0a8a35981ca6012072da14aed24fe1999d997c67, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/errno
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/fcntl: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/fcntl
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/fts: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/fts
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/grp: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/grp
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/langinfo: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/langinfo
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/limits: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/limits
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/netdb: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/netdb
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/netinet/in: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/netinet/in
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/poll: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/poll
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/pthread: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/pthread
+package github.com/josharian/secretrabbit
+	imports modernc.org/lib
+
+...
+
+nc.org/libc@v1.40.10/pwd
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/signal: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/signal
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/stdio: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/stdio
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/stdlib: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/stdlib
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/socket: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/sys/socket
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/stat: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/sys/stat
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/types: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/sys/types
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/termios: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/termios
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/time: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/time
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/unistd: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/unistd
+package github.com/josharian/secretrabbit
+	imports modernc.org/libc
+	imports modernc.org/libc/uuid: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.40.10/uuid
+
+FAIL err=exit status 1

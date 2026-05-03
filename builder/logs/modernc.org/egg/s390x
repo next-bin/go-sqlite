@@ -1,0 +1,91 @@
+2023-11-25T07:28:24+01:00 commit 261b1269e1c7b3e8be98cb3b119753585716cfa1, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/egg	0.438s [no tests to run]
+--- FAIL: TestNewSource (1.00s)
+    all_test.go:169: Lexicon 1:
+        greedy: "A(B(C)?)?"
+    all_test.go:170: HasNonTerminals: false
+    all_test.go:171: HasTerminals: true
+    all_test.go:169: Lexicon 1:
+        x: "A[^C]Z"
+    all_test.go:170: HasNonTerminals: false
+    all_test.go:171: HasTerminals: true
+    all_test.go:169: Lexicon 2:
+        x: "A[^N]Z"
+        y: "ABY"
+    all_test.go:170: HasNonTerminals: false
+    all_test.go:171: HasTerminals: true
+    all_test.go:169: Lexicon 1:
+        white_space: " |\t|\n|\r|(//.*)|(/\\*([^*]|\\*+[^*/])*\\*+/)"
+    all_test.go:170: HasNonTerminals: false
+    all_test.go:171: HasTerminals: true
+    all_test.go:169: Lexicon 1:
+        white_space: " |\t|\n|\r"
+    all_test.go:170: HasNonTerminals: false
+    all_test.go:171: HasTerminals: true
+    all_test.go:169: Lexicon 1:
+        white_space: "(//([^\\n])*)"
+    all_test.go:170: HasNonTerminals: false
+    all_test.go:171: HasTerminals: true
+    all_test.go:169: Lexicon 1:
+        white_space: "(/\\*([^*]|\\*+[^*/])*\\*+/)"
+    all_test.go:170: HasNonTerminals: false
+    all_test.go:171: HasTerminals: true
+    all_test.go:169: Lexicon 80:
+        "!=": "!="
+        "%=": "%="
+        "&&": "&&"
+        "&=": "&="
+        "&^": "&\\^"
+        "&^=": "&\\^="
+        "*=": "\\*="
+        "++": "\\+\\+"
+        "+=": "\\+="
+        "--": "--"
+        "-=": "-="
+        "...": "\\.\\.\\."
+        "/=": "/="
+        ":=": ":="
+        "<-": "<-"
+        "<<": "<<"
+        "<<=": "<<="
+        "<=": "<="
+        "==": "=="
+        ">=": ">="
+        ">>": ">>"
+        ">>=": ">>="
+        "^=": "\\^="
+        "break": "break"
+        "case": "case"
+        "chan": "chan"
+        "const": "const"
+        "continue": "continue"
+        "default": "default"
+        "defer": "defer"
+        "else": "else"
+        "fallthrough": "fallthrough"
+        "for": "for"
+        "func": "func"
+        "go": "go"
+        "goto": "goto"
+        "if": "if"
+        "import": "import"
+        "
+
+...
+
+)?([0-9]))*))|\\.(([0-9])((_)?([0-9]))*)(((e|E)(\\+|-)?(([0-9])((_)?([0-9]))*)))?)|(0(x|X)((_)?(([0-9a-fA-F])((_)?([0-9a-fA-F]))*)\\.((([0-9a-fA-F])((_)?([0-9a-fA-F]))*))?|(_)?(([0-9a-fA-F])((_)?([0-9a-fA-F]))*)|\\.(([0-9a-fA-F])((_)?([0-9a-fA-F]))*))((p|P)(\\+|-)?(([0-9])((_)?([0-9]))*)))"
+        075: "((\\pL)|_)(((\\pL)|_)|(\\p{Nd}))*"
+        076: "((([0-9])((_)?([0-9]))*)|((0|([1-9])((_)?(([0-9])((_)?([0-9]))*))?)|(0(b|B)(_)?((0|1)((_)?(0|1))*))|(0(o|O)?(_)?(([0-7])((_)?([0-7]))*))|(0(x|X)(_)?(([0-9a-fA-F])((_)?([0-9a-fA-F]))*)))|(((([0-9])((_)?([0-9]))*)\\.((([0-9])((_)?([0-9]))*))?(((e|E)(\\+|-)?(([0-9])((_)?([0-9]))*)))?|(([0-9])((_)?([0-9]))*)((e|E)(\\+|-)?(([0-9])((_)?([0-9]))*))|\\.(([0-9])((_)?([0-9]))*)(((e|E)(\\+|-)?(([0-9])((_)?([0-9]))*)))?)|(0(x|X)((_)?(([0-9a-fA-F])((_)?([0-9a-fA-F]))*)\\.((([0-9a-fA-F])((_)?([0-9a-fA-F]))*))?|(_)?(([0-9a-fA-F])((_)?([0-9a-fA-F]))*)|\\.(([0-9a-fA-F])((_)?([0-9a-fA-F]))*))((p|P)(\\+|-)?(([0-9])((_)?([0-9]))*)))))i" FAIL err=compile NFA longest failed
+        
+        077: "(0|([1-9])((_)?(([0-9])((_)?([0-9]))*))?)|(0(b|B)(_)?((0|1)((_)?(0|1))*))|(0(o|O)?(_)?(([0-7])((_)?([0-7]))*))|(0(x|X)(_)?(([0-9a-fA-F])((_)?([0-9a-fA-F]))*))"
+        078: "'((.|(\\\\u([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F]))|(\\\\U([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F]))|(\\\\(a|b|f|n|r|t|v|\\\\|'|\")))|((\\\\([0-7])([0-7])([0-7]))|(\\\\x([0-9a-fA-F])([0-9a-fA-F]))))'"
+        079: "(`(.|(\n)|\r)*`)|(\"((.|(\\\\u([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F]))|(\\\\U([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F]))|(\\\\(a|b|f|n|r|t|v|\\\\|'|\")))|((\\\\([0-7])([0-7])([0-7]))|(\\\\x([0-9a-fA-F])([0-9a-fA-F]))))*\")" FAIL err=compile DFA longest failed
+    all_test.go:169: Lexicon 1:
+        foo: "([^x])*xxxxx"
+    all_test.go:170: HasNonTerminals: false
+    all_test.go:171: HasTerminals: true
+FAIL
+FAIL	modernc.org/egg/lib	2.248s
+FAIL
+
+FAIL err=exit status 1

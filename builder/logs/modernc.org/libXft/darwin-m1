@@ -1,0 +1,53 @@
+go1.24.3 darwin/arm64
+2025-05-17T15:07:31+02:00 commit d7350e2243087555b8387a86c389ef65b9724e00, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libXft/libXft-2.3.8"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft
+execute /bin/sh ["-c" "find /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft/internal/darwin/arm64 -name \\*darwin_arm64.go -delete"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft
+archivePath libXft-2.3.8.tar.gz
+extractedArchivePath libXft-2.3.8
+tempDir /tmp/libXft
+libRoot /tmp/libXft/libXft-2.3.8
+makeRoot /tmp/libXft/libXft-2.3.8
+tests /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft/internal/darwin/arm64
+execute /usr/bin/tar ["xf" "libXft-2.3.8.tar.gz" "-C" "/tmp/libXft"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXft
+execute /bin/sh ["-c" "go mod init example.com/libxft ; go get modernc.org/libc@latest modernc.org/libfontconfig@latest modernc.org/libfreetype@latest modernc.org/libX11@latest modernc.org/libXrender@latest"] in /private/tmp/libXft/libXft-2.3.8
+go: creating new go.mod: module example.com/libxft
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250408133849-7e4ce0ab07d0
+go: added golang.org/x/sys v0.33.0
+go: added modernc.org/libX11 v0.11.18
+go: added modernc.org/libXau v0.9.15
+go: added modernc.org/libXdmcp v0.12.14
+go: added modernc.org/libXrender v0.9.18
+go: added modernc.org/libbsd v0.11.10
+go: added modernc.org/libc v1.65.6
+go: added modernc.org/libexpat v0.10.12
+go: added modernc.org/libfontconfig v0.8.11
+go: added modernc.org/libfreetype v0.9.21
+go: added modernc.org/libmd v0.12.17
+go: added modernc.org/libxcb v0.12.2
+go: added modernc.org/libz v0.16.16
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.10.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -w' ./configure --disable-share
+
+...
+
+796640/xftglyphs.o.go:12517:5: undefined: "XRenderAddGlyphs" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:)
+/tmp/ccgo-tmp-ar-2314796640/xftglyphs.o.go:12624:8: undefined: "XRenderFreeGlyphs" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:)
+/tmp/ccgo-tmp-ar-2314796640/xftrender.o.go:10820:3: undefined: "XRenderCompositeString8" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:)
+/tmp/ccgo-tmp-ar-2314796640/xftrender.o.go:10824:3: undefined: "XRenderCompositeString16" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:)
+/tmp/ccgo-tmp-ar-2314796640/xftrender.o.go:10828:3: undefined: "XRenderCompositeString32" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:)
+/tmp/ccgo-tmp-ar-2314796640/xftrender.o.go:10938:4: undefined: "XRenderComposite" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:)
+/tmp/ccgo-tmp-ar-2314796640/xftrender.o.go:11000:3: undefined: "XRenderCompositeText8" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:)
+/tmp/ccgo-tmp-ar-2314796640/xftrender.o.go:11004:3: undefined: "XRenderCompositeText16" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:)
+/tmp/ccgo-tmp-ar-2314796640/xftrender.o.go:11008:3: undefined: "XRenderCompositeText32" external (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:880:link:) (util.go:365:InDir: util.go:365:InDir: ccgo.go:203:Main: ccgo.go:673:main: link.go:312:link: link.go:883:link:)
+exit status 1
+libxft.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

@@ -1,0 +1,73 @@
+2024-05-14T11:15:55Z commit 5f1c372a65b3aff856fefae7e63f5f4e29ce3c28, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading github.com/tetratelabs/wazero v1.7.2
+ok  	github.com/ncruces/go-sqlite3	2.933s
+?   	github.com/ncruces/go-sqlite3/embed	[no test files]
+ok  	github.com/ncruces/go-sqlite3/driver	2.753s
+ok  	github.com/ncruces/go-sqlite3/ext/array	2.253s
+ok  	github.com/ncruces/go-sqlite3/ext/blobio	1.951s
+ok  	github.com/ncruces/go-sqlite3/ext/csv	2.220s
+ok  	github.com/ncruces/go-sqlite3/ext/fileio	1.823s
+ok  	github.com/ncruces/go-sqlite3/ext/hash	1.839s
+ok  	github.com/ncruces/go-sqlite3/ext/lines	1.845s
+ok  	github.com/ncruces/go-sqlite3/ext/pivot	2.444s
+ok  	github.com/ncruces/go-sqlite3/ext/statement	2.124s
+ok  	github.com/ncruces/go-sqlite3/ext/stats	1.741s
+ok  	github.com/ncruces/go-sqlite3/ext/unicode	1.675s
+ok  	github.com/ncruces/go-sqlite3/ext/zorder	1.673s
+ok  	github.com/ncruces/go-sqlite3/internal/util	0.026s
+ok  	github.com/ncruces/go-sqlite3/tests	556.104s
+ok  	github.com/ncruces/go-sqlite3/tests/bradfitz	65.141s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/empty	0.027s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/missing	0.024s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/nil	0.025s
+?   	github.com/ncruces/go-sqlite3/tests/testcfg	[no test files]
+?   	github.com/ncruces/go-sqlite3/util/osutil	[no test files]
+?   	github.com/ncruces/go-sqlite3/util/vtabutil	[no test files]
+ok  	github.com/ncruces/go-sqlite3/tests/parallel	1271.475s
+ok  	github.com/ncruces/go-sqlite3/util/fsutil	0.068s
+ok  	github.com/ncruces/go-sqlite3/util/ioutil	0.062s
+ok  	github.com/ncruces/go-sqlite3/vfs	2.992s
+ok  	github.com/ncruces/go-sqlite3/vfs/adiantum	8.723s
+ok  	github.com/ncruces/go-sqlite3/vfs/memdb	3.170s
+ok  	github.com/ncruces/go-sqlite3/vfs/readervfs	7.197s
+--- FAIL: Test_config02 (44.16s)
+    mptest_test.go:318: BEGIN: mptest /tmp/Test_config023497621703/001/test.db config02.test
+    mptest_test.go:318: With SQLite 3.45.3 2024-04-15 13:34:05 8653b758870e6ef0c98d46b3ace27849054af85da891eb121e9aaa537f1e8355
+    mptest_test.go:318: -DSQLITE_ALLOW_URI_AUTHORITY
+    mptest_test.go:318: -DSQLITE_ATOMIC_IN
+
+...
+
+iwrite01.test:225 (16)
+    mptest_test.go:318: 00042.client05: end multiwrite01.test:225 (16)
+    mptest_test.go:318: 00042.client03: begin multiwrite01.test:232 (17)
+    mptest_test.go:318: 00042.client03: end multiwrite01.test:232 (17)
+    mptest_test.go:318: 00042.client01: begin multiwrite01.test:239 (18)
+    mptest_test.go:318: 00042.client01: end multiwrite01.test:239 (18)
+    mptest_test.go:318: 00042.client02: begin multiwrite01.test:246 (19)
+    mptest_test.go:318: 00042.client02: end multiwrite01.test:246 (19)
+    mptest_test.go:318: 00042.client04: begin multiwrite01.test:253 (20)
+    mptest_test.go:318: 00042.client04: end multiwrite01.test:253 (20)
+    mptest_test.go:318: 00042.client01: begin multiwrite01.test:262 (21)
+    mptest_test.go:318: 00042.client01: end multiwrite01.test:262 (21)
+    mptest_test.go:318: 00042.client03: begin multiwrite01.test:282 (23)
+    mptest_test.go:318: 00042.client03: end multiwrite01.test:282 (23)
+    mptest_test.go:318: 00042.client05: begin multiwrite01.test:272 (22)
+    mptest_test.go:318: 00042.client05: end multiwrite01.test:272 (22)
+    mptest_test.go:318: 00042.client02: begin multiwrite01.test:292 (24)
+    mptest_test.go:318: 00042.client02: end multiwrite01.test:292 (24)
+    mptest_test.go:318: 00042.client04: begin multiwrite01.test:302 (25)
+    mptest_test.go:318: 00042.client04: end multiwrite01.test:302 (25)
+    mptest_test.go:318: 00042.client01: begin multiwrite01.test:318 (26)
+    mptest_test.go:318: 00042.client02: begin multiwrite01.test:325 (27)
+    mptest_test.go:318: 00042.mptest:ERROR: timeout after 10000ms
+    mptest_test.go:318: 00042.mptest:FATAL: database is locked
+    mptest_test.go:318: 00042.mptest:FATAL: INSERT OR IGNORE INTO client VALUES(3,0)
+    mptest_test.go:318: 00042.client02:ERROR: timeout after 10000ms
+    mptest_test.go:135: module closed with exit_code(1)
+FAIL
+FAIL	github.com/ncruces/go-sqlite3/vfs/tests/mptest	49.169s
+ok  	github.com/ncruces/go-sqlite3/vfs/tests/speedtest1	3.416s [no tests to run]
+FAIL
+
+FAIL err=exit status 1

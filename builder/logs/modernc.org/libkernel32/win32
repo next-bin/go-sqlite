@@ -1,0 +1,16 @@
+2024-07-30T19:53:23+02:00 commit 019c99c8a6cfd8bce01d7df1ac9664d15c93fa03, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libkernel32 [modernc.org/libkernel32.test]
+.\libkernel32.go:112:14: undefined: libc.CreateThread
+.\libkernel32_windows_386.go:27108:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:27117:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:27187:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:27215:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:27243:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:28238:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:28285:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:29509:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:29765:7: undefined: libc.X__ccgo_SyscallFP
+.\libkernel32_windows_386.go:29765:7: too many errors
+FAIL	modernc.org/libkernel32 [build failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,73 @@
+2024-05-20T17:38:24+02:00 commit 53eef1510ff0b35b6191a3ef4e0bedf236a0d3f7, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	github.com/ncruces/go-sqlite3	0.311s
+ok  	github.com/ncruces/go-sqlite3/driver	1.761s
+?   	github.com/ncruces/go-sqlite3/embed	[no test files]
+ok  	github.com/ncruces/go-sqlite3/ext/array	0.246s
+ok  	github.com/ncruces/go-sqlite3/ext/blobio	0.200s
+ok  	github.com/ncruces/go-sqlite3/ext/csv	0.232s
+ok  	github.com/ncruces/go-sqlite3/ext/fileio	0.203s
+ok  	github.com/ncruces/go-sqlite3/ext/hash	0.199s
+ok  	github.com/ncruces/go-sqlite3/ext/lines	0.190s
+ok  	github.com/ncruces/go-sqlite3/ext/pivot	0.252s
+ok  	github.com/ncruces/go-sqlite3/ext/statement	0.223s
+ok  	github.com/ncruces/go-sqlite3/ext/stats	0.187s
+ok  	github.com/ncruces/go-sqlite3/ext/unicode	0.186s
+ok  	github.com/ncruces/go-sqlite3/ext/zorder	0.171s
+ok  	github.com/ncruces/go-sqlite3/internal/util	0.004s
+ok  	github.com/ncruces/go-sqlite3/tests	59.916s
+ok  	github.com/ncruces/go-sqlite3/tests/bradfitz	7.455s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/empty	0.003s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/missing	0.003s
+ok  	github.com/ncruces/go-sqlite3/tests/compile/nil	0.003s
+ok  	github.com/ncruces/go-sqlite3/tests/parallel	650.814s
+?   	github.com/ncruces/go-sqlite3/tests/testcfg	[no test files]
+ok  	github.com/ncruces/go-sqlite3/util/fsutil	0.004s
+?   	github.com/ncruces/go-sqlite3/util/osutil	[no test files]
+?   	github.com/ncruces/go-sqlite3/util/vtabutil	[no test files]
+ok  	github.com/ncruces/go-sqlite3/util/ioutil	0.004s
+ok  	github.com/ncruces/go-sqlite3/vfs	0.996s
+ok  	github.com/ncruces/go-sqlite3/vfs/adiantum	0.555s
+ok  	github.com/ncruces/go-sqlite3/vfs/memdb	0.195s
+ok  	github.com/ncruces/go-sqlite3/vfs/readervfs	0.412s
+--- FAIL: Test_config02 (183.60s)
+    mptest_test.go:318: BEGIN: mptest /tmp/Test_config022557639217/001/test.db config02.test
+    mptest_test.go:318: With SQLite 3.45.3 2024-04-15 13:34:05 8653b758870e6ef0c98d46b3ace27849054af85da891eb121e9aaa537f1e8355
+    mptest_test.go:318: -DSQLITE_ALLOW_URI_AUTHORITY
+    mptest_test.go:318: -DSQLITE_ATOMIC_INTRINSICS=1
+    mptest_test.go:318: -DSQLITE_COMPILER=cl
+
+...
+
+RROR:      Got [error(5) 'database is locked']
+    mptest_test.go:318: 00042.client02: end integrity_check-2 (267)
+    mptest_test.go:318: 00042.client04:ERROR: timeout after 10000ms
+    mptest_test.go:318: 00042.client04:ERROR: line 5 of integrity_check-4:
+    mptest_test.go:318: 00042.client04:ERROR: Expected [ok]
+    mptest_test.go:318: 00042.client04:ERROR:      Got [error(5) 'database is locked']
+    mptest_test.go:318: 00042.client04: end integrity_check-4 (269)
+    mptest_test.go:318: 00042.client05:ERROR: timeout after 10000ms
+    mptest_test.go:318: 00042.client05:ERROR: line 5 of integrity_check-5:
+    mptest_test.go:318: 00042.client05:ERROR: Expected [ok]
+    mptest_test.go:318: 00042.client05:ERROR:      Got [error(5) 'database is locked']
+    mptest_test.go:318: 00042.client05: end integrity_check-5 (270)
+    mptest_test.go:318: 00042.mptest:ERROR: line 53 of crash02.subtest
+    mptest_test.go:318: 00042.mptest:ERROR: timeout waiting for all clients
+    mptest_test.go:318: 00042.mptest: end script [crash02.subtest]
+    mptest_test.go:318: 00042.mptest: end script [config02.test] cycle 1
+    mptest_test.go:318: 00042.mptest:ERROR: during shutdown...
+    mptest_test.go:318: 00042.mptest:ERROR: timeout waiting for all clients
+    mptest_test.go:318: 00042.client01: Task one crashing an incomplete transaction
+    mptest_test.go:318: 00042.client03: (info) recovered 181 pages from /tmp/Test_config022557639217/001/test.db-journal
+    mptest_test.go:318: 00042.client04: end-client
+    mptest_test.go:318: 00042.client05: end-client
+    mptest_test.go:318: 00042.client03: end-client
+    mptest_test.go:318: 00042.client02: end-client
+    mptest_test.go:318: Summary: 29 errors out of 627 tests
+    mptest_test.go:318: END: mptest /tmp/Test_config022557639217/001/test.db config02.test
+    mptest_test.go:135: module closed with exit_code(1)
+FAIL
+FAIL	github.com/ncruces/go-sqlite3/vfs/tests/mptest	184.108s
+ok  	github.com/ncruces/go-sqlite3/vfs/tests/speedtest1	0.302s [no tests to run]
+FAIL
+
+FAIL err=exit status 1

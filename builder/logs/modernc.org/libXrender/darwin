@@ -1,0 +1,67 @@
+go1.24.2 darwin/amd64
+2025-04-23T06:09:38+02:00 commit 0b3a80deffe3548ca68a6166bdc61f8ff7cd363b, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /bin/sh ["-c" "rm -rf /tmp/libXrender/libXrender-0.9.10"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+execute /bin/sh ["-c" "find /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/internal/darwin/amd64 -name *darwin_amd64.go -delete"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+archivePath libXrender-0.9.10.tar.gz
+extractedArchivePath libXrender-0.9.10
+tempDir /tmp/libXrender
+libRoot /tmp/libXrender/libXrender-0.9.10
+makeRoot /tmp/libXrender/libXrender-0.9.10
+tests /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/internal/darwin/amd64
+execute /usr/bin/tar ["xf" "libXrender-0.9.10.tar.gz" "-C" "/tmp/libXrender"] in /Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender
+execute /bin/sh ["-c" "go mod init example.com/libxrender ; go get modernc.org/libc@latest modernc.org/libX11@latest"] in /private/tmp/libXrender/libXrender-0.9.10
+go: creating new go.mod: module example.com/libxrender
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250408133849-7e4ce0ab07d0
+go: added golang.org/x/sys v0.32.0
+go: added modernc.org/libX11 v0.11.15
+go: added modernc.org/libXau v0.9.14
+go: added modernc.org/libXdmcp v0.12.13
+go: added modernc.org/libbsd v0.11.9
+go: added modernc.org/libc v1.63.0
+go: added modernc.org/libmd v0.12.16
+go: added modernc.org/libxcb v0.12.0
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.10.0
+execute /bin/sh ["-c" "CFLAGS='-DNDEBUG -w -mlong-double-64' ./configure --disable-shared "] in /private/tmp/libXrender/libXrender-0.9.10
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p
+
+...
+
+tack()
+	/Users/jnml/bin/amd64/go/src/runtime/debug/stack.go:26 +0x5e
+modernc.org/fileutil/ccgo.Fatalf(0x0?, {0x5cd9bb7, 0x18}, {0xc0012e9b10, 0x4, 0x4})
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.0/ccgo/util.go:313 +0x49
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x5ccf109, 0x2}, {0xc000d106c0, 0x4, 0x4})
+	/Users/jnml/go/pkg/mod/modernc.org/fileutil@v1.3.0/ccgo/util.go:414 +0x185
+main.main()
+	/Users/jnml/src/modernc.org/builder/.exclude/modernc.org/libXrender/generator.go:168 +0x11ca
+
+go [test -vet=off -run @]
+output: # modernc.org/libX11
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:11716:9: undefined: libxcb.Xxcb_disconnect
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:37405:20: undefined: libxcb.Xxcb_get_setup
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:37655:64: undefined: libxcb.Xxcb_get_maximum_request_length
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:37929:10: undefined: libxcb.Xxcb_disconnect
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:53333:14: undefined: libxcb.Xxcb_parse_display
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:53342:14: undefined: libxcb.Xxcb_connect_to_display_with_auth_info
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:53344:14: undefined: libxcb.Xxcb_connect
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:53349:48: undefined: libxcb.Xxcb_get_file_descriptor
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:53351:103: undefined: libxcb.Xxcb_generate_id
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:53359:33: undefined: libxcb.Xxcb_connection_has_error
+/Users/jnml/go/pkg/mod/modernc.org/lib!x11@v0.11.15/ccgo_darwin_amd64.go:53359:33: too many errors
+FAIL	modernc.org/libXrender [build failed]
+
+err: exit status 1
+exit status 1
+libxrender.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

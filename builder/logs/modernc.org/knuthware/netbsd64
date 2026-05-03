@@ -1,0 +1,84 @@
+2023-01-25T00:05:44+01:00 commit fe41aa82c9f1102d030ecb39fb393662bfe47c7e, GOMAXPROCS 2, GOGC "10", GOMEMLIMIT "", CC ""
+ok  	modernc.org/knuthware	0.016s
+ok  	modernc.org/knuthware/cmd/gogftopk	0.021s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gogftype	0.002s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gomft	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopktype	0.016s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopltotf	0.007s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gopooltype	0.003s [no tests to run]
+ok  	modernc.org/knuthware/cmd/gotftopl	0.017s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govftovp	0.007s [no tests to run]
+ok  	modernc.org/knuthware/cmd/govptovf	0.002s [no tests to run]
+ok  	modernc.org/knuthware/gftopk	0.202s
+ok  	modernc.org/knuthware/gftype	1.256s
+ok  	modernc.org/knuthware/mft	0.024s
+ok  	modernc.org/knuthware/pktype	0.509s
+ok  	modernc.org/knuthware/pltotf	0.060s
+ok  	modernc.org/knuthware/pooltype	0.100s
+ok  	modernc.org/knuthware/tftopl	0.135s
+ok  	modernc.org/knuthware/vftovp	0.099s
+ok  	modernc.org/knuthware/vptovf	0.065s
+--- FAIL: TestGo (37.03s)
+    all_test.go:465: 
+        2154 lines vftovp.web
+    all_test.go:145: pass: testdata/ctan.org/tex-archive/systems/knuth/dist/etc/vftovp.web
+    all_test.go:465: 
+        3050 lines vptovf.web
+    all_test.go:145: pass: testdata/ctan.org/tex-archive/systems/knuth/dist/etc/vptovf.web
+    all_test.go:465: 
+        20402 lines mf.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/mf/mf.web: output: # example.com/knuth
+        ./test.go:2647:38: f.GetC undefined (type knuth.File has no field or method GetC)
+        
+        error: exit status 2
+    all_test.go:465: 
+        3929 lines gftodvi.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/mfware/gftodvi.web: output: # example.com/knuth
+        ./test.go:773:52: prg.termIn.GetC undefined (type knuth.File has no field or method GetC)
+        
+        error: exit status 2
+    all_test.go:465: 
+        2012 lines gftopk.web
+    all_test.go:145: pass: testdata/ctan.org/tex-archive/systems/knuth/dist/mfware/gftopk.web
+
+...
+
+uth/dist/texware/pltotf.web
+    all_test.go:465: 
+        339 lines pooltype.web
+    all_test.go:145: pass: testdata/ctan.org/tex-archive/systems/knuth/dist/texware/pooltype.web
+    all_test.go:465: 
+        1524 lines tftopl.web
+    all_test.go:145: pass: testdata/ctan.org/tex-archive/systems/knuth/dist/texware/tftopl.web
+    all_test.go:465: 
+        2661 lines tangle.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/web/tangle.web: output: # example.com/knuth
+        ./test.go:775:39: f.GetC undefined (type knuth.File has no field or method GetC)
+        
+        error: exit status 2
+    all_test.go:465: 
+        4318 lines weave.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/dist/web/weave.web: output: # example.com/knuth
+        ./test.go:929:39: f.GetC undefined (type knuth.File has no field or method GetC)
+        
+        error: exit status 2
+    all_test.go:465: 
+        1134 lines pktype.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/local/mfware/pktype.web: output: # example.com/knuth
+        ./test.go:878:20: prg.pkFile.GetC undefined (type knuth.File has no field or method GetC)
+        ./test.go:1109:31: prg.stdin.GetC undefined (type knuth.File has no field or method GetC)
+        ./test.go:1122:32: prg.stdin.GetC undefined (type knuth.File has no field or method GetC)
+        
+        error: exit status 2
+    all_test.go:465: 
+        1134 lines pktype.web
+    all_test.go:140: fail: testdata/ctan.org/tex-archive/systems/knuth/local/mfware-sparc/pktype.web: output: # example.com/knuth
+        ./test.go:878:20: prg.pkFile.GetC undefined (type knuth.File has no field or method GetC)
+        ./test.go:1109:31: prg.stdin.GetC undefined (type knuth.File has no field or method GetC)
+        ./test.go:1122:32: prg.stdin.GetC undefined (type knuth.File has no field or method GetC)
+        
+        error: exit status 2
+    all_test.go:85: files 46, ignored 29, fails 9, ok 8
+FAIL
+FAIL	modernc.org/knuthware/web	64.699s
+FAIL

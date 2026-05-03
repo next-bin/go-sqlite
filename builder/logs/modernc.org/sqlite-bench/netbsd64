@@ -1,0 +1,22 @@
+2025-04-02T17:45:33+02:00 commit 0cda537c3526624fba9803f838733c425bd0869c, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: --- FAIL: TestBenchmarks (263.83s)
+    all_test.go:147: build /tmp/TestBenchmarks3711012130/001/mattn
+    all_test.go:158: exec 0: /tmp/TestBenchmarks3711012130/001/mattn
+    all_test.go:158: exec 1: /tmp/TestBenchmarks3711012130/001/mattn
+    all_test.go:147: build /tmp/TestBenchmarks3711012130/002/modernc
+    all_test.go:152: modernc: out=# modernc.org/sqlite/lib
+        /home/jnml/pkg/mod/modernc.org/sqlite@v1.37.0/lib/sqlite_netbsd_amd64.go:112447:5: mu.enter undefined (type mutex has no field or method enter)
+        /home/jnml/pkg/mod/modernc.org/sqlite@v1.37.0/lib/sqlite_netbsd_amd64.go:112448:11: mu.leave undefined (type mutex has no field or method leave)
+        
+        FAIL err=exit status 1
+    all_test.go:147: build /tmp/TestBenchmarks3711012130/003/ncruces
+    all_test.go:158: exec 0: /tmp/TestBenchmarks3711012130/003/ncruces
+    all_test.go:158: exec 1: /tmp/TestBenchmarks3711012130/003/ncruces
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite-bench	263.835s
+exit status 1
+exit status 1
+bench.go:1: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

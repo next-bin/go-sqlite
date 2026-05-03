@@ -1,0 +1,22 @@
+go1.26.0 linux/riscv64
+2026-04-05T18:59:50+02:00 commit 2034b4ce44f111f279dbf700a39f2315bd305e00, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: --- FAIL: TestBenchmarks (3197.20s)
+    all_test.go:147: build /tmp/TestBenchmarks1798312956/001/mattn
+    all_test.go:158: exec 0: /tmp/TestBenchmarks1798312956/001/mattn
+    all_test.go:158: exec 1: /tmp/TestBenchmarks1798312956/001/mattn
+    all_test.go:147: build /tmp/TestBenchmarks1798312956/002/modernc
+    all_test.go:152: modernc: out=go: downloading modernc.org/sqlite v1.48.1
+        modernc.go:6:2: modernc.org/sqlite@v1.48.1: Get "https://storage.googleapis.com/proxy-golang-org-prod/bc93c8bca2639136-modernc.org:sqlite-v1.48.1.zip?Expires=1775492051&GoogleAccessId=gcs-urlsigner-prod%40golang-modproxy.iam.gserviceaccount.com&Signature=phXAnGVvILPQbwpuOwBqQRGpvcvvj7galJ5Z0UrADW5taSzQaOZE0sKTeTv7xrw0YPbCYB9blWrx0FwEU%2FxIEngH%2Fb2Bsfs2x36wywroQqtxRiBwZ6OaZUOYfMxTQX6E8xMNcmCT9MV%2FFPl1M2%2FEK1qtsf%2BgrEae0pYB8YYhbi0rZT7atFW90QgXaylptdEs2D%2B2gagjG384siNEd1WWuFz9BGr1LnF4jY96Ai2W%2FeY5lk9rlHb7dStZs%2B93Hij%2FxmWwUL8kp6uUQpmdm57ridVAG03yfKUG2H74y9vxKPMEXPfIGwvwEVmaK7L3F5D3XllfAo5Z4LG70eQxFc70Dg%3D%3D": dial tcp: lookup storage.googleapis.com on 127.0.0.53:53: read udp 127.0.0.1:57480->127.0.0.53:53: i/o timeout
+        
+        FAIL err=exit status 1
+    all_test.go:147: build /tmp/TestBenchmarks1798312956/003/ncruces
+    all_test.go:158: exec 0: /tmp/TestBenchmarks1798312956/003/ncruces
+    all_test.go:158: exec 1: /tmp/TestBenchmarks1798312956/003/ncruces
+FAIL
+exit status 1
+FAIL	modernc.org/sqlite-bench	3197.219s
+exit status 1
+exit status 1
+bench.go:1: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

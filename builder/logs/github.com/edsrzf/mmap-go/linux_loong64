@@ -1,0 +1,16 @@
+2023-12-12T02:09:39+01:00 commit 8e5d0fe060243a0edfc8c27674bff11a8fc632e6, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+# golang.org/x/sys/unix
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/affinity_linux.go:14:35: undefined: _NCPUBITS
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/affinity_linux.go:17:25: undefined: cpuMask
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/ifreq_linux.go:27:24: undefined: ifreq
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/ifreq_linux.go:139:9: undefined: ifreq
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/ifreq_linux.go:139:25: undefined: SizeofPtr
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/sockcmsg_unix.go:34:9: undefined: Cmsghdr
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/syscall_linux.go:942:17: undefined: RawSockaddrNFCLLCP
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/ztypes_linux.go:23:11: undefined: Timespec
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/ztypes_linux.go:24:11: undefined: Timespec
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/ztypes_linux.go:1166:12: undefined: SockaddrStorage
+/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/ztypes_linux.go:1166:12: too many errors
+FAIL	github.com/edsrzf/mmap-go [build failed]
+
+FAIL err=exit status 1

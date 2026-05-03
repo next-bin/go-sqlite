@@ -1,0 +1,137 @@
+2023-10-06T07:42:10+02:00 commit 46bf234809b0dde5a49108495c1ba96f4d8ea6f1, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+test binary compiled for openbsd/arm64
+exec: ./mptest db config01.test
+exec: ./mptest db config02.test
+exec: ./mptest db crash01.test
+exec: ./mptest db multiwrite01.test
+Time: 8_3_names.test 401 ms
+Time: affinity2.test 718 ms
+Time: affinity3.test 633 ms
+Time: aggerror.test 408 ms
+Time: aggnested.test 1048 ms
+Time: alias.test 192 ms
+Time: alter.test 2262 ms
+Time: alter2.test 1101 ms
+Time: alter3.test 2583 ms
+Time: alter4.test 1163 ms
+Time: alterauth.test 287 ms
+Time: alterauth2.test 336 ms
+Time: altercol.test 5270 ms
+Time: altercorrupt.test 241 ms
+Time: alterdropcol.test 6583 ms
+Time: alterdropcol2.test 840 ms
+Time: alterfault.test 27006 ms
+Time: alterlegacy.test 1559 ms
+Time: altermalloc.test 565234 ms
+Time: altermalloc2.test 358740 ms
+Time: altermalloc3.test 157689 ms
+Time: alterqf.test 237 ms
+Time: altertab.test 3241 ms
+Time: altertab2.test 1536 ms
+Time: altertab3.test 2087 ms
+Time: altertrig.test 985 ms
+Time: amatch1.test 123 ms
+Time: analyze.test 1241 ms
+Time: analyze3.test 1725 ms
+Time: analyze4.test 632 ms
+Time: analyze5.test 11228 ms
+Time: analyze6.test 494 ms
+Time: analyze7.test 327 ms
+Time: analyze8.test 12836 ms
+ (nByte=2800 nByte2=3800)Time: analyze9.test 43182 ms
+Time: analyzeC.test 523 ms
+Time: analyzeD.test 10327 ms
+Time: analyzeE.test 512 ms
+Time: analyzeF.test 878 ms
+Time: analyzeG.test 279 ms
+analyzer1 cannot run because /tmp/sqlite-test-2519616062/sqlite3_analyzer is not available
+Time: analyzer1.test 150 ms
+Skipping async2 tests: not compiled with required features
+Time: async2.test 134 ms
+Skipping async3 tests: not compiled with required features
+Time: async3.test 134 ms
+Time: async4.test 184 ms
+Time: async5.test 168 ms
+Time: atof1.test 170 ms
+No f2fs atomic-batch-write support. Skipping tests...
+Time: atomic.test 146 ms
+No f2fs atomic-batch-write support. Skipping tests...
+Time: atomic2.test 181 ms
+Time: attach.test 1199 ms
+Time: attach2.test 744 ms
+Time: attach3.test 513 ms
+Testing with SQLITE_MAX_ATTACHED=10
+Time: attach4.test 785 ms
+Time: attachmalloc.test 144996 ms
+Time: auth.test 1780 ms
+
+...
+
+
+Time: exclusive.test 436 ms
+Time: exclusive2.test 404 ms
+Time: exec.test 217 ms
+Time: exists.test 9465 ms
+Time: expr.test 6388 ms
+Time: expr2.test 214 ms
+testfixture: error copying "test.db-mj1C0ACD949": no such file or directory
+    while executing
+"file copy -force $from $to"
+    (procedure "do_copy_file" line 27)
+    invoked from within
+"do_copy_file true $from $to"
+    (procedure "forcecopy" line 2)
+    invoked from within
+"forcecopy $f $f2"
+    (procedure "db_save" line 5)
+    invoked from within
+"db_save"
+    (procedure "db_save_and_close" line 2)
+    invoked from within
+"db_save_and_close"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel db_save_and_close $args "
+    (procedure "faultsim_save_and_close" line 1)
+    invoked from within
+"faultsim_save_and_close"
+    (file "/tmp/sqlite-test-2519616062/exprfault.test" line 22)
+    invoked from within
+"source /tmp/sqlite-test-2519616062/exprfault.test"
+    invoked from within
+"interp eval tinterp $script"
+    (procedure "slave_test_script" line 30)
+    invoked from within
+"slave_test_script [list source $zFile] "
+    invoked from within
+"time { slave_test_script [list source $zFile] }"
+    (procedure "slave_test_file" line 23)
+    invoked from within
+"slave_test_file $file"
+    (procedure "run_tests" line 36)
+    invoked from within
+"run_tests full -presql {} -files {shared3.test func7.test sysfault.test writecrash.test upfrom4.test vacuum5.test func4.test tkt3731.test upfrom1.test..."
+    ("eval" body line 1)
+    invoked from within
+"eval [list run_tests $suite] $S $extra"
+    (procedure "main" line 34)
+    invoked from within
+"main $argv"
+    (file "permutations.test" line 1260)
+    invoked from within
+"source $argv0"
+    invoked from within
+"if {[llength $argv]>=1} {
+set argv0 [lindex $argv 0]
+set argv [lrange $argv 1 end]
+source $argv0
+} else {
+set line {}
+while {![eof stdin]} {
+if {$line..."
+--- FAIL: TestTclTest (23505.92s)
+    tcl_test.go:137: exit status 1
+FAIL
+FAIL	modernc.org/sqlite	24283.800s
+ok  	modernc.org/sqlite/functest	1.243s
+FAIL

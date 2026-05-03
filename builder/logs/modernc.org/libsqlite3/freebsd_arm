@@ -1,0 +1,14 @@
+2023-10-07T05:31:50Z commit 95cb115fc76b54183198f8dd32ff4f9d7dc6857d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libtcl8.6 v0.0.13
+# os/user
+cgo-gcc-prolog:95:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:89:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:89:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+cgo-gcc-prolog:117:17: warning: field r within 'struct (unnamed at cgo-gcc-prolog:111:2)' is less aligned than 'struct passwd' and is usually due to 'struct (unnamed at cgo-gcc-prolog:111:2)' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+execute /usr/local/go/bin/go ["build" "-o" "/tmp/TestTclTest563072777/001/testfixture" "-tags=" "internal/testfixture/ccgo_freebsd_arm.go"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libsqlite3
+package internal/testfixture/ccgo_freebsd_arm.go is not in std (/usr/local/go/src/internal/testfixture/ccgo_freebsd_arm.go)
+--- FAIL: TestTclTest (1.24s)
+    all_test.go:64: package internal/testfixture/ccgo_freebsd_arm.go is not in std (/usr/local/go/src/internal/testfixture/ccgo_freebsd_arm.go)
+        
+        FAIL: exit status 1
+FAIL
+exit status 1
+FAIL	modernc.org/libsqlite3	1.463s

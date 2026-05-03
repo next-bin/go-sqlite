@@ -1,0 +1,9 @@
+go1.25.1 linux/loong64
+2025-09-20T21:49:10+08:00 commit ce695f6ef24ca8e590d0b402ad6b262d52442621, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: ssh: connect to host gitlab.com port 22: Network is unreachable
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+FAIL err=AUTOTASKS: exit status 1

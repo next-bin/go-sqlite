@@ -1,0 +1,87 @@
+go1.25.0 linux/s390x
+2025-08-20T11:03:12+02:00 commit 201f4d3fc7a0668098cc713856deada1911c1412, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libX11/libX11-1.7.2"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11/internal/linux/s390x -name *linux_s390x.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+archivePath libX11-1.7.2.tar.gz
+extractedArchivePath libX11-1.7.2
+tempDir /tmp/libX11
+libRoot /tmp/libX11/libX11-1.7.2
+makeRoot /tmp/libX11/libX11-1.7.2
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11/internal/linux/s390x
+execute /usr/bin/tar ["xf" "libX11-1.7.2.tar.gz" "-C" "/tmp/libX11"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libX11
+execute /usr/bin/sed ["-i" "s/&& (tmp_ctext\\[0\\] & 0x80) && (tmp_ctext\\[0\\] & 0x80))/\\&\\& (tmp_ctext[0] \\& 0x80))/" "src/xlibi18n/lcCT.c"] in /tmp/libX11/libX11-1.7.2
+execute /usr/bin/sh ["-c" "go mod init example.com/libx11 ; go get modernc.org/libc@latest modernc.org/libxcb@latest"] in /tmp/libX11/libX11-1.7.2
+go: creating new go.mod: module example.com/libx11
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.33.0
+go: added modernc.org/libXau v0.9.18
+go: added modernc.org/libXdmcp v0.12.18
+go: added modernc.org/libbsd v0.11.15
+go: added modernc.org/libc v1.66.7
+go: added modernc.org/libmd v0.12.21
+go: added modernc.org/libxcb v0.12.4
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -w -mlong-double-64' ./configure --disable-loadable-i18n --disable-loadable-xcursor --disable-shared --disable-specs "] in /tmp/libX11/libX11-1.7.2
+checking build system type... s390x-ibm-linux-
+
+...
+
+xsltproc... no
+configure: WARNING: xsltproc not found - cannot transform XML documents
+checking for X.Org SGML entities >= 1.10... no
+checking how to run the C preprocessor... gcc -E
+checking for cpp... /usr/bin/cpp
+checking if /usr/bin/cpp requires -undef... yes
+checking if /usr/bin/cpp requires -traditional... yes
+checking for perl... /usr/bin/perl
+checking for pkg-config... no
+checking for pkg-config... no
+checking if Xtrans should support UNIX socket connections... yes
+checking if Xtrans should support TCP socket connections... yes
+checking for library containing socket... none required
+checking for library containing gethostbyname... none required
+checking for getaddrinfo... yes
+checking if IPv6 support should be built... yes
+checking for struct sockaddr_in.sin_len... no
+checking for socklen_t... yes
+checking for struct msghdr.msg_control... yes
+checking if Xtrans should support os-specific local connections... no
+checking for strcasecmp... yes
+checking for strlcpy... no
+checking if run-time linking is supported... checking for library containing dlopen... none required
+checking for dlfcn.h... (cached) yes
+yes
+checking if loadable i18n module support should be enabled... no
+checking if loadable Xcursor library support should be enabled... no
+checking for sys/filio.h... no
+checking for sys/select.h... yes
+checking for sys/ioctl.h... yes
+checking for sys/socket.h... yes
+checking for __builtin_popcountl... yes
+checking for strtol... yes
+checking for seteuid... yes
+checking for reallocarray... yes
+checking whether issetugid is declared... no
+checking for issetugid... no
+checking for getresuid... yes
+checking for shmat... yes
+checking for launchd... no
+checking for getpwuid_r in -lc... yes
+checking for pthread_self in -lc... yes
+checking for poll... yes
+checking keysym definitions... ./configure: line 22103: --variable=includedir: command not found
+configure: error: /X11 doesn't exist or isn't a directory
+
+err: exit status 1
+exit status 1
+libx11.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

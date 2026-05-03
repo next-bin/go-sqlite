@@ -1,0 +1,97 @@
+2023-12-12T00:07:54+01:00 commit 9a4851b8a136c043f0ff4671676ee4c296eb0809, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+SIGSEGV: segmentation violation
+PC=0x8055943 m=3 sigcode=1
+
+goroutine 0 [idle]:
+runtime.unlock2(0xb33c95b4)
+	runtime/lock_sema.go:115 +0x63 fp=0x8c61ec4 sp=0x8c61ea8 pc=0x8055943
+runtime.unlockWithRank(...)
+	runtime/lockrank_off.go:34
+runtime.unlock(...)
+	runtime/lock_sema.go:96
+runtime.markrootSpans(0x8c29c5c, 0x0)
+	runtime/mgcmark.go:397 +0x138 fp=0x8c61f00 sp=0x8c61ec4 pc=0x8068a88
+runtime.markroot(0x8c29c5c, 0x4, 0x1)
+	runtime/mgcmark.go:193 +0xe3 fp=0x8c61f5c sp=0x8c61f00 pc=0x80682c3
+runtime.gcDrain(0x8c29c5c, 0xb)
+	runtime/mgcmark.go:1069 +0x4a2 fp=0x8c61fa8 sp=0x8c61f5c pc=0x806a822
+runtime.gcBgMarkWorker.func2()
+	runtime/mgc.go:1385 +0x8a fp=0x8c61fd4 sp=0x8c61fa8 pc=0x806614a
+traceback: unexpected SPWRITE function runtime.systemstack
+runtime.systemstack()
+	runtime/asm_386.s:374 +0x35 fp=0x8c61fd8 sp=0x8c61fd4 pc=0x80b57c5
+
+goroutine 61 [GC worker (active)]:
+runtime.systemstack_switch()
+	runtime/asm_386.s:341 fp=0x8c2ef94 sp=0x8c2ef90 pc=0x80b5780
+runtime.gcBgMarkWorker()
+	runtime/mgc.go:1355 +0x1eb fp=0x8c2eff0 sp=0x8c2ef94 pc=0x8065dbb
+runtime.goexit()
+	runtime/asm_386.s:1363 +0x1 fp=0x8c2eff4 sp=0x8c2eff0 pc=0x80b6ac1
+created by runtime.gcBgMarkStartWorkers in goroutine 59
+	runtime/mgc.go:1219 +0x1f
+
+goroutine 1 [semacquire]:
+runtime.gopark(0x86f4d88, 0x8aca020, 0x12, 0x19, 0x4)
+	runtime/proc.go:398 +0xfa fp=0x8c5d9f4 sp=0x8c5d9e0 pc=0x80859fa
+runtime.goparkunlock(...)
+	runtime/proc.go:404
+runtime.semacquire1(0x8d8d648, 0x0, 0x1, 0x0, 0x12)
+	runtime/sema.go:160 +0x27d fp=0x8c5da24 sp=0x8c5d9f4 pc=0x809751d
+sync.runtime_Semacquire(0x8d8d648)
+	runtime/sema.go:62 +0x35 fp=0x8c5da3c sp=0x8c5da24 pc=0x80b4295
+sync.(*WaitGroup).Wait(0x8d8d640)
+	sync/waitgroup.go:116 +0x5f fp=0x8c5da58 sp=0x8c5da3c pc=0x80c20bf
+cmd/go/internal/work.(*Builder).Do(0x90017a0, {0x879cb50, 0x8ad8680}, 0x8e0c240)
+	cmd/go/internal/work/exec.go:228 +0x463 fp=0x8c5daf4 sp=0x8c5da58 pc=0x853e5f3
+cmd/go/internal/test.runTest({0x879cb50, 0x8ad8680}, 0x8abed40, {0x8c1a070, 0x3, 0x4})
+	cmd/go/internal/test/test.go:961 +0x1de5 fp=0x8c5de70
+
+...
+
+0x4)
+	syscall/zsyscall_netbsd_386.go:1211 +0x3f fp=0x90992cc sp=0x90992a4 pc=0x80ca9af
+syscall.forkExec({0x8e703f0, 0x25}, {0x8e9aa30, 0x2, 0x2}, 0x90993a0)
+	syscall/exec_unix.go:217 +0x4ea fp=0x9099358 sp=0x90992cc pc=0x80c437a
+syscall.StartProcess(...)
+	syscall/exec_unix.go:251
+os.startProcess({0x8e703f0, 0x25}, {0x8e9aa30, 0x2, 0x2}, 0x9099484)
+	os/exec_posix.go:54 +0x250 fp=0x90993c8 sp=0x9099358 pc=0x812b610
+os.StartProcess({0x8e703f0, 0x25}, {0x8e9aa30, 0x2, 0x2}, 0x9099484)
+	os/exec.go:111 +0x57 fp=0x90993f0 sp=0x90993c8 pc=0x812b0b7
+os/exec.(*Cmd).Start(0x8e94900)
+	os/exec/exec.go:693 +0x58a fp=0x90994b0 sp=0x90993f0 pc=0x815ec2a
+os/exec.(*Cmd).Run(0x8e94900)
+	os/exec/exec.go:587 +0x1b fp=0x90994c0 sp=0x90994b0 pc=0x815e65b
+cmd/go/internal/work.(*Builder).toolID(0x90017a0, {0x869ef3d, 0x3})
+	cmd/go/internal/work/buildid.go:167 +0x2d7 fp=0x9099550 sp=0x90994c0 pc=0x853a147
+cmd/go/internal/work.(*Builder).buildActionID(0x90017a0, 0x90569c0)
+	cmd/go/internal/work/exec.go:331 +0x12c4 fp=0x909974c sp=0x9099550 pc=0x8540764
+cmd/go/internal/work.(*Builder).build(0x90017a0, {0x879cb50, 0x8ad8680}, 0x90569c0)
+	cmd/go/internal/work/exec.go:465 +0x1b3 fp=0x9099e58 sp=0x909974c pc=0x8541be3
+cmd/go/internal/work.ActorFunc.Act(0x86f5030, 0x90017a0, {0x879cb50, 0x8ad8680}, 0x90569c0)
+	cmd/go/internal/work/action.go:78 +0x36 fp=0x9099e74 sp=0x9099e58 pc=0x8530bb6
+cmd/go/internal/work.(*Builder).Do.func3({0x879cb50, 0x8ad8680}, 0x90569c0)
+	cmd/go/internal/work/exec.go:151 +0x836 fp=0x9099f88 sp=0x9099e74 pc=0x853f176
+cmd/go/internal/work.(*Builder).Do.func4()
+	cmd/go/internal/work/exec.go:219 +0xbe fp=0x9099ff0 sp=0x9099f88 pc=0x853e7de
+runtime.goexit()
+	runtime/asm_386.s:1363 +0x1 fp=0x9099ff4 sp=0x9099ff0 pc=0x80b6ac1
+created by cmd/go/internal/work.(*Builder).Do in goroutine 1
+	cmd/go/internal/work/exec.go:205 +0x3d3
+
+eax    0x0
+ebx    0x4
+ecx    0x8c06a00
+edx    0xb34087f0
+edi    0x86f4bb0
+esi    0x1
+ebp    0x4
+esp    0x8c61ea8
+eip    0x8055943
+eflags 0x10246
+cs     0x17
+fs     0xab
+gs     0xb3
+
+FAIL err=exit status 2

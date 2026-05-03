@@ -1,0 +1,78 @@
+2023-10-10T04:47:29Z commit 7f419475d38ba851595b963e037ba17a4f71d0e9, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+CC=/usr/bin/gcc
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+execute /usr/local/go/bin/go ["mod" "init" "example.com/ccgo/v3/lib/sqlite"] in /tmp/ccgo-test-1410618130
+go: creating new go.mod: module example.com/ccgo/v3/lib/sqlite
+execute /usr/local/go/bin/go ["get" "modernc.org/libc"] in /tmp/ccgo-test-1410618130
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.3.0
+go: added github.com/mattn/go-isatty v0.0.16
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab
+go: added modernc.org/libc v1.24.1
+go: added modernc.org/mathutil v1.5.0
+go: added modernc.org/memory v1.6.0
+--- FAIL: TestSQLite (177.36s)
+    all_test.go:2782: unexpected fault address 0x5b7c66
+        fatal error: fault
+        [signal SIGBUS: bus error code=0x1 addr=0x5b7c66 pc=0x2f2d20]
+        
+        goroutine 1 [running, locked to thread]:
+        runtime.throw({0x35bf54?, 0x1ad08?})
+        	/usr/local/go/src/runtime/panic.go:1077 +0x40 fp=0x40000bdb80 sp=0x40000bdb50 pc=0x44d10
+        runtime.sigpanic()
+        	/usr/local/go/src/runtime/signal_unix.go:858 +0xec fp=0x40000bdbe0 sp=0x40000bdb80 pc=0x5bf0c
+        modernc.org/libc.AtomicStoreNInt32(...)
+        	/home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/ccgo.go:11
+        main.sqlite3_config(0xffff37100120?, 0xbdcb0?, 0x40000bdc78?)
+        	/tmp/ccgo-test-1410618130/main.go:217735 +0x4a0 fp=0x40000bdc30 sp=0x40000bdbf0 pc=0x2f2d20
+        main.main_init(0x40000fc620, 0xffff37100120)
+        	/tmp/ccgo-test-1410618130/main.go:36139 +0x1f0 fp=0x40000bdcf0 sp=0x40000bdc30 pc=0x14a4a0
+        main.main1(0x40000fc620, 0x3, 0xffff44300020)
+        	/tmp/ccgo-test-1410618130/main.go:36214 +0x328 fp=0x40000bde90 sp=0x40000bdcf0 pc=0x14ac88
+        modernc.org/libc.Start(0x3a4b30)
+        	/home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/libc.go:125 +0x15c fp=0x40000bdf10 sp=0x40000bde90 pc=0xeb07c
+        main.main()
+        	/tmp/ccgo-test-1410618130/main.go:23 +0x24 fp=0x40000bdf30 
+
+...
+
+func1()
+        	/usr/local/go/src/runtime/signal_unix.go:1014 +0x198 fp=0x40000337d0 sp=0x4000033740 pc=0x6ee88
+        runtime.goexit()
+        	/usr/local/go/src/runtime/asm_arm64.s:1197 +0x4 fp=0x40000337d0 sp=0x40000337d0 pc=0x76964
+        created by runtime.ensureSigM in goroutine 1
+        	/usr/local/go/src/runtime/signal_unix.go:997 +0xd8
+        
+        goroutine 34 [syscall]:
+        runtime.notetsleepg(0x0?, 0x0?)
+        	/usr/local/go/src/runtime/lock_futex.go:236 +0x34 fp=0x4000188790 sp=0x4000188750 pc=0x1bad4
+        os/signal.signal_recv()
+        	/usr/local/go/src/runtime/sigqueue.go:152 +0x30 fp=0x40001887b0 sp=0x4000188790 pc=0x72f80
+        os/signal.loop()
+        	/usr/local/go/src/os/signal/signal_unix.go:23 +0x1c fp=0x40001887d0 sp=0x40001887b0 pc=0xd73bc
+        runtime.goexit()
+        	/usr/local/go/src/runtime/asm_arm64.s:1197 +0x4 fp=0x40001887d0 sp=0x40001887d0 pc=0x76964
+        created by os/signal.Notify.func1.1 in goroutine 1
+        	/usr/local/go/src/os/signal/signal.go:151 +0x28
+        
+        goroutine 35 [chan receive]:
+        runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+        	/usr/local/go/src/runtime/proc.go:398 +0xc8 fp=0x4000188ed0 sp=0x4000188eb0 pc=0x47a38
+        runtime.chanrecv(0x4000092240, 0x0, 0x1)
+        	/usr/local/go/src/runtime/chan.go:583 +0x414 fp=0x4000188f50 sp=0x4000188ed0 pc=0x16c44
+        runtime.chanrecv1(0x0?, 0x0?)
+        	/usr/local/go/src/runtime/chan.go:442 +0x14 fp=0x4000188f80 sp=0x4000188f50 pc=0x16824
+        modernc.org/libc.Xsignal.func1()
+        	/home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/libc_unix.go:72 +0x38 fp=0x4000188fd0 sp=0x4000188f80 pc=0xf00f8
+        runtime.goexit()
+        	/usr/local/go/src/runtime/asm_arm64.s:1197 +0x4 fp=0x4000188fd0 sp=0x4000188fd0 pc=0x76964
+        created by modernc.org/libc.Xsignal in goroutine 1
+        	/home/jnml/go/pkg/mod/modernc.org/libc@v1.24.1/libc_unix.go:70 +0x220
+        
+        exit status 2
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v3/lib	2929.491s
+
+FAIL err=exit status 1

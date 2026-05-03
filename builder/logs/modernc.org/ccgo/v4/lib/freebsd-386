@@ -1,0 +1,28 @@
+2024-05-04T02:25:36+02:00 commit f14c18037a7fd53f0fa624a264acbf107d7cf90d, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/libc v1.50.5
+execute /usr/local/go/bin/go ["mod" "init" "test"] in /tmp/TestExec502617701/001
+go: creating new go.mod: module test
+execute /usr/local/go/bin/go ["get" "modernc.org/libc@latest"] in /tmp/TestExec502617701/001
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/sys v0.18.0
+go: added modernc.org/libc v1.50.5
+go: added modernc.org/mathutil v1.6.0
+go: added modernc.org/memory v1.8.0
+01:57:39.464 expr.go:130:convert: TRC struct-non-lval-2.c:6:3: struct foo {x char; y char; z array of 2 char} exprUintptr -> pointer to struct foo exprUintptr
+01:57:39.464 expr.go:130:convert: TRC struct-non-lval-2.c:6:3: struct foo {x char; y char; z array of 2 char} exprUintptr -> pointer to struct foo exprUintptr
+02:23:08.287 all_test.go:600:testExec1: TRC `assets/github.com/vnmakarov/mir/c-benchmarks/except.c`: {}, // EXEC FAIL: "assets/github.com/vnmakarov/mir/c-benchmarks/except.c: pthread.go:97:PopJumpBuffer: TODOTODO unsupported setjmp/longjmp usage"
+--- FAIL: TestExec (1835.65s)
+    --- FAIL: TestExec/github.com/vnmakarov (210.99s)
+        all_test.go:398: assets/github.com/vnmakarov: copied 583 files, 149,066 bytes
+        all_test.go:138: "assets/github.com/vnmakarov/mir/c-benchmarks/except.c: pthread.go:97:PopJumpBuffer: TODOTODO unsupported setjmp/longjmp usage"
+        all_test.go:138: "assets/github.com/vnmakarov/mir/c-benchmarks/except.c: pthread.go:97:PopJumpBuffer: TODOTODO unsupported setjmp/longjmp usage"
+        all_test.go:141: TOTAL: files   330, skip    26, ok   303, fails     1: assets/github.com/vnmakarov
+FAIL
+exit status 1
+FAIL	modernc.org/ccgo/v4/lib	1835.697s
+
+FAIL err=exit status 1

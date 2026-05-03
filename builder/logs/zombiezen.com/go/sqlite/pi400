@@ -1,0 +1,15 @@
+go1.25.3 windows/arm64
+2025-11-08T06:01:12+01:00 commit f1ff619356e549f92f14ead4cde16b370ff455b6, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+ok  	zombiezen.com/go/sqlite	5.689s
+ok  	zombiezen.com/go/sqlite/ext/generateseries	0.180s
+ok  	zombiezen.com/go/sqlite/ext/refunc	0.137s
+ok  	zombiezen.com/go/sqlite/shell	0.160s [no tests to run]
+ok  	zombiezen.com/go/sqlite/sqlitefile	49.860s
+ok  	zombiezen.com/go/sqlite/sqlitemigration	26.335s
+--- FAIL: TestSharedCacheLock (7.77s)
+    pool_test.go:226: second connection insert not completing
+FAIL
+FAIL	zombiezen.com/go/sqlite/sqlitex	8.380s
+FAIL
+
+FAIL err=exit status 1

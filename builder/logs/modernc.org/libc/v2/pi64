@@ -1,0 +1,16 @@
+2023-10-19T00:04:13Z commit de08ef47257cf813395989ad54b33d8b28655f8a, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libc/v2 [modernc.org/libc/v2.test]
+./ccgo_linux_arm64.go:1133:25: invalid operation: ___get_tp(tls) - Uint64FromInt64(200) (mismatched types uintptr and uint64)
+./ccgo_linux_arm64.go:1168:54: invalid operation: ___get_tp(tls) - Uint64FromInt64(200) (mismatched types uintptr and uint64)
+./ccgo_linux_arm64.go:1559:48: invalid operation: ___get_tp(tls) - Uint64FromInt64(200) (mismatched types uintptr and uint64)
+./ccgo_linux_arm64.go:1716:3: undefined: _memcpy
+./ccgo_linux_arm64.go:6216:2: undefined: _memcpy
+./ccgo_linux_arm64.go:6302:2: undefined: _memcpy
+./ccgo_linux_arm64.go:6361:2: undefined: _memcpy
+./ccgo_linux_arm64.go:6367:2: undefined: _memset
+./ccgo_linux_arm64.go:8753:3: undefined: _memcpy
+./ccgo_linux_arm64.go:9030:3: undefined: _memset
+./ccgo_linux_arm64.go:9030:3: too many errors
+FAIL	modernc.org/libc/v2 [build failed]
+
+FAIL err=exit status 1

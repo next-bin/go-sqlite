@@ -1,0 +1,8 @@
+2022-12-21T13:28:44+01:00 commit b5506fad2e7595e9047f941c7783e0460e7eeb85, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/ccgo/v3 v3.16.10
+# modernc.org/web2go
+package modernc.org/web2go (test)
+	imports modernc.org/ccgo/v3/lib
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/pkg/mod/modernc.org/libc@v1.20.3/errno
+FAIL	modernc.org/web2go [setup failed]

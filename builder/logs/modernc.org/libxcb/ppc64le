@@ -1,0 +1,97 @@
+go1.25.2 linux/ppc64le
+2025-10-14T09:52:01+02:00 commit e4e65d8b04aec657b65df28a8ee1ab6c76519eb8, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libxcb/libxcb-1.14"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libxcb
+execute /usr/bin/sh ["-c" "find /home/debian/src/modernc.org/builder/.exclude/modernc.org/libxcb/internal/linux/ppc64le -name \\*linux_ppc64le.go -delete"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libxcb
+archivePath libxcb-1.14.tar.gz
+extractedArchivePath libxcb-1.14
+tempDir /tmp/libxcb
+libRoot /tmp/libxcb/libxcb-1.14
+makeRoot /tmp/libxcb/libxcb-1.14
+tests /home/debian/src/modernc.org/builder/.exclude/modernc.org/libxcb/internal/linux/ppc64le
+execute /usr/bin/tar ["xf" "libxcb-1.14.tar.gz" "-C" "/tmp/libxcb"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libxcb
+execute /usr/bin/sh ["-c" "go mod init example.com/libxcb ; go get modernc.org/libc@latest modernc.org/libXau@latest  modernc.org/libXdmcp@latest"] in /tmp/libxcb/libxcb-1.14
+go: creating new go.mod: module example.com/libxcb
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libXau v0.9.19
+go: added modernc.org/libXdmcp v0.12.20
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.66.10
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DNDEBUG -w -mlong-double-64' ./configure --disable-shared --enable-devel-docs=no --enable-ge --enable-xevie --enable-xprint "] in /tmp/libxcb/libxcb-1.14
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+
+
+...
+
+...........: yes
+    Sync................: yes
+    Xevie...............: yes
+    Xfixes..............: yes
+    Xfree86-dri.........: yes
+    xinerama............: yes
+    xinput..............: yes
+    xkb.................: yes
+    xprint..............: yes
+    xtest...............: yes
+    xv..................: yes
+    xvmc................: yes
+
+  Used CFLAGS:
+    CPPFLAGS............: 
+    CFLAGS..............: -DNDEBUG -w -mlong-double-64
+
+  Installation:
+    Prefix..............: /usr/local
+
+Making check in src
+make[1]: Entering directory '/tmp/libxcb/libxcb-1.14/src'
+  GEN      xproto.c
+  GEN      bigreq.c
+  GEN      xc_misc.c
+  GEN      composite.c
+Traceback (most recent call last):
+  File "/tmp/libxcb/libxcb-1.14/src/./c_client.py", line 3368, in <module>
+    module.generate()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/xcbgen/state.py", line 131, in generate
+    item.out(name)
+    ~~~~~~~~^^^^^^
+  File "/tmp/libxcb/libxcb-1.14/src/./c_client.py", line 3172, in c_request
+    _c_request_helper(self, name, void=True, regular=False)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/libxcb/libxcb-1.14/src/./c_client.py", line 2248, in _c_request_helper
+    if namecount[tname] > 1:
+       ~~~~~~~~~^^^^^^^
+KeyError: 'xcb_redirect_t'
+make[1]: *** [Makefile:1406: composite.c] Error 1
+make[1]: Leaving directory '/tmp/libxcb/libxcb-1.14/src'
+make: *** [Makefile:792: check-recursive] Error 1
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x6c
+modernc.org/fileutil/ccgo.Fatal(0x0?, {0xc000031ad8, 0x1, 0x1})
+	/home/debian/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:323 +0x5c
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0xc000110000?, 0xc00013e160?}, 0x5009f2?)
+	/home/debian/pkg/mod/modernc.org/fileutil@v1.3.40/ccgo/util.go:371 +0x8c
+main.main()
+	/home/debian/src/modernc.org/builder/.exclude/modernc.org/libxcb/generator.go:111 +0xf28
+
+exit status 2
+exit status 1
+libxcb.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

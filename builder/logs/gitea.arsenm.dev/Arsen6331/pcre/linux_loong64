@@ -1,0 +1,65 @@
+2023-08-28T02:04:53+02:00 commit 4ce849193f6405a87953590b94b608bdbe3936cd, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package go.elara.ws/pcre
+	imports go.elara.ws/pcre/lib: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/gitea.arsenm.dev/Arsen6331/pcre/lib
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/errno
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/fcntl: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/fcntl
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/fts: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/fts
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/grp: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/grp
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/langinfo: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/langinfo
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/limits: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/limits
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/netdb: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/netdb
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/netinet/in: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/netinet/in
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/poll: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/poll
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/pthread: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/pthread
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/pwd: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/pwd
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/signal: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/signal
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/stdio: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/stdio
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/stdlib: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/stdlib
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/socket: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/sys/socket
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/stat: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/sys/stat
+package go.elara.ws/pcre
+	imports modernc.org/libc/sys/types: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/sys/types
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/termios: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/termios
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/time: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/time
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/unistd: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/unistd
+package go.elara.ws/pcre
+	imports modernc.org/libc
+	imports modernc.org/libc/uuid/uuid: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.16.8/uuid/uuid

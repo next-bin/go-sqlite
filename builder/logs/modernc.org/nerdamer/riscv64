@@ -1,0 +1,8 @@
+go1.24.1 linux/riscv64
+2025-05-23T18:04:47Z commit f6eee0a78d039e3c0b58d901ac358507526a0ee0, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/quickjs v0.15.1
+# modernc.org/nerdamer
+nerdamer.go:15:2: modernc.org/quickjs@v0.15.1: Get "https://proxy.golang.org/modernc.org/quickjs/@v/v0.15.1.zip": EOF
+FAIL	modernc.org/nerdamer [setup failed]
+
+FAIL err=exit status 1

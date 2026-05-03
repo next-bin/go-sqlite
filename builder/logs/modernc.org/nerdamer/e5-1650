@@ -1,0 +1,8 @@
+go1.24.3 linux/386
+2025-05-23T12:06:45+02:00 commit f6eee0a78d039e3c0b58d901ac358507526a0ee0, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/quickjs v0.15.1
+# modernc.org/nerdamer
+nerdamer.go:15:2: modernc.org/quickjs@v0.15.1: Get "https://proxy.golang.org/modernc.org/quickjs/@v/v0.15.1.zip": net/http: TLS handshake timeout
+FAIL	modernc.org/nerdamer [setup failed]
+
+FAIL err=exit status 1

@@ -1,0 +1,5 @@
+go1.25.1 linux/amd64
+2025-09-15T15:11:06+02:00 commit cb7cc556ae2a18da118aac092dfda13f6682f7e1, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: go: modernc.org/tk9.0@v1.71.5: invalid version: unknown revision v1.71.5
+
+FAIL err=AUTOTASKS: exit status 1

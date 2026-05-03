@@ -1,0 +1,94 @@
+go1.25.1 linux/ppc64le
+2025-09-24T03:04:45Z commit 404b7a6c8fd8879040a564ba341d9968ca904516, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libfontconfig/fontconfig-2.13.1"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libfontconfig
+execute /usr/bin/sh ["-c" "find /home/debian/src/modernc.org/builder/.exclude/modernc.org/libfontconfig/internal/linux/ppc64le -name \\*linux_ppc64le.go -delete"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libfontconfig
+archivePath fontconfig-2.13.1.tar.gz
+extractedArchivePath fontconfig-2.13.1
+tempDir /tmp/libfontconfig
+libRoot /tmp/libfontconfig/fontconfig-2.13.1
+makeRoot /tmp/libfontconfig/fontconfig-2.13.1
+tests /home/debian/src/modernc.org/builder/.exclude/modernc.org/libfontconfig/internal/linux/ppc64le
+execute /usr/bin/tar ["xf" "fontconfig-2.13.1.tar.gz" "-C" "/tmp/libfontconfig"] in /home/debian/src/modernc.org/builder/.exclude/modernc.org/libfontconfig
+execute /usr/bin/sed ["-i" "s/if (os2->achVendID && os2->achVendID\\[0\\] != 0)/if (os2->achVendID[0])/" "src/fcfreetype.c"] in /tmp/libfontconfig/fontconfig-2.13.1
+execute /usr/bin/sh ["-c" "go mod init example.com/libfontconfig ; go get modernc.org/libc@latest modernc.org/libexpat@latest modernc.org/libfreetype@latest"] in /tmp/libfontconfig/fontconfig-2.13.1
+go: creating new go.mod: module example.com/libfontconfig
+go: to add module requirements and sums:
+	go mod tidy
+go: added github.com/dustin/go-humanize v1.0.1
+go: added github.com/google/uuid v1.6.0
+go: added github.com/mattn/go-isatty v0.0.20
+go: added github.com/ncruces/go-strftime v0.1.9
+go: added github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: added golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+go: added golang.org/x/sys v0.35.0
+go: added modernc.org/libbsd v0.11.17
+go: added modernc.org/libc v1.66.9
+go: added modernc.org/libexpat v0.10.22
+go: added modernc.org/libfreetype v0.9.24
+go: added modernc.org/libmd v0.12.24
+go: added modernc.org/libz v0.16.20
+go: added modernc.org/mathutil v1.7.1
+go: added modernc.org/memory v1.11.0
+execute /usr/bin/sh ["-c" "CFLAGS='-DFC_NO_MT -DNDEBUG -mlong-doub
+
+...
+
+e system)
+checking for an ANSI C-conforming const... yes
+checking for inline... inline
+checking for flexible array members... yes
+checking for pid_t... yes
+checking for vprintf... yes
+checking for _doprnt... no
+checking for stdlib.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for sys/param.h... (cached) yes
+checking for getpagesize... yes
+checking for working mmap... yes
+checking for link... yes
+checking for mkstemp... yes
+checking for mkostemp... yes
+checking for _mktemp_s... no
+checking for mkdtemp... yes
+checking for getopt... yes
+checking for getopt_long... yes
+checking for getprogname... no
+checking for getexecname... no
+checking for rand... yes
+checking for random... yes
+checking for lrand48... yes
+checking for random_r... yes
+checking for rand_r... yes
+checking for readlink... yes
+checking for fstatvfs... yes
+checking for fstatfs... yes
+checking for lstat... yes
+checking for strerror... yes
+checking for strerror_r... yes
+checking for posix_fadvise in fcntl.h... fcntl.h
+checking for struct stat.st_mtim... yes
+checking for struct statvfs.f_basetype... no
+checking for struct statvfs.f_fstypename... no
+checking for struct statfs.f_flags... yes
+checking for struct statfs.f_fstypename... no
+checking for struct dirent.d_type... yes
+checking The type of len parameter of gperf hash/lookup function... ./configure: line 16871: gperf: command not found
+size_t
+checking for FREETYPE... no
+configure: error: in `/tmp/libfontconfig/fontconfig-2.13.1':
+configure: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables FREETYPE_CFLAGS
+and FREETYPE_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See `config.log' for more details
+
+err: exit status 1
+exit status 1
+libfontconfig.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

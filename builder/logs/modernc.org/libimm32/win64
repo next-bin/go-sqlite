@@ -1,0 +1,8 @@
+2024-07-31T02:34:53+02:00 commit 6bd5d7c2814b8d25683454becb864b37c92aceba, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libimm32 [modernc.org/libimm32.test]
+.\ccgo_windows_amd64.go:61264:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:61273:7: undefined: libc.X__ccgo_SyscallFP
+.\ccgo_windows_amd64.go:61301:7: undefined: libc.X__ccgo_SyscallFP
+FAIL	modernc.org/libimm32 [build failed]
+
+FAIL err=exit status 1

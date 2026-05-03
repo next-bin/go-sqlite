@@ -1,0 +1,12 @@
+go1.24.5 linux/386
+2025-07-30T18:32:11+02:00 commit a151d90635b51917355edef09604917bff53b780, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+ok  	modernc.org/egg	0.094s [no tests to run]
+all_test.go:236:TestGoScanner0: TRC "ident" "[a-d]+"
+all_test.go:236:TestGoScanner0: TRC "\"abc\"" "abc"
+all_test.go:236:TestGoScanner0: TRC "white_space" " "
+all_test.go:244:TestGoScanner0: TRC ["$" "abc" "[a-d]+" " "]
+signal: illegal instruction
+FAIL	modernc.org/egg/lib	959.272s
+FAIL
+
+FAIL err=exit status 1

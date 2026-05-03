@@ -1,0 +1,54 @@
+go1.24.1 freebsd/arm64
+2025-04-11T15:59:18+02:00 commit 4f7fddcff940831c0c436c76f20575cf855c629b, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestTranslate (439.66s)
+    --- FAIL: TestTranslate/gcc-9.1.0/gcc/testsuite/gcc.c-torture (433.00s)
+        all_test.go:1494: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/20011229-1.c:
+            assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/20011229-1.c:65:3: left operand shall be a modifiable lvalue (check.go:3655:check:)
+        all_test.go:1494: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/920928-4.c:
+            assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/920928-4.c:103:12: sizeof incomplete type: sec_rgy_unix_passwd_t (check.go:4493:check:)
+        all_test.go:1551: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/dll.c: skip: /usr/bin/cc: /tmp/TestTranslategcc-9.1.0gcctestsuitegcc.c-torture2226137310/001/dll.c:3:1: error: '__declspec' attributes are not enabled; use '-fdeclspec' or '-fms-extensions' to enable support for __declspec attributes
+                3 | __declspec (dllimport) int foo;
+                  | ^
+            /tmp/TestTranslategcc-9.1.0gcctestsuitegcc.c-torture2226137310/001/dll.c:4:45: warning: unknown attribute 'dllimport' ignored [-Wunknown-attributes]
+                4 | extern int (* import) (void) __attribute__((dllimport));
+                  |                                             ^~~~~~~~~
+            /tmp/TestTranslategcc-9.1.0gcctestsuitegcc.c-torture2226137310/001/dll.c:5:33: warning: unknown attribute 'dllexport' ignored [-Wunknown-attributes]
+                5 | int func2 (void) __attribute__((dllexport));
+                  |                                 ^~~~~~~~~
+            /tmp/TestTranslategcc-9.1.0gcctestsuitegcc.c-torture2226137310/001/dll.c:7:1: error: '__declspec' attributes are not enabled; use '-fdeclspec' or '-fms-extensions' to enable support for __declspec attributes
+                7 | __declspec(dllexport) int 
+                  | ^
+            2 warnings and 2 errors generated.
+             exit status 1
+        all_test.go:1551: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/pr88347.c: skip: /usr/b
+
+...
+
+1.0/gcc/testsuite/gcc.c-torture/execute/pr41463.c:51:40: sizeof incomplete type: union tree_node {othr struct other_tree; vec struct tree_vec} (check.go:4493:check:)
+        all_test.go:1551: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/pr80692.c: skip: /usr/bin/cc: /tmp/TestTranslategcc-9.1.0gcctestsuitegcc.c-torture2226137310/001/pr80692.c:4:2: error: GNU decimal type extension not supported
+                4 |         _Decimal64 d64 = -0.DD;
+                  |         ^
+            /tmp/TestTranslategcc-9.1.0gcctestsuitegcc.c-torture2226137310/001/pr80692.c:4:22: error: invalid suffix 'DD' on floating constant
+                4 |         _Decimal64 d64 = -0.DD;
+                  |                             ^
+            /tmp/TestTranslategcc-9.1.0gcctestsuitegcc.c-torture2226137310/001/pr80692.c:6:15: error: invalid suffix 'DD' on floating constant
+                6 |         if (d64 != 0.DD)
+                  |                      ^
+            /tmp/TestTranslategcc-9.1.0gcctestsuitegcc.c-torture2226137310/001/pr80692.c:9:16: error: invalid suffix 'DD' on floating constant
+                9 |         if (d64 != -0.DD)
+                  |                       ^
+            4 errors generated.
+             exit status 1
+        all_test.go:1565: FAIL: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/20011229-1.c
+        all_test.go:1565: FAIL: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/920928-4.c
+        all_test.go:1565: FAIL: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/20020810-1.c
+        all_test.go:1565: FAIL: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/20041218-1.c
+        all_test.go:1565: FAIL: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/builtins/pr22237.c
+        all_test.go:1565: FAIL: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/pr41463.c
+        all_test.go:1568: files 3491, skip 6, ok 3479, fails 6
+    all_test.go:1449: TOTAL: files 3559, skip 6, ok 3547, fails 6
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	1103.917s
+
+FAIL err=exit status 1

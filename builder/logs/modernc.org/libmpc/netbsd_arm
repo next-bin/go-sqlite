@@ -1,0 +1,8 @@
+2024-01-24T04:20:12Z commit 63496543bcca9d927574abe0fa8a28f81692abca, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: Test (0.02s)
+    all_test.go:61: lstat testdata/netbsd/arm/tests: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libmpc	1.073s
+
+FAIL err=exit status 1

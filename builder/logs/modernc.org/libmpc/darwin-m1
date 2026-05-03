@@ -1,0 +1,15 @@
+2024-05-21T20:47:47+02:00 commit 63496543bcca9d927574abe0fa8a28f81692abca, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+go: downloading modernc.org/ccgo/v3 v3.16.15
+go: downloading modernc.org/ccgo/v4 v4.0.27
+go: downloading golang.org/x/tools v0.10.0
+go: downloading modernc.org/cc/v4 v4.14.12
+go: downloading golang.org/x/mod v0.11.0
+go: downloading modernc.org/libc v1.24.1
+go: downloading golang.org/x/sys v0.9.0
+--- FAIL: Test (0.00s)
+    all_test.go:61: lstat testdata/darwin/arm64/tests: no such file or directory
+FAIL
+exit status 1
+FAIL	modernc.org/libmpc	0.340s
+
+FAIL err=exit status 1

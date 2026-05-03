@@ -1,0 +1,40 @@
+2024-06-28T22:04:58+02:00 commit 99c53b978673ca7d8d6a8a444afd4e8eb2bfc0f2, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestTranslate (39.88s)
+    --- FAIL: TestTranslate/gcc-9.1.0/gcc/testsuite/gcc.c-torture (38.04s)
+        all_test.go:1547: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/pr70355.c: skip: C:\mingw32\bin\gcc.exe: C:\Users\jnml\AppData\Local\Temp\TestTranslategcc-9.1.0gcctestsuitegcc.c-torture1367947783\001\pr70355.c:4:18: error: '__int128' is not supported on this target
+                4 | typedef unsigned __int128 v2ti __attribute__ ((vector_size (32)));
+                  |                  ^~~~~~~~
+             exit status 1
+        all_test.go:1547: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/pr88347.c: skip: C:\mingw32\bin\gcc.exe: C:\Users\jnml\AppData\Local\Temp\TestTranslategcc-9.1.0gcctestsuitegcc.c-torture1367947783\001\pr88347.c:4:10: fatal error: ../../gcc.target/powerpc/ppc-switch-2.c: No such file or directory
+                4 | #include "../../gcc.target/powerpc/ppc-switch-2.c"
+                  |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            compilation terminated.
+             exit status 1
+        all_test.go:1547: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/compile/pr88423.c: skip: C:\mingw32\bin\gcc.exe: C:\Users\jnml\AppData\Local\Temp\TestTranslategcc-9.1.0gcctestsuitegcc.c-torture1367947783\001\pr88423.c:5:10: fatal error: ../../gcc.dg/20030309-1.c: No such file or directory
+                5 | #include "../../gcc.dg/20030309-1.c"
+                  |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+            compilation terminated.
+             exit status 1
+        all_test.go:1490: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/ieee/pr30704.c:
+            assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/ieee/pr30704.c:35:48: undefined: __DBL_MIN_EXP__ (check.go:5000:check:)
+            TODO *cc.PrimaryExpression missed/failed type check PrimaryExpressionIdent (check.go:5044:check:)
+            assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/ieee/pr30704.c:35:64: invalid operands: <invalid type> and int (check.go:4072:check:)
+            TODO *cc.EqualityExpression missed/failed type check (check.go:4078:check:)
+            assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/ieee/pr30704.c:35:45: operands shall be scalars: int and <invalid type> (check.go:3859:check:)
+            TODO *cc.LogicalOrExpression missed/failed type check (check.go:3867:check:)
+        all_test.go:1547: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/pr84748.c: skip: C:\mingw32\bin\gcc.exe: C:\Users\jnml\AppData\Local\Temp\TestTranslategcc-9.1.0gcctestsuitegcc.c-torture1367947783\001\pr84748.c:3:18: error: '__int128' is not supported on this target
+                3 | typedef unsigned __int128 u128;
+                  |                  ^~~~~~~~
+            C:\Users\jnml\AppData\Local\Temp\TestTranslategcc-9.1.0gcctestsuitegcc.c-torture1367947783\001\pr84748.c: In function 'foo':
+            C:\Users\jnml\AppData\Local\Temp\TestTranslategcc-9.1.0gcctestsuitegcc.c-torture1367947783\001\pr84748.c:24:20: warning: right shift count >= width of type [-Wshift-count-overflow]
+               24 |   store (x >> 0, x >> 64);
+                  |                    ^~
+             exit status 1
+        all_test.go:1561: assets/gcc-9.1.0/gcc/testsuite/gcc.c-torture/execute/ieee/pr30704.c
+        all_test.go:1564: files 3491, skip 6, ok 3484, fails 1
+    all_test.go:1445: TOTAL: files 3558, skip 6, ok 3551, fails 1
+FAIL
+exit status 1
+FAIL	modernc.org/cc/v4	153.495s
+
+FAIL err=exit status 1

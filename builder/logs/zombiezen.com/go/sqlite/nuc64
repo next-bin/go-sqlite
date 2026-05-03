@@ -1,0 +1,4 @@
+go1.24.4 linux/amd64
+2025-07-23T10:41:16+02:00 commit 1b2931a7b1b42870fc8312cac859eeab0db5fe99, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: 
+FAIL err=AUTOTASKS: internal error: ip=zombiezen.com/go/sqlite

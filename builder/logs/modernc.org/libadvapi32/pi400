@@ -1,0 +1,9 @@
+2024-07-30T04:08:53+02:00 commit 25c8145d9cb461d2fc501b201d83036fc86d0010, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+# modernc.org/libadvapi32 [modernc.org/libadvapi32.test]
+.\libadvapi32_windows_arm64.go:64554:7: undefined: libc.X__ccgo_SyscallFP
+.\libadvapi32_windows_arm64.go:64563:7: undefined: libc.X__ccgo_SyscallFP
+.\libadvapi32_windows_arm64.go:65076:7: undefined: libc.X__ccgo_SyscallFP
+.\libadvapi32_windows_arm64.go:65085:7: undefined: libc.X__ccgo_SyscallFP
+FAIL	modernc.org/libadvapi32 [build failed]
+
+FAIL err=exit status 1

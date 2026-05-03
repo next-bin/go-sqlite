@@ -1,0 +1,25 @@
+2024-03-21T02:50:24+01:00 commit eeb09a874245b41a6720d97279954f96f1c252ff, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+package modernc.org/tcl
+	imports modernc.org/libc/errno: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/errno
+package modernc.org/tcl
+	imports modernc.org/libc
+	imports modernc.org/libc/pthread: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/pthread
+package modernc.org/tcl
+	imports modernc.org/libc
+	imports modernc.org/libc/signal: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/signal
+package modernc.org/tcl
+	imports modernc.org/libc
+	imports modernc.org/libc/stdio: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/stdio
+package modernc.org/tcl
+	imports modernc.org/libc
+	imports modernc.org/libc/sys/types: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/sys/types
+package modernc.org/tcl
+	imports modernc.org/libc
+	imports modernc.org/libc/time: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/time
+package modernc.org/tcl
+	imports modernc.org/libc
+	imports modernc.org/libc/unistd: build constraints exclude all Go files in /home/jnml/go/pkg/mod/modernc.org/libc@v1.22.6/unistd
+package modernc.org/tcl
+	imports modernc.org/tcl/lib: build constraints exclude all Go files in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/tcl/lib
+
+FAIL err=exit status 1

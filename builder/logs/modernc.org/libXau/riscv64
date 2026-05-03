@@ -1,0 +1,43 @@
+go1.25.1 linux/riscv64
+2025-09-17T04:18:37Z commit e5f610ee2095764e082c1171d60844e58cc74384, GOMAXPROCS 4, GOGC "", GOMEMLIMIT "", CC ""
+AUTOTASKS: execute /usr/bin/sh ["-c" "rm -rf /tmp/libXau/libXau-1.0.9"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXau
+execute /usr/bin/sh ["-c" "find /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXau/internal/linux/riscv64 -name \\*linux_riscv64.go -delete"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXau
+archivePath libXau-1.0.9.tar.gz
+extractedArchivePath libXau-1.0.9
+tempDir /tmp/libXau
+libRoot /tmp/libXau/libXau-1.0.9
+makeRoot /tmp/libXau/libXau-1.0.9
+tests /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXau/internal/linux/riscv64
+execute /usr/bin/tar ["xf" "libXau-1.0.9.tar.gz" "-C" "/tmp/libXau"] in /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXau
+execute /usr/bin/sh ["-c" "go mod init example.com/libXau ; go get modernc.org/libc@latest"] in /tmp/libXau/libXau-1.0.9
+go: creating new go.mod: module example.com/libXau
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: module modernc.org/libc: Get "https://proxy.golang.org/modernc.org/libc/@v/list": dial tcp 142.250.217.81:443: i/o timeout
+goroutine 1 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:26 +0x6c
+modernc.org/fileutil/ccgo.Fatalf(0x20?, {0x49bba6, 0x18}, {0x3f7002f9f0, 0x4, 0x4})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.32/ccgo/util.go:313 +0x74
+modernc.org/fileutil/ccgo.MustShell(0x1, {0x0?, 0x0?}, {0x4902e0, 0x2}, {0x3f70036e60, 0x2, 0x2})
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.32/ccgo/util.go:414 +0x15c
+main.main.func2()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXau/generator.go:113 +0x154
+modernc.org/fileutil/ccgo.InDir({0x3f700262a0, 0x18}, 0x3f7002fd68)
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.32/ccgo/util.go:365 +0xdc
+modernc.org/fileutil/ccgo.MustInDir(0x1, {0x3f700262a0?, 0x3f70002260?}, 0x4906d0?)
+	/home/jnml/pkg/mod/modernc.org/fileutil@v1.3.32/ccgo/util.go:370 +0x54
+main.main()
+	/home/jnml/src/modernc.org/builder/.exclude/modernc.org/libXau/generator.go:106 +0xb6c
+
+sh [-c go mod init example.com/libXau ; go get modernc.org/libc@latest]
+output: go: creating new go.mod: module example.com/libXau
+go: to add module requirements and sums:
+	go mod tidy
+go: modernc.org/libc@latest: module modernc.org/libc: Get "https://proxy.golang.org/modernc.org/libc/@v/list": dial tcp 142.250.217.81:443: i/o timeout
+
+err: exit status 1
+exit status 1
+libxau.go:5: running "go": exit status 1
+
+FAIL err=AUTOTASKS: exit status 1

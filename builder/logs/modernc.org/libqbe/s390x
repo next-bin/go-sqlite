@@ -1,0 +1,133 @@
+go1.24.3 linux/s390x
+2025-06-10T21:00:54+02:00 commit 6d3ba5bb0e715072b460a9483f78594af14ce5b3, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestCompile (3.49s)
+    --- FAIL: TestCompile/amd64_apple (3.48s)
+        all_test.go:169: internal/test/abi8.ssa: FAIL output differs target=amd64_apple:
+            --- testdata/amd64_apple/abi8.ssa.s - want
+            +++ abi8.ssa.s - got
+            @@ -313,34 +313,34 @@
+             	movq %rsp, %rbp
+             	subq $16, %rsp
+             	movq %rsp, %rax
+            -	movq $1092511334, 0(%rax)
+            -	movss "Lfp1"(%rip), %xmm7
+            -	movss "Lfp1"(%rip), %xmm6
+            -	movss "Lfp1"(%rip), %xmm5
+            -	movss "Lfp1"(%rip), %xmm4
+            -	movss "Lfp1"(%rip), %xmm3
+            -	movss "Lfp1"(%rip), %xmm2
+            -	movss "Lfp1"(%rip), %xmm1
+            -	movss "Lfp1"(%rip), %xmm0
+            +	movq $0, 0(%rax)
+            +	movss "Lfp0"(%rip), %xmm7
+            +	movss "Lfp0"(%rip), %xmm6
+            +	movss "Lfp0"(%rip), %xmm5
+            +	movss "Lfp0"(%rip), %xmm4
+            +	movss "Lfp0"(%rip), %xmm3
+            +	movss "Lfp0"(%rip), %xmm2
+            +	movss "Lfp0"(%rip), %xmm1
+            +	movss "Lfp0"(%rip), %xmm0
+             	callq _cfn0
+             	subq $-16, %rsp
+             	movq _fi1(%rip), %rsi
+            -	movss "Lfp2"(%rip), %xmm0
+            +	movss "Lfp0"(%rip), %xmm0
+             	movl $1, %edi
+             	callq _cfn1
+            -	movss "Lfp3"(%rip), %xmm0
+            +	movss "Lfp0"(%rip), %xmm0
+             	movq _fi2(%rip), %rsi
+             	movl $1, %edi
+             	callq _cfn2
+             	movq _fi3(%rip), %rsi
+            -	movss "Lfp2"(%rip), %xmm0
+            +	movss "Lfp0"(%rip), %xmm0
+             	movl $1, %edi
+             	callq _cfn3
+             	movsd _ss(%rip), %xmm0
+             	callq _cfn4
+             	subq $16, %rsp
+             	movq %rsp, %rax
+            -	movq $1092511334, 0(%rax)
+            +	movq $0, 0(%rax)
+             	movl $10, %edi
+             	movsd _ss(%rip), %xmm7
+             	movsd "Lfp1"(%rip), %xmm6
+            @@ -468,16 +468,6 @@
+             .section __TEXT,__literal4,4byte_literals
+        
+
+...
+
+), %rax
+            	movq %rax, 1(%rcx)
+            	leaq _big(%rip), %rax
+            	addq $9, %rax
+            	movq (%rax), %rax
+            	movq %rax, 9(%rcx)
+            	callq _cfn9
+            	subq $-32, %rsp
+            	subq $48, %rsp
+            	movq %rsp, %rax
+            	movq $11, 40(%rax)
+            	leaq _big(%rip), %rcx
+            	addq $0, %rcx
+            	movzbl (%rcx), %ecx
+            	movb %cl, 16(%rax)
+            	leaq _big(%rip), %rcx
+            	addq $1, %rcx
+            	movq (%rcx), %rcx
+            	movq %rcx, 17(%rax)
+            	leaq _big(%rip), %rcx
+            	addq $9, %rcx
+            	movq (%rcx), %rcx
+            	movq %rcx, 25(%rax)
+            	movq $0, 8(%rax)
+            	movq $0, 0(%rax)
+            	movss "Lfp0"(%rip), %xmm0
+            	movl $0, %r9d
+            	movl $0, %r8d
+            	movl $0, %ecx
+            	movl $0, %edx
+            	movl $0, %esi
+            	movl $0, %edi
+            	callq _cfn10
+            	subq $-48, %rsp
+            	subq $32, %rsp
+            	movq %rsp, %rcx
+            	leaq _ddd(%rip), %rax
+            	addq $0, %rax
+            	movq (%rax), %rax
+            	movq %rax, 0(%rcx)
+            	leaq _ddd(%rip), %rax
+            	addq $8, %rax
+            	movq (%rax), %rax
+            	movq %rax, 8(%rcx)
+            	leaq _ddd(%rip), %rax
+            	addq $16, %rax
+            	movq (%rax), %rax
+            	movq %rax, 16(%rcx)
+            	callq _cfn11
+            	subq $-32, %rsp
+            	movl $0, %eax
+            	leave
+            	ret
+            /* end function main */
+            
+            /* floating point constants */
+            .section __TEXT,__literal8,8byte_literals
+            .p2align 3
+            Lfp1:
+            	.quad 0 /* 0.000000 */
+            
+            .section __TEXT,__literal4,4byte_literals
+            .p2align 2
+            Lfp0:
+            	.int 0 /* 0.000000 */
+            
+        all_test.go:181: files 56, ok 55
+FAIL
+exit status 1
+FAIL	modernc.org/libqbe	3.789s
+
+FAIL err=exit status 1

@@ -1,0 +1,86 @@
+2024-04-04T22:42:37+02:00 commit 8e5d0fe060243a0edfc8c27674bff11a8fc632e6, GOMAXPROCS 2, GOGC "", GOMEMLIMIT "", CC ""
+SIGSYS: bad system call
+PC=0x20b87f05 m=0 sigcode=0
+
+goroutine 0 gp=0x8266cc0 m=0 mp=0x8267300 [idle]:
+syscall.rawSyscall10X(0x80bf7a0, 0xc5, 0x0, 0x10, 0x1, 0x1, 0x6, 0x0, 0x0, 0x0, ...)
+	/usr/local/go/src/runtime/sys_openbsd3.go:114 +0x31 fp=0x4e02e618 sp=0x4e02e608 pc=0x80b57d1
+syscall.syscall9Internal(0xc5, 0x0, 0x10, 0x1, 0x1, 0x6, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/syscall/syscall_openbsd_libc.go:38 +0x6d fp=0x4e02e654 sp=0x4e02e618 pc=0x80be3dd
+golang.org/x/sys/unix.mmap(0x0, 0x10, 0x1, 0x1, 0x6, 0x0)
+	/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/zsyscall_openbsd_386.go:1640 +0x67 fp=0x4e02e690 sp=0x4e02e654 pc=0x8147667
+golang.org/x/sys/unix.(*mmapper).Mmap(0x8262980, 0x6, 0x0, 0x10, 0x1, 0x1)
+	/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/syscall_unix.go:114 +0x93 fp=0x4e02e6dc sp=0x4e02e690 pc=0x8147183
+golang.org/x/sys/unix.Mmap(...)
+	/home/jnml/go/pkg/mod/golang.org/x/sys@v0.0.0-20211216021012-1d35b9e2eb4e/unix/syscall_bsd.go:639
+github.com/edsrzf/mmap-go.mmap(0x10, 0x0, 0x0, 0x6, 0x0)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/edsrzf/mmap-go/mmap_unix.go:30 +0x99 fp=0x4e02e710 sp=0x4e02e6dc pc=0x8147c09
+github.com/edsrzf/mmap-go.MapRegion(0x4e0841e8, 0xffffffff, 0x0, 0x0, 0x0)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/edsrzf/mmap-go/mmap.go:77 +0x12e fp=0x4e02e744 sp=0x4e02e710 pc=0x8147a1e
+github.com/edsrzf/mmap-go.Map(...)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/edsrzf/mmap-go/mmap.go:49
+github.com/edsrzf/mmap-go.TestUnmap(0x4e0c2108)
+	/home/jnml/src/modernc.org/builder/.exclude/github.com/edsrzf/mmap-go/mmap_test.go:38 +0x8c fp=0x4e02e798 sp=0x4e02e744 pc=0x8147dfc
+testing.tRunner(0x4e0c2108, 0x8183288)
+	/usr/local/go/src/testing/testing.go:1689 +0x11f fp=0x4e02e7e4 sp=0x4e02e798 pc=0x810dd2f
+testing.(*T).Run.gowrap1()
+	/usr/local/go/src/testing/testing.go:1742 +0x28 fp=0x4e02e7f0 sp=0x4e02e7e4 pc=0x810ed18
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_386.s:1363 +0x1 fp=0x4e02e7f4
+
+...
+
+
+	/usr/local/go/src/runtime/proc.go:408
+runtime.bgsweep(0x4e04a000)
+	/usr/local/go/src/runtime/mgcsweep.go:278 +0x8f fp=0x4e0337e8 sp=0x4e0337cc pc=0x806e89f
+runtime.gcenable.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:203 +0x21 fp=0x4e0337f0 sp=0x4e0337e8 pc=0x80605f1
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_386.s:1363 +0x1 fp=0x4e0337f4 sp=0x4e0337f0 pc=0x80b72f1
+created by runtime.gcenable in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:203 +0x71
+
+goroutine 4 gp=0x4e006908 m=nil [GC scavenge wait]:
+runtime.gopark(0x81834c0, 0x8266c40, 0xd, 0xa, 0x2)
+	/usr/local/go/src/runtime/proc.go:402 +0xfa fp=0x4e033fb8 sp=0x4e033fa4 pc=0x808478a
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:408
+runtime.(*scavengerState).park(0x8266c40)
+	/usr/local/go/src/runtime/mgcscavenge.go:425 +0x54 fp=0x4e033fcc sp=0x4e033fb8 pc=0x806bec4
+runtime.bgscavenge(0x4e04a000)
+	/usr/local/go/src/runtime/mgcscavenge.go:653 +0x45 fp=0x4e033fe8 sp=0x4e033fcc pc=0x806c505
+runtime.gcenable.gowrap2()
+	/usr/local/go/src/runtime/mgc.go:204 +0x21 fp=0x4e033ff0 sp=0x4e033fe8 pc=0x80605b1
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_386.s:1363 +0x1 fp=0x4e033ff4 sp=0x4e033ff0 pc=0x80b72f1
+created by runtime.gcenable in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:204 +0xb1
+
+goroutine 17 gp=0x4e0a0008 m=nil [finalizer wait]:
+runtime.gopark(0x8183370, 0x8292a64, 0x10, 0xa, 0x1)
+	/usr/local/go/src/runtime/proc.go:402 +0xfa fp=0x4e032798 sp=0x4e032784 pc=0x808478a
+runtime.runfinq()
+	/usr/local/go/src/runtime/mfinal.go:194 +0xf0 fp=0x4e0327f0 sp=0x4e032798 pc=0x805f720
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_386.s:1363 +0x1 fp=0x4e0327f4 sp=0x4e0327f0 pc=0x80b72f1
+created by runtime.createfing in goroutine 1
+	/usr/local/go/src/runtime/mfinal.go:164 +0x5a
+
+eax    0x4e
+ebx    0x4e02e618
+ecx    0x80b86f3
+edx    0x0
+edi    0x210
+esi    0x8266cc0
+ebp    0xcf7ebec8
+esp    0xcf7ebea0
+eip    0x20b87f05
+eflags 0x287
+cs     0x2b
+fs     0x5b
+gs     0x63
+exit status 2
+FAIL	github.com/edsrzf/mmap-go	0.094s
+
+FAIL err=exit status 1

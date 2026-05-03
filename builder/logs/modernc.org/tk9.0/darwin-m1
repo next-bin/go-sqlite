@@ -1,0 +1,38 @@
+go1.26.2 darwin/arm64
+2026-04-26T03:31:34+02:00 commit f5d57b5b08f29b315ee033539e8dc48c8fca2d8b, GOMAXPROCS 8, GOGC "", GOMEMLIMIT "", CC ""
+--- FAIL: TestExamples (3091.15s)
+    all_test.go:166: DISPLAY= XVFB_DISPLAY= display=
+    all_test.go:236: SKIP _examples/demo.go (30/113)
+    all_test.go:236: SKIP _examples/fontmetrics.go (41/113)
+    all_test.go:254: FAIL "_examples/getopenfile.go" err=exit status 1 out=# command-line-arguments
+        /usr/local/go/pkg/tool/darwin_arm64/link: cannot open file /Users/jnml/Library/Caches/go-build/5f/5f06b4d317369afe9d4b68cbbe12d9e507c102726415f7ec6d684551e31c33ec-d: open /Users/jnml/Library/Caches/go-build/5f/5f06b4d317369afe9d4b68cbbe12d9e507c102726415f7ec6d684551e31c33ec-d: no such file or directory
+    all_test.go:254: FAIL "_examples/getsavefile.go" err=exit status 1 out=# command-line-arguments
+        /usr/local/go/pkg/tool/darwin_arm64/link: cannot open file /Users/jnml/Library/Caches/go-build/9d/9d2197a5bf3ebaf622d449dc5afcc460b378f13f00fc2a0e2645e70f36a45a20-d: open /Users/jnml/Library/Caches/go-build/9d/9d2197a5bf3ebaf622d449dc5afcc460b378f13f00fc2a0e2645e70f36a45a20-d: no such file or directory
+    all_test.go:254: FAIL "_examples/hello.go" err=exit status 1 out=/usr/local/go/src/image/gif/writer.go:14:2: package image/color/palette is not in std (/usr/local/go/src/image/color/palette)
+    all_test.go:254: FAIL "_examples/hello2.go" err=exit status 1 out=# crypto/internal/fips140/sha256
+        /usr/local/go/src/crypto/internal/fips140/sha256/sha256.go:11:2: could not import crypto/internal/fips140deps/byteorder (open /Users/jnml/Library/Caches/go-build/44/44cefa5d54e0b0ce735c6b416ad5038a89dbf1be0e2eba501d8f175ffca317dc-d: no such file or directory)
+        # crypto/internal/fips140/sha512
+        /usr/local/go/src/crypto/internal/fips140/sha512/sha512.go:11:2: could not import crypto/internal/fips140deps/byteorder (open /Users/jnml/Library/Caches/go-build/44/44cefa5d54e0b0ce735c6b416ad5038a89dbf1be0e2eba501d8f175ffca317dc-d: no such file or directory)
+    all_test.go:236: SKIP _examples/insert_ml.go (47/113)
+    all_test.go:254: FAIL "_examples/layouts.go" err=exit status 1 out=# modernc.org/tk9.0
+
+
+...
+
+.go:10:2: could not import path/filepath (open /Users/jnml/Library/Caches/go-build/e1/e12656d7dac0aec2a06d69143c4cdf3b58de6fc86b59c29b747909e9db300144-d: no such file or directory)
+        # archive/zip
+        /usr/local/go/src/archive/zip/reader.go:19:2: could not import path/filepath (open /Users/jnml/Library/Caches/go-build/e1/e12656d7dac0aec2a06d69143c4cdf3b58de6fc86b59c29b747909e9db300144-d: no such file or directory)
+    all_test.go:254: FAIL "_examples/mac.go" err=exit status 1 out=/usr/local/go/src/runtime/arena.go:88:2: package internal/runtime/atomic is not in std (/usr/local/go/src/internal/runtime/atomic)
+        /usr/local/go/src/crypto/internal/fips140/check/check.go:17:2: package crypto/internal/fips140/hmac is not in std (/usr/local/go/src/crypto/internal/fips140/hmac)
+    all_test.go:254: FAIL "_examples/menu.go" err=exit status 1 out=# command-line-arguments
+        /usr/local/go/pkg/tool/darwin_arm64/link: cannot open file /Users/jnml/Library/Caches/go-build/ce/ce9f394be7e6630696642611c48e9bb6e12e46a3217b695d631cca996795fe06-d: open /Users/jnml/Library/Caches/go-build/ce/ce9f394be7e6630696642611c48e9bb6e12e46a3217b695d631cca996795fe06-d: no such file or directory
+    all_test.go:254: FAIL "_examples/modal.go" err=exit status 1 out=# compress/gzip
+        /usr/local/go/src/compress/gzip/gunzip.go:14:2: could not import hash/crc32 (open /Users/jnml/Library/Caches/go-build/41/41fd37b1a04bff66c49c4e89ec9f51e9afb53e2b1bacd2b9d2e86effa1216f47-d: no such file or directory)
+    all_test.go:254: FAIL "_examples/modeless.go" err=exit status 1 out=# command-line-arguments
+        /usr/local/go/pkg/tool/darwin_arm64/link: cannot open file /Users/jnml/Library/Caches/go-build/77/772f545bd0407610f2426397fe019fcba4129fbe86b11d171433f7b7baa94aca-d: open /Users/jnml/Library/Caches/go-build/77/772f545bd0407610f2426397fe019fcba4129fbe86b11d171433f7b7baa94aca-d: no such file or directory
+    all_test.go:236: SKIP _examples/ring.go (89/113)
+FAIL
+exit status 1
+FAIL	modernc.org/tk9.0	3097.524s
+
+FAIL err=exit status 1
