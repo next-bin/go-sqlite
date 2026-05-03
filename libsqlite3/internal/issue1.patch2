@@ -1,0 +1,4 @@
+239c239
+<   int bUnderPressure;            /* True if low on PAGECACHE memory */
+---
+>   volatile int bUnderPressure;            /* True if low on PAGECACHE memory */
