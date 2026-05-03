@@ -26,7 +26,7 @@ func yy() (nm string, err error) {
 	nm = y.Name()
 	cmd := exec.Command(
 		"yy",
-		"-astImport", "\"go/token\"\n\n\"github.com/next-bin/go-sqlite/xc\"",
+		"-astImport", "\"go/token\"\n\n\"github.com/next-bin/go-sqlite/xc"",
 		"-kind", "Case",
 		"-o", nm,
 		"-prettyString", "PrettyString",

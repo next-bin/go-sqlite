@@ -7,7 +7,7 @@
 //go:generate golex -o scanner.go scanner.l
 
 //go:generate rm -f ast.go
-//go:generate yy -kind Case -o parser.y -astImport "\"github.com/next-bin/go-sqlite/xc\";\"go/token\";\"fmt\"" -prettyString PrettyString parser.yy
+//go:generate yy -kind Case -o parser.y -astImport "\"github.com/next-bin/go-sqlite/xc";\"go/token\";\"fmt\"" -prettyString PrettyString parser.yy
 
 //go:generate rm -f parser.go
 //go:generate goyacc -o /dev/null -xegen xegen parser.y

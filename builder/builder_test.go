@@ -1165,7 +1165,7 @@ func initTasks() {
 		"test",
 	} {
 		for _, importPath := range []string{
-			"github.com/next-bin/go-sqlite/ace",
+			"modernc.org/ace",
 			"github.com/next-bin/go-sqlite/b",
 			"github.com/next-bin/go-sqlite/bitz",
 			"github.com/next-bin/go-sqlite/cc/v4",
@@ -1306,7 +1306,7 @@ func initTasks() {
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
 			case "gonum.org/v1/gonum/v1/gonum":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "github.com/next-bin/go-sqlite/ace":
+			case "modernc.org/ace":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
 			case "github.com/next-bin/go-sqlite/b":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}

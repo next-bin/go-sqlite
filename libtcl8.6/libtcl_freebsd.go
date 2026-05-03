@@ -2,7 +2,7 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libtcl8_6 // import "github.com/next-bin/go-sqlite/libtcl8_6"
+package libtcl8_6 // import "github.com/next-bin/go-sqlite/libtcl8.6"
 
 import (
 	"github.com/next-bin/go-sqlite/libc"

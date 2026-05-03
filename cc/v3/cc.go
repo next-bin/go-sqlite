@@ -9,7 +9,7 @@
 //go:generate golex -o lexer.go lexer.l
 
 //go:generate rm -f ast.go
-//go:generate yy -o /dev/null -position -astImport "\"fmt\"\n\n\"github.com/next-bin/go-sqlite/token\"" -prettyString PrettyString -kind Case -noListKind -noPrivateHelpers -forceOptPos parser.yy
+//go:generate yy -o /dev/null -position -astImport "\"fmt\"\n\n\"github.com/next-bin/go-sqlite/token"" -prettyString PrettyString -kind Case -noListKind -noPrivateHelpers -forceOptPos parser.yy
 
 //go:generate stringer -output stringer.go -linecomment -type=Kind,Linkage
 
