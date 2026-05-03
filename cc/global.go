@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/bgolex/lex"
+	"github.com/next-bin/go-sqlite/golex/lex"
 	"github.com/next-bin/go-sqlite/strutil"
 	"github.com/next-bin/go-sqlite/xc"
 )

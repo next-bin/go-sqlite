@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/next-bin/go-sqlite/bgolex/lex"
+	"github.com/next-bin/go-sqlite/golex/lex"
 	"github.com/next-bin/go-sqlite/mathutil"
 	"github.com/next-bin/go-sqlite/xc"
 )

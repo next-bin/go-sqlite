@@ -48,7 +48,7 @@ import __yyfmt__ "fmt"
 import (
 	"fmt"
 
-	"github.com/next-bin/go-sqlite/bgolex/lex"
+	"github.com/next-bin/go-sqlite/golex/lex"
 	"github.com/next-bin/go-sqlite/xc"
 )
 

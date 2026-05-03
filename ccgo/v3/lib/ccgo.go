@@ -32,7 +32,7 @@ import (
 
 	"github.com/kballard/go-shellquote"
 	"golang.org/x/tools/go/packages"
-	"github.com/next-bin/go-sqlite/bcc/v3"
+	"github.com/next-bin/go-sqlite/cc/v3"
 	"github.com/next-bin/go-sqlite/libc"
 	"github.com/next-bin/go-sqlite/opt"
 )

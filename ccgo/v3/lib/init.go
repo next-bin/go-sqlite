@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/bcc/v3"
+	"github.com/next-bin/go-sqlite/cc/v3"
 )
 
 func isAggregateTypeOrUnion(t cc.Type) bool {

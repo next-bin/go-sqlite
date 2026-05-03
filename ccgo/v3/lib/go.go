@@ -23,7 +23,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/next-bin/go-sqlite/bcc/v3"
+	"github.com/next-bin/go-sqlite/cc/v3"
 	"github.com/next-bin/go-sqlite/mathutil"
 )
 

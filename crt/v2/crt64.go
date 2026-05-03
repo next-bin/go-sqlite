@@ -4,12 +4,12 @@
 
 // +build amd64,!windows
 
-package crt // import "github.com/next-bin/go-sqlite/bcrt/v2"
+package crt // import "github.com/next-bin/go-sqlite/crt/v2"
 
 import (
 	"strings"
 
-	"github.com/next-bin/go-sqlite/bcrt/v2/libc/sys/mman"
+	"github.com/next-bin/go-sqlite/crt/v2/libc/sys/mman"
 )
 
 type (

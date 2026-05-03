@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package crt // import "github.com/next-bin/go-sqlite/bcrt/v3"
+package crt // import "github.com/next-bin/go-sqlite/crt/v3"
 
 import (
 	"bufio"
@@ -18,13 +18,13 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	ftsh "github.com/next-bin/go-sqlite/bcrt/v3/libc/fts"
-	"github.com/next-bin/go-sqlite/bcrt/v3/libc/grp"
-	"github.com/next-bin/go-sqlite/bcrt/v3/libc/netdb"
-	"github.com/next-bin/go-sqlite/bcrt/v3/libc/pwd"
-	"github.com/next-bin/go-sqlite/bcrt/v3/libc/stdio"
-	"github.com/next-bin/go-sqlite/bcrt/v3/libc/sys/mman"
-	"github.com/next-bin/go-sqlite/bcrt/v3/libc/unistd"
+	ftsh "github.com/next-bin/go-sqlite/crt/v3/libc/fts"
+	"github.com/next-bin/go-sqlite/crt/v3/libc/grp"
+	"github.com/next-bin/go-sqlite/crt/v3/libc/netdb"
+	"github.com/next-bin/go-sqlite/crt/v3/libc/pwd"
+	"github.com/next-bin/go-sqlite/crt/v3/libc/stdio"
+	"github.com/next-bin/go-sqlite/crt/v3/libc/sys/mman"
+	"github.com/next-bin/go-sqlite/crt/v3/libc/unistd"
 )
 
 const eof = stdio.EOF

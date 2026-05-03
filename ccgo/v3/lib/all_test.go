@@ -32,7 +32,7 @@ import (
 
 	"github.com/dustin/go-humanize"
 	"github.com/pmezard/go-difflib/difflib"
-	"github.com/next-bin/go-sqlite/bcc/v3"
+	"github.com/next-bin/go-sqlite/cc/v3"
 	"github.com/next-bin/go-sqlite/ccorpus"
 )
 

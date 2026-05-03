@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package storage // import "github.com/next-bin/go-sqlite/bfileutil/storage"
+package storage // import "github.com/next-bin/go-sqlite/fileutil/storage"
 
 import "sync/atomic"
 

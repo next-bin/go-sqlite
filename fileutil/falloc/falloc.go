@@ -12,11 +12,11 @@ The main incompletness is support for only one kind of FTL, though this table ki
 
 */
 
-package falloc // import "github.com/next-bin/go-sqlite/bfileutil/falloc"
+package falloc // import "github.com/next-bin/go-sqlite/fileutil/falloc"
 
 import (
 	"bytes"
-	"github.com/next-bin/go-sqlite/bfileutil/storage"
+	"github.com/next-bin/go-sqlite/fileutil/storage"
 	"sync"
 )
 

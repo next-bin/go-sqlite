@@ -50,7 +50,7 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/binternal/buffer" //TODO-
+	"github.com/next-bin/go-sqlite/internal/buffer" //TODO-
 	"github.com/next-bin/go-sqlite/memory"
 	"github.com/next-bin/go-sqlite/strutil"
 )

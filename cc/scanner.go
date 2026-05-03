@@ -11,7 +11,7 @@ package cc // import "github.com/next-bin/go-sqlite/cc"
 import (
 	"fmt"
 
-	"github.com/next-bin/go-sqlite/bgolex/lex"
+	"github.com/next-bin/go-sqlite/golex/lex"
 )
 
 const (

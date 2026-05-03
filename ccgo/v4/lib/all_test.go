@@ -29,10 +29,10 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/pbnjay/memory"
 	"github.com/pmezard/go-difflib/difflib"
-	"github.com/next-bin/go-sqlite/bcc/v4"
+	"github.com/next-bin/go-sqlite/cc/v4"
 	"github.com/next-bin/go-sqlite/ccorpus2"
 	"github.com/next-bin/go-sqlite/fileutil"
-	"github.com/next-bin/go-sqlite/bgc/v2"
+	"github.com/next-bin/go-sqlite/gc/v2"
 	_ "github.com/next-bin/go-sqlite/libc"
 	"github.com/next-bin/go-sqlite/mathutil"
 )

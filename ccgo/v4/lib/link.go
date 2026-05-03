@@ -23,7 +23,7 @@ import (
 	"golang.org/x/mod/semver"
 	"golang.org/x/tools/go/packages"
 	"github.com/next-bin/go-sqlite/ccgo/v4/lib/internal/secret_sauce"
-	"github.com/next-bin/go-sqlite/bgc/v2"
+	"github.com/next-bin/go-sqlite/gc/v2"
 	"github.com/next-bin/go-sqlite/strutil"
 )
 

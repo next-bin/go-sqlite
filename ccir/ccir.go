@@ -39,7 +39,7 @@ import (
 	"strings"
 
 	"github.com/next-bin/go-sqlite/cc"
-	"github.com/next-bin/go-sqlite/binternal/buffer"
+	"github.com/next-bin/go-sqlite/internal/buffer"
 	"github.com/next-bin/go-sqlite/ir"
 	"github.com/next-bin/go-sqlite/mathutil"
 	"github.com/next-bin/go-sqlite/strutil"

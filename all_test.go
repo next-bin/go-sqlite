@@ -31,7 +31,7 @@ import (
 	"time"
 
 	"github.com/google/pprof/profile"
-	util "github.com/next-bin/go-sqlite/bfileutil/ccgo"
+	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
 	sqlite3 "github.com/next-bin/go-sqlite/lib"
 	"github.com/next-bin/go-sqlite/libc"
 	"github.com/next-bin/go-sqlite/mathutil"

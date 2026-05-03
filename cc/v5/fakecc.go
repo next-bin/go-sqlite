@@ -19,7 +19,7 @@ import (
 
 	"github.com/next-bin/go-sqlite/opt"
 
-	"github.com/next-bin/go-sqlite/bcc/v5"
+	"github.com/next-bin/go-sqlite/cc/v5"
 )
 
 var (

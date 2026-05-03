@@ -25,7 +25,7 @@ import (
 
 	"github.com/next-bin/go-sqlite/cc"
 	"github.com/next-bin/go-sqlite/ccir"
-	"github.com/next-bin/go-sqlite/binternal/buffer"
+	"github.com/next-bin/go-sqlite/internal/buffer"
 	"github.com/next-bin/go-sqlite/ir"
 	"github.com/next-bin/go-sqlite/irgo"
 	"github.com/next-bin/go-sqlite/strutil"

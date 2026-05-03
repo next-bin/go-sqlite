@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package hdb // import "github.com/next-bin/go-sqlite/bfileutil/hdb"
+package hdb // import "github.com/next-bin/go-sqlite/fileutil/hdb"
 
 import (
 	"testing"

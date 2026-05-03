@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/bcc/v4"
+	"github.com/next-bin/go-sqlite/cc/v4"
 )
 
 func (c *ctx) statement(w writer, n *cc.Statement) {

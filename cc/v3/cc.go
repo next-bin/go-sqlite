@@ -45,7 +45,7 @@
 //  [2]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
 //  [3]: http://gallium.inria.fr/~fpottier/publis/jourdan-fpottier-2016.pdf
 //  [4]: https://gcc.gnu.org/onlinedocs/gcc-8.3.0/gcc/Attribute-Syntax.html#Attribute-Syntax
-package cc // import "github.com/next-bin/go-sqlite/bcc/v3"
+package cc // import "github.com/next-bin/go-sqlite/cc/v3"
 
 import (
 	"fmt"
