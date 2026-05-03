@@ -12,7 +12,7 @@
 //
 //   [1]: http://modernc.org/ebnf2y
 
-package parser // import "modernc.org/parser/nquads"
+package parser // import "github.com/next-bin/go-sqlite/parser/nquads"
 
 import __yyfmt__ "fmt"
 

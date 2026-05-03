@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package crt // import "modernc.org/bccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
 
 import (
 	"fmt"
@@ -10,8 +10,8 @@ import (
 	"sort"
 	"unsafe"
 
-	"modernc.org/binternal/buffer"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/internal/buffer"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 // void exit(int);

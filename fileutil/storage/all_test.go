@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package storage // import "modernc.org/bfileutil/storage"
+package storage // import "github.com/next-bin/go-sqlite/bfileutil/storage"
 
 import (
 	"flag"

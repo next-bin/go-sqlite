@@ -4,6 +4,6 @@
 
 // +build crt.strace
 
-package crt // import "modernc.org/bccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
 
 const strace = true

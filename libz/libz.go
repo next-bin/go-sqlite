@@ -6,4 +6,4 @@
 
 // Package libz is a ccgo/v4 version of the zlib general purpose data
 // compression library.
-package libz // import "modernc.org/libz"
+package libz // import "github.com/next-bin/go-sqlite/libz"

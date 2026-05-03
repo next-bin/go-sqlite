@@ -84,10 +84,10 @@ import (
 	"runtime"
 	"strings"
 
-	"modernc.org/bcc/v2"
-	"modernc.org/bccgo/v2"
-	"modernc.org/bccgo/v2/internal/object"
-	"modernc.org/bcrt"
+	"github.com/next-bin/go-sqlite/cc/v2"
+	"github.com/next-bin/go-sqlite/ccgo/v2"
+	"github.com/next-bin/go-sqlite/ccgo/v2/internal/object"
+	"github.com/next-bin/go-sqlite/crt"
 )
 
 const (
@@ -861,7 +861,7 @@ func (c *config) linkGo(fn string) (err error) {
 	}
 
 	crtPrefix := crtPrefix
-	imports := "\n\n\t\"modernc.org/bcrt\""
+	imports := "\n\n\t\"github.com/next-bin/go-sqlite/crt\""
 	if c.ffreeStanding {
 		imports = ""
 		crtPrefix = ""

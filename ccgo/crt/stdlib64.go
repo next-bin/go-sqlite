@@ -4,14 +4,14 @@
 
 // +build amd64 amd64p32 arm64 mips64 mips64le mips64p32 mips64p32le ppc64 sparc64
 
-package crt // import "modernc.org/bccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
 
 import (
 	"fmt"
 	"os"
 	"unsafe"
 
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 // void *calloc(size_t nmemb, size_t size);

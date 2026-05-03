@@ -21,10 +21,10 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/bcc"
-	"modernc.org/bccir"
-	"modernc.org/binternal/buffer"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/cc"
+	"github.com/next-bin/go-sqlite/ccir"
+	"github.com/next-bin/go-sqlite/internal/buffer"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 var (

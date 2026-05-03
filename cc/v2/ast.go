@@ -9,7 +9,7 @@ package cc
 import (
 	"fmt"
 	"go/token"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 // AbstractDeclaratorCase represents case numbers of production AbstractDeclarator

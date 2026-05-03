@@ -252,7 +252,7 @@ FLTT describes the type of the Free List Table. Currently defined values:
 FLTT == 0: Free List Table is fixed at atom address 2. It has a fixed size for 3856 entries
 for free list of size 1..3855 atoms and the last is for the list of free block >= 3856 atoms.
 */
-package falloc // import "modernc.org/bfileutil/falloc"
+package falloc // import "github.com/next-bin/go-sqlite/bfileutil/falloc"
 
 const (
 	INVALID_HANDLE = Handle(-1)

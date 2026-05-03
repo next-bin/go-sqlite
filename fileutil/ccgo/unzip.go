@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-package ccgo // import "modernc.org/bfileutil/ccgo"
+package ccgo // import "github.com/next-bin/go-sqlite/bfileutil/ccgo"
 
 // Retrieved from
 //

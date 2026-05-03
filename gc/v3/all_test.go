@@ -27,7 +27,7 @@ import (
 
 	"github.com/pmezard/go-difflib/difflib"
 	"golang.org/x/tools/go/packages"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 func stack() string { return string(debug.Stack()) }

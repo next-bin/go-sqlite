@@ -5,6 +5,6 @@
 //go:build !libc.nofsync
 // +build !libc.nofsync
 
-package libc // import "modernc.org/blibc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 const noFsync = false

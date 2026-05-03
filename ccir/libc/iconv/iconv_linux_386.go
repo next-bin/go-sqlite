@@ -46,7 +46,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package iconv // import "modernc.org/bccir/libc/iconv"
+package iconv // import "github.com/next-bin/go-sqlite/ccir/libc/iconv"
 
 const (
 	X_ICONV_H = 1

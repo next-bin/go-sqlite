@@ -4,14 +4,14 @@
 
 // +build linux,amd64
 
-package crt // import "modernc.org/bcrt/v3"
+package crt // import "github.com/next-bin/go-sqlite/bcrt/v3"
 
 import (
 	"syscall"
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	ftsh "modernc.org/bcrt/v3/libc/fts"
+	ftsh "github.com/next-bin/go-sqlite/bcrt/v3/libc/fts"
 )
 
 type ino_t = uint64   /* types.h:47:17 */

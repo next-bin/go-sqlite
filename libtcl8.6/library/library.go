@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package library provides the standard Tcl library assets
-package library // import "modernc.org/libtcl8_6/library"
+package library // import "github.com/next-bin/go-sqlite/libtcl8_6/library"
 
 import (
 	"embed"

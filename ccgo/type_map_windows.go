@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/bccgo"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo"
 
 import (
-	"modernc.org/bccgo/crt"
-	"modernc.org/bir"
+	"github.com/next-bin/go-sqlite/ccgo/crt"
+	"github.com/next-bin/go-sqlite/ir"
 )
 
 var typeMap map[ir.TypeID]string = map[ir.TypeID]string{

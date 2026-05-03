@@ -4,7 +4,7 @@
 
 //go:build linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm)
 
-package libc // import "modernc.org/blibc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 // /tmp/dbg/libc-test/
 
@@ -27,9 +27,9 @@ import (
 	"time"
 	"unsafe"
 
-	ccgo "modernc.org/bccgo/v4/lib"
-	util "modernc.org/bfileutil/ccgo"
-	"modernc.org/bmemory"
+	ccgo "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+	util "github.com/next-bin/go-sqlite/bfileutil/ccgo"
+	"github.com/next-bin/go-sqlite/memory"
 )
 
 var (
@@ -2558,7 +2558,7 @@ func TestLibc(t *testing.T) {
 	cwd := util.MustAbsCwd(true)
 	mustInDir(t, libcTest, func() error {
 		mustShell(t, 10*time.Minute, "go", "mod", "init", "example.com/libc_test")
-		mustShell(t, 10*time.Minute, "go", "get", "modernc.org/blibc@latest")
+		mustShell(t, 10*time.Minute, "go", "get", "github.com/next-bin/go-sqlite/libc@latest")
 		mustShell(t, 10*time.Minute, "go", "work", "init")
 		mustShell(t, 10*time.Minute, "go", "work", "use", ".", cwd)
 		return nil

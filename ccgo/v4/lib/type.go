@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/bccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
 
 import (
 	"fmt"
 	"strings"
 
-	"modernc.org/bcc/v4"
-	"modernc.org/bgc/v2"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/bcc/v4"
+	"github.com/next-bin/go-sqlite/bgc/v2"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 func (c *ctx) typedef(n cc.Node, t cc.Type) string {

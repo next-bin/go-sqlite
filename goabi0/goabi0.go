@@ -5,7 +5,7 @@
 // Package goabi0 provides helpers for generating Go assembler [ABI0] code.
 //
 // [ABI0]: https://go.dev/doc/asm
-package goabi0 // import "modernc.org/bgoabi0"
+package goabi0 // import "github.com/next-bin/go-sqlite/goabi0"
 
 import (
 	"fmt"

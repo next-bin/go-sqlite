@@ -9,8 +9,8 @@ require (
 	github.com/next-bin/go-sqlite/ccgo/v4 v4.32.5
 	github.com/next-bin/go-sqlite/fileutil v1.4.0
 	github.com/next-bin/go-sqlite/libc v1.72.0
-	modernc.org/libtcl8.6 v0.17.4
-	modernc.org/libz v0.17.3
+	github.com/next-bin/go-sqlite/libtcl8.6 v0.17.4
+	github.com/next-bin/go-sqlite/libz v0.17.3
 )
 
 require (
@@ -35,6 +35,8 @@ require (
 )
 
 replace (
+	github.com/next-bin/go-sqlite/libtcl8.6 => ../libtcl8.6
+	github.com/next-bin/go-sqlite/libz => ../libz
 	github.com/next-bin/go-sqlite/cc/v4 => ../cc/v4
 	github.com/next-bin/go-sqlite/ccgo/v4 => ../ccgo/v4
 	github.com/next-bin/go-sqlite/fileutil => ../fileutil

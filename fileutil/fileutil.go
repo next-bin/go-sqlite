@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package fileutil collects some file utility functions.
-package fileutil // import "modernc.org/bfileutil"
+package fileutil // import "github.com/next-bin/go-sqlite/fileutil"
 
 import (
 	"bufio"

@@ -45,8 +45,8 @@ import (
 
 	"github.com/golang/glog"
 	"golang.org/x/mod/semver"
-	gomod "modernc.org/gomod/engine"
-	"modernc.org/bstrutil"
+	gomod "github.com/next-bin/go-sqlite/gomod/engine"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 const (
@@ -239,7 +239,7 @@ func (task *task) diskPath() string {
 }
 
 func (task *task) removeLibcV2() {
-	if task.importPath != "modernc.org/libc" {
+	if task.importPath != "github.com/next-bin/go-sqlite/libc" {
 		return
 	}
 
@@ -1091,8 +1091,8 @@ func (task *task) cloneRepository() (r bool) {
 
 func (task *task) url() string {
 	switch {
-	case strings.HasPrefix(task.importPath, "modernc.org/"):
-		return fmt.Sprintf("https://gitlab.com/cznic/%s.git", task.importPath[len("modernc.org/"):])
+	case strings.HasPrefix(task.importPath, "github.com/next-bin/go-sqlite/"):
+		return fmt.Sprintf("https://gitlab.com/cznic/%s.git", task.importPath[len("github.com/next-bin/go-sqlite/"):])
 	case task.importPath == "gonum.org/v1/gonum/v1/gonum":
 		return "https://github.com/gonum/gonum.git"
 	case task.importPath == "gonum.org/v1/gonum/v1/plot":
@@ -1165,100 +1165,100 @@ func initTasks() {
 		"test",
 	} {
 		for _, importPath := range []string{
-			"modernc.org/ace",
+			"github.com/next-bin/go-sqlite/ace",
 			"modernc.org/b",
 			"modernc.org/bitz",
-			"modernc.org/cc/v4",
-			"modernc.org/ccgo/v4",
-			"modernc.org/css",
-			"modernc.org/db",
-			"modernc.org/doomgeneric",
-			"modernc.org/dyd",
-			"modernc.org/egg",
-			"modernc.org/equ",
-			"modernc.org/file",
-			"modernc.org/fileutil",
-			"modernc.org/fsm",
-			"modernc.org/gc/v2",
-			"modernc.org/gc/v3",
-			"modernc.org/go0",
-			"modernc.org/goabi0",
-			"modernc.org/gs",
-			"modernc.org/htmlview",
-			"modernc.org/internal",
-			"modernc.org/knuth",
-			"modernc.org/libX11",
-			"modernc.org/libXau",
-			"modernc.org/libXdmcp",
-			"modernc.org/libXft",
-			"modernc.org/libXrender",
-			"modernc.org/libbsd",
-			"modernc.org/libc",
-			"modernc.org/libexpat",
-			"modernc.org/libfontconfig",
-			"modernc.org/libfreetype",
-			"modernc.org/libgmp",
-			"modernc.org/libmd",
-			"modernc.org/libmpc",
-			"modernc.org/libmpfr",
-			"modernc.org/libpcre",
-			"modernc.org/libpcre16",
-			"modernc.org/libpcre2-16",
-			"modernc.org/libpcre2-32",
-			"modernc.org/libpcre2-8",
-			"modernc.org/libpcre2-posix",
-			"modernc.org/libpcre32",
-			"modernc.org/libpcreposix",
-			"modernc.org/libqbe",
-			"modernc.org/libquickjs",
-			"modernc.org/libsamplerate", // was paused, see https://github.com/golang/go/issues/73425
-			"modernc.org/libsqlite3",
-			"modernc.org/libsqlite_vec",
-			"modernc.org/libtcl8.6",
-			"modernc.org/libtcl9.0",
-			"modernc.org/libtk9.0",
-			"modernc.org/libxcb",
-			"modernc.org/libz",
-			"modernc.org/mathutil",
-			"modernc.org/memory",
-			"modernc.org/nerdamer",
-			"modernc.org/opt",
-			"modernc.org/purego",
-			"modernc.org/qbecc",
-			"modernc.org/ql",
-			"modernc.org/quickjs",
-			"modernc.org/rec",
-			"modernc.org/regexp",
-			"modernc.org/sortutil",
+			"github.com/next-bin/go-sqlite/cc/v4",
+			"github.com/next-bin/go-sqlite/ccgo/v4",
+			"github.com/next-bin/go-sqlite/css",
+			"github.com/next-bin/go-sqlite/db",
+			"github.com/next-bin/go-sqlite/doomgeneric",
+			"github.com/next-bin/go-sqlite/dyd",
+			"github.com/next-bin/go-sqlite/egg",
+			"github.com/next-bin/go-sqlite/equ",
+			"github.com/next-bin/go-sqlite/file",
+			"github.com/next-bin/go-sqlite/fileutil",
+			"github.com/next-bin/go-sqlite/fsm",
+			"github.com/next-bin/go-sqlite/gc/v2",
+			"github.com/next-bin/go-sqlite/gc/v3",
+			"github.com/next-bin/go-sqlite/go0",
+			"github.com/next-bin/go-sqlite/goabi0",
+			"github.com/next-bin/go-sqlite/gs",
+			"github.com/next-bin/go-sqlite/htmlview",
+			"github.com/next-bin/go-sqlite/internal",
+			"github.com/next-bin/go-sqlite/knuth",
+			"github.com/next-bin/go-sqlite/ibX11",
+			"github.com/next-bin/go-sqlite/ibXau",
+			"github.com/next-bin/go-sqlite/ibXdmcp",
+			"github.com/next-bin/go-sqlite/libXft",
+			"github.com/next-bin/go-sqlite/libXrender",
+			"github.com/next-bin/go-sqlite/libbsd",
+			"github.com/next-bin/go-sqlite/libc",
+			"github.com/next-bin/go-sqlite/libexpat",
+			"github.com/next-bin/go-sqlite/libfontconfig",
+			"github.com/next-bin/go-sqlite/libfreetype",
+			"github.com/next-bin/go-sqlite/libgmp",
+			"github.com/next-bin/go-sqlite/libmd",
+			"github.com/next-bin/go-sqlite/libmpc",
+			"github.com/next-bin/go-sqlite/libmpfr",
+			"github.com/next-bin/go-sqlite/libpcre",
+			"github.com/next-bin/go-sqlite/libpcre16",
+			"github.com/next-bin/go-sqlite/libpcre2-16",
+			"github.com/next-bin/go-sqlite/libpcre2-32",
+			"github.com/next-bin/go-sqlite/libpcre2-8",
+			"github.com/next-bin/go-sqlite/libpcre2-posix",
+			"github.com/next-bin/go-sqlite/libpcre32",
+			"github.com/next-bin/go-sqlite/libpcreposix",
+			"github.com/next-bin/go-sqlite/libqbe",
+			"github.com/next-bin/go-sqlite/libquickjs",
+			"github.com/next-bin/go-sqlite/libsamplerate", // was paused, see https://github.com/golang/go/issues/73425
+			"github.com/next-bin/go-sqlite/libsqlite3",
+			"github.com/next-bin/go-sqlite/ibsqlite_vec",
+			"github.com/next-bin/go-sqlite/libtcl8.6",
+			"github.com/next-bin/go-sqlite/ibtcl9.0",
+			"github.com/next-bin/go-sqlite/ibtk9.0",
+			"github.com/next-bin/go-sqlite/ibxcb",
+			"github.com/next-bin/go-sqlite/libz",
+			"github.com/next-bin/go-sqlite/mathutil",
+			"github.com/next-bin/go-sqlite/memory",
+			"github.com/next-bin/go-sqlite/nerdamer",
+			"github.com/next-bin/go-sqlite/opt",
+			"github.com/next-bin/go-sqlite/purego",
+			"github.com/next-bin/go-sqlite/qbecc",
+			"github.com/next-bin/go-sqlite/ql",
+			"github.com/next-bin/go-sqlite/quickjs",
+			"github.com/next-bin/go-sqlite/rec",
+			"github.com/next-bin/go-sqlite/regexp",
+			"github.com/next-bin/go-sqlite/sortutil",
 			"github.com/next-bin/go-sqlite",
-			"modernc.org/sqlite-bench",
-			"modernc.org/sqlite-bench2",
-			"modernc.org/strutil",
-			"modernc.org/tcl8.6",
-			"modernc.org/tcl9.0",
-			"modernc.org/tfs",
-			"modernc.org/tk9.0",
-			"modernc.org/visualmd",
-			"modernc.org/y",
-			// obsolete "modernc.org/cc/v3",
-			// obsolete "modernc.org/cc/v5",
-			// obsolete "modernc.org/ccgo/v3",
-			// obsolete "modernc.org/ccorpus",
-			// obsolete "modernc.org/libadvapi32",
-			// obsolete "modernc.org/libcomctl32",
-			// obsolete "modernc.org/libcomdlg32",
-			// obsolete "modernc.org/libgdi32",
-			// obsolete "modernc.org/libimm32",
-			// obsolete "modernc.org/libkernel32",
-			// obsolete "modernc.org/libnetapi32",
-			// obsolete "modernc.org/libole32",
-			// obsolete "modernc.org/libshell32",
-			// obsolete "modernc.org/libuser32",
-			// obsolete "modernc.org/libuserenv",
-			// obsolete "modernc.org/libwinspool",
-			// obsolete "modernc.org/libws2_32",
-			// obsolete "modernc.org/tcl",
-			// obsolete "modernc.org/z",
+			"github.com/next-bin/go-sqlite/sqlite-bench",
+			"github.com/next-bin/go-sqlite/sqlite-bench2",
+			"github.com/next-bin/go-sqlite/strutil",
+			"github.com/next-bin/go-sqlite/tcl8.6",
+			"github.com/next-bin/go-sqlite/tcl9.0",
+			"github.com/next-bin/go-sqlite/tfs",
+			"github.com/next-bin/go-sqlite/tk9.0",
+			"github.com/next-bin/go-sqlite/visualmd",
+			"github.com/next-bin/go-sqlite/y",
+			// obsolete "github.com/next-bin/go-sqlite/cc/v3",
+			// obsolete "github.com/next-bin/go-sqlite/cc/v5",
+			// obsolete "github.com/next-bin/go-sqlite/ccgo/v3",
+			// obsolete "github.com/next-bin/go-sqlite/ccorpus",
+			// obsolete "github.com/next-bin/go-sqlite/libadvapi32",
+			// obsolete "github.com/next-bin/go-sqlite/libcomctl32",
+			// obsolete "github.com/next-bin/go-sqlite/libcomdlg32",
+			// obsolete "github.com/next-bin/go-sqlite/libgdi32",
+			// obsolete "github.com/next-bin/go-sqlite/libimm32",
+			// obsolete "github.com/next-bin/go-sqlite/libkernel32",
+			// obsolete "github.com/next-bin/go-sqlite/libnetapi32",
+			// obsolete "github.com/next-bin/go-sqlite/libole32",
+			// obsolete "github.com/next-bin/go-sqlite/ibshell32",
+			// obsolete "github.com/next-bin/go-sqlite/ibuser32",
+			// obsolete "github.com/next-bin/go-sqlite/ibuserenv",
+			// obsolete "github.com/next-bin/go-sqlite/ibwinspool",
+			// obsolete "github.com/next-bin/go-sqlite/ibws2_32",
+			// obsolete "github.com/next-bin/go-sqlite/tcl",
+			// obsolete "github.com/next-bin/go-sqlite/z",
 			// paused "git.sr.ht/~jackmordaunt/go-libwebp",
 			// paused "gitea.arsenm.dev/Arsen6331/pcre",
 			// paused "github.com/edsrzf/mmap-go",
@@ -1270,32 +1270,32 @@ func initTasks() {
 			// paused "github.com/shopspring/decimal",
 			// paused "gonum.org/v1/gonum/v1/gonum",
 			// paused "gonum.org/v1/gonum/v1/plot",
-			// paused "modernc.org/assets",
-			// paused "modernc.org/ccorpus2",
-			// paused "modernc.org/ebnf",
-			// paused "modernc.org/ebnfutil",
-			// paused "modernc.org/gc/v3/internal/ebnf",
-			// paused "modernc.org/golex",
-			// paused "modernc.org/goyacc",
-			// paused "modernc.org/hash",
-			// paused "modernc.org/httpfs",
-			// paused "modernc.org/immutable",
-			// paused "modernc.org/kv",
-			// paused "modernc.org/lex",
-			// paused "modernc.org/lexer",
-			// paused "modernc.org/lldb",
-			// paused "modernc.org/ngrab",
-			// paused "modernc.org/parser",
-			// paused "modernc.org/qbe",
-			// paused "modernc.org/readline",
-			// paused "modernc.org/run",
-			// paused "modernc.org/scanner",
-			// paused "modernc.org/scannertest",
-			// paused "modernc.org/token",
-			// paused "modernc.org/uncomment",
-			// paused "modernc.org/xc",
-			// paused "modernc.org/yy",
-			// paused "modernc.org/zappy",
+			// paused "github.com/next-bin/go-sqlite/assets",
+			// paused "github.com/next-bin/go-sqlite/ccorpus2",
+			// paused "github.com/next-bin/go-sqlite/ebnf",
+			// paused "github.com/next-bin/go-sqlite/ebnfutil",
+			// paused "github.com/next-bin/go-sqlite/gc/v3/internal/ebnf",
+			// paused "github.com/next-bin/go-sqlite/golex",
+			// paused "github.com/next-bin/go-sqlite/goyacc",
+			// paused "github.com/next-bin/go-sqlite/hash",
+			// paused "github.com/next-bin/go-sqlite/httpfs",
+			// paused "github.com/next-bin/go-sqlite/immutable",
+			// paused "github.com/next-bin/go-sqlite/kv",
+			// paused "github.com/next-bin/go-sqlite/lex",
+			// paused "github.com/next-bin/go-sqlite/lexer",
+			// paused "github.com/next-bin/go-sqlite/lldb",
+			// paused "github.com/next-bin/go-sqlite/ngrab",
+			// paused "github.com/next-bin/go-sqlite/parser",
+			// paused "github.com/next-bin/go-sqlite/qbe",
+			// paused "github.com/next-bin/go-sqlite/readline",
+			// paused "github.com/next-bin/go-sqlite/run",
+			// paused "github.com/next-bin/go-sqlite/scanner",
+			// paused "github.com/next-bin/go-sqlite/scannertest",
+			// paused "github.com/next-bin/go-sqlite/token",
+			// paused "github.com/next-bin/go-sqlite/uncomment",
+			// paused "github.com/next-bin/go-sqlite/xc",
+			// paused "github.com/next-bin/go-sqlite/yy",
+			// paused "github.com/next-bin/go-sqlite/zappy",
 			// paused "zombiezen.com/go/sqlite",
 		} {
 			task := task{builder: builder, importPath: importPath, testPath: importPath}
@@ -1306,72 +1306,72 @@ func initTasks() {
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
 			case "gonum.org/v1/gonum/v1/gonum":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/ace":
+			case "github.com/next-bin/go-sqlite/ace":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
 			case "modernc.org/b":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/dyd":
+			case "github.com/next-bin/go-sqlite/dyd":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, ".", "./dyd"}
-			case "modernc.org/run":
+			case "github.com/next-bin/go-sqlite/run":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/internal":
+			case "github.com/next-bin/go-sqlite/internal":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/ql":
+			case "github.com/next-bin/go-sqlite/ql":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "-tags=purego", "./..."}
-			case "modernc.org/qbe":
+			case "github.com/next-bin/go-sqlite/qbe":
 				task.test = []string{"go", "test", "-vet", "off", "-v", "-failfast", "-timeout", tmax, "./...", "-bestof", "1", "-gcc", "7,8,9,10,11"}
 			case "zombiezen.com/go/sqlite":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/scanner":
+			case "github.com/next-bin/go-sqlite/scanner":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/parser":
+			case "github.com/next-bin/go-sqlite/parser":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/lexer":
+			case "github.com/next-bin/go-sqlite/lexer":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/knuth":
+			case "github.com/next-bin/go-sqlite/knuth":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/gs":
+			case "github.com/next-bin/go-sqlite/gs":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/egg":
+			case "github.com/next-bin/go-sqlite/egg":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/regexp":
+			case "github.com/next-bin/go-sqlite/regexp":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/rec":
+			case "github.com/next-bin/go-sqlite/rec":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/tfs":
+			case "github.com/next-bin/go-sqlite/tfs":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "modernc.org/gc/v2":
-				task.importPath = "modernc.org/gc"
-				task.testPath = "modernc.org/gc/v2"
-			case "modernc.org/gc/v3":
-				task.importPath = "modernc.org/gc"
-				task.testPath = "modernc.org/gc/v3"
-			case "modernc.org/gc/v3/internal/ebnf":
-				task.importPath = "modernc.org/gc"
-				task.testPath = "modernc.org/gc/v3/internal/ebnf"
-			case "modernc.org/cc/v3":
-				task.importPath = "modernc.org/cc"
-				task.testPath = "modernc.org/cc/v3"
-			case "modernc.org/cc/v4":
-				task.importPath = "modernc.org/cc"
-				task.testPath = "modernc.org/cc/v4"
-			case "modernc.org/cc/v5":
-				task.importPath = "modernc.org/cc"
-				task.testPath = "modernc.org/cc/v5"
-			case "modernc.org/ccgo/v3":
-				task.importPath = "modernc.org/ccgo"
-				task.testPath = "modernc.org/ccgo/v3/lib"
+			case "github.com/next-bin/go-sqlite/gc/v2":
+				task.importPath = "github.com/next-bin/go-sqlite/gc"
+				task.testPath = "github.com/next-bin/go-sqlite/gc/v2"
+			case "github.com/next-bin/go-sqlite/gc/v3":
+				task.importPath = "github.com/next-bin/go-sqlite/gc"
+				task.testPath = "github.com/next-bin/go-sqlite/gc/v3"
+			case "github.com/next-bin/go-sqlite/gc/v3/internal/ebnf":
+				task.importPath = "github.com/next-bin/go-sqlite/gc"
+				task.testPath = "github.com/next-bin/go-sqlite/gc/v3/internal/ebnf"
+			case "github.com/next-bin/go-sqlite/cc/v3":
+				task.importPath = "github.com/next-bin/go-sqlite/cc"
+				task.testPath = "github.com/next-bin/go-sqlite/cc/v3"
+			case "github.com/next-bin/go-sqlite/cc/v4":
+				task.importPath = "github.com/next-bin/go-sqlite/cc"
+				task.testPath = "github.com/next-bin/go-sqlite/cc/v4"
+			case "github.com/next-bin/go-sqlite/cc/v5":
+				task.importPath = "github.com/next-bin/go-sqlite/cc"
+				task.testPath = "github.com/next-bin/go-sqlite/cc/v5"
+			case "github.com/next-bin/go-sqlite/ccgo/v3":
+				task.importPath = "github.com/next-bin/go-sqlite/ccgo"
+				task.testPath = "github.com/next-bin/go-sqlite/ccgo/v3/lib"
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "-tags=ccgo.assert"}
-			case "modernc.org/ngrab":
-				task.importPath = "modernc.org/ngrab"
-				task.testPath = "modernc.org/ngrab/lib"
-			case "modernc.org/ccgo/v4":
-				task.importPath = "modernc.org/ccgo"
-				task.testPath = "modernc.org/ccgo/v4/lib"
+			case "github.com/next-bin/go-sqlite/ngrab":
+				task.importPath = "github.com/next-bin/go-sqlite/ngrab"
+				task.testPath = "github.com/next-bin/go-sqlite/ngrab/lib"
+			case "github.com/next-bin/go-sqlite/ccgo/v4":
+				task.importPath = "github.com/next-bin/go-sqlite/ccgo"
+				task.testPath = "github.com/next-bin/go-sqlite/ccgo/v4/lib"
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "-tags=ccgo.assert"}
-			case "modernc.org/qbecc":
-				task.importPath = "modernc.org/qbecc"
-				task.testPath = "modernc.org/qbecc/lib"
+			case "github.com/next-bin/go-sqlite/qbecc":
+				task.importPath = "github.com/next-bin/go-sqlite/qbecc"
+				task.testPath = "github.com/next-bin/go-sqlite/qbecc/lib"
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax}
 			}
 			tasks = append(tasks, task)

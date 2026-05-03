@@ -96,7 +96,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package stdio // import "modernc.org/bccir/libc/stdio"
+package stdio // import "github.com/next-bin/go-sqlite/ccir/libc/stdio"
 
 const (
 	XBUFSIZ                 = 8192

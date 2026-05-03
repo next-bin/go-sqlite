@@ -1,9 +1,9 @@
-package crt // import "modernc.org/bccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
 
 import (
 	"unsafe"
 
-	"modernc.org/bccir/libc/errno"
+	"github.com/next-bin/go-sqlite/ccir/libc/errno"
 )
 
 // void *sbrk(intptr_t increment);

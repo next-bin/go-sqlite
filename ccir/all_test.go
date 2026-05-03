@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccir // import "modernc.org/bccir"
+package ccir // import "github.com/next-bin/go-sqlite/ccir"
 
 import (
 	"bytes"
@@ -24,12 +24,12 @@ import (
 	"testing"
 	"time"
 
-	"modernc.org/bcc"
-	"modernc.org/binternal/buffer"
-	"modernc.org/bir"
-	"modernc.org/bstrutil"
-	"modernc.org/bvirtual"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/cc"
+	"github.com/next-bin/go-sqlite/binternal/buffer"
+	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/virtual"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 func caller(s string, va ...interface{}) {

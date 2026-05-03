@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"modernc.org/blibc"
+	"github.com/next-bin/go-sqlite/libc"
 )
 
 // TestOpenV2FailureResourceLeak verifies that a failed sql.Open+Ping (e.g.,

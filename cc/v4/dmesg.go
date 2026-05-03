@@ -5,7 +5,7 @@
 //go:build cc.dmesg
 // +build cc.dmesg
 
-package cc // import "modernc.org/bcc/v4"
+package cc // import "github.com/next-bin/go-sqlite/bcc/v4"
 
 import (
 	"fmt"

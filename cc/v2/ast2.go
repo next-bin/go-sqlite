@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc/v2"
+package cc // import "github.com/next-bin/go-sqlite/cc/v2"
 
 // [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
 
@@ -15,8 +15,8 @@ import (
 	"strconv"
 	"strings"
 
-	"modernc.org/bir"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 // Node represents an AST node.

@@ -12,8 +12,8 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"modernc.org/blibc"
-	"modernc.org/blibc/sys/types"
+	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
 )
 
 func init() {

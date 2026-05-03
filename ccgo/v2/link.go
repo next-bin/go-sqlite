@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/bccgo/v2"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v2"
 
 import (
 	"bufio"
@@ -21,9 +21,9 @@ import (
 	"strings"
 	"sync"
 
-	"modernc.org/bcc/v2"
-	"modernc.org/bccgo/v2/internal/object"
-	"modernc.org/bsortutil"
+	"github.com/next-bin/go-sqlite/cc/v2"
+	"github.com/next-bin/go-sqlite/ccgo/v2/internal/object"
+	"github.com/next-bin/go-sqlite/sortutil"
 )
 
 /*

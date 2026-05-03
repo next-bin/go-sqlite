@@ -5,7 +5,7 @@
 // blame: jnml, labs.nic.cz
 
 // WIP: Package storage defines and implements storage providers and store accessors.
-package storage // import "modernc.org/bfileutil/storage"
+package storage // import "github.com/next-bin/go-sqlite/bfileutil/storage"
 
 import (
 	"os"

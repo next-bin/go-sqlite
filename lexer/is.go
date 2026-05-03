@@ -4,7 +4,7 @@
 
 // This is a modified version of the code originally found in $GOROOT/src/pkg/unicode/letter.go
 
-package lexer // import "modernc.org/blexer"
+package lexer // import "github.com/next-bin/go-sqlite/lexer"
 
 import (
 	"unicode"

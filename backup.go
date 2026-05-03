@@ -7,7 +7,7 @@ package sqlite // import "github.com/next-bin/go-sqlite"
 import (
 	"database/sql/driver"
 
-	sqlite3 "modernc.org/blib"
+	sqlite3 "github.com/next-bin/go-sqlite/lib"
 )
 
 // Backup object is used to manage progress and cleanup an online backup. It

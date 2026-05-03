@@ -4,12 +4,12 @@
 
 // blame: jnml, labs.nic.cz
 
-package falloc // import "modernc.org/bfileutil/falloc"
+package falloc // import "github.com/next-bin/go-sqlite/fileutil/falloc"
 
 // Pull test dependencies too.
 // Enables easy 'go test X' after 'go get X'
 import (
-	_ "modernc.org/bfileutil"
-	_ "modernc.org/bfileutil/storage"
-	_ "modernc.org/bmathutil"
+	_ "github.com/next-bin/go-sqlite/fileutil"
+	_ "github.com/next-bin/go-sqlite/fileutil/storage"
+	_ "github.com/next-bin/go-sqlite/mathutil"
 )

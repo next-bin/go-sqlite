@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc/v4"
+package cc // import "github.com/next-bin/go-sqlite/bcc/v4"
 
 import (
 	"math"
@@ -13,7 +13,7 @@ import (
 	"strings"
 	"unicode/utf16"
 
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 const (

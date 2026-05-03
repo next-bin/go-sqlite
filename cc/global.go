@@ -2,16 +2,16 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc"
+package cc // import "github.com/next-bin/go-sqlite/cc"
 
 import (
 	"reflect"
 	"strconv"
 	"strings"
 
-	"modernc.org/bgolex/lex"
-	"modernc.org/bstrutil"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/bgolex/lex"
+	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 const (

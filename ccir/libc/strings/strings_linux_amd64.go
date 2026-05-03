@@ -46,7 +46,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package strings // import "modernc.org/bccir/libc/strings"
+package strings // import "github.com/next-bin/go-sqlite/ccir/libc/strings"
 
 const (
 	X_STRINGS_H = 1

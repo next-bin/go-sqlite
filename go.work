@@ -45,7 +45,7 @@ use (
     ./virtual
     ./xc
     ./y
-t./gomod
+	./gomod
 	./libtcl8.6
 	./libz
 	./parser

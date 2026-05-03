@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package inttypes // import "modernc.org/bccir/libc/inttypes"
+package inttypes // import "github.com/next-bin/go-sqlite/ccir/libc/inttypes"
 
 const (
 	XINT16_MAX            = 32767

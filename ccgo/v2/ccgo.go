@@ -13,7 +13,7 @@
 // # The library
 //
 //	https://modernc.org/ccgo/v4/lib
-package ccgo // import "modernc.org/bccgo/v2"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v2"
 
 //TODO must respect 'volatile' -> use sync.Atomic
 
@@ -30,8 +30,8 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/bcc/v2"
-	"modernc.org/bir"
+	"github.com/next-bin/go-sqlite/cc/v2"
+	"github.com/next-bin/go-sqlite/ir"
 )
 
 var (

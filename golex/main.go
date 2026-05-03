@@ -15,7 +15,7 @@ import (
 	"os"
 	"unicode"
 
-	"modernc.org/blex"
+	"github.com/next-bin/go-sqlite/lex"
 )
 
 const (

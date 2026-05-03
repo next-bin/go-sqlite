@@ -12,8 +12,8 @@ import (
 	"runtime"
 	"strings"
 
-	"modernc.org/bcc/v3"
-	ccgo "modernc.org/bccgo/v3/lib"
+	"github.com/next-bin/go-sqlite/bcc/v3"
+	ccgo "github.com/next-bin/go-sqlite/ccgo/v3/lib"
 )
 
 var (

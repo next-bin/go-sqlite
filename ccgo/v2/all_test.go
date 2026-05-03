@@ -91,7 +91,7 @@
 //	PASS
 //	ok  	modernc.org/ccgo/v2	538.804s
 
-package ccgo // import "modernc.org/bccgo/v2"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v2"
 
 import (
 	"bytes"
@@ -110,8 +110,8 @@ import (
 	"testing"
 	"time"
 
-	"modernc.org/bcc/v2"
-	"modernc.org/bstrutil"
+	"github.com/next-bin/go-sqlite/cc/v2"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 func caller(s string, va ...interface{}) {

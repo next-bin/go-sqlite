@@ -20,9 +20,9 @@ import (
 	"strings"
 
 	"github.com/adrg/xdg"
-	"modernc.org/cc/v4"
-	ccgo "modernc.org/ccgo/v4/lib"
-	util "modernc.org/fileutil/ccgo"
+	"github.com/next-bin/go-sqlite/cc/v4"
+	ccgo "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
 )
 
 const (

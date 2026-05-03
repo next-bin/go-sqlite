@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/bccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
 
 import (
 	"bytes"
@@ -29,12 +29,12 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/pbnjay/memory"
 	"github.com/pmezard/go-difflib/difflib"
-	"modernc.org/bcc/v4"
-	"modernc.org/bccorpus2"
-	"modernc.org/bfileutil"
-	"modernc.org/bgc/v2"
-	_ "modernc.org/blibc"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/bcc/v4"
+	"github.com/next-bin/go-sqlite/ccorpus2"
+	"github.com/next-bin/go-sqlite/fileutil"
+	"github.com/next-bin/go-sqlite/bgc/v2"
+	_ "github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 const (
@@ -50,7 +50,7 @@ var (
 	oDebug        = flag.Bool("debug", false, "")
 	oErr1         = flag.Bool("err1", false, "first error line only")
 	oKeep         = flag.Bool("keep", false, "keep temp directories (only with -work)")
-	oLibc         = flag.String("libc", "modernc.org/blibc", "")
+	oLibc         = flag.String("libc", "github.com/next-bin/go-sqlite/libc", "")
 	oPanic        = flag.Bool("panic", false, "panic on miscompilation")
 	oShellTime    = flag.Duration("shelltimeout", 3600*time.Second, "shell() time limit")
 	oStackTrace   = flag.Bool("trcstack", false, "")
@@ -143,7 +143,7 @@ func getLatest() string {
 	a := strings.Split(string(b), "\n")
 	for _, v := range a {
 		v = strings.TrimSpace(v)
-		if strings.HasPrefix(v, "modernc.org/blibc") {
+		if strings.HasPrefix(v, "github.com/next-bin/go-sqlite/libc") {
 			a := strings.Fields(v)
 			return "@" + a[1]
 		}

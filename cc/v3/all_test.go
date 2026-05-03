@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc/v3"
+package cc // import "github.com/next-bin/go-sqlite/bcc/v3"
 
 import (
 	flags "flag"
@@ -19,7 +19,7 @@ import (
 	"time"
 
 	"github.com/dustin/go-humanize"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 func caller(s string, va ...interface{}) {

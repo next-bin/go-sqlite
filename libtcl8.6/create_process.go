@@ -5,7 +5,7 @@
 //go:build !windows
 // +build !windows
 
-package libtcl8_6 // import "modernc.org/libtcl8_6"
+package libtcl8_6 // import "github.com/next-bin/go-sqlite/libtcl8_6"
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"modernc.org/libc"
+	"github.com/next-bin/go-sqlite/libc"
 )
 
 /*

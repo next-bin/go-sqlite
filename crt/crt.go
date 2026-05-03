@@ -36,7 +36,7 @@
 // libc project:
 //
 //	https://www.musl-libc.org/
-package crt // import "modernc.org/bcrt"
+package crt // import "github.com/next-bin/go-sqlite/crt"
 
 import (
 	"fmt"
@@ -50,9 +50,9 @@ import (
 	"sync"
 	"unsafe"
 
-	"modernc.org/binternal/buffer" //TODO-
-	"modernc.org/bmemory"
-	"modernc.org/bstrutil"
+	"github.com/next-bin/go-sqlite/binternal/buffer" //TODO-
+	"github.com/next-bin/go-sqlite/memory"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 var (

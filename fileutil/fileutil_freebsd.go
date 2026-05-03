@@ -5,7 +5,7 @@
 //go:build !arm && !arm64
 // +build !arm,!arm64
 
-package fileutil // import "modernc.org/bfileutil"
+package fileutil // import "github.com/next-bin/go-sqlite/fileutil"
 
 import (
 	"io"

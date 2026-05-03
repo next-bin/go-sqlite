@@ -13,7 +13,7 @@
 
 // Based on https://github.com/golang/go/blob/fe8a0d12b14108cbe2408b417afcaab722b0727c/test/run.go
 
-package gc // import "modernc.org/bgc"
+package gc // import "github.com/next-bin/go-sqlite/gc"
 
 import (
 	"bytes"

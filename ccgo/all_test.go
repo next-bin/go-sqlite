@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/bccgo"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo"
 
 import (
 	"bytes"
@@ -23,13 +23,13 @@ import (
 	"testing"
 	"time"
 
-	"modernc.org/bcc"
-	"modernc.org/bccir"
-	"modernc.org/binternal/buffer"
-	"modernc.org/bir"
-	"modernc.org/birgo"
-	"modernc.org/bstrutil"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/cc"
+	"github.com/next-bin/go-sqlite/ccir"
+	"github.com/next-bin/go-sqlite/binternal/buffer"
+	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/irgo"
+	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 func caller(s string, va ...interface{}) {
@@ -83,7 +83,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"modernc.org/bccgo/crt"
+	"github.com/next-bin/go-sqlite/ccgo/crt"
 )
 
 var argv []*int8

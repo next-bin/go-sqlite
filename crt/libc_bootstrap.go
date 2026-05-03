@@ -4,7 +4,7 @@
 
 // +build none
 
-package crt // import "modernc.org/bcrt"
+package crt // import "github.com/next-bin/go-sqlite/crt"
 
 import (
 	"unsafe"

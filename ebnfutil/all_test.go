@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ebnfutil // import "modernc.org/bebnfutil"
+package ebnfutil // import "github.com/next-bin/go-sqlite/ebnfutil"
 
 import (
 	"bytes"
@@ -15,8 +15,8 @@ import (
 	"strings"
 	"testing"
 
-	"modernc.org/bebnf"
-	"modernc.org/bstrutil"
+	"github.com/next-bin/go-sqlite/ebnf"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 func dbg(s string, va ...interface{}) {

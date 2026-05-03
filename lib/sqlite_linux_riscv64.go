@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"modernc.org/blibc"
+	"github.com/next-bin/go-sqlite/libc"
 
 	"sync"
 )

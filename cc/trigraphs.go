@@ -9,7 +9,7 @@
 
 // Implements translation phases 1 and 2 of [0], 5.1.1.2.
 
-package cc // import "modernc.org/bcc"
+package cc // import "github.com/next-bin/go-sqlite/cc"
 
 import (
 	"fmt"

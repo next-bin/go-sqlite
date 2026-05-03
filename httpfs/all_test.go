@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package httpfs // import "modernc.org/bhttpfs"
+package httpfs // import "github.com/next-bin/go-sqlite/httpfs"
 
 import (
 	"fmt"

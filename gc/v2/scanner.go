@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "modernc.org/bgc/v2"
+package gc // import "github.com/next-bin/go-sqlite/bgc/v2"
 
 import (
 	"bytes"
@@ -12,7 +12,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	mtoken "modernc.org/btoken"
+	mtoken "github.com/next-bin/go-sqlite/token"
 )
 
 var (

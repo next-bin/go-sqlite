@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "modernc.org/bgc"
+package gc // import "github.com/next-bin/go-sqlite/gc"
 
 import (
 	"bytes"
@@ -17,7 +17,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"modernc.org/btoken"
+	"github.com/next-bin/go-sqlite/token"
 )
 
 type errorList struct {

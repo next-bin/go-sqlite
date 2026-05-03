@@ -14,7 +14,7 @@
 //
 // Grammar for the input to yacc.
 
-package parser // import "modernc.org/parser/yacc"
+package parser // import "github.com/next-bin/go-sqlite/parser/yacc"
 
 import __yyfmt__ "fmt"
 

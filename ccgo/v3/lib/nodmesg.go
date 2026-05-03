@@ -5,7 +5,7 @@
 //go:build !ccgo.dmesg
 // +build !ccgo.dmesg
 
-package ccgo // import "modernc.org/bccgo/v3/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v3/lib"
 
 const dmesgs = false
 

@@ -14,9 +14,9 @@ import (
 	"time"
 	"unsafe"
 
-	sqlite3 "modernc.org/blib"
-	"modernc.org/blibc"
-	"modernc.org/blibc/sys/types"
+	sqlite3 "github.com/next-bin/go-sqlite/lib"
+	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
 )
 
 type conn struct {

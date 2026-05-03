@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc"
+package cc // import "github.com/next-bin/go-sqlite/cc"
 
 import (
 	"bufio"
@@ -27,9 +27,9 @@ import (
 	"testing"
 	"unicode"
 
-	"modernc.org/bgolex/lex"
-	"modernc.org/bmathutil"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/bgolex/lex"
+	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 func printStack() { debug.PrintStack() }

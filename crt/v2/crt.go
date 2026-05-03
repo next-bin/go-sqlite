@@ -6,7 +6,7 @@
 //go:generate go run generate.go
 //go:generate gofmt -l -s -w .
 
-package crt // import "modernc.org/bcrt/v2"
+package crt // import "github.com/next-bin/go-sqlite/bcrt/v2"
 
 import (
 	"fmt"
@@ -20,8 +20,8 @@ import (
 	"unsafe"
 
 	"github.com/mattn/go-isatty"
-	"modernc.org/bcrt/v2/libc/stdio"
-	"modernc.org/bmemory"
+	"github.com/next-bin/go-sqlite/bcrt/v2/libc/stdio"
+	"github.com/next-bin/go-sqlite/memory"
 )
 
 const (

@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package file provides an os.File-like interface of a memory mapped file.
-package file // import "modernc.org/binternal/file"
+package file // import "github.com/next-bin/go-sqlite/binternal/file"
 
 import (
 	"fmt"
@@ -13,9 +13,9 @@ import (
 	"time"
 
 	"github.com/edsrzf/mmap-go"
-	"modernc.org/bfileutil"
-	"modernc.org/binternal/buffer"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/fileutil"
+	"github.com/next-bin/go-sqlite/binternal/buffer"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 const copyBufSize = 1 << 20 // 1 MB.

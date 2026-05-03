@@ -19,7 +19,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"modernc.org/bsortutil"
+	"github.com/next-bin/go-sqlite/sortutil"
 )
 
 var (

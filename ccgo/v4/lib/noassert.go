@@ -5,6 +5,6 @@
 //go:build !ccgo.assert
 // +build !ccgo.assert
 
-package ccgo // import "modernc.org/bccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
 
 const assert = false

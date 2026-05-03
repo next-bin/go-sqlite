@@ -4,12 +4,12 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc"
+package cc // import "github.com/next-bin/go-sqlite/cc"
 
 import (
 	"go/token"
 
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 // AbstractDeclarator represents data reduced by productions:

@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package ccgo implements the ccgo command.
-package ccgo // import "modernc.org/bccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
 
 //TODO Tucontext_t - Tucontext_t5
 //TODO acosh u does not need to be pinned, need better escape analysis above "address taken"
@@ -25,10 +25,10 @@ import (
 	"runtime"
 	"strings"
 
-	"modernc.org/bcc/v4"
-	"modernc.org/bgc/v2"
-	"modernc.org/bopt"
-	"modernc.org/bstrutil"
+	"github.com/next-bin/go-sqlite/bcc/v4"
+	"github.com/next-bin/go-sqlite/bgc/v2"
+	"github.com/next-bin/go-sqlite/opt"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 var (

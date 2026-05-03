@@ -2,16 +2,16 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccir // import "modernc.org/bccir"
+package ccir // import "github.com/next-bin/go-sqlite/ccir"
 
 import (
 	"go/scanner"
 	"go/token"
 	"strings"
 
-	"modernc.org/bcc"
-	"modernc.org/bir"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/cc"
+	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 var (

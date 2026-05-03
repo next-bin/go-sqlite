@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strings"
 
-	"modernc.org/bgc/v3"
+	"github.com/next-bin/go-sqlite/bgc/v3"
 )
 
 var (

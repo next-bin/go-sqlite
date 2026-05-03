@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package buffer // import "modernc.org/binternal/buffer"
+package buffer // import "github.com/next-bin/go-sqlite/binternal/buffer"
 
 import (
 	"bytes"

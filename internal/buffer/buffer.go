@@ -30,11 +30,11 @@
 //	b := *buffer.Get(size)
 //	...
 //	buffer.Put(&b)
-package buffer // import "modernc.org/binternal/buffer"
+package buffer // import "github.com/next-bin/go-sqlite/binternal/buffer"
 
 import (
 	"io"
-	"modernc.org/binternal/slice"
+	"github.com/next-bin/go-sqlite/binternal/slice"
 )
 
 // CGet returns a pointer to a byte slice of len size. The pointed to byte

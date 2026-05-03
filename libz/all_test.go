@@ -2,7 +2,7 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libz // import "modernc.org/libz"
+package libz // import "github.com/next-bin/go-sqlite/libz"
 
 import (
 	"flag"
@@ -14,9 +14,9 @@ import (
 	"strings"
 	"testing"
 
-	_ "modernc.org/cc/v4"
-	_ "modernc.org/ccgo/v4/lib"
-	util "modernc.org/fileutil/ccgo"
+	_ "github.com/next-bin/go-sqlite/cc/v4"
+	_ "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
 )
 
 var (

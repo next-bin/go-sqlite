@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	github.com/golang/glog v1.2.5
 	golang.org/x/mod v0.33.0
-	modernc.org/gomod v1.2.2
+	github.com/next-bin/go-sqlite/gomod v1.2.2
 	github.com/next-bin/go-sqlite/strutil v1.2.1
 )
 
@@ -24,6 +24,7 @@ require (
 )
 
 replace (
+	github.com/next-bin/go-sqlite/gomod => ../gomod
 	github.com/next-bin/go-sqlite => ..
 	github.com/next-bin/go-sqlite/libc => ../libc
 	github.com/next-bin/go-sqlite/mathutil => ../mathutil

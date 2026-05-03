@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc/v2"
+package cc // import "github.com/next-bin/go-sqlite/cc/v2"
 
 import (
 	"fmt"
 	"runtime"
 
-	"modernc.org/bir"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 // Model describes properties of scalar Types.

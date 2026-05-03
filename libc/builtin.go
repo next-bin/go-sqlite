@@ -4,7 +4,7 @@
 
 //go:build linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm)
 
-package libc // import "modernc.org/blibc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ import (
 	"os"
 	"unsafe"
 
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 func X__builtin_inff(tls *TLS) float32 {

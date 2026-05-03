@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"golang.org/x/exp/ebnf"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 func generate(dst, src string) error {

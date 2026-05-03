@@ -20,7 +20,7 @@ import (
 
 	_ "github.com/next-bin/go-sqlite/ccgo/v4/lib"
 	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
-	"modernc.org/libtcl8.6/library"
+	"github.com/next-bin/go-sqlite/libtcl8.6/library"
 )
 
 var (

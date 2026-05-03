@@ -7,8 +7,8 @@ package sqlite // import "github.com/next-bin/go-sqlite"
 import (
 	"unsafe"
 
-	sqlite3 "modernc.org/blib"
-	"modernc.org/blibc"
+	sqlite3 "github.com/next-bin/go-sqlite/lib"
+	"github.com/next-bin/go-sqlite/libc"
 )
 
 // Access to sqlite3_file_control

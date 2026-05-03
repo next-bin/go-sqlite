@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/bccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
 
 import (
 	"bufio"
@@ -21,8 +21,8 @@ import (
 
 	"golang.org/x/mod/semver"
 	"golang.org/x/tools/go/packages"
-	"modernc.org/bcc/v4"
-	"modernc.org/bstrutil"
+	"github.com/next-bin/go-sqlite/bcc/v4"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 type name int

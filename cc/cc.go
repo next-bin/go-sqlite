@@ -27,7 +27,7 @@
 //  [1]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1406.pdf
 //  [2]: https://github.com/rsc/c2go/blob/fc8cbfad5a47373828c81c7a56cccab8b221d310/cc/cc.y
 //  [3]: https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html
-package cc // import "modernc.org/bcc"
+package cc // import "github.com/next-bin/go-sqlite/cc"
 
 import (
 	"bufio"
@@ -39,10 +39,10 @@ import (
 	"runtime"
 	"strings"
 
-	"modernc.org/bgolex/lex"
-	"modernc.org/bmathutil"
-	"modernc.org/bstrutil"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/bgolex/lex"
+	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 const (

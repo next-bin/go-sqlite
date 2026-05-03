@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc/v2"
+package cc // import "github.com/next-bin/go-sqlite/cc/v2"
 
 // [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
 
@@ -12,9 +12,9 @@ import (
 	"go/token"
 	"io"
 
-	"modernc.org/bgolex/lex"
-	"modernc.org/bmathutil"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/golex/lex"
+	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 var (

@@ -10,7 +10,7 @@
 
 // package build // /usr/local/go/src/go/build/syslist.go
 
-package gc // import "modernc.org/bgc/v3"
+package gc // import "github.com/next-bin/go-sqlite/bgc/v3"
 
 // Go 1.19.3
 

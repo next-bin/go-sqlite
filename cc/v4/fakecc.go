@@ -17,8 +17,8 @@ import (
 	"runtime"
 	"strings"
 
-	"modernc.org/bcc/v4"
-	"modernc.org/bopt"
+	"github.com/next-bin/go-sqlite/bcc/v4"
+	"github.com/next-bin/go-sqlite/opt"
 )
 
 var (

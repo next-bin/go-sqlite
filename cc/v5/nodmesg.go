@@ -5,7 +5,7 @@
 //go:build !cc.dmesg || windows
 // +build !cc.dmesg windows
 
-package cc // import "modernc.org/bcc/v5"
+package cc // import "github.com/next-bin/go-sqlite/bcc/v5"
 
 const Dmesgs = false
 

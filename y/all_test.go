@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	yparser "modernc.org/parser/yacc"
+	yparser "github.com/next-bin/go-sqlite/parser/yacc"
 )
 
 func init() {

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package crt // import "modernc.org/bccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
 
 import (
 	"fmt"
@@ -10,8 +10,8 @@ import (
 	"sync"
 	"unsafe"
 
-	"modernc.org/bccir/libc/errno"
-	"modernc.org/bccir/libc/pthread"
+	"github.com/next-bin/go-sqlite/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/ccir/libc/pthread"
 )
 
 const (

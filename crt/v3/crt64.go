@@ -4,13 +4,13 @@
 
 // +build amd64,!windows
 
-package crt // import "modernc.org/bcrt/v3"
+package crt // import "github.com/next-bin/go-sqlite/bcrt/v3"
 
 import (
 	"math"
 	"strings"
 
-	"modernc.org/bcrt/v3/libc/sys/mman"
+	"github.com/next-bin/go-sqlite/bcrt/v3/libc/sys/mman"
 )
 
 const (

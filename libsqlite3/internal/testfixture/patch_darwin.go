@@ -8,7 +8,7 @@ import (
 	"runtime"
 
 	"github.com/next-bin/go-sqlite/libc"
-	"modernc.org/libtcl8.6"
+	"github.com/next-bin/go-sqlite/libtcl8.6"
 )
 
 // func _guess_number_of_cores(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, objv uintptr) (r int32) {

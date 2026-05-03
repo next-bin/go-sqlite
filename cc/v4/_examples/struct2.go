@@ -8,7 +8,7 @@ import (
 	"os"
 	"runtime"
 
-	"modernc.org/bcc/v4"
+	"github.com/next-bin/go-sqlite/cc/v4"
 )
 
 const src = `

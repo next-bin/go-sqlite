@@ -41,15 +41,15 @@
 // otherwise, arising from, out of or in connection with the
 // software or the use or other dealings in the software.
 
-package cc // import "modernc.org/bcc"
+package cc // import "github.com/next-bin/go-sqlite/cc"
 
 import __yyfmt__ "fmt"
 
 import (
 	"fmt"
 
-	"modernc.org/bgolex/lex"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/bgolex/lex"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 type yySymType struct {

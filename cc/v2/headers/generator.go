@@ -19,11 +19,11 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/bcc/v2"
-	"modernc.org/bir"
-	"modernc.org/bsortutil"
-	"modernc.org/bstrutil"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/cc/v2"
+	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/sortutil"
+	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 var (

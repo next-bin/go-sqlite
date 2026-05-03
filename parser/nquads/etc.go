@@ -18,13 +18,13 @@
 //  [7]: http://www.w3.org/TR/n-quads/#grammar-production-predicate
 //  [8]: http://www.w3.org/TR/n-quads/#grammar-production-object
 //  [9]: http://www.w3.org/TR/n-quads/#grammar-production-graphLabel
-package parser // import "modernc.org/parser/nquads"
+package parser // import "github.com/next-bin/go-sqlite/parser/nquads"
 
 import (
 	"fmt"
 	"strings"
 
-	"modernc.org/scanner/nquads"
+	"github.com/next-bin/go-sqlite/scanner/nquads"
 )
 
 type lexer struct {

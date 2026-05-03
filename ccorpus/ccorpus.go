@@ -6,12 +6,12 @@
 //go:generate gofmt -l -s -w assets.go
 
 // Package ccorpus provides a test corpus of C code.
-package ccorpus // import "modernc.org/bccorpus"
+package ccorpus // import "github.com/next-bin/go-sqlite/ccorpus"
 
 import (
 	"time"
 
-	"modernc.org/bhttpfs"
+	"github.com/next-bin/go-sqlite/httpfs"
 )
 
 var fs = httpfs.NewFileSystem(assets, time.Now())

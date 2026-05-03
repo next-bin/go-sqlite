@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "modernc.org/bgc"
+package gc // import "github.com/next-bin/go-sqlite/gc"
 
 import (
 	"bufio"
@@ -31,13 +31,13 @@ import (
 	"testing"
 
 	"github.com/edsrzf/mmap-go"
-	"modernc.org/blex"
-	dfa "modernc.org/blexer"
-	"modernc.org/bmathutil"
-	"modernc.org/bsortutil"
-	"modernc.org/bstrutil"
-	"modernc.org/btoken"
-	"modernc.org/by"
+	"github.com/next-bin/go-sqlite/lex"
+	dfa "github.com/next-bin/go-sqlite/lexer"
+	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/sortutil"
+	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/token"
+	"github.com/next-bin/go-sqlite/y"
 )
 
 func caller(s string, va ...interface{}) {

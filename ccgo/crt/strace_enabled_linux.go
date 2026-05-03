@@ -4,13 +4,13 @@
 
 // +build crt.strace
 
-package crt // import "modernc.org/bccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
 
 import (
 	"fmt"
 	"strings"
 
-	fcntl2 "modernc.org/bccir/libc/fcntl"
+	fcntl2 "github.com/next-bin/go-sqlite/ccir/libc/fcntl"
 )
 
 func cmdString(cmd int32) string {

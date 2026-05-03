@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package parser // import "modernc.org/parser/yacc"
+package parser // import "github.com/next-bin/go-sqlite/parser/yacc"
 
 import (
 	"bytes"
@@ -15,8 +15,8 @@ import (
 	"strconv"
 	"strings"
 
-	"modernc.org/golex/lex"
-	"modernc.org/strutil"
+	"github.com/next-bin/go-sqlite/golex/lex"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 // Node represents an AST node.

@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package locale // import "modernc.org/bccir/libc/locale"
+package locale // import "github.com/next-bin/go-sqlite/ccir/libc/locale"
 
 const (
 	XLC_ADDRESS          = 9

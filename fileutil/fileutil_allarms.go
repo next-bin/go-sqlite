@@ -8,7 +8,7 @@
 // +build !openbsd
 // +build !plan9
 
-package fileutil // import "modernc.org/bfileutil"
+package fileutil // import "github.com/next-bin/go-sqlite/fileutil"
 
 import (
 	"io"

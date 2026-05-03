@@ -8,7 +8,7 @@ import (
 	"database/sql/driver"
 	"fmt"
 
-	"modernc.org/bvtab"
+	"github.com/next-bin/go-sqlite/vtab"
 )
 
 // Driver implements database/sql/driver.Driver.

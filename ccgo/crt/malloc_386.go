@@ -4,7 +4,7 @@
 
 // +build 386 arm arm64be armbe mips mipsle ppc ppc64le s390 s390x sparc
 
-package crt // import "modernc.org/bccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
 
 import (
 	"unsafe"

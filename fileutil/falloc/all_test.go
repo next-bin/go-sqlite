@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package falloc // import "modernc.org/bfileutil/falloc"
+package falloc // import "github.com/next-bin/go-sqlite/fileutil/falloc"
 
 import (
 	"bytes"
@@ -20,9 +20,9 @@ import (
 	"testing"
 	"time"
 
-	"modernc.org/bfileutil"
-	"modernc.org/bfileutil/storage"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/fileutil"
+	"github.com/next-bin/go-sqlite/fileutil/storage"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 var (

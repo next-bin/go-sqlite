@@ -36,13 +36,13 @@
 // probably just to verify a particular IR generator or to provide an
 // interpreter for scripts loaded/entered at run time. A "standard" back-end
 // should normally produce machine code,
-package ir // import "modernc.org/bir"
+package ir // import "github.com/next-bin/go-sqlite/ir"
 
 import (
 	"fmt"
 	"go/token"
 
-	"modernc.org/binternal/buffer"
+	"github.com/next-bin/go-sqlite/binternal/buffer"
 )
 
 var (

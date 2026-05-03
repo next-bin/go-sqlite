@@ -2,10 +2,10 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libtcl8_6 // import "modernc.org/libtcl8_6"
+package libtcl8_6 // import "github.com/next-bin/go-sqlite/libtcl8_6"
 
 import (
-	"modernc.org/libc"
+	"github.com/next-bin/go-sqlite/libc"
 )
 
 func ___inline_isnanf(tls *libc.TLS, f float32) int32 {

@@ -10,7 +10,7 @@ import (
 	"io"
 	"strconv"
 
-	"modernc.org/bcc/v3"
+	"github.com/next-bin/go-sqlite/cc/v3"
 )
 
 type Type = cc.Type

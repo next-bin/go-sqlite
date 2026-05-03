@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 //go:generate rm -f ast.go
-//go:generate yy -o /dev/null -position -astImport "\"fmt\"\n\n\"modernc.org/btoken\"" -prettyString PrettyString -kind Case -noListKind -noPrivateHelpers -forceOptPos parser.yy
+//go:generate yy -o /dev/null -position -astImport "\"fmt\"\n\n\"github.com/next-bin/go-sqlite/btoken\"" -prettyString PrettyString -kind Case -noListKind -noPrivateHelpers -forceOptPos parser.yy
 //go:generate sed -i "s/\\*.*Expression$/ExpressionNode/" ast.go
 //go:generate sed -i "s/\\*ExpressionList$/ExpressionNode/" ast.go
 //go:generate patch ast.go ast.patch
@@ -25,7 +25,7 @@
 //	[0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
 //	[1]: https://www.spinellis.gr/blog/20060626/cpp.algo.pdf
 //	[2]: https://jhjourdan.mketjh.fr/pdf/jourdan2017simple.pdf
-package cc // import "modernc.org/bcc/v4"
+package cc // import "github.com/next-bin/go-sqlite/bcc/v4"
 
 import (
 	stdErrors "errors"
@@ -40,7 +40,7 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/bopt"
+	"github.com/next-bin/go-sqlite/opt"
 )
 
 var (

@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "modernc.org/bgc"
+package gc // import "github.com/next-bin/go-sqlite/gc"
 
 import (
 	"bytes"
 	gotoken "go/token"
 	"unicode/utf8"
 
-	"modernc.org/btoken"
+	"github.com/next-bin/go-sqlite/token"
 )
 
 // Non ASCII character classes.

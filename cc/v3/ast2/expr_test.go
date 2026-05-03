@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"testing"
 
-	"modernc.org/bcc/v3"
+	"github.com/next-bin/go-sqlite/cc/v3"
 )
 
 // eqExpr implements a limited deep equality for expressions.

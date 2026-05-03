@@ -5,7 +5,7 @@
 //go:build go1.3
 // +build go1.3
 
-package fileutil // import "modernc.org/bfileutil"
+package fileutil // import "github.com/next-bin/go-sqlite/fileutil"
 
 import (
 	"io"

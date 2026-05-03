@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc/v3"
+package cc // import "github.com/next-bin/go-sqlite/bcc/v3"
 
 import (
 	"encoding/binary"
@@ -12,7 +12,7 @@ import (
 	"runtime"
 
 	"lukechampine.com/uint128"
-	"modernc.org/bmathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 var (

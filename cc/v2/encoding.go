@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/bcc/v2"
+package cc // import "github.com/next-bin/go-sqlite/cc/v2"
 
 import (
 	"encoding/binary"
@@ -10,10 +10,10 @@ import (
 	"reflect"
 	"strconv"
 
-	"modernc.org/bgolex/lex"
-	"modernc.org/bir"
-	"modernc.org/bstrutil"
-	"modernc.org/bxc"
+	"github.com/next-bin/go-sqlite/golex/lex"
+	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 var (

@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"modernc.org/bbuilder/html"
+	"github.com/next-bin/go-sqlite/bbuilder/html"
 )
 
 func origin(skip int) string {

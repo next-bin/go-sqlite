@@ -6,7 +6,7 @@
 
 //TODO s/n.sourceFile.Package.errorlist.add/n.err/g
 
-package gc // import "modernc.org/bgc"
+package gc // import "github.com/next-bin/go-sqlite/gc"
 
 import (
 	"bytes"
@@ -18,7 +18,7 @@ import (
 	"strings"
 	"unicode"
 
-	"modernc.org/btoken"
+	"github.com/next-bin/go-sqlite/token"
 )
 
 var (

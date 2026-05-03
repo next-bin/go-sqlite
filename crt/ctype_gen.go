@@ -14,7 +14,7 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/bcrt"
+	"github.com/next-bin/go-sqlite/crt"
 )
 
 /*
