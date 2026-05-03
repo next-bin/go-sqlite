@@ -1194,9 +1194,9 @@ func initTasks() {
 			"github.com/next-bin/go-sqlite/libXrender",
 			"modernc.org/libbsd",
 			"github.com/next-bin/go-sqlite/libc",
-			"github.com/next-bin/go-sqlite/libexpat",
+			"modernc.org/libexpat",
 			"github.com/next-bin/go-sqlite/libfontconfig",
-			"github.com/next-bin/go-sqlite/libfreetype",
+			"modernc.org/libfreetype",
 			"github.com/next-bin/go-sqlite/libgmp",
 			"github.com/next-bin/go-sqlite/libmd",
 			"github.com/next-bin/go-sqlite/libmpc",
@@ -1223,8 +1223,8 @@ func initTasks() {
 			"github.com/next-bin/go-sqlite/memory",
 			"github.com/next-bin/go-sqlite/nerdamer",
 			"github.com/next-bin/go-sqlite/opt",
-			"github.com/next-bin/go-sqlite/purego",
-			"github.com/next-bin/go-sqlite/qbecc",
+			"modernc.org/purego",
+			"modernc.org/qbecc",
 			"github.com/next-bin/go-sqlite/ql",
 			"github.com/next-bin/go-sqlite/quickjs",
 			"github.com/next-bin/go-sqlite/rec",
@@ -1245,10 +1245,10 @@ func initTasks() {
 			// obsolete "github.com/next-bin/go-sqlite/ccgo/v3",
 			// obsolete "github.com/next-bin/go-sqlite/ccorpus",
 			// obsolete "github.com/next-bin/go-sqlite/libadvapi32",
-			// obsolete "github.com/next-bin/go-sqlite/libcomctl32",
-			// obsolete "github.com/next-bin/go-sqlite/libcomdlg32",
-			// obsolete "github.com/next-bin/go-sqlite/libgdi32",
-			// obsolete "github.com/next-bin/go-sqlite/libimm32",
+			// obsolete "modernc.org/libcomctl32",
+			// obsolete "modernc.org/libcomdlg32",
+			// obsolete "modernc.org/libgdi32",
+			// obsolete "modernc.org/libimm32",
 			// obsolete "github.com/next-bin/go-sqlite/libkernel32",
 			// obsolete "github.com/next-bin/go-sqlite/libnetapi32",
 			// obsolete "github.com/next-bin/go-sqlite/libole32",
@@ -1283,7 +1283,7 @@ func initTasks() {
 			// paused "github.com/next-bin/go-sqlite/kv",
 			// paused "github.com/next-bin/go-sqlite/lex",
 			// paused "github.com/next-bin/go-sqlite/lexer",
-			// paused "github.com/next-bin/go-sqlite/lldb",
+			// paused "modernc.org/lldb",
 			// paused "github.com/next-bin/go-sqlite/ngrab",
 			// paused "github.com/next-bin/go-sqlite/parser",
 			// paused "github.com/next-bin/go-sqlite/qbe",
@@ -1369,8 +1369,8 @@ func initTasks() {
 				task.importPath = "github.com/next-bin/go-sqlite/ccgo"
 				task.testPath = "github.com/next-bin/go-sqlite/ccgo/v4/lib"
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "-tags=ccgo.assert"}
-			case "github.com/next-bin/go-sqlite/qbecc":
-				task.importPath = "github.com/next-bin/go-sqlite/qbecc"
+			case "modernc.org/qbecc":
+				task.importPath = "modernc.org/qbecc"
 				task.testPath = "github.com/next-bin/go-sqlite/qbecc/lib"
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax}
 			}
