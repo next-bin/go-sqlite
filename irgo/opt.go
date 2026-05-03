@@ -6,7 +6,7 @@
 
 //TODO P2U(U2P(x))
 
-package irgo // import "github.com/next-bin/go-sqlite/irgo"
+package irgo // import "modernc.org/birgo"
 
 import (
 	"go/ast"

@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/pmezard/go-difflib/difflib"
-	"github.com/next-bin/go-sqlite/ebnfutil"
+	"modernc.org/bebnfutil"
 )
 
 const (

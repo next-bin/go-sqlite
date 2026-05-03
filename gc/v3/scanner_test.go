@@ -10,7 +10,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "github.com/next-bin/go-sqlite/gc/v3"
+package gc // import "modernc.org/bgc/v3"
 
 import (
 	"fmt"

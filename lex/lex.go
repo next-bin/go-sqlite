@@ -75,7 +75,7 @@
 //	- Anything special after '(?'.
 //	- Matching <<EOF>>. Still \0 is OK in a pattern.
 //	- And probably more.
-package lex // import "github.com/next-bin/go-sqlite/lex"
+package lex // import "modernc.org/blex"
 
 import (
 	"bytes"
@@ -83,11 +83,11 @@ import (
 	"fmt"
 	"go/token"
 	"io"
-	"github.com/next-bin/go-sqlite/lexer"
+	"modernc.org/blexer"
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/fileutil"
+	"modernc.org/bfileutil"
 )
 
 type rule struct {

@@ -4,7 +4,7 @@
 
 //go:build linux && (386 || arm)
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "modernc.org/blibc"
 
 import (
 	mbits "math/bits"

@@ -5,7 +5,7 @@
 package sqlite3
 
 import (
-	"github.com/next-bin/go-sqlite/libc"
+	"modernc.org/blibc"
 )
 
 func ___inline_isnanf(tls *libc.TLS, f float32) int32 {

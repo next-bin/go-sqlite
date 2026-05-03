@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ir // import "github.com/next-bin/go-sqlite/ir"
+package ir // import "modernc.org/bir"
 
 import (
 	"fmt"
 	"runtime"
 
-	"github.com/next-bin/go-sqlite/mathutil"
+	"modernc.org/bmathutil"
 )
 
 func roundup(n, to int64) int64 {

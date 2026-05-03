@@ -7,7 +7,7 @@
 package sqlite3
 
 import (
-	"github.com/next-bin/go-sqlite/libc"
+	"modernc.org/blibc"
 )
 
 // Format and write a message to the log if logging is enabled.

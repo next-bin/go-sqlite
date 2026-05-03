@@ -4,7 +4,7 @@
 
 //go:build linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm)
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "modernc.org/blibc"
 
 func X__vm_wait(tls *TLS) {}
 

@@ -4,6 +4,6 @@
 
 // +build !go1.4
 
-package lexer // import "github.com/next-bin/go-sqlite/lexer"
+package lexer // import "modernc.org/blexer"
 
 const stdlib = "pkg"

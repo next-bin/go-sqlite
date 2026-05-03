@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "github.com/next-bin/go-sqlite/gc"
+package gc // import "modernc.org/bgc"
 
 import (
 	"fmt"
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/token"
+	"modernc.org/btoken"
 )
 
 var (

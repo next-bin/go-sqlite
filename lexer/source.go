@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package lexer // import "github.com/next-bin/go-sqlite/lexer"
+package lexer // import "modernc.org/blexer"
 
 import (
 	"go/token"
 	"io"
 
-	"github.com/next-bin/go-sqlite/fileutil"
+	"modernc.org/bfileutil"
 )
 
 // EOFReader implements a RuneReader allways returning 0 (EOF)

@@ -13,8 +13,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/next-bin/go-sqlite/mathutil"
-	mtoken "github.com/next-bin/go-sqlite/token"
+	"modernc.org/bmathutil"
+	mtoken "modernc.org/btoken"
 )
 
 var (

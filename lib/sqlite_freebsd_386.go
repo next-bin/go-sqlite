@@ -8,8 +8,8 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"modernc.org/blibc"
+	"modernc.org/blibc/sys/types"
 )
 
 var _ = math.Pi
