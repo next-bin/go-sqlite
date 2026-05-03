@@ -49,4 +49,5 @@ use (
 	./libtcl8.6
 	./libz
 	./parser
+	./scanner
 )

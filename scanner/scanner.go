@@ -11,7 +11,7 @@ import (
 	"go/token"
 	"strings"
 
-	mtoken "modernc.org/token"
+	mtoken "github.com/next-bin/go-sqlite/token"
 )
 
 var (
