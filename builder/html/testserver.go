@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"modernc.org/builder/html"
+	"modernc.org/bbuilder/html"
 )
 
 func origin(skip int) string {

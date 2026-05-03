@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package crt // import "modernc.org/crt/v2"
+package crt // import "modernc.org/bcrt/v2"
 
 import (
 	"fmt"
@@ -14,10 +14,10 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	"modernc.org/crt/v2/libc/pwd"
-	"modernc.org/crt/v2/libc/stdio"
-	"modernc.org/crt/v2/libc/sys/mman"
-	"modernc.org/crt/v2/libc/unistd"
+	"modernc.org/bcrt/v2/libc/pwd"
+	"modernc.org/bcrt/v2/libc/stdio"
+	"modernc.org/bcrt/v2/libc/sys/mman"
+	"modernc.org/bcrt/v2/libc/unistd"
 )
 
 const eof = stdio.DEOF

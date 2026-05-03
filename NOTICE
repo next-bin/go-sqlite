@@ -1,129 +1,26 @@
-NOTICE
+This product includes software developed by:
+- The Go Authors (Google Inc.) — BSD-3-Clause
+- The Sqlite Authors — BSD-3-Clause
+- The Libc Authors — BSD-3-Clause
+- The CC Authors — BSD-3-Clause
+- The CCGO Authors — BSD-3-Clause
+- The GC Authors — BSD-3-Clause
+- The Memory Authors — BSD-3-Clause
+- The fileutil Authors — BSD-3-Clause
+- CZ.NIC z.s.p.o. — BSD-3-Clause
+- The mathutil Authors — BSD-3-Clause
+- The sortutil Authors — BSD-3-Clause
+- The strutil Authors — BSD-3-Clause
+- The Opt Authors — BSD-3-Clause
+- The goabi0 Authors — BSD-3-Clause
+- The token Authors — BSD-3-Clause
+- Russ Cox — BSD-3-Clause
+- Evan Shaw (mmap-go) — BSD-3-Clause
+- Edd Turtle — MIT
+- Rich Felker et al. (musl libc) — MIT
+- Dominik Honnef (go-netdb) — MIT
+- Eelco Dolstra / NixOS contributors — MIT
+- SQLite Authors (D. Richard Hipp et al.) — Public Domain
+- 以及 musl libc 和系统头文件翻译中涉及的 200+ 历史版权方
 
-This repository (github.com/next-bin/go-sqlite) is a consolidated monorepo
-that aggregates multiple Go modules originally developed by CZ.NIC z.s.p.o.
-and other contributors. Each subdirectory retains its original license.
-
-The monorepo as a whole is distributed under the BSD-3-Clause license (see
-the root LICENSE file). Individual subdirectories may carry their own LICENSE
-files. Third-party components are governed by their respective licenses as
-detailed below and in the referenced files.
-
-
-Copyright Holders
------------------
-
-The following entities hold copyright over portions of this repository:
-
-  - The Sqlite Authors                           (BSD-3-Clause)
-  - The Builder Authors                          (BSD-3-Clause)
-  - The CC Authors                               (BSD-3-Clause)
-  - The CCGO Authors                             (BSD-3-Clause)
-  - The CCIR Authors                             (BSD-3-Clause)
-  - The Ccorpus Authors                          (BSD-3-Clause)
-  - The Ccorpus2 Authors                         (BSD-3-Clause)
-  - The CRT Authors                              (BSD-3-Clause)
-  - The ebnfutil Authors                         (BSD-3-Clause)
-  - The fileutil Authors                         (BSD-3-Clause)
-  - The GC Authors                               (BSD-3-Clause)
-  - The goabi0 Authors                           (BSD-3-Clause)
-  - The golex Authors                            (BSD-3-Clause)
-  - The Gomod Authors                            (BSD-3-Clause)
-  - The HTTPFS Authors                           (BSD-3-Clause)
-  - The Internal Authors                         (BSD-3-Clause)
-  - The IR Authors                               (BSD-3-Clause)
-  - The IRGO Authors                             (BSD-3-Clause)
-  - The lex Authors                              (BSD-3-Clause)
-  - The lexer Authors                            (BSD-3-Clause)
-  - The Libc Authors                             (BSD-3-Clause)
-  - The libsqlite3-go Authors                    (BSD-3-Clause)
-  - The tcl-go Authors                           (BSD-3-Clause)
-  - The zlib-go Authors                          (BSD-3-Clause)
-  - The mathutil Authors                         (BSD-3-Clause)
-  - The Memory Authors                           (BSD-3-Clause)
-  - The Opt Authors                              (BSD-3-Clause)
-  - The Scannertest Authors                      (BSD-3-Clause)
-  - The Scanner Authors                          (BSD-3-Clause)
-  - The sortutil Authors                         (BSD-3-Clause)
-  - The strutil Authors                          (BSD-3-Clause)
-  - The Virtual Authors                          (BSD-3-Clause)
-  - The XC Authors                               (BSD-3-Clause)
-  - The y Authors                                (BSD-3-Clause)
-  - CZ.NIC z.s.p.o.                              (BSD-3-Clause)
-
-  - The Go Authors (Google Inc.)                 (BSD-3-Clause)
-    See: crt/v3/LICENSE-GO, lexer/LICENSE-GO, memory/LICENSE-GO,
-         memory/LICENSE-LOGO, ebnf/LICENSE
-
-
-Third-Party Components
-----------------------
-
-The following third-party software is included in this repository.
-Full license texts and contributor lists are available in the referenced
-files.
-
-  SQLite
-    Public Domain (D. Richard Hipp et al.)
-    See: libsqlite3/LICENSE-SQLITE.md
-
-  musl libc
-    MIT License (Rich Felker et al.)
-    See: ccgo/crt/LICENSE-MUSL, libc/LICENSE-3RD-PARTY.md
-
-  zlib
-    zlib License (Jean-loup Gailly, Mark Adler)
-    See: libz/LICENSE-ZLIB
-
-  mmap-go
-    BSD-3-Clause (Evan Shaw)
-    See: memory/LICENSE-MMAP-GO
-
-  Tcl/Tk
-    BSD-style license (University of California, Sun Microsystems,
-    Scriptics Corporation, ActiveState Corporation)
-    See: libtcl8.6/LICENSE-TCL
-
-  go-netdb
-    MIT License (Dominik Honnef)
-    See: libc/LICENSE-3RD-PARTY.md
-
-  NixOS/nixpkgs
-    MIT License (Eelco Dolstra and Nixpkgs/NixOS contributors)
-    See: libc/LICENSE-3RD-PARTY.md
-
-  GCC Runtime Library Exception headers
-    See: cc/v2/headers/LICENSE-GCC-RTE-V3.1
-
-  cxgo (test corpus asset)
-    MIT License (gotranspile)
-    See: ccorpus/assets/github.com/cxgo/LICENSE,
-         ccorpus2/assets/github.com/cxgo/LICENSE
-
-  MIR (test corpus asset)
-    MIT License (Vladimir Makarov)
-    See: ccorpus/assets/github.com/vnmakarov/mir/LICENSE,
-         ccorpus2/assets/github.com/vnmakarov/mir/LICENSE
-
-  lacc (test corpus asset)
-    MIT License (Lars Kirkholt Melhus)
-    See: ccorpus/assets/github.com/vnmakarov/mir/c-tests/lacc/LICENSE.md,
-         ccorpus2/assets/github.com/vnmakarov/mir/c-tests/lacc/LICENSE.md
-
-  dotzlib (test corpus asset)
-    See: ccorpus2/assets/github.com/madler/zlib/contrib/dotzlib/LICENSE_1_0.txt
-
-
-The libc subdirectory contains translations of musl libc functions and
-system header files. Over 200 historical copyright holders contributed to
-the original musl libc codebase. A complete contributor list is available
-in ccgo/crt/LICENSE-MUSL and libc/LICENSE-3RD-PARTY.md.
-
-
-Attribution
------------
-
-Each subdirectory contains its own LICENSE, AUTHORS, and/or CONTRIBUTORS
-files where applicable. This NOTICE file provides a top-level summary.
-For full license texts and complete attribution, refer to the individual
-files within each subdirectory.
+See individual LICENSE files in each subdirectory for details.

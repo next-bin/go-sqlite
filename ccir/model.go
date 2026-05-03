@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccir // import "modernc.org/ccir"
+package ccir // import "modernc.org/bccir"
 
 import (
 	"fmt"
 	"runtime"
 
-	"modernc.org/cc"
+	"modernc.org/bcc"
 )
 
 func longSize() cc.ModelItem {

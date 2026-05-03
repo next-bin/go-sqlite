@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ir // import "modernc.org/ir"
+package ir // import "github.com/next-bin/go-sqlite/ir"
 
 import (
 	"fmt"
 	"go/token"
 
-	"modernc.org/internal/buffer"
+	"github.com/next-bin/go-sqlite/internal/buffer"
 )
 
 const opw = 16

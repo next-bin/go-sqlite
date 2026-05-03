@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package un // import "modernc.org/ccir/libc/sys/un"
+package un // import "modernc.org/bccir/libc/sys/un"
 
 const (
 	X_BITS_SOCKADDR_H = 1

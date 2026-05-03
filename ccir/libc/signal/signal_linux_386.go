@@ -40,7 +40,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package signal // import "modernc.org/ccir/libc/signal"
+package signal // import "modernc.org/bccir/libc/signal"
 
 const (
 	XFP_XSTATE_MAGIC1      = 1179670611

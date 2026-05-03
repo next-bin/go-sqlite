@@ -18,7 +18,7 @@
 //  [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
 //  [1]: https://www.spinellis.gr/blog/20060626/cpp.algo.pdf
 //  [2]: https://jhjourdan.mketjh.fr/pdf/jourdan2017simple.pdf
-package cc // import "modernc.org/cc/v5"
+package cc // import "modernc.org/bcc/v5"
 
 import (
 	"fmt"
@@ -32,7 +32,7 @@ import (
 	"strconv"
 	"strings"
 
-	"modernc.org/opt"
+	"modernc.org/bopt"
 )
 
 const (

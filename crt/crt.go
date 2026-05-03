@@ -36,7 +36,7 @@
 // libc project:
 //
 //	https://www.musl-libc.org/
-package crt // import "modernc.org/crt"
+package crt // import "modernc.org/bcrt"
 
 import (
 	"fmt"
@@ -50,9 +50,9 @@ import (
 	"sync"
 	"unsafe"
 
-	"modernc.org/internal/buffer" //TODO-
-	"modernc.org/memory"
-	"modernc.org/strutil"
+	"modernc.org/binternal/buffer" //TODO-
+	"modernc.org/bmemory"
+	"modernc.org/bstrutil"
 )
 
 var (

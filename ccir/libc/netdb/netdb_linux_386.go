@@ -166,7 +166,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package netdb // import "modernc.org/ccir/libc/netdb"
+package netdb // import "modernc.org/bccir/libc/netdb"
 
 const (
 	XAF_ALG                = 38

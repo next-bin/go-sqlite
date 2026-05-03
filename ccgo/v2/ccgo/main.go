@@ -84,10 +84,10 @@ import (
 	"runtime"
 	"strings"
 
-	"modernc.org/cc/v2"
-	"modernc.org/ccgo/v2"
-	"modernc.org/ccgo/v2/internal/object"
-	"modernc.org/crt"
+	"modernc.org/bcc/v2"
+	"modernc.org/bccgo/v2"
+	"modernc.org/bccgo/v2/internal/object"
+	"modernc.org/bcrt"
 )
 
 const (
@@ -861,7 +861,7 @@ func (c *config) linkGo(fn string) (err error) {
 	}
 
 	crtPrefix := crtPrefix
-	imports := "\n\n\t\"modernc.org/crt\""
+	imports := "\n\n\t\"modernc.org/bcrt\""
 	if c.ffreeStanding {
 		imports = ""
 		crtPrefix = ""

@@ -4,7 +4,7 @@
 
 // +build none
 
-package crt // import "modernc.org/crt"
+package crt // import "modernc.org/bcrt"
 
 import (
 	"unsafe"

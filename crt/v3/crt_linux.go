@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package crt // import "modernc.org/crt/v3"
+package crt // import "modernc.org/bcrt/v3"
 
 import (
 	"bufio"
@@ -18,13 +18,13 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	ftsh "modernc.org/crt/v3/libc/fts"
-	"modernc.org/crt/v3/libc/grp"
-	"modernc.org/crt/v3/libc/netdb"
-	"modernc.org/crt/v3/libc/pwd"
-	"modernc.org/crt/v3/libc/stdio"
-	"modernc.org/crt/v3/libc/sys/mman"
-	"modernc.org/crt/v3/libc/unistd"
+	ftsh "modernc.org/bcrt/v3/libc/fts"
+	"modernc.org/bcrt/v3/libc/grp"
+	"modernc.org/bcrt/v3/libc/netdb"
+	"modernc.org/bcrt/v3/libc/pwd"
+	"modernc.org/bcrt/v3/libc/stdio"
+	"modernc.org/bcrt/v3/libc/sys/mman"
+	"modernc.org/bcrt/v3/libc/unistd"
 )
 
 const eof = stdio.EOF

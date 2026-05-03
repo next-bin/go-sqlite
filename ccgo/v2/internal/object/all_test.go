@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package object // import "modernc.org/ccgo/v2/internal/object"
+package object // import "modernc.org/bccgo/v2/internal/object"
 
 import (
 	"fmt"

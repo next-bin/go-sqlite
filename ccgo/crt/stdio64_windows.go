@@ -4,14 +4,14 @@
 
 // +build amd64 amd64p32 arm64 mips64 mips64le mips64p32 mips64p32le ppc64 sparc64
 
-package crt // import "modernc.org/ccgo/crt"
+package crt // import "modernc.org/bccgo/crt"
 
 import (
 	"math"
 	"unsafe"
 
-	"modernc.org/ccir/libc/errno"
-	"modernc.org/mathutil"
+	"modernc.org/bccir/libc/errno"
+	"modernc.org/bmathutil"
 )
 
 const (

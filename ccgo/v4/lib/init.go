@@ -4,7 +4,7 @@
 
 // ~/src/modernc.org/ccorpus2/
 
-package ccgo // import "modernc.org/ccgo/v4/lib"
+package ccgo // import "modernc.org/bccgo/v4/lib"
 
 import (
 	"bytes"
@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"sort"
 
-	"modernc.org/cc/v4"
+	"modernc.org/bcc/v4"
 )
 
 var (

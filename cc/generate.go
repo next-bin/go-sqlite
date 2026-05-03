@@ -26,7 +26,7 @@ func yy() (nm string, err error) {
 	nm = y.Name()
 	cmd := exec.Command(
 		"yy",
-		"-astImport", "\"go/token\"\n\n\"modernc.org/xc\"",
+		"-astImport", "\"go/token\"\n\n\"modernc.org/bxc\"",
 		"-kind", "Case",
 		"-o", nm,
 		"-prettyString", "PrettyString",

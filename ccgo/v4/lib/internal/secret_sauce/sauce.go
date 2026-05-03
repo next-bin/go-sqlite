@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strings"
 
-	"modernc.org/gc/v3"
+	"modernc.org/bgc/v3"
 )
 
 var (

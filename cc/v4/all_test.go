@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc/v4"
+package cc // import "modernc.org/bcc/v4"
 
 import (
 	"archive/tar"
@@ -30,8 +30,8 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/pbnjay/memory"
 	"github.com/pmezard/go-difflib/difflib"
-	"modernc.org/ccorpus2"
-	"modernc.org/mathutil"
+	"modernc.org/bccorpus2"
+	"modernc.org/bmathutil"
 )
 
 var (

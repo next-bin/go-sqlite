@@ -8,7 +8,7 @@ import (
 	"os"
 	"runtime"
 
-	"modernc.org/cc/v4"
+	"modernc.org/bcc/v4"
 )
 
 const src = `

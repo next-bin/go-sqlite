@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "modernc.org/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/virtual"
 
 import (
 	"fmt"
@@ -14,8 +14,8 @@ import (
 	"unsafe"
 
 	"golang.org/x/crypto/ssh/terminal"
-	"modernc.org/ccir/libc/errno"
-	"modernc.org/ccir/libc/unistd"
+	"github.com/next-bin/go-sqlite/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/ccir/libc/unistd"
 )
 
 func init() {

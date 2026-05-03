@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"golang.org/x/sys/windows"
@@ -11,8 +11,8 @@ import (
 	"strings"
 	"unsafe"
 
-	"modernc.org/libc/errno"
-	"modernc.org/libc/sys/types"
+	"github.com/next-bin/go-sqlite/libc/errno"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
 )
 
 // int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);

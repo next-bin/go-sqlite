@@ -6,7 +6,7 @@
 //TODO unsafe.Pointer(uintptr(unsafe.Pointer(expr))) -> unsafe.Pointer(expr)
 //TODO unsafe.Pointer(uintptr(0)) -> nil
 
-package ccgo // import "modernc.org/ccgo/v2"
+package ccgo // import "modernc.org/bccgo/v2"
 
 import (
 	"bytes"

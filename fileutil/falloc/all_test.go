@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package falloc // import "modernc.org/fileutil/falloc"
+package falloc // import "modernc.org/bfileutil/falloc"
 
 import (
 	"bytes"
@@ -20,9 +20,9 @@ import (
 	"testing"
 	"time"
 
-	"modernc.org/fileutil"
-	"modernc.org/fileutil/storage"
-	"modernc.org/mathutil"
+	"modernc.org/bfileutil"
+	"modernc.org/bfileutil/storage"
+	"modernc.org/bmathutil"
 )
 
 var (

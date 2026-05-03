@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package libc is a partial reimplementation of C libc in pure Go.
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"math"

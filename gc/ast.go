@@ -6,7 +6,7 @@
 
 //TODO s/n.sourceFile.Package.errorlist.add/n.err/g
 
-package gc // import "modernc.org/gc"
+package gc // import "modernc.org/bgc"
 
 import (
 	"bytes"
@@ -18,7 +18,7 @@ import (
 	"strings"
 	"unicode"
 
-	"modernc.org/token"
+	"modernc.org/btoken"
 )
 
 var (

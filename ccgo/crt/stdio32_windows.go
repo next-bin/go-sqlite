@@ -4,13 +4,13 @@
 
 // +build 386 arm arm64be armbe mips mipsle ppc ppc64le s390 s390x sparc
 
-package crt // import "modernc.org/ccgo/crt"
+package crt // import "modernc.org/bccgo/crt"
 
 import (
 	"math"
 	"unsafe"
 
-	"modernc.org/ccir/libc/errno"
+	"modernc.org/bccir/libc/errno"
 )
 
 const (

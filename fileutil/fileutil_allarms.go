@@ -8,7 +8,7 @@
 // +build !openbsd
 // +build !plan9
 
-package fileutil // import "modernc.org/fileutil"
+package fileutil // import "modernc.org/bfileutil"
 
 import (
 	"io"

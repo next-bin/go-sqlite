@@ -4,7 +4,7 @@
 
 //go:build unix && !(linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm))
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"bufio"
@@ -24,16 +24,16 @@ import (
 	guuid "github.com/google/uuid"
 	"github.com/ncruces/go-strftime"
 	"golang.org/x/sys/unix"
-	"modernc.org/libc/errno"
-	"modernc.org/libc/grp"
-	"modernc.org/libc/limits"
-	"modernc.org/libc/poll"
-	"modernc.org/libc/pwd"
-	"modernc.org/libc/signal"
-	"modernc.org/libc/stdio"
-	"modernc.org/libc/stdlib"
-	"modernc.org/libc/sys/types"
-	ctime "modernc.org/libc/time"
+	"github.com/next-bin/go-sqlite/libc/errno"
+	"github.com/next-bin/go-sqlite/libc/grp"
+	"github.com/next-bin/go-sqlite/libc/limits"
+	"github.com/next-bin/go-sqlite/libc/poll"
+	"github.com/next-bin/go-sqlite/libc/pwd"
+	"github.com/next-bin/go-sqlite/libc/signal"
+	"github.com/next-bin/go-sqlite/libc/stdio"
+	"github.com/next-bin/go-sqlite/libc/stdlib"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
+	ctime "github.com/next-bin/go-sqlite/libc/time"
 )
 
 var staticGetpwnam pwd.Passwd

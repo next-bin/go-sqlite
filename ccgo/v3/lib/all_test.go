@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v3/lib"
+package ccgo // import "modernc.org/bccgo/v3/lib"
 
 import (
 	"bufio"
@@ -32,8 +32,8 @@ import (
 
 	"github.com/dustin/go-humanize"
 	"github.com/pmezard/go-difflib/difflib"
-	"modernc.org/cc/v3"
-	"modernc.org/ccorpus"
+	"modernc.org/bcc/v3"
+	"modernc.org/bccorpus"
 )
 
 func caller(s string, va ...interface{}) {
@@ -231,7 +231,7 @@ func initGoMod() error {
 package main
 
 import (
-	"modernc.org/libc"
+	"modernc.org/blibc"
 )
 
 var (
@@ -1175,7 +1175,7 @@ func skipDir(path string) error {
 
 func TestCAPI(t *testing.T) {
 	task := NewTask(nil, nil, nil)
-	pkgName, capi, err := task.capi("modernc.org/libc")
+	pkgName, capi, err := task.capi("modernc.org/blibc")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -2713,7 +2713,7 @@ func testSQLite(t *testing.T, dir string) {
 			t.Fatalf("%v\n%s", err, out)
 		}
 
-		if out, err := Shell("go", "get", "modernc.org/libc"); err != nil {
+		if out, err := Shell("go", "get", "modernc.org/blibc"); err != nil {
 			t.Fatalf("%v\n%s", err, out)
 		}
 	}
@@ -2966,7 +2966,7 @@ func TestCSmith(t *testing.T) {
 			t.Fatalf("%v\n%s", err, out)
 		}
 
-		if out, err := Shell("go", "get", "modernc.org/libc"); err != nil {
+		if out, err := Shell("go", "get", "modernc.org/blibc"); err != nil {
 			t.Fatalf("%v\n%s", err, out)
 		}
 	}

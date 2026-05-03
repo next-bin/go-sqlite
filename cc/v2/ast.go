@@ -9,7 +9,7 @@ package cc
 import (
 	"fmt"
 	"go/token"
-	"modernc.org/xc"
+	"modernc.org/bxc"
 )
 
 // AbstractDeclaratorCase represents case numbers of production AbstractDeclarator

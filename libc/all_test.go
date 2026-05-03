@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"os"
@@ -13,8 +13,8 @@ import (
 	"unsafe"
 
 	_ "golang.org/x/tools/go/packages" // genasm.go
-	ccgo "modernc.org/ccgo/v4/lib"
-	_ "modernc.org/goabi0" // genasm.go
+	ccgo "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+	_ "github.com/next-bin/go-sqlite/goabi0" // genasm.go
 )
 
 var (

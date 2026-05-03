@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v3/lib"
+package ccgo // import "modernc.org/bccgo/v3/lib"
 
 import (
 	"fmt"
 	"sort"
 	"strings"
 
-	"modernc.org/cc/v3"
+	"modernc.org/bcc/v3"
 )
 
 func isAggregateTypeOrUnion(t cc.Type) bool {

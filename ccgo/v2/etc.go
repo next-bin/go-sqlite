@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v2"
+package ccgo // import "modernc.org/bccgo/v2"
 
 import (
 	"bufio"
@@ -14,9 +14,9 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"modernc.org/cc/v2"
-	"modernc.org/strutil"
-	"modernc.org/xc"
+	"modernc.org/bcc/v2"
+	"modernc.org/bstrutil"
+	"modernc.org/bxc"
 )
 
 const (

@@ -4,12 +4,12 @@
 
 // blame: jnml, labs.nic.cz
 
-package falloc // import "modernc.org/fileutil/falloc"
+package falloc // import "modernc.org/bfileutil/falloc"
 
 // Pull test dependencies too.
 // Enables easy 'go test X' after 'go get X'
 import (
-	_ "modernc.org/fileutil"
-	_ "modernc.org/fileutil/storage"
-	_ "modernc.org/mathutil"
+	_ "modernc.org/bfileutil"
+	_ "modernc.org/bfileutil/storage"
+	_ "modernc.org/bmathutil"
 )

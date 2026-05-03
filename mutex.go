@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "modernc.org/sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite"
 
 import (
 	"sync"
 	"unsafe"
 
-	"modernc.org/libc"
-	"modernc.org/libc/sys/types"
+	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
 )
 
 type mutex struct {

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"strings"
@@ -10,11 +10,11 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	"modernc.org/libc/fcntl"
-	"modernc.org/libc/signal"
-	"modernc.org/libc/stdio"
-	"modernc.org/libc/sys/types"
-	"modernc.org/libc/utime"
+	"github.com/next-bin/go-sqlite/libc/fcntl"
+	"github.com/next-bin/go-sqlite/libc/signal"
+	"github.com/next-bin/go-sqlite/libc/stdio"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/libc/utime"
 )
 
 // #define FE_DOWNWARD         0x0400

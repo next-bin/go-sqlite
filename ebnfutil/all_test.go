@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ebnfutil // import "modernc.org/ebnfutil"
+package ebnfutil // import "modernc.org/bebnfutil"
 
 import (
 	"bytes"
@@ -15,8 +15,8 @@ import (
 	"strings"
 	"testing"
 
-	"modernc.org/ebnf"
-	"modernc.org/strutil"
+	"modernc.org/bebnf"
+	"modernc.org/bstrutil"
 )
 
 func dbg(s string, va ...interface{}) {

@@ -6,7 +6,7 @@
 
 // +build windows
 
-package virtual // import "modernc.org/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/virtual"
 
 import (
 	"fmt"

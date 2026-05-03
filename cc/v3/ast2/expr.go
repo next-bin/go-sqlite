@@ -10,7 +10,7 @@ import (
 	"io"
 	"strconv"
 
-	"modernc.org/cc/v3"
+	"modernc.org/bcc/v3"
 )
 
 type Type = cc.Type

@@ -7,7 +7,7 @@ import (
 	"math"
 	"testing"
 
-	_ "modernc.org/sqlite/vec"
+	_ "github.com/next-bin/go-sqlite/vec"
 )
 
 func TestVec(t *testing.T) {

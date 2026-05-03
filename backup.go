@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "modernc.org/sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite"
 
 import (
 	"database/sql/driver"
 
-	sqlite3 "modernc.org/sqlite/lib"
+	sqlite3 "modernc.org/blib"
 )
 
 // Backup object is used to manage progress and cleanup an online backup. It

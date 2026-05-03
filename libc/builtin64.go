@@ -4,7 +4,7 @@
 
 //go:build linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64)
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	mbits "math/bits"

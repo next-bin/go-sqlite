@@ -40,7 +40,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package fcntl // import "modernc.org/ccir/libc/fcntl"
+package fcntl // import "modernc.org/bccir/libc/fcntl"
 
 const (
 	XFD_CLOEXEC            = 1

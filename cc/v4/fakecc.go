@@ -17,8 +17,8 @@ import (
 	"runtime"
 	"strings"
 
-	"modernc.org/cc/v4"
-	"modernc.org/opt"
+	"modernc.org/bcc/v4"
+	"modernc.org/bopt"
 )
 
 var (

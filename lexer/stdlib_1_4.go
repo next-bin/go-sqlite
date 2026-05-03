@@ -4,6 +4,6 @@
 
 // +build go1.4
 
-package lexer // import "modernc.org/lexer"
+package lexer // import "github.com/next-bin/go-sqlite/lexer"
 
 const stdlib = ""

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package goabi0 // import "modernc.org/goabi0"
+package goabi0 // import "github.com/next-bin/go-sqlite/goabi0"
 
 import (
 	"fmt"

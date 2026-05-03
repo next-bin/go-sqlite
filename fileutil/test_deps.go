@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package fileutil // import "modernc.org/fileutil"
+package fileutil // import "modernc.org/bfileutil"
 
 // Pull test dependencies too.
 // Enables easy 'go test X' after 'go get X'

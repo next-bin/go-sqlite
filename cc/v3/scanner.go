@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc/v3"
+package cc // import "modernc.org/bcc/v3"
 
 import (
 	"bufio"
@@ -16,8 +16,8 @@ import (
 	"sync"
 	"unicode/utf8"
 
-	"modernc.org/mathutil"
-	"modernc.org/token"
+	"modernc.org/bmathutil"
+	"modernc.org/btoken"
 )
 
 const (

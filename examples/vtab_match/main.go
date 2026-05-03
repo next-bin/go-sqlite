@@ -6,8 +6,8 @@ import (
 	"log"
 	"strings"
 
-	_ "modernc.org/sqlite"
-	"modernc.org/sqlite/vtab"
+	_ "github.com/next-bin/go-sqlite"
+	"modernc.org/bvtab"
 )
 
 // matchModule demonstrates MATCH pushdown. It exposes a single TEXT column `val`.

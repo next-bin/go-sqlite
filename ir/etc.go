@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ir // import "modernc.org/ir"
+package ir // import "github.com/next-bin/go-sqlite/ir"
 
 import (
 	"encoding/gob"
@@ -10,8 +10,8 @@ import (
 	"go/token"
 	"reflect"
 
-	"modernc.org/strutil"
-	"modernc.org/xc"
+	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/xc"
 )
 
 func init() {

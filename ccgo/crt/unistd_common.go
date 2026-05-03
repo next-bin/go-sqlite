@@ -1,9 +1,9 @@
-package crt // import "modernc.org/ccgo/crt"
+package crt // import "modernc.org/bccgo/crt"
 
 import (
 	"unsafe"
 
-	"modernc.org/ccir/libc/errno"
+	"modernc.org/bccir/libc/errno"
 )
 
 // void *sbrk(intptr_t increment);

@@ -1,5 +1,5 @@
-module modernc.org/ccorpus
+module github.com/next-bin/go-sqlite/ccorpus
 
 go 1.16
 
-require modernc.org/httpfs v1.0.6
+require github.com/next-bin/go-sqlite/httpfs v1.0.6

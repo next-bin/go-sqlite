@@ -4,7 +4,7 @@
 
 // +build gofuzz
 
-package gc // import "modernc.org/gc"
+package gc // import "modernc.org/bgc"
 
 import (
 	"bytes"
@@ -13,7 +13,7 @@ import (
 	gotoken "go/token"
 	"strings"
 
-	"modernc.org/token"
+	"modernc.org/btoken"
 )
 
 var (

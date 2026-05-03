@@ -91,7 +91,7 @@
 //	PASS
 //	ok  	modernc.org/ccgo/v2	538.804s
 
-package ccgo // import "modernc.org/ccgo/v2"
+package ccgo // import "modernc.org/bccgo/v2"
 
 import (
 	"bytes"
@@ -110,8 +110,8 @@ import (
 	"testing"
 	"time"
 
-	"modernc.org/cc/v2"
-	"modernc.org/strutil"
+	"modernc.org/bcc/v2"
+	"modernc.org/bstrutil"
 )
 
 func caller(s string, va ...interface{}) {

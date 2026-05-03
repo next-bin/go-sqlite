@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "modernc.org/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/virtual"
 
 import (
 	"bytes"
@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"modernc.org/internal/buffer"
+	"github.com/next-bin/go-sqlite/internal/buffer"
 )
 
 var (

@@ -6,12 +6,12 @@
 
 // Based on [0], 6.4.
 
-package cc // import "modernc.org/cc"
+package cc // import "modernc.org/bcc"
 
 import (
 	"fmt"
 
-	"modernc.org/golex/lex"
+	"modernc.org/bgolex/lex"
 )
 
 const (

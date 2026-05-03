@@ -4,7 +4,7 @@
 
 // +build !crt.dmesg
 
-package crt // import "modernc.org/crt/v3"
+package crt // import "modernc.org/bcrt/v3"
 
 const dmesgs = false
 

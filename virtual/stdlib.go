@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "modernc.org/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/virtual"
 
 import (
 	"fmt"
 	"os"
 	"sort"
 
-	"modernc.org/ccir/libc/errno"
-	"modernc.org/mathutil"
+	"github.com/next-bin/go-sqlite/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 func init() {

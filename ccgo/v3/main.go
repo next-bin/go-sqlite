@@ -2,16 +2,16 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package main // import "modernc.org/ccgo/v3"
+package main // import "modernc.org/bccgo/v3"
 
 import (
 	"fmt"
 	"os"
 	"runtime"
 
-	ccgo3 "modernc.org/ccgo/v3/lib"
-	ccgo4 "modernc.org/ccgo/v4/lib"
-	_ "modernc.org/libc"
+	ccgo3 "modernc.org/bccgo/v3/lib"
+	ccgo4 "modernc.org/bccgo/v4/lib"
+	_ "modernc.org/blibc"
 )
 
 //TODO parallel

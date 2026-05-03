@@ -4,11 +4,11 @@
 
 // +build !windows
 
-package ccgo // import "modernc.org/ccgo"
+package ccgo // import "modernc.org/bccgo"
 
 import (
-	"modernc.org/ccgo/crt"
-	"modernc.org/ir"
+	"modernc.org/bccgo/crt"
+	"modernc.org/bir"
 )
 
 var typeMap map[ir.TypeID]string = map[ir.TypeID]string{

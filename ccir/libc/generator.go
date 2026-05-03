@@ -21,10 +21,10 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/cc"
-	"modernc.org/ccir"
-	"modernc.org/internal/buffer"
-	"modernc.org/xc"
+	"modernc.org/bcc"
+	"modernc.org/bccir"
+	"modernc.org/binternal/buffer"
+	"modernc.org/bxc"
 )
 
 var (

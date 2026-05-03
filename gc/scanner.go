@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "modernc.org/gc"
+package gc // import "modernc.org/bgc"
 
 import (
 	"bytes"
 	gotoken "go/token"
 	"unicode/utf8"
 
-	"modernc.org/token"
+	"modernc.org/btoken"
 )
 
 // Non ASCII character classes.

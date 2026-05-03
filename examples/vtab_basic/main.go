@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	_ "modernc.org/sqlite"
-	"modernc.org/sqlite/vtab"
+	_ "github.com/next-bin/go-sqlite"
+	"modernc.org/bvtab"
 )
 
 // echoModule implements a tiny read-only vtab with a single TEXT column `val`.

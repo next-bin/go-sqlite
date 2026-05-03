@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc/v2"
+package cc // import "modernc.org/bcc/v2"
 
 // [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
 
@@ -15,8 +15,8 @@ import (
 	"strconv"
 	"strings"
 
-	"modernc.org/ir"
-	"modernc.org/mathutil"
+	"modernc.org/bir"
+	"modernc.org/bmathutil"
 )
 
 // Node represents an AST node.

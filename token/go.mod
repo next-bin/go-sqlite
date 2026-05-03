@@ -1,1 +1,1 @@
-module modernc.org/token
+module github.com/next-bin/go-sqlite/token

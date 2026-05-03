@@ -4,7 +4,7 @@
 
 //TODO strace
 
-package virtual // import "modernc.org/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/virtual"
 
 import (
 	"fmt"
@@ -16,7 +16,7 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	sockconst "modernc.org/ccir/libc/sys/socket"
+	sockconst "github.com/next-bin/go-sqlite/ccir/libc/sys/socket"
 )
 
 func init() {

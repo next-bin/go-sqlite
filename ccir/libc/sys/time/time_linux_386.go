@@ -40,7 +40,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package time // import "modernc.org/ccir/libc/sys/time"
+package time // import "modernc.org/bccir/libc/sys/time"
 
 const (
 	XFD_SETSIZE         = 0

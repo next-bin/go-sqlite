@@ -5,7 +5,7 @@
 //go:build !cc.dmesg
 // +build !cc.dmesg
 
-package cc // import "modernc.org/cc/v4"
+package cc // import "modernc.org/bcc/v4"
 
 const Dmesgs = false
 

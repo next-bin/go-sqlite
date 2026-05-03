@@ -4,6 +4,6 @@
 
 // +build virtual.profile
 
-package virtual // import "modernc.org/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/virtual"
 
 const profile = true

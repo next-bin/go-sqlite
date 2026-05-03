@@ -14,7 +14,7 @@ import (
 	"flag"
 	"log"
 	"math"
-	"modernc.org/mathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 	"os"
 )
 

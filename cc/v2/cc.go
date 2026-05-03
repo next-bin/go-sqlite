@@ -7,7 +7,7 @@
 //go:generate golex -o scanner.go scanner.l
 
 //go:generate rm -f ast.go
-//go:generate yy -kind Case -o parser.y -astImport "\"modernc.org/xc\";\"go/token\";\"fmt\"" -prettyString PrettyString parser.yy
+//go:generate yy -kind Case -o parser.y -astImport "\"modernc.org/bxc\";\"go/token\";\"fmt\"" -prettyString PrettyString parser.yy
 
 //go:generate rm -f parser.go
 //go:generate goyacc -o /dev/null -xegen xegen parser.y
@@ -23,7 +23,7 @@
 // This package is no longer maintained. Please see the v3 version at
 //
 // 	https://modernc.org/cc/v3
-package cc // import "modernc.org/cc/v2"
+package cc // import "modernc.org/bcc/v2"
 
 import (
 	"bufio"
@@ -42,9 +42,9 @@ import (
 	"strings"
 	"sync"
 
-	"modernc.org/ir"
-	"modernc.org/strutil"
-	"modernc.org/xc"
+	"modernc.org/bir"
+	"modernc.org/bstrutil"
+	"modernc.org/bxc"
 )
 
 const (

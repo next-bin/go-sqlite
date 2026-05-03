@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"modernc.org/sqlite/vtab"
+	"github.com/next-bin/go-sqlite/vtab"
 )
 
 // dummyModule is a minimal vtab.Module implementation used to verify that the

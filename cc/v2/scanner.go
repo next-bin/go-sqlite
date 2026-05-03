@@ -13,7 +13,7 @@ package cc
 import (
 	"fmt"
 
-	"modernc.org/golex/lex"
+	"modernc.org/bgolex/lex"
 )
 
 const (

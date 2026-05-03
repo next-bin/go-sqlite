@@ -65,8 +65,8 @@ import (
 	gotime "time"
 	"unsafe"
 
-	"modernc.org/libc"
-	"modernc.org/libc/time"
+	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/libc/time"
 )
 
 const (

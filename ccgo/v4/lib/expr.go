@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v4/lib"
+package ccgo // import "modernc.org/bccgo/v4/lib"
 
 import (
 	"bytes"
@@ -12,8 +12,8 @@ import (
 	"strconv"
 	"strings"
 
-	"modernc.org/cc/v4"
-	"modernc.org/mathutil"
+	"modernc.org/bcc/v4"
+	"modernc.org/bmathutil"
 )
 
 type mode int

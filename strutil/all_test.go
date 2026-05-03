@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package strutil // import "modernc.org/strutil"
+package strutil // import "github.com/next-bin/go-sqlite/strutil"
 
 import (
 	"bytes"
 	"fmt"
 	"math"
-	"modernc.org/mathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 	"os"
 	"path"
 	"runtime"

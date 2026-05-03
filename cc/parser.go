@@ -41,15 +41,15 @@
 // otherwise, arising from, out of or in connection with the
 // software or the use or other dealings in the software.
 
-package cc // import "modernc.org/cc"
+package cc // import "modernc.org/bcc"
 
 import __yyfmt__ "fmt"
 
 import (
 	"fmt"
 
-	"modernc.org/golex/lex"
-	"modernc.org/xc"
+	"modernc.org/bgolex/lex"
+	"modernc.org/bxc"
 )
 
 type yySymType struct {

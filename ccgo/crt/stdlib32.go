@@ -4,14 +4,14 @@
 
 // +build 386 arm arm64be armbe mips mipsle ppc ppc64le s390 s390x sparc
 
-package crt // import "modernc.org/ccgo/crt"
+package crt // import "modernc.org/bccgo/crt"
 
 import (
 	"fmt"
 	"os"
 	"unsafe"
 
-	"modernc.org/mathutil"
+	"modernc.org/bmathutil"
 )
 
 // void *calloc(size_t nmemb, size_t size);

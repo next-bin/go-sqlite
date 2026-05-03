@@ -1,3 +1,3 @@
-module modernc.org/ccorpus2
+module github.com/next-bin/go-sqlite/ccorpus2
 
 go 1.18

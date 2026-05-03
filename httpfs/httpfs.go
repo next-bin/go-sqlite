@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package httpfs implements http.FileSystem on top of a map[string]string.
-package httpfs // import "modernc.org/httpfs"
+package httpfs // import "github.com/next-bin/go-sqlite/httpfs"
 
 import (
 	"fmt"

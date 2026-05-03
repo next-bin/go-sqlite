@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "modernc.org/sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite"
 
 import (
 	"bytes"
@@ -31,11 +31,11 @@ import (
 	"time"
 
 	"github.com/google/pprof/profile"
-	util "modernc.org/fileutil/ccgo"
-	"modernc.org/libc"
-	"modernc.org/mathutil"
-	sqlite3 "modernc.org/sqlite/lib"
-	"modernc.org/sqlite/vfs"
+	util "modernc.org/bfileutil/ccgo"
+	sqlite3 "modernc.org/blib"
+	"modernc.org/blibc"
+	"modernc.org/bmathutil"
+	"modernc.org/bvfs"
 )
 
 var (
@@ -4491,7 +4491,7 @@ func TestDBPageVtab(t *testing.T) {
 	}
 
 	// Query the sqlite_dbpage virtual table.
-	// If -DSQLITE_ENABLE_DBPAGE_VTAB was not enabled, this will return an error 
+	// If -DSQLITE_ENABLE_DBPAGE_VTAB was not enabled, this will return an error
 	// (e.g., "no such table: sqlite_dbpage").
 	var pgno int
 	var data []byte

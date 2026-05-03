@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"testing"
 
-	"modernc.org/cc/v3"
+	"modernc.org/bcc/v3"
 )
 
 // eqExpr implements a limited deep equality for expressions.

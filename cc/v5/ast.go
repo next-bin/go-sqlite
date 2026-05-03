@@ -7,7 +7,7 @@ package cc
 import (
 	"fmt"
 
-	"modernc.org/token"
+	"modernc.org/btoken"
 )
 
 // AbstractDeclaratorCase represents case numbers of production AbstractDeclarator

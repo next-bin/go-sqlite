@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"errors"
@@ -23,24 +23,24 @@ import (
 
 	guuid "github.com/google/uuid"
 	"golang.org/x/sys/unix"
-	"modernc.org/libc/errno"
-	"modernc.org/libc/fcntl"
-	"modernc.org/libc/fts"
-	gonetdb "modernc.org/libc/honnef.co/go/netdb"
-	"modernc.org/libc/langinfo"
-	"modernc.org/libc/limits"
-	"modernc.org/libc/netdb"
-	"modernc.org/libc/netinet/in"
-	"modernc.org/libc/pthread"
-	"modernc.org/libc/signal"
-	"modernc.org/libc/stdio"
-	"modernc.org/libc/sys/socket"
-	"modernc.org/libc/sys/stat"
-	"modernc.org/libc/sys/types"
-	"modernc.org/libc/termios"
-	"modernc.org/libc/time"
-	"modernc.org/libc/unistd"
-	"modernc.org/libc/uuid"
+	"github.com/next-bin/go-sqlite/libc/errno"
+	"github.com/next-bin/go-sqlite/libc/fcntl"
+	"github.com/next-bin/go-sqlite/libc/fts"
+	gonetdb "github.com/next-bin/go-sqlite/libc/honnef.co/go/netdb"
+	"github.com/next-bin/go-sqlite/libc/langinfo"
+	"github.com/next-bin/go-sqlite/libc/limits"
+	"github.com/next-bin/go-sqlite/libc/netdb"
+	"github.com/next-bin/go-sqlite/libc/netinet/in"
+	"github.com/next-bin/go-sqlite/libc/pthread"
+	"github.com/next-bin/go-sqlite/libc/signal"
+	"github.com/next-bin/go-sqlite/libc/stdio"
+	"github.com/next-bin/go-sqlite/libc/sys/socket"
+	"github.com/next-bin/go-sqlite/libc/sys/stat"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/libc/termios"
+	"github.com/next-bin/go-sqlite/libc/time"
+	"github.com/next-bin/go-sqlite/libc/unistd"
+	"github.com/next-bin/go-sqlite/libc/uuid"
 )
 
 var (

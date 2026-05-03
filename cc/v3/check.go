@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc/v3"
+package cc // import "modernc.org/bcc/v3"
 
 import (
 	"fmt"
@@ -14,8 +14,8 @@ import (
 	"strconv"
 	"strings"
 
-	"modernc.org/mathutil"
-	"modernc.org/strutil"
+	"modernc.org/bmathutil"
+	"modernc.org/bstrutil"
 )
 
 const longDoublePrec = 256

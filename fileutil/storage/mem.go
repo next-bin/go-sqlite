@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package storage // import "modernc.org/fileutil/storage"
+package storage // import "modernc.org/bfileutil/storage"
 
 import (
 	"errors"

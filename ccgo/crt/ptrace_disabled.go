@@ -4,6 +4,6 @@
 
 // +build !crt.ptrace
 
-package crt // import "modernc.org/ccgo/crt"
+package crt // import "modernc.org/bccgo/crt"
 
 const ptrace = false

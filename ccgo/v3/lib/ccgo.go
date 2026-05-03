@@ -5,7 +5,7 @@
 //go:generate stringer -output stringer.go -type=exprMode,opKind
 
 // Package ccgo implements the ccgo command.
-package ccgo // import "modernc.org/ccgo/v3/lib"
+package ccgo // import "modernc.org/bccgo/v3/lib"
 
 import (
 	"bufio"
@@ -32,9 +32,9 @@ import (
 
 	"github.com/kballard/go-shellquote"
 	"golang.org/x/tools/go/packages"
-	"modernc.org/cc/v3"
-	"modernc.org/libc"
-	"modernc.org/opt"
+	"modernc.org/bcc/v3"
+	"modernc.org/blibc"
+	"modernc.org/bopt"
 )
 
 const (
@@ -287,7 +287,7 @@ int (*__darwin_check_fd_set_overflow)(int, void *, int);
 #endif
 
 `
-	defaultCrt = "modernc.org/libc"
+	defaultCrt = "modernc.org/blibc"
 )
 
 func origin(skip int) string {

@@ -3,15 +3,15 @@
 // license that can be found in the LICENSE file.
 
 // Command ccgo is a C compiler producing Go code.
-package main // import "modernc.org/ccgo/v4"
+package main // import "modernc.org/bccgo/v4"
 
 import (
 	"fmt"
 	"os"
 	"runtime"
 
-	ccgo3 "modernc.org/ccgo/v3/lib"
-	ccgo4 "modernc.org/ccgo/v4/lib"
+	ccgo3 "modernc.org/bccgo/v3/lib"
+	ccgo4 "modernc.org/bccgo/v4/lib"
 )
 
 func main() {

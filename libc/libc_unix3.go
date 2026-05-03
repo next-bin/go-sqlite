@@ -4,14 +4,14 @@
 
 //go:build unix && !illumos && !(linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm))
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	"modernc.org/libc/errno"
-	ctime "modernc.org/libc/time"
+	"github.com/next-bin/go-sqlite/libc/errno"
+	ctime "github.com/next-bin/go-sqlite/libc/time"
 )
 
 // int clock_gettime(clockid_t clk_id, struct timespec *tp);

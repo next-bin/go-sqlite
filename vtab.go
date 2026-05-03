@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "modernc.org/sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite"
 
 import (
 	"fmt"
@@ -10,10 +10,10 @@ import (
 	"sync"
 	"unsafe"
 
-	"modernc.org/libc"
-	"modernc.org/libc/sys/types"
-	sqlite3 "modernc.org/sqlite/lib"
-	"modernc.org/sqlite/vtab"
+	sqlite3 "github.com/next-bin/go-sqlite/lib"
+	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/vtab"
 )
 
 func init() {

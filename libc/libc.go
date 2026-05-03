@@ -7,7 +7,7 @@
 ///go.generate echo package libc > ccgo.go
 ///go:generate go fmt -l -s -w ./...
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 //TODO use O_RDONLY etc. from fcntl header
 
@@ -31,12 +31,12 @@ import (
 	"unsafe"
 
 	"github.com/mattn/go-isatty"
-	"modernc.org/libc/errno"
-	"modernc.org/libc/stdio"
-	"modernc.org/libc/sys/types"
-	"modernc.org/libc/time"
-	"modernc.org/libc/unistd"
-	"modernc.org/mathutil"
+	"github.com/next-bin/go-sqlite/libc/errno"
+	"github.com/next-bin/go-sqlite/libc/stdio"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/libc/time"
+	"github.com/next-bin/go-sqlite/libc/unistd"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 const (

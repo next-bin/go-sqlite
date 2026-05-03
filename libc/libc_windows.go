@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"errors"
@@ -24,14 +24,14 @@ import (
 
 	"github.com/ncruces/go-strftime"
 	"golang.org/x/sys/windows"
-	"modernc.org/libc/errno"
-	"modernc.org/libc/fcntl"
-	"modernc.org/libc/limits"
-	"modernc.org/libc/stdio"
-	"modernc.org/libc/sys/stat"
-	"modernc.org/libc/sys/types"
-	"modernc.org/libc/time"
-	"modernc.org/libc/unistd"
+	"github.com/next-bin/go-sqlite/libc/errno"
+	"github.com/next-bin/go-sqlite/libc/fcntl"
+	"github.com/next-bin/go-sqlite/libc/limits"
+	"github.com/next-bin/go-sqlite/libc/stdio"
+	"github.com/next-bin/go-sqlite/libc/sys/stat"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/libc/time"
+	"github.com/next-bin/go-sqlite/libc/unistd"
 )
 
 // Keep these outside of the var block otherwise go generate will miss them.

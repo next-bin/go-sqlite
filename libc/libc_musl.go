@@ -103,7 +103,7 @@
 //
 // [Linux man-pages Copyleft]: https://spdx.org/licenses/Linux-man-pages-copyleft.html
 // [ccgo]: http://modernc.org/ccgo/v4
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"fmt"
@@ -124,8 +124,8 @@ import (
 
 	guuid "github.com/google/uuid"
 	"golang.org/x/sys/unix"
-	"modernc.org/libc/uuid/uuid"
-	"modernc.org/memory"
+	"github.com/next-bin/go-sqlite/libc/uuid/uuid"
+	"github.com/next-bin/go-sqlite/memory"
 )
 
 const (

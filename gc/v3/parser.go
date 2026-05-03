@@ -13,8 +13,8 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/mathutil"
-	"modernc.org/strutil"
+	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 // === RUN   TestTypeCheck/GOROOT

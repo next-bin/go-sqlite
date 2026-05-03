@@ -7,7 +7,7 @@
 // Positions attached to particular ebnf package types instances are ignored in
 // most, if not all places. Positions make sense after Parse, but usually no
 // more after mutating the grammar in any way.
-package ebnfutil // import "modernc.org/ebnfutil"
+package ebnfutil // import "modernc.org/bebnfutil"
 
 import (
 	"bytes"
@@ -17,8 +17,8 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/ebnf"
-	"modernc.org/strutil"
+	"modernc.org/bebnf"
+	"modernc.org/bstrutil"
 )
 
 var (

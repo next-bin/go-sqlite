@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package file // import "modernc.org/internal/file"
+package file // import "github.com/next-bin/go-sqlite/internal/file"
 
 import (
 	"bytes"
@@ -17,8 +17,8 @@ import (
 	"strings"
 	"testing"
 
-	"modernc.org/fileutil"
-	"modernc.org/internal/buffer"
+	"github.com/next-bin/go-sqlite/fileutil"
+	"github.com/next-bin/go-sqlite/internal/buffer"
 )
 
 func caller(s string, va ...interface{}) {

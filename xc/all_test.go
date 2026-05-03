@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package xc // import "modernc.org/xc"
+package xc // import "github.com/next-bin/go-sqlite/xc"
 
 import (
 	"bytes"
@@ -14,7 +14,7 @@ import (
 	"strings"
 	"testing"
 
-	"modernc.org/mathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 func caller(s string, va ...interface{}) {

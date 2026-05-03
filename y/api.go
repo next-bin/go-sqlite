@@ -24,7 +24,7 @@
 //  - [4] https://www.gnu.org/software/bison/manual/html_node/Using-Mid_002dRule-Actions.html
 //  - [5] http://www.gnu.org/software/bison/manual/html_node/Precedence-Only.html#Precedence-Only
 //  - [6] http://www.gnu.org/software/bison/manual/html_node/Token-Decl.html#Token-Decl
-package y // import "modernc.org/y"
+package y // import "github.com/next-bin/go-sqlite/y"
 
 import (
 	"bytes"
@@ -38,7 +38,7 @@ import (
 	"strings"
 
 	yparser "modernc.org/parser/yacc"
-	"modernc.org/sortutil"
+	"github.com/next-bin/go-sqlite/sortutil"
 )
 
 // Values of {AssocDef,Rule,Sym}.Associativity

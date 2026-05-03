@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc/v5"
+package cc // import "modernc.org/bcc/v5"
 
 import (
 	"fmt"
 	"sort"
 	"strings"
 
-	"modernc.org/token"
+	"modernc.org/btoken"
 )
 
 var (

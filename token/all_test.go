@@ -1,4 +1,4 @@
-package token // import "modernc.org/token"
+package token // import "github.com/next-bin/go-sqlite/token"
 
 import (
 	"testing"

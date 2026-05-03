@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc"
+package cc // import "modernc.org/bcc"
 
 import (
 	"bytes"
@@ -13,8 +13,8 @@ import (
 	"strconv"
 	"strings"
 
-	"modernc.org/mathutil"
-	"modernc.org/xc"
+	"modernc.org/bmathutil"
+	"modernc.org/bxc"
 )
 
 type (

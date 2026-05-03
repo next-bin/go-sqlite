@@ -46,7 +46,7 @@ import (
 	"github.com/golang/glog"
 	"golang.org/x/mod/semver"
 	gomod "modernc.org/gomod/engine"
-	"modernc.org/strutil"
+	"modernc.org/bstrutil"
 )
 
 const (
@@ -1230,7 +1230,7 @@ func initTasks() {
 			"modernc.org/rec",
 			"modernc.org/regexp",
 			"modernc.org/sortutil",
-			"modernc.org/sqlite",
+			"github.com/next-bin/go-sqlite",
 			"modernc.org/sqlite-bench",
 			"modernc.org/sqlite-bench2",
 			"modernc.org/strutil",

@@ -5,7 +5,7 @@
 //go:build linux || darwin || netbsd || openbsd
 // +build linux darwin netbsd openbsd
 
-package libsqlite3 // import "modernc.org/libsqlite3"
+package libsqlite3 // import "github.com/next-bin/go-sqlite/libsqlite3"
 
 import (
 	nix "golang.org/x/sys/unix"

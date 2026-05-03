@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v4/lib"
+package ccgo // import "modernc.org/bccgo/v4/lib"
 
 import (
 	"bytes"
@@ -23,8 +23,8 @@ import (
 	"unicode/utf8"
 
 	// "github.com/pbnjay/memory"
-	"modernc.org/cc/v4"
-	"modernc.org/gc/v2"
+	"modernc.org/bcc/v4"
+	"modernc.org/bgc/v2"
 )
 
 var (

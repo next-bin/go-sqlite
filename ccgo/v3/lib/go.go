@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v3/lib"
+package ccgo // import "modernc.org/bccgo/v3/lib"
 
 import (
 	"bytes"
@@ -23,8 +23,8 @@ import (
 	"sync"
 	"time"
 
-	"modernc.org/cc/v3"
-	"modernc.org/mathutil"
+	"modernc.org/bcc/v3"
+	"modernc.org/bmathutil"
 )
 
 var (

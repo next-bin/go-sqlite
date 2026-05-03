@@ -5,7 +5,7 @@
 // +build amd64 amd64p32 arm64 mips64 mips64le mips64p32 mips64p32le ppc64 sparc64
 // +build !windows
 
-package crt // import "modernc.org/ccgo/crt"
+package crt // import "modernc.org/bccgo/crt"
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"modernc.org/ccir/libc/unistd"
+	"modernc.org/bccir/libc/unistd"
 )
 
 // void *sbrk(intptr_t increment);

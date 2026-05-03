@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package ioctl // import "modernc.org/ccir/libc/sys/ioctl"
+package ioctl // import "modernc.org/bccir/libc/sys/ioctl"
 
 const (
 	X_SYS_IOCTL_H = 1

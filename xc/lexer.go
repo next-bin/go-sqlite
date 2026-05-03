@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package xc // import "modernc.org/xc"
+package xc // import "github.com/next-bin/go-sqlite/xc"
 
 import (
 	"go/token"
 
-	"modernc.org/golex/lex"
-	"modernc.org/strutil"
+	"github.com/next-bin/go-sqlite/golex/lex"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 // Token describes a token.

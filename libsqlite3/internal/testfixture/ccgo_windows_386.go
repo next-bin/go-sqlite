@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"modernc.org/libc"
+	"github.com/next-bin/go-sqlite/libc"
 	"modernc.org/libtcl8.6"
 )
 

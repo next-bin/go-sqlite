@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v2"
+package ccgo // import "modernc.org/bccgo/v2"
 
 import (
-	"modernc.org/cc/v2"
-	crtp "modernc.org/crt"
-	"modernc.org/mathutil"
+	"modernc.org/bcc/v2"
+	crtp "modernc.org/bcrt"
+	"modernc.org/bmathutil"
 )
 
 func (g *gen) compoundStmt(n *cc.CompoundStmt, vars []*cc.Declarator, cases map[*cc.LabeledStmt]int, sentinel bool, brk, cont *int, params, escParams []*cc.Declarator, main, value bool) {

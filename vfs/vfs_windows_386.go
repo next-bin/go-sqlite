@@ -9,9 +9,9 @@ import (
 	"time"
 	"unsafe"
 
-	"modernc.org/libc"
-	"modernc.org/libc/sys/types"
-	libsqlite3 "modernc.org/sqlite/lib"
+	libsqlite3 "github.com/next-bin/go-sqlite/lib"
+	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/libc/sys/types"
 )
 
 var (

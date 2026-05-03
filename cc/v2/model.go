@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc/v2"
+package cc // import "modernc.org/bcc/v2"
 
 import (
 	"fmt"
 	"runtime"
 
-	"modernc.org/ir"
-	"modernc.org/mathutil"
+	"modernc.org/bir"
+	"modernc.org/bmathutil"
 )
 
 // Model describes properties of scalar Types.

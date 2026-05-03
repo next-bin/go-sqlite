@@ -4,13 +4,13 @@
 
 // +build virtual.strace
 
-package virtual // import "modernc.org/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/virtual"
 
 import (
 	"fmt"
 	"strings"
 
-	fcntl2 "modernc.org/ccir/libc/fcntl"
+	fcntl2 "github.com/next-bin/go-sqlite/ccir/libc/fcntl"
 )
 
 func cmdString(cmd int32) string {

@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package storage // import "modernc.org/fileutil/storage"
+package storage // import "modernc.org/bfileutil/storage"
 
 // Pull test dependencies too.
 // Enables easy 'go test X' after 'go get X'

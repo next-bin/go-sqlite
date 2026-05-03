@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v4/lib"
+package ccgo // import "modernc.org/bccgo/v4/lib"
 
 import (
 	"bytes"
@@ -29,12 +29,12 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/pbnjay/memory"
 	"github.com/pmezard/go-difflib/difflib"
-	"modernc.org/cc/v4"
-	"modernc.org/ccorpus2"
-	"modernc.org/fileutil"
-	"modernc.org/gc/v2"
-	_ "modernc.org/libc"
-	"modernc.org/mathutil"
+	"modernc.org/bcc/v4"
+	"modernc.org/bccorpus2"
+	"modernc.org/bfileutil"
+	"modernc.org/bgc/v2"
+	_ "modernc.org/blibc"
+	"modernc.org/bmathutil"
 )
 
 const (
@@ -50,7 +50,7 @@ var (
 	oDebug        = flag.Bool("debug", false, "")
 	oErr1         = flag.Bool("err1", false, "first error line only")
 	oKeep         = flag.Bool("keep", false, "keep temp directories (only with -work)")
-	oLibc         = flag.String("libc", "modernc.org/libc", "")
+	oLibc         = flag.String("libc", "modernc.org/blibc", "")
 	oPanic        = flag.Bool("panic", false, "panic on miscompilation")
 	oShellTime    = flag.Duration("shelltimeout", 3600*time.Second, "shell() time limit")
 	oStackTrace   = flag.Bool("trcstack", false, "")
@@ -143,7 +143,7 @@ func getLatest() string {
 	a := strings.Split(string(b), "\n")
 	for _, v := range a {
 		v = strings.TrimSpace(v)
-		if strings.HasPrefix(v, "modernc.org/libc") {
+		if strings.HasPrefix(v, "modernc.org/blibc") {
 			a := strings.Fields(v)
 			return "@" + a[1]
 		}

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package irgo // import "modernc.org/irgo"
+package irgo // import "github.com/next-bin/go-sqlite/irgo"
 
 import (
 	"flag"

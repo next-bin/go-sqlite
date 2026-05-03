@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package irgo // import "modernc.org/irgo"
+package irgo // import "github.com/next-bin/go-sqlite/irgo"
 
 //TODO var x[n]T; (*T)(unsafe.Pointer(&x)) -> &x[0]
 
@@ -12,9 +12,9 @@ import (
 	"reflect"
 	"sort"
 
-	"modernc.org/ir"
-	"modernc.org/sortutil"
-	"modernc.org/strutil"
+	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/sortutil"
+	"github.com/next-bin/go-sqlite/strutil"
 )
 
 var (

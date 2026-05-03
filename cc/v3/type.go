@@ -10,7 +10,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the GO-LICENSE file.
 
-package cc // import "modernc.org/cc/v3"
+package cc // import "modernc.org/bcc/v3"
 
 import (
 	"bytes"

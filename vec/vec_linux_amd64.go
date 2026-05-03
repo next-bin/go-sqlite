@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"unsafe"
 
-	"modernc.org/libc"
-	libsqlite3 "modernc.org/sqlite/lib"
+	libsqlite3 "github.com/next-bin/go-sqlite/lib"
+	"github.com/next-bin/go-sqlite/libc"
 )
 
 var _ reflect.Type

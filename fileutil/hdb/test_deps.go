@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package hdb // import "modernc.org/fileutil/hdb"
+package hdb // import "modernc.org/bfileutil/hdb"
 
 // Pull test dependencies too.
 // Enables easy 'go test X' after 'go get X'

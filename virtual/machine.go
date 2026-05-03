@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "modernc.org/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/virtual"
 
 import (
 	"fmt"
@@ -15,10 +15,10 @@ import (
 	"unsafe"
 
 	"github.com/edsrzf/mmap-go"
-	"modernc.org/ccir/libc/stdlib"
-	"modernc.org/internal/buffer"
-	"modernc.org/mathutil"
-	"modernc.org/memory"
+	"github.com/next-bin/go-sqlite/ccir/libc/stdlib"
+	"github.com/next-bin/go-sqlite/internal/buffer"
+	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/memory"
 )
 
 const (

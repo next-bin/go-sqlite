@@ -53,4 +53,4 @@
 // Builder results available at:
 //
 // https://modern-c.appspot.com/-/builder/?importpath=modernc.org%2flibsqlite3
-package libsqlite3 // import "modernc.org/libsqlite3"
+package libsqlite3 // import "github.com/next-bin/go-sqlite/libsqlite3"

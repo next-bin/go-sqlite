@@ -19,11 +19,11 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/cc/v2"
-	"modernc.org/ir"
-	"modernc.org/sortutil"
-	"modernc.org/strutil"
-	"modernc.org/xc"
+	"modernc.org/bcc/v2"
+	"modernc.org/bir"
+	"modernc.org/bsortutil"
+	"modernc.org/bstrutil"
+	"modernc.org/bxc"
 )
 
 var (

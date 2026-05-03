@@ -14,7 +14,7 @@ import (
 	"sort"
 	"strings"
 
-	"modernc.org/crt"
+	"modernc.org/bcrt"
 )
 
 /*

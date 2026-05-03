@@ -14,8 +14,8 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"modernc.org/libc"
-	sqlite3 "modernc.org/sqlite/lib"
+	sqlite3 "github.com/next-bin/go-sqlite/lib"
+	"github.com/next-bin/go-sqlite/libc"
 )
 
 var (

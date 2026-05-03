@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v4/lib"
+package ccgo // import "modernc.org/bccgo/v4/lib"
 
 import (
 	"bytes"
@@ -22,9 +22,9 @@ import (
 
 	"golang.org/x/mod/semver"
 	"golang.org/x/tools/go/packages"
-	"modernc.org/ccgo/v4/lib/internal/secret_sauce"
-	"modernc.org/gc/v2"
-	"modernc.org/strutil"
+	"modernc.org/bccgo/v4/lib/internal/secret_sauce"
+	"modernc.org/bgc/v2"
+	"modernc.org/bstrutil"
 )
 
 const (

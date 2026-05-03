@@ -15,7 +15,7 @@
 //
 // Blocked on ccgo/v3 not able yet to emit definitions separately.
 
-package crt // import "modernc.org/crt/v3"
+package crt // import "modernc.org/bcrt/v3"
 
 import (
 	"bufio"
@@ -35,10 +35,10 @@ import (
 	"unsafe"
 
 	"github.com/mattn/go-isatty"
-	"modernc.org/crt/v3/libc/errno"
-	"modernc.org/crt/v3/libc/stdio"
-	timeh "modernc.org/crt/v3/libc/time"
-	"modernc.org/memory"
+	"modernc.org/bcrt/v3/libc/errno"
+	"modernc.org/bcrt/v3/libc/stdio"
+	timeh "modernc.org/bcrt/v3/libc/time"
+	"modernc.org/bmemory"
 )
 
 const (

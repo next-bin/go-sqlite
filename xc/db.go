@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package xc // import "modernc.org/xc"
+package xc // import "github.com/next-bin/go-sqlite/xc"
 
 import (
 	"encoding/binary"
 	"sync"
 
-	"modernc.org/mathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 const (

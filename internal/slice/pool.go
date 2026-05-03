@@ -3,12 +3,12 @@
 // license that can be found in the LICENSE file.
 
 // Package slice implements pools of pointers to slices.
-package slice // import "modernc.org/internal/slice"
+package slice // import "github.com/next-bin/go-sqlite/internal/slice"
 
 import (
 	"sync"
 
-	"modernc.org/mathutil"
+	"github.com/next-bin/go-sqlite/mathutil"
 )
 
 var (

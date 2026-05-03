@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccir // import "modernc.org/ccir"
+package ccir // import "modernc.org/bccir"
 
 import (
 	"bytes"
@@ -24,12 +24,12 @@ import (
 	"testing"
 	"time"
 
-	"modernc.org/cc"
-	"modernc.org/internal/buffer"
-	"modernc.org/ir"
-	"modernc.org/strutil"
-	"modernc.org/virtual"
-	"modernc.org/xc"
+	"modernc.org/bcc"
+	"modernc.org/binternal/buffer"
+	"modernc.org/bir"
+	"modernc.org/bstrutil"
+	"modernc.org/bvirtual"
+	"modernc.org/bxc"
 )
 
 func caller(s string, va ...interface{}) {

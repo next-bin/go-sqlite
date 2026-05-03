@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v2"
+package ccgo // import "modernc.org/bccgo/v2"
 
 import (
 	"fmt"
@@ -11,9 +11,9 @@ import (
 	"strings"
 	"unsafe"
 
-	"modernc.org/cc/v2"
-	"modernc.org/ir"
-	"modernc.org/mathutil"
+	"modernc.org/bcc/v2"
+	"modernc.org/bir"
+	"modernc.org/bmathutil"
 )
 
 func (g *gen) isArray(d *cc.Declarator) (arr, esc, vla, param bool) {

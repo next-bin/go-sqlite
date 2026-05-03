@@ -11,7 +11,7 @@
 
 //go:build (darwin && amd64) || (darwin && arm64) || (freebsd && amd64) || (linux && amd64) || (linux && arm64) || (linux && ppc64le) || (linux && s390x)
 
-package libsqlite3 // import "modernc.org/libsqlite3"
+package libsqlite3 // import "github.com/next-bin/go-sqlite/libsqlite3"
 
 import (
 	"context"
@@ -20,8 +20,8 @@ import (
 	"testing"
 	"time"
 
-	util "modernc.org/fileutil/ccgo"
-	"modernc.org/libc"
+	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
+	"github.com/next-bin/go-sqlite/libc"
 )
 
 // https://gitlab.com/cznic/sqlite/-/issues/173

@@ -5,7 +5,7 @@
 //go:build !arm && !arm64
 // +build !arm,!arm64
 
-package fileutil // import "modernc.org/fileutil"
+package fileutil // import "modernc.org/bfileutil"
 
 import (
 	"io"

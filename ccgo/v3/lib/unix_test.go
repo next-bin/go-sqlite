@@ -5,7 +5,7 @@
 //go:build !windows
 // +build !windows
 
-package ccgo // import "modernc.org/ccgo/v3/lib"
+package ccgo // import "modernc.org/bccgo/v3/lib"
 
 import (
 	"bytes"

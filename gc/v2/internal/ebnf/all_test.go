@@ -18,9 +18,9 @@ import (
 	"testing"
 
 	"github.com/dustin/go-humanize"
-	"modernc.org/ebnf"
-	"modernc.org/ebnfutil"
-	"modernc.org/gc/v2"
+	"github.com/next-bin/go-sqlite/ebnf"
+	"github.com/next-bin/go-sqlite/ebnfutil"
+	"github.com/next-bin/go-sqlite/gc/v2"
 )
 
 const (

@@ -5,6 +5,6 @@
 //go:build memory.counters
 // +build memory.counters
 
-package memory // import "modernc.org/memory"
+package memory // import "github.com/next-bin/go-sqlite/memory"
 
 const counters = true

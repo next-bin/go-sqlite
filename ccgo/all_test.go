@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo"
+package ccgo // import "modernc.org/bccgo"
 
 import (
 	"bytes"
@@ -23,13 +23,13 @@ import (
 	"testing"
 	"time"
 
-	"modernc.org/cc"
-	"modernc.org/ccir"
-	"modernc.org/internal/buffer"
-	"modernc.org/ir"
-	"modernc.org/irgo"
-	"modernc.org/strutil"
-	"modernc.org/xc"
+	"modernc.org/bcc"
+	"modernc.org/bccir"
+	"modernc.org/binternal/buffer"
+	"modernc.org/bir"
+	"modernc.org/birgo"
+	"modernc.org/bstrutil"
+	"modernc.org/bxc"
 )
 
 func caller(s string, va ...interface{}) {
@@ -83,7 +83,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"modernc.org/ccgo/crt"
+	"modernc.org/bccgo/crt"
 )
 
 var argv []*int8

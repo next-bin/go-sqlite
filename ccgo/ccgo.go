@@ -13,7 +13,7 @@
 // # The library
 //
 //	https://modernc.org/ccgo/v4/lib
-package ccgo // import "modernc.org/ccgo"
+package ccgo // import "modernc.org/bccgo"
 
 import (
 	"fmt"
@@ -22,12 +22,12 @@ import (
 	"path"
 	"runtime"
 
-	"modernc.org/cc"
-	"modernc.org/ccir"
-	"modernc.org/ir"
-	"modernc.org/irgo"
-	"modernc.org/virtual"
-	"modernc.org/xc"
+	"modernc.org/bcc"
+	"modernc.org/bccir"
+	"modernc.org/bir"
+	"modernc.org/birgo"
+	"modernc.org/bvirtual"
+	"modernc.org/bxc"
 )
 
 var (

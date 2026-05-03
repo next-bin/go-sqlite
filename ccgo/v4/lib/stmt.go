@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v4/lib"
+package ccgo // import "modernc.org/bccgo/v4/lib"
 
 import (
 	"fmt"
 	"sort"
 	"strings"
 
-	"modernc.org/cc/v4"
+	"modernc.org/bcc/v4"
 )
 
 func (c *ctx) statement(w writer, n *cc.Statement) {

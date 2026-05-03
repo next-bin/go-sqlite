@@ -1,8 +1,13 @@
-module modernc.org/ebnfutil
+module github.com/next-bin/go-sqlite/ebnfutil
 
 go 1.18
 
 require (
-	modernc.org/ebnf v1.1.0
-	modernc.org/strutil v1.2.0
+	github.com/next-bin/go-sqlite/ebnf v1.1.0
+	github.com/next-bin/go-sqlite/strutil v1.2.0
+)
+
+replace (
+	github.com/next-bin/go-sqlite/ebnf => ../ebnf
+	github.com/next-bin/go-sqlite/strutil => ../strutil
 )

@@ -4,12 +4,12 @@
 
 // +build 386,!windows
 
-package crt // import "modernc.org/crt/v3"
+package crt // import "modernc.org/bcrt/v3"
 
 import (
 	"strings"
 
-	"modernc.org/crt/v3/libc/sys/mman"
+	"modernc.org/bcrt/v3/libc/sys/mman"
 )
 
 const (

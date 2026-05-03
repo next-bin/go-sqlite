@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc"
+package cc // import "modernc.org/bcc"
 
 import (
 	"bytes"
@@ -11,10 +11,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"modernc.org/golex/lex"
-	"modernc.org/mathutil"
-	"modernc.org/strutil"
-	"modernc.org/xc"
+	"modernc.org/bgolex/lex"
+	"modernc.org/bmathutil"
+	"modernc.org/bstrutil"
+	"modernc.org/bxc"
 )
 
 var (

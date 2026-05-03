@@ -6,7 +6,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "modernc.org/libc"
+package libc // import "github.com/next-bin/go-sqlite/libc"
 
 import (
 	"fmt"
@@ -15,8 +15,8 @@ import (
 	"time"
 	"unsafe"
 	// "golang.org/x/sys/unix"
-	// "modernc.org/libc/errno"
-	// "modernc.org/libc/fcntl"
+	// "github.com/next-bin/go-sqlite/libc/errno"
+	// "github.com/next-bin/go-sqlite/libc/fcntl"
 )
 
 // Random number state.

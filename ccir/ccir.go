@@ -26,7 +26,7 @@
 // Referenced from elsewhere
 //
 //  [0]: https://modernc.org/cc
-package ccir // import "modernc.org/ccir"
+package ccir // import "modernc.org/bccir"
 
 import (
 	"fmt"
@@ -38,13 +38,13 @@ import (
 	"runtime"
 	"strings"
 
-	"modernc.org/cc"
-	"modernc.org/internal/buffer"
-	"modernc.org/ir"
-	"modernc.org/mathutil"
-	"modernc.org/strutil"
-	"modernc.org/virtual"
-	"modernc.org/xc"
+	"modernc.org/bcc"
+	"modernc.org/binternal/buffer"
+	"modernc.org/bir"
+	"modernc.org/bmathutil"
+	"modernc.org/bstrutil"
+	"modernc.org/bvirtual"
+	"modernc.org/bxc"
 )
 
 const (

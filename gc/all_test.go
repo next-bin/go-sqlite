@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "modernc.org/gc"
+package gc // import "modernc.org/bgc"
 
 import (
 	"bufio"
@@ -31,13 +31,13 @@ import (
 	"testing"
 
 	"github.com/edsrzf/mmap-go"
-	"modernc.org/lex"
-	dfa "modernc.org/lexer"
-	"modernc.org/mathutil"
-	"modernc.org/sortutil"
-	"modernc.org/strutil"
-	"modernc.org/token"
-	"modernc.org/y"
+	"modernc.org/blex"
+	dfa "modernc.org/blexer"
+	"modernc.org/bmathutil"
+	"modernc.org/bsortutil"
+	"modernc.org/bstrutil"
+	"modernc.org/btoken"
+	"modernc.org/by"
 )
 
 func caller(s string, va ...interface{}) {

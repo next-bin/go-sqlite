@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "modernc.org/ccgo/v4/lib"
+package ccgo // import "modernc.org/bccgo/v4/lib"
 
 import (
 	"fmt"
 	"strings"
 
-	"modernc.org/cc/v4"
-	"modernc.org/gc/v2"
-	"modernc.org/mathutil"
+	"modernc.org/bcc/v4"
+	"modernc.org/bgc/v2"
+	"modernc.org/bmathutil"
 )
 
 func (c *ctx) typedef(n cc.Node, t cc.Type) string {

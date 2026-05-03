@@ -18,7 +18,7 @@ import (
 	"strings"
 	"time"
 
-	_ "modernc.org/sqlite"
+	_ "github.com/next-bin/go-sqlite"
 )
 
 const (

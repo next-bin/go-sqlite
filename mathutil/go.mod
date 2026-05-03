@@ -1,4 +1,4 @@
-module modernc.org/mathutil
+module github.com/next-bin/go-sqlite/mathutil
 
 go 1.21
 

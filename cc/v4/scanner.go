@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "modernc.org/cc/v4"
+package cc // import "modernc.org/bcc/v4"
 
 import (
 	"bytes"
@@ -14,7 +14,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"modernc.org/token"
+	"modernc.org/btoken"
 )
 
 // Static type asserts.

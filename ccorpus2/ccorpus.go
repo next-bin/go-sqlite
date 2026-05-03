@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package ccorpus2 provides a test corpus of C code.
-package ccorpus2 // import "modernc.org/ccorpus2"
+package ccorpus2 // import "modernc.org/bccorpus2"
 
 import (
 	"embed"

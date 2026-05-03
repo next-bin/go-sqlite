@@ -102,7 +102,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    This exception applies to code released by its copyright holders
    in files containing the exception.  */
 
-package tcl // import "modernc.org/ccir/libc/tcl"
+package tcl // import "modernc.org/bccir/libc/tcl"
 
 const (
 	XBUFSIZ                             = 8192

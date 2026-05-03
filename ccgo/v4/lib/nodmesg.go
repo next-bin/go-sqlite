@@ -5,7 +5,7 @@
 //go:build !ccgo.dmesg
 // +build !ccgo.dmesg
 
-package ccgo // import "modernc.org/ccgo/v4/lib"
+package ccgo // import "modernc.org/bccgo/v4/lib"
 
 //lint:ignore U1000 debug support
 const dmesgs = false
