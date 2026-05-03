@@ -16,7 +16,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/next-bin/go-sqlite/binternal/buffer"
+	"github.com/next-bin/go-sqlite/internal/buffer"
 )
 
 const (

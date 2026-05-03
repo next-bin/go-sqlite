@@ -15,9 +15,9 @@ import (
 	"time"
 	"unsafe"
 
-	_ "github.com/next-bin/go-sqlite/bcc/v4"
+	_ "github.com/next-bin/go-sqlite/cc/v4"
 	_ "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	_ "github.com/next-bin/go-sqlite/bfileutil/ccgo"
+	_ "github.com/next-bin/go-sqlite/fileutil/ccgo"
 	ctime "github.com/next-bin/go-sqlite/libc/time"
 )
 

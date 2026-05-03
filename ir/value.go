@@ -7,7 +7,7 @@ package ir // import "github.com/next-bin/go-sqlite/ir"
 import (
 	"fmt"
 
-	"github.com/next-bin/go-sqlite/binternal/buffer"
+	"github.com/next-bin/go-sqlite/internal/buffer"
 )
 
 var (

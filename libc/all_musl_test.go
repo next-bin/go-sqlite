@@ -28,7 +28,7 @@ import (
 	"unsafe"
 
 	ccgo "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	util "github.com/next-bin/go-sqlite/bfileutil/ccgo"
+	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
 	"github.com/next-bin/go-sqlite/memory"
 )
 
