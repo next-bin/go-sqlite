@@ -1,0 +1,313 @@
+IsBNF: false
+Lexical: ["add_op" "assign_op" "big_u_value" "binary_op" "byte_value" "decimal_digit" "decimal_lit" "decimals" "escaped_char" "exponent" "float_lit" "hex_byte_value" "hex_digit" "hex_lit" "identifier" "imaginary_lit" "int_lit" "interpreted_string_lit" "letter" "little_u_value" "mul_op" "newline" "octal_byte_value" "octal_digit" "octal_lit" "raw_string_lit" "rel_op" "rune_lit" "string_lit" "unary_op" "unicode_char" "unicode_digit" "unicode_letter" "unicode_value"]
+Literals: ["!" "!=" "%" "&" "&&" "&^" "'" "(" ")" "*" "+" "++" "," "-" "--" "." "..." "/" "0" ":" ":=" ";" "<" "<-" "<<" "<=" "=" "==" ">" ">=" ">>" "E" "U" "X" "[" "\"" "\\" "]" "^" "_" "`" "a" "b" "break" "case" "chan" "const" "continue" "default" "defer" "e" "else" "f" "fallthrough" "for" "func" "go" "goto" "i" "if" "import" "interface" "map" "n" "package" "r" "range" "return" "select" "struct" "switch" "t" "type" "u" "v" "var" "x" "{" "|" "||" "}"]
+NonTerminals: ["AnonymousField" "ArgumentList" "ArrayLength" "ArrayType" "Assignment" "BaseType" "BaseTypeName" "BasicLit" "Block" "BreakStmt" "BuiltinArgs" "BuiltinCall" "Call" "Channel" "ChannelType" "CommCase" "CommClause" "CompositeLit" "Condition" "ConstDecl" "ConstSpec" "ContinueStmt" "Conversion" "Declaration" "DeferStmt" "Element" "ElementIndex" "ElementList" "ElementType" "EmptyStmt" "ExprCaseClause" "ExprSwitchCase" "ExprSwitchStmt" "Expression" "ExpressionList" "ExpressionStmt" "FallthroughStmt" "FieldDecl" "FieldName" "ForClause" "ForStmt" "Function" "FunctionBody" "FunctionDecl" "FunctionLit" "FunctionName" "FunctionType" "GoStmt" "GotoStmt" "IdentifierList" "IfStmt" "ImportDecl" "ImportPath" "ImportSpec" "IncDecStmt" "Index" "InitStmt" "InterfaceType" "InterfaceTypeName" "Key" "KeyType" "Label" "LabeledStmt" "Literal" "LiteralType" "LiteralValue" "MapType" "MethodDecl" "MethodExpr" "MethodName" "MethodSpec" "Operand" "OperandName" "PackageClause" "PackageName" "ParameterDecl" "ParameterList" "Parameters" "PointerType" "PostStmt" "PrimaryExpr" "QualifiedIdent" "RangeClause" "Receiver" "ReceiverType" "RecvExpr" "RecvStmt" "Result" "ReturnStmt" "SelectStmt" "Selector" "SendStmt" "ShortVarDecl" "Signature" "SimpleStmt" "Slice" "SliceType" "Start" "Statement" "StatementList" "StructType" "SwitchStmt" "Tag" "TopLevelDecl" "Type" "TypeAssertion" "TypeCaseClause" "TypeDecl" "TypeList" "TypeLit" "TypeName" "TypeSpec" "TypeSwitchCase" "TypeSwitchGuard" "TypeSwitchStmt" "UnaryExpr" "Value" "VarDecl" "VarSpec"]
+Ranges: ["0" … "7" "0" … "9" "1" … "9" "A" … "F" "a" … "f"]
+Tokens: ["assign_op" "binary_op" "float_lit" "identifier" "imaginary_lit" "int_lit" "rune_lit" "string_lit" "unary_op"]
+Used:
+	"AnonymousField": 1
+	"ArgumentList": 3
+	"ArrayLength": 1
+	"ArrayType": 2
+	"Assignment": 1
+	"BaseType": 1
+	"BaseTypeName": 1
+	"BasicLit": 1
+	"Block": 5
+	"BreakStmt": 1
+	"BuiltinArgs": 1
+	"BuiltinCall": 1
+	"Call": 1
+	"Channel": 1
+	"ChannelType": 1
+	"CommCase": 1
+	"CommClause": 1
+	"CompositeLit": 1
+	"Condition": 2
+	"ConstDecl": 1
+	"ConstSpec": 2
+	"ContinueStmt": 1
+	"Conversion": 1
+	"Declaration": 2
+	"DeferStmt": 1
+	"Element": 2
+	"ElementIndex": 1
+	"ElementList": 1
+	"ElementType": 5
+	"EmptyStmt": 1
+	"ExprCaseClause": 1
+	"ExprSwitchCase": 1
+	"ExprSwitchStmt": 1
+	"Expression": 22
+	"ExpressionList": 11
+	"ExpressionStmt": 1
+	"FallthroughStmt": 1
+	"FieldDecl": 1
+	"FieldName": 1
+	"ForClause": 1
+	"ForStmt": 1
+	"Function": 3
+	"FunctionBody": 1
+	"FunctionDecl": 1
+	"FunctionLit": 1
+	"FunctionName": 1
+	"FunctionType": 1
+	"GoStmt": 1
+	"GotoStmt": 1
+	"IdentifierList": 7
+	"IfStmt": 2
+	"ImportDecl": 1
+	"ImportPath": 1
+	"ImportSpec": 2
+	"IncDecStmt": 1
+	"Index": 1
+	"InitStmt": 1
+	"InterfaceType": 1
+	"InterfaceTypeName": 1
+	"Key": 1
+	"KeyType": 1
+	"Label": 4
+	"LabeledStmt": 1
+	"Literal": 1
+	"LiteralType": 1
+	"LiteralValue": 2
+	"MapType": 2
+	"MethodDecl": 1
+	"MethodExpr": 1
+	"MethodName": 3
+	"MethodSpec": 1
+	"Operand": 1
+	"OperandName": 1
+	"PackageClause": 1
+	"PackageName": 3
+	"ParameterDecl": 2
+	"ParameterList": 1
+	"Parameters": 2
+	"PointerType": 1
+	"PostStmt": 1
+	"PrimaryExpr": 7
+	"QualifiedIdent": 2
+	"RangeClause": 1
+	"Receiver": 1
+	"ReceiverType": 2
+	"RecvExpr": 1
+	"RecvStmt": 1
+	"Result": 1
+	"ReturnStmt": 1
+	"SelectStmt": 1
+	"Selector": 1
+	"SendStmt": 2
+	"ShortVarDecl": 1
+	"Signature": 5
+	"SimpleStmt": 6
+	"Slice": 1
+	"SliceType": 2
+	"Statement": 2
+	"StatementList": 4
+	"StructType": 2
+	"SwitchStmt": 1
+	"Tag": 1
+	"TopLevelDecl": 1
+	"Type": 15
+	"TypeAssertion": 1
+	"TypeCaseClause": 1
+	"TypeDecl": 1
+	"TypeList": 1
+	"TypeLit": 1
+	"TypeName": 6
+	"TypeSpec": 2
+	"TypeSwitchCase": 1
+	"TypeSwitchGuard": 1
+	"TypeSwitchStmt": 1
+	"UnaryExpr": 3
+	"Value": 1
+	"VarDecl": 1
+	"VarSpec": 2
+	"add_op": 2
+	"assign_op": 1
+	"big_u_value": 1
+	"binary_op": 1
+	"byte_value": 2
+	"decimal_digit": 3
+	"decimal_lit": 1
+	"decimals": 6
+	"escaped_char": 1
+	"exponent": 3
+	"float_lit": 2
+	"hex_byte_value": 1
+	"hex_digit": 16
+	"hex_lit": 1
+	"identifier": 16
+	"imaginary_lit": 1
+	"int_lit": 1
+	"interpreted_string_lit": 1
+	"letter": 2
+	"little_u_value": 1
+	"mul_op": 2
+	"newline": 1
+	"octal_byte_value": 1
+	"octal_digit": 4
+	"octal_lit": 1
+	"raw_string_lit": 1
+	"rel_op": 1
+	"rune_lit": 1
+	"string_lit": 3
+	"unary_op": 1
+	"unicode_char": 2
+	"unicode_digit": 1
+	"unicode_letter": 1
+	"unicode_value": 2
+UsedBy:
+	"AnonymousField": ["FieldDecl"]
+	"ArgumentList": ["BuiltinArgs" "Call"]
+	"ArrayLength": ["ArrayType"]
+	"ArrayType": ["LiteralType" "TypeLit"]
+	"Assignment": ["SimpleStmt"]
+	"BaseType": ["PointerType"]
+	"BaseTypeName": ["Receiver"]
+	"BasicLit": ["Literal"]
+	"Block": ["ForStmt" "FunctionBody" "IfStmt" "Statement"]
+	"BreakStmt": ["Statement"]
+	"BuiltinArgs": ["BuiltinCall"]
+	"BuiltinCall": ["PrimaryExpr"]
+	"Call": ["PrimaryExpr"]
+	"Channel": ["SendStmt"]
+	"ChannelType": ["TypeLit"]
+	"CommCase": ["CommClause"]
+	"CommClause": ["SelectStmt"]
+	"CompositeLit": ["Literal"]
+	"Condition": ["ForClause" "ForStmt"]
+	"ConstDecl": ["Declaration"]
+	"ConstSpec": ["ConstDecl"]
+	"ContinueStmt": ["Statement"]
+	"Conversion": ["PrimaryExpr"]
+	"Declaration": ["Statement" "TopLevelDecl"]
+	"DeferStmt": ["Statement"]
+	"Element": ["ElementList"]
+	"ElementIndex": ["Key"]
+	"ElementList": ["LiteralValue"]
+	"ElementType": ["ArrayType" "ChannelType" "LiteralType" "MapType" "SliceType"]
+	"EmptyStmt": ["SimpleStmt"]
+	"ExprCaseClause": ["ExprSwitchStmt"]
+	"ExprSwitchCase": ["ExprCaseClause"]
+	"ExprSwitchStmt": ["SwitchStmt"]
+	"Expression": ["ArrayLength" "Channel" "Condition" "Conversion" "DeferStmt" "ElementIndex" "ExprSwitchStmt" "Expression" "ExpressionList" "ExpressionStmt" "GoStmt" "IfStmt" "IncDecStmt" "Index" "Operand" "RangeClause" "RecvExpr" "SendStmt" "Slice" "Value"]
+	"ExpressionList": ["ArgumentList" "Assignment" "ConstSpec" "ExprSwitchCase" "RangeClause" "RecvStmt" "ReturnStmt" "ShortVarDecl" "VarSpec"]
+	"ExpressionStmt": ["SimpleStmt"]
+	"FallthroughStmt": ["Statement"]
+	"FieldDecl": ["StructType"]
+	"FieldName": ["Key"]
+	"ForClause": ["ForStmt"]
+	"ForStmt": ["Statement"]
+	"Function": ["FunctionDecl" "FunctionLit" "MethodDecl"]
+	"FunctionBody": ["Function"]
+	"FunctionDecl": ["TopLevelDecl"]
+	"FunctionLit": ["Literal"]
+	"FunctionName": ["FunctionDecl"]
+	"FunctionType": ["TypeLit"]
+	"GoStmt": ["Statement"]
+	"GotoStmt": ["Statement"]
+	"IdentifierList": ["ConstSpec" "FieldDecl" "ParameterDecl" "RangeClause" "RecvStmt" "ShortVarDecl" "VarSpec"]
+	"IfStmt": ["IfStmt" "Statement"]
+	"ImportDecl": ["Start"]
+	"ImportPath": ["ImportSpec"]
+	"ImportSpec": ["ImportDecl"]
+	"IncDecStmt": ["SimpleStmt"]
+	"Index": ["PrimaryExpr"]
+	"InitStmt": ["ForClause"]
+	"InterfaceType": ["TypeLit"]
+	"InterfaceTypeName": ["MethodSpec"]
+	"Key": ["Element"]
+	"KeyType": ["MapType"]
+	"Label": ["BreakStmt" "ContinueStmt" "GotoStmt" "LabeledStmt"]
+	"LabeledStmt": ["Statement"]
+	"Literal": ["Operand"]
+	"LiteralType": ["CompositeLit"]
+	"LiteralValue": ["CompositeLit" "Value"]
+	"MapType": ["LiteralType" "TypeLit"]
+	"MethodDecl": ["TopLevelDecl"]
+	"MethodExpr": ["Operand"]
+	"MethodName": ["MethodDecl" "MethodExpr" "MethodSpec"]
+	"MethodSpec": ["InterfaceType"]
+	"Operand": ["PrimaryExpr"]
+	"OperandName": ["Operand"]
+	"PackageClause": ["Start"]
+	"PackageName": ["ImportSpec" "PackageClause" "QualifiedIdent"]
+	"ParameterDecl": ["ParameterList"]
+	"ParameterList": ["Parameters"]
+	"Parameters": ["Result" "Signature"]
+	"PointerType": ["TypeLit"]
+	"PostStmt": ["ForClause"]
+	"PrimaryExpr": ["PrimaryExpr" "TypeSwitchGuard" "UnaryExpr"]
+	"QualifiedIdent": ["OperandName" "TypeName"]
+	"RangeClause": ["ForStmt"]
+	"Receiver": ["MethodDecl"]
+	"ReceiverType": ["MethodExpr" "ReceiverType"]
+	"RecvExpr": ["RecvStmt"]
+	"RecvStmt": ["CommCase"]
+	"Result": ["Signature"]
+	"ReturnStmt": ["Statement"]
+	"SelectStmt": ["Statement"]
+	"Selector": ["PrimaryExpr"]
+	"SendStmt": ["CommCase" "SimpleStmt"]
+	"ShortVarDecl": ["SimpleStmt"]
+	"Signature": ["Function" "FunctionDecl" "FunctionType" "MethodDecl" "MethodSpec"]
+	"SimpleStmt": ["ExprSwitchStmt" "IfStmt" "InitStmt" "PostStmt" "Statement" "TypeSwitchStmt"]
+	"Slice": ["PrimaryExpr"]
+	"SliceType": ["LiteralType" "TypeLit"]
+	"Start": []
+	"Statement": ["LabeledStmt" "StatementList"]
+	"StatementList": ["Block" "CommClause" "ExprCaseClause" "TypeCaseClause"]
+	"StructType": ["LiteralType" "TypeLit"]
+	"SwitchStmt": ["Statement"]
+	"Tag": ["FieldDecl"]
+	"TopLevelDecl": ["Start"]
+	"Type": ["BaseType" "BuiltinArgs" "ConstSpec" "Conversion" "ElementType" "FieldDecl" "KeyType" "ParameterDecl" "Result" "Type" "TypeAssertion" "TypeList" "TypeSpec" "VarSpec"]
+	"TypeAssertion": ["PrimaryExpr"]
+	"TypeCaseClause": ["TypeSwitchStmt"]
+	"TypeDecl": ["Declaration"]
+	"TypeList": ["TypeSwitchCase"]
+	"TypeLit": ["Type"]
+	"TypeName": ["AnonymousField" "InterfaceTypeName" "LiteralType" "ReceiverType" "Type"]
+	"TypeSpec": ["TypeDecl"]
+	"TypeSwitchCase": ["TypeCaseClause"]
+	"TypeSwitchGuard": ["TypeSwitchStmt"]
+	"TypeSwitchStmt": ["SwitchStmt"]
+	"UnaryExpr": ["Expression" "UnaryExpr"]
+	"Value": ["Element"]
+	"VarDecl": ["Declaration"]
+	"VarSpec": ["VarDecl"]
+	"add_op": ["assign_op" "binary_op"]
+	"assign_op": ["Assignment"]
+	"big_u_value": ["unicode_value"]
+	"binary_op": ["Expression"]
+	"byte_value": ["interpreted_string_lit" "rune_lit"]
+	"decimal_digit": ["decimal_lit" "decimals"]
+	"decimal_lit": ["int_lit"]
+	"decimals": ["exponent" "float_lit" "imaginary_lit"]
+	"escaped_char": ["unicode_value"]
+	"exponent": ["float_lit"]
+	"float_lit": ["BasicLit" "imaginary_lit"]
+	"hex_byte_value": ["byte_value"]
+	"hex_digit": ["big_u_value" "hex_byte_value" "hex_lit" "little_u_value"]
+	"hex_lit": ["int_lit"]
+	"identifier": ["BaseTypeName" "BuiltinCall" "FieldName" "FunctionName" "IdentifierList" "Label" "MethodName" "OperandName" "PackageName" "QualifiedIdent" "Receiver" "Selector" "TypeName" "TypeSpec" "TypeSwitchGuard"]
+	"imaginary_lit": ["BasicLit"]
+	"int_lit": ["BasicLit"]
+	"interpreted_string_lit": ["string_lit"]
+	"letter": ["identifier"]
+	"little_u_value": ["unicode_value"]
+	"mul_op": ["assign_op" "binary_op"]
+	"newline": ["raw_string_lit"]
+	"octal_byte_value": ["byte_value"]
+	"octal_digit": ["octal_byte_value" "octal_lit"]
+	"octal_lit": ["int_lit"]
+	"raw_string_lit": ["string_lit"]
+	"rel_op": ["binary_op"]
+	"rune_lit": ["BasicLit"]
+	"string_lit": ["BasicLit" "ImportPath" "Tag"]
+	"unary_op": ["UnaryExpr"]
+	"unicode_char": ["raw_string_lit" "unicode_value"]
+	"unicode_digit": ["identifier"]
+	"unicode_letter": ["letter"]
+	"unicode_value": ["interpreted_string_lit" "rune_lit"]
