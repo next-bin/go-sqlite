@@ -1,0 +1,5 @@
+Package ebnf is a library for EBNF grammars salvaged from pre Go 1 exp/ebnf as
+other packages at modernc.org used to depend on it.
+
+Install: $ go get modernc.org/ebnf
+Godocs: http://godoc.org/modernc.org/ebnf
