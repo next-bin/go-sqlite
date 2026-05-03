@@ -1,9 +1,9 @@
-module modernc.org/parser
+module github.com/next-bin/go-sqlite/parser
 
 go 1.18
 
 require (
-	modernc.org/golex v1.1.0
-	modernc.org/scanner v1.1.0
-	modernc.org/strutil v1.2.0
+	github.com/next-bin/go-sqlite/golex v1.1.0
+	github.com/next-bin/go-sqlite/scanner v1.1.0
+	github.com/next-bin/go-sqlite/strutil v1.2.0
 )

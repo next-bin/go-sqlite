@@ -1,4 +1,4 @@
-module modernc.org/gomod
+module github.com/next-bin/go-sqlite/gomod
 
 go 1.19
 
