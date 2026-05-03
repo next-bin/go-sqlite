@@ -37,7 +37,7 @@ import (
 	"strconv"
 	"strings"
 
-	yparser "modernc.org/parser/yacc"
+	yparser "github.com/next-bin/go-sqlite/parser/yacc"
 	"github.com/next-bin/go-sqlite/sortutil"
 )
 

@@ -18,7 +18,7 @@ import (
 	"strings"
 
 	"github.com/next-bin/go-sqlite/mathutil"
-	yparser "modernc.org/parser/yacc"
+	yparser "github.com/next-bin/go-sqlite/parser/yacc"
 	"github.com/next-bin/go-sqlite/strutil"
 )
 
