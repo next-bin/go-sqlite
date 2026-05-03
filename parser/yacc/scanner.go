@@ -6,7 +6,7 @@
 
 // CAUTION: Generated file (unless this is y.l) - DO NOT EDIT!
 
-package parser // import "github.com/next-bin/go-sqlite/parser/yacc"
+package parser // import "modernc.org/parser/yacc"
 
 import (
 	"github.com/next-bin/go-sqlite/golex/lex"
