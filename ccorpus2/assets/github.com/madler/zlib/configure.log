@@ -1,0 +1,233 @@
+--------------------
+./configure
+Po čen 21 14:24:40 CEST 2021
+=== ztest6083.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+ecc -c ztest6083.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest6083.c ===
+int foo() { return 0; }
+===
+ecc -c -O3 ztest6083.c
+
+Checking for shared library support...
+=== ztest6083.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+ecc -w -c -O3 -fPIC ztest6083.c
+ecc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest6083.so ztest6083.o
+gcc: error: ztest6083.o: Adresář nebo soubor neexistuje
+ecc: executing /usr/bin/gcc: exit status 1
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.11 with ecc.
+
+=== ztest6083.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+ecc -c -O3 ztest6083.c
+Checking for size_t... Yes.
+
+
+=== ztest6083.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+ecc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest6083.c
+ztest6083.c:2:9: `dummy`: expected declaration: IDENTIFIER
+(exit code 1)
+Checking for off64_t... No.
+
+=== ztest6083.c ===
+#include <stdio.h>
+int main(void) {
+  fseeko(NULL, 0, 0);
+  return 0;
+}
+===
+ecc -O3 -o ztest6083 ztest6083.c
+Checking for fseeko... Yes.
+
+=== ztest6083.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+ecc -O3 -o ztest6083 ztest6083.c
+/tmp/qbec-674327116/0.c: In function ‘main’:
+/tmp/qbec-674327116/0.c:28:16: warning: assignment to ‘int64_t’ {aka ‘long int’} from ‘void *’ makes integer from pointer without a cast [-Wint-conversion]
+  __v4 /* %4 */ = strerror(__v3 /* %3 */);
+                ^
+/tmp/qbec-674327116/0.c:29:25: warning: passing argument 1 of ‘strlen’ makes pointer from integer without a cast [-Wint-conversion]
+  __v5 /* %5 */ = strlen(__v4 /* %4 */);
+                         ^~~~
+/tmp/qbec-674327116/0.c:15:22: note: expected ‘void *’ but argument is of type ‘int64_t’ {aka ‘long int’}
+ unsigned long strlen(void*); // string.h:384:15:
+                      ^~~~~
+Checking for strerror... Yes.
+
+=== ztest6083.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+ecc -c -O3 ztest6083.c
+Checking for unistd.h... Yes.
+
+=== ztest6083.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+ecc -c -O3 ztest6083.c
+Checking for stdarg.h... Yes.
+
+=== ztest6083.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+ecc -c -O3 ztest6083.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest6083.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+ecc -O3 -o ztest6083 ztest6083.c
+/tmp/qbec-970552386/0.c:17:44: warning: anonymous struct declared inside parameter list will not be visible outside of this definition or declaration
+ int vsnprintf(void*, unsigned long, void*, struct { int8_t f[24]; } __attribute__ ((aligned (8)))[1]); // stdio.h:358:12:
+                                            ^~~~~~
+/tmp/qbec-970552386/0.c: In function ‘mytest’:
+/tmp/qbec-970552386/0.c:35:28: warning: passing argument 1 of ‘vsnprintf’ makes pointer from integer without a cast [-Wint-conversion]
+  __v4 /* %4 */ = vsnprintf(__v1 /* %1 */, __v3 /* %3 */, __v0 /* %0 */, __v2);
+                            ^~~~
+/tmp/qbec-970552386/0.c:17:15: note: expected ‘void *’ but argument is of type ‘int64_t’ {aka ‘long int’}
+ int vsnprintf(void*, unsigned long, void*, struct { int8_t f[24]; } __attribute__ ((aligned (8)))[1]); // stdio.h:358:12:
+               ^~~~~
+/tmp/qbec-970552386/0.c:35:58: warning: passing argument 3 of ‘vsnprintf’ makes pointer from integer without a cast [-Wint-conversion]
+  __v4 /* %4 */ = vsnprintf(__v1 /* %1 */, __v3 /* %3 */, __v0 /* %0 */, __v2);
+                                                          ^~~~
+/tmp/qbec-970552386/0.c:17:37: note: expected ‘void *’ but argument is of type ‘int64_t’ {aka ‘long int’}
+ int vsnprintf(void*, unsigned long, void*, struct { int8_t f[24]; } __attribute__ ((aligned (8)))[1]); // stdio.h:358:12:
+                                     ^~~~~
+/tmp/qbec-970552386/0.c:35:73: warning: passing argument 4 of ‘vsnprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+  __v4 /* %4 */ = vsnprintf(__v1 /* %1 */, __v3 /* %3 */, __v0 /* %0 */, __v2);
+                                                                         ^~~~
+/tmp/qbec-970552386/0.c:17:44: note: expected ‘struct <anonymous> *’ but argument is of type ‘__va_list_tag *’
+ int vsnprintf(void*, unsigned long, void*, struct { int8_t f[24]; } __attribute__ ((aligned (8)))[1]); // stdio.h:358:12:
+                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest6083.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+ecc -c -O3 ztest6083.c
+/tmp/qbec-821167741/0.c:17:44: warning: anonymous struct declared inside parameter list will not be visible outside of this definition or declaration
+ int vsnprintf(void*, unsigned long, void*, struct { int8_t f[24]; } __attribute__ ((aligned (8)))[1]); // stdio.h:358:12:
+                                            ^~~~~~
+/tmp/qbec-821167741/0.c: In function ‘mytest’:
+/tmp/qbec-821167741/0.c:36:28: warning: passing argument 1 of ‘vsnprintf’ makes pointer from integer without a cast [-Wint-conversion]
+  __v5 /* %5 */ = vsnprintf(__v1 /* %2 */, __v4 /* %4 */, __v0 /* %0 */, __v2);
+                            ^~~~
+/tmp/qbec-821167741/0.c:17:15: note: expected ‘void *’ but argument is of type ‘int64_t’ {aka ‘long int’}
+ int vsnprintf(void*, unsigned long, void*, struct { int8_t f[24]; } __attribute__ ((aligned (8)))[1]); // stdio.h:358:12:
+               ^~~~~
+/tmp/qbec-821167741/0.c:36:58: warning: passing argument 3 of ‘vsnprintf’ makes pointer from integer without a cast [-Wint-conversion]
+  __v5 /* %5 */ = vsnprintf(__v1 /* %2 */, __v4 /* %4 */, __v0 /* %0 */, __v2);
+                                                          ^~~~
+/tmp/qbec-821167741/0.c:17:37: note: expected ‘void *’ but argument is of type ‘int64_t’ {aka ‘long int’}
+ int vsnprintf(void*, unsigned long, void*, struct { int8_t f[24]; } __attribute__ ((aligned (8)))[1]); // stdio.h:358:12:
+                                     ^~~~~
+/tmp/qbec-821167741/0.c:36:73: warning: passing argument 4 of ‘vsnprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+  __v5 /* %5 */ = vsnprintf(__v1 /* %2 */, __v4 /* %4 */, __v0 /* %0 */, __v2);
+                                                                         ^~~~
+/tmp/qbec-821167741/0.c:17:44: note: expected ‘struct <anonymous> *’ but argument is of type ‘__va_list_tag *’
+ int vsnprintf(void*, unsigned long, void*, struct { int8_t f[24]; } __attribute__ ((aligned (8)))[1]); // stdio.h:358:12:
+                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest6083.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+ecc -c -O3 ztest6083.c
+Checking for attribute(visibility) support... Yes.
+
+ALL = static
+AR = ar
+ARFLAGS = rc
+CC = ecc
+CFLAGS = -O3 -DHAVE_HIDDEN
+CPP = ecc -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = ecc
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -O3 -fPIC -DHAVE_HIDDEN
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+
