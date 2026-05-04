@@ -51,7 +51,7 @@
 //	PASS
 //	ok  	modernc.org/memory	93.178s
 //	jnml@3900x:~/src/modernc.org/memory$
-package memory // import "github.com/next-bin/go-sqlite/memory"
+package memory // import "github.com/next-bin/go-sqlite/v2/memory"
 
 import (
 	"fmt"

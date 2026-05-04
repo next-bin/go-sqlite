@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 // int gettimeofday(struct timeval *restrict tp, void *restrict tzp);
 func (c *cpu) gettimeofday() { panic("unreachable") }

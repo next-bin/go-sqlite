@@ -2,7 +2,7 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libsqlite3 // import "github.com/next-bin/go-sqlite/libsqlite3"
+package libsqlite3 // import "github.com/next-bin/go-sqlite/v2/libsqlite3"
 
 import (
 	"bytes"
@@ -18,9 +18,9 @@ import (
 	"strings"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
-	"github.com/next-bin/go-sqlite/libtcl8.6/library"
+	_ "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	util "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
+	"github.com/next-bin/go-sqlite/v2/libtcl8.6/library"
 )
 
 var (
@@ -147,7 +147,7 @@ func TestConcurrentProcesses(t *testing.T) {
 	if s := *oXTags; s != "" {
 		args = append(args, "-tags", s)
 	}
-	args = append(args, "github.com/next-bin/go-sqlite/libsqlite3/mptest")
+	args = append(args, "github.com/next-bin/go-sqlite/v2/libsqlite3/mptest")
 	out, err := exec.Command("go", args...).CombinedOutput()
 	if err != nil {
 		t.Fatalf("%s\n%v", out, err)

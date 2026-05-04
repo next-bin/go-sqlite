@@ -40,7 +40,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package utime // import "github.com/next-bin/go-sqlite/ccir/libc/utime"
+package utime // import "github.com/next-bin/go-sqlite/v2/ccir/libc/utime"
 
 const (
 	X_BITS_TYPES_H    = 1

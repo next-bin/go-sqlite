@@ -40,7 +40,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package dirent // import "github.com/next-bin/go-sqlite/ccir/libc/dirent"
+package dirent // import "github.com/next-bin/go-sqlite/v2/ccir/libc/dirent"
 
 const (
 	X_BITS_TYPES_H            = 1

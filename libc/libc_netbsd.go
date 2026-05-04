@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"fmt"
@@ -18,22 +18,22 @@ import (
 
 	guuid "github.com/google/uuid"
 	"golang.org/x/sys/unix"
-	"github.com/next-bin/go-sqlite/libc/errno"
-	"github.com/next-bin/go-sqlite/libc/fcntl"
-	"github.com/next-bin/go-sqlite/libc/fts"
-	gonetdb "github.com/next-bin/go-sqlite/libc/honnef.co/go/netdb"
-	"github.com/next-bin/go-sqlite/libc/langinfo"
-	"github.com/next-bin/go-sqlite/libc/limits"
-	"github.com/next-bin/go-sqlite/libc/netdb"
-	"github.com/next-bin/go-sqlite/libc/netinet/in"
-	"github.com/next-bin/go-sqlite/libc/stdio"
-	"github.com/next-bin/go-sqlite/libc/sys/socket"
-	"github.com/next-bin/go-sqlite/libc/sys/stat"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
-	"github.com/next-bin/go-sqlite/libc/termios"
-	"github.com/next-bin/go-sqlite/libc/time"
-	"github.com/next-bin/go-sqlite/libc/unistd"
-	"github.com/next-bin/go-sqlite/libc/uuid"
+	"github.com/next-bin/go-sqlite/v2/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
+	"github.com/next-bin/go-sqlite/v2/libc/fts"
+	gonetdb "github.com/next-bin/go-sqlite/v2/libc/honnef.co/go/netdb"
+	"github.com/next-bin/go-sqlite/v2/libc/langinfo"
+	"github.com/next-bin/go-sqlite/v2/libc/limits"
+	"github.com/next-bin/go-sqlite/v2/libc/netdb"
+	"github.com/next-bin/go-sqlite/v2/libc/netinet/in"
+	"github.com/next-bin/go-sqlite/v2/libc/stdio"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/socket"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/stat"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/libc/termios"
+	"github.com/next-bin/go-sqlite/v2/libc/time"
+	"github.com/next-bin/go-sqlite/v2/libc/unistd"
+	"github.com/next-bin/go-sqlite/v2/libc/uuid"
 )
 
 var (

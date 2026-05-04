@@ -14,9 +14,9 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc/v4"
-	ccgo "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
+	ccgo "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	util "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
 )
 
 const (
@@ -29,7 +29,7 @@ var (
 	target = fmt.Sprintf("%s/%s", goos, goarch)
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
-	libc   = "github.com/next-bin/go-sqlite/libc"
+	libc   = "github.com/next-bin/go-sqlite/v2/libc"
 	win    = os.Getenv("GO_GENERATE_WIN") == "1"
 	win32  = os.Getenv("GO_GENERATE_WIN32") == "1"
 )

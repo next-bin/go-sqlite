@@ -4,10 +4,10 @@
 
 //go:build illumos
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
-	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 )
 
 // ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags);

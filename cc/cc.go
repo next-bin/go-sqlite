@@ -27,7 +27,7 @@
 //  [1]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1406.pdf
 //  [2]: https://github.com/rsc/c2go/blob/fc8cbfad5a47373828c81c7a56cccab8b221d310/cc/cc.y
 //  [3]: https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html
-package cc // import "github.com/next-bin/go-sqlite/cc"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc"
 
 import (
 	"bufio"
@@ -39,10 +39,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/golex/lex"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 const (

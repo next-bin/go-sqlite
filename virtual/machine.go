@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 import (
 	"fmt"
@@ -15,10 +15,10 @@ import (
 	"unsafe"
 
 	"github.com/edsrzf/mmap-go"
-	"github.com/next-bin/go-sqlite/ccir/libc/stdlib"
-	"github.com/next-bin/go-sqlite/internal/buffer"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/memory"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/stdlib"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/memory"
 )
 
 const (

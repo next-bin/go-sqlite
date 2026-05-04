@@ -4,12 +4,12 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "github.com/next-bin/go-sqlite/cc"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc"
 
 import (
 	"go/token"
 
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 // AbstractDeclarator represents data reduced by productions:

@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package ioctl // import "github.com/next-bin/go-sqlite/ccir/libc/sys/ioctl"
+package ioctl // import "github.com/next-bin/go-sqlite/v2/ccir/libc/sys/ioctl"
 
 const (
 	X_SYS_IOCTL_H = 1

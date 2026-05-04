@@ -14,7 +14,7 @@
 //
 // Grammar for the input to yacc.
 
-package parser // import "github.com/next-bin/go-sqlite/parser/yacc"
+package parser // import "github.com/next-bin/go-sqlite/v2/parser/yacc"
 
 import (
 	"go/token"

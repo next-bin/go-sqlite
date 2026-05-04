@@ -40,7 +40,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package file // import "github.com/next-bin/go-sqlite/ccir/libc/sys/file"
+package file // import "github.com/next-bin/go-sqlite/v2/ccir/libc/sys/file"
 
 const (
 	XF_GETLK64               = 5

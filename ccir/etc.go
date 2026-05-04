@@ -2,16 +2,16 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccir // import "github.com/next-bin/go-sqlite/ccir"
+package ccir // import "github.com/next-bin/go-sqlite/v2/ccir"
 
 import (
 	"go/scanner"
 	"go/token"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc"
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/cc"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 var (

@@ -6,7 +6,7 @@
 //go:generate go run generate.go
 //go:generate gofmt -l -s -w .
 
-package crt // import "github.com/next-bin/go-sqlite/crt/v2"
+package crt // import "github.com/next-bin/go-sqlite/v2/crt/v2"
 
 import (
 	"fmt"
@@ -20,8 +20,8 @@ import (
 	"unsafe"
 
 	"github.com/mattn/go-isatty"
-	"github.com/next-bin/go-sqlite/crt/v2/libc/stdio"
-	"github.com/next-bin/go-sqlite/memory"
+	"github.com/next-bin/go-sqlite/v2/crt/v2/libc/stdio"
+	"github.com/next-bin/go-sqlite/v2/memory"
 )
 
 const (

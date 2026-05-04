@@ -4,12 +4,12 @@
 
 //go:build unix && !illumos && !(linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm)) && !openbsd
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"golang.org/x/sys/unix"
 
-	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 )
 
 // ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags);

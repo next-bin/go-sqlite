@@ -4,6 +4,6 @@
 
 // +build !crt.ptrace
 
-package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/v2/ccgo/crt"
 
 const ptrace = false

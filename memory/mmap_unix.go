@@ -6,7 +6,7 @@
 
 // Modifications (c) 2017 The Memory Authors.
 
-package memory // import "github.com/next-bin/go-sqlite/memory"
+package memory // import "github.com/next-bin/go-sqlite/v2/memory"
 
 import (
 	"golang.org/x/sys/unix"

@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package lex // import "github.com/next-bin/go-sqlite/lex"
+package lex // import "github.com/next-bin/go-sqlite/v2/lex"
 
 import (
 	"fmt"
-	"github.com/next-bin/go-sqlite/lexer"
+	"github.com/next-bin/go-sqlite/v2/lexer"
 )
 
 func (t *tokenizer) Lex(lval *yySymType) (c int) {

@@ -4,13 +4,13 @@
 
 //go:build (!linux && !(386 || arm)) || mips64le
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc/limits"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/libc/limits"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 )
 
 const (

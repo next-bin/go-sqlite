@@ -4,7 +4,7 @@
 
 // generator.go helpers
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v3/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v3/lib"
 
 import (
 	"archive/tar"

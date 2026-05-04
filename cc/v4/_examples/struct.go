@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/next-bin/go-sqlite/cc/v4"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
 )
 
 const src = `

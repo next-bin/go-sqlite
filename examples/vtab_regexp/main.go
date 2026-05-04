@@ -13,7 +13,7 @@ import (
 
 	_ "github.com/next-bin/go-sqlite"
 	sqlite "github.com/next-bin/go-sqlite"
-	"github.com/next-bin/go-sqlite/vtab"
+	"github.com/next-bin/go-sqlite/v2/vtab"
 )
 
 // Register a minimal REGEXP(pattern, value) UDF so SQLite can evaluate

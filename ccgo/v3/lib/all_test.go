@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v3/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v3/lib"
 
 import (
 	"bufio"
@@ -32,8 +32,8 @@ import (
 
 	"github.com/dustin/go-humanize"
 	"github.com/pmezard/go-difflib/difflib"
-	"github.com/next-bin/go-sqlite/cc/v3"
-	"github.com/next-bin/go-sqlite/ccorpus"
+	"github.com/next-bin/go-sqlite/v2/cc/v3"
+	"github.com/next-bin/go-sqlite/v2/ccorpus"
 )
 
 func caller(s string, va ...interface{}) {
@@ -231,7 +231,7 @@ func initGoMod() error {
 package main
 
 import (
-	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 var (
@@ -1175,7 +1175,7 @@ func skipDir(path string) error {
 
 func TestCAPI(t *testing.T) {
 	task := NewTask(nil, nil, nil)
-	pkgName, capi, err := task.capi("github.com/next-bin/go-sqlite/libc")
+	pkgName, capi, err := task.capi("github.com/next-bin/go-sqlite/v2/libc")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -2713,7 +2713,7 @@ func testSQLite(t *testing.T, dir string) {
 			t.Fatalf("%v\n%s", err, out)
 		}
 
-		if out, err := Shell("go", "get", "github.com/next-bin/go-sqlite/libc"); err != nil {
+		if out, err := Shell("go", "get", "github.com/next-bin/go-sqlite/v2/libc"); err != nil {
 			t.Fatalf("%v\n%s", err, out)
 		}
 	}
@@ -2966,7 +2966,7 @@ func TestCSmith(t *testing.T) {
 			t.Fatalf("%v\n%s", err, out)
 		}
 
-		if out, err := Shell("go", "get", "github.com/next-bin/go-sqlite/libc"); err != nil {
+		if out, err := Shell("go", "get", "github.com/next-bin/go-sqlite/v2/libc"); err != nil {
 			t.Fatalf("%v\n%s", err, out)
 		}
 	}

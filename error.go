@@ -5,7 +5,7 @@
 package sqlite // import "github.com/next-bin/go-sqlite"
 
 import (
-	sqlite3 "github.com/next-bin/go-sqlite/lib"
+	sqlite3 "github.com/next-bin/go-sqlite/v2/lib"
 )
 
 // Error represents sqlite library error code.

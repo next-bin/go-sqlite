@@ -4,7 +4,7 @@
 
 // ~/src/modernc.org/ccorpus2/
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
 
 import (
 	"bytes"
@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"sort"
 
-	"github.com/next-bin/go-sqlite/cc/v4"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
 )
 
 var (

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sortutil // import "github.com/next-bin/go-sqlite/sortutil"
+package sortutil // import "github.com/next-bin/go-sqlite/v2/sortutil"
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 func dbg(s string, va ...interface{}) {

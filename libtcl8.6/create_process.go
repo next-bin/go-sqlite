@@ -5,7 +5,7 @@
 //go:build !windows
 // +build !windows
 
-package libtcl8_6 // import "github.com/next-bin/go-sqlite/libtcl8.6"
+package libtcl8_6 // import "github.com/next-bin/go-sqlite/v2/libtcl8.6"
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 /*

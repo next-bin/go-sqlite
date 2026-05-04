@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 // void *mmap(void *addr, size_t len, int prot, int flags, int fildes, off_t off);
 func (c *cpu) mmap64() { panic("unreachable") }

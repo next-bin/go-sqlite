@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/gc/v3"
+	"github.com/next-bin/go-sqlite/v2/gc/v3"
 )
 
 var (

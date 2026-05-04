@@ -18,13 +18,13 @@
 //  [7]: http://www.w3.org/TR/n-quads/#grammar-production-predicate
 //  [8]: http://www.w3.org/TR/n-quads/#grammar-production-object
 //  [9]: http://www.w3.org/TR/n-quads/#grammar-production-graphLabel
-package parser // import "github.com/next-bin/go-sqlite/parser/nquads"
+package parser // import "github.com/next-bin/go-sqlite/v2/parser/nquads"
 
 import (
 	"fmt"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/scanner/nquads"
+	"github.com/next-bin/go-sqlite/v2/scanner/nquads"
 )
 
 type lexer struct {

@@ -4,7 +4,7 @@
 
 // +build 386 arm arm64be armbe mips mipsle ppc ppc64le s390 s390x sparc
 
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 import (
 	"math"

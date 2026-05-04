@@ -4,7 +4,7 @@
 
 //go:build !libc.membrk && libc.memgrind && !(linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm))
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"math/rand"

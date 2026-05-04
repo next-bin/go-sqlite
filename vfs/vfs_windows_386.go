@@ -9,9 +9,9 @@ import (
 	"time"
 	"unsafe"
 
-	libsqlite3 "github.com/next-bin/go-sqlite/lib"
-	"github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
+	libsqlite3 "github.com/next-bin/go-sqlite/v2/lib"
+	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 )
 
 var (

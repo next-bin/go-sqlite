@@ -6,7 +6,7 @@
 
 // +build !windows
 
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 func (c *cpu) InterlockedCompareExchange() {
 	winStub("InterlockedCompareExchange")

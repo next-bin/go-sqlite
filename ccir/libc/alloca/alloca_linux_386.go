@@ -46,7 +46,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package alloca // import "github.com/next-bin/go-sqlite/ccir/libc/alloca"
+package alloca // import "github.com/next-bin/go-sqlite/v2/ccir/libc/alloca"
 
 const (
 	X_ALLOCA_H = 1

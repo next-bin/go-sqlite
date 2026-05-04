@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/next-bin/go-sqlite/builder/html"
+	"github.com/next-bin/go-sqlite/v2/builder/html"
 )
 
 func origin(skip int) string {

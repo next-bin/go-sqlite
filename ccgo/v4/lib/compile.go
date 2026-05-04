@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
 
 import (
 	"bufio"
@@ -21,8 +21,8 @@ import (
 
 	"golang.org/x/mod/semver"
 	"golang.org/x/tools/go/packages"
-	"github.com/next-bin/go-sqlite/cc/v4"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 type name int

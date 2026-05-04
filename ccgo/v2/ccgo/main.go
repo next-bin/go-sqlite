@@ -84,10 +84,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc/v2"
-	"github.com/next-bin/go-sqlite/ccgo/v2"
-	"github.com/next-bin/go-sqlite/ccgo/v2/internal/object"
-	"github.com/next-bin/go-sqlite/crt"
+	"github.com/next-bin/go-sqlite/v2/cc/v2"
+	"github.com/next-bin/go-sqlite/v2/ccgo/v2"
+	"github.com/next-bin/go-sqlite/v2/ccgo/v2/internal/object"
+	"github.com/next-bin/go-sqlite/v2/crt"
 )
 
 const (
@@ -861,7 +861,7 @@ func (c *config) linkGo(fn string) (err error) {
 	}
 
 	crtPrefix := crtPrefix
-	imports := "\n\n\t\"github.com/next-bin/go-sqlite/crt\""
+	imports := "\n\n\t\"github.com/next-bin/go-sqlite/v2/crt\""
 	if c.ffreeStanding {
 		imports = ""
 		crtPrefix = ""

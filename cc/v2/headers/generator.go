@@ -19,11 +19,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc/v2"
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/sortutil"
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/cc/v2"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/sortutil"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 var (

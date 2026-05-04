@@ -40,7 +40,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package time // import "github.com/next-bin/go-sqlite/ccir/libc/sys/time"
+package time // import "github.com/next-bin/go-sqlite/v2/ccir/libc/sys/time"
 
 const (
 	XFD_SETSIZE         = 0

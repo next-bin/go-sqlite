@@ -4,7 +4,7 @@
 
 //go:build unix && !(linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm))
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"bufio"
@@ -24,16 +24,16 @@ import (
 	guuid "github.com/google/uuid"
 	"github.com/ncruces/go-strftime"
 	"golang.org/x/sys/unix"
-	"github.com/next-bin/go-sqlite/libc/errno"
-	"github.com/next-bin/go-sqlite/libc/grp"
-	"github.com/next-bin/go-sqlite/libc/limits"
-	"github.com/next-bin/go-sqlite/libc/poll"
-	"github.com/next-bin/go-sqlite/libc/pwd"
-	"github.com/next-bin/go-sqlite/libc/signal"
-	"github.com/next-bin/go-sqlite/libc/stdio"
-	"github.com/next-bin/go-sqlite/libc/stdlib"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
-	ctime "github.com/next-bin/go-sqlite/libc/time"
+	"github.com/next-bin/go-sqlite/v2/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/libc/grp"
+	"github.com/next-bin/go-sqlite/v2/libc/limits"
+	"github.com/next-bin/go-sqlite/v2/libc/poll"
+	"github.com/next-bin/go-sqlite/v2/libc/pwd"
+	"github.com/next-bin/go-sqlite/v2/libc/signal"
+	"github.com/next-bin/go-sqlite/v2/libc/stdio"
+	"github.com/next-bin/go-sqlite/v2/libc/stdlib"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
+	ctime "github.com/next-bin/go-sqlite/v2/libc/time"
 )
 
 var staticGetpwnam pwd.Passwd

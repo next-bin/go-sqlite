@@ -4,7 +4,7 @@
 
 // +build crt.dmesg
 
-package crt // import "github.com/next-bin/go-sqlite/crt/v2"
+package crt // import "github.com/next-bin/go-sqlite/v2/crt/v2"
 
 import (
 	"fmt"

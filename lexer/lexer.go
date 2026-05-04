@@ -183,7 +183,7 @@ Unicode character class names--scripts:
 	Yi                     Yi
 
 */
-package lexer // import "github.com/next-bin/go-sqlite/lexer"
+package lexer // import "github.com/next-bin/go-sqlite/v2/lexer"
 
 import (
 	"bytes"

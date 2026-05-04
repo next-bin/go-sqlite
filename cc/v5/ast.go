@@ -7,7 +7,7 @@ package cc
 import (
 	"fmt"
 
-	"github.com/next-bin/go-sqlite/token"
+	"github.com/next-bin/go-sqlite/v2/token"
 )
 
 // AbstractDeclaratorCase represents case numbers of production AbstractDeclarator

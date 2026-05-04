@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "github.com/next-bin/go-sqlite/cc/v4"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v4"
 
 import (
 	"fmt"

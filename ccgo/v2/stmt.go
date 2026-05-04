@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v2"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v2"
 
 import (
-	"github.com/next-bin/go-sqlite/cc/v2"
-	crtp "github.com/next-bin/go-sqlite/crt"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/cc/v2"
+	crtp "github.com/next-bin/go-sqlite/v2/crt"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 func (g *gen) compoundStmt(n *cc.CompoundStmt, vars []*cc.Declarator, cases map[*cc.LabeledStmt]int, sentinel bool, brk, cont *int, params, escParams []*cc.Declarator, main, value bool) {

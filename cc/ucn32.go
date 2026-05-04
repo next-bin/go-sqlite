@@ -4,7 +4,7 @@
 
 // +build 386 arm armbe mips mipsle sparc
 
-package cc // import "github.com/next-bin/go-sqlite/cc"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc"
 
 var ucnDigits = [...]uint32{
 	0x33: 0x3ff,

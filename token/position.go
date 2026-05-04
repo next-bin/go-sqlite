@@ -4,7 +4,7 @@
 
 // Package token is variant of the stdlib package token with types FileSet and
 // Token removed.
-package token // import "github.com/next-bin/go-sqlite/token"
+package token // import "github.com/next-bin/go-sqlite/v2/token"
 
 import (
 	"fmt"

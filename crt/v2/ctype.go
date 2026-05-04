@@ -27,7 +27,7 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package crt // import "github.com/next-bin/go-sqlite/crt/v2"
+package crt // import "github.com/next-bin/go-sqlite/v2/crt/v2"
 
 import (
 	"unsafe"

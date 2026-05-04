@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	_ "github.com/next-bin/go-sqlite"
-	"github.com/next-bin/go-sqlite/vtab"
+	"github.com/next-bin/go-sqlite/v2/vtab"
 )
 
 // matchModule demonstrates MATCH pushdown. It exposes a single TEXT column `val`.

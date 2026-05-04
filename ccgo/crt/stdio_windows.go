@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/v2/ccgo/crt"
 
 import (
 	"bytes"
@@ -13,9 +13,9 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/ccir/libc/errno"
-	"github.com/next-bin/go-sqlite/ccir/libc/stdio"
-	"github.com/next-bin/go-sqlite/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/stdio"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
 )
 
 var (

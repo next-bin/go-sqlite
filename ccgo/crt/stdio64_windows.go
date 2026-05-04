@@ -4,14 +4,14 @@
 
 // +build amd64 amd64p32 arm64 mips64 mips64le mips64p32 mips64p32le ppc64 sparc64
 
-package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/v2/ccgo/crt"
 
 import (
 	"math"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/ccir/libc/errno"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 const (

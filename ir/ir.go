@@ -36,13 +36,13 @@
 // probably just to verify a particular IR generator or to provide an
 // interpreter for scripts loaded/entered at run time. A "standard" back-end
 // should normally produce machine code,
-package ir // import "github.com/next-bin/go-sqlite/ir"
+package ir // import "github.com/next-bin/go-sqlite/v2/ir"
 
 import (
 	"fmt"
 	"go/token"
 
-	"github.com/next-bin/go-sqlite/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
 )
 
 var (

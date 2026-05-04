@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
 
 import (
 	"fmt"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc/v4"
-	"github.com/next-bin/go-sqlite/gc/v2"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
+	"github.com/next-bin/go-sqlite/v2/gc/v2"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 func (c *ctx) typedef(n cc.Node, t cc.Type) string {

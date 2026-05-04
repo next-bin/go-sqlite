@@ -46,14 +46,14 @@
 //	$ go install modernc.org/gomod@v1.0.0
 //
 // But it is recommended to use the better 'go work' command.
-package main // import "github.com/next-bin/go-sqlite/gomod"
+package main // import "github.com/next-bin/go-sqlite/v2/gomod"
 
 import (
 	"flag"
 	"fmt"
 	"os"
 
-	"github.com/next-bin/go-sqlite/gomod/engine"
+	"github.com/next-bin/go-sqlite/v2/gomod/engine"
 )
 
 var (

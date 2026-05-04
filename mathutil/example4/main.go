@@ -20,8 +20,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/sortutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/sortutil"
 )
 
 func main() {

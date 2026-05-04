@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package file provides an os.File-like interface of a memory mapped file.
-package file // import "github.com/next-bin/go-sqlite/internal/file"
+package file // import "github.com/next-bin/go-sqlite/v2/internal/file"
 
 import (
 	"fmt"
@@ -13,9 +13,9 @@ import (
 	"time"
 
 	"github.com/edsrzf/mmap-go"
-	"github.com/next-bin/go-sqlite/fileutil"
-	"github.com/next-bin/go-sqlite/internal/buffer"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/fileutil"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 const copyBufSize = 1 << 20 // 1 MB.

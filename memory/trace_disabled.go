@@ -5,6 +5,6 @@
 //go:build !memory.trace
 // +build !memory.trace
 
-package memory // import "github.com/next-bin/go-sqlite/memory"
+package memory // import "github.com/next-bin/go-sqlite/v2/memory"
 
 const trace = false

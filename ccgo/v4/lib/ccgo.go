@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package ccgo implements the ccgo command.
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
 
 //TODO Tucontext_t - Tucontext_t5
 //TODO acosh u does not need to be pinned, need better escape analysis above "address taken"
@@ -25,10 +25,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc/v4"
-	"github.com/next-bin/go-sqlite/gc/v2"
-	"github.com/next-bin/go-sqlite/opt"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
+	"github.com/next-bin/go-sqlite/v2/gc/v2"
+	"github.com/next-bin/go-sqlite/v2/opt"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 var (

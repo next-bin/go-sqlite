@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "github.com/next-bin/go-sqlite/cc/v2"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v2"
 
 import (
-	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/v2/ir"
 )
 
 // [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf

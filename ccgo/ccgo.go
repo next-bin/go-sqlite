@@ -13,7 +13,7 @@
 // # The library
 //
 //	https://modernc.org/ccgo/v4/lib
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo"
 
 import (
 	"fmt"
@@ -22,12 +22,12 @@ import (
 	"path"
 	"runtime"
 
-	"github.com/next-bin/go-sqlite/cc"
-	"github.com/next-bin/go-sqlite/ccir"
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/irgo"
-	"github.com/next-bin/go-sqlite/virtual"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/cc"
+	"github.com/next-bin/go-sqlite/v2/ccir"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/irgo"
+	"github.com/next-bin/go-sqlite/v2/virtual"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 var (

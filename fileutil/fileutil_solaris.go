@@ -5,7 +5,7 @@
 //go:build go1.3
 // +build go1.3
 
-package fileutil // import "github.com/next-bin/go-sqlite/fileutil"
+package fileutil // import "github.com/next-bin/go-sqlite/v2/fileutil"
 
 import (
 	"io"

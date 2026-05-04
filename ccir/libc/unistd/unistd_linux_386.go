@@ -46,7 +46,7 @@ a copy of the GCC Runtime Library Exception along with this program;
 see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 <http://www.gnu.org/licenses/>.  */
 
-package unistd // import "github.com/next-bin/go-sqlite/ccir/libc/unistd"
+package unistd // import "github.com/next-bin/go-sqlite/v2/ccir/libc/unistd"
 
 const (
 	XF_LOCK                              = 1

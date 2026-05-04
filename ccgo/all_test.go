@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo"
 
 import (
 	"bytes"
@@ -23,13 +23,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/next-bin/go-sqlite/cc"
-	"github.com/next-bin/go-sqlite/ccir"
-	"github.com/next-bin/go-sqlite/internal/buffer"
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/irgo"
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/cc"
+	"github.com/next-bin/go-sqlite/v2/ccir"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/irgo"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 func caller(s string, va ...interface{}) {
@@ -83,7 +83,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/ccgo/crt"
+	"github.com/next-bin/go-sqlite/v2/ccgo/crt"
 )
 
 var argv []*int8

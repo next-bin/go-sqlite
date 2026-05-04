@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package xc // import "github.com/next-bin/go-sqlite/xc"
+package xc // import "github.com/next-bin/go-sqlite/v2/xc"
 
 import (
 	"bytes"
@@ -14,7 +14,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 func caller(s string, va ...interface{}) {

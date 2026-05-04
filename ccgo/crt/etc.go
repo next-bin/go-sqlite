@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package crt provides C-runtime services. (Work In Progress)
-package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/v2/ccgo/crt"
 
 import (
 	"fmt"
@@ -17,10 +17,10 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/ccir/libc/errno"
-	"github.com/next-bin/go-sqlite/internal/buffer"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/memory"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/memory"
 )
 
 const (

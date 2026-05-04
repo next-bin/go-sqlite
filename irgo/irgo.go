@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package irgo translates intermediate representations to Go. (Work In Progress)
-package irgo // import "github.com/next-bin/go-sqlite/irgo"
+package irgo // import "github.com/next-bin/go-sqlite/v2/irgo"
 
 import (
 	"bytes"
@@ -21,10 +21,10 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/internal/buffer"
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 const (

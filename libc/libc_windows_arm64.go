@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"golang.org/x/sys/windows"
-	"github.com/next-bin/go-sqlite/libc/errno"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 	"os"
 	"strings"
 	"unsafe"

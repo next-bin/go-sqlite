@@ -8,9 +8,9 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/libtcl8.6"
-	"github.com/next-bin/go-sqlite/libz"
+	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite/v2/libtcl8.6"
+	"github.com/next-bin/go-sqlite/v2/libz"
 )
 
 var _ reflect.Type

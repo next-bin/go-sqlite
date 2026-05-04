@@ -17,7 +17,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/gc/v3"
+	"github.com/next-bin/go-sqlite/v2/gc/v3"
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -166,7 +166,7 @@ type Sqlite3_vtab_cursor = sqlite3_vtab_cursor
 			s = strings.Replace(s, "package libsqlite_vec", "package vec", 1)
 			fmt.Fprintln(b, s)
 			s = ast.SourceFile.ImportDeclList.Source(true)
-			s = strings.Replace(s, `"github.com/next-bin/go-sqlite/libsqlite3"`, `libsqlite3 "github.com/next-bin/go-sqlite/lib"`, 1)
+			s = strings.Replace(s, `"github.com/next-bin/go-sqlite/v2/libsqlite3"`, `libsqlite3 "github.com/next-bin/go-sqlite/v2/lib"`, 1)
 			fmt.Fprint(b, s)
 			taken := map[string]struct{}{}
 			for n := ast.SourceFile.TopLevelDeclList; n != nil; n = n.List {

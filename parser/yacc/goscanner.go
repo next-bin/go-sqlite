@@ -6,12 +6,12 @@
 
 // CAUTION: Generated file (unless this is go.l) - DO NOT EDIT!
 
-package parser // import "github.com/next-bin/go-sqlite/parser/yacc"
+package parser // import "github.com/next-bin/go-sqlite/v2/parser/yacc"
 
 import (
 	"fmt"
 
-	"github.com/next-bin/go-sqlite/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
 )
 
 func (l *lexer) scanGo() lex.Char {

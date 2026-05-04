@@ -18,7 +18,7 @@
 //  [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
 //  [1]: https://www.spinellis.gr/blog/20060626/cpp.algo.pdf
 //  [2]: https://jhjourdan.mketjh.fr/pdf/jourdan2017simple.pdf
-package cc // import "github.com/next-bin/go-sqlite/cc/v5"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v5"
 
 import (
 	"fmt"
@@ -32,7 +32,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/opt"
+	"github.com/next-bin/go-sqlite/v2/opt"
 )
 
 const (

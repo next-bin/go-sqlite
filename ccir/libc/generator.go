@@ -21,10 +21,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc"
-	"github.com/next-bin/go-sqlite/ccir"
-	"github.com/next-bin/go-sqlite/internal/buffer"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/cc"
+	"github.com/next-bin/go-sqlite/v2/ccir"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 var (

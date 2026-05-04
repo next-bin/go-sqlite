@@ -449,4 +449,4 @@
 // There may exist other options not listed above. Those should be considered
 // temporary and/or unsupported and may be removed without notice.
 // Alternatively, they may eventually get promoted to "documented" options.
-package main // import "github.com/next-bin/go-sqlite/ccgo/v3"
+package main // import "github.com/next-bin/go-sqlite/v2/ccgo/v3"

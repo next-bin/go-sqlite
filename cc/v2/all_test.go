@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "github.com/next-bin/go-sqlite/cc/v2"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v2"
 
 // [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
 
@@ -23,8 +23,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/next-bin/go-sqlite/golex/lex"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 func caller(s string, va ...interface{}) {

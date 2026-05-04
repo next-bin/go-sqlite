@@ -19,7 +19,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/sortutil"
+	"github.com/next-bin/go-sqlite/v2/sortutil"
 )
 
 var (

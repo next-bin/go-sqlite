@@ -26,7 +26,7 @@
 // Referenced from elsewhere
 //
 //  [0]: https://modernc.org/cc
-package ccir // import "github.com/next-bin/go-sqlite/ccir"
+package ccir // import "github.com/next-bin/go-sqlite/v2/ccir"
 
 import (
 	"fmt"
@@ -38,13 +38,13 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc"
-	"github.com/next-bin/go-sqlite/internal/buffer"
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/virtual"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/cc"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/virtual"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 const (

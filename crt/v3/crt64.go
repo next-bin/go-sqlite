@@ -4,13 +4,13 @@
 
 // +build amd64,!windows
 
-package crt // import "github.com/next-bin/go-sqlite/crt/v3"
+package crt // import "github.com/next-bin/go-sqlite/v2/crt/v3"
 
 import (
 	"math"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/crt/v3/libc/sys/mman"
+	"github.com/next-bin/go-sqlite/v2/crt/v3/libc/sys/mman"
 )
 
 const (

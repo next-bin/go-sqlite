@@ -8,8 +8,8 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 )
 
 type mutex struct {

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package y // import "github.com/next-bin/go-sqlite/y"
+package y // import "github.com/next-bin/go-sqlite/v2/y"
 
 import (
 	"bytes"
@@ -17,9 +17,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/mathutil"
-	yparser "github.com/next-bin/go-sqlite/parser/yacc"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	yparser "github.com/next-bin/go-sqlite/v2/parser/yacc"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 const (

@@ -10,7 +10,7 @@ import (
 	"log"
 
 	_ "github.com/next-bin/go-sqlite"
-	"github.com/next-bin/go-sqlite/vtab"
+	"github.com/next-bin/go-sqlite/v2/vtab"
 )
 
 // echoModule implements a tiny read-only vtab with a single TEXT column `val`.

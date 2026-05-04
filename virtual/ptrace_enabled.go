@@ -4,6 +4,6 @@
 
 // +build virtual.ptrace
 
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 const ptrace = true

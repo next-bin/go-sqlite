@@ -75,7 +75,7 @@
 //
 //	func Uint64ToBigInt(n uint64) *big.Int
 //	func Uint64FromBigInt(n *big.Int) (uint64, bool)
-package mathutil // import "github.com/next-bin/go-sqlite/mathutil"
+package mathutil // import "github.com/next-bin/go-sqlite/v2/mathutil"
 
 import (
 	"math"

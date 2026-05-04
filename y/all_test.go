@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package y // import "github.com/next-bin/go-sqlite/y"
+package y // import "github.com/next-bin/go-sqlite/v2/y"
 
 import (
 	"bytes"
@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	yparser "github.com/next-bin/go-sqlite/parser/yacc"
+	yparser "github.com/next-bin/go-sqlite/v2/parser/yacc"
 )
 
 func init() {

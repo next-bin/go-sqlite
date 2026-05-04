@@ -60,7 +60,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package wait // import "github.com/next-bin/go-sqlite/ccir/libc/sys/wait"
+package wait // import "github.com/next-bin/go-sqlite/v2/ccir/libc/sys/wait"
 
 const (
 	X_BITS_PTHREADTYPES_H              = 1
