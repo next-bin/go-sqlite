@@ -21,11 +21,11 @@
 //
 // To install/update cc/v3 invoke:
 //
-//     $ go get [-u] modernc.org/cc/v3
+//     $ go get [-u] github.com/next-bin/go-sqlite/v2/cc/v3
 //
 // Online documentation
 //
-// See https://godoc.org/modernc.org/cc/v3.
+// See https://godoc.org/github.com/next-bin/go-sqlite/v2/cc/v3.
 //
 // Status
 //

@@ -10,7 +10,7 @@
 //
 // Referenced from elsewhere
 //
-//  [0]: https://modernc.org/ccir
+//  [0]: https://github.com/next-bin/go-sqlite/v2/ccir
 package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 import (

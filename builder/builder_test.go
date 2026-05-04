@@ -186,7 +186,7 @@ func errorf(s string, v ...any) {
 	glog.Errorf(s, v...)
 }
 
-// k={pi400 modernc.org/tcl} v="2023-09-22T16:52:46+02:00\teeb09a874245b41a6720d97279954f96f1c252ff\twindows\tarm64\tFAIL\tgo1.21.1\tv0.1.0"
+// k={pi400 github.com/next-bin/go-sqlite/v2/tcl} v="2023-09-22T16:52:46+02:00\teeb09a874245b41a6720d97279954f96f1c252ff\twindows\tarm64\tFAIL\tgo1.21.1\tv0.1.0"
 //                           0                             1                                         2        3      4     5         6
 // 	0:	2023-09-22T16:52:46+02:00
 //	1:	eeb09a874245b41a6720d97279954f96f1c252ff

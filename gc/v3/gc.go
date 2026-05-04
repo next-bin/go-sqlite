@@ -4,7 +4,7 @@
 
 //go:generate stringer -output stringer.go -linecomment -type=Kind,ScopeKind,ChanDir,TypeCheck
 
-package gc // modernc.org/gc/v3
+package gc // github.com/next-bin/go-sqlite/v2/gc/v3
 
 import (
 	"fmt"

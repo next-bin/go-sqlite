@@ -17,7 +17,7 @@
 //
 // # Referenced from elsewhere:
 //
-//  - [0] http://godoc.org/modernc.org/goyacc
+//  - [0] http://godoc.org/github.com/next-bin/go-sqlite/v2/goyacc
 //  - [1] http://people.via.ecp.fr/~stilgar/doc/compilo/parser/Generating%20LR%20Syntax%20Error%20Messages.pdf
 //  - [2] http://dinosaur.compilertools.net/yacc/
 //  - [3] http://dinosaur.compilertools.net/lex/index.html

@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'gcc --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment --package-name=main -DNDEBUG -U__ARM_FEATURE_CRC32 -DHAVE_HIDDEN -o example64.go example64.o.go -L. libz.a', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'gcc --libc github.com/next-bin/go-sqlite/v2/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment --package-name=main -DNDEBUG -U__ARM_FEATURE_CRC32 -DHAVE_HIDDEN -o example64.go example64.o.go -L. libz.a', DO NOT EDIT.
 
 //go:build darwin && arm64
 

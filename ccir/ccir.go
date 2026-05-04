@@ -16,7 +16,7 @@
 // If you can access a machine with a not yet supported os/arch and you would
 // like to contribute to porting this package, you may want to start by trying
 //
-//	$ cd $GOPATH/src/modernc.org/ccir/libc
+//	$ cd $GOPATH/src/github.com/next-bin/go-sqlite/v2/ccir/libc
 //	$ go generate
 //
 // Please fill an issue for the port and let's discuss it there.
@@ -25,7 +25,7 @@
 //
 // Referenced from elsewhere
 //
-//  [0]: https://modernc.org/cc
+//  [0]: https://github.com/next-bin/go-sqlite/v2/cc
 package ccir // import "github.com/next-bin/go-sqlite/v2/ccir"
 
 import (

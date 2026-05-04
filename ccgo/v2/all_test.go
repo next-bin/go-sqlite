@@ -42,7 +42,7 @@
 //	cc 29 ccgo 29 build 29 run 29 ok 29 (100.00%) csmith 29 (54.66904889s)
 //	CSmith0	cc 29 ccgo 29 build 29 run 29 ok 29 (100.00%) csmith 29 (1m1.787559698s)
 //	PASS
-//	ok  	modernc.org/ccgo/v2	824.188s
+//	ok  	github.com/next-bin/go-sqlite/v2/ccgo/v2	824.188s
 
 //	go version go1.11.4 linux/amd64
 //
@@ -89,7 +89,7 @@
 //	cc 33 ccgo 33 build 33 run 33 ok 33 (100.00%) csmith 33 (1m0.203026129s)
 //	CSmith0	cc 33 ccgo 33 build 33 run 33 ok 33 (100.00%) csmith 33 (1m0.203046872s)
 //	PASS
-//	ok  	modernc.org/ccgo/v2	538.804s
+//	ok  	github.com/next-bin/go-sqlite/v2/ccgo/v2	538.804s
 
 package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v2"
 

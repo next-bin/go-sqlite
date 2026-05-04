@@ -8,10 +8,10 @@
 // SQLite is an in-process implementation of a self-contained, serverless,
 // zero-configuration, transactional SQL database engine.
 //
-// # Fragile modernc.org/libc dependency
+// # Fragile github.com/next-bin/go-sqlite/v2/libc dependency
 //
 // When you import this package you should use in your go.mod file the exact
-// same version of modernc.org/libc as seen in the go.mod file of this
+// same version of github.com/next-bin/go-sqlite/v2/libc as seen in the go.mod file of this
 // repository.
 //
 // See the discussion at https://gitlab.com/cznic/sqlite/-/issues/177 for more details.
@@ -83,37 +83,37 @@
 //
 //	$ GO_GENERATE=-DSQLITE_DEBUG,-DSQLITE_MEM_DEBUG go generate
 //
-// Note: To run `go generate` you need to have modernc.org/ccgo/v3 installed.
+// Note: To run `go generate` you need to have github.com/next-bin/go-sqlite/v2/ccgo/v3 installed.
 //
 // # Hacking
 //
-// This is an example of how to use the debug logs in modernc.org/libc when hunting a bug.
+// This is an example of how to use the debug logs in github.com/next-bin/go-sqlite/v2/libc when hunting a bug.
 //
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$ git status
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$ git status
 //	On branch master
 //	Your branch is up to date with 'origin/master'.
 //
 //	nothing to commit, working tree clean
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$ git log -1
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$ git log -1
 //	commit df33b8d15107f3cc777799c0fe105f74ef499e62 (HEAD -> master, tag: v1.21.1, origin/master, origin/HEAD, wips, ok)
 //	Author: Jan Mercl <0xjnml@gmail.com>
 //	Date:   Mon Mar 27 16:18:28 2023 +0200
 //
 //	    upgrade to SQLite 3.41.2
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$ rm -f /tmp/libc.log ; go test -v -tags=libc.dmesg -run TestScalar ; ls -l /tmp/libc.log
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$ rm -f /tmp/libc.log ; go test -v -tags=libc.dmesg -run TestScalar ; ls -l /tmp/libc.log
 //	test binary compiled for linux/amd64
 //	=== RUN   TestScalar
 //	--- PASS: TestScalar (0.09s)
 //	PASS
-//	ok  modernc.org/sqlite 0.128s
+//	ok  github.com/next-bin/go-sqlite/v2 0.128s
 //	-rw-r--r-- 1 jnml jnml 76 Apr  6 11:22 /tmp/libc.log
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$ cat /tmp/libc.log
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$ cat /tmp/libc.log
 //	[10723 sqlite.test] 2023-04-06 11:22:48.288066057 +0200 CEST m=+0.000707150
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$
 //
 // The /tmp/libc.log file is created as requested. No useful messages there because none are enabled in libc. Let's try to enable Xwrite as an example.
 //
-//	0:jnml@e5-1650:~/src/modernc.org/libc$ git status
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2/libc$ git status
 //	On branch master
 //	Your branch is up to date with 'origin/master'.
 //
@@ -123,13 +123,13 @@
 //	modified:   libc_linux.go
 //
 //	no changes added to commit (use "git add" and/or "git commit -a")
-//	0:jnml@e5-1650:~/src/modernc.org/libc$ git log -1
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2/libc$ git log -1
 //	commit 1e22c18cf2de8aa86d5b19b165f354f99c70479c (HEAD -> master, tag: v1.22.3, origin/master, origin/HEAD)
 //	Author: Jan Mercl <0xjnml@gmail.com>
 //	Date:   Wed Feb 22 20:27:45 2023 +0100
 //
 //	    support sqlite 3.41 on linux targets
-//	0:jnml@e5-1650:~/src/modernc.org/libc$ git diff
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2/libc$ git diff
 //	diff --git a/libc_linux.go b/libc_linux.go
 //	index 1c2f482..ac1f08d 100644
 //	--- a/libc_linux.go
@@ -161,23 +161,23 @@
 //	        t.setErrno(err)
 //	        return -1
 //	 }
-//	0:jnml@e5-1650:~/src/modernc.org/libc$
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2/libc$
 //
 // We need to tell the Go build system to use our local, patched/debug libc:
 //
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$ go work use $(go env GOPATH)/src/modernc.org/libc
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$ go work use .
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$ go work use $(go env GOPATH)/src/github.com/next-bin/go-sqlite/v2/libc
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$ go work use .
 //
 // And run the test again:
 //
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$ rm -f /tmp/libc.log ; go test -v -tags=libc.dmesg -run TestScalar ; ls -l /tmp/libc.log
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$ rm -f /tmp/libc.log ; go test -v -tags=libc.dmesg -run TestScalar ; ls -l /tmp/libc.log
 //	test binary compiled for linux/amd64
 //	=== RUN   TestScalar
 //	--- PASS: TestScalar (0.26s)
 //	PASS
-//	ok   modernc.org/sqlite 0.285s
+//	ok   github.com/next-bin/go-sqlite/v2 0.285s
 //	-rw-r--r-- 1 jnml jnml 918 Apr  6 11:29 /tmp/libc.log
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$ cat /tmp/libc.log
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$ cat /tmp/libc.log
 //	[11910 sqlite.test] 2023-04-06 11:29:13.143589542 +0200 CEST m=+0.000689270
 //	[11910 sqlite.test] libc_linux.go:337:Xwrite: 8 0x200: 0x200
 //	[11910 sqlite.test] libc_linux.go:337:Xwrite: 8 0xc: 0xc
@@ -193,11 +193,11 @@
 //	[11910 sqlite.test] libc_linux.go:337:Xwrite: 8 0xc: 0xc
 //	[11910 sqlite.test] libc_linux.go:337:Xwrite: 7 0x1000: 0x1000
 //	[11910 sqlite.test] libc_linux.go:337:Xwrite: 7 0x1000: 0x1000
-//	0:jnml@e5-1650:~/src/modernc.org/sqlite$
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite/v2$
 //
 // # Sqlite documentation
 //
 // See https://sqlite.org/docs.html
 //
-// [The SQLite Drivers Benchmarks Game]: https://pkg.go.dev/modernc.org/sqlite-bench#readme-tl-dr-scorecard
+// [The SQLite Drivers Benchmarks Game]: https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/sqlite-bench#readme-tl-dr-scorecard
 package sqlite // import "github.com/next-bin/go-sqlite/v2"

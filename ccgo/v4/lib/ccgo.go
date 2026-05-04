@@ -73,7 +73,7 @@ type Task struct {
 	iquote                []string // -iquote
 	isystem               []string // -isystem
 	l                     []string // -l
-	libc                  string   // --libc=modernc.org/libc/v2
+	libc                  string   // --libc=github.com/next-bin/go-sqlite/v2/libc/v2
 	linkFiles             []string
 	o                     string   // -o
 	packageName           string   // --package-name
@@ -504,7 +504,7 @@ func (t *Task) main() (err error) {
 
 	switch t.goarch {
 	case "arm", "386":
-		// modernc.org/libc@v1/sys/types/Off_t is 64 bit
+		// github.com/next-bin/go-sqlite/v2/libc@v1/sys/types/Off_t is 64 bit
 		t.D = append(t.D, "-D_FILE_OFFSET_BITS=64")
 	}
 	switch t.goarch {

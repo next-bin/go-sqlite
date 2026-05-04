@@ -26,7 +26,7 @@
 // linked with a specific version of, say GNU libc. When such code asking for
 // glibc5 is run on a system with glibc6, or vice versa, it will fail.
 //
-// As a particular example, if your project imports modernc.org/sqlite you
+// As a particular example, if your project imports github.com/next-bin/go-sqlite/v2 you
 // should use the same libc version as seen in the go.mod file of the sqlite
 // package.
 //
@@ -102,7 +102,7 @@
 //	source, must acknowledge the copyright and authors of this work.
 //
 // [Linux man-pages Copyleft]: https://spdx.org/licenses/Linux-man-pages-copyleft.html
-// [ccgo]: http://modernc.org/ccgo/v4
+// [ccgo]: http://github.com/next-bin/go-sqlite/v2/ccgo/v4
 package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (

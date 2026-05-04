@@ -64,9 +64,9 @@
 //
 // To install or update ccgo and its accompanying tools
 //
-//      $ go get [-u] modernc.org/ccgo/v2/...
+//      $ go get [-u] github.com/next-bin/go-sqlite/v2/ccgo/v2/...
 //
-// Online documentation: [godoc.org/modernc.org/ccgo/v2/ccgo](http://godoc.org/modernc.org/ccgo/v2/ccgo)
+// Online documentation: [godoc.org/github.com/next-bin/go-sqlite/v2/ccgo/v2/ccgo](http://godoc.org/github.com/next-bin/go-sqlite/v2/ccgo/v2/ccgo)
 //
 // Changelog
 //

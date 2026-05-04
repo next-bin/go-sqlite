@@ -11,13 +11,13 @@
 //
 // Install and run the update subcommand:
 //
-//	~ $ go install modernc.org/gomod@latest
+//	~ $ go install github.com/next-bin/go-sqlite/v2/gomod@latest
 //	~ $ ( cd $(go env GOPATH)/src && gomod update | grep 'in modernc\.org' )
-//	in modernc.org/fileutil go get -d modernc.org/mathutil@v1.5.0
-//	in modernc.org/hash go get -d modernc.org/mathutil@v1.5.0
-//	in modernc.org/memory go get -d modernc.org/mathutil@v1.5.0
-//	in modernc.org/sortutil go get -d modernc.org/mathutil@v1.5.0
-//	in modernc.org/strutil go get -d modernc.org/mathutil@v1.5.0
+//	in github.com/next-bin/go-sqlite/v2/fileutil go get -d github.com/next-bin/go-sqlite/v2/mathutil@v1.5.0
+//	in github.com/next-bin/go-sqlite/v2/hash go get -d github.com/next-bin/go-sqlite/v2/mathutil@v1.5.0
+//	in github.com/next-bin/go-sqlite/v2/memory go get -d github.com/next-bin/go-sqlite/v2/mathutil@v1.5.0
+//	in github.com/next-bin/go-sqlite/v2/sortutil go get -d github.com/next-bin/go-sqlite/v2/mathutil@v1.5.0
+//	in github.com/next-bin/go-sqlite/v2/strutil go get -d github.com/next-bin/go-sqlite/v2/mathutil@v1.5.0
 //	~ $
 //
 // # Subcommand update
@@ -43,7 +43,7 @@
 // This used to be a tool that predated go work files. To get the old behavior of
 // this command
 //
-//	$ go install modernc.org/gomod@v1.0.0
+//	$ go install github.com/next-bin/go-sqlite/v2/gomod@v1.0.0
 //
 // But it is recommended to use the better 'go work' command.
 package main // import "github.com/next-bin/go-sqlite/v2/gomod"

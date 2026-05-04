@@ -347,7 +347,7 @@ func (c *matchCursorX) Close() error {
 }
 
 // TestDummyModuleVtab verifies that a simple vtab module implemented in Go
-// can be registered and queried through the modernc.org/sqlite driver.
+// can be registered and queried through the github.com/next-bin/go-sqlite/v2 driver.
 func TestDummyModuleVtab(t *testing.T) {
 	// Open an in-memory database using this driver.
 	db, err := sql.Open(driverName, ":memory:")

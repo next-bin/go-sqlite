@@ -882,7 +882,7 @@ func TestCSmith(t *testing.T) {
 	// Other blacklist
 	blacklist := []struct{ target, seed string }{
 		{"linux/ppc64le", "8032246412188002"}, // false positive: gcc 10.2.1 bug.
-		{"linux/ppc64le", "3088696074888013"}, // TODO https://gitlab.com/cznic/builder/-/tree/91efcffac0cf3a1618f47d117864b76435ed87a2/logs/modernc.org/ccgo/v4/lib
+		{"linux/ppc64le", "3088696074888013"}, // TODO https://gitlab.com/cznic/builder/-/tree/91efcffac0cf3a1618f47d117864b76435ed87a2/logs/github.com/next-bin/go-sqlite/v2/ccgo/v4/lib
 
 		// # command-line-arguments
 		// ./main.go:908:34: internal compiler error: 'func_1': FlagConstant op should never make it to codegen v2095 = FlagConstant <flags>[N=false,Z=false,C=false,V=false]
@@ -890,7 +890,7 @@ func TestCSmith(t *testing.T) {
 		// Please file a bug report including a short program that triggers the error.
 		// https://go.dev/issue/new
 		//
-		// https://gitlab.com/cznic/builder/-/blob/a796cec9f649d055ac3e20294c0d577b28315806/logs/modernc.org/ccgo/v4/lib/pi64
+		// https://gitlab.com/cznic/builder/-/blob/a796cec9f649d055ac3e20294c0d577b28315806/logs/github.com/next-bin/go-sqlite/v2/ccgo/v4/lib/pi64
 		//
 		// ML: https://groups.google.com/g/golang-dev/c/n0x570DGGUI
 		//

@@ -28,9 +28,9 @@
 //
 // Installation
 //
-//     $ go get modernc.org/crt
+//     $ go get github.com/next-bin/go-sqlite/v2/crt
 //
-// Documentation: http://godoc.org/modernc.org/crt
+// Documentation: http://godoc.org/github.com/next-bin/go-sqlite/v2/crt
 //
 // The vast majority of this package is a mechanical translation of the musl
 // libc project:

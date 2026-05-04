@@ -9,7 +9,7 @@
 //
 // Online documentation
 //
-// See https://godoc.org/modernc.org/cc/v4.
+// See https://godoc.org/github.com/next-bin/go-sqlite/v2/cc/v4.
 //
 // Links
 //

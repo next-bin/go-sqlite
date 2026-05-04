@@ -10,7 +10,7 @@
 // CAUTION: If this file is a Go source file (*.go), it was generated
 // automatically by '$ go tool yacc' from a *.y file - DO NOT EDIT in that case!
 //
-//   [1]: http://modernc.org/ebnf2y
+//   [1]: http://github.com/next-bin/go-sqlite/v2/ebnf2y
 
 package parser // import "github.com/next-bin/go-sqlite/v2/parser/nquads"
 

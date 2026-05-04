@@ -1139,7 +1139,7 @@ func testParserBug(t *testing.T, dir string, blacklist map[string]struct{}) {
 	t.Logf("files %v, skip %v, ok %v, fails %v", files, skip, ok, len(fails))
 }
 
-// ~/src/modernc.org/ccorpus2/
+// ~/src/github.com/next-bin/go-sqlite/v2/ccorpus2/
 
 func TestParse(t *testing.T) {
 	cfg := defaultCfg()

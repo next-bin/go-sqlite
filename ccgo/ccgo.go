@@ -8,11 +8,11 @@
 //
 // # The command
 //
-//	https://modernc.org/ccgo/v4
+//	https://github.com/next-bin/go-sqlite/v2/ccgo/v4
 //
 // # The library
 //
-//	https://modernc.org/ccgo/v4/lib
+//	https://github.com/next-bin/go-sqlite/v2/ccgo/v4/lib
 package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo"
 
 import (

@@ -315,7 +315,7 @@ func updateResults(commits []*commit) {
 
 		for _, resultLine := range strings.Split(strings.TrimSpace(string(b)), "\n") {
 			f := strings.Fields(resultLine)
-			//	0: modernc.org/sqlite-bench2
+			//	0: github.com/next-bin/go-sqlite/v2/sqlite-bench2
 			//	1: ppc64le
 			//	2: 2025-03-29T03:35:13+01:00
 			//	3: 9fdbb8410817bc1248f406fcc3c20e3eb5594a48

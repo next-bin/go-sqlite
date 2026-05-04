@@ -28,7 +28,7 @@ import (
 type name int
 
 const (
-	defaultLibs        = "modernc.org"
+	defaultLibs        = "github.com/next-bin/go-sqlite/v2"
 	libcV1             = defaultLibs + "/libc"    // Import paths are always slash separated.
 	libcV2             = defaultLibs + "/libc/v2" // Import paths are always slash separated.
 	defaultLibcPackage = libcV1

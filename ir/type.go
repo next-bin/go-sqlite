@@ -99,7 +99,7 @@ func newPointerType(t Type) Type {
 // TypeID is a numeric identifier of a type specifier as registered in a global
 // dictionary[0].
 //
-//  [0]: https://godoc.org/modernc.org/xc#pkg-variables
+//  [0]: https://godoc.org/github.com/next-bin/go-sqlite/v2/xc#pkg-variables
 type TypeID int
 
 // Equal implements Type.

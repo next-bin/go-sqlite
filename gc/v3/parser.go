@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // modernc.org/gc/v3
+package gc // github.com/next-bin/go-sqlite/v2/gc/v3
 
 import (
 	"go/constant"

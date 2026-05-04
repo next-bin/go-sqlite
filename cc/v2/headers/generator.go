@@ -145,7 +145,7 @@ func main() {
 			cc.NewStringSource("main.c", fmt.Sprintf(`
 #include "./%s/builtin.h"
 
-// Output of gcc features.c && ./a.out in modernc.org/cc/v2/headers on linux_amd64.
+// Output of gcc features.c && ./a.out in github.com/next-bin/go-sqlite/v2/cc/v2/headers on linux_amd64.
 #define _POSIX_SOURCE 1
 #define _POSIX_C_SOURCE 200809
 #define _DEFAULT_SOURCE 1

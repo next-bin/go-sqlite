@@ -20,12 +20,12 @@
 //
 // # Benchmarks
 //
-//	jnml@3900x:~/src/modernc.org/memory$ date ; go version ; go test -run @ -bench . -benchmem |& tee log
+//	jnml@3900x:~/src/github.com/next-bin/go-sqlite/v2/memory$ date ; go version ; go test -run @ -bench . -benchmem |& tee log
 //	Mon Sep 25 16:02:02 CEST 2023
 //	go version go1.21.1 linux/amd64
 //	goos: linux
 //	goarch: amd64
-//	pkg: modernc.org/memory
+//	pkg: github.com/next-bin/go-sqlite/v2/memory
 //	cpu: AMD Ryzen 9 3900X 12-Core Processor
 //	BenchmarkFree16-24             	123506772	         9.802 ns/op	       0 B/op	       0 allocs/op
 //	BenchmarkFree32-24             	73853230	        15.08 ns/op	       0 B/op	       0 allocs/op
@@ -49,8 +49,8 @@
 //	BenchmarkUintptrMalloc32-24    	241423840	         4.433 ns/op	       0 B/op	       0 allocs/op
 //	BenchmarkUintptrMalloc64-24    	256450324	         4.669 ns/op	       0 B/op	       0 allocs/op
 //	PASS
-//	ok  	modernc.org/memory	93.178s
-//	jnml@3900x:~/src/modernc.org/memory$
+//	ok  	github.com/next-bin/go-sqlite/v2/memory	93.178s
+//	jnml@3900x:~/src/github.com/next-bin/go-sqlite/v2/memory$
 package memory // import "github.com/next-bin/go-sqlite/v2/memory"
 
 import (
