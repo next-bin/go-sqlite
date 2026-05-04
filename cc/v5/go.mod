@@ -1,19 +1,19 @@
 module github.com/next-bin/go-sqlite/v2/cc/v5
 
-go 1.17
+go 1.21
 
 require (
-	github.com/dustin/go-humanize v1.0.0
-	github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58
-	github.com/pmezard/go-difflib v1.0.0
+	github.com/dustin/go-humanize v1.0.1
 	github.com/next-bin/go-sqlite/v2/ccorpus2 v1.2.0
-	github.com/next-bin/go-sqlite/v2/mathutil v1.5.0
+	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 	github.com/next-bin/go-sqlite/v2/opt v0.1.3
 	github.com/next-bin/go-sqlite/v2/strutil v1.1.3
 	github.com/next-bin/go-sqlite/v2/token v1.1.0
+	github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58
+	github.com/pmezard/go-difflib v1.0.0
 )
 
-require github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0 // indirect
+require github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 
 replace (
 	github.com/next-bin/go-sqlite/v2/ccorpus2 => ../../ccorpus2
