@@ -1230,7 +1230,7 @@ func initTasks() {
 			"github.com/next-bin/go-sqlite/v2/rec",
 			"github.com/next-bin/go-sqlite/v2/regexp",
 			"github.com/next-bin/go-sqlite/v2/sortutil",
-			"github.com/next-bin/go-sqlite",
+			"github.com/next-bin/go-sqlite/v2",
 			"github.com/next-bin/go-sqlite/v2/sqlite-bench",
 			"github.com/next-bin/go-sqlite/v2/sqlite-bench2",
 			"github.com/next-bin/go-sqlite/v2/strutil",

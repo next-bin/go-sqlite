@@ -60,7 +60,7 @@
 //	import (
 //		"database/sql"
 //
-//		_ "github.com/next-bin/go-sqlite"
+//		_ "github.com/next-bin/go-sqlite/v2"
 //	)
 //
 //	...
@@ -200,4 +200,4 @@
 // See https://sqlite.org/docs.html
 //
 // [The SQLite Drivers Benchmarks Game]: https://pkg.go.dev/modernc.org/sqlite-bench#readme-tl-dr-scorecard
-package sqlite // import "github.com/next-bin/go-sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite/v2"

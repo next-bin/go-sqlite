@@ -4,7 +4,7 @@
 
 //go:generate go run generator.go -full-path-comments
 
-package sqlite // import "github.com/next-bin/go-sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite/v2"
 
 import (
 	"context"

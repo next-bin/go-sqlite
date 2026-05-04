@@ -6,7 +6,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/next-bin/go-sqlite"
+	"github.com/next-bin/go-sqlite/v2"
 	sqlite3 "github.com/next-bin/go-sqlite/v2/lib"
 )
 

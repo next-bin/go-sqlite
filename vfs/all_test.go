@@ -13,7 +13,7 @@ import (
 	"testing"
 	"testing/iotest"
 
-	"github.com/next-bin/go-sqlite"
+	"github.com/next-bin/go-sqlite/v2"
 )
 
 func E(err error) string {
