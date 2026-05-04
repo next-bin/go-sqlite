@@ -5,9 +5,9 @@ go 1.25.0
 require (
 	github.com/google/pprof v0.0.0-20250317173921-a4b03ec1a45e
 	golang.org/x/sys v0.42.0
-	github.com/next-bin/go-sqlite/fileutil v1.4.0
-	github.com/next-bin/go-sqlite/libc v1.72.0
-	github.com/next-bin/go-sqlite/mathutil v1.7.1
+	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
+	github.com/next-bin/go-sqlite/v2/libc v1.72.0
+	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 )
 
 require (
@@ -16,7 +16,7 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/next-bin/go-sqlite/memory v1.11.0 // indirect
+	github.com/next-bin/go-sqlite/v2/memory v1.11.0 // indirect
 )
 
 retract [v1.16.0, v1.17.2] // https://gitlab.com/cznic/sqlite/-/issues/100
@@ -34,8 +34,8 @@ retract v1.34.3 // intended to resolve #199 but breaks clients, see #200, fix in
 retract v1.42.0 // Accidentaly broken, reverting to v1.41.0 state
 
 replace (
-	github.com/next-bin/go-sqlite/fileutil => ./fileutil
-	github.com/next-bin/go-sqlite/libc => ./libc
-	github.com/next-bin/go-sqlite/mathutil => ./mathutil
-	github.com/next-bin/go-sqlite/memory => ./memory
+	github.com/next-bin/go-sqlite/v2/fileutil => ./fileutil
+	github.com/next-bin/go-sqlite/v2/libc => ./libc
+	github.com/next-bin/go-sqlite/v2/mathutil => ./mathutil
+	github.com/next-bin/go-sqlite/v2/memory => ./memory
 )

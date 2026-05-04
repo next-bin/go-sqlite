@@ -1,11 +1,11 @@
-module github.com/next-bin/go-sqlite/internal
+module github.com/next-bin/go-sqlite/v2/internal
 
 go 1.24
 
 require (
 	github.com/edsrzf/mmap-go v1.2.0
-	github.com/next-bin/go-sqlite/fileutil v1.4.0
-	github.com/next-bin/go-sqlite/mathutil v1.7.1
+	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
+	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 )
 
 require (
@@ -14,6 +14,6 @@ require (
 )
 
 replace (
-	github.com/next-bin/go-sqlite/fileutil => ../fileutil
-	github.com/next-bin/go-sqlite/mathutil => ../mathutil
+	github.com/next-bin/go-sqlite/v2/fileutil => ../fileutil
+	github.com/next-bin/go-sqlite/v2/mathutil => ../mathutil
 )

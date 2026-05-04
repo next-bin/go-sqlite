@@ -1,12 +1,12 @@
-module github.com/next-bin/go-sqlite/libz
+module github.com/next-bin/go-sqlite/v2/libz
 
 go 1.25.0
 
 require (
-	github.com/next-bin/go-sqlite/cc/v4 v4.28.1
-	github.com/next-bin/go-sqlite/ccgo/v4 v4.34.0
-	github.com/next-bin/go-sqlite/fileutil v1.4.0
-	github.com/next-bin/go-sqlite/libc v1.72.1
+	github.com/next-bin/go-sqlite/v2/cc/v4 v4.28.1
+	github.com/next-bin/go-sqlite/v2/ccgo/v4 v4.34.0
+	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
+	github.com/next-bin/go-sqlite/v2/libc v1.72.1
 )
 
 require (
@@ -20,12 +20,12 @@ require (
 	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.41.0 // indirect
 	golang.org/x/tools v0.42.0 // indirect
-	github.com/next-bin/go-sqlite/gc/v2 v2.6.5 // indirect
-	github.com/next-bin/go-sqlite/gc/v3 v3.1.2 // indirect
-	github.com/next-bin/go-sqlite/mathutil v1.7.1 // indirect
-	github.com/next-bin/go-sqlite/memory v1.11.0 // indirect
-	github.com/next-bin/go-sqlite/opt v0.2.0 // indirect
-	github.com/next-bin/go-sqlite/sortutil v1.2.1 // indirect
-	github.com/next-bin/go-sqlite/strutil v1.2.1 // indirect
-	github.com/next-bin/go-sqlite/token v1.1.0 // indirect
+	github.com/next-bin/go-sqlite/v2/gc/v2 v2.6.5 // indirect
+	github.com/next-bin/go-sqlite/v2/gc/v3 v3.1.2 // indirect
+	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1 // indirect
+	github.com/next-bin/go-sqlite/v2/memory v1.11.0 // indirect
+	github.com/next-bin/go-sqlite/v2/opt v0.2.0 // indirect
+	github.com/next-bin/go-sqlite/v2/sortutil v1.2.1 // indirect
+	github.com/next-bin/go-sqlite/v2/strutil v1.2.1 // indirect
+	github.com/next-bin/go-sqlite/v2/token v1.1.0 // indirect
 )
