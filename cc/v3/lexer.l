@@ -9,7 +9,7 @@
 %yym s.mark = len(s.charBuf)
 
 %{
-package cc // import "modernc.org/cc/v3"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v3"
 
 func (s *scanner) scan() (r rune) {
 %}

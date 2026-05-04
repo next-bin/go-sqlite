@@ -3,8 +3,8 @@ http://git.nic.cz/redmine/projects/gornd/repository
 
 Packages in this repository:
 
-Install: $ go get github.com/next-bin/go-sqlite/mathutil
-Godocs:  https://pkg.go.dev/github.com/next-bin/go-sqlite/mathutil
+Install: $ go get github.com/next-bin/go-sqlite/v2/mathutil
+Godocs:  https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/mathutil
 
-Install: $ go get github.com/next-bin/go-sqlite/mathutil/mersenne
-Godocs:  https://pkg.go.dev/github.com/next-bin/go-sqlite/mathutil/mersenne
+Install: $ go get github.com/next-bin/go-sqlite/v2/mathutil/mersenne
+Godocs:  https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/mathutil/mersenne

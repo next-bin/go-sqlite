@@ -1,4 +1,4 @@
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/goabi0.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/goabi0)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/v2/goabi0.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/goabi0)
 
 ![logo_png](logo.png)
 

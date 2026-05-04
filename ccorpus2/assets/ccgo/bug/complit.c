@@ -1,6 +1,6 @@
 // +build none
 
-// ~/src/modernc.org/ccorpus2/
+// ~/src/github.com/next-bin/go-sqlite/v2/ccorpus2/
 
 // void dumpBits(void *p, int s)
 // {

@@ -13,7 +13,7 @@ all: editor
 	make todo
 	misspell *.go
 	staticcheck || true
-	go install -v modernc.org/ccgo/v2/...
+	go install -v github.com/next-bin/go-sqlite/v2/ccgo/v2/...
 	grep -c MustMalloc libc_*.go | tee -a log
 	grep -n 'FAIL\|PASS' log
 	git status

@@ -2,7 +2,7 @@ This is a goinstall-able mirror of modified code already published at:
 http://git.nic.cz/redmine/projects/golex/repository
 
 Online godoc documentation for this package (should be) available at:
-https://pkg.go.dev/github.com/next-bin/go-sqlite/lex
+https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/lex
 
 Installation:
-$ go get github.com/next-bin/go-sqlite/lex
+$ go get github.com/next-bin/go-sqlite/v2/lex

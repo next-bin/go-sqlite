@@ -19,7 +19,7 @@ esac
 echo target arch: $MUSLARCH, file: $LIBC
 git checkout ../$LIBC
 # eg. $ CRTBOOTSTRAP='-tags crt.bootstrap' ./mk.sh
-go install $CRTBOOTSTRAP -v modernc.org/ccgo/v2/ccgo
+go install $CRTBOOTSTRAP -v github.com/next-bin/go-sqlite/v2/ccgo/v2/ccgo
 rm -f log-ccgo
 make distclean
 make clean
@@ -32,6 +32,6 @@ ccgo -ffreestanding -D_XOPEN_SOURCE=700 -I./arch/$MUSLARCH -I./arch/generic \
 	-D__typeof=typeof --ccgo-import runtime/debug,sync/atomic \
 	--ccgo-pkg-name crt -o ../$LIBC ccgo.c lib/libc.a
 make distclean
-go install -v modernc.org/ccgo/v2/ccgo
+go install -v github.com/next-bin/go-sqlite/v2/ccgo/v2/ccgo
 go version
 date

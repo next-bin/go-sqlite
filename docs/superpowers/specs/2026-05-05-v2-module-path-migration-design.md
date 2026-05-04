@@ -2,17 +2,17 @@
 
 ## Goal
 
-Migrate the entire go-sqlite monorepo from `github.com/next-bin/go-sqlite/*` module paths to `github.com/next-bin/go-sqlite/v2/*`, clean up all residual `modernc.org` references, update documentation, and publish as `v2.0.0`.
+Migrate the entire go-sqlite monorepo from `github.com/next-bin/go-sqlite/*` module paths to `github.com/next-bin/go-sqlite/v2/*`, clean up all residual `github.com/next-bin/go-sqlite/v2` references, update documentation, and publish as `v2.0.0`.
 
-Success criteria: `go get github.com/next-bin/go-sqlite/v2` resolves all dependencies within the monorepo, with zero references to `modernc.org` in go.mod or import statements.
+Success criteria: `go get github.com/next-bin/go-sqlite/v2` resolves all dependencies within the monorepo, with zero references to `github.com/next-bin/go-sqlite/v2` in go.mod or import statements.
 
 ## Context
 
 - 49 Go modules in a monorepo workspace (go.work)
-- Module paths already migrated from `modernc.org/*` to `github.com/next-bin/go-sqlite/*` on HEAD
-- Latest tag `v1.50.0` (14900 commits behind HEAD) still uses `modernc.org/sqlite`
+- Module paths already migrated from `github.com/next-bin/go-sqlite/v2/*` to `github.com/next-bin/go-sqlite/*` on HEAD
+- Latest tag `v1.50.0` (14900 commits behind HEAD) still uses `github.com/next-bin/go-sqlite/v2/sqlite`
 - No sub-module tags exist; all resolution relies on `replace` directives
-- 625 .go files contain `modernc.org` in comments/strings (not imports)
+- 625 .go files contain `github.com/next-bin/go-sqlite/v2` in comments/strings (not imports)
 - ~1100+ .go files contain `github.com/next-bin/go-sqlite/*` imports
 
 ## Branch Strategy
@@ -92,35 +92,35 @@ Special case — root module self-import (no trailing slash):
 
 Must NOT double-replace: `/v2/` should not become `/v2/v2/`. Strategy: apply the sub-path replacement first, then handle bare root import.
 
-### Phase 10: modernc.org Comment Cleanup
+### Phase 10: github.com/next-bin/go-sqlite/v2 Comment Cleanup
 
-Replace all `modernc.org` references in comments and string literals:
+Replace all `github.com/next-bin/go-sqlite/v2` references in comments and string literals:
 
 ```
-modernc.org/sqlite      → github.com/next-bin/go-sqlite/v2
-modernc.org/libc        → github.com/next-bin/go-sqlite/v2/libc
-modernc.org/ccgo/v4     → github.com/next-bin/go-sqlite/v2/ccgo/v4
-modernc.org/mathutil    → github.com/next-bin/go-sqlite/v2/mathutil
-modernc.org/fileutil    → github.com/next-bin/go-sqlite/v2/fileutil
-modernc.org/memory      → github.com/next-bin/go-sqlite/v2/memory
-modernc.org/builder     → github.com/next-bin/go-sqlite/v2/builder
-modernc.org/golex       → github.com/next-bin/go-sqlite/v2/golex
-modernc.org/scanner     → github.com/next-bin/go-sqlite/v2/scanner
-modernc.org/parser      → github.com/next-bin/go-sqlite/v2/parser
-modernc.org/strutil     → github.com/next-bin/go-sqlite/v2/strutil
-modernc.org/sortutil    → github.com/next-bin/go-sqlite/v2/sortutil
-modernc.org/token       → github.com/next-bin/go-sqlite/v2/token
-modernc.org/cc/v3       → github.com/next-bin/go-sqlite/v2/cc/v3
-modernc.org/cc/v4       → github.com/next-bin/go-sqlite/v2/cc/v4
-modernc.org/ccgo/v3     → github.com/next-bin/go-sqlite/v2/ccgo/v3
-modernc.org/ccgo/v4     → github.com/next-bin/go-sqlite/v2/ccgo/v4
-modernc.org/gc/v2       → github.com/next-bin/go-sqlite/v2/gc/v2
-modernc.org/gc/v3       → github.com/next-bin/go-sqlite/v2/gc/v3
-modernc.org/ql          → github.com/next-bin/go-sqlite/v2/ql
-modernc.org/y           → github.com/next-bin/go-sqlite/v2/y
+github.com/next-bin/go-sqlite/v2/sqlite      → github.com/next-bin/go-sqlite/v2
+github.com/next-bin/go-sqlite/v2/libc        → github.com/next-bin/go-sqlite/v2/libc
+github.com/next-bin/go-sqlite/v2/ccgo/v4     → github.com/next-bin/go-sqlite/v2/ccgo/v4
+github.com/next-bin/go-sqlite/v2/mathutil    → github.com/next-bin/go-sqlite/v2/mathutil
+github.com/next-bin/go-sqlite/v2/fileutil    → github.com/next-bin/go-sqlite/v2/fileutil
+github.com/next-bin/go-sqlite/v2/memory      → github.com/next-bin/go-sqlite/v2/memory
+github.com/next-bin/go-sqlite/v2/builder     → github.com/next-bin/go-sqlite/v2/builder
+github.com/next-bin/go-sqlite/v2/golex       → github.com/next-bin/go-sqlite/v2/golex
+github.com/next-bin/go-sqlite/v2/scanner     → github.com/next-bin/go-sqlite/v2/scanner
+github.com/next-bin/go-sqlite/v2/parser      → github.com/next-bin/go-sqlite/v2/parser
+github.com/next-bin/go-sqlite/v2/strutil     → github.com/next-bin/go-sqlite/v2/strutil
+github.com/next-bin/go-sqlite/v2/sortutil    → github.com/next-bin/go-sqlite/v2/sortutil
+github.com/next-bin/go-sqlite/v2/token       → github.com/next-bin/go-sqlite/v2/token
+github.com/next-bin/go-sqlite/v2/cc/v3       → github.com/next-bin/go-sqlite/v2/cc/v3
+github.com/next-bin/go-sqlite/v2/cc/v4       → github.com/next-bin/go-sqlite/v2/cc/v4
+github.com/next-bin/go-sqlite/v2/ccgo/v3     → github.com/next-bin/go-sqlite/v2/ccgo/v3
+github.com/next-bin/go-sqlite/v2/ccgo/v4     → github.com/next-bin/go-sqlite/v2/ccgo/v4
+github.com/next-bin/go-sqlite/v2/gc/v2       → github.com/next-bin/go-sqlite/v2/gc/v2
+github.com/next-bin/go-sqlite/v2/gc/v3       → github.com/next-bin/go-sqlite/v2/gc/v3
+github.com/next-bin/go-sqlite/v2/ql          → github.com/next-bin/go-sqlite/v2/ql
+github.com/next-bin/go-sqlite/v2/y           → github.com/next-bin/go-sqlite/v2/y
 ```
 
-Generic fallback: `modernc.org/XXX` → `github.com/next-bin/go-sqlite/v2/XXX` where XXX is any identifier.
+Generic fallback: `github.com/next-bin/go-sqlite/v2/XXX` → `github.com/next-bin/go-sqlite/v2/XXX` where XXX is any identifier.
 
 ### Phase 11: README and Documentation Update
 
@@ -128,7 +128,7 @@ Update README.md to reflect:
 - New module path `github.com/next-bin/go-sqlite/v2`
 - New import example: `import _ "github.com/next-bin/go-sqlite/v2"`
 - Update installation instructions
-- Remove references to modernc.org
+- Remove references to github.com/next-bin/go-sqlite/v2
 
 ### Phase 12: Validation
 
@@ -136,7 +136,7 @@ Update README.md to reflect:
 2. `go vet ./...` — static analysis
 3. `go test ./...` — run all tests
 4. `go mod tidy` in each module — verify consistency
-5. Verify zero remaining `modernc.org` references: `grep -r "modernc.org" --include="*.go" --include="go.mod" | wc -l` == 0
+5. Verify zero remaining `github.com/next-bin/go-sqlite/v2` references: `grep -r "github.com/next-bin/go-sqlite/v2" --include="*.go" --include="go.mod" | wc -l` == 0
 6. Verify all import paths use v2: `grep -r '"github.com/next-bin/go-sqlite/[^v]' --include="*.go" | wc -l` == 0
 
 ### Phase 13: Tag
@@ -152,7 +152,7 @@ git push origin feat/v2-module-path-migration --tags
 |----------|-------|
 | go.mod files | 49 |
 | .go files with import changes | ~1100 |
-| .go files with modernc.org comment cleanup | ~625 |
+| .go files with github.com/next-bin/go-sqlite/v2 comment cleanup | ~625 |
 | go.work | 1 |
 | README / docs | ~3-5 |
 | **Total unique files** | **~1200** |

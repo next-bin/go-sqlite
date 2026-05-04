@@ -50,7 +50,7 @@ import (
 	"go/token"
 	"unicode"
 
-	"modernc.org/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
 )
 
 // Allocate Character classes anywhere in [0x80, 0xFF].

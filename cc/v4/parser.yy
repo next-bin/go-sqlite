@@ -5,7 +5,7 @@
 
 // Based on [0], 6.5-6.10. 
 
-package cc // import "modernc.org/cc/v4"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v4"
 
 %}
 

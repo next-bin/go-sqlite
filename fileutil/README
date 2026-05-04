@@ -3,14 +3,14 @@ http://git.nic.cz/redmine/projects/gofileutil/repository
 
 Packages in this repository:
 
-Install: $ go get github.com/next-bin/go-sqlite/fileutil
-Godocs: https://pkg.go.dev/github.com/next-bin/go-sqlite/fileutil
+Install: $ go get github.com/next-bin/go-sqlite/v2/fileutil
+Godocs: https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/fileutil
 
-Install: $ go get github.com/next-bin/go-sqlite/fileutil/storage
-Godocs: https://pkg.go.dev/github.com/next-bin/go-sqlite/fileutil/storage
+Install: $ go get github.com/next-bin/go-sqlite/v2/fileutil/storage
+Godocs: https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/fileutil/storage
 
-Install: $ go get github.com/next-bin/go-sqlite/fileutil/falloc
-Godocs: https://pkg.go.dev/github.com/next-bin/go-sqlite/fileutil/falloc
+Install: $ go get github.com/next-bin/go-sqlite/v2/fileutil/falloc
+Godocs: https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/fileutil/falloc
 
-Install: $ go get github.com/next-bin/go-sqlite/fileutil/hdb
-Godocs: https://pkg.go.dev/github.com/next-bin/go-sqlite/fileutil/hdb
+Install: $ go get github.com/next-bin/go-sqlite/v2/fileutil/hdb
+Godocs: https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/fileutil/hdb

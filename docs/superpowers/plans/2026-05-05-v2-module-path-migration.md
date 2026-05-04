@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Migrate all 49 Go modules from `github.com/next-bin/go-sqlite/*` to `github.com/next-bin/go-sqlite/v2/*`, clean up all `modernc.org` references, and prepare for `v2.0.0` tag.
+**Goal:** Migrate all 49 Go modules from `github.com/next-bin/go-sqlite/*` to `github.com/next-bin/go-sqlite/v2/*`, clean up all `github.com/next-bin/go-sqlite/v2` references, and prepare for `v2.0.0` tag.
 
 **Architecture:** This is a global find-and-replace across go.mod files (module/require/replace directives), .go files (import paths), comments, and documentation files. All replacements are mechanical string substitutions. Directory layout is unchanged; `replace` directives in go.mod files resolve v2 paths to the same local directories. Note: `issue198/go.mod` uses `module example.com/issue198` (not a next-bin module) — its module declaration is intentionally NOT changed, only its require/replace lines.
 
@@ -18,9 +18,9 @@ Three independent replacement passes, executed in this order to avoid double-rep
 
 **Pass 2 — .go import paths:** Replace `"github.com/next-bin/go-sqlite/` → `"github.com/next-bin/go-sqlite/v2/` (handles all sub-path imports), then `"github.com/next-bin/go-sqlite"` → `"github.com/next-bin/go-sqlite/v2"` (handles bare root import).
 
-**Pass 3 — modernc.org comments:** Replace `modernc.org/` → `github.com/next-bin/go-sqlite/v2/` in .go files, plus handle bare `"modernc.org"` string literals.
+**Pass 3 — github.com/next-bin/go-sqlite/v2 comments:** Replace `github.com/next-bin/go-sqlite/v2/` → `github.com/next-bin/go-sqlite/v2/` in .go files, plus handle bare `"github.com/next-bin/go-sqlite/v2"` string literals.
 
-**Pass 4 — non-Go files:** Replace `modernc.org/` references in .md, .sh, Makefile files.
+**Pass 4 — non-Go files:** Replace `github.com/next-bin/go-sqlite/v2/` references in .md, .sh, Makefile files.
 
 **Pass 5 — documentation:** Update README.md and other docs.
 
@@ -245,13 +245,13 @@ EOF
 
 ---
 
-### Task 6: Clean Up modernc.org References in .go Files
+### Task 6: Clean Up github.com/next-bin/go-sqlite/v2 References in .go Files
 
-625 .go files contain `modernc.org` in comments and string literals. All need updating.
+625 .go files contain `github.com/next-bin/go-sqlite/v2` in comments and string literals. All need updating.
 
-**Important: External package names.** Some `modernc.org/XXX` references point to packages that are NOT part of this monorepo (e.g., `modernc.org/b`, `modernc.org/bitz`, `modernc.org/sqlite-bench`). These appear in builder test fixtures and historical comments. We replace them all uniformly — the builder test data is fixture strings that should reflect the new domain, and external package references in comments should point to the migrated namespace.
+**Important: External package names.** Some `github.com/next-bin/go-sqlite/v2/XXX` references point to packages that are NOT part of this monorepo (e.g., `github.com/next-bin/go-sqlite/v2/b`, `github.com/next-bin/go-sqlite/v2/bitz`, `github.com/next-bin/go-sqlite/v2/sqlite-bench`). These appear in builder test fixtures and historical comments. We replace them all uniformly — the builder test data is fixture strings that should reflect the new domain, and external package references in comments should point to the migrated namespace.
 
-- [ ] **Step 1: Replace specific modernc.org paths (longest match first to avoid partial matches)**
+- [ ] **Step 1: Replace specific github.com/next-bin/go-sqlite/v2 paths (longest match first to avoid partial matches)**
 
 ```bash
 cd C:/Users/Administrator/github/go-sqlite
@@ -277,7 +277,7 @@ find . -name "*.go" -not -path "./.git/*" -exec sed -i \
 
 Note: `sqlite-bench` and `sqlite-bench2` MUST come before `sqlite` to avoid partial match producing `/v2-bench`.
 
-- [ ] **Step 2: Replace single-component modernc.org paths (longest match first within group)**
+- [ ] **Step 2: Replace single-component github.com/next-bin/go-sqlite/v2 paths (longest match first within group)**
 
 ```bash
 find . -name "*.go" -not -path "./.git/*" -exec sed -i \
@@ -322,7 +322,7 @@ find . -name "*.go" -not -path "./.git/*" -exec sed -i \
   {} +
 ```
 
-- [ ] **Step 3: Catch remaining generic `modernc.org/XXX` patterns (includes external packages like b, bitz, sqlite-bench, goyacc, etc.)**
+- [ ] **Step 3: Catch remaining generic `github.com/next-bin/go-sqlite/v2/XXX` patterns (includes external packages like b, bitz, sqlite-bench, goyacc, etc.)**
 
 ```bash
 find . -name "*.go" -not -path "./.git/*" -exec sed -i \
@@ -330,12 +330,12 @@ find . -name "*.go" -not -path "./.git/*" -exec sed -i \
   {} +
 ```
 
-This catch-all handles remaining references like `modernc.org/b`, `modernc.org/bitz`, `modernc.org/goyacc`, `modernc.org/ebnf2y`, etc. These are all replaced uniformly since they appear in builder fixture data and comments.
+This catch-all handles remaining references like `github.com/next-bin/go-sqlite/v2/b`, `github.com/next-bin/go-sqlite/v2/bitz`, `github.com/next-bin/go-sqlite/v2/goyacc`, `github.com/next-bin/go-sqlite/v2/ebnf2y`, etc. These are all replaced uniformly since they appear in builder fixture data and comments.
 
-- [ ] **Step 4: Fix bare `"modernc.org"` string literals (no trailing path)**
+- [ ] **Step 4: Fix bare `"github.com/next-bin/go-sqlite/v2"` string literals (no trailing path)**
 
-Two .go files contain the bare string `"modernc.org"` without any sub-path:
-- `ccgo/v4/lib/compile.go:31` (if present): `defaultLibs = "modernc.org"` — used as a domain prefix for constructing import paths. This MUST be updated to `"github.com/next-bin/go-sqlite/v2"` so that concatenated paths like `defaultLibs + "/libc"` produce `github.com/next-bin/go-sqlite/v2/libc`.
+Two .go files contain the bare string `"github.com/next-bin/go-sqlite/v2"` without any sub-path:
+- `ccgo/v4/lib/compile.go:31` (if present): `defaultLibs = "github.com/next-bin/go-sqlite/v2"` — used as a domain prefix for constructing import paths. This MUST be updated to `"github.com/next-bin/go-sqlite/v2"` so that concatenated paths like `defaultLibs + "/libc"` produce `github.com/next-bin/go-sqlite/v2/libc`.
 
 ```bash
 find . -name "*.go" -not -path "./.git/*" -not -path "./builder/*" -exec sed -i \
@@ -343,33 +343,33 @@ find . -name "*.go" -not -path "./.git/*" -not -path "./builder/*" -exec sed -i 
   {} +
 ```
 
-Note: We exclude `builder/` because `builder/builder_test.go:1858` has `const mtag = "modernc.org"` which is used for `filepath.Base(modDir) != mtag` comparisons. Changing it to the full v2 path would break `filepath.Base()` logic since `filepath.Base(".../next-bin/go-sqlite/v2")` returns `"v2"`, not the full module path. The builder module is a build infrastructure tool that may need separate migration.
+Note: We exclude `builder/` because `builder/builder_test.go:1858` has `const mtag = "github.com/next-bin/go-sqlite/v2"` which is used for `filepath.Base(modDir) != mtag` comparisons. Changing it to the full v2 path would break `filepath.Base()` logic since `filepath.Base(".../next-bin/go-sqlite/v2")` returns `"v2"`, not the full module path. The builder module is a build infrastructure tool that may need separate migration.
 
-- [ ] **Step 5: Check for any remaining `modernc.org` references**
+- [ ] **Step 5: Check for any remaining `github.com/next-bin/go-sqlite/v2` references**
 
 ```bash
 grep -rPn 'modernc\.org' --include="*.go" | head -20
 ```
 
-Expected: Either zero output, or only references in URLs to external sites (like `pkg.go.dev/modernc.org/...` links or historical references that should not be changed). Review any remaining hits and handle manually.
+Expected: Either zero output, or only references in URLs to external sites (like `pkg.go.dev/github.com/next-bin/go-sqlite/v2/...` links or historical references that should not be changed). Review any remaining hits and handle manually.
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add -A
 git commit -m "$(cat <<'EOF'
-refactor: replace all modernc.org references with github.com/next-bin/go-sqlite/v2
+refactor: replace all github.com/next-bin/go-sqlite/v2 references with github.com/next-bin/go-sqlite/v2
 EOF
 )"
 ```
 
 ---
 
-### Task 7: Clean Up modernc.org References in go.mod Files
+### Task 7: Clean Up github.com/next-bin/go-sqlite/v2 References in go.mod Files
 
 Verify go.mod files are clean (they should already be from Task 2-3, but check).
 
-- [ ] **Step 1: Check for any remaining modernc.org in go.mod**
+- [ ] **Step 1: Check for any remaining github.com/next-bin/go-sqlite/v2 in go.mod**
 
 ```bash
 grep -rPn 'modernc\.org' --include="go.mod"
@@ -386,13 +386,13 @@ find . -name "go.mod" -not -path "./.git/*" -exec sed -i \
 
 ---
 
-### Task 8: Clean Up modernc.org References in Non-Go Files
+### Task 8: Clean Up github.com/next-bin/go-sqlite/v2 References in Non-Go Files
 
 ~200+ references in non-.go files are not covered by previous tasks. This includes autogen `.mod` templates, documentation, build scripts, and yacc/lex files.
 
 - [ ] **Step 1: Fix autogen `.mod` template files (60 files under `*/internal/autogen/`)**
 
-These are go.mod-format templates that get copied to become `go.mod` at build time. They still have `modernc.org` module paths and will produce broken go.mod files if not updated.
+These are go.mod-format templates that get copied to become `go.mod` at build time. They still have `github.com/next-bin/go-sqlite/v2` module paths and will produce broken go.mod files if not updated.
 
 ```bash
 cd C:/Users/Administrator/github/go-sqlite
@@ -408,7 +408,7 @@ grep -rPc 'modernc\.org' --include="*.mod" | grep -v ':0$'
 ```
 Expected: No output.
 
-- [ ] **Step 2: Replace modernc.org in all other text files (broad catch-all)**
+- [ ] **Step 2: Replace github.com/next-bin/go-sqlite/v2 in all other text files (broad catch-all)**
 
 This handles: `.md`, `.sh`, `Makefile`, `.mk`, `.y`, `.yy`, `.l`, `.adoc`, bare `README` files, `HACKING`, `builder/commits`, `builder/results`, `testdata/testlog-*`, and any other text files.
 
@@ -418,16 +418,16 @@ find . -not -path "./.git/*" -not -path "./builder/logs/*" -not -name "*.go" -no
   -exec sed -i 's|modernc\.org/|github.com/next-bin/go-sqlite/v2/|g' {} +
 ```
 
-Note: We exclude `builder/logs/` because that directory contains 1183+ historical log files under `builder/logs/modernc.org/`. These are historical build logs and should be left as-is (or handled separately). The directory name `builder/logs/modernc.org/` itself would need a `mv` to rename, which is out of scope for this migration.
+Note: We exclude `builder/logs/` because that directory contains 1183+ historical log files under `builder/logs/github.com/next-bin/go-sqlite/v2/`. These are historical build logs and should be left as-is (or handled separately). The directory name `builder/logs/github.com/next-bin/go-sqlite/v2/` itself would need a `mv` to rename, which is out of scope for this migration.
 
-Then catch bare `modernc.org` without trailing slash:
+Then catch bare `github.com/next-bin/go-sqlite/v2` without trailing slash:
 ```bash
 find . -not -path "./.git/*" -not -path "./builder/logs/*" -not -name "*.go" -not -name "go.mod" -not -name "*.mod" -not -name "*.png" -not -name "*.jpg" -not -name "*.db" -not -name "*.diff" -not -name "*.patch" -type f \
   -exec grep -l 'modernc\.org' {} + \
   -exec sed -i 's|modernc\.org|github.com/next-bin/go-sqlite/v2|g' {} +
 ```
 
-- [ ] **Step 3: Verify no modernc.org references remain outside builder/logs**
+- [ ] **Step 3: Verify no github.com/next-bin/go-sqlite/v2 references remain outside builder/logs**
 
 ```bash
 grep -rPn 'modernc\.org' --exclude-dir=".git" --exclude-dir="builder/logs" --exclude="*.go" --exclude="go.mod" | grep -v '.git/' | head -20
@@ -440,7 +440,7 @@ Expected: Zero or near-zero output. Review any remaining hits.
 ```bash
 git add -A
 git commit -m "$(cat <<'EOF'
-refactor: replace modernc.org references in non-Go files and autogen templates
+refactor: replace github.com/next-bin/go-sqlite/v2 references in non-Go files and autogen templates
 EOF
 )"
 ```
@@ -464,7 +464,7 @@ go work sync
 cat go.work
 ```
 
-Expected: `use` entries unchanged (they reference directories, not module paths). No `modernc.org` anywhere.
+Expected: `use` entries unchanged (they reference directories, not module paths). No `github.com/next-bin/go-sqlite/v2` anywhere.
 
 - [ ] **Step 3: Commit if changed**
 
@@ -495,11 +495,11 @@ cat README.md
 - [ ] **Step 2: Update all references**
 
 Replace in README.md:
-- Any `modernc.org/sqlite` → `github.com/next-bin/go-sqlite/v2`
-- Any `modernc.org/XXX` → `github.com/next-bin/go-sqlite/v2/XXX`
+- Any `github.com/next-bin/go-sqlite/v2/sqlite` → `github.com/next-bin/go-sqlite/v2`
+- Any `github.com/next-bin/go-sqlite/v2/XXX` → `github.com/next-bin/go-sqlite/v2/XXX`
 - Installation instructions: `go get github.com/next-bin/go-sqlite/v2`
 - Import example: `import _ "github.com/next-bin/go-sqlite/v2"`
-- Any links to modernc.org that should point to next-bin repo
+- Any links to github.com/next-bin/go-sqlite/v2 that should point to next-bin repo
 
 Note: Task 8 may have already updated most README.md references. This task is a manual review pass to ensure correctness and readability.
 
@@ -567,7 +567,7 @@ go test -count=1 -timeout 600s ./...
 
 Expected: All tests pass. The 600s timeout accounts for the full workspace.
 
-- [ ] **Step 6: Verify zero modernc.org references remain (all file types, excluding builder/logs)**
+- [ ] **Step 6: Verify zero github.com/next-bin/go-sqlite/v2 references remain (all file types, excluding builder/logs)**
 
 ```bash
 grep -rPc 'modernc\.org' --exclude-dir=".git" --exclude-dir="builder/logs" | grep -v ':0$' | head -20
@@ -630,8 +630,8 @@ feat: migrate all module paths to github.com/next-bin/go-sqlite/v2
 Complete v2 module path migration:
 - All 49 go.mod files: module/require/replace paths updated with /v2
 - ~1200 .go files: import paths updated with /v2
-- 625 .go files: modernc.org references cleaned up
-- ~135 non-Go files: modernc.org references in docs/build files cleaned
+- 625 .go files: github.com/next-bin/go-sqlite/v2 references cleaned up
+- ~135 non-Go files: github.com/next-bin/go-sqlite/v2 references in docs/build files cleaned
 - README updated for new module path
 - Ready for v2.0.0 tag
 EOF

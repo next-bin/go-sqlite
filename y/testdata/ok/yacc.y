@@ -23,8 +23,8 @@ import (
 	"go/token"
 	"strings"
 
-	"modernc.org/scanner/yacc"
-	"modernc.org/strutil"
+	"github.com/next-bin/go-sqlite/v2/scanner/yacc"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 %}
@@ -420,7 +420,7 @@ type Prec struct {
 type Act struct{
 	token.Pos
 	Src string
-	Tok scanner.Token       // modernc.org/scanner/yacc.DLR_* or zero
+	Tok scanner.Token       // github.com/next-bin/go-sqlite/v2/scanner/yacc.DLR_* or zero
 	Tag string              // DLR_TAG_*
 	Num int                 // DLR_NUM, DLR_TAG_NUM
 }

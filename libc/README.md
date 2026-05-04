@@ -1,6 +1,6 @@
 # libc
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/libc.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/libc)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/v2/libc.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/libc)
 
 Package libc is a partial reimplementation of C libc in pure Go.
 

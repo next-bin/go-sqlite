@@ -45,8 +45,8 @@ package cc
 import (
 	"fmt"
 
-	"modernc.org/xc"
-	"modernc.org/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/xc"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
 )
 %}
 
