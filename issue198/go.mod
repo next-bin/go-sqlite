@@ -16,13 +16,13 @@ require (
 	github.com/next-bin/go-sqlite/v2/libc v1.55.3 // indirect
 	github.com/next-bin/go-sqlite/v2/mathutil v1.6.0 // indirect
 	github.com/next-bin/go-sqlite/v2/memory v1.8.0 // indirect
-	github.com/next-bin/go-sqlite v1.34.1 // indirect
+	github.com/next-bin/go-sqlite/v2 v1.34.1 // indirect
 	github.com/next-bin/go-sqlite/v2/strutil v1.2.0 // indirect
 	github.com/next-bin/go-sqlite/v2/token v1.1.0 // indirect
 )
 
 replace (
-	github.com/next-bin/go-sqlite => ..
+	github.com/next-bin/go-sqlite/v2 => ..
 	github.com/next-bin/go-sqlite/v2/gc/v3 => ../gc/v3
 	github.com/next-bin/go-sqlite/v2/libc => ../libc
 	github.com/next-bin/go-sqlite/v2/mathutil => ../mathutil

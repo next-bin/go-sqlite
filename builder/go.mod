@@ -20,12 +20,12 @@ require (
 	github.com/next-bin/go-sqlite/v2/libc v1.72.0 // indirect
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1 // indirect
 	github.com/next-bin/go-sqlite/v2/memory v1.11.0 // indirect
-	github.com/next-bin/go-sqlite v1.50.0 // indirect
+	github.com/next-bin/go-sqlite/v2 v1.50.0 // indirect
 )
 
 replace (
 	github.com/next-bin/go-sqlite/v2/gomod => ../gomod
-	github.com/next-bin/go-sqlite => ..
+	github.com/next-bin/go-sqlite/v2 => ..
 	github.com/next-bin/go-sqlite/v2/libc => ../libc
 	github.com/next-bin/go-sqlite/v2/mathutil => ../mathutil
 	github.com/next-bin/go-sqlite/v2/memory => ../memory

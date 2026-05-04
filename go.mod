@@ -1,4 +1,4 @@
-module github.com/next-bin/go-sqlite
+module github.com/next-bin/go-sqlite/v2
 
 go 1.25.0
 
