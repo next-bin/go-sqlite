@@ -4,13 +4,13 @@
 
 // +build 386 arm arm64be armbe mips mipsle ppc ppc64le s390 s390x sparc
 
-package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/v2/ccgo/crt"
 
 import (
 	"math"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/errno"
 )
 
 const (

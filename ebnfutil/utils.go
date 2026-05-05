@@ -7,7 +7,7 @@
 // Positions attached to particular ebnf package types instances are ignored in
 // most, if not all places. Positions make sense after Parse, but usually no
 // more after mutating the grammar in any way.
-package ebnfutil // import "github.com/next-bin/go-sqlite/ebnfutil"
+package ebnfutil // import "github.com/next-bin/go-sqlite/v2/ebnfutil"
 
 import (
 	"bytes"
@@ -17,8 +17,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/ebnf"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/ebnf"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 var (

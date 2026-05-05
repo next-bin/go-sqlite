@@ -3,8 +3,8 @@
 package vec
 
 import (
-	sqlite3 "github.com/next-bin/go-sqlite/lib"
-	"github.com/next-bin/go-sqlite/libc"
+	sqlite3 "github.com/next-bin/go-sqlite/v2/lib"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 func init() {

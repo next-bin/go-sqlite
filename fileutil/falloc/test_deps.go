@@ -4,12 +4,12 @@
 
 // blame: jnml, labs.nic.cz
 
-package falloc // import "github.com/next-bin/go-sqlite/fileutil/falloc"
+package falloc // import "github.com/next-bin/go-sqlite/v2/fileutil/falloc"
 
 // Pull test dependencies too.
 // Enables easy 'go test X' after 'go get X'
 import (
-	_ "github.com/next-bin/go-sqlite/fileutil"
-	_ "github.com/next-bin/go-sqlite/fileutil/storage"
-	_ "github.com/next-bin/go-sqlite/mathutil"
+	_ "github.com/next-bin/go-sqlite/v2/fileutil"
+	_ "github.com/next-bin/go-sqlite/v2/fileutil/storage"
+	_ "github.com/next-bin/go-sqlite/v2/mathutil"
 )

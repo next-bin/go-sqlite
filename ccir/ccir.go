@@ -16,7 +16,7 @@
 // If you can access a machine with a not yet supported os/arch and you would
 // like to contribute to porting this package, you may want to start by trying
 //
-//	$ cd $GOPATH/src/modernc.org/ccir/libc
+//	$ cd $GOPATH/src/github.com/next-bin/go-sqlite/v2/ccir/libc
 //	$ go generate
 //
 // Please fill an issue for the port and let's discuss it there.
@@ -25,8 +25,8 @@
 //
 // Referenced from elsewhere
 //
-//  [0]: https://modernc.org/cc
-package ccir // import "github.com/next-bin/go-sqlite/ccir"
+//  [0]: https://github.com/next-bin/go-sqlite/v2/cc
+package ccir // import "github.com/next-bin/go-sqlite/v2/ccir"
 
 import (
 	"fmt"
@@ -38,13 +38,13 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc"
-	"github.com/next-bin/go-sqlite/internal/buffer"
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/virtual"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/cc"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/virtual"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 const (

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "github.com/next-bin/go-sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite/v2"
 
 import (
 	"fmt"
@@ -10,10 +10,10 @@ import (
 	"sync"
 	"unsafe"
 
-	sqlite3 "github.com/next-bin/go-sqlite/lib"
-	"github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
-	"github.com/next-bin/go-sqlite/vtab"
+	sqlite3 "github.com/next-bin/go-sqlite/v2/lib"
+	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/vtab"
 )
 
 func init() {

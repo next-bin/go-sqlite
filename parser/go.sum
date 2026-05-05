@@ -1,8 +1,8 @@
 github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec h1:W09IVJc94icq4NjY3clb7Lk8O1qJ8BdBEF8z0ibU0rE=
-modernc.org/golex v1.1.0 h1:dmSaksHMd+y6NkBsRsCShNPRaSNCNH+abrVm5/gZic8=
-modernc.org/golex v1.1.0/go.mod h1:2pVlfqApurXhR1m0N+WDYu6Twnc4QuvO4+U8HnwoiRA=
-modernc.org/mathutil v1.6.0 h1:fRe9+AmYlaej+64JsEEhoWuAYBkOtQiMEU7n/XgfYi4=
-modernc.org/scanner v1.1.0 h1:oyyez/m1+IE/sIngiR4Ud1WHRYOv9FsFnylkXLPTMGY=
-modernc.org/scanner v1.1.0/go.mod h1:pDSh3vhQZeHFCjpcSzhDsvDIDOku2b/DdagPGXkK35o=
-modernc.org/strutil v1.2.0 h1:agBi9dp1I+eOnxXeiZawM8F4LawKv4NzGWSaLfyeNZA=
-modernc.org/strutil v1.2.0/go.mod h1:/mdcBmfOibveCTBxUl5B5l6W+TTH1FXPLHZE6bTosX0=
+github.com/next-bin/go-sqlite/v2/golex v1.1.0 h1:dmSaksHMd+y6NkBsRsCShNPRaSNCNH+abrVm5/gZic8=
+github.com/next-bin/go-sqlite/v2/golex v1.1.0/go.mod h1:2pVlfqApurXhR1m0N+WDYu6Twnc4QuvO4+U8HnwoiRA=
+github.com/next-bin/go-sqlite/v2/mathutil v1.6.0 h1:fRe9+AmYlaej+64JsEEhoWuAYBkOtQiMEU7n/XgfYi4=
+github.com/next-bin/go-sqlite/v2/scanner v1.1.0 h1:oyyez/m1+IE/sIngiR4Ud1WHRYOv9FsFnylkXLPTMGY=
+github.com/next-bin/go-sqlite/v2/scanner v1.1.0/go.mod h1:pDSh3vhQZeHFCjpcSzhDsvDIDOku2b/DdagPGXkK35o=
+github.com/next-bin/go-sqlite/v2/strutil v1.2.0 h1:agBi9dp1I+eOnxXeiZawM8F4LawKv4NzGWSaLfyeNZA=
+github.com/next-bin/go-sqlite/v2/strutil v1.2.0/go.mod h1:/mdcBmfOibveCTBxUl5B5l6W+TTH1FXPLHZE6bTosX0=

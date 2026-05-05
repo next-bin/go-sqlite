@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v3/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v3/lib"
 
 import (
 	"fmt"

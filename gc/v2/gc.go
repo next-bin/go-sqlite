@@ -4,7 +4,7 @@
 
 //go:generate stringer -output stringer.go -linecomment -type=Ch,Kind,guard
 
-package gc // import "github.com/next-bin/go-sqlite/gc/v2"
+package gc // import "github.com/next-bin/go-sqlite/v2/gc/v2"
 
 // ParseSourceFileConfig configures ParseSourceFile.
 type ParseSourceFileConfig struct {

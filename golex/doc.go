@@ -17,11 +17,11 @@
 //
 // To get the latest golex version:
 //
-//	$ go get -u modernc.org/golex
+//	$ go get -u github.com/next-bin/go-sqlite/v2/golex
 //
 // Run time library
 //
-// Please see http://godoc.org/modernc.org/golex/lex.
+// Please see http://godoc.org/github.com/next-bin/go-sqlite/v2/golex/lex.
 //
 // Changelog
 //

@@ -17,13 +17,13 @@ INSERT CODE EXAMPLES ILLUSTRATING THE PROBLEM HERE
 == How the parser works
 
 There are no comment nodes in the C AST. Instead every cc.Token has a
-Sep field: https://godoc.org/modernc.org/cc/v3#Token
+Sep field: https://godoc.org/github.com/next-bin/go-sqlite/v2/cc/v3#Token
 
 It captures, when configured to do so, all white space preceding the
 token, combined, including comments, if any. So we have all white
 space/comments information for every token in the AST. A final white
 space/comment, preceding EOF, is available as field TrailingSeperator
-in the AST: https://godoc.org/modernc.org/cc/v3#AST.
+in the AST: https://godoc.org/github.com/next-bin/go-sqlite/v2/cc/v3#AST.
 
 To get the lexically first white space/comment for any node, use
 tokenSeparator():

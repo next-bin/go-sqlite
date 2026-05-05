@@ -21,7 +21,7 @@
 //
 //	[0]: http://pubs.opengroup.org/onlinepubs/009695399/utilities/yacc.html
 //	[1]: http://www.gnu.org/software/bison/manual/html_node/Symbols.html
-package scanner // import "github.com/next-bin/go-sqlite/scanner/yacc"
+package scanner // import "github.com/next-bin/go-sqlite/v2/scanner/yacc"
 
 import (
 	"errors"

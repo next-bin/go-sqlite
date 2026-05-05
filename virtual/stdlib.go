@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 import (
 	"fmt"
 	"os"
 	"sort"
 
-	"github.com/next-bin/go-sqlite/ccir/libc/errno"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 func init() {

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
 
 import (
 	"bytes"
@@ -29,12 +29,12 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/pbnjay/memory"
 	"github.com/pmezard/go-difflib/difflib"
-	"github.com/next-bin/go-sqlite/cc/v4"
-	"github.com/next-bin/go-sqlite/ccorpus2"
-	"github.com/next-bin/go-sqlite/fileutil"
-	"github.com/next-bin/go-sqlite/gc/v2"
-	_ "github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
+	"github.com/next-bin/go-sqlite/v2/ccorpus2"
+	"github.com/next-bin/go-sqlite/v2/fileutil"
+	"github.com/next-bin/go-sqlite/v2/gc/v2"
+	_ "github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 const (
@@ -50,7 +50,7 @@ var (
 	oDebug        = flag.Bool("debug", false, "")
 	oErr1         = flag.Bool("err1", false, "first error line only")
 	oKeep         = flag.Bool("keep", false, "keep temp directories (only with -work)")
-	oLibc         = flag.String("libc", "github.com/next-bin/go-sqlite/libc", "")
+	oLibc         = flag.String("libc", "github.com/next-bin/go-sqlite/v2/libc", "")
 	oPanic        = flag.Bool("panic", false, "panic on miscompilation")
 	oShellTime    = flag.Duration("shelltimeout", 3600*time.Second, "shell() time limit")
 	oStackTrace   = flag.Bool("trcstack", false, "")
@@ -143,7 +143,7 @@ func getLatest() string {
 	a := strings.Split(string(b), "\n")
 	for _, v := range a {
 		v = strings.TrimSpace(v)
-		if strings.HasPrefix(v, "github.com/next-bin/go-sqlite/libc") {
+		if strings.HasPrefix(v, "github.com/next-bin/go-sqlite/v2/libc") {
 			a := strings.Fields(v)
 			return "@" + a[1]
 		}
@@ -882,7 +882,7 @@ func TestCSmith(t *testing.T) {
 	// Other blacklist
 	blacklist := []struct{ target, seed string }{
 		{"linux/ppc64le", "8032246412188002"}, // false positive: gcc 10.2.1 bug.
-		{"linux/ppc64le", "3088696074888013"}, // TODO https://gitlab.com/cznic/builder/-/tree/91efcffac0cf3a1618f47d117864b76435ed87a2/logs/modernc.org/ccgo/v4/lib
+		{"linux/ppc64le", "3088696074888013"}, // TODO https://gitlab.com/cznic/builder/-/tree/91efcffac0cf3a1618f47d117864b76435ed87a2/logs/github.com/next-bin/go-sqlite/v2/ccgo/v4/lib
 
 		// # command-line-arguments
 		// ./main.go:908:34: internal compiler error: 'func_1': FlagConstant op should never make it to codegen v2095 = FlagConstant <flags>[N=false,Z=false,C=false,V=false]
@@ -890,7 +890,7 @@ func TestCSmith(t *testing.T) {
 		// Please file a bug report including a short program that triggers the error.
 		// https://go.dev/issue/new
 		//
-		// https://gitlab.com/cznic/builder/-/blob/a796cec9f649d055ac3e20294c0d577b28315806/logs/modernc.org/ccgo/v4/lib/pi64
+		// https://gitlab.com/cznic/builder/-/blob/a796cec9f649d055ac3e20294c0d577b28315806/logs/github.com/next-bin/go-sqlite/v2/ccgo/v4/lib/pi64
 		//
 		// ML: https://groups.google.com/g/golang-dev/c/n0x570DGGUI
 		//

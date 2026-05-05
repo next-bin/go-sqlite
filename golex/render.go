@@ -10,8 +10,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/lex"
-	"github.com/next-bin/go-sqlite/lexer"
+	"github.com/next-bin/go-sqlite/v2/lex"
+	"github.com/next-bin/go-sqlite/v2/lexer"
 )
 
 type renderGo struct {

@@ -701,5 +701,5 @@ Linux e5-1650 4.19.0-13-amd64 #1 SMP Debian 4.19.160-2 (2020-11-28) x86_64 GNU/L
 === RUN   ExamplePrimaryExpression_stringLiteral
 --- PASS: ExamplePrimaryExpression_stringLiteral (0.00s)
 PASS
-ok  	modernc.org/cc/v3	86.522s
+ok  	github.com/next-bin/go-sqlite/v2/cc/v3	86.522s
 Thu Jan 21 16:01:58 CET 2021

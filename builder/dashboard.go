@@ -20,7 +20,7 @@ import (
 	"strings"
 	"time"
 
-	_ "github.com/next-bin/go-sqlite"
+	_ "github.com/next-bin/go-sqlite/v2"
 )
 
 const dbPath = ".exclude/results2.db"
@@ -228,7 +228,7 @@ func buildDashboardData(db *sql.DB) (*DashboardData, error) {
 		var bJSON *BuilderJSON
 
 		if bjsonPath == "" {
-			if strings.HasPrefix(proj, "github.com/next-bin/go-sqlite/") {
+			if strings.HasPrefix(proj, "github.com/next-bin/go-sqlite/v2/") {
 				data.MissingCheckouts = append(data.MissingCheckouts, proj)
 			}
 		} else {

@@ -9,7 +9,7 @@
 //go:generate golex -o lexer.go lexer.l
 
 //go:generate rm -f ast.go
-//go:generate yy -o /dev/null -position -astImport "\"fmt\"\n\n\"github.com/next-bin/go-sqlite/token"" -prettyString PrettyString -kind Case -noListKind -noPrivateHelpers -forceOptPos parser.yy
+//go:generate yy -o /dev/null -position -astImport "\"fmt\"\n\n\"github.com/next-bin/go-sqlite/v2/token"" -prettyString PrettyString -kind Case -noListKind -noPrivateHelpers -forceOptPos parser.yy
 
 //go:generate stringer -output stringer.go -linecomment -type=Kind,Linkage
 
@@ -21,11 +21,11 @@
 //
 // To install/update cc/v3 invoke:
 //
-//     $ go get [-u] modernc.org/cc/v3
+//     $ go get [-u] github.com/next-bin/go-sqlite/v2/cc/v3
 //
 // Online documentation
 //
-// See https://godoc.org/modernc.org/cc/v3.
+// See https://godoc.org/github.com/next-bin/go-sqlite/v2/cc/v3.
 //
 // Status
 //
@@ -45,7 +45,7 @@
 //  [2]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
 //  [3]: http://gallium.inria.fr/~fpottier/publis/jourdan-fpottier-2016.pdf
 //  [4]: https://gcc.gnu.org/onlinedocs/gcc-8.3.0/gcc/Attribute-Syntax.html#Attribute-Syntax
-package cc // import "github.com/next-bin/go-sqlite/cc/v3"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v3"
 
 import (
 	"fmt"
@@ -65,8 +65,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/token"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/token"
 )
 
 const (

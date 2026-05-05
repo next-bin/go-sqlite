@@ -3,12 +3,12 @@
 // license that can be found in the LICENSE file.
 
 // Package slice implements pools of pointers to slices.
-package slice // import "github.com/next-bin/go-sqlite/internal/slice"
+package slice // import "github.com/next-bin/go-sqlite/v2/internal/slice"
 
 import (
 	"sync"
 
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 var (

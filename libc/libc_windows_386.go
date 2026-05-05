@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"golang.org/x/sys/windows"
@@ -11,10 +11,10 @@ import (
 	gotime "time"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc/errno"
-	"github.com/next-bin/go-sqlite/libc/sys/stat"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
-	"github.com/next-bin/go-sqlite/libc/time"
+	"github.com/next-bin/go-sqlite/v2/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/stat"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/libc/time"
 )
 
 // int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);

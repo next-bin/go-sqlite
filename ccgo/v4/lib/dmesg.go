@@ -5,7 +5,7 @@
 //go:build ccgo.dmesg
 // +build ccgo.dmesg
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
 
 import (
 	"fmt"

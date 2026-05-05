@@ -5,6 +5,6 @@
 //go:build !linux
 // +build !linux
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v3/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v3/lib"
 
 var totalRam uint64

@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package falloc // import "github.com/next-bin/go-sqlite/fileutil/falloc"
+package falloc // import "github.com/next-bin/go-sqlite/v2/fileutil/falloc"
 
 import (
 	"bytes"
@@ -20,9 +20,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/next-bin/go-sqlite/fileutil"
-	"github.com/next-bin/go-sqlite/fileutil/storage"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/fileutil"
+	"github.com/next-bin/go-sqlite/v2/fileutil/storage"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 var (

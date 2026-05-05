@@ -52,7 +52,7 @@ editor:
 	git diff errchk.log
 
 fuzz:
-	go-fuzz-build -func FuzzLexer modernc.org/gc-priv
+	go-fuzz-build -func FuzzLexer github.com/next-bin/go-sqlite/v2/gc-priv
 	rm -rf testdata/fuzz/lexer/corpus/ testdata/fuzz/lexer/crashers/ testdata/fuzz/lexer/suppressions/
 	-go-fuzz -bin gc-fuzz.zip -workdir testdata/fuzz/lexer/
 

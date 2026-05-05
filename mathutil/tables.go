@@ -4,7 +4,7 @@
 
 // "Static" data
 
-package mathutil // import "github.com/next-bin/go-sqlite/mathutil"
+package mathutil // import "github.com/next-bin/go-sqlite/v2/mathutil"
 
 var (
 	// Set bits count in a byte

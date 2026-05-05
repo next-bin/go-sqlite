@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package ccgo implements the ccgo command.
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v4/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
 
 //TODO Tucontext_t - Tucontext_t5
 //TODO acosh u does not need to be pinned, need better escape analysis above "address taken"
@@ -25,10 +25,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc/v4"
-	"github.com/next-bin/go-sqlite/gc/v2"
-	"github.com/next-bin/go-sqlite/opt"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
+	"github.com/next-bin/go-sqlite/v2/gc/v2"
+	"github.com/next-bin/go-sqlite/v2/opt"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 var (
@@ -73,7 +73,7 @@ type Task struct {
 	iquote                []string // -iquote
 	isystem               []string // -isystem
 	l                     []string // -l
-	libc                  string   // --libc=modernc.org/libc/v2
+	libc                  string   // --libc=github.com/next-bin/go-sqlite/v2/libc/v2
 	linkFiles             []string
 	o                     string   // -o
 	packageName           string   // --package-name
@@ -504,7 +504,7 @@ func (t *Task) main() (err error) {
 
 	switch t.goarch {
 	case "arm", "386":
-		// modernc.org/libc@v1/sys/types/Off_t is 64 bit
+		// github.com/next-bin/go-sqlite/v2/libc@v1/sys/types/Off_t is 64 bit
 		t.D = append(t.D, "-D_FILE_OFFSET_BITS=64")
 	}
 	switch t.goarch {

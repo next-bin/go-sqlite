@@ -6,4 +6,4 @@
 
 2025-05-03 This package is no longer maintained. Please see [cc/v4].
 
-[cc/v4]: https://pkg.go.dev/github.com/next-bin/go-sqlite/cc/v4
+[cc/v4]: https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/cc/v4

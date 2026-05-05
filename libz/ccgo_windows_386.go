@@ -1,4 +1,4 @@
-// Code generated for windows/386 by 'generator --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -D_UCRT --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
+// Code generated for windows/386 by 'generator --libc github.com/next-bin/go-sqlite/v2/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -D_UCRT --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
 
 //go:build windows && 386
 
@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 var _ reflect.Type

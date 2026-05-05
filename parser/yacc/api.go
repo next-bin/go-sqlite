@@ -16,14 +16,14 @@
 //	string		Eg. "Start" represents rule component Start
 //
 //	*Action		Mid rule action or rule semantic action
-package parser // import "github.com/next-bin/go-sqlite/parser/yacc"
+package parser // import "github.com/next-bin/go-sqlite/v2/parser/yacc"
 
 import (
 	"bytes"
 	"fmt"
 	"go/token"
 
-	"github.com/next-bin/go-sqlite/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
 )
 
 const (

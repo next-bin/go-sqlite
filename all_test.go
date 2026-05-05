@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "github.com/next-bin/go-sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite/v2"
 
 import (
 	"bytes"
@@ -31,11 +31,11 @@ import (
 	"time"
 
 	"github.com/google/pprof/profile"
-	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
-	sqlite3 "github.com/next-bin/go-sqlite/lib"
-	"github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/vfs"
+	util "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
+	sqlite3 "github.com/next-bin/go-sqlite/v2/lib"
+	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/vfs"
 )
 
 var (

@@ -17,8 +17,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	_ "github.com/next-bin/go-sqlite"
-	"github.com/next-bin/go-sqlite/vtab"
+	_ "github.com/next-bin/go-sqlite/v2"
+	"github.com/next-bin/go-sqlite/v2/vtab"
 )
 
 // A tiny CSV loader example that:

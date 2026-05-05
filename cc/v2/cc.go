@@ -7,7 +7,7 @@
 //go:generate golex -o scanner.go scanner.l
 
 //go:generate rm -f ast.go
-//go:generate yy -kind Case -o parser.y -astImport "\"github.com/next-bin/go-sqlite/xc";\"go/token\";\"fmt\"" -prettyString PrettyString parser.yy
+//go:generate yy -kind Case -o parser.y -astImport "\"github.com/next-bin/go-sqlite/v2/xc";\"go/token\";\"fmt\"" -prettyString PrettyString parser.yy
 
 //go:generate rm -f parser.go
 //go:generate goyacc -o /dev/null -xegen xegen parser.y
@@ -22,8 +22,8 @@
 //
 // This package is no longer maintained. Please see the v3 version at
 //
-// 	https://modernc.org/cc/v3
-package cc // import "github.com/next-bin/go-sqlite/cc/v2"
+// 	https://github.com/next-bin/go-sqlite/v2/cc/v3
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v2"
 
 import (
 	"bufio"
@@ -42,9 +42,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 const (

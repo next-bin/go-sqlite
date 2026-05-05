@@ -8,11 +8,11 @@
 //
 // # The command
 //
-//	https://modernc.org/ccgo/v4
+//	https://github.com/next-bin/go-sqlite/v2/ccgo/v4
 //
 // # The library
 //
-//	https://modernc.org/ccgo/v4/lib
+//	https://github.com/next-bin/go-sqlite/v2/ccgo/v4/lib
 //
 // Usage
 //
@@ -26,7 +26,7 @@
 //
 // Libc
 //
-// To compile the resulting Go programs the package modernc.org/libc has to be
+// To compile the resulting Go programs the package github.com/next-bin/go-sqlite/v2/libc has to be
 // installed.
 //
 // Environment variables
@@ -136,7 +136,7 @@
 // -crt-import-path path
 //
 // Unless disabled by the -nostdlib option, every produced Go file imports the
-// C runtime library. Default is `modernc.org/libc`.
+// C runtime library. Default is `github.com/next-bin/go-sqlite/v2/libc`.
 //
 // Exporting C defines
 //
@@ -449,4 +449,4 @@
 // There may exist other options not listed above. Those should be considered
 // temporary and/or unsupported and may be removed without notice.
 // Alternatively, they may eventually get promoted to "documented" options.
-package main // import "github.com/next-bin/go-sqlite/ccgo/v3"
+package main // import "github.com/next-bin/go-sqlite/v2/ccgo/v3"

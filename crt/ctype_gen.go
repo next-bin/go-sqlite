@@ -14,7 +14,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/crt"
+	"github.com/next-bin/go-sqlite/v2/crt"
 )
 
 /*

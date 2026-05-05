@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "github.com/next-bin/go-sqlite/cc/v5"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v5"
 
 import (
 	"fmt"
@@ -16,8 +16,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/next-bin/go-sqlite/strutil"
-	mtoken "github.com/next-bin/go-sqlite/token"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	mtoken "github.com/next-bin/go-sqlite/v2/token"
 )
 
 var (

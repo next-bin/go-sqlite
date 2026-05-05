@@ -17,7 +17,7 @@ import (
 	"log"
 	"math"
 	"math/rand"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 // $ go run example2.go # view rand.png and rnd.png by your favorite pic viewer

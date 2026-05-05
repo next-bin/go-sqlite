@@ -12,21 +12,21 @@ require (
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/sync v0.9.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
-	github.com/next-bin/go-sqlite/gc/v3 v3.0.0-20240107210532-573471604cb6 // indirect
-	github.com/next-bin/go-sqlite/libc v1.55.3 // indirect
-	github.com/next-bin/go-sqlite/mathutil v1.6.0 // indirect
-	github.com/next-bin/go-sqlite/memory v1.8.0 // indirect
-	github.com/next-bin/go-sqlite v1.34.1 // indirect
-	github.com/next-bin/go-sqlite/strutil v1.2.0 // indirect
-	github.com/next-bin/go-sqlite/token v1.1.0 // indirect
+	github.com/next-bin/go-sqlite/v2/gc/v3 v3.0.0-20240107210532-573471604cb6 // indirect
+	github.com/next-bin/go-sqlite/v2/libc v1.55.3 // indirect
+	github.com/next-bin/go-sqlite/v2/mathutil v1.6.0 // indirect
+	github.com/next-bin/go-sqlite/v2/memory v1.8.0 // indirect
+	github.com/next-bin/go-sqlite/v2 v2.0.0 // indirect
+	github.com/next-bin/go-sqlite/v2/strutil v1.2.0 // indirect
+	github.com/next-bin/go-sqlite/v2/token v1.1.0 // indirect
 )
 
 replace (
-	github.com/next-bin/go-sqlite => ..
-	github.com/next-bin/go-sqlite/gc/v3 => ../gc/v3
-	github.com/next-bin/go-sqlite/libc => ../libc
-	github.com/next-bin/go-sqlite/mathutil => ../mathutil
-	github.com/next-bin/go-sqlite/memory => ../memory
-	github.com/next-bin/go-sqlite/strutil => ../strutil
-	github.com/next-bin/go-sqlite/token => ../token
+	github.com/next-bin/go-sqlite/v2 => ..
+	github.com/next-bin/go-sqlite/v2/gc/v3 => ../gc/v3
+	github.com/next-bin/go-sqlite/v2/libc => ../libc
+	github.com/next-bin/go-sqlite/v2/mathutil => ../mathutil
+	github.com/next-bin/go-sqlite/v2/memory => ../memory
+	github.com/next-bin/go-sqlite/v2/strutil => ../strutil
+	github.com/next-bin/go-sqlite/v2/token => ../token
 )

@@ -6,4 +6,4 @@
 //go:generate go run generate.go
 
 // Package gc is a Go compiler front end. Work in progess. API not stable.
-package gc // import "github.com/next-bin/go-sqlite/gc"
+package gc // import "github.com/next-bin/go-sqlite/v2/gc"

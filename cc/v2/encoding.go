@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "github.com/next-bin/go-sqlite/cc/v2"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v2"
 
 import (
 	"encoding/binary"
@@ -10,10 +10,10 @@ import (
 	"reflect"
 	"strconv"
 
-	"github.com/next-bin/go-sqlite/golex/lex"
-	"github.com/next-bin/go-sqlite/ir"
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/ir"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 var (

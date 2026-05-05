@@ -20,9 +20,9 @@ import (
 	"strings"
 
 	"github.com/adrg/xdg"
-	"github.com/next-bin/go-sqlite/cc/v4"
-	ccgo "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
+	ccgo "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	util "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
 )
 
 const (
@@ -166,15 +166,15 @@ func main() {
 		util.MustShell(true, nil, "sh", "-c", `
 go mod init example.com/libtcl8.6
 go get \
-	modernc.org/libc@latest \
-	modernc.org/libz@latest
+	github.com/next-bin/go-sqlite/v2/libc@latest \
+	github.com/next-bin/go-sqlite/v2/libz@latest
 `)
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", `
 go work init
 go work use \
-	$GOPATH/src/modernc.org/libc \
-	$GOPATH/src/modernc.org/libz
+	$GOPATH/src/github.com/next-bin/go-sqlite/v2/libc \
+	$GOPATH/src/github.com/next-bin/go-sqlite/v2/libz
 `)
 		}
 		switch {

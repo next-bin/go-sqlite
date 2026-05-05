@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "github.com/next-bin/go-sqlite/gc/v3"
+package gc // import "github.com/next-bin/go-sqlite/v2/gc/v3"
 
 import (
 	"bytes"
@@ -13,8 +13,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/next-bin/go-sqlite/mathutil"
-	mtoken "github.com/next-bin/go-sqlite/token"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	mtoken "github.com/next-bin/go-sqlite/v2/token"
 )
 
 var (

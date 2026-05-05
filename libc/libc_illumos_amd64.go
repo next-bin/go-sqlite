@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	// "os"
@@ -12,13 +12,13 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	// "github.com/next-bin/go-sqlite/libc/errno"
-	"github.com/next-bin/go-sqlite/libc/fcntl"
-	// "github.com/next-bin/go-sqlite/libc/signal"
-	"github.com/next-bin/go-sqlite/libc/stdio"
-	"github.com/next-bin/go-sqlite/libc/sys/types"
-	"github.com/next-bin/go-sqlite/libc/time"
-	"github.com/next-bin/go-sqlite/libc/wctype"
+	// "github.com/next-bin/go-sqlite/v2/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
+	// "github.com/next-bin/go-sqlite/v2/libc/signal"
+	"github.com/next-bin/go-sqlite/v2/libc/stdio"
+	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
+	"github.com/next-bin/go-sqlite/v2/libc/time"
+	"github.com/next-bin/go-sqlite/v2/libc/wctype"
 )
 
 var (

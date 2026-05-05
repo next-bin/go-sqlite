@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 // Format and write a message to the log if logging is enabled.

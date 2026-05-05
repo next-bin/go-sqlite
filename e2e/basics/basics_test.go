@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite"
+	_ "github.com/next-bin/go-sqlite/v2"
 )
 
 func openMem(t *testing.T) *sql.DB {

@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package opt implements command-line flag parsing.
-package opt // import "github.com/next-bin/go-sqlite/opt"
+package opt // import "github.com/next-bin/go-sqlite/v2/opt"
 
 import (
 	"fmt"

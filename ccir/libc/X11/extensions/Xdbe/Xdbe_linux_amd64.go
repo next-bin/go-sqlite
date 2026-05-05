@@ -55,7 +55,7 @@ in this Software without prior written authorization from The Open Group.
 
 */
 
-package Xdbe // import "github.com/next-bin/go-sqlite/ccir/libc/X11/extensions/Xdbe"
+package Xdbe // import "github.com/next-bin/go-sqlite/v2/ccir/libc/X11/extensions/Xdbe"
 
 const (
 	XAbove                           = 0

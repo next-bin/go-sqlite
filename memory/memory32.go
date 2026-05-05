@@ -5,6 +5,6 @@
 //go:build 386 || arm || armbe || mips || mipsle || ppc || s390 || s390x || sparc
 // +build 386 arm armbe mips mipsle ppc s390 s390x sparc
 
-package memory // import "github.com/next-bin/go-sqlite/memory"
+package memory // import "github.com/next-bin/go-sqlite/v2/memory"
 
 type rawmem [1<<31 - 2]byte

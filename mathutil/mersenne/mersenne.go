@@ -19,13 +19,13 @@ Referenced from above:
 
 	[1] http://en.wikipedia.org/wiki/Mersenne_number
 */
-package mersenne // import "github.com/next-bin/go-sqlite/mathutil/mersenne"
+package mersenne // import "github.com/next-bin/go-sqlite/v2/mathutil/mersenne"
 
 import (
 	"math"
 	"math/big"
 
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 var (

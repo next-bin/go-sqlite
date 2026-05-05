@@ -5,7 +5,7 @@
 //go:build !arm && !arm64
 // +build !arm,!arm64
 
-package fileutil // import "github.com/next-bin/go-sqlite/fileutil"
+package fileutil // import "github.com/next-bin/go-sqlite/v2/fileutil"
 
 import (
 	"io"

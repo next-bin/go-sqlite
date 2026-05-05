@@ -4,9 +4,9 @@ Package crt provides C-runtime services. Work In Progress. API unstable.
 
 Installation
 
-    $ go get github.com/next-bin/go-sqlite/crt
+    $ go get github.com/next-bin/go-sqlite/v2/crt
 
-Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/crt](https://pkg.go.dev/github.com/next-bin/go-sqlite/crt)
+Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/v2/crt](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/crt)
 
 Building with `make` requires the following Go packages
 

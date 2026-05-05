@@ -4,7 +4,7 @@ A CGo-free SQLite driver for Go's `database/sql` package, based on the SQLite 3.
 
 This is an independent fork of [modernc.org/sqlite](https://gitlab.com/cznic/sqlite), originally developed by CZ.NIC z.s.p.o. and contributors.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/v2/sqlite.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/sqlite)
 
 ## Features
 
@@ -23,12 +23,12 @@ This is an independent fork of [modernc.org/sqlite](https://gitlab.com/cznic/sql
 
 ## Quick Start
 
-    go get github.com/next-bin/go-sqlite
+    go get github.com/next-bin/go-sqlite/v2
 
 ```go
 import (
     "database/sql"
-    _ "github.com/next-bin/go-sqlite"
+    _ "github.com/next-bin/go-sqlite/v2"
 )
 
 func main() {
@@ -43,7 +43,7 @@ func main() {
 
 ## Documentation
 
-See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sqlite) for full API details.
+See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/sqlite) for full API details.
 
 ## Examples
 
@@ -66,7 +66,7 @@ The `examples/` directory contains runnable programs demonstrating all driver fe
 
 ## Virtual Tables (vtab)
 
-The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
+The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite/v2/sqlite/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
 
 - Register: `vtab.RegisterModule(db, name, module)`. Registration applies to new connections only.
 - Schema declaration: Call `ctx.Declare("CREATE TABLE <name>(<cols...>)")` within `Create` or `Connect`.

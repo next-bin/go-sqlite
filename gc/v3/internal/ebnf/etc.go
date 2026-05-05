@@ -20,8 +20,8 @@ import (
 
 	"github.com/dustin/go-humanize"
 	"golang.org/x/exp/ebnf"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 const (

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "github.com/next-bin/go-sqlite/gc"
+package gc // import "github.com/next-bin/go-sqlite/v2/gc"
 
 import (
 	"bufio"
@@ -31,13 +31,13 @@ import (
 	"testing"
 
 	"github.com/edsrzf/mmap-go"
-	"github.com/next-bin/go-sqlite/lex"
-	dfa "github.com/next-bin/go-sqlite/lexer"
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/sortutil"
-	"github.com/next-bin/go-sqlite/strutil"
-	"github.com/next-bin/go-sqlite/token"
-	"github.com/next-bin/go-sqlite/y"
+	"github.com/next-bin/go-sqlite/v2/lex"
+	dfa "github.com/next-bin/go-sqlite/v2/lexer"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/sortutil"
+	"github.com/next-bin/go-sqlite/v2/strutil"
+	"github.com/next-bin/go-sqlite/v2/token"
+	"github.com/next-bin/go-sqlite/v2/y"
 )
 
 func caller(s string, va ...interface{}) {

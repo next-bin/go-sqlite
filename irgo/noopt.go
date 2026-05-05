@@ -4,7 +4,7 @@
 
 // +build irgo.noopt
 
-package irgo // import "github.com/next-bin/go-sqlite/irgo"
+package irgo // import "github.com/next-bin/go-sqlite/v2/irgo"
 
 import (
 	"go/format"

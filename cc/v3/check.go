@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "github.com/next-bin/go-sqlite/cc/v3"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v3"
 
 import (
 	"fmt"
@@ -14,8 +14,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/mathutil"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 const longDoublePrec = 256

@@ -166,7 +166,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package netdb // import "github.com/next-bin/go-sqlite/ccir/libc/netdb"
+package netdb // import "github.com/next-bin/go-sqlite/v2/ccir/libc/netdb"
 
 const (
 	XAF_ALG                = 38

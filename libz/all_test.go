@@ -2,7 +2,7 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libz // import "github.com/next-bin/go-sqlite/libz"
+package libz // import "github.com/next-bin/go-sqlite/v2/libz"
 
 import (
 	"flag"
@@ -14,9 +14,9 @@ import (
 	"strings"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite/cc/v4"
-	_ "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
+	_ "github.com/next-bin/go-sqlite/v2/cc/v4"
+	_ "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	util "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
 )
 
 var (

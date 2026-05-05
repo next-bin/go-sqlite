@@ -16,7 +16,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 const (

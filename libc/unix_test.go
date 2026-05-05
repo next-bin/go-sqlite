@@ -5,7 +5,7 @@
 //go:build unix
 // +build unix
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"os"

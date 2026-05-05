@@ -6,8 +6,8 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/next-bin/go-sqlite"
-	sqlite3 "github.com/next-bin/go-sqlite/lib"
+	"github.com/next-bin/go-sqlite/v2"
+	sqlite3 "github.com/next-bin/go-sqlite/v2/lib"
 )
 
 func TestPreUpdateHook(t *testing.T) {

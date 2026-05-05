@@ -1,4 +1,4 @@
-make[2]: Entering directory '/home/jnml/src/modernc.org/ccgo/v3/lib'
+make[2]: Entering directory '/home/jnml/src/github.com/next-bin/go-sqlite/v2/ccgo/v3/lib'
 go version
 go version go1.15.6 linux/amd64
 uname -a
@@ -112,7 +112,7 @@ go test -v -timeout 24h
     all_test.go:1754: files 36, bytes 5,896,342, ok 36 in 3m25.330869311s
 --- PASS: TestCSmith (205.33s)
 PASS
-ok  	modernc.org/ccgo/v3/lib	509.336s
+ok  	github.com/next-bin/go-sqlite/v2/ccgo/v3/lib	509.336s
 date | tee -a testdata/testlog-linux-amd64-on-linux-amd64
 Sat Dec 26 17:11:00 CET 2020
-make[2]: Leaving directory '/home/jnml/src/modernc.org/ccgo/v3/lib'
+make[2]: Leaving directory '/home/jnml/src/github.com/next-bin/go-sqlite/v2/ccgo/v3/lib'

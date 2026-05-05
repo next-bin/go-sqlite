@@ -5,6 +5,6 @@
 //go:build !libc.strace
 // +build !libc.strace
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 const __ccgo_strace = false

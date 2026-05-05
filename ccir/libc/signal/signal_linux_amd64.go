@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package signal // import "github.com/next-bin/go-sqlite/ccir/libc/signal"
+package signal // import "github.com/next-bin/go-sqlite/v2/ccir/libc/signal"
 
 const (
 	XSIGABRT               = 6

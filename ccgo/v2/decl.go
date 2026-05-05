@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v2"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v2"
 
 import (
 	"fmt"
 	"io"
 	"path/filepath"
 
-	"github.com/next-bin/go-sqlite/cc/v2"
-	"github.com/next-bin/go-sqlite/ir"
+	"github.com/next-bin/go-sqlite/v2/cc/v2"
+	"github.com/next-bin/go-sqlite/v2/ir"
 )
 
 func (g *gen) defineQueued() {

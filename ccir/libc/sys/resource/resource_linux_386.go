@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package resource // import "github.com/next-bin/go-sqlite/ccir/libc/sys/resource"
+package resource // import "github.com/next-bin/go-sqlite/v2/ccir/libc/sys/resource"
 
 const (
 	XPRIO_MAX            = 20

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "github.com/next-bin/go-sqlite"
+package sqlite // import "github.com/next-bin/go-sqlite/v2"
 
 import (
 	"context"
@@ -10,8 +10,8 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	sqlite3 "github.com/next-bin/go-sqlite/lib"
-	"github.com/next-bin/go-sqlite/libc"
+	sqlite3 "github.com/next-bin/go-sqlite/v2/lib"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 type stmt struct {

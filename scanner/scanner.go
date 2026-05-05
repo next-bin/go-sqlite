@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package scanner provides some common scanner stuff.
-package scanner // modernc.org/scanner
+package scanner // github.com/next-bin/go-sqlite/v2/scanner
 
 import (
 	"bytes"
@@ -11,7 +11,7 @@ import (
 	"go/token"
 	"strings"
 
-	mtoken "github.com/next-bin/go-sqlite/token"
+	mtoken "github.com/next-bin/go-sqlite/v2/token"
 )
 
 var (
@@ -369,9 +369,9 @@ func (t Token) String() string {
 
 // RecScanner represents the data structures and methods common to some/many
 // lexical scanners, specialized for using scan functions produced by the
-// [modernc.org/rec compiler].
+// [github.com/next-bin/go-sqlite/v2/rec compiler].
 //
-// [modernc.org/rec compiler]: https://pkg.go.dev/modernc.org/rec
+// [github.com/next-bin/go-sqlite/v2/rec compiler]: https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/rec
 type RecScanner struct {
 	*source
 	errs ErrList
@@ -388,7 +388,7 @@ type RecScanner struct {
 // mutated by the caller afterwards.
 //
 // The 'scan' function that is compatible with functions that the
-// modernc.org/rec compiler produces. 'whiteSpace' is the id the 'scan'
+// github.com/next-bin/go-sqlite/v2/rec compiler produces. 'whiteSpace' is the id the 'scan'
 // function returns for white space. The production for white space does not
 // have to handle sequences of white space. RecScanner handles sequences of
 // white space automatically. You can still write your regular expression for

@@ -1,6 +1,6 @@
 # scanner
 
-    import path "github.com/next-bin/go-sqlite/scanner"
+    import path "github.com/next-bin/go-sqlite/v2/scanner"
 
 Package scanner provides some common scanner stuff.
 

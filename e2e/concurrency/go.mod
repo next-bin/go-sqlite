@@ -2,6 +2,6 @@ module e2e/concurrency
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite v0.0.0
+require github.com/next-bin/go-sqlite/v2 v2.0.0
 
-replace github.com/next-bin/go-sqlite => ../..
+replace github.com/next-bin/go-sqlite/v2 => ../..

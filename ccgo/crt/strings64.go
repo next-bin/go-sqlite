@@ -4,7 +4,7 @@
 
 // +build amd64 amd64p32 arm64 mips64 mips64le mips64p32 mips64p32le ppc64 sparc64
 
-package crt // import "github.com/next-bin/go-sqlite/ccgo/crt"
+package crt // import "github.com/next-bin/go-sqlite/v2/ccgo/crt"
 
 // int ffsl(long i);
 func X__builtin_ffsl(tls *TLS, i int64) int32 { return X__builtin_ffsll(tls, i) }

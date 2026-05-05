@@ -55,7 +55,7 @@ in this Software without prior written authorization from The Open Group.
 
 */
 
-package Xlib // import "github.com/next-bin/go-sqlite/ccir/libc/X11/Xlib"
+package Xlib // import "github.com/next-bin/go-sqlite/v2/ccir/libc/X11/Xlib"
 
 const (
 	XAbove                           = 0

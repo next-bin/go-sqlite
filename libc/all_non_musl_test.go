@@ -4,7 +4,7 @@
 
 //go:build !(linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm))
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"encoding/hex"
@@ -15,10 +15,10 @@ import (
 	"time"
 	"unsafe"
 
-	_ "github.com/next-bin/go-sqlite/cc/v4"
-	_ "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	_ "github.com/next-bin/go-sqlite/fileutil/ccgo"
-	ctime "github.com/next-bin/go-sqlite/libc/time"
+	_ "github.com/next-bin/go-sqlite/v2/cc/v4"
+	_ "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	_ "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
+	ctime "github.com/next-bin/go-sqlite/v2/libc/time"
 )
 
 func TestXfmod(t *testing.T) {

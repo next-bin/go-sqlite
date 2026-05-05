@@ -17,9 +17,9 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/opt"
+	"github.com/next-bin/go-sqlite/v2/opt"
 
-	"github.com/next-bin/go-sqlite/cc/v5"
+	"github.com/next-bin/go-sqlite/v2/cc/v5"
 )
 
 var (

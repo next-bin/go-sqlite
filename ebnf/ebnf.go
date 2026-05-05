@@ -20,7 +20,7 @@
 // and comments between tokens); all other production names denote
 // lexical productions.
 //
-package ebnf // import "github.com/next-bin/go-sqlite/ebnf"
+package ebnf // import "github.com/next-bin/go-sqlite/v2/ebnf"
 
 import (
 	"errors"

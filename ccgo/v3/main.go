@@ -2,16 +2,16 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package main // import "github.com/next-bin/go-sqlite/ccgo/v3"
+package main // import "github.com/next-bin/go-sqlite/v2/ccgo/v3"
 
 import (
 	"fmt"
 	"os"
 	"runtime"
 
-	ccgo3 "github.com/next-bin/go-sqlite/ccgo/v3/lib"
-	ccgo4 "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	_ "github.com/next-bin/go-sqlite/libc"
+	ccgo3 "github.com/next-bin/go-sqlite/v2/ccgo/v3/lib"
+	ccgo4 "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	_ "github.com/next-bin/go-sqlite/v2/libc"
 )
 
 //TODO parallel

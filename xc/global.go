@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package xc provides cross language compiler support/utility stuff.
-package xc // import "github.com/next-bin/go-sqlite/xc"
+package xc // import "github.com/next-bin/go-sqlite/v2/xc"
 
 import (
 	"fmt"
@@ -16,8 +16,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/next-bin/go-sqlite/golex/lex"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 var (

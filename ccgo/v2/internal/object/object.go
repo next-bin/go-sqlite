@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package object reads and writes object files.
-package object // import "github.com/next-bin/go-sqlite/ccgo/v2/internal/object"
+package object // import "github.com/next-bin/go-sqlite/v2/ccgo/v2/internal/object"
 
 import (
 	"bytes"

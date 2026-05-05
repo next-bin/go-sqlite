@@ -5,7 +5,7 @@
 package vec
 
 import (
-	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 func ___inline_isnanf(tls *libc.TLS, f float32) int32 {

@@ -15,7 +15,7 @@
 //
 // Blocked on ccgo/v3 not able yet to emit definitions separately.
 
-package crt // import "github.com/next-bin/go-sqlite/crt/v3"
+package crt // import "github.com/next-bin/go-sqlite/v2/crt/v3"
 
 import (
 	"bufio"
@@ -35,10 +35,10 @@ import (
 	"unsafe"
 
 	"github.com/mattn/go-isatty"
-	"github.com/next-bin/go-sqlite/crt/v3/libc/errno"
-	"github.com/next-bin/go-sqlite/crt/v3/libc/stdio"
-	timeh "github.com/next-bin/go-sqlite/crt/v3/libc/time"
-	"github.com/next-bin/go-sqlite/memory"
+	"github.com/next-bin/go-sqlite/v2/crt/v3/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/crt/v3/libc/stdio"
+	timeh "github.com/next-bin/go-sqlite/v2/crt/v3/libc/time"
+	"github.com/next-bin/go-sqlite/v2/memory"
 )
 
 const (

@@ -1,4 +1,4 @@
-// Code generated for windows/386 by 'i686-w64-mingw32-gcc --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -D_UCRT --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows --package-name=main -map ar=i686-w64-mingw32-ar,gcc=i686-w64-mingw32-gcc -o minigzip.exe.go minigzip.o.go libz.a', DO NOT EDIT.
+// Code generated for windows/386 by 'i686-w64-mingw32-gcc --libc github.com/next-bin/go-sqlite/v2/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -D_UCRT --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows --package-name=main -map ar=i686-w64-mingw32-ar,gcc=i686-w64-mingw32-gcc -o minigzip.exe.go minigzip.o.go libz.a', DO NOT EDIT.
 
 //go:build windows && 386
 
@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 var _ reflect.Type

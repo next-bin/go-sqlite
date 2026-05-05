@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 import (
 	"fmt"
@@ -14,8 +14,8 @@ import (
 	"unsafe"
 
 	"golang.org/x/crypto/ssh/terminal"
-	"github.com/next-bin/go-sqlite/ccir/libc/errno"
-	"github.com/next-bin/go-sqlite/ccir/libc/unistd"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/ccir/libc/unistd"
 )
 
 func init() {

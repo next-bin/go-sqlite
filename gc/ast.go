@@ -6,7 +6,7 @@
 
 //TODO s/n.sourceFile.Package.errorlist.add/n.err/g
 
-package gc // import "github.com/next-bin/go-sqlite/gc"
+package gc // import "github.com/next-bin/go-sqlite/v2/gc"
 
 import (
 	"bytes"
@@ -18,7 +18,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/next-bin/go-sqlite/token"
+	"github.com/next-bin/go-sqlite/v2/token"
 )
 
 var (

@@ -26,7 +26,7 @@ a copy of the GCC Runtime Library Exception along with this program;
 see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 <http://www.gnu.org/licenses/>.  */
 
-package stdbool // import "github.com/next-bin/go-sqlite/ccir/libc/stdbool"
+package stdbool // import "github.com/next-bin/go-sqlite/v2/ccir/libc/stdbool"
 
 const (
 	X_MSC_VER                      = 1200

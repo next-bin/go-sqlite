@@ -38,11 +38,11 @@ type Wchar_t = int32 /* <builtin>:15:24 */
 type X__int128_t = struct {
 	Flo int64
 	Fhi int64
-} /* <builtin>:21:43 */ // must match modernc.org/mathutil.Int128
+} /* <builtin>:21:43 */ // must match github.com/next-bin/go-sqlite/v2/mathutil.Int128
 type X__uint128_t = struct {
 	Flo uint64
 	Fhi uint64
-} /* <builtin>:22:44 */ // must match modernc.org/mathutil.Int128
+} /* <builtin>:22:44 */ // must match github.com/next-bin/go-sqlite/v2/mathutil.Int128
 
 type X__builtin_va_list = uintptr /* <builtin>:46:14 */
 type X__float128 = float64        /* <builtin>:47:21 */

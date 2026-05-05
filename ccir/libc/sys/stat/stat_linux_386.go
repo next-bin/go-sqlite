@@ -60,7 +60,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package stat // import "github.com/next-bin/go-sqlite/ccir/libc/sys/stat"
+package stat // import "github.com/next-bin/go-sqlite/v2/ccir/libc/sys/stat"
 
 const (
 	XS_IFBLK             = 24576

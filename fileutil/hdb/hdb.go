@@ -27,11 +27,11 @@ Conceptual analogy:
 
 	Delete	    free() the "memory" "pointed to" by handle.
 */
-package hdb // import "github.com/next-bin/go-sqlite/fileutil/hdb"
+package hdb // import "github.com/next-bin/go-sqlite/v2/fileutil/hdb"
 
 import (
-	"github.com/next-bin/go-sqlite/fileutil/falloc"
-	"github.com/next-bin/go-sqlite/fileutil/storage"
+	"github.com/next-bin/go-sqlite/v2/fileutil/falloc"
+	"github.com/next-bin/go-sqlite/v2/fileutil/storage"
 )
 
 type Store struct {

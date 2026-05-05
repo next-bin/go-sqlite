@@ -17,9 +17,9 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/cc/v4"
-	ccgo "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	util "github.com/next-bin/go-sqlite/fileutil/ccgo"
+	"github.com/next-bin/go-sqlite/v2/cc/v4"
+	ccgo "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	util "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
 )
 
 const (
@@ -150,10 +150,10 @@ func main() {
 	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@v1.72.0 modernc.org/libz@v0.17.3 modernc.org/libtcl8.6@v0.17.4")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get github.com/next-bin/go-sqlite/v2/libc@v1.72.0 github.com/next-bin/go-sqlite/v2/libz@v0.17.3 github.com/next-bin/go-sqlite/v2/libtcl8.6@v0.17.4")
 		config := []string{os.Args[0]}
 		if dev {
-			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
+			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/github.com/next-bin/go-sqlite/v2/libc $GOPATH/src/github.com/next-bin/go-sqlite/v2/libz $GOPATH/src/github.com/next-bin/go-sqlite/v2/libtcl8.6")
 			config = append(config,
 				"-absolute-paths",
 				"-keep-object-files",
@@ -314,17 +314,17 @@ func main() {
 		util.MustShell(true, nil, "sh", "-c", `
 go mod init example.com/libsqlite3
 go get \
-	modernc.org/libc@v1.72.0 \
-	modernc.org/libtcl8.6@v0.17.4 \
-	modernc.org/libz@v0.17.3 \
+	github.com/next-bin/go-sqlite/v2/libc@v1.72.0 \
+	github.com/next-bin/go-sqlite/v2/libtcl8.6@v0.17.4 \
+	github.com/next-bin/go-sqlite/v2/libz@v0.17.3 \
 `)
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", `
 go work init
 go work use \
-	$GOPATH/src/modernc.org/libc \
-	$GOPATH/src/modernc.org/libtcl8.6 \
-	$GOPATH/src/modernc.org/libz \
+	$GOPATH/src/github.com/next-bin/go-sqlite/v2/libc \
+	$GOPATH/src/github.com/next-bin/go-sqlite/v2/libtcl8.6 \
+	$GOPATH/src/github.com/next-bin/go-sqlite/v2/libz \
 `)
 		}
 		var config []string

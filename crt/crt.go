@@ -28,15 +28,15 @@
 //
 // Installation
 //
-//     $ go get modernc.org/crt
+//     $ go get github.com/next-bin/go-sqlite/v2/crt
 //
-// Documentation: http://godoc.org/modernc.org/crt
+// Documentation: http://godoc.org/github.com/next-bin/go-sqlite/v2/crt
 //
 // The vast majority of this package is a mechanical translation of the musl
 // libc project:
 //
 //	https://www.musl-libc.org/
-package crt // import "github.com/next-bin/go-sqlite/crt"
+package crt // import "github.com/next-bin/go-sqlite/v2/crt"
 
 import (
 	"fmt"
@@ -50,9 +50,9 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/internal/buffer" //TODO-
-	"github.com/next-bin/go-sqlite/memory"
-	"github.com/next-bin/go-sqlite/strutil"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer" //TODO-
+	"github.com/next-bin/go-sqlite/v2/memory"
+	"github.com/next-bin/go-sqlite/v2/strutil"
 )
 
 var (

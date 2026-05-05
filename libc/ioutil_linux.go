@@ -8,7 +8,7 @@
 
 //go:build !(linux && (amd64 || arm64 || loong64 || ppc64le || s390x || riscv64 || 386 || arm))
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"fmt"
@@ -18,8 +18,8 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	"github.com/next-bin/go-sqlite/libc/errno"
-	"github.com/next-bin/go-sqlite/libc/fcntl"
+	"github.com/next-bin/go-sqlite/v2/libc/errno"
+	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
 )
 
 // Random number state.

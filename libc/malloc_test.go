@@ -4,7 +4,7 @@
 
 //go:build linux && amd64
 
-package libc // import "github.com/next-bin/go-sqlite/libc"
+package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
 	"math"
@@ -12,7 +12,7 @@ import (
 	"testing"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 const (

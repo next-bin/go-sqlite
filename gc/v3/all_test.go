@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // modernc.org/gc/v3
+package gc // github.com/next-bin/go-sqlite/v2/gc/v3
 
 import (
 	"encoding/hex"
@@ -27,7 +27,7 @@ import (
 
 	"github.com/pmezard/go-difflib/difflib"
 	"golang.org/x/tools/go/packages"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 func stack() string { return string(debug.Stack()) }

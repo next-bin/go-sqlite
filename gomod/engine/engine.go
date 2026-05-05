@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package engine // import "github.com/next-bin/go-sqlite/gomod/engine"
+package engine // import "github.com/next-bin/go-sqlite/v2/gomod/engine"
 
 import (
 	"fmt"

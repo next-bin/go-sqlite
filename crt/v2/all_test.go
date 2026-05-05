@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package crt // import "github.com/next-bin/go-sqlite/crt/v2"
+package crt // import "github.com/next-bin/go-sqlite/v2/crt/v2"
 
 import (
 	"encoding/hex"

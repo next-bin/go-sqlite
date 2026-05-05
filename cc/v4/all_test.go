@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package cc // import "github.com/next-bin/go-sqlite/cc/v4"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v4"
 
 import (
 	"archive/tar"
@@ -30,8 +30,8 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/pbnjay/memory"
 	"github.com/pmezard/go-difflib/difflib"
-	"github.com/next-bin/go-sqlite/ccorpus2"
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/ccorpus2"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 var (
@@ -1139,7 +1139,7 @@ func testParserBug(t *testing.T, dir string, blacklist map[string]struct{}) {
 	t.Logf("files %v, skip %v, ok %v, fails %v", files, skip, ok, len(fails))
 }
 
-// ~/src/modernc.org/ccorpus2/
+// ~/src/github.com/next-bin/go-sqlite/v2/ccorpus2/
 
 func TestParse(t *testing.T) {
 	cfg := defaultCfg()

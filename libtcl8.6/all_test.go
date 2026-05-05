@@ -2,7 +2,7 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libtcl8_6 // import "github.com/next-bin/go-sqlite/libtcl8.6"
+package libtcl8_6 // import "github.com/next-bin/go-sqlite/v2/libtcl8.6"
 
 import (
 	"flag"
@@ -17,11 +17,11 @@ import (
 	"time"
 
 	_ "github.com/adrg/xdg"
-	_ "github.com/next-bin/go-sqlite/cc/v4"
-	_ "github.com/next-bin/go-sqlite/ccgo/v4/lib"
-	_ "github.com/next-bin/go-sqlite/fileutil/ccgo"
-	"github.com/next-bin/go-sqlite/libc"
-	_ "github.com/next-bin/go-sqlite/libz"
+	_ "github.com/next-bin/go-sqlite/v2/cc/v4"
+	_ "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	_ "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
+	"github.com/next-bin/go-sqlite/v2/libc"
+	_ "github.com/next-bin/go-sqlite/v2/libz"
 )
 
 var (

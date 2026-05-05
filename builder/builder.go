@@ -4,8 +4,8 @@
 
 // Package builder exports nothing, its functionality is implemented via
 //
-//	$ go get -u modernc.org/builder
-//	$ go test -timeout 24h modernc.org/builder	# or other any other appropriate timeout
+//	$ go get -u github.com/next-bin/go-sqlite/v2/builder
+//	$ go test -timeout 24h github.com/next-bin/go-sqlite/v2/builder	# or other any other appropriate timeout
 //
 // # Purpose
 //
@@ -33,7 +33,7 @@
 // The above can be invoked automatically by cron, example script is in cron.sh:
 //
 //	eval $(ssh-agent) > /dev/null
-//	cd $HOME/src/modernc.org/builder
+//	cd $HOME/src/github.com/next-bin/go-sqlite/v2/builder
 //	go get -u -t -d
 //	go test -timeout 24h
 //
@@ -62,7 +62,7 @@
 // # I want this for my domain
 //
 // To create a builder for a domain other than modernc.org, fork this
-// repository and replace all hard-coded modernc.org instances with your own
+// repository and replace all hard-coded github.com/next-bin/go-sqlite/v2 instances with your own
 // domain. Or consider contributing a parameterization mechanism. It's not
 // there as I don't need it (yet) and I'm lazy, sorry.
 package builder

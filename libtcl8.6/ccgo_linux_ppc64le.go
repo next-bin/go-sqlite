@@ -1,4 +1,4 @@
-// Code generated for linux/ppc64le by 'generator -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/debian/src/modernc.org/builder/.exclude/modernc.org/libz/include/linux/ppc64le -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl8.6.a -lz', DO NOT EDIT.
+// Code generated for linux/ppc64le by 'generator -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/debian/src/github.com/next-bin/go-sqlite/v2/builder/.exclude/github.com/next-bin/go-sqlite/v2/libz/include/linux/ppc64le -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl8.6.a -lz', DO NOT EDIT.
 
 //go:build linux && ppc64le
 
@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/libz"
+	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite/v2/libz"
 )
 
 var _ reflect.Type

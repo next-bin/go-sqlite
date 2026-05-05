@@ -2,12 +2,12 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package libsqlite3 // import "github.com/next-bin/go-sqlite/libsqlite3"
+package libsqlite3 // import "github.com/next-bin/go-sqlite/v2/libsqlite3"
 
 import (
 	"math/bits"
 
-	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/v2/libc"
 )
 
 func ___umulh(tls *libc.TLS, a, b uint64) uint64 {

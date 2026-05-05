@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package mersenne // import "github.com/next-bin/go-sqlite/mathutil/mersenne"
+package mersenne // import "github.com/next-bin/go-sqlite/v2/mathutil/mersenne"
 
 import (
 	"math"
@@ -12,7 +12,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/mathutil"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
 )
 
 func r32() *mathutil.FC32 {

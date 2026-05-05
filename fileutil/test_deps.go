@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package fileutil // import "github.com/next-bin/go-sqlite/fileutil"
+package fileutil // import "github.com/next-bin/go-sqlite/v2/fileutil"
 
 // Pull test dependencies too.
 // Enables easy 'go test X' after 'go get X'

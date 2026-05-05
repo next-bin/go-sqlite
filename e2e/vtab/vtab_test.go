@@ -8,8 +8,8 @@ import (
 	"database/sql"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/vtab"
-	_ "github.com/next-bin/go-sqlite"
+	_ "github.com/next-bin/go-sqlite/v2"
+	"github.com/next-bin/go-sqlite/v2/vtab"
 )
 
 type echoModule struct{}
@@ -31,8 +31,8 @@ type echoTable struct {
 
 func (t *echoTable) BestIndex(*vtab.IndexInfo) error { return nil }
 func (t *echoTable) Open() (vtab.Cursor, error)      { return &echoCursor{vals: t.vals, pos: -1}, nil }
-func (t *echoTable) Disconnect() error                { return nil }
-func (t *echoTable) Destroy() error                   { return nil }
+func (t *echoTable) Disconnect() error               { return nil }
+func (t *echoTable) Destroy() error                  { return nil }
 
 type echoCursor struct {
 	vals []string
@@ -150,11 +150,11 @@ func (c *filterCursor) Filter(idxNum int, idxStr string, vals []vtab.Value) erro
 	c.pos = 0
 	return nil
 }
-func (c *filterCursor) Next() error                      { c.pos++; return nil }
-func (c *filterCursor) Eof() bool                        { return c.pos >= len(c.filtered) }
-func (c *filterCursor) Column(int) (vtab.Value, error)   { return c.filtered[c.pos], nil }
-func (c *filterCursor) Rowid() (int64, error)            { return int64(c.pos), nil }
-func (c *filterCursor) Close() error                     { return nil }
+func (c *filterCursor) Next() error                    { c.pos++; return nil }
+func (c *filterCursor) Eof() bool                      { return c.pos >= len(c.filtered) }
+func (c *filterCursor) Column(int) (vtab.Value, error) { return c.filtered[c.pos], nil }
+func (c *filterCursor) Rowid() (int64, error)          { return int64(c.pos), nil }
+func (c *filterCursor) Close() error                   { return nil }
 
 func TestVTabConstraintPushdown(t *testing.T) {
 	db, err := sql.Open("sqlite", ":memory:")

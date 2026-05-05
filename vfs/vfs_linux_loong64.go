@@ -1,4 +1,4 @@
-// Code generated for linux/loong64 by 'ccgo -o vfs_linux_loong64.go c/vfs.c -Isqlite-amalgamation-3450200 -D SQLITE_OS_UNIX -extended-errors -hide=vfsAccess -hide=vfsClose -hide=vfsFileSize -hide=vfsFullPathname -hide=vfsOpen -hide=vfsRead -ignore-link-errors -import modernc.org/sqlite/lib --package-name vfs --prefix-external X', DO NOT EDIT.
+// Code generated for linux/loong64 by 'ccgo -o vfs_linux_loong64.go c/vfs.c -Isqlite-amalgamation-3450200 -D SQLITE_OS_UNIX -extended-errors -hide=vfsAccess -hide=vfsClose -hide=vfsFileSize -hide=vfsFullPathname -hide=vfsOpen -hide=vfsRead -ignore-link-errors -import github.com/next-bin/go-sqlite/v2/lib --package-name vfs --prefix-external X', DO NOT EDIT.
 
 //go:build linux && loong64
 // +build linux,loong64
@@ -9,9 +9,9 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/next-bin/go-sqlite/libc"
+	"github.com/next-bin/go-sqlite/v2/libc"
 
-	"github.com/next-bin/go-sqlite/lib"
+	"github.com/next-bin/go-sqlite/v2/lib"
 )
 
 var (

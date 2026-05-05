@@ -4,7 +4,7 @@
 
 // blame: jnml, labs.nic.cz
 
-package falloc // import "github.com/next-bin/go-sqlite/fileutil/falloc"
+package falloc // import "github.com/next-bin/go-sqlite/v2/fileutil/falloc"
 
 import "fmt"
 

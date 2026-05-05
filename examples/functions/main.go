@@ -12,8 +12,8 @@ import (
 	"log"
 	"sort"
 
-	"github.com/next-bin/go-sqlite"
-	_ "github.com/next-bin/go-sqlite"
+	"github.com/next-bin/go-sqlite/v2"
+	_ "github.com/next-bin/go-sqlite/v2"
 )
 
 func main() {

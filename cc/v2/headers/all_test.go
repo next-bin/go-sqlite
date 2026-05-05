@@ -4,7 +4,7 @@
 
 //go:generate go run generator.go
 
-package headers // import "github.com/next-bin/go-sqlite/cc/v2/headers"
+package headers // import "github.com/next-bin/go-sqlite/v2/cc/v2/headers"
 
 import (
 	"fmt"

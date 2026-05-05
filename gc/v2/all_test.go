@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package gc // import "github.com/next-bin/go-sqlite/gc/v2"
+package gc // import "github.com/next-bin/go-sqlite/v2/gc/v2"
 
 import (
 	"bytes"
@@ -29,7 +29,7 @@ import (
 
 	"github.com/dustin/go-humanize"
 	"github.com/pmezard/go-difflib/difflib"
-	"github.com/next-bin/go-sqlite/scannertest"
+	"github.com/next-bin/go-sqlite/v2/scannertest"
 )
 
 func caller(s string, va ...interface{}) {

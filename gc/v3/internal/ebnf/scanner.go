@@ -13,8 +13,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/next-bin/go-sqlite/mathutil"
-	mtoken "github.com/next-bin/go-sqlite/token"
+	"github.com/next-bin/go-sqlite/v2/mathutil"
+	mtoken "github.com/next-bin/go-sqlite/v2/token"
 )
 
 var (

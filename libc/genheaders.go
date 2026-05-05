@@ -12,8 +12,8 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/bcc/v3"
-	ccgo "github.com/next-bin/go-sqlite/ccgo/v3/lib"
+	"github.com/next-bin/go-sqlite/v2/bcc/v3"
+	ccgo "github.com/next-bin/go-sqlite/v2/ccgo/v3/lib"
 )
 
 var (

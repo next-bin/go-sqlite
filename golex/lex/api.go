@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package lex // import "github.com/next-bin/go-sqlite/golex/lex"
+package lex // import "github.com/next-bin/go-sqlite/v2/golex/lex"
 
 import (
 	"bytes"

@@ -86,7 +86,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package socket // import "github.com/next-bin/go-sqlite/ccir/libc/sys/socket"
+package socket // import "github.com/next-bin/go-sqlite/v2/ccir/libc/sys/socket"
 
 const (
 	XAF_ALG                           = 38

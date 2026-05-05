@@ -39,7 +39,7 @@
 //
 //		goto yyAction
 //	}
-package lex_test // import "github.com/next-bin/go-sqlite/golex/lex"
+package lex_test // import "github.com/next-bin/go-sqlite/v2/golex/lex"
 
 import (
 	"bytes"
@@ -47,7 +47,7 @@ import (
 	"go/token"
 	"unicode"
 
-	"github.com/next-bin/go-sqlite/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
 )
 
 // Allocate Character classes anywhere in [0x80, 0xFF].

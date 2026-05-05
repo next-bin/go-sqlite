@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ir // import "github.com/next-bin/go-sqlite/ir"
+package ir // import "github.com/next-bin/go-sqlite/v2/ir"
 
 import (
 	"fmt"
 	"go/token"
 
-	"github.com/next-bin/go-sqlite/internal/buffer"
+	"github.com/next-bin/go-sqlite/v2/internal/buffer"
 )
 
 const opw = 16

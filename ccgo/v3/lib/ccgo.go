@@ -5,7 +5,7 @@
 //go:generate stringer -output stringer.go -type=exprMode,opKind
 
 // Package ccgo implements the ccgo command.
-package ccgo // import "github.com/next-bin/go-sqlite/ccgo/v3/lib"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v3/lib"
 
 import (
 	"bufio"
@@ -32,9 +32,9 @@ import (
 
 	"github.com/kballard/go-shellquote"
 	"golang.org/x/tools/go/packages"
-	"github.com/next-bin/go-sqlite/cc/v3"
-	"github.com/next-bin/go-sqlite/libc"
-	"github.com/next-bin/go-sqlite/opt"
+	"github.com/next-bin/go-sqlite/v2/cc/v3"
+	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite/v2/opt"
 )
 
 const (
@@ -158,8 +158,8 @@ typedef __WCHAR_TYPE__ wchar_t;
 #endif
 
 #ifdef __SIZEOF_INT128__
-typedef struct { __INT64_TYPE__ lo, hi; } __int128_t;   // must match modernc.org/mathutil.Int128
-typedef struct { __UINT64_TYPE__ lo, hi; } __uint128_t; // must match modernc.org/mathutil.Int128
+typedef struct { __INT64_TYPE__ lo, hi; } __int128_t;   // must match github.com/next-bin/go-sqlite/v2/mathutil.Int128
+typedef struct { __UINT64_TYPE__ lo, hi; } __uint128_t; // must match github.com/next-bin/go-sqlite/v2/mathutil.Int128
 #endif;
 
 #define _FILE_OFFSET_BITS 64
@@ -287,7 +287,7 @@ int (*__darwin_check_fd_set_overflow)(int, void *, int);
 #endif
 
 `
-	defaultCrt = "github.com/next-bin/go-sqlite/libc"
+	defaultCrt = "github.com/next-bin/go-sqlite/v2/libc"
 )
 
 func origin(skip int) string {

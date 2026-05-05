@@ -2,7 +2,7 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccorpus2 // import "github.com/next-bin/go-sqlite/ccorpus2"
+package ccorpus2 // import "github.com/next-bin/go-sqlite/v2/ccorpus2"
 
 import (
 	"flag"

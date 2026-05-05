@@ -4,7 +4,7 @@
 
 // +build gofuzz
 
-package gc // import "github.com/next-bin/go-sqlite/gc"
+package gc // import "github.com/next-bin/go-sqlite/v2/gc"
 
 import (
 	"bytes"
@@ -13,7 +13,7 @@ import (
 	gotoken "go/token"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/token"
+	"github.com/next-bin/go-sqlite/v2/token"
 )
 
 var (

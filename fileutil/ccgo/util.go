@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package ccgo collects utilities often used while generating code with ccgo.
-package ccgo // import "github.com/next-bin/go-sqlite/fileutil/ccgo"
+package ccgo // import "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
 
 import (
 	"archive/tar"

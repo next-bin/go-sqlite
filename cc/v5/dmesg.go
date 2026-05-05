@@ -5,7 +5,7 @@
 //go:build cc.dmesg && !windows
 // +build cc.dmesg,!windows
 
-package cc // import "github.com/next-bin/go-sqlite/cc/v5"
+package cc // import "github.com/next-bin/go-sqlite/v2/cc/v5"
 
 import (
 	"fmt"

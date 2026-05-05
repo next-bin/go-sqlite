@@ -13,7 +13,7 @@ package cc
 import (
 	"fmt"
 
-	"github.com/next-bin/go-sqlite/golex/lex"
+	"github.com/next-bin/go-sqlite/v2/golex/lex"
 )
 
 const (

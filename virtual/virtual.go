@@ -10,14 +10,14 @@
 //
 // Referenced from elsewhere
 //
-//  [0]: https://modernc.org/ccir
-package virtual // import "github.com/next-bin/go-sqlite/virtual"
+//  [0]: https://github.com/next-bin/go-sqlite/v2/ccir
+package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"
 
 import (
 	"fmt"
 	"io"
 
-	"github.com/next-bin/go-sqlite/xc"
+	"github.com/next-bin/go-sqlite/v2/xc"
 )
 
 var (
