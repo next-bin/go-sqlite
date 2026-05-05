@@ -5,7 +5,7 @@
 [![License: BSD](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)](https://go.dev/)
 
-[English](README.md) | 中文
+[English](README.md) | 简体中文
 
 一个无 CGo 依赖的 SQLite 驱动，适配 Go 的 `database/sql` 接口，基于 SQLite 3.53.0 合并版本。
 

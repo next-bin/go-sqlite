@@ -41,6 +41,7 @@ use (
     ./sortutil
     ./strutil
     ./token
+    ./uint128
     ./vendor_libs
     ./virtual
     ./xc
