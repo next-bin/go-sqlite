@@ -50,4 +50,17 @@ use (
 	./libz
 	./parser
 	./scanner
+	./e2e/hooks
+	./e2e/types
+	./e2e/concurrency
+	./e2e/serialization
+	./e2e/context
+	./e2e/basics
+	./e2e/transactions
+	./e2e/functions
+	./e2e/collation
+	./e2e/backup
+	./e2e/vtab
+	./e2e/columninfo
+	./e2e/integration
 )
