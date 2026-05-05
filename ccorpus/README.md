@@ -5,12 +5,10 @@ Package ccorpus provides a test corpus of C code.
 
 ## Installation
 
-    $ go get modernc.org/ccorpus
+    $ go get github.com/next-bin/go-sqlite/ccorpus
 
 ## Documentation
 
-[godoc.org/modernc.org/ccorpus](http://godoc.org/modernc.org/ccorpus)
+[pkg.go.dev/github.com/next-bin/go-sqlite/ccorpus](https://pkg.go.dev/github.com/next-bin/go-sqlite/ccorpus)
 
-## Builders
-
-[modern-c.appspot.com/-/builder/?importpath=modernc.org%2fccorpus](https://modern-c.appspot.com/-/builder/?importpath=modernc.org%2fccorpus)
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

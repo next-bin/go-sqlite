@@ -4,9 +4,9 @@ Package crt provides C-runtime services. Work In Progress. API unstable.
 
 Installation
 
-    $ go get modernc.org/crt
+    $ go get github.com/next-bin/go-sqlite/crt
 
-Documentation: [godoc.org/modernc.org/crt](http://godoc.org/modernc.org/crt)
+Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/crt](https://pkg.go.dev/github.com/next-bin/go-sqlite/crt)
 
 Building with `make` requires the following Go packages
 
@@ -16,3 +16,5 @@ Building with `make` requires the following Go packages
 * honnef.co/go/tools/cmd/unused
 * honnef.co/go/tools/cmd/gosimple
 * github.com/client9/misspell/cmd/misspell
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

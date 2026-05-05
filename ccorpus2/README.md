@@ -4,12 +4,10 @@ Continuation of ccorpus but using embed.FS
 
 ## Installation
 
-    $ go install modernc.org/ccorpus
+    $ go install github.com/next-bin/go-sqlite/ccorpus
 
 ## Documentation
 
-[godoc.org/modernc.org/ccorpus2](http://godoc.org/modernc.org/ccorpus2)
+[pkg.go.dev/github.com/next-bin/go-sqlite/ccorpus2](https://pkg.go.dev/github.com/next-bin/go-sqlite/ccorpus2)
 
-## Builders
-
-[modern-c.appspot.com/-/builder/?importpath=modernc.org%2fccorpus2](https://modern-c.appspot.com/-/builder/?importpath=modernc.org%2fccorpus2)
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

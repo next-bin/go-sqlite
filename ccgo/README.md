@@ -6,8 +6,10 @@ This v1 package is obsolete. Please use current ccgo/v4:
 
 # The command
 
-	https://modernc.org/ccgo/v4
+	https://github.com/next-bin/go-sqlite/ccgo/v4
 
 # The library
 
-	https://modernc.org/ccgo/v4/lib
+	https://github.com/next-bin/go-sqlite/ccgo/v4/lib
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

@@ -1,8 +1,8 @@
-modernc.orgall-able mirror of modified code already published at:
+This is a goinstall-able mirror of modified code already published at:
 http://git.nic.cz/redmine/projects/gostrutil/repository
 
 Online godoc documentation for this package (should be) available at:
-http://gopkgdoc.appspot.com/pkg/modernc.org/strutil
+https://pkg.go.dev/github.com/next-bin/go-sqlite/strutil
 
 Installation:
-$ go get modernc.org/strutil
+$ go get github.com/next-bin/go-sqlite/strutil

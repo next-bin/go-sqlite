@@ -3,6 +3,8 @@ Package xc provides cross language compiler support/utility stuff.
 
 Installation
 
-    $ go get modernc.org/xc
+    $ go get github.com/next-bin/go-sqlite/xc
 
-Documentation: [godoc.org/modernc.org/xc](http://godoc.org/modernc.org/xc)
+Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/xc](https://pkg.go.dev/github.com/next-bin/go-sqlite/xc)
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.
