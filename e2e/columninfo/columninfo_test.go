@@ -71,5 +71,11 @@ func TestColumnInfo(t *testing.T) {
 		if got.DeclType != want.DeclType {
 			t.Errorf("column %d DeclType: got %q, want %q", i, got.DeclType, want.DeclType)
 		}
+		if got.TableName != "ci_test" {
+			t.Errorf("column %d TableName: got %q, want %q", i, got.TableName, "ci_test")
+		}
+		if got.OriginName != want.Name {
+			t.Errorf("column %d OriginName: got %q, want %q", i, got.OriginName, want.Name)
+		}
 	}
 }

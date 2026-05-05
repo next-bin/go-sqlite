@@ -181,3 +181,31 @@ func TestRawBytes(t *testing.T) {
 		t.Errorf("raw bytes: got %q, want %q", string(got), string(orig))
 	}
 }
+
+func TestTimeFormatDatetime(t *testing.T) {
+	db := openMemWithDSN(t, ":memory:?_time_format=datetime")
+	mustExec(t, db, "CREATE TABLE t (ts DATETIME)")
+	now := time.Date(2026, 3, 15, 14, 30, 0, 0, time.UTC)
+	mustExec(t, db, "INSERT INTO t (ts) VALUES (?)", now)
+	var got time.Time
+	if err := db.QueryRow("SELECT ts FROM t").Scan(&got); err != nil {
+		t.Fatal(err)
+	}
+	if !got.Equal(now) {
+		t.Fatalf("got %v, want %v", got, now)
+	}
+}
+
+func TestTimezone(t *testing.T) {
+	db := openMemWithDSN(t, ":memory:?_time_format=sqlite&_timezone=UTC")
+	mustExec(t, db, "CREATE TABLE t (ts DATETIME)")
+	now := time.Date(2026, 5, 5, 0, 0, 0, 0, time.UTC)
+	mustExec(t, db, "INSERT INTO t (ts) VALUES (?)", now)
+	var got time.Time
+	if err := db.QueryRow("SELECT ts FROM t").Scan(&got); err != nil {
+		t.Fatal(err)
+	}
+	if got.Location().String() != "UTC" {
+		t.Fatalf("got timezone %v, want UTC", got.Location())
+	}
+}
