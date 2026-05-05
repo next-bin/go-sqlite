@@ -1,10 +1,26 @@
 # go-sqlite
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/v2.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2)
+[![Go Report Card](https://goreportcard.com/badge/github.com/next-bin/go-sqlite/v2)](https://goreportcard.com/report/github.com/next-bin/go-sqlite/v2)
+[![License: BSD](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
+[![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)](https://go.dev/)
+
+English | [中文](README-zh.md)
+
 A CGo-free SQLite driver for Go's `database/sql` package, based on the SQLite 3.53.0 amalgamation.
 
-This is an independent fork of [modernc.org/sqlite](https://gitlab.com/cznic/sqlite), originally developed by CZ.NIC z.s.p.o. and contributors.
+Originally developed by CZ.NIC z.s.p.o. and contributors at [modernc.org/sqlite](https://gitlab.com/cznic/sqlite). This repository is an independent continuation with a restructured module layout.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/v2/sqlite.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/sqlite)
+## Background
+
+The original project is a monolithic codebase containing over 50 tightly coupled Go modules, including C parsers, compilers, assemblers, and code generation toolchains. While the engineering is substantial, this architecture presents challenges for downstream users:
+
+- **Dependency surface** — Importing the SQLite driver transitively pulls in lexers, IR frameworks, and compilation toolchains that are not required for database operations.
+- **Audit complexity** — Hundreds of thousands of lines of generated and hand-written code span the full toolchain, making focused security review difficult.
+- **Maintenance coupling** — Changes to low-level modules propagate unpredictably through the dependency graph, increasing the risk of unintended regressions.
+- **Contribution overhead** — The monolithic structure and interdependent build process create a steep onboarding curve for contributors targeting the driver itself.
+
+This repository addresses these concerns by restructuring the project as a focused, self-contained module with clear boundaries — easier to audit, maintain, and extend.
 
 ## Features
 
@@ -43,7 +59,7 @@ func main() {
 
 ## Documentation
 
-See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/sqlite) for full API details.
+See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2) for full API details.
 
 ## Examples
 
@@ -66,7 +82,7 @@ The `examples/` directory contains runnable programs demonstrating all driver fe
 
 ## Virtual Tables (vtab)
 
-The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite/v2/sqlite/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
+The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite/v2/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
 
 - Register: `vtab.RegisterModule(db, name, module)`. Registration applies to new connections only.
 - Schema declaration: Call `ctx.Declare("CREATE TABLE <name>(<cols...>)")` within `Create` or `Connect`.
