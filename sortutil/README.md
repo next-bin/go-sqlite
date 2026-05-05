@@ -1,6 +1,6 @@
 Packages in this repository:
 
-Install: $ go get modernc.org/sortutil
+Install: $ go get github.com/next-bin/go-sqlite/sortutil
 
 Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/sortutil](https://pkg.go.dev/github.com/next-bin/go-sqlite/sortutil)
 

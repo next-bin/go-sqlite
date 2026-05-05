@@ -1,6 +1,6 @@
 # scanner
 
-    import path "modernc.org/scanner"
+    import path "github.com/next-bin/go-sqlite/scanner"
 
 Package scanner provides some common scanner stuff.
 

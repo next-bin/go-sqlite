@@ -3,7 +3,7 @@ Package virtual implements a machine that isn't. (Work In Progress)
 
 Installation
 
-    $ go get modernc.org/virtual
+    $ go get github.com/next-bin/go-sqlite/virtual
 
 Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/virtual](https://pkg.go.dev/github.com/next-bin/go-sqlite/virtual)
 

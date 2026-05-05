@@ -1,9 +1,9 @@
 # ccir
-Package ccir translates [cc](https://modernc.org/cc) ASTs to internal representation. (Work In Progress)
+Package ccir translates [cc](https://github.com/next-bin/go-sqlite/cc) ASTs to internal representation. (Work In Progress)
 
 Installation
 
-    $ go get modernc.org/ccir
+    $ go get github.com/next-bin/go-sqlite/ccir
 
 Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/ccir](https://pkg.go.dev/github.com/next-bin/go-sqlite/ccir)
 

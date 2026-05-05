@@ -5,7 +5,7 @@ Package y converts yacc source code to data structures suitable for a parser gen
 
 Installation
 
-    $ go get modernc.org/y
+    $ go get github.com/next-bin/go-sqlite/y
 
 Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/y](https://pkg.go.dev/github.com/next-bin/go-sqlite/y)
 

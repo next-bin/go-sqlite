@@ -4,7 +4,7 @@ Package opt implements command-line flag parsing.
 
 ### Installation
 
-    $ go get [-u] modernc.org/opt
+    $ go get [-u] github.com/next-bin/go-sqlite/opt
 
 ### Documentation
 

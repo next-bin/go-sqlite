@@ -5,7 +5,7 @@ Package ebnfutils provides some utilities for messing with EBNF grammars.
 
 Installation:
 
-    $ go get modernc.org/ebnfutil
+    $ go get github.com/next-bin/go-sqlite/ebnfutil
 
 Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/ebnfutil](https://pkg.go.dev/github.com/next-bin/go-sqlite/ebnfutil)
 

@@ -4,8 +4,8 @@
 
 Package builder exports nothing, its functionality is implemented via
 
-    $ go get -u modernc.org/builder
-    $ go test -timeout 24h modernc.org/builder	# or other any other appropriate timeout
+    $ go get -u github.com/next-bin/go-sqlite/builder
+    $ go test -timeout 24h github.com/next-bin/go-sqlite/builder	# or other any other appropriate timeout
 
 ## Purpose
 
@@ -33,7 +33,7 @@ repository root.
 The above can be invoked automatically by cron, example script is in cron.sh:
 
     eval $(ssh-agent) > /dev/null
-    cd $HOME/src/modernc.org/builder
+    cd $HOME/src/github.com/next-bin/go-sqlite/builder
     go get -u -t -d
     go test -timeout 24h
 

@@ -5,7 +5,7 @@ Package ccorpus provides a test corpus of C code.
 
 ## Installation
 
-    $ go get modernc.org/ccorpus
+    $ go get github.com/next-bin/go-sqlite/ccorpus
 
 ## Documentation
 

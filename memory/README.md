@@ -4,7 +4,7 @@ Package memory implements a memory allocator.
 
 Installation
 
-    $ go get modernc.org/memory
+    $ go get github.com/next-bin/go-sqlite/memory
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/memory.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/memory)
 

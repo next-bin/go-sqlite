@@ -4,7 +4,7 @@ Package GC is a Go compiler front end. (Work in progress, API unstable)
 
 Installation
 
-    $ go get modernc.org/gc
+    $ go get github.com/next-bin/go-sqlite/gc
 
 Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/gc](https://pkg.go.dev/github.com/next-bin/go-sqlite/gc)
 

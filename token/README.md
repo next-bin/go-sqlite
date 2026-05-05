@@ -4,7 +4,7 @@ Package token is a variant of the stdlib package token with types FileSet and To
 
 Installation
 
-    $ go get [-u] modernc.org/token
+    $ go get [-u] github.com/next-bin/go-sqlite/token
 
 Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/token](https://pkg.go.dev/github.com/next-bin/go-sqlite/token)
 
