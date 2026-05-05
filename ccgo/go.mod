@@ -5,7 +5,7 @@ go 1.15
 require (
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
 	github.com/next-bin/go-sqlite/v2/cc v1.0.0
-	github.com/next-bin/go-sqlite/v2/ccir v1.0.0
+	github.com/next-bin/go-sqlite/v2/ccir v0.0.0-20181106174718-5753a3f77739
 	github.com/next-bin/go-sqlite/v2/crt v1.0.0
 	github.com/next-bin/go-sqlite/v2/golex v1.0.0 // indirect
 	github.com/next-bin/go-sqlite/v2/internal v1.0.3
