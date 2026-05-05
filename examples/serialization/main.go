@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Command serialization demonstrates serializing and deserializing in-memory databases.
 package main
 
 import (

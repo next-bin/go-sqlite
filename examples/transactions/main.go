@@ -2,9 +2,11 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Command transactions demonstrates database transactions, savepoints, and rollback.
 package main
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"log"
@@ -22,19 +24,19 @@ func main() {
 	db.Exec("CREATE TABLE accounts (id INTEGER PRIMARY KEY, balance INT)")
 	db.Exec("INSERT INTO accounts (balance) VALUES (100)")
 
-	tx, _ := db.Begin()
+	tx, _ := db.BeginTx(context.Background(), nil)
 	tx.Exec("UPDATE accounts SET balance = balance - 50 WHERE id = 1")
 	if err := tx.Commit(); err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("Transaction committed")
 
-	tx, _ = db.Begin()
+	tx, _ = db.BeginTx(context.Background(), nil)
 	tx.Exec("UPDATE accounts SET balance = 0 WHERE id = 1")
 	tx.Rollback()
 	fmt.Println("Transaction rolled back")
 
-	tx, _ = db.Begin()
+	tx, _ = db.BeginTx(context.Background(), nil)
 	tx.Exec("SAVEPOINT sp1")
 	tx.Exec("UPDATE accounts SET balance = 200 WHERE id = 1")
 	tx.Exec("ROLLBACK TO sp1")

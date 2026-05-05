@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Command backup demonstrates online backup of an in-memory database to a file.
 package main
 
 import (
