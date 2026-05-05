@@ -6,7 +6,7 @@ Installation
 
     $ go get modernc.org/crt
 
-Documentation: [pkg.go.dev/modernc.org/crt](https://pkg.go.dev/modernc.org/crt)
+Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/crt](https://pkg.go.dev/github.com/next-bin/go-sqlite/crt)
 
 Building with `make` requires the following Go packages
 
