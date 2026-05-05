@@ -5,4 +5,6 @@ Installation
 
     $ go get modernc.org/ccir
 
-Documentation: [godoc.org/modernc.org/ccir](http://godoc.org/modernc.org/ccir)
+Documentation: [pkg.go.dev/modernc.org/ccir](https://pkg.go.dev/modernc.org/ccir)
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

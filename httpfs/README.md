@@ -6,4 +6,6 @@ Installation
 
     $ go get [-u] modernc.org/httpfs
 
-Documentation: [godoc.org/modernc.org/httpfs](http://godoc.org/modernc.org/httpfs)
+Documentation: [pkg.go.dev/modernc.org/httpfs](https://pkg.go.dev/modernc.org/httpfs)
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

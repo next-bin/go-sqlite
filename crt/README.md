@@ -6,7 +6,7 @@ Installation
 
     $ go get modernc.org/crt
 
-Documentation: [godoc.org/modernc.org/crt](http://godoc.org/modernc.org/crt)
+Documentation: [pkg.go.dev/modernc.org/crt](https://pkg.go.dev/modernc.org/crt)
 
 Building with `make` requires the following Go packages
 
@@ -16,3 +16,5 @@ Building with `make` requires the following Go packages
 * honnef.co/go/tools/cmd/unused
 * honnef.co/go/tools/cmd/gosimple
 * github.com/client9/misspell/cmd/misspell
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

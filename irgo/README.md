@@ -6,4 +6,6 @@ Installation
 
     $ go get modernc.org/irgo
 
-Documentation: [godoc.org/modernc.org/irgo](http://godoc.org/modernc.org/irgo)
+Documentation: [pkg.go.dev/modernc.org/irgo](https://pkg.go.dev/modernc.org/irgo)
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

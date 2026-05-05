@@ -5,4 +5,6 @@ Installation
 
     $ go get modernc.org/virtual
 
-Documentation: [godoc.org/modernc.org/virtual](http://godoc.org/modernc.org/virtual)
+Documentation: [pkg.go.dev/modernc.org/virtual](https://pkg.go.dev/modernc.org/virtual)
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

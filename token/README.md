@@ -6,4 +6,6 @@ Installation
 
     $ go get [-u] modernc.org/token
 
-Documentation: [godoc.org/modernc.org/token](http://godoc.org/modernc.org/token)
+Documentation: [pkg.go.dev/modernc.org/token](https://pkg.go.dev/modernc.org/token)
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

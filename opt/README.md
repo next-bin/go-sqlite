@@ -8,4 +8,6 @@ Package opt implements command-line flag parsing.
 
 ### Documentation
 
-[godoc.org/modernc.org/opt](http://godoc.org/modernc.org/opt)
+[pkg.go.dev/modernc.org/opt](https://pkg.go.dev/modernc.org/opt)
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

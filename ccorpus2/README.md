@@ -8,8 +8,6 @@ Continuation of ccorpus but using embed.FS
 
 ## Documentation
 
-[godoc.org/modernc.org/ccorpus2](http://godoc.org/modernc.org/ccorpus2)
+[pkg.go.dev/modernc.org/ccorpus2](https://pkg.go.dev/modernc.org/ccorpus2)
 
-## Builders
-
-[modern-c.appspot.com/-/builder/?importpath=modernc.org%2fccorpus2](https://modern-c.appspot.com/-/builder/?importpath=modernc.org%2fccorpus2)
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

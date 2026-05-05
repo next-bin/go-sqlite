@@ -9,8 +9,6 @@ Package ccorpus provides a test corpus of C code.
 
 ## Documentation
 
-[godoc.org/modernc.org/ccorpus](http://godoc.org/modernc.org/ccorpus)
+[pkg.go.dev/modernc.org/ccorpus](https://pkg.go.dev/modernc.org/ccorpus)
 
-## Builders
-
-[modern-c.appspot.com/-/builder/?importpath=modernc.org%2fccorpus](https://modern-c.appspot.com/-/builder/?importpath=modernc.org%2fccorpus)
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

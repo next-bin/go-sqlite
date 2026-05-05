@@ -65,3 +65,5 @@ To create a builder for a domain other than modernc.org, fork this
 repository and replace all hard-coded modernc.org instances with your own
 domain. Or consider contributing a parameterization mechanism. It's not
 there as I don't need it (yet) and I'm lazy, sorry.
+
+Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.
