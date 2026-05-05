@@ -6,8 +6,8 @@ This v3 package is obsolete. Please use current ccgo/v4:
 
 # The command
 
-	https://modernc.org/ccgo/v4
+	https://pkg.go.dev/github.com/next-bin/go-sqlite/ccgo/v4
 
 # The library
 
-	https://modernc.org/ccgo/v4/lib
+	https://pkg.go.dev/github.com/next-bin/go-sqlite/ccgo/v4/lib

@@ -4,6 +4,6 @@ Package crt provides C-runtime services. (Work In Progress)
 
 Installation
 
-    $ go get modernc.org/crt
+    $ go get github.com/next-bin/go-sqlite/crt
 
-Documentation: [godoc.org/modernc.org/crt](http://godoc.org/modernc.org/crt)
+Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite/crt](https://pkg.go.dev/github.com/next-bin/go-sqlite/crt)
