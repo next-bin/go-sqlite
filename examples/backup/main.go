@@ -26,10 +26,18 @@ func main() {
 	db.Exec("CREATE TABLE t (val TEXT)")
 	db.Exec("INSERT INTO t (val) VALUES ('important data')")
 
-	backupFile := "backup.db"
+	f, err := os.CreateTemp("", "backup-*.db")
+	if err != nil {
+		log.Fatal(err)
+	}
+	backupFile := f.Name()
+	f.Close()
 	defer os.Remove(backupFile)
 
-	conn, _ := db.Conn(context.Background())
+	conn, err := db.Conn(context.Background())
+	if err != nil {
+		log.Fatal(err)
+	}
 	defer conn.Close()
 	err = conn.Raw(func(driverConn any) error {
 		type backuper interface {
@@ -52,9 +60,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	bdb, _ := sql.Open("sqlite", backupFile)
+	bdb, err := sql.Open("sqlite", backupFile)
+	if err != nil {
+		log.Fatal(err)
+	}
 	defer bdb.Close()
 	var val string
-	bdb.QueryRow("SELECT val FROM t").Scan(&val)
+	if err := bdb.QueryRow("SELECT val FROM t").Scan(&val); err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("Backup verified: %q\n", val)
 }

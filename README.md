@@ -49,6 +49,7 @@ See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sql
 
 The `examples/` directory contains runnable programs demonstrating all driver features:
 
+- `file_basic` — Basic database/sql operations with a file-backed database
 - `basics` — CRUD, connection modes, data types
 - `transactions` — Transactions, savepoints
 - `functions` — Custom scalar and aggregate functions

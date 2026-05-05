@@ -20,31 +20,51 @@ func main() {
 		log.Fatal(err)
 	}
 	defer db.Close()
+	db.SetMaxOpenConns(1)
 
 	db.Exec("CREATE TABLE t (val TEXT)")
 	db.Exec("INSERT INTO t (val) VALUES ('snapshot')")
 
-	conn, _ := db.Conn(context.Background())
+	conn, err := db.Conn(context.Background())
+	if err != nil {
+		log.Fatal(err)
+	}
 	var serialized []byte
-	conn.Raw(func(driverConn any) error {
+	err = conn.Raw(func(driverConn any) error {
 		type serializer interface{ Serialize() ([]byte, error) }
 		var err error
 		serialized, err = driverConn.(serializer).Serialize()
 		return err
 	})
 	conn.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("Serialized %d bytes\n", len(serialized))
 
-	db2, _ := sql.Open("sqlite", ":memory:")
+	db2, err := sql.Open("sqlite", ":memory:")
+	if err != nil {
+		log.Fatal(err)
+	}
 	defer db2.Close()
-	conn2, _ := db2.Conn(context.Background())
-	conn2.Raw(func(driverConn any) error {
+	db2.SetMaxOpenConns(1)
+
+	conn2, err := db2.Conn(context.Background())
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = conn2.Raw(func(driverConn any) error {
 		type deserializer interface{ Deserialize([]byte) error }
 		return driverConn.(deserializer).Deserialize(serialized)
 	})
 	conn2.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	var val string
-	db2.QueryRow("SELECT val FROM t").Scan(&val)
+	if err := db2.QueryRow("SELECT val FROM t").Scan(&val); err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("Deserialized: %q\n", val)
 }
