@@ -8,6 +8,7 @@ import (
 	"database/sql"
 	"database/sql/driver"
 	"fmt"
+	"reflect"
 	"sort"
 	"testing"
 
@@ -272,6 +273,11 @@ func TestFunctionReturnTypes(t *testing.T) {
 			return true, nil
 		},
 	)
+	sqlite.MustRegisterScalarFunction("return_bytes", 0,
+		func(ctx *sqlite.FunctionContext, args []driver.Value) (driver.Value, error) {
+			return []byte{0xDE, 0xAD}, nil
+		},
+	)
 
 	db := openMem(t)
 	defer db.Close()
@@ -319,5 +325,15 @@ func TestFunctionReturnTypes(t *testing.T) {
 	}
 	if !bVal {
 		t.Fatalf("bool: expected true, got false")
+	}
+
+	// []byte
+	var bytesVal []byte
+	if err := db.QueryRow("SELECT return_bytes()").Scan(&bytesVal); err != nil {
+		t.Fatalf("scan []byte: %v", err)
+	}
+	wantBytes := []byte{0xDE, 0xAD}
+	if !reflect.DeepEqual(bytesVal, wantBytes) {
+		t.Fatalf("[]byte: expected %v, got %v", wantBytes, bytesVal)
 	}
 }

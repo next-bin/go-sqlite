@@ -7,6 +7,7 @@ package transactions
 import (
 	"database/sql"
 	"fmt"
+	"path/filepath"
 	"sync"
 	"testing"
 
@@ -266,5 +267,66 @@ func TestConcurrentTransactions(t *testing.T) {
 	// 1 initial + 10 goroutine inserts.
 	if count != goroutines+1 {
 		t.Fatalf("expected %d rows, got %d", goroutines+1, count)
+	}
+}
+
+func TestTransactionMode(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "test.db")
+	dsn := fmt.Sprintf("file:%s?_txlock=immediate", path)
+	db, err := sql.Open("sqlite", dsn)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+
+	mustExec(t, db, "CREATE TABLE t(id INTEGER PRIMARY KEY, val TEXT)")
+
+	tx, err := db.Begin()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := tx.Exec("INSERT INTO t (val) VALUES (?)", "test"); err != nil {
+		t.Fatal(err)
+	}
+	if err := tx.Commit(); err != nil {
+		t.Fatal(err)
+	}
+
+	var val string
+	if err := db.QueryRow("SELECT val FROM t").Scan(&val); err != nil {
+		t.Fatal(err)
+	}
+	if val != "test" {
+		t.Fatalf("got %q, want %q", val, "test")
+	}
+}
+
+func TestErrorRecovery(t *testing.T) {
+	db := openMem(t)
+	defer db.Close()
+
+	mustExec(t, db, "CREATE TABLE t(id INTEGER PRIMARY KEY, val TEXT)")
+	mustExec(t, db, "INSERT INTO t (val) VALUES ('original')")
+
+	tx, err := db.Begin()
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Try to violate a constraint
+	if _, err := tx.Exec("INSERT INTO t (id, val) VALUES (1, 'duplicate')"); err == nil {
+		t.Fatal("expected error from duplicate primary key")
+	}
+	if err := tx.Rollback(); err != nil {
+		t.Fatal(err)
+	}
+
+	// Verify original data is intact
+	var val string
+	if err := db.QueryRow("SELECT val FROM t WHERE id = 1").Scan(&val); err != nil {
+		t.Fatal(err)
+	}
+	if val != "original" {
+		t.Fatalf("got %q, want %q", val, "original")
 	}
 }
