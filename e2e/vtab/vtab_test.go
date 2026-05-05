@@ -93,3 +93,100 @@ func TestVTabBasic(t *testing.T) {
 		}
 	}
 }
+
+type filterModule struct{}
+
+func (m *filterModule) Create(ctx vtab.Context, args []string) (vtab.Table, error) {
+	if err := ctx.Declare("CREATE TABLE x (val TEXT)"); err != nil {
+		return nil, err
+	}
+	return &filterTable{vals: args}, nil
+}
+func (m *filterModule) Connect(ctx vtab.Context, args []string) (vtab.Table, error) {
+	return m.Create(ctx, args)
+}
+
+type filterTable struct{ vals []string }
+
+func (t *filterTable) BestIndex(info *vtab.IndexInfo) error {
+	for i := range info.Constraints {
+		c := &info.Constraints[i]
+		if c.Column == 0 && c.Op == vtab.OpEQ && c.Usable {
+			c.Omit = true
+			c.ArgIndex = 0
+			info.IdxNum = 1
+			info.EstimatedCost = 1.0
+			return nil
+		}
+	}
+	info.EstimatedCost = 1000.0
+	return nil
+}
+func (t *filterTable) Open() (vtab.Cursor, error) {
+	return &filterCursor{vals: t.vals}, nil
+}
+func (t *filterTable) Disconnect() error { return nil }
+func (t *filterTable) Destroy() error    { return nil }
+
+type filterCursor struct {
+	vals      []string
+	pos       int
+	filterVal string
+	filtered  []string
+}
+
+func (c *filterCursor) Filter(idxNum int, idxStr string, vals []vtab.Value) error {
+	if idxNum == 1 && len(vals) > 0 {
+		c.filterVal, _ = vals[0].(string)
+		c.filtered = nil
+		for _, v := range c.vals {
+			if v == c.filterVal {
+				c.filtered = append(c.filtered, v)
+			}
+		}
+	} else {
+		c.filtered = c.vals
+	}
+	c.pos = 0
+	return nil
+}
+func (c *filterCursor) Next() error                      { c.pos++; return nil }
+func (c *filterCursor) Eof() bool                        { return c.pos >= len(c.filtered) }
+func (c *filterCursor) Column(int) (vtab.Value, error)   { return c.filtered[c.pos], nil }
+func (c *filterCursor) Rowid() (int64, error)            { return int64(c.pos), nil }
+func (c *filterCursor) Close() error                     { return nil }
+
+func TestVTabConstraintPushdown(t *testing.T) {
+	db, err := sql.Open("sqlite", ":memory:")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+
+	if err := vtab.RegisterModule(db, "filter", &filterModule{}); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := db.Exec("CREATE VIRTUAL TABLE ft USING filter(a, b, c)"); err != nil {
+		t.Fatal(err)
+	}
+	rows, err := db.Query("SELECT val FROM ft WHERE val = 'b'")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer rows.Close()
+	var got []string
+	for rows.Next() {
+		var v string
+		if err := rows.Scan(&v); err != nil {
+			t.Fatal(err)
+		}
+		got = append(got, v)
+	}
+	if err := rows.Err(); err != nil {
+		t.Fatal(err)
+	}
+	// With EQ constraint on val='b', should only get 'b' back
+	if len(got) != 1 || got[0] != "b" {
+		t.Fatalf("got %v, want [b]", got)
+	}
+}

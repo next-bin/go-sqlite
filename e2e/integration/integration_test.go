@@ -197,4 +197,73 @@ func TestIntegration(t *testing.T) {
 	if backupScore != 95.0 {
 		t.Fatalf("expected charlie's score in backup to be 95.0, got %f", backupScore)
 	}
+
+	// 9. Serialize: create a separate in-memory copy to serialize from,
+	// since the primary db uses WAL mode which can cause issues with in-memory deserialize.
+	serDB, err := sql.Open("sqlite", ":memory:")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer serDB.Close()
+	serDB.SetMaxOpenConns(1)
+	// Populate the in-memory db with the same data
+	if _, err := serDB.Exec("CREATE TABLE scores (id INTEGER PRIMARY KEY, name TEXT, score REAL)"); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := serDB.Exec("INSERT INTO scores VALUES (1, 'alice', 85.5)"); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := serDB.Exec("INSERT INTO scores VALUES (2, 'bob', 92.0)"); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := serDB.Exec("INSERT INTO scores VALUES (3, 'charlie', 95.0)"); err != nil {
+		t.Fatal(err)
+	}
+	var serialized []byte
+	serConn, err := serDB.Conn(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = serConn.Raw(func(driverConn any) error {
+		type serializer interface{ Serialize() ([]byte, error) }
+		var sErr error
+		serialized, sErr = driverConn.(serializer).Serialize()
+		return sErr
+	})
+	serConn.Close()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(serialized) == 0 {
+		t.Fatal("serialized data is empty")
+	}
+
+	// 10. Deserialize and verify
+	db3, err := sql.Open("sqlite", ":memory:")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db3.Close()
+	db3.SetMaxOpenConns(1)
+	conn3, err := db3.Conn(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = conn3.Raw(func(driverConn any) error {
+		type deserializer interface{ Deserialize([]byte) error }
+		return driverConn.(deserializer).Deserialize(serialized)
+	})
+	if err != nil {
+		conn3.Close()
+		t.Fatal(err)
+	}
+	var count3 int
+	if err := conn3.QueryRowContext(context.Background(), "SELECT COUNT(*) FROM scores").Scan(&count3); err != nil {
+		conn3.Close()
+		t.Fatal(err)
+	}
+	conn3.Close()
+	if count3 != 3 {
+		t.Fatalf("deserialized db has %d scores, want 3", count3)
+	}
 }

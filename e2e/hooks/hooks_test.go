@@ -7,6 +7,7 @@ package hooks
 import (
 	"database/sql"
 	"fmt"
+	"sync"
 	"sync/atomic"
 	"testing"
 	"time"
@@ -166,5 +167,86 @@ func TestRollbackHook(t *testing.T) {
 
 	if rollbackCount < 1 {
 		t.Fatalf("expected at least 1 rollback, got %d", rollbackCount)
+	}
+}
+
+func TestPreUpdateHookDelete(t *testing.T) {
+	var mu sync.Mutex
+	var ops []string
+	var oldVals []string
+
+	db := newHookDB(t, func(h sqlite.HookRegisterer) {
+		h.RegisterPreUpdateHook(func(data sqlite.SQLitePreUpdateData) {
+			mu.Lock()
+			defer mu.Unlock()
+			if data.Op == sqlite3.SQLITE_DELETE {
+				ops = append(ops, "delete")
+				old := make([]any, data.Count())
+				if err := data.Old(old...); err != nil {
+					t.Errorf("Old() error: %v", err)
+					return
+				}
+				if s, ok := old[1].(string); ok {
+					oldVals = append(oldVals, s)
+				}
+			}
+		})
+	})
+
+	mustExec(t, db, "CREATE TABLE t (id INTEGER PRIMARY KEY, val TEXT)")
+	mustExec(t, db, "INSERT INTO t (val) VALUES ('to-delete')")
+	mustExec(t, db, "DELETE FROM t WHERE id = 1")
+
+	mu.Lock()
+	defer mu.Unlock()
+	if len(ops) != 1 || ops[0] != "delete" {
+		t.Fatalf("got ops %v, want [delete]", ops)
+	}
+	if len(oldVals) != 1 || oldVals[0] != "to-delete" {
+		t.Fatalf("got oldVals %v, want [to-delete]", oldVals)
+	}
+}
+
+func TestCommitHookAbort(t *testing.T) {
+	var abortNext int32
+
+	var d sqlite.Driver
+	d.RegisterConnectionHook(func(conn sqlite.ExecQuerierContext, dsn string) error {
+		if h, ok := conn.(sqlite.HookRegisterer); ok {
+			h.RegisterCommitHook(func() int32 {
+				if atomic.LoadInt32(&abortNext) == 1 {
+					return 1 // non-zero = abort
+				}
+				return 0
+			})
+		}
+		return nil
+	})
+
+	name := fmt.Sprintf("hook_abort_test_%d_%d", time.Now().UnixNano(), atomic.AddInt32(&driverCounter, 1))
+	sql.Register(name, &d)
+
+	db, err := sql.Open(name, ":memory:")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	mustExec(t, db, "CREATE TABLE t (id INTEGER PRIMARY KEY, val TEXT)")
+
+	tx, err := db.Begin()
+	if err != nil {
+		t.Fatal(err)
+	}
+	tx.Exec("INSERT INTO t (val) VALUES ('should-abort')")
+	atomic.StoreInt32(&abortNext, 1)
+	err = tx.Commit()
+	if err == nil {
+		t.Fatal("expected error from aborted commit, got nil")
+	}
+	// Verify data was NOT committed
+	var count int
+	db.QueryRow("SELECT COUNT(*) FROM t").Scan(&count)
+	if count != 0 {
+		t.Fatalf("got %d rows, want 0 (commit was aborted)", count)
 	}
 }
