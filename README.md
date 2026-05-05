@@ -5,7 +5,7 @@
 [![License: BSD](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)](https://go.dev/)
 
-English | [中文](README-zh.md)
+English | [简体中文](README-zh.md)
 
 A CGo-free SQLite driver for Go's `database/sql` package, based on the SQLite 3.53.0 amalgamation.
 
