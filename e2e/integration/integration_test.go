@@ -12,8 +12,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/next-bin/go-sqlite"
-	_ "github.com/next-bin/go-sqlite"
+	"github.com/next-bin/go-sqlite/v2"
+	_ "github.com/next-bin/go-sqlite/v2"
 )
 
 func TestIntegration(t *testing.T) {

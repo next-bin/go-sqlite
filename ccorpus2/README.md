@@ -4,7 +4,7 @@ Continuation of ccorpus but using embed.FS
 
 ## Installation
 
-    $ go install github.com/next-bin/go-sqlite/v2/ccorpus
+    $ go install github.com/next-bin/go-sqlite/v2/ccorpus2
 
 ## Documentation
 

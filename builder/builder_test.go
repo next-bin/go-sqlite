@@ -44,9 +44,9 @@ import (
 	"time"
 
 	"github.com/golang/glog"
-	"golang.org/x/mod/semver"
 	gomod "github.com/next-bin/go-sqlite/v2/gomod/engine"
 	"github.com/next-bin/go-sqlite/v2/strutil"
+	"golang.org/x/mod/semver"
 )
 
 const (
@@ -1855,7 +1855,7 @@ func (t *task) autotag(cfg *builderCfg, dir string) (out []byte, err error) {
 		}
 	}()
 
-	const mtag = "modernc.org"
+	const mtag = "github.com/next-bin/go-sqlite/v2"
 	asBuilder := builder
 	if asBuilder != leader {
 		return nil, nil
