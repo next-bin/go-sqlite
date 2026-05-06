@@ -1,9 +1,9 @@
 # go-sqlite
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite/v2.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite/v2)
-[![Go Report Card](https://goreportcard.com/badge/github.com/next-bin/go-sqlite/v2)](https://goreportcard.com/report/github.com/next-bin/go-sqlite/v2)
+[![Go Report Card](https://goreportcard.com/badge/github.com/next-bin/go-sqlite)](https://goreportcard.com/report/github.com/next-bin/go-sqlite)
 [![License: BSD](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
-[![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)](https://go.dev/)
+[![Go Version](https://img.shields.io/badge/Go-1.26+-00ADD8?logo=go)](https://go.dev/)
 
 [English](README.md) | 简体中文
 
