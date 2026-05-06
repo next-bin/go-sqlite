@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/fileutil
 
-go 1.24
+go 1.26.0
 
 require github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 

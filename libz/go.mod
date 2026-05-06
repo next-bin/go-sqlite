@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/libz
 
-go 1.25.0
+go 1.26.0
 
 require (
 	github.com/next-bin/go-sqlite/v2/cc/v4 v4.28.1
@@ -18,7 +18,7 @@ require (
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/mod v0.33.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.41.0 // indirect
+	golang.org/x/sys v0.43.0 // indirect
 	golang.org/x/tools v0.42.0 // indirect
 	github.com/next-bin/go-sqlite/v2/gc/v2 v2.6.5 // indirect
 	github.com/next-bin/go-sqlite/v2/gc/v3 v3.1.2 // indirect

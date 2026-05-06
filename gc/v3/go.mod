@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/gc/v3
 
-go 1.23.0
+go 1.26.0
 
 require (
 	github.com/dustin/go-humanize v1.0.1

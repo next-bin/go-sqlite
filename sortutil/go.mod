@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/sortutil
 
-go 1.21
+go 1.26.0
 
 require github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 

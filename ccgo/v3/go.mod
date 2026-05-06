@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/ccgo/v3
 
-go 1.25.0
+go 1.26.0
 
 require (
 	github.com/dustin/go-humanize v1.0.1
@@ -12,7 +12,7 @@ require (
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 	github.com/next-bin/go-sqlite/v2/opt v0.2.0
 	github.com/pmezard/go-difflib v1.0.0
-	golang.org/x/sys v0.42.0
+	golang.org/x/sys v0.43.0
 	golang.org/x/tools v0.42.0
 )
 
@@ -28,6 +28,7 @@ require (
 	github.com/next-bin/go-sqlite/v2/token v1.1.0 // indirect
 	github.com/next-bin/go-sqlite/v2/uint128 v1.3.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
+	golang.org/x/crypto v0.50.0 // indirect
 	golang.org/x/mod v0.33.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
 )

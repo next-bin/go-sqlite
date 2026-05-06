@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/scannertest
 
-go 1.16
+go 1.26.0
 
 require (
 	github.com/next-bin/go-sqlite/v2/lex v1.1.1

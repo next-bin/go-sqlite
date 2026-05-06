@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/xc
 
-go 1.18
+go 1.26.0
 
 require (
 	github.com/next-bin/go-sqlite/v2/golex v1.1.0
