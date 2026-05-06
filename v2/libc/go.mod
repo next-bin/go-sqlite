@@ -11,8 +11,8 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/mattn/go-isatty v0.0.20
 	github.com/ncruces/go-strftime v1.0.0
-	github.com/next-bin/go-sqlite/v2/cc/v4 v4.28.1
-	github.com/next-bin/go-sqlite/v2/ccgo/v4 v4.34.0
+	github.com/next-bin/go-sqlite/v2/cc4 v1.0.0
+	github.com/next-bin/go-sqlite/v2/ccgo4 v1.0.0
 	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
 	github.com/next-bin/go-sqlite/v2/goabi0 v0.2.0
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
@@ -23,8 +23,8 @@ require (
 
 require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
-	github.com/next-bin/go-sqlite/v2/gc/v2 v2.6.5 // indirect
-	github.com/next-bin/go-sqlite/v2/gc/v3 v3.1.2 // indirect
+	github.com/next-bin/go-sqlite/v2/gc2 v1.0.0 // indirect
+	github.com/next-bin/go-sqlite/v2/gc3 v1.0.0 // indirect
 	github.com/next-bin/go-sqlite/v2/opt v0.2.0 // indirect
 	github.com/next-bin/go-sqlite/v2/sortutil v1.2.1 // indirect
 	github.com/next-bin/go-sqlite/v2/strutil v1.2.1 // indirect

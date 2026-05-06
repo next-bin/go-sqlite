@@ -102,7 +102,7 @@
 //	source, must acknowledge the copyright and authors of this work.
 //
 // [Linux man-pages Copyleft]: https://spdx.org/licenses/Linux-man-pages-copyleft.html
-// [ccgo]: http://github.com/next-bin/go-sqlite/v2/ccgo/v4
+// [ccgo]: http://github.com/next-bin/go-sqlite/v2/ccgo4
 package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (

@@ -2,7 +2,7 @@ module github.com/next-bin/go-sqlite/v2/vendor_libs
 
 go 1.26.0
 
-require github.com/next-bin/go-sqlite/v2/gc/v3 v3.1.2
+require github.com/next-bin/go-sqlite/v2/gc3 v1.0.0
 
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect

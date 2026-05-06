@@ -1168,8 +1168,8 @@ func initTasks() {
 			"github.com/next-bin/go-sqlite/v2/ace",
 			"github.com/next-bin/go-sqlite/v2/b",
 			"github.com/next-bin/go-sqlite/v2/bitz",
-			"github.com/next-bin/go-sqlite/v2/cc/v4",
-			"github.com/next-bin/go-sqlite/v2/ccgo/v4",
+			"github.com/next-bin/go-sqlite/v2/cc4",
+			"github.com/next-bin/go-sqlite/v2/ccgo4",
 			"github.com/next-bin/go-sqlite/v2/css",
 			"github.com/next-bin/go-sqlite/v2/db",
 			"github.com/next-bin/go-sqlite/v2/doomgeneric",
@@ -1179,8 +1179,8 @@ func initTasks() {
 			"github.com/next-bin/go-sqlite/v2/file",
 			"github.com/next-bin/go-sqlite/v2/fileutil",
 			"github.com/next-bin/go-sqlite/v2/fsm",
-			"github.com/next-bin/go-sqlite/v2/gc/v2",
-			"github.com/next-bin/go-sqlite/v2/gc/v3",
+			"github.com/next-bin/go-sqlite/v2/gc2",
+			"github.com/next-bin/go-sqlite/v2/gc3",
 			"github.com/next-bin/go-sqlite/v2/go0",
 			"github.com/next-bin/go-sqlite/v2/goabi0",
 			"github.com/next-bin/go-sqlite/v2/gs",
@@ -1240,9 +1240,9 @@ func initTasks() {
 			"github.com/next-bin/go-sqlite/v2/tk9.0",
 			"github.com/next-bin/go-sqlite/v2/visualmd",
 			"github.com/next-bin/go-sqlite/v2/y",
-			// obsolete "github.com/next-bin/go-sqlite/v2/cc/v3",
-			// obsolete "github.com/next-bin/go-sqlite/v2/cc/v5",
-			// obsolete "github.com/next-bin/go-sqlite/v2/ccgo/v3",
+			// obsolete "github.com/next-bin/go-sqlite/v2/cc3",
+			// obsolete "github.com/next-bin/go-sqlite/v2/cc5",
+			// obsolete "github.com/next-bin/go-sqlite/v2/ccgo3",
 			// obsolete "github.com/next-bin/go-sqlite/v2/ccorpus",
 			// obsolete "github.com/next-bin/go-sqlite/v2/libadvapi32",
 			// obsolete "github.com/next-bin/go-sqlite/v2/libcomctl32",
@@ -1274,7 +1274,7 @@ func initTasks() {
 			// paused "github.com/next-bin/go-sqlite/v2/ccorpus2",
 			// paused "github.com/next-bin/go-sqlite/v2/ebnf",
 			// paused "github.com/next-bin/go-sqlite/v2/ebnfutil",
-			// paused "github.com/next-bin/go-sqlite/v2/gc/v3/internal/ebnf",
+			// paused "github.com/next-bin/go-sqlite/v2/gc3/internal/ebnf",
 			// paused "github.com/next-bin/go-sqlite/v2/golex",
 			// paused "github.com/next-bin/go-sqlite/v2/goyacc",
 			// paused "github.com/next-bin/go-sqlite/v2/hash",
@@ -1340,34 +1340,34 @@ func initTasks() {
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
 			case "github.com/next-bin/go-sqlite/v2/tfs":
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "./..."}
-			case "github.com/next-bin/go-sqlite/v2/gc/v2":
+			case "github.com/next-bin/go-sqlite/v2/gc2":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/gc"
-				task.testPath = "github.com/next-bin/go-sqlite/v2/gc/v2"
-			case "github.com/next-bin/go-sqlite/v2/gc/v3":
+				task.testPath = "github.com/next-bin/go-sqlite/v2/gc2"
+			case "github.com/next-bin/go-sqlite/v2/gc3":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/gc"
-				task.testPath = "github.com/next-bin/go-sqlite/v2/gc/v3"
-			case "github.com/next-bin/go-sqlite/v2/gc/v3/internal/ebnf":
+				task.testPath = "github.com/next-bin/go-sqlite/v2/gc3"
+			case "github.com/next-bin/go-sqlite/v2/gc3/internal/ebnf":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/gc"
-				task.testPath = "github.com/next-bin/go-sqlite/v2/gc/v3/internal/ebnf"
-			case "github.com/next-bin/go-sqlite/v2/cc/v3":
+				task.testPath = "github.com/next-bin/go-sqlite/v2/gc3/internal/ebnf"
+			case "github.com/next-bin/go-sqlite/v2/cc3":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/cc"
-				task.testPath = "github.com/next-bin/go-sqlite/v2/cc/v3"
-			case "github.com/next-bin/go-sqlite/v2/cc/v4":
+				task.testPath = "github.com/next-bin/go-sqlite/v2/cc3"
+			case "github.com/next-bin/go-sqlite/v2/cc4":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/cc"
-				task.testPath = "github.com/next-bin/go-sqlite/v2/cc/v4"
-			case "github.com/next-bin/go-sqlite/v2/cc/v5":
+				task.testPath = "github.com/next-bin/go-sqlite/v2/cc4"
+			case "github.com/next-bin/go-sqlite/v2/cc5":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/cc"
-				task.testPath = "github.com/next-bin/go-sqlite/v2/cc/v5"
-			case "github.com/next-bin/go-sqlite/v2/ccgo/v3":
+				task.testPath = "github.com/next-bin/go-sqlite/v2/cc5"
+			case "github.com/next-bin/go-sqlite/v2/ccgo3":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/ccgo"
-				task.testPath = "github.com/next-bin/go-sqlite/v2/ccgo/v3/lib"
+				task.testPath = "github.com/next-bin/go-sqlite/v2/ccgo3/lib"
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "-tags=ccgo.assert"}
 			case "github.com/next-bin/go-sqlite/v2/ngrab":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/ngrab"
 				task.testPath = "github.com/next-bin/go-sqlite/v2/ngrab/lib"
-			case "github.com/next-bin/go-sqlite/v2/ccgo/v4":
+			case "github.com/next-bin/go-sqlite/v2/ccgo4":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/ccgo"
-				task.testPath = "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+				task.testPath = "github.com/next-bin/go-sqlite/v2/ccgo4/lib"
 				task.test = []string{"go", "test", "-vet", "off", "-failfast", "-timeout", tmax, "-tags=ccgo.assert"}
 			case "github.com/next-bin/go-sqlite/v2/qbecc":
 				task.importPath = "github.com/next-bin/go-sqlite/v2/qbecc"

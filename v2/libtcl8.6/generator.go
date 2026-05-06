@@ -20,8 +20,8 @@ import (
 	"strings"
 
 	"github.com/adrg/xdg"
-	"github.com/next-bin/go-sqlite/v2/cc/v4"
-	ccgo "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	"github.com/next-bin/go-sqlite/v2/cc4"
+	ccgo "github.com/next-bin/go-sqlite/v2/ccgo4/lib"
 	util "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
 )
 

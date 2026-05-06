@@ -17,7 +17,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/next-bin/go-sqlite/v2/gc/v3"
+	"github.com/next-bin/go-sqlite/v2/gc3"
 )
 
 func fail(rc int, msg string, args ...any) {

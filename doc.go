@@ -83,7 +83,7 @@
 //
 //	$ GO_GENERATE=-DSQLITE_DEBUG,-DSQLITE_MEM_DEBUG go generate
 //
-// Note: To run `go generate` you need to have github.com/next-bin/go-sqlite/v2/ccgo/v3 installed.
+// Note: To run `go generate` you need to have github.com/next-bin/go-sqlite/v2/ccgo3 installed.
 //
 // # Hacking
 //

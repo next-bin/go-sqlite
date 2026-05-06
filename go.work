@@ -4,25 +4,24 @@ use (
 	.
 	./v2/builder
 	./v2/cc
-	./v2/cc/v3
-	./v2/cc/v4
-	./v2/cc/v5
+	./v2/cc3
+	./v2/cc4
+	./v2/cc5
 	./v2/ccgo
-	./v2/ccgo/v3
-	./v2/ccgo/v4
+	./v2/ccgo3
+	./v2/ccgo4
 	./v2/ccir
 	./v2/ccorpus
 	./v2/ccorpus2
 	./v2/crt
-	./v2/crt/v2
-	./v2/crt/v3
+	./v2/crt2
+	./v2/crt3
 	./v2/ebnf
 	./v2/ebnfutil
 	./v2/fileutil
 	./v2/gc
-	./v2/gc/v2
-	./v2/gc/v2/internal/ebnf
-	./v2/gc/v3
+	./v2/gc2
+	./v2/gc3
 	./v2/goabi0
 	./v2/golex
 	./v2/gomod
