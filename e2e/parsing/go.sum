@@ -1,0 +1,14 @@
+github.com/next-bin/go-sqlite/v2/ebnf v1.1.0 h1:l/TGBjK58vXPzogPXW5IK6R+U39tjUHh1wUIyc9itCo=
+github.com/next-bin/go-sqlite/v2/ebnf v1.1.0/go.mod h1:dU/9BhsLJJeKJOeeFbGLJS1xBmSdIrT1giRnr0ihL5g=
+github.com/next-bin/go-sqlite/v2/ebnfutil v1.1.0 h1:+aNaKnod5FLJ1647qoiiYRtWzudA2+NJ/4D/h0cUNjE=
+github.com/next-bin/go-sqlite/v2/ebnfutil v1.1.0/go.mod h1:22wNWHFu3W6TLNrVLBm0Cukx4JPeAL7WwO0WuHIszZY=
+github.com/next-bin/go-sqlite/v2/mathutil v1.7.1 h1:LVTTUAKFNrGJqscM0V/HjsiVRIMLpHPhX24uk1uRYzw=
+github.com/next-bin/go-sqlite/v2/mathutil v1.7.1/go.mod h1:0G9MPVPcUhU5PVwxvefQldUyam1lLVOC5jUCr0z5Xjg=
+github.com/next-bin/go-sqlite/v2/scanner v1.1.0 h1:jycRNcIkMo7i+R4KJR3rYVYPGOQFoB88rgdz0C6W8aQ=
+github.com/next-bin/go-sqlite/v2/scanner v1.1.0/go.mod h1:IRZ4KHXAxtr8UCQyQiERNiHFvuwa6I915bmMXYh6Lqg=
+github.com/next-bin/go-sqlite/v2/strutil v1.2.1 h1:cwoZGN57VrCCzEeIPdOHfG6w5hCvoKkTOqjilTd1M/8=
+github.com/next-bin/go-sqlite/v2/strutil v1.2.1/go.mod h1:XZ5N/0VWjbyqHjkDXsEjP7lUpmeFV5g/Bgyr7KB024k=
+github.com/next-bin/go-sqlite/v2/token v1.1.0 h1:bMUM1OdeOketgVdtBWO4JZu8eZNMyNwIDtH5RLNDvIs=
+github.com/next-bin/go-sqlite/v2/token v1.1.0/go.mod h1:dPsN4UOJf0ey2oOyf56Bhvp/BQZ42BuIt0R5geg+gxk=
+github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec h1:W09IVJc94icq4NjY3clb7Lk8O1qJ8BdBEF8z0ibU0rE=
+github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec/go.mod h1:qqbHyh8v60DhA7CoWK5oRCqLrMHRGoxYCSS9EjAz6Eo=

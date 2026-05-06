@@ -63,4 +63,10 @@ use (
 	./e2e/vtab
 	./e2e/columninfo
 	./e2e/integration
+	./e2e/utilities
+	./e2e/parsing
+	./e2e/compilers
+	./e2e/ir
+	./e2e/libs
+	./e2e/tools
 )
