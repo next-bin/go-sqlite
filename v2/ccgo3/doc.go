@@ -4,7 +4,7 @@
 
 // Package ccgo translates C to Go source code.
 //
-// This v3 package is obsolete. Please use current ccgo/v4:
+// This v3 package is obsolete. Please use current ccgo4:
 //
 // # The command
 //

@@ -4,7 +4,7 @@
 
 //go:generate go run generator.go
 
-// Package libtcl8.6 is a ccgo/v4 version the Tool Command Language (Tcl).
+// Package libtcl8.6 is a ccgo4 version the Tool Command Language (Tcl).
 package libtcl8_6 // import "github.com/next-bin/go-sqlite/v2/libtcl8.6"
 
 import (

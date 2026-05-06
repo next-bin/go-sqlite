@@ -19,7 +19,7 @@
 //
 // Installation
 //
-// To install/update cc/v3 invoke:
+// To install/update cc3 invoke:
 //
 //     $ go get [-u] github.com/next-bin/go-sqlite/v2/cc3
 //

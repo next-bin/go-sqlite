@@ -874,9 +874,9 @@ func BenchmarkParser(b *testing.B) {
 	}); err != nil {
 		b.Fatal(err)
 	}
-	b.Run("gc/v2/serial", func(b *testing.B) { benchmarkParserSerial(b, names, files, bytes) })
+	b.Run("gc2/serial", func(b *testing.B) { benchmarkParserSerial(b, names, files, bytes) })
 	b.Run("go/parser/serial", func(b *testing.B) { benchmarkGoParserSerial(b, names, files, bytes) })
-	b.Run("gc/v2/paralel", func(b *testing.B) { benchmarkParserParalel(b, names, files, bytes) })
+	b.Run("gc2/paralel", func(b *testing.B) { benchmarkParserParalel(b, names, files, bytes) })
 	b.Run("go/parser/paralel", func(b *testing.B) { benchmarkGoParserParalel(b, names, files, bytes) })
 }
 

@@ -1,7 +1,7 @@
 # cc
 
-2025-05-03 This package is no longer maintained. Please see [cc/v4].
+2025-05-03 This package is no longer maintained. Please see [cc4].
 
-[cc/v4]: https://github.com/next-bin/go-sqlite/v2/cc/v4
+[cc4]: https://github.com/next-bin/go-sqlite/v2/cc4
 
 Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

@@ -386,8 +386,8 @@ type Task struct {
 	// Path to a binary that will be called instead of executing
 	// Task.Main().  Intended to support TestGenerate in stable vs latest
 	// modes. This is _not_ supposed to be used when the Task instance is
-	// constructed by a ccgo _command_ (ccgo/v3) - it should never set this
-	// field. Only programs importing ccgo/v3/lib that opt-in into this
+	// constructed by a ccgo _command_ (ccgo3) - it should never set this
+	// field. Only programs importing ccgo3/lib that opt-in into this
 	// feature should ever set it.
 	CallOutBinary string
 

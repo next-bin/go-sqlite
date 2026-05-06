@@ -55,7 +55,7 @@ editor:
 	stringer -output stringer.go -type mode,name
 	gofmt -l -s -w *.go
 	go test -o /dev/null -c
-	go install -v -tags=ccgo.assert,ccgo.dmesg github.com/next-bin/go-sqlite/v2/ccgo/v4
+	go install -v -tags=ccgo.assert,ccgo.dmesg github.com/next-bin/go-sqlite/v2/ccgo4
 	staticcheck
 
 test shorttest:
@@ -67,5 +67,5 @@ work:
 	rm -f go.work*
 	go work init
 	go work use ..
-	go work use $(GOPATH)/src/github.com/next-bin/go-sqlite/v2/cc/v4
-	go work use $(GOPATH)/src/github.com/next-bin/go-sqlite/v2/gc/v2
+	go work use $(GOPATH)/src/github.com/next-bin/go-sqlite/v2/cc4
+	go work use $(GOPATH)/src/github.com/next-bin/go-sqlite/v2/gc2

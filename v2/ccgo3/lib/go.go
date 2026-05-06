@@ -1883,7 +1883,7 @@ func (p *project) typeSignature2(n cc.Node, b *maphash.Hash, t cc.Type) {
 	case cc.Void:
 		b.WriteString("void")
 	case cc.Invalid:
-		b.WriteString("invalid") //TODO fix cc/v3
+		b.WriteString("invalid") //TODO fix cc3
 	default:
 		panic(todo("", p.pos(n), t, t.Kind()))
 	}

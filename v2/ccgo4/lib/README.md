@@ -2,6 +2,6 @@
 [![receives](https://img.shields.io/liberapay/receives/jnml.svg?logo=liberapay)](https://liberapay.com/jnml/donate)
 [![patrons](https://img.shields.io/liberapay/patrons/jnml.svg?logo=liberapay)](https://liberapay.com/jnml/donate)
 
-# ccgo/v4/lib
+# ccgo4/lib
 
-Package ccgo/v4/lib is a C compiler producing Go code.
+Package ccgo4/lib is a C compiler producing Go code.

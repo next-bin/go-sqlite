@@ -4,7 +4,7 @@
 
 //go:generate go run generator.go
 
-// Package libsqlite3 is a ccgo/v4 version of libsqlite3 (SQLite, http://sqlite.org)
+// Package libsqlite3 is a ccgo4 version of libsqlite3 (SQLite, http://sqlite.org)
 //
 // # Supported platforms and architectures - Tier 1
 //

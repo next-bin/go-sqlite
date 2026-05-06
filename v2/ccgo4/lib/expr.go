@@ -4753,7 +4753,7 @@ func (c *ctx) primaryExpressionStringConst(w writer, n *cc.PrimaryExpression, t 
 		switch {
 		case c.isCharType(x.Elem()):
 			s := string(s.(cc.StringValue))
-			//TODO bug in cc/v4/cpp.go:
+			//TODO bug in cc4/cpp.go:
 			//
 			//	int main() {
 			//	  /* Test data is:
