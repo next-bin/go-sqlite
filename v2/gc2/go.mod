@@ -15,5 +15,6 @@ require (
 	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0 // indirect
 	github.com/next-bin/go-sqlite/v2/lex v1.1.1 // indirect
 	github.com/next-bin/go-sqlite/v2/lexer v1.0.5 // indirect
+	github.com/next-bin/go-sqlite/v2/strutil v1.2.1 // indirect
 	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
 )

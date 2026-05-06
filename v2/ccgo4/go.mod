@@ -10,7 +10,7 @@ require (
 	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
 	github.com/next-bin/go-sqlite/v2/gc2 v1.0.0
 	github.com/next-bin/go-sqlite/v2/gc3 v1.0.0
-	github.com/next-bin/go-sqlite/v2/libc v1.72.1
+	github.com/next-bin/go-sqlite/v2/libc v1.73.0
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 	github.com/next-bin/go-sqlite/v2/opt v0.2.0
 	github.com/next-bin/go-sqlite/v2/strutil v1.2.1

@@ -7,8 +7,8 @@ require (
 	github.com/next-bin/go-sqlite/v2/cc4 v1.0.0
 	github.com/next-bin/go-sqlite/v2/ccgo4 v1.0.0
 	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
-	github.com/next-bin/go-sqlite/v2/libc v1.72.1
-	github.com/next-bin/go-sqlite/v2/libz v0.17.3
+	github.com/next-bin/go-sqlite/v2/libc v1.73.0
+	github.com/next-bin/go-sqlite/v2/libz v0.18.0
 )
 
 require (

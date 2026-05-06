@@ -8,7 +8,7 @@ require (
 	github.com/next-bin/go-sqlite/v2/cc3 v1.0.0
 	github.com/next-bin/go-sqlite/v2/ccgo4 v1.0.0
 	github.com/next-bin/go-sqlite/v2/ccorpus v1.11.6
-	github.com/next-bin/go-sqlite/v2/libc v1.72.1
+	github.com/next-bin/go-sqlite/v2/libc v1.73.0
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 	github.com/next-bin/go-sqlite/v2/opt v0.2.0
 	github.com/pmezard/go-difflib v1.0.0
@@ -18,12 +18,15 @@ require (
 
 require (
 	github.com/google/uuid v1.6.0 // indirect
+	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/next-bin/go-sqlite/v2/cc4 v1.0.0 // indirect
 	github.com/next-bin/go-sqlite/v2/gc2 v1.0.0 // indirect
+	github.com/next-bin/go-sqlite/v2/gc3 v1.0.0 // indirect
 	github.com/next-bin/go-sqlite/v2/httpfs v1.0.6 // indirect
 	github.com/next-bin/go-sqlite/v2/memory v1.11.0 // indirect
+	github.com/next-bin/go-sqlite/v2/sortutil v1.2.1 // indirect
 	github.com/next-bin/go-sqlite/v2/strutil v1.2.1 // indirect
 	github.com/next-bin/go-sqlite/v2/token v1.1.0 // indirect
 	github.com/next-bin/go-sqlite/v2/uint128 v1.3.0 // indirect

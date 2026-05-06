@@ -5,7 +5,7 @@ go 1.26.0
 require (
 	github.com/google/pprof v0.0.0-20250317173921-a4b03ec1a45e
 	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
-	github.com/next-bin/go-sqlite/v2/libc v1.72.1
+	github.com/next-bin/go-sqlite/v2/libc v1.73.0
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 	golang.org/x/sys v0.43.0
 )

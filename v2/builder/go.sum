@@ -1,0 +1,14 @@
+github.com/golang/glog v1.2.5 h1:DrW6hGnjIhtvhOIiAKT6Psh/Kd/ldepEa81DKeiRJ5I=
+github.com/golang/glog v1.2.5/go.mod h1:6AhwSGph0fcJtXVM/PEHPqZlFeoLxhs7/t5UDAwmO+w=
+github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
+github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
+github.com/next-bin/go-sqlite/v2/gomod v1.2.2 h1:NInfWqBLzP7WiblYdYEi3HZQ2Yz5NXR0hIJFdYCtGzk=
+github.com/next-bin/go-sqlite/v2/gomod v1.2.2/go.mod h1:+X3LehZSJSNU7SZVaRAh8oxVE6m5evk5tvjJZa4kB7g=
+github.com/next-bin/go-sqlite/v2/mathutil v1.7.1 h1:2HvN59/qxtHGskhq50Z9rD6YlVLVdppJql1JewSPQso=
+github.com/next-bin/go-sqlite/v2/mathutil v1.7.1/go.mod h1:0G9MPVPcUhU5PVwxvefQldUyam1lLVOC5jUCr0z5Xjg=
+github.com/next-bin/go-sqlite/v2/strutil v1.2.1 h1:AtX9dfKGMLlTdwthOhQjYJ9BCcA8IfXiyqIHv9ywMAs=
+github.com/next-bin/go-sqlite/v2/strutil v1.2.1/go.mod h1:XZ5N/0VWjbyqHjkDXsEjP7lUpmeFV5g/Bgyr7KB024k=
+github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec h1:W09IVJc94icq4NjY3clb7Lk8O1qJ8BdBEF8z0ibU0rE=
+github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec/go.mod h1:qqbHyh8v60DhA7CoWK5oRCqLrMHRGoxYCSS9EjAz6Eo=
+golang.org/x/mod v0.35.0 h1:Ww1D637e6Pg+Zb2KrWfHQUnH2dQRLBQyAtpr/haaJeM=
+golang.org/x/mod v0.35.0/go.mod h1:+GwiRhIInF8wPm+4AoT6L0FA1QWAad3OMdTRx4tFYlU=

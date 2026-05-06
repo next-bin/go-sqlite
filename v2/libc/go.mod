@@ -9,7 +9,7 @@ retract v1.67.5
 require (
 	github.com/dustin/go-humanize v1.0.1
 	github.com/google/uuid v1.6.0
-	github.com/mattn/go-isatty v0.0.20
+	github.com/mattn/go-isatty v0.0.22
 	github.com/ncruces/go-strftime v1.0.0
 	github.com/next-bin/go-sqlite/v2/cc4 v1.0.0
 	github.com/next-bin/go-sqlite/v2/ccgo4 v1.0.0
@@ -30,7 +30,6 @@ require (
 	github.com/next-bin/go-sqlite/v2/strutil v1.2.1 // indirect
 	github.com/next-bin/go-sqlite/v2/token v1.1.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	golang.org/x/crypto v0.50.0 // indirect
 	golang.org/x/mod v0.35.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
 )
