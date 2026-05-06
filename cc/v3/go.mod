@@ -6,7 +6,7 @@ require (
 	github.com/dustin/go-humanize v1.0.1
 	github.com/google/go-cmp v0.6.0
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
-	github.com/next-bin/go-sqlite/v2/strutil v1.2.0
+	github.com/next-bin/go-sqlite/v2/strutil v1.2.1
 	github.com/next-bin/go-sqlite/v2/token v1.1.0
 	github.com/next-bin/go-sqlite/v2/uint128 v1.3.0
 )

@@ -3,8 +3,8 @@ module github.com/next-bin/go-sqlite/v2/lex
 go 1.16
 
 require (
-	github.com/next-bin/go-sqlite/v2/fileutil v1.1.2
-	github.com/next-bin/go-sqlite/v2/lexer v1.0.4
+	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
+	github.com/next-bin/go-sqlite/v2/lexer v1.0.5
 )
 
 replace (

@@ -8,12 +8,12 @@ require (
 	golang.org/x/crypto v0.0.0-20181106171534-e4dc69e5b2fd // indirect
 	golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8 // indirect
 	github.com/next-bin/go-sqlite/v2/cc v1.0.0
-	github.com/next-bin/go-sqlite/v2/golex v1.0.0 // indirect
-	github.com/next-bin/go-sqlite/v2/internal v1.0.0
+	github.com/next-bin/go-sqlite/v2/golex v1.1.0 // indirect
+	github.com/next-bin/go-sqlite/v2/internal v1.0.3
 	github.com/next-bin/go-sqlite/v2/ir v1.0.0
-	github.com/next-bin/go-sqlite/v2/mathutil v1.0.0
-	github.com/next-bin/go-sqlite/v2/memory v1.0.0 // indirect
-	github.com/next-bin/go-sqlite/v2/strutil v1.0.0
+	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
+	github.com/next-bin/go-sqlite/v2/memory v1.11.0 // indirect
+	github.com/next-bin/go-sqlite/v2/strutil v1.2.1
 	github.com/next-bin/go-sqlite/v2/virtual v1.0.0
 	github.com/next-bin/go-sqlite/v2/xc v1.0.0
 )

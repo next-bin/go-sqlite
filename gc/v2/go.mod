@@ -11,9 +11,9 @@ require (
 
 require (
 	golang.org/x/exp v0.0.0-20181106170214-d68db9428509 // indirect
-	github.com/next-bin/go-sqlite/v2/fileutil v1.1.2 // indirect
+	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0 // indirect
 	github.com/next-bin/go-sqlite/v2/lex v1.1.1 // indirect
-	github.com/next-bin/go-sqlite/v2/lexer v1.0.4 // indirect
+	github.com/next-bin/go-sqlite/v2/lexer v1.0.5 // indirect
 )
 
 replace (

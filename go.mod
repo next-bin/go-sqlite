@@ -6,7 +6,7 @@ require (
 	github.com/google/pprof v0.0.0-20250317173921-a4b03ec1a45e
 	golang.org/x/sys v0.42.0
 	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
-	github.com/next-bin/go-sqlite/v2/libc v1.72.0
+	github.com/next-bin/go-sqlite/v2/libc v1.72.1
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 )
 

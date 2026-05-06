@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/next-bin/go-sqlite/v2/golex v1.1.0
 	github.com/next-bin/go-sqlite/v2/scanner v1.1.0
-	github.com/next-bin/go-sqlite/v2/strutil v1.2.0
+	github.com/next-bin/go-sqlite/v2/strutil v1.2.1
 )
 
 replace (

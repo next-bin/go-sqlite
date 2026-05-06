@@ -4,10 +4,10 @@ go 1.21
 
 require (
 	github.com/dustin/go-humanize v1.0.1
-	github.com/next-bin/go-sqlite/v2/ccorpus2 v1.2.0
+	github.com/next-bin/go-sqlite/v2/ccorpus2 v1.6.0
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
-	github.com/next-bin/go-sqlite/v2/opt v0.1.3
-	github.com/next-bin/go-sqlite/v2/strutil v1.1.3
+	github.com/next-bin/go-sqlite/v2/opt v0.2.0
+	github.com/next-bin/go-sqlite/v2/strutil v1.2.1
 	github.com/next-bin/go-sqlite/v2/token v1.1.0
 	github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58
 	github.com/pmezard/go-difflib v1.0.0

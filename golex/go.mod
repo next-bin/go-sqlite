@@ -9,7 +9,7 @@ require (
 
 require (
 	golang.org/x/exp v0.0.0-20181106170214-d68db9428509 // indirect
-	github.com/next-bin/go-sqlite/v2/fileutil v1.2.0 // indirect
+	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0 // indirect
 )
 
 replace (
