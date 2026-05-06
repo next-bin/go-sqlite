@@ -17,12 +17,3 @@ require (
 require github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 
 retract v4.27.2 // The fix belongs elsewhere
-
-replace (
-	github.com/next-bin/go-sqlite/v2/ccorpus2 => ../../ccorpus2
-	github.com/next-bin/go-sqlite/v2/mathutil => ../../mathutil
-	github.com/next-bin/go-sqlite/v2/opt => ../../opt
-	github.com/next-bin/go-sqlite/v2/sortutil => ../../sortutil
-	github.com/next-bin/go-sqlite/v2/strutil => ../../strutil
-	github.com/next-bin/go-sqlite/v2/token => ../../token
-)

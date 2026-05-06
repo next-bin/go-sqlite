@@ -30,24 +30,7 @@ require (
 	github.com/next-bin/go-sqlite/v2/token v1.1.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/crypto v0.50.0 // indirect
-	golang.org/x/mod v0.33.0 // indirect
+	golang.org/x/mod v0.35.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/tools v0.42.0 // indirect
-)
-
-replace (
-	github.com/next-bin/go-sqlite/v2/cc/v4 => ../cc/v4
-	github.com/next-bin/go-sqlite/v2/ccgo/v4 => ../ccgo/v4
-	github.com/next-bin/go-sqlite/v2/fileutil => ../fileutil
-	github.com/next-bin/go-sqlite/v2/gc/v2 => ../gc/v2
-	github.com/next-bin/go-sqlite/v2/gc/v3 => ../gc/v3
-	github.com/next-bin/go-sqlite/v2/libc => ../libc
-	github.com/next-bin/go-sqlite/v2/libtcl8.6 => ../libtcl8.6
-	github.com/next-bin/go-sqlite/v2/libz => ../libz
-	github.com/next-bin/go-sqlite/v2/mathutil => ../mathutil
-	github.com/next-bin/go-sqlite/v2/memory => ../memory
-	github.com/next-bin/go-sqlite/v2/opt => ../opt
-	github.com/next-bin/go-sqlite/v2/sortutil => ../sortutil
-	github.com/next-bin/go-sqlite/v2/strutil => ../strutil
-	github.com/next-bin/go-sqlite/v2/token => ../token
+	golang.org/x/tools v0.44.0 // indirect
 )
