@@ -1,13 +1,17 @@
 module github.com/next-bin/go-sqlite/v2/crt/v3
 
-go 1.14
+go 1.26.0
 
 require (
 	github.com/mattn/go-isatty v0.0.12
-	github.com/remyoudompheng/bigfft v0.0.0-20190728182440-6a916e37a237 // indirect
-	golang.org/x/sys v0.0.0-20200519105757-fe76b779f299
-	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1 // indirect
 	github.com/next-bin/go-sqlite/v2/memory v1.11.0
+	golang.org/x/sys v0.43.0
+)
+
+require (
+	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1 // indirect
+	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
+	golang.org/x/crypto v0.50.0 // indirect
 )
 
 replace (

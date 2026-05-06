@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/ccir
 
-go 1.15
+go 1.26.0
 
 require (
 	github.com/edsrzf/mmap-go v0.0.0-20170320065105-0bce6a688712 // indirect

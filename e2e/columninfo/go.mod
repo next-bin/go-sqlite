@@ -1,6 +1,6 @@
 module e2e/columninfo
 
-go 1.25.0
+go 1.26.0
 
 require github.com/next-bin/go-sqlite/v2 v2.0.0
 

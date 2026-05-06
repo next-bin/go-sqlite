@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/ccgo
 
-go 1.15
+go 1.26.0
 
 require (
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect

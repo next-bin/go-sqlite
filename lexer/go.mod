@@ -1,6 +1,6 @@
 module github.com/next-bin/go-sqlite/v2/lexer
 
-go 1.18
+go 1.26.0
 
 require (
 	golang.org/x/exp v0.0.0-20181106170214-d68db9428509

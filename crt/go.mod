@@ -1,5 +1,7 @@
 module github.com/next-bin/go-sqlite/v2/crt
 
+go 1.26.0
+
 require (
 	github.com/remyoudompheng/bigfft v0.0.0-20170806203942-52369c62f446 // indirect
 	github.com/next-bin/go-sqlite/v2/internal v1.0.3
