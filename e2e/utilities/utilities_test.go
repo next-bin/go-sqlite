@@ -59,16 +59,6 @@ func TestOpt(t *testing.T) {
 	}
 }
 
-func TestMemory(t *testing.T) {
-	// memory package initializes SQLite allocator; just verify import works
-	_ = "imported"
-}
-
-func TestFileUtil(t *testing.T) {
-	// fileutil provides MFile utilities; just verify import works
-	_ = "imported"
-}
-
 func TestIndentFormatter(t *testing.T) {
 	var buf strings.Builder
 	f := strutil.IndentFormatter(&buf, "  ")

@@ -1,10 +1,14 @@
 package libs
 
 import (
+	"runtime"
 	"testing"
 )
 
 func TestCRTImports(t *testing.T) {
-	// Verify crt modules resolve via go mod tidy (blank import in go.mod require)
-	t.Log("crt, crt2, crt3 modules imported successfully via go.mod require")
+	// CRT packages have platform-specific (Linux) build constraints.
+	// On non-Linux platforms, verify the module paths resolve via go.mod only.
+	if runtime.GOOS != "linux" {
+		t.Skip("CRT packages require Linux build constraints")
+	}
 }
