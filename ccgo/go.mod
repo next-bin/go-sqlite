@@ -18,19 +18,3 @@ require (
 	github.com/next-bin/go-sqlite/v2/virtual v1.0.0
 	github.com/next-bin/go-sqlite/v2/xc v1.0.0
 )
-
-replace (
-	github.com/next-bin/go-sqlite/v2/cc => ../cc
-	github.com/next-bin/go-sqlite/v2/ccir => ../ccir
-	github.com/next-bin/go-sqlite/v2/crt => ../crt
-	github.com/next-bin/go-sqlite/v2/golex => ../golex
-	github.com/next-bin/go-sqlite/v2/internal => ../internal
-	github.com/next-bin/go-sqlite/v2/ir => ../ir
-	github.com/next-bin/go-sqlite/v2/irgo => ../irgo
-	github.com/next-bin/go-sqlite/v2/mathutil => ../mathutil
-	github.com/next-bin/go-sqlite/v2/memory => ../memory
-	github.com/next-bin/go-sqlite/v2/sortutil => ../sortutil
-	github.com/next-bin/go-sqlite/v2/strutil => ../strutil
-	github.com/next-bin/go-sqlite/v2/virtual => ../virtual
-	github.com/next-bin/go-sqlite/v2/xc => ../xc
-)

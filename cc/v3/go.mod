@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/dustin/go-humanize v1.0.1
-	github.com/google/go-cmp v0.6.0
+	github.com/google/go-cmp v0.7.0
 	github.com/next-bin/go-sqlite/v2/mathutil v1.7.1
 	github.com/next-bin/go-sqlite/v2/strutil v1.2.1
 	github.com/next-bin/go-sqlite/v2/token v1.1.0
@@ -12,10 +12,3 @@ require (
 )
 
 require github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-
-replace (
-	github.com/next-bin/go-sqlite/v2/mathutil => ../../mathutil
-	github.com/next-bin/go-sqlite/v2/strutil => ../../strutil
-	github.com/next-bin/go-sqlite/v2/token => ../../token
-	github.com/next-bin/go-sqlite/v2/uint128 => ../../uint128
-)

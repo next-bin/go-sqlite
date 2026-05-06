@@ -8,11 +8,3 @@ require (
 	github.com/next-bin/go-sqlite/v2/strutil v1.2.1
 	github.com/next-bin/go-sqlite/v2/xc v1.0.0
 )
-
-replace (
-	github.com/next-bin/go-sqlite/v2/golex => ../golex
-	github.com/next-bin/go-sqlite/v2/internal => ../internal
-	github.com/next-bin/go-sqlite/v2/mathutil => ../mathutil
-	github.com/next-bin/go-sqlite/v2/strutil => ../strutil
-	github.com/next-bin/go-sqlite/v2/xc => ../xc
-)

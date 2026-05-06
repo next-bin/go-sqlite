@@ -13,11 +13,3 @@ require (
 	github.com/next-bin/go-sqlite/v2/strutil v1.2.1 // indirect
 	github.com/next-bin/go-sqlite/v2/token v1.1.0 // indirect
 )
-
-replace (
-	github.com/next-bin/go-sqlite/v2/ebnf => ../../../../ebnf
-	github.com/next-bin/go-sqlite/v2/ebnfutil => ../../../../ebnfutil
-	github.com/next-bin/go-sqlite/v2/gc/v2 => ../../../../gc/v2
-	github.com/next-bin/go-sqlite/v2/strutil => ../../../../strutil
-	github.com/next-bin/go-sqlite/v2/token => ../../../../token
-)

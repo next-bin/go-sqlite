@@ -3,10 +3,6 @@ module github.com/next-bin/go-sqlite/v2/lexer
 go 1.26.0
 
 require (
-	golang.org/x/exp v0.0.0-20181106170214-d68db9428509
 	github.com/next-bin/go-sqlite/v2/fileutil v1.4.0
-)
-
-replace (
-	github.com/next-bin/go-sqlite/v2/fileutil => ../fileutil
+	golang.org/x/exp v0.0.0-20181106170214-d68db9428509
 )
