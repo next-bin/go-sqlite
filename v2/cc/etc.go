@@ -232,7 +232,6 @@ func position(pos token.Pos) token.Position { return fset.Position(pos) }
 //
 //	struct foo { int i; };
 //	enum bar { a = 1 };
-//
 type Binding struct {
 	Node Node
 	enum bool

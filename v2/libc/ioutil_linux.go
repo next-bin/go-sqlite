@@ -17,9 +17,9 @@ import (
 	"time"
 	"unsafe"
 
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/libc/errno"
 	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
+	"golang.org/x/sys/unix"
 )
 
 // Random number state.

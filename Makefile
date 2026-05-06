@@ -77,9 +77,9 @@ work:
 	rm -f go.work*
 	go work init
 	go work use .
-	go work use ../cc/v4
-	go work use ../ccgo/v3
-	go work use ../ccgo/v4
+	go work use ../cc4
+	go work use ../ccgo3
+	go work use ../ccgo4
 	go work use ../libc
 	go work use ../libtcl8.6
 	go work use ../libsqlite3

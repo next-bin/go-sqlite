@@ -23,7 +23,6 @@ import (
 
 	guuid "github.com/google/uuid"
 	"github.com/ncruces/go-strftime"
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/libc/errno"
 	"github.com/next-bin/go-sqlite/v2/libc/grp"
 	"github.com/next-bin/go-sqlite/v2/libc/limits"
@@ -34,6 +33,7 @@ import (
 	"github.com/next-bin/go-sqlite/v2/libc/stdlib"
 	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 	ctime "github.com/next-bin/go-sqlite/v2/libc/time"
+	"golang.org/x/sys/unix"
 )
 
 var staticGetpwnam pwd.Passwd

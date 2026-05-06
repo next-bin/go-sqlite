@@ -5,7 +5,7 @@
 // Package lex provides support for a *nix (f)lex like tool on .l sources.
 // The syntax is similar to a subset of (f)lex, see also: http://flex.sourceforge.net/manual/Format.html#Format
 //
-// Changelog
+// # Changelog
 //
 // 2021-05-28: Removed global state, NewL can now be called multiple times.
 //
@@ -64,26 +64,27 @@
 //	%%
 //	The optional user code section. Possibly the place where a lexem recognition fail will
 //	be handled (renderer specific).
+//
 // Missing/differing functionality of the .l parser/FSM generator (compared to flex):
-//	- Trailing context (re1/re2).
-//	- No requirement of an action to start on the same line as the pattern.
-//	- Processing of actions enclosed in braces. This package mostly treats
-//	  any non blank text following a pattern up to the next pattern as an action source code.
-//	- All flex % prefixed options except %s and %x.
-//	- Flex incompatible %yy* options
-//	- No cclasses ([[:digit:]]).
-//	- Anything special after '(?'.
-//	- Matching <<EOF>>. Still \0 is OK in a pattern.
-//	- And probably more.
+//   - Trailing context (re1/re2).
+//   - No requirement of an action to start on the same line as the pattern.
+//   - Processing of actions enclosed in braces. This package mostly treats
+//     any non blank text following a pattern up to the next pattern as an action source code.
+//   - All flex % prefixed options except %s and %x.
+//   - Flex incompatible %yy* options
+//   - No cclasses ([[:digit:]]).
+//   - Anything special after '(?'.
+//   - Matching <<EOF>>. Still \0 is OK in a pattern.
+//   - And probably more.
 package lex // import "github.com/next-bin/go-sqlite/v2/lex"
 
 import (
 	"bytes"
 	"errors"
 	"fmt"
+	"github.com/next-bin/go-sqlite/v2/lexer"
 	"go/token"
 	"io"
-	"github.com/next-bin/go-sqlite/v2/lexer"
 	"sort"
 	"strings"
 

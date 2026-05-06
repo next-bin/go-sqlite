@@ -102,7 +102,6 @@ type File struct {
 }
 
 // NewFile returns  a new file with a given filename and file size.
-//
 func NewFile(filename string, size int) *File {
 	return &File{name: filename, base: 1, size: size, lines: []int{0}}
 }

@@ -2,27 +2,46 @@ go 1.26.0
 
 use (
 	.
+	./e2e/backup
+	./e2e/basics
+	./e2e/collation
+	./e2e/columninfo
+	./e2e/compilers
+	./e2e/concurrency
+	./e2e/context
+	./e2e/functions
+	./e2e/hooks
+	./e2e/integration
+	./e2e/ir
+	./e2e/libs
+	./e2e/parsing
+	./e2e/serialization
+	./e2e/tools
+	./e2e/transactions
+	./e2e/types
+	./e2e/utilities
+	./e2e/vtab
+	./issue198
 	./v2/builder
 	./v2/cc
-	./v2/cc/v3
-	./v2/cc/v4
-	./v2/cc/v5
+	./v2/cc3
+	./v2/cc4
+	./v2/cc5
 	./v2/ccgo
-	./v2/ccgo/v3
-	./v2/ccgo/v4
+	./v2/ccgo3
+	./v2/ccgo4
 	./v2/ccir
 	./v2/ccorpus
 	./v2/ccorpus2
 	./v2/crt
-	./v2/crt/v2
-	./v2/crt/v3
+	./v2/crt2
+	./v2/crt3
 	./v2/ebnf
 	./v2/ebnfutil
 	./v2/fileutil
 	./v2/gc
-	./v2/gc/v2
-	./v2/gc/v2/internal/ebnf
-	./v2/gc/v3
+	./v2/gc2
+	./v2/gc3
 	./v2/goabi0
 	./v2/golex
 	./v2/gomod
@@ -50,18 +69,4 @@ use (
 	./v2/virtual
 	./v2/xc
 	./v2/y
-	./issue198
-	./e2e/hooks
-	./e2e/types
-	./e2e/concurrency
-	./e2e/serialization
-	./e2e/context
-	./e2e/basics
-	./e2e/transactions
-	./e2e/functions
-	./e2e/collation
-	./e2e/backup
-	./e2e/vtab
-	./e2e/columninfo
-	./e2e/integration
 )

@@ -9,9 +9,9 @@ package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 import (
 	"unsafe"
 
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/libc/errno"
 	ctime "github.com/next-bin/go-sqlite/v2/libc/time"
+	"golang.org/x/sys/unix"
 )
 
 // int clock_gettime(clockid_t clk_id, struct timespec *tp);

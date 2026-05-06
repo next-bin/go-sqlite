@@ -17,8 +17,8 @@ import (
 	"time"
 
 	_ "github.com/adrg/xdg"
-	_ "github.com/next-bin/go-sqlite/v2/cc/v4"
-	_ "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	_ "github.com/next-bin/go-sqlite/v2/cc4"
+	_ "github.com/next-bin/go-sqlite/v2/ccgo4/lib"
 	_ "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
 	"github.com/next-bin/go-sqlite/v2/libc"
 	_ "github.com/next-bin/go-sqlite/v2/libz"

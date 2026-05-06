@@ -149,8 +149,8 @@ func (n *NfaState) isRedundant() (retarget *NfaState, ok bool) { //TODO func (rc
 	return
 }
 
-//TODO s/^func (n *NfaState)/func (state *NfaState)/g
-//TODO s/^func (n *Nfa)/func (nfa *Nfa)/g
+// TODO s/^func (n *NfaState)/func (state *NfaState)/g
+// TODO s/^func (n *Nfa)/func (nfa *Nfa)/g
 func (n *NfaState) retarget() (target *NfaState, ok bool) {
 	if target, ok = n.isRedundant(); !ok {
 		return

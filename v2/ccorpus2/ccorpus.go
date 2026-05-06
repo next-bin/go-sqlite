@@ -9,6 +9,7 @@ import (
 	"embed"
 )
 
-//go:embed assets
 // FS exposes the corpus.
+//
+//go:embed assets
 var FS embed.FS

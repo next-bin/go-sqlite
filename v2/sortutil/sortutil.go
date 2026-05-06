@@ -4,7 +4,7 @@
 
 // Package sortutil provides utilities supplementing the standard 'sort' package.
 //
-// Changelog
+// # Changelog
 //
 // 2019-10-24: v1.1.0: Added topological sort.
 //

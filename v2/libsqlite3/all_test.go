@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite/v2/ccgo/v4/lib"
+	_ "github.com/next-bin/go-sqlite/v2/ccgo4/lib"
 	util "github.com/next-bin/go-sqlite/v2/fileutil/ccgo"
 	"github.com/next-bin/go-sqlite/v2/libtcl8.6/library"
 )

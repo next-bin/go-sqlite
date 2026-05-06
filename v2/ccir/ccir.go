@@ -4,7 +4,7 @@
 
 // Package ccir translates cc[0] ASTs to an intermediate representation. (Work In Progress)
 //
-// Supported platforms and architectures
+// # Supported platforms and architectures
 //
 // In GOOS_GOARCH form
 //
@@ -21,11 +21,11 @@
 //
 // Please fill an issue for the port and let's discuss it there.
 //
-// Links
+// # Links
 //
 // Referenced from elsewhere
 //
-//  [0]: https://github.com/next-bin/go-sqlite/v2/cc
+//	[0]: https://github.com/next-bin/go-sqlite/v2/cc
 package ccir // import "github.com/next-bin/go-sqlite/v2/ccir"
 
 import (
@@ -106,7 +106,7 @@ func init() {
 	panic("internal error")
 }
 
-//TODO remove me.
+// TODO remove me.
 func TODO(more ...interface{}) string { //TODOOK
 	_, fn, fl, _ := runtime.Caller(1)
 	fmt.Fprintf(os.Stderr, "%s:%d: %v\n", path.Base(fn), fl, fmt.Sprint(more...))

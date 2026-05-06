@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+//go:build (386 || arm || arm64be || armbe || mips || mipsle || ppc || ppc64le || s390 || s390x || sparc) && !windows
 // +build 386 arm arm64be armbe mips mipsle ppc ppc64le s390 s390x sparc
-
 // +build !windows
 
 package crt // import "github.com/next-bin/go-sqlite/v2/ccgo/crt"

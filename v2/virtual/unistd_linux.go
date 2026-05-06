@@ -13,9 +13,9 @@ import (
 	tim "time"
 	"unsafe"
 
-	"golang.org/x/crypto/ssh/terminal"
 	"github.com/next-bin/go-sqlite/v2/ccir/libc/errno"
 	"github.com/next-bin/go-sqlite/v2/ccir/libc/unistd"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 func init() {

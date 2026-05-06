@@ -13,7 +13,6 @@ import (
 	"unicode"
 	"unsafe"
 
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/libc/errno"
 	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
 	"github.com/next-bin/go-sqlite/v2/libc/signal"
@@ -21,6 +20,7 @@ import (
 	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 	"github.com/next-bin/go-sqlite/v2/libc/time"
 	"github.com/next-bin/go-sqlite/v2/libc/wctype"
+	"golang.org/x/sys/unix"
 )
 
 var (

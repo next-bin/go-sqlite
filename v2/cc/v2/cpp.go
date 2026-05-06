@@ -482,28 +482,29 @@ func (c *cpp) eval(r tokenReader, w tokenWriter) (err error) {
 // [1]pg 1.
 //
 // expand(TS ) /* recur, substitute, pushback, rescan */
-// {
-// 	if TS is {} then
-//		// ---------------------------------------------------------- A
-// 		return {};
 //
-// 	else if TS is T^HS • TS’ and T is in HS then
-//		//----------------------------------------------------------- B
-// 		return T^HS • expand(TS’);
+//	{
+//		if TS is {} then
+//			// ---------------------------------------------------------- A
+//			return {};
 //
-// 	else if TS is T^HS • TS’ and T is a "()-less macro" then
-//		// ---------------------------------------------------------- C
-// 		return expand(subst(ts(T), {}, {}, HS \cup {T}, {}) • TS’ );
+//		else if TS is T^HS • TS’ and T is in HS then
+//			//----------------------------------------------------------- B
+//			return T^HS • expand(TS’);
 //
-// 	else if TS is T^HS •(•TS’ and T is a "()’d macro" then
-//		// ---------------------------------------------------------- D
-// 		check TS’ is actuals • )^HS’ • TS’’ and actuals are "correct for T"
-// 		return expand(subst(ts(T), fp(T), actuals,(HS \cap HS’) \cup {T }, {}) • TS’’);
+//		else if TS is T^HS • TS’ and T is a "()-less macro" then
+//			// ---------------------------------------------------------- C
+//			return expand(subst(ts(T), {}, {}, HS \cup {T}, {}) • TS’ );
 //
-//	// ------------------------------------------------------------------ E
-// 	note TS must be T^HS • TS’
-// 	return T^HS • expand(TS’);
-// }
+//		else if TS is T^HS •(•TS’ and T is a "()’d macro" then
+//			// ---------------------------------------------------------- D
+//			check TS’ is actuals • )^HS’ • TS’’ and actuals are "correct for T"
+//			return expand(subst(ts(T), fp(T), actuals,(HS \cap HS’) \cup {T }, {}) • TS’’);
+//
+//		// ------------------------------------------------------------------ E
+//		note TS must be T^HS • TS’
+//		return T^HS • expand(TS’);
+//	}
 func (c *cpp) expand(r tokenReader, w tokenWriter, cs conds, lvl int, expandDefined bool) conds {
 	for {
 		t := r.read()
@@ -745,57 +746,58 @@ func (c *cpp) expands(toks []cppToken, expandDefined bool) (out []cppToken) {
 // [1]pg 2.
 //
 // subst(IS, FP, AP, HS, OS) /* substitute args, handle stringize and paste */
-// {
-// 	if IS is {} then
-//		// ---------------------------------------------------------- A
-// 		return hsadd(HS, OS);
 //
-// 	else if IS is # • T • IS’ and T is FP[i] then
-//		// ---------------------------------------------------------- B
-// 		return subst(IS’, FP, AP, HS, OS • stringize(select(i, AP)));
-//
-// 	else if IS is ## • T • IS’ and T is FP[i] then
 //	{
-//		// ---------------------------------------------------------- C
-// 		if select(i, AP) is {} then /* only if actuals can be empty */
-//			// -------------------------------------------------- D
-// 			return subst(IS’, FP, AP, HS, OS);
-// 		else
-//			// -------------------------------------------------- E
-// 			return subst(IS’, FP, AP, HS, glue(OS, select(i, AP)));
-// 	}
+//		if IS is {} then
+//			// ---------------------------------------------------------- A
+//			return hsadd(HS, OS);
 //
-// 	else if IS is ## • T^HS’ • IS’ then
-//		// ---------------------------------------------------------- F
-// 		return subst(IS’, FP, AP, HS, glue(OS, T^HS’));
+//		else if IS is # • T • IS’ and T is FP[i] then
+//			// ---------------------------------------------------------- B
+//			return subst(IS’, FP, AP, HS, OS • stringize(select(i, AP)));
 //
-// 	else if IS is T • ##^HS’ • IS’ and T is FP[i] then
-//	{
-//		// ---------------------------------------------------------- G
-// 		if select(i, AP) is {} then /* only if actuals can be empty */
+//		else if IS is ## • T • IS’ and T is FP[i] then
 //		{
-//			// -------------------------------------------------- H
-// 			if IS’ is T’ • IS’’ and T’ is FP[j] then
-//				// ------------------------------------------ I
-// 				return subst(IS’’, FP, AP, HS, OS • select(j, AP));
-// 			else
-//				// ------------------------------------------ J
-// 				return subst(IS’, FP, AP, HS, OS);
-// 		}
-//		else
-//			// -------------------------------------------------- K
-// 			return subst(##^HS’ • IS’, FP, AP, HS, OS • select(i, AP));
+//			// ---------------------------------------------------------- C
+//			if select(i, AP) is {} then /* only if actuals can be empty */
+//				// -------------------------------------------------- D
+//				return subst(IS’, FP, AP, HS, OS);
+//			else
+//				// -------------------------------------------------- E
+//				return subst(IS’, FP, AP, HS, glue(OS, select(i, AP)));
+//		}
 //
+//		else if IS is ## • T^HS’ • IS’ then
+//			// ---------------------------------------------------------- F
+//			return subst(IS’, FP, AP, HS, glue(OS, T^HS’));
+//
+//		else if IS is T • ##^HS’ • IS’ and T is FP[i] then
+//		{
+//			// ---------------------------------------------------------- G
+//			if select(i, AP) is {} then /* only if actuals can be empty */
+//			{
+//				// -------------------------------------------------- H
+//				if IS’ is T’ • IS’’ and T’ is FP[j] then
+//					// ------------------------------------------ I
+//					return subst(IS’’, FP, AP, HS, OS • select(j, AP));
+//				else
+//					// ------------------------------------------ J
+//					return subst(IS’, FP, AP, HS, OS);
+//			}
+//			else
+//				// -------------------------------------------------- K
+//				return subst(##^HS’ • IS’, FP, AP, HS, OS • select(i, AP));
+//
+//		}
+//
+//		else if IS is T • IS’ and T is FP[i] then
+//			// ---------------------------------------------------------- L
+//			return subst(IS’, FP, AP, HS, OS • expand(select(i, AP)));
+//
+//		// ------------------------------------------------------------------ M
+//		note IS must be T^HS’ • IS’
+//		return subst(IS’, FP, AP, HS, OS • T^HS’);
 //	}
-//
-// 	else if IS is T • IS’ and T is FP[i] then
-//		// ---------------------------------------------------------- L
-// 		return subst(IS’, FP, AP, HS, OS • expand(select(i, AP)));
-//
-//	// ------------------------------------------------------------------ M
-// 	note IS must be T^HS’ • IS’
-// 	return subst(IS’, FP, AP, HS, OS • T^HS’);
-// }
 //
 // A quick overview of subst is that it walks through the input sequence, IS,
 // building up an output sequence, OS, by handling each token from left to

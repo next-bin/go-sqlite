@@ -8,11 +8,11 @@
 //
 // # The command
 //
-//	https://github.com/next-bin/go-sqlite/v2/ccgo/v4
+//	https://github.com/next-bin/go-sqlite/v2/ccgo4
 //
 // # The library
 //
-//	https://github.com/next-bin/go-sqlite/v2/ccgo/v4/lib
+//	https://github.com/next-bin/go-sqlite/v2/ccgo4/lib
 package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo"
 
 import (
@@ -38,7 +38,7 @@ var (
 	idVoidPtr = ir.TypeID(dict.SID("*struct{}"))
 )
 
-//TODO remove me.
+// TODO remove me.
 func TODO(msg string, more ...interface{}) string { //TODOOK
 	_, fn, fl, _ := runtime.Caller(1)
 	fmt.Fprintf(os.Stderr, "%s:%d: %v\n", path.Base(fn), fl, fmt.Sprintf(msg, more...))

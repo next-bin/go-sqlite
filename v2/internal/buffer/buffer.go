@@ -33,8 +33,8 @@
 package buffer // import "github.com/next-bin/go-sqlite/v2/internal/buffer"
 
 import (
-	"io"
 	"github.com/next-bin/go-sqlite/v2/internal/slice"
+	"io"
 )
 
 // CGet returns a pointer to a byte slice of len size. The pointed to byte

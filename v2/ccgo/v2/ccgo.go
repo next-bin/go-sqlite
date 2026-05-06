@@ -8,11 +8,11 @@
 //
 // # The command
 //
-//	https://github.com/next-bin/go-sqlite/v2/ccgo/v4
+//	https://github.com/next-bin/go-sqlite/v2/ccgo4
 //
 // # The library
 //
-//	https://github.com/next-bin/go-sqlite/v2/ccgo/v4/lib
+//	https://github.com/next-bin/go-sqlite/v2/ccgo4/lib
 package ccgo // import "github.com/next-bin/go-sqlite/v2/ccgo/v2"
 
 //TODO must respect 'volatile' -> use sync.Atomic

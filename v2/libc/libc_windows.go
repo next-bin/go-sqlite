@@ -23,7 +23,6 @@ import (
 	"unsafe"
 
 	"github.com/ncruces/go-strftime"
-	"golang.org/x/sys/windows"
 	"github.com/next-bin/go-sqlite/v2/libc/errno"
 	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
 	"github.com/next-bin/go-sqlite/v2/libc/limits"
@@ -32,6 +31,7 @@ import (
 	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 	"github.com/next-bin/go-sqlite/v2/libc/time"
 	"github.com/next-bin/go-sqlite/v2/libc/unistd"
+	"golang.org/x/sys/windows"
 )
 
 // Keep these outside of the var block otherwise go generate will miss them.

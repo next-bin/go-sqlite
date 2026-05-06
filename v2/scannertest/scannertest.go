@@ -86,11 +86,11 @@ type Interface interface {
 	Scan() error
 }
 
-//	1	states 4, cases 18560
-//	2	states 7, cases 28416
-//	4	states 13, cases 48128
-//	8	states 25, cases 87552
-//	16	states 49, cases 166400
+// 1	states 4, cases 18560
+// 2	states 7, cases 28416
+// 4	states 13, cases 48128
+// 8	states 25, cases 87552
+// 16	states 49, cases 166400
 const testStatesDepth = 16
 
 type stateStack [testStatesDepth]*dfa.NfaState

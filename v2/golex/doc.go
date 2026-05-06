@@ -8,6 +8,7 @@
 // If no non-opt args are given, golex reads stdin.
 //
 // Options:
+//
 //	-DFA            print the DFA to stdout and quit
 //	-nodfaopt       disable DFA optimization - don't use this for production code
 //	-o fname        write to file `fname`, default is `lex.yy.go`
@@ -19,16 +20,16 @@
 //
 //	$ go get -u github.com/next-bin/go-sqlite/v2/golex
 //
-// Run time library
+// # Run time library
 //
 // Please see http://godoc.org/github.com/next-bin/go-sqlite/v2/golex/lex.
 //
-// Changelog
+// # Changelog
 //
 // 2014-11-18: Golex now supports %yym - a hook which can be used to mark an
 // accepting state.
 //
-// Implementing POSIX-like longest match
+// # Implementing POSIX-like longest match
 //
 // Consider for example this .l file:
 //
@@ -171,11 +172,12 @@
 // 2014-11-15: Golex's output is now gofmt'ed, if possible.
 //
 // Missing/differing functionality of the current renderer (compared to flex):
-//	- No runtime tokenizer package/environment
-//	  (but the freedom to have/write any fitting one's specific task(s)).
-//	- The generated FSM picks the rules in the order of their appearance in the .l source,
-//	  but "flex picks the rule that matches the most text".
-//	- And probably more.
+//   - No runtime tokenizer package/environment
+//     (but the freedom to have/write any fitting one's specific task(s)).
+//   - The generated FSM picks the rules in the order of their appearance in the .l source,
+//     but "flex picks the rule that matches the most text".
+//   - And probably more.
+//
 // Further limitations on the .l source are listed in the cznic/lex package godocs.
 //
 // A simple golex program example (make example1 && ./example1):

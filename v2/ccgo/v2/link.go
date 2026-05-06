@@ -171,7 +171,7 @@ func NewObject(out io.Writer, goos, goarch, file string, in *cc.TranslationUnit,
 	return err
 }
 
-//TODO use
+// TODO use
 type unit struct { // Translation unit
 	provides map[string]struct{} // key: mangled declarator name with external linkage
 	requires map[string]struct{} // key: mangled declarator name with external linkage

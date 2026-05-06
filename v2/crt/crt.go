@@ -28,7 +28,7 @@
 //
 // Installation
 //
-//     $ go get github.com/next-bin/go-sqlite/v2/crt
+//	$ go get github.com/next-bin/go-sqlite/v2/crt
 //
 // Documentation: http://godoc.org/github.com/next-bin/go-sqlite/v2/crt
 //

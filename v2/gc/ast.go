@@ -357,7 +357,8 @@ func (n *ImportDecl) Name() string {
 }
 
 // importSpec:
-// 	'.' STRING
+//
+//	'.' STRING
 //	|	IDENT STRING
 //	|	STRING
 func (p *parser) importSpec() {
@@ -478,6 +479,7 @@ func (p *parser) importSpec() {
 }
 
 // importSpecList:
+//
 //		importSpec
 //	|	importSpecList ';' importSpec
 func (p *parser) importSpecList() {
@@ -487,6 +489,7 @@ func (p *parser) importSpecList() {
 }
 
 // imports:
+//
 //	|	imports "import" '(' ')' ';'
 //	|	imports "import" '(' importSpecList semiOpt ')' ';'
 //	|	imports "import" importSpec ';'
@@ -511,6 +514,7 @@ func (p *parser) imports() {
 }
 
 // identList:
+//
 //		IDENT
 //	|	identList ',' IDENT
 func (p *parser) identList() (l []Token) {
@@ -622,6 +626,7 @@ func (p *parser) keyVal() KeyVal {
 }
 
 // keyValList:
+//
 //		keyVal
 //	|	keyValList ',' keyVal
 func (p *parser) keyValList() (r []KeyVal) {
@@ -637,6 +642,7 @@ func (p *parser) keyValList() (r []KeyVal) {
 }
 
 // bracedKeyValList:
+//
 //	|	keyValList commaOpt
 func (p *parser) bracedKeyValList() (r []KeyVal) {
 	if p.c != gotoken.RBRACE {
@@ -790,6 +796,7 @@ more:
 }
 
 // exprOrTypeList:
+//
 //		exprOrType
 //	|	exprOrTypeList ',' exprOrType
 func (p *parser) exprOrTypeList() (r []ExprOrType) {
@@ -801,6 +808,7 @@ func (p *parser) exprOrTypeList() (r []ExprOrType) {
 }
 
 // exprOpt:
+//
 //	|	expr
 func (p *parser) exprOpt() (r Expr) {
 	if p.c == gotoken.COLON || p.c == gotoken.RBRACK {
@@ -1416,7 +1424,7 @@ func (n *PrimaryExprFullSlice) check(s *cstack) {
 
 // PrimaryExpr represents data reduced by productions
 //
-// 	primaryExpr:
+//	primaryExpr:
 //		'(' exprOrType ')'
 //	|	IDENT genericArgsOpt %prec _NotParen
 //	|	convType '(' expr commaOpt ')'
@@ -2407,6 +2415,7 @@ func (p *parser) expr2(lhs Expr) (r Expr) {
 }
 
 // exprList:
+//
 //		expr
 //	|	exprList ',' expr
 func (p *parser) exprList() (r []Expr) {
@@ -2418,6 +2427,7 @@ func (p *parser) exprList() (r []Expr) {
 }
 
 // constSpec:
+//
 //		identList
 //	|	identList '=' exprList
 //	|	identList typ
@@ -2465,6 +2475,7 @@ func (p *parser) constSpec() (r []Declaration) {
 }
 
 // constSpecList:
+//
 //		constSpec
 //	|	constSpecList ';' constSpec
 func (p *parser) constSpecList() (r []Declaration) {
@@ -2476,7 +2487,7 @@ func (p *parser) constSpecList() (r []Declaration) {
 
 // FieldDeclaration represents data reduced by productions
 //
-// 	fieldDecl:
+//	fieldDecl:
 //		'*' embeddedName literalOpt
 //	|	identList typ literalOpt
 //	|	embeddedName literalOpt
@@ -2582,6 +2593,7 @@ func (p *parser) fieldDecl() (r []FieldDeclaration) {
 }
 
 // fieldDeclList:
+//
 //		fieldDecl
 //	|	fieldDeclList ';' fieldDecl
 func (p *parser) fieldDeclList() (r []FieldDeclaration) {
@@ -2609,6 +2621,7 @@ type interfaceDeclEmbedded struct {
 }
 
 // interfaceDecl:
+//
 //		IDENT '(' paramTypeListCommaOptOpt ')' result
 //	|	embeddedName
 func (p *parser) interfaceDecl() (r interfaceDecl) {
@@ -2649,6 +2662,7 @@ func (p *parser) interfaceDecl() (r interfaceDecl) {
 }
 
 // interfaceDeclList:
+//
 //		interfaceDecl
 //	|	interfaceDeclList ';' interfaceDecl
 func (p *parser) interfaceDeclList() (r []interfaceDecl) {
@@ -2664,6 +2678,7 @@ func (p *parser) interfaceDeclList() (r []interfaceDecl) {
 }
 
 // otherType:
+//
 //		"chan" "<-" typ
 //	|	"chan" '(' typ ')'
 //	|	"chan" qualifiedIdent
@@ -2816,6 +2831,7 @@ func (p *parser) otherType(ch gotoken.Token) (r Type) {
 }
 
 // qualifiedIdent:
+//
 //		IDENT %prec _NotParen
 //	|	IDENT '.' IDENT
 func (p *parser) qualifiedIdent() Type {
@@ -2834,7 +2850,8 @@ func (p *parser) qualifiedIdent() Type {
 }
 
 // ptrType:
-// 	'*' typ
+//
+//	'*' typ
 func (p *parser) ptrType() *PointerType {
 	tok := p.tok()
 	p.must(gotoken.MUL)
@@ -2842,7 +2859,8 @@ func (p *parser) ptrType() *PointerType {
 }
 
 // fnType:
-// 	"func" '(' paramTypeListCommaOptOpt ')' result
+//
+//	"func" '(' paramTypeListCommaOptOpt ')' result
 func (p *parser) fnType() *FunctionType {
 	tok := p.tok()
 	p.n() // "func"
@@ -2858,7 +2876,8 @@ func (p *parser) fnType() *FunctionType {
 }
 
 // rxChanType:
-// 	"<-" "chan" typ
+//
+//	"<-" "chan" typ
 func (p *parser) rxChanType() *ChannelType {
 	tok := p.tok()
 	p.n() // "<-"
@@ -2867,6 +2886,7 @@ func (p *parser) rxChanType() *ChannelType {
 }
 
 // typeList:
+//
 //		typ
 //	|	typeList ',' typ
 func (p *parser) typeList() (r []Type) {
@@ -2877,6 +2897,7 @@ func (p *parser) typeList() (r []Type) {
 }
 
 // genericArgsOpt:
+//
 //	|	"«" typeList commaOpt "»"
 func (p *parser) genericArgsOpt() (r []Type) {
 	if p.opt(tokenLTLT) {
@@ -2888,6 +2909,7 @@ func (p *parser) genericArgsOpt() (r []Type) {
 }
 
 // typ:
+//
 //		'(' typ ')'
 //	|	qualifiedIdent genericArgsOpt
 //	|	fnType
@@ -2919,7 +2941,8 @@ func (p *parser) typ() (r Type) {
 	return r
 }
 
-//genericParamsOpt:
+// genericParamsOpt:
+//
 //	|	"«" identList "»"
 func (p *parser) genericParamsOpt() (r []Token) {
 	if p.opt(tokenLTLT) {
@@ -2931,6 +2954,7 @@ func (p *parser) genericParamsOpt() (r []Token) {
 }
 
 // typeSpec:
+//
 //		IDENT genericParamsOpt typ
 //	|	IDENT '=' typ
 func (p *parser) typeSpec() Declaration {
@@ -2957,6 +2981,7 @@ func (p *parser) typeSpec() Declaration {
 }
 
 // typeSpecList:
+//
 //		typeSpec
 //	|	typeSpecList ';' typeSpec
 func (p *parser) typeSpecList() (r []Declaration) {
@@ -2973,6 +2998,7 @@ func (p *parser) typeSpecList() (r []Declaration) {
 }
 
 // varSpec:
+//
 //		identList '=' exprList
 //	|	identList typ
 //	|	identList typ '=' exprList
@@ -3046,6 +3072,7 @@ func (p *parser) varSpec() (r []Declaration) {
 }
 
 // varSpecList:
+//
 //		varSpec
 //	|	varSpecList ';' varSpec
 func (p *parser) varSpecList() (r []Declaration) {
@@ -3056,6 +3083,7 @@ func (p *parser) varSpecList() (r []Declaration) {
 }
 
 // commonDecl:
+//
 //		"const" '(' ')'
 //	|	"const" '(' constSpec ';' constSpecList semiOpt ')'
 //	|	"const" '(' constSpec semiOpt ')'
@@ -3324,6 +3352,7 @@ func (p *parser) paramTypeList() ParamTypeList {
 }
 
 // paramTypeListCommaOptOpt:
+//
 //	|	paramTypeList commaOpt
 func (p *parser) paramTypeListCommaOptOpt() ParamTypeList {
 	if p.c != gotoken.RPAREN {
@@ -3334,6 +3363,7 @@ func (p *parser) paramTypeListCommaOptOpt() ParamTypeList {
 }
 
 // result:
+//
 //		%prec _NotParen
 //	|	'(' paramTypeListCommaOptOpt ')'
 //	|	qualifiedIdent genericArgsOpt
@@ -3806,6 +3836,7 @@ more:
 }
 
 // simpleStmtOpt:
+//
 //	|	simpleStmt
 func (p *parser) simpleStmtOpt(acceptRange bool) (isRange bool, r SimpleStmt) {
 	if p.c == gotoken.SEMICOLON || p.c == tokenBODY {
@@ -3879,7 +3910,8 @@ func (p *parser) ifHeader(s string) (r IfHeader) {
 }
 
 // loopBody:
-// 	BODY stmtList '}'
+//
+//	BODY stmtList '}'
 func (p *parser) loopBody() *StmtBlock {
 	p.must(tokenBODY)
 	s := p.push()
@@ -3919,8 +3951,9 @@ func (p *parser) elseIfList() (isElse bool, r []ElseIf) {
 	return false, r
 }
 
-//	compoundStmt:
-//		'{' stmtList '}'
+// compoundStmt:
+//
+//	'{' stmtList '}'
 func (p *parser) compoundStmt(ch gotoken.Token) *StmtBlock {
 	r := &StmtBlock{}
 	switch p.c {
@@ -4446,7 +4479,9 @@ func (p *parser) stmt() (r Stmt) {
 }
 
 // stmtList:
-// 	stmt
+//
+//	stmt
+//
 // |	stmtList ';' stmt
 func (p *parser) stmtList() (r []Stmt) {
 	if s := p.stmt(); s != nil {
@@ -4473,6 +4508,7 @@ func (p *parser) stmtList() (r []Stmt) {
 }
 
 // fnBody:
+//
 //	|	'{' stmtList '}'
 func (p *parser) fnBody() (r []Stmt, ok bool) {
 	if p.opt(gotoken.LBRACE) {
@@ -4485,6 +4521,7 @@ func (p *parser) fnBody() (r []Stmt, ok bool) {
 }
 
 // topLevelDeclList:
+//
 //	|	topLevelDeclList "func" '(' paramTypeListCommaOptOpt ')' IDENT genericParamsOpt '(' paramTypeListCommaOptOpt ')' result fnBody ';'
 //	|	topLevelDeclList "func" IDENT genericParamsOpt '(' paramTypeListCommaOptOpt ')' result fnBody ';'
 //	|	topLevelDeclList commonDecl ';'
@@ -4602,7 +4639,8 @@ func (p *parser) topLevelDeclList() {
 }
 
 // file:
-// 	"package" IDENT ';' imports topLevelDeclList
+//
+//	"package" IDENT ';' imports topLevelDeclList
 func (p *parser) file() {
 	if p.syntaxError == nil {
 		p.syntaxError = func(*parser) {}
