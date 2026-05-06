@@ -812,9 +812,9 @@ func (g Grammar) String() string {
 
 // Verify checks that:
 //
-//	- all productions used are defined
-//	- all productions defined are used when beginning at start
-//	- lexical productions refer only to other lexical productions
+//   - all productions used are defined
+//   - all productions defined are used when beginning at start
+//   - lexical productions refer only to other lexical productions
 func (g Grammar) Verify(start string) error {
 	return ebnf.Verify(ebnf.Grammar(g), start)
 }

@@ -1,6 +1,6 @@
 github.com/edsrzf/mmap-go v1.2.0 h1:hXLYlkbaPzt1SaQk+anYwKSRNhufIDCchSPkUD6dD84=
 github.com/edsrzf/mmap-go v1.2.0/go.mod h1:19H/e8pUPLicwkyNgOykDXkJ9F0MHE+Z52B8EIth78Q=
-github.com/next-bin/go-sqlite/v2/fileutil v1.4.0 h1:FSVxkAtrEA4nhrEaCzqf7tXmYvNYUvZ8Rdz6JiZNZe8=
+github.com/next-bin/go-sqlite/v2/fileutil v1.4.0 h1:3/auzHkiq+yaoIruY6dC9/vHt5/pYLTP4TvAJ0TSeQg=
 github.com/next-bin/go-sqlite/v2/fileutil v1.4.0/go.mod h1:aEy7fYIwzFAL4G/zykhOwvgAz3KTrn9d15Jvu4WJS2o=
 github.com/next-bin/go-sqlite/v2/mathutil v1.7.1 h1:2HvN59/qxtHGskhq50Z9rD6YlVLVdppJql1JewSPQso=
 github.com/next-bin/go-sqlite/v2/mathutil v1.7.1/go.mod h1:0G9MPVPcUhU5PVwxvefQldUyam1lLVOC5jUCr0z5Xjg=

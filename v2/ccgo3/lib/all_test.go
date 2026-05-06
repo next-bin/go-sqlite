@@ -31,9 +31,9 @@ import (
 	"unsafe"
 
 	"github.com/dustin/go-humanize"
-	"github.com/pmezard/go-difflib/difflib"
 	"github.com/next-bin/go-sqlite/v2/cc3"
 	"github.com/next-bin/go-sqlite/v2/ccorpus"
+	"github.com/pmezard/go-difflib/difflib"
 )
 
 func caller(s string, va ...interface{}) {

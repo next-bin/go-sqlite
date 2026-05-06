@@ -12,9 +12,9 @@ import (
 	"testing"
 	"unsafe"
 
-	_ "golang.org/x/tools/go/packages" // genasm.go
 	ccgo "github.com/next-bin/go-sqlite/v2/ccgo4/lib"
 	_ "github.com/next-bin/go-sqlite/v2/goabi0" // genasm.go
+	_ "golang.org/x/tools/go/packages"          // genasm.go
 )
 
 var (

@@ -17,34 +17,34 @@
 
 // Package cc is a C99 compiler front end (Work in progress).
 //
-// Installation
+// # Installation
 //
 // To install/update cc3 invoke:
 //
-//     $ go get [-u] github.com/next-bin/go-sqlite/v2/cc3
+//	$ go get [-u] github.com/next-bin/go-sqlite/v2/cc3
 //
-// Online documentation
+// # Online documentation
 //
 // See https://godoc.org/github.com/next-bin/go-sqlite/v2/cc3.
 //
-// Status
+// # Status
 //
 // Most of the functionality is now working.
 //
-// Supported platforms
+// # Supported platforms
 //
 // The code is known to work on Darwin, Linux and Windows, but the supported
 // features may vary.
 //
-// Links
+// # Links
 //
 // Referenced from elsewhere:
 //
-//  [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
-//  [1]: https://www.spinellis.gr/blog/20060626/cpp.algo.pdf
-//  [2]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-//  [3]: http://gallium.inria.fr/~fpottier/publis/jourdan-fpottier-2016.pdf
-//  [4]: https://gcc.gnu.org/onlinedocs/gcc-8.3.0/gcc/Attribute-Syntax.html#Attribute-Syntax
+//	[0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
+//	[1]: https://www.spinellis.gr/blog/20060626/cpp.algo.pdf
+//	[2]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+//	[3]: http://gallium.inria.fr/~fpottier/publis/jourdan-fpottier-2016.pdf
+//	[4]: https://gcc.gnu.org/onlinedocs/gcc-8.3.0/gcc/Attribute-Syntax.html#Attribute-Syntax
 package cc // import "github.com/next-bin/go-sqlite/v2/cc3"
 
 import (

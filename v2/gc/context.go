@@ -445,7 +445,6 @@ func NewContext(goos, goarch string, tags, searchPaths []string, options ...Opti
 }
 
 /*
-
 Vendor Directories
 
 Go 1.6 includes support for using local copies of external dependencies
@@ -460,23 +459,23 @@ Here's the example from the previous section,
 but with the "internal" directory renamed to "vendor"
 and a new foo/vendor/crash/bang directory added:
 
-    /home/user/gocode/
-        src/
-            crash/
-                bang/              (go code in package bang)
-                    b.go
-            foo/                   (go code in package foo)
-                f.go
-                bar/               (go code in package bar)
-                    x.go
-                vendor/
-                    crash/
-                        bang/      (go code in package bang)
-                            b.go
-                    baz/           (go code in package baz)
-                        z.go
-                quux/              (go code in package main)
-                    y.go
+	/home/user/gocode/
+	    src/
+	        crash/
+	            bang/              (go code in package bang)
+	                b.go
+	        foo/                   (go code in package foo)
+	            f.go
+	            bar/               (go code in package bar)
+	                x.go
+	            vendor/
+	                crash/
+	                    bang/      (go code in package bang)
+	                        b.go
+	                baz/           (go code in package baz)
+	                    z.go
+	            quux/              (go code in package main)
+	                y.go
 
 The same visibility rules apply as for internal, but the code
 in z.go is imported as "baz", not as "foo/vendor/baz".
@@ -497,7 +496,6 @@ being checked out for the first time by 'go get': those are always
 placed in the main GOPATH, never in a vendor subtree.
 
 See https://golang.org/s/go15vendor for details.
-
 */
 func (c *Context) dirForImportPath(position token.Position, importPath string) (string, error) {
 	if strings.HasPrefix(importPath, "./") {

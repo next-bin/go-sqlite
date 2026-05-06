@@ -2,6 +2,26 @@ go 1.26.0
 
 use (
 	.
+	./e2e/backup
+	./e2e/basics
+	./e2e/collation
+	./e2e/columninfo
+	./e2e/compilers
+	./e2e/concurrency
+	./e2e/context
+	./e2e/functions
+	./e2e/hooks
+	./e2e/integration
+	./e2e/ir
+	./e2e/libs
+	./e2e/parsing
+	./e2e/serialization
+	./e2e/tools
+	./e2e/transactions
+	./e2e/types
+	./e2e/utilities
+	./e2e/vtab
+	./issue198
 	./v2/builder
 	./v2/cc
 	./v2/cc3
@@ -49,24 +69,4 @@ use (
 	./v2/virtual
 	./v2/xc
 	./v2/y
-	./issue198
-	./e2e/hooks
-	./e2e/types
-	./e2e/concurrency
-	./e2e/serialization
-	./e2e/context
-	./e2e/basics
-	./e2e/transactions
-	./e2e/functions
-	./e2e/collation
-	./e2e/backup
-	./e2e/vtab
-	./e2e/columninfo
-	./e2e/integration
-	./e2e/utilities
-	./e2e/parsing
-	./e2e/compilers
-	./e2e/ir
-	./e2e/libs
-	./e2e/tools
 )

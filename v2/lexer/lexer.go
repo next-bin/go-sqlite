@@ -5,7 +5,6 @@
 //TODO(jnml) complete package docs
 
 /*
-
 Package lexer provides generating actionless scanners (lexeme recognizers) at run time.
 
 Scanners are defined by regular expressions
@@ -17,6 +16,7 @@ regexp syntax using the \p{name} construct.
 Syntax supported by ParseRE (ATM a very basic subset of RE2, docs bellow are a mod of: http://code.google.com/p/re2/wiki/Syntax, original docs license unclear)
 
 Single characters:
+
 	.            any character, excluding newline
 	[xyz]        character class
 	[^xyz]       negated character class
@@ -24,24 +24,29 @@ Single characters:
 	\P{Greek}    negated Unicode character class
 
 Composites:
+
 	xy           x followed by y
 	x|y          x or y
 
 Repetitions:
+
 	x*           zero or more x
 	x+           one or more x
 	x?           zero or one x
 
 Grouping:
+
 	(re)         group
 
 Empty strings:
+
 	^            at beginning of text or line
 	$            at end of text or line
 	\A           at beginning of text
 	\z           at end of text
 
 Escape sequences:
+
 	\a           bell (≡ \007)
 	\b           backspace (≡ \010)
 	\f           form feed (≡ \014)
@@ -53,10 +58,12 @@ Escape sequences:
 	\xhh         arune \u00hh, h is a hex digit
 
 Character class elements:
+
 	x            single Unicode character
 	A-Z          Unicode character range (inclusive)
 
 Unicode character class names--general category:
+
 	Cc           control
 	Cf           format
 	Co           private use
@@ -89,6 +96,7 @@ Unicode character class names--general category:
 	Zs           space separator
 
 Unicode character class names--scripts:
+
 	Arabic                 Arabic
 	Armenian               Armenian
 	Avestan                Avestan
@@ -181,7 +189,6 @@ Unicode character class names--scripts:
 	Ugaritic               Ugaritic
 	Vai                    Vai
 	Yi                     Yi
-
 */
 package lexer // import "github.com/next-bin/go-sqlite/v2/lexer"
 
@@ -209,7 +216,7 @@ type Lexer struct {
 // It is used by Begin and PushState.
 type StartSetID int
 
-//TODO:full docs
+// TODO:full docs
 func CompileLexer(starts [][]int, tokdefs map[string]int, grammar, start string) (lexer *Lexer, err error) {
 	lexer = &Lexer{}
 

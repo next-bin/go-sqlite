@@ -5,9 +5,9 @@
 package libc // import "github.com/next-bin/go-sqlite/v2/libc"
 
 import (
-	"golang.org/x/sys/windows"
 	"github.com/next-bin/go-sqlite/v2/libc/errno"
 	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
+	"golang.org/x/sys/windows"
 	"os"
 	"strings"
 	"unsafe"

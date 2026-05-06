@@ -19,10 +19,10 @@ import (
 	"strings"
 	"sync"
 
-	"golang.org/x/mod/semver"
-	"golang.org/x/tools/go/packages"
 	"github.com/next-bin/go-sqlite/v2/cc4"
 	"github.com/next-bin/go-sqlite/v2/strutil"
+	"golang.org/x/mod/semver"
+	"golang.org/x/tools/go/packages"
 )
 
 type name int

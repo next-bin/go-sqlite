@@ -40,9 +40,9 @@ var (
 //
 // No whitespace is allowed in type specifiers except as the name Type separator.
 //
-//  [0]: https://golang.org/ref/spec#Notation
+//	[0]: https://golang.org/ref/spec#Notation
 //
-// Type identity
+// # Type identity
 //
 // Two types are identical if their type specifiers are equivalent.
 type Type interface {
@@ -99,7 +99,7 @@ func newPointerType(t Type) Type {
 // TypeID is a numeric identifier of a type specifier as registered in a global
 // dictionary[0].
 //
-//  [0]: https://godoc.org/github.com/next-bin/go-sqlite/v2/xc#pkg-variables
+//	[0]: https://godoc.org/github.com/next-bin/go-sqlite/v2/xc#pkg-variables
 type TypeID int
 
 // Equal implements Type.

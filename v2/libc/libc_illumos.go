@@ -18,7 +18,6 @@ import (
 	"unsafe"
 
 	guuid "github.com/google/uuid"
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/libc/errno"
 	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
 	"github.com/next-bin/go-sqlite/v2/libc/fts"
@@ -27,6 +26,7 @@ import (
 	"github.com/next-bin/go-sqlite/v2/libc/limits"
 	"github.com/next-bin/go-sqlite/v2/libc/netdb"
 	"github.com/next-bin/go-sqlite/v2/libc/netinet/in"
+	"golang.org/x/sys/unix"
 
 	// "github.com/next-bin/go-sqlite/v2/libc/signal"
 	"github.com/next-bin/go-sqlite/v2/libc/stdio"

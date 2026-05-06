@@ -8,12 +8,12 @@ import (
 	"strings"
 	"unsafe"
 
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
 	"github.com/next-bin/go-sqlite/v2/libc/fts"
 	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
 	"github.com/next-bin/go-sqlite/v2/libc/time"
 	"github.com/next-bin/go-sqlite/v2/libc/utime"
+	"golang.org/x/sys/unix"
 )
 
 type (

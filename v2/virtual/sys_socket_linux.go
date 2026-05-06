@@ -15,8 +15,8 @@ import (
 	"syscall"
 	"unsafe"
 
-	"golang.org/x/sys/unix"
 	sockconst "github.com/next-bin/go-sqlite/v2/ccir/libc/sys/socket"
+	"golang.org/x/sys/unix"
 )
 
 func init() {

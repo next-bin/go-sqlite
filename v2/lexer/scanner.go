@@ -62,6 +62,7 @@ func (s *Scanner) PushState(newState StartSetID) {
 /*
 Scan scans the Scanner source, consumes arunes as long as there is a chance to recognize a token
 (i.e. until the Scanner FSM stops).
+
 	If the scanner is starting a Scan at EOF:
 	    Return 0, false.
 

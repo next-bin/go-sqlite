@@ -1,8 +1,8 @@
-github.com/next-bin/go-sqlite/v2/fileutil v1.4.0 h1:FSVxkAtrEA4nhrEaCzqf7tXmYvNYUvZ8Rdz6JiZNZe8=
+github.com/next-bin/go-sqlite/v2/fileutil v1.4.0 h1:3/auzHkiq+yaoIruY6dC9/vHt5/pYLTP4TvAJ0TSeQg=
 github.com/next-bin/go-sqlite/v2/fileutil v1.4.0/go.mod h1:aEy7fYIwzFAL4G/zykhOwvgAz3KTrn9d15Jvu4WJS2o=
-github.com/next-bin/go-sqlite/v2/lex v1.1.1 h1:KRMJYcMC9LvAcjb8ZX2z6km606N0nH/JDi+LE3fQq0o=
+github.com/next-bin/go-sqlite/v2/lex v1.1.1 h1:z5SH2IxP+M6yfRXnQwli+knN1CSDah0xME6sj+KlPkw=
 github.com/next-bin/go-sqlite/v2/lex v1.1.1/go.mod h1:1fbOi5OqgeJM9qDFixVJNbRqpXMSzUc5kaHrFjQBctc=
-github.com/next-bin/go-sqlite/v2/lexer v1.0.5 h1:1nZ/cefUHEFnc5yCAvthhAmby9v012fJMRLq8391zEE=
+github.com/next-bin/go-sqlite/v2/lexer v1.0.5 h1:8DQu57hbFCm3qymVaP+GKchQubBZEqzBeM2PZWj1r+k=
 github.com/next-bin/go-sqlite/v2/lexer v1.0.5/go.mod h1:u0TZjAPM8BKiYYHyonCnAJkkCbM+xHjGTHPJb2MsiXc=
 golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 h1:nDVHiLt8aIbd/VzvPWN6kSOPE7+F/fNFDSXLVYkE/Iw=
 golang.org/x/exp v0.0.0-20250305212735-054e65f0b394/go.mod h1:sIifuuw/Yco/y6yb6+bDNfyeQ/MdPUy/hKEMYQV17cM=

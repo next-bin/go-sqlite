@@ -14,22 +14,22 @@
 //
 //	https://github.com/next-bin/go-sqlite/v2/ccgo4/lib
 //
-// Usage
+// # Usage
 //
 // Invocation
 //
 //	ccgo { option | input-file }
 //
-// Changelog
+// # Changelog
 //
 // 2021-12-23: v3.13.0 add clang support.
 //
-// Libc
+// # Libc
 //
 // To compile the resulting Go programs the package github.com/next-bin/go-sqlite/v2/libc has to be
 // installed.
 //
-// Environment variables
+// # Environment variables
 //
 // CCGO_CPP selects which command is used by the C front end to obtain target
 // configuration. Defaults to `cpp`. Ignored when --load-config <path> is used.
@@ -41,13 +41,13 @@
 // TARGET_GOOS selects the GOOS of the resulting Go code. Defaults to $GOOS or
 // runtime.GOOS if $GOOS is not set. Ignored when --load-config <path> is used.
 //
-// Compiling
+// # Compiling
 //
 // To compile for the host invoke something like
 //
 //	ccgo -o foo.go bar.c baz.c
 //
-// Cross compiling
+// # Cross compiling
 //
 // To cross compile set TARGET_GOARCH and/or TARGET_GOOS, not GOARCH/GOOS.
 // Cross compile depends on availability of C stdlib headers for the target
@@ -58,7 +58,7 @@
 //	CCGO_CPP=x86_64-w64-mingw32-cpp TARGET_GOOS=windows TARGET_GOARCH=amd64
 //	ccgo -o foo.go bar.c baz.c
 //
-// Input files
+// # Input files
 //
 // Only files with extension .c, .h or .json are recognized as input files.
 //
@@ -67,11 +67,11 @@
 // found in the database and included in the output file. Each item should be
 // on object file (.o) or static archive (.a) or a command (no extension).
 //
-// Options with arguments
+// # Options with arguments
 //
 // Command line options requiring an argument.
 //
-// Define a preprocessor macro
+// # Define a preprocessor macro
 //
 // -Dfoo
 //
@@ -81,14 +81,14 @@
 //
 // Equals `#define foo bar`.
 //
-// Setting include search path
+// # Setting include search path
 //
 // -Ipath
 //
 // Add path to the list of include files search path. The option is a capital
 // letter I (India), not a lowercase letter l (Lima).
 //
-// Linking with other ccgo-generated packages
+// # Linking with other ccgo-generated packages
 //
 // -limport-path
 //
@@ -97,13 +97,13 @@
 // file.  The option is a lowercase letter l (Lima), not a capital letter I
 // (India).
 //
-// Undefine a preprocessor macro
+// # Undefine a preprocessor macro
 //
 // -Ufoo
 //
 // Equals `#undef foo`.
 //
-// Generating JSON compilation database
+// # Generating JSON compilation database
 //
 // -compiledb name
 //
@@ -131,14 +131,14 @@
 // Note: This option produces also information about libraries created with `ar
 // cr` and include it in the json file, which is above the specification.
 //
-// Setting C runtime library import path
+// # Setting C runtime library import path
 //
 // -crt-import-path path
 //
 // Unless disabled by the -nostdlib option, every produced Go file imports the
 // C runtime library. Default is `github.com/next-bin/go-sqlite/v2/libc`.
 //
-// Exporting C defines
+// # Exporting C defines
 //
 // -export-defines ""
 //
@@ -152,7 +152,7 @@
 //
 // Name conflicts are resolved by adding a numeric suffix.
 //
-// Exporting C enum constants
+// # Exporting C enum constants
 //
 // -export-enums ""
 //
@@ -166,7 +166,7 @@
 //
 // Name conflicts are resolved by adding a numeric suffix.
 //
-// Exporting C externs
+// # Exporting C externs
 //
 // -export-externs ""
 //
@@ -180,7 +180,7 @@
 //
 // Name conflicts are resolved by adding a numeric suffix.
 //
-// Exporting C struct fields
+// # Exporting C struct fields
 //
 // -export-fields ""
 //
@@ -194,7 +194,7 @@
 //
 // Name conflicts are resolved by adding a numeric suffix.
 //
-// Exporting tagged C struct and union types
+// # Exporting tagged C struct and union types
 //
 // -export-structs ""
 //
@@ -208,7 +208,7 @@
 //
 // Name conflicts are resolved by adding a numeric suffix.
 //
-// Exporting C typedefs
+// # Exporting C typedefs
 //
 // -export-typedefs ""
 //
@@ -222,32 +222,32 @@
 //
 // Name conflicts are resolved by adding a numeric suffix.
 //
-// Prefixing static identifiers
+// # Prefixing static identifiers
 //
 // -static-locals-prefix prefix
 //
 // Prefix C static local declarators names with 'prefix'.
 //
-// Selecting command for target configuration
+// # Selecting command for target configuration
 //
 // -host-config-cmd command
 //
 // This option has the same effect as setting `CCGO_CPP=command`.
 //
-// Adding options to the configuration command
+// # Adding options to the configuration command
 //
 // -host-config-opts comma-separated-list
 //
 // The separated items of the list are added to the invocation of the
 // configuration command.
 //
-// Setting the Go package name
+// # Setting the Go package name
 //
 // -pkgname name
 //
 // Set the resulting Go package name to 'name'. Defaults to `main`.
 //
-// Compiler scripts
+// # Compiler scripts
 //
 // -script filename
 //
@@ -276,7 +276,7 @@
 //	/home/user/foo,-Dbar=42,foo.c
 //	/home/user/bar,-Dbar=314,bar.c
 //
-// Forcing atomic access
+// # Forcing atomic access
 //
 // -volatile comma-separated-list
 //
@@ -286,7 +286,7 @@
 // bytes are supported. Other types/sizes will ignore both the volatile
 // specifier and the -volatile option.
 //
-// Capturing host configuration
+// # Capturing host configuration
 //
 // -save-config path
 //
@@ -304,7 +304,7 @@
 //
 // This option is ignored when -compiledb <path> is used.
 //
-// Using captured configuration
+// # Using captured configuration
 //
 // --load-config path
 //
@@ -319,8 +319,8 @@
 // compile foo.c that #includes <stdlib.h>, which is found in
 // /usr/include/stdlib.h on the host results in
 //
-// 	- /tmp/foo/config.json having an element "/usr/include" in the SysIncludePaths array.
-//	- Host's /usr/include/stdlib.h is copied to /tmp/foo/usr/include/stdlib.h.
+//   - /tmp/foo/config.json having an element "/usr/include" in the SysIncludePaths array.
+//   - Host's /usr/include/stdlib.h is copied to /tmp/foo/usr/include/stdlib.h.
 //
 // Assume /tmp/foo from machine A will be recursively copied to machine B, that
 // may run a different operating system and/or architecture. Let the copy be
@@ -356,25 +356,25 @@
 // option is not present at all. Possibly useful when the option set is
 // generated in code.
 //
-// Boolean options
+// # Boolean options
 //
 // These command line options don't take arguments.
 //
-// Preprocessing
+// # Preprocessing
 //
 // -E
 //
 // When this option is present the compiler does not produce any Go files and
 // instead prints the preprocessor output to stdout.
 //
-// Removing error limit
+// # Removing error limit
 //
 // -all-errors
 //
 // Normally only the first 10 or so errors are shown. With this option the
 // compiler will show all errors.
 //
-// Compiling header files
+// # Compiling header files
 //
 // -header
 //
@@ -387,39 +387,39 @@
 //
 // Add this option to include fucntion signature when compiling headers (using -header).
 //
-// Suppressing C stdlib include search paths
+// # Suppressing C stdlib include search paths
 //
 // -nostdinc
 //
 // This option disables the default C include search paths.
 //
-// Suppressing runtime import
+// # Suppressing runtime import
 //
 // -nostdlib
 //
 // This option disables importing of the runtime library by the resulting Go
 // code.
 //
-// Output information about pinned declarators
+// # Output information about pinned declarators
 //
 // -trace-pinning
 //
 // This option will print the positions and names of local declarators that are
 // being pinned.
 //
-// Obtaining version information
+// # Obtaining version information
 //
 // -version
 //
 // Ignore all other options, print version and exit.
 //
-// Verbose compile DB generation
+// # Verbose compile DB generation
 //
 // -verbose-compiledb
 //
 // Enable verbose output when -compiledb is present.
 //
-// Ignore undefined functions
+// # Ignore undefined functions
 //
 // -ignore-undefined
 //
@@ -429,14 +429,14 @@
 // functions manually. Name conflict resolution for such declarator names may
 // or may not be applied.
 //
-// Ignoring unsupported aligmnent
+// # Ignoring unsupported aligmnent
 //
 // -ignore-unsupported-alignment
 //
 // This option tells the compiler to not complain about alignments that Go
 // cannot support.
 //
-// Tracing included files
+// # Tracing included files
 //
 // -trace-included-files
 //
@@ -444,7 +444,7 @@
 //
 // This option is ignored when -compiledb <path> is used.
 //
-// Undocumented options
+// # Undocumented options
 //
 // There may exist other options not listed above. Those should be considered
 // temporary and/or unsupported and may be removed without notice.

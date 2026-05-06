@@ -31,10 +31,10 @@ import (
 	"time"
 
 	"github.com/kballard/go-shellquote"
-	"golang.org/x/tools/go/packages"
 	"github.com/next-bin/go-sqlite/v2/cc3"
 	"github.com/next-bin/go-sqlite/v2/libc"
 	"github.com/next-bin/go-sqlite/v2/opt"
+	"golang.org/x/tools/go/packages"
 )
 
 const (

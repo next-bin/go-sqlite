@@ -22,7 +22,7 @@
 //
 // This package is no longer maintained. Please see the v3 version at
 //
-// 	https://github.com/next-bin/go-sqlite/v2/cc3
+//	https://github.com/next-bin/go-sqlite/v2/cc3
 package cc // import "github.com/next-bin/go-sqlite/v2/cc/v2"
 
 import (

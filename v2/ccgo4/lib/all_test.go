@@ -27,14 +27,14 @@ import (
 	"time"
 
 	"github.com/dustin/go-humanize"
-	"github.com/pbnjay/memory"
-	"github.com/pmezard/go-difflib/difflib"
 	"github.com/next-bin/go-sqlite/v2/cc4"
 	"github.com/next-bin/go-sqlite/v2/ccorpus2"
 	"github.com/next-bin/go-sqlite/v2/fileutil"
 	"github.com/next-bin/go-sqlite/v2/gc2"
 	_ "github.com/next-bin/go-sqlite/v2/libc"
 	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/pbnjay/memory"
+	"github.com/pmezard/go-difflib/difflib"
 )
 
 const (

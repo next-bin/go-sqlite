@@ -13,20 +13,20 @@
 
 // Package cc is a C99 compiler front end.
 //
-// Changelog
+// # Changelog
 //
 // 2020-07-13 This package is no longer maintained. Please see the v3 version at
 //
-// 	https://github.com/next-bin/go-sqlite/v2/cc3
+//	https://github.com/next-bin/go-sqlite/v2/cc3
 //
-// Links
+// # Links
 //
 // Referenced from elsewhere:
 //
-//  [0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
-//  [1]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1406.pdf
-//  [2]: https://github.com/rsc/c2go/blob/fc8cbfad5a47373828c81c7a56cccab8b221d310/cc/cc.y
-//  [3]: https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html
+//	[0]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
+//	[1]: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1406.pdf
+//	[2]: https://github.com/rsc/c2go/blob/fc8cbfad5a47373828c81c7a56cccab8b221d310/cc/cc.y
+//	[3]: https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html
 package cc // import "github.com/next-bin/go-sqlite/v2/cc"
 
 import (
@@ -460,7 +460,6 @@ func EnableBuiltinConstantP() Opt {
 // becomes the same as
 //
 //	static int i;
-//
 func EnableImplicitIntType() Opt {
 	return func(l *lexer) { l.tweaks.enableImplicitIntType = true }
 }
@@ -505,7 +504,6 @@ func EnableLegacyDesignators() Opt {
 //	typedef int foo;
 //	typedef int foo; // ok with this option.
 //	typedef long int foo; // never ok.
-//
 func AllowCompatibleTypedefRedefinitions() Opt {
 	return func(l *lexer) { l.tweaks.allowCompatibleTypedefRedefinitions = true }
 }

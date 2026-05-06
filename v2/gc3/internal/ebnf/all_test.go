@@ -17,8 +17,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pmezard/go-difflib/difflib"
 	"github.com/next-bin/go-sqlite/v2/ebnfutil"
+	"github.com/pmezard/go-difflib/difflib"
 )
 
 const (

@@ -13,11 +13,11 @@ import (
 	"strings"
 	"unsafe"
 
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/crt2/libc/pwd"
 	"github.com/next-bin/go-sqlite/v2/crt2/libc/stdio"
 	"github.com/next-bin/go-sqlite/v2/crt2/libc/sys/mman"
 	"github.com/next-bin/go-sqlite/v2/crt2/libc/unistd"
+	"golang.org/x/sys/unix"
 )
 
 const eof = stdio.DEOF

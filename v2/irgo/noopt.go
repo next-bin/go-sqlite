@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+//go:build irgo.noopt
 // +build irgo.noopt
 
 package irgo // import "github.com/next-bin/go-sqlite/v2/irgo"

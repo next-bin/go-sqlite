@@ -84,7 +84,7 @@ type Lexer struct {
 
 // New returns a new *Lexer. The result can be amended using opts.
 //
-// Non Unicode Input
+// # Non Unicode Input
 //
 // To consume sources in other encodings and still have exact position
 // information, pass an io.RuneReader which returns the next input character

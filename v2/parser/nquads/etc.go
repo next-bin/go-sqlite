@@ -4,20 +4,20 @@
 
 // Package parser implements a parser for N-Quads[0] source text.
 //
-// Links
+// # Links
 //
 // Referenced from elsewhere.
 //
-//  [0]: http://www.w3.org/TR/n-quads/
-//  [1]: http://www.w3.org/TR/n-quads/#grammar-production-statement
-//  [2]: http://www.w3.org/TR/n-quads/#grammar-production-IRIREF
-//  [3]: http://www.w3.org/TR/n-quads/#grammar-production-BLANK_NODE_LABEL
-//  [4]: http://www.w3.org/TR/n-quads/#grammar-production-literal
-//  [5]: http://www.w3.org/TR/n-quads/#grammar-production-LANGTAG
-//  [6]: http://www.w3.org/TR/n-quads/#grammar-production-subject
-//  [7]: http://www.w3.org/TR/n-quads/#grammar-production-predicate
-//  [8]: http://www.w3.org/TR/n-quads/#grammar-production-object
-//  [9]: http://www.w3.org/TR/n-quads/#grammar-production-graphLabel
+//	[0]: http://www.w3.org/TR/n-quads/
+//	[1]: http://www.w3.org/TR/n-quads/#grammar-production-statement
+//	[2]: http://www.w3.org/TR/n-quads/#grammar-production-IRIREF
+//	[3]: http://www.w3.org/TR/n-quads/#grammar-production-BLANK_NODE_LABEL
+//	[4]: http://www.w3.org/TR/n-quads/#grammar-production-literal
+//	[5]: http://www.w3.org/TR/n-quads/#grammar-production-LANGTAG
+//	[6]: http://www.w3.org/TR/n-quads/#grammar-production-subject
+//	[7]: http://www.w3.org/TR/n-quads/#grammar-production-predicate
+//	[8]: http://www.w3.org/TR/n-quads/#grammar-production-object
+//	[9]: http://www.w3.org/TR/n-quads/#grammar-production-graphLabel
 package parser // import "github.com/next-bin/go-sqlite/v2/parser/nquads"
 
 import (

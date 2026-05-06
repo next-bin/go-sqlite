@@ -20,11 +20,11 @@ import (
 	"strconv"
 	"strings"
 
-	"golang.org/x/mod/semver"
-	"golang.org/x/tools/go/packages"
 	"github.com/next-bin/go-sqlite/v2/ccgo4/lib/internal/secret_sauce"
 	"github.com/next-bin/go-sqlite/v2/gc2"
 	"github.com/next-bin/go-sqlite/v2/strutil"
+	"golang.org/x/mod/semver"
+	"golang.org/x/tools/go/packages"
 )
 
 const (

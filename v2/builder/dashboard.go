@@ -322,11 +322,11 @@ func buildDashboardData(db *sql.DB) (*DashboardData, error) {
 							for rRows.Next() {
 								// Using NullString perfectly shields against bad legacy data
 								var b, dStr, goos, goarch, h sql.NullString
-								
+
 								if err := rRows.Scan(&b, &dStr, &goos, &goarch, &h); err == nil {
 									if b.Valid && dStr.Valid {
 										d := parseDBDate(dStr.String)
-										
+
 										if _, exists := stats[b.String]; !exists {
 											stats[b.String] = &bStats{
 												lastSeen: d,

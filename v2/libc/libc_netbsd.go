@@ -17,7 +17,6 @@ import (
 	"unsafe"
 
 	guuid "github.com/google/uuid"
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/libc/errno"
 	"github.com/next-bin/go-sqlite/v2/libc/fcntl"
 	"github.com/next-bin/go-sqlite/v2/libc/fts"
@@ -34,6 +33,7 @@ import (
 	"github.com/next-bin/go-sqlite/v2/libc/time"
 	"github.com/next-bin/go-sqlite/v2/libc/unistd"
 	"github.com/next-bin/go-sqlite/v2/libc/uuid"
+	"golang.org/x/sys/unix"
 )
 
 var (

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+//go:build linux && amd64
 // +build linux,amd64
 
 package crt // import "github.com/next-bin/go-sqlite/v2/crt3"
@@ -10,8 +11,8 @@ import (
 	"syscall"
 	"unsafe"
 
-	"golang.org/x/sys/unix"
 	ftsh "github.com/next-bin/go-sqlite/v2/crt3/libc/fts"
+	"golang.org/x/sys/unix"
 )
 
 type ino_t = uint64   /* types.h:47:17 */

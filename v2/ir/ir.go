@@ -7,7 +7,7 @@
 //
 // See: https://en.wikipedia.org/wiki/Intermediate_representation
 //
-// Concepts
+// # Concepts
 //
 // From the POV of this package, an IR is a slice of Objects. Object is either
 // a DataDefinition or a FunctionDefinition. All objects are defined by
@@ -20,7 +20,7 @@
 // are, for example, Add, Return, etc. The operation execution model is a zero
 // register stack machine.
 //
-// Verifying and linking
+// # Verifying and linking
 //
 // After generating a slice of Objects, its every item should be verified using
 // Verify. One or more generated IRs can be turned into complete IRs using
@@ -29,7 +29,7 @@
 // for example Global. A properly linked IR should be suitable for back-end
 // code generation of a program or a library.
 //
-// Executing IR programs
+// # Executing IR programs
 //
 // cznic/virtual is an IR code generator for a virtual CPU and can also run the
 // resulting binary. The virtual CPU is not very fast, it's best use is
@@ -56,7 +56,7 @@ var (
 // NameID is a numeric identifier of an identifier as registered in a global
 // dictionary[0].
 //
-//  [0]: https://godoc.org/github.com/next-bin/go-sqlite/v2/xc#pkg-variables
+//	[0]: https://godoc.org/github.com/next-bin/go-sqlite/v2/xc#pkg-variables
 type NameID int
 
 // String implements fmt.Stringer.
@@ -76,7 +76,7 @@ func (t NameID) GobEncode() ([]byte, error) {
 // StringID is a numeric identifier of a string literal as registered in a
 // global dictionary[0].
 //
-//  [0]: https://godoc.org/github.com/next-bin/go-sqlite/v2/xc#pkg-variables
+//	[0]: https://godoc.org/github.com/next-bin/go-sqlite/v2/xc#pkg-variables
 type StringID int
 
 // String implements fmt.Stringer.

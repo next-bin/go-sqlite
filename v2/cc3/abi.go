@@ -11,8 +11,8 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/next-bin/go-sqlite/v2/uint128"
 	"github.com/next-bin/go-sqlite/v2/mathutil"
+	"github.com/next-bin/go-sqlite/v2/uint128"
 )
 
 var (

@@ -123,9 +123,9 @@ import (
 	"unsafe"
 
 	guuid "github.com/google/uuid"
-	"golang.org/x/sys/unix"
 	"github.com/next-bin/go-sqlite/v2/libc/uuid/uuid"
 	"github.com/next-bin/go-sqlite/v2/memory"
+	"golang.org/x/sys/unix"
 )
 
 const (

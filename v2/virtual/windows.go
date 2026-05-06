@@ -4,6 +4,7 @@
 
 //go:generate go run generator.go
 
+//go:build windows
 // +build windows
 
 package virtual // import "github.com/next-bin/go-sqlite/v2/virtual"

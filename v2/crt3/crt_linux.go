@@ -17,7 +17,6 @@ import (
 	"syscall"
 	"unsafe"
 
-	"golang.org/x/sys/unix"
 	ftsh "github.com/next-bin/go-sqlite/v2/crt3/libc/fts"
 	"github.com/next-bin/go-sqlite/v2/crt3/libc/grp"
 	"github.com/next-bin/go-sqlite/v2/crt3/libc/netdb"
@@ -25,6 +24,7 @@ import (
 	"github.com/next-bin/go-sqlite/v2/crt3/libc/stdio"
 	"github.com/next-bin/go-sqlite/v2/crt3/libc/sys/mman"
 	"github.com/next-bin/go-sqlite/v2/crt3/libc/unistd"
+	"golang.org/x/sys/unix"
 )
 
 const eof = stdio.EOF
@@ -467,7 +467,7 @@ func parseZoneOffset(s string, offOpt bool) (string, string, int, bool) {
 	panic(todo(""))
 }
 
-//  [+|-]hh[:mm[:ss]]
+// [+|-]hh[:mm[:ss]]
 func parseOffset(s string) (string, int) {
 	if len(s) == 0 {
 		panic(todo(""))
