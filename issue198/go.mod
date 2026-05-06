@@ -1,6 +1,6 @@
 module example.com/issue198
 
-go 1.23.3
+go 1.26.0
 
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
