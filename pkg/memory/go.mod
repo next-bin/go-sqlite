@@ -5,7 +5,7 @@ module github.com/next-bin/go-sqlite3/pkg/memory
 go 1.26.0
 
 require (
-	github.com/next-bin/go-sqlite3/pkg/mathutil v1.0.0
+	github.com/next-bin/go-sqlite3/pkg/mathutil v1.0.6
 	golang.org/x/sys v0.43.0
 )
 
