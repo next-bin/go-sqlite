@@ -7,7 +7,7 @@ require (
 	github.com/google/go-cmp v0.7.0
 	github.com/next-bin/go-sqlite3/pkg/mathutil v1.0.0
 	github.com/next-bin/go-sqlite3/pkg/strutil v1.0.0
-	github.com/next-bin/go-sqlite3/pkg/token v1.0.0
+	github.com/next-bin/go-sqlite3/pkg/token v1.0.1
 	github.com/next-bin/go-sqlite3/pkg/uint128 v1.0.0
 )
 

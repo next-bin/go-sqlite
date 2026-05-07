@@ -5,9 +5,9 @@ go 1.26.0
 require (
 	github.com/dustin/go-humanize v1.0.1
 	github.com/next-bin/go-sqlite3/pkg/ebnf v1.0.0
-	github.com/next-bin/go-sqlite3/pkg/ebnfutil v1.0.0
+	github.com/next-bin/go-sqlite3/pkg/ebnfutil v1.0.1
 	github.com/next-bin/go-sqlite3/pkg/scannertest v1.0.0
-	github.com/next-bin/go-sqlite3/pkg/token v1.0.0
+	github.com/next-bin/go-sqlite3/pkg/token v1.0.1
 	github.com/pmezard/go-difflib v1.0.0
 )
 
