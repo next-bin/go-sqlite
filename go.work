@@ -69,4 +69,25 @@ use (
 	./pkg/virtual
 	./pkg/xc
 	./pkg/y
+	./examples/advanced_types
+	./examples/backup
+	./examples/basics
+	./examples/collation
+	./examples/columninfo
+	./examples/concurrency
+	./examples/context_cancel
+	./examples/file_basic
+	./examples/functions
+	./examples/hooks
+	./examples/serialization
+	./examples/transactions
+	./examples/vtab_basic
+	./examples/vtab_csv
+	./examples/vtab_match
+	./examples/vtab_regexp
+	./examples/wal
+	./pkg/mathutil/example
+	./pkg/mathutil/example2
+	./pkg/mathutil/example4
+	./pkg/libz/internal/example
 )

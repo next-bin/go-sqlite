@@ -4,8 +4,8 @@ go 1.26.0
 
 require (
 	github.com/edsrzf/mmap-go v1.2.0
-	github.com/next-bin/go-sqlite3/pkg/fileutil v1.0.6
-	github.com/next-bin/go-sqlite3/pkg/mathutil v1.0.6
+	github.com/next-bin/go-sqlite3/pkg/fileutil v1.0.2
+	github.com/next-bin/go-sqlite3/pkg/mathutil v1.0.2
 )
 
 require (
