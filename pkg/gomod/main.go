@@ -13,11 +13,11 @@
 //
 //	~ $ go install github.com/next-bin/go-sqlite3/pkg/gomod@latest
 //	~ $ ( cd $(go env GOPATH)/src && gomod update | grep 'in modernc\.org' )
-//	in github.com/next-bin/go-sqlite3/pkg/fileutil go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.2
-//	in github.com/next-bin/go-sqlite3/pkg/hash go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.2
-//	in github.com/next-bin/go-sqlite3/pkg/memory go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.2
-//	in github.com/next-bin/go-sqlite3/pkg/sortutil go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.2
-//	in github.com/next-bin/go-sqlite3/pkg/strutil go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.2
+//	in github.com/next-bin/go-sqlite3/pkg/fileutil go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.3
+//	in github.com/next-bin/go-sqlite3/pkg/hash go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.3
+//	in github.com/next-bin/go-sqlite3/pkg/memory go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.3
+//	in github.com/next-bin/go-sqlite3/pkg/sortutil go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.3
+//	in github.com/next-bin/go-sqlite3/pkg/strutil go get -d github.com/next-bin/go-sqlite3/pkg/mathutil@v1.0.3
 //	~ $
 //
 // # Subcommand update
@@ -43,7 +43,7 @@
 // This used to be a tool that predated go work files. To get the old behavior of
 // this command
 //
-//	$ go install github.com/next-bin/go-sqlite3/pkg/gomod@v1.0.2
+//	$ go install github.com/next-bin/go-sqlite3/pkg/gomod@v1.0.3
 //
 // But it is recommended to use the better 'go work' command.
 package main // import "github.com/next-bin/go-sqlite3/pkg/gomod"
