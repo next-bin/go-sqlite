@@ -1,7 +1,0 @@
-github.com/golang/glog v1.2.5 h1:DrW6hGnjIhtvhOIiAKT6Psh/Kd/ldepEa81DKeiRJ5I=
-github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
-github.com/next-bin/go-sqlite/v2/gomod v1.2.2 h1:NInfWqBLzP7WiblYdYEi3HZQ2Yz5NXR0hIJFdYCtGzk=
-github.com/next-bin/go-sqlite/v2/mathutil v1.7.1 h1:2HvN59/qxtHGskhq50Z9rD6YlVLVdppJql1JewSPQso=
-github.com/next-bin/go-sqlite/v2/strutil v1.2.1 h1:VkDPJpP1UcpC6OvFmo0xfutiIex461QYpxuQ34c2n94=
-github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec h1:W09IVJc94icq4NjY3clb7Lk8O1qJ8BdBEF8z0ibU0rE=
-golang.org/x/mod v0.35.0 h1:Ww1D637e6Pg+Zb2KrWfHQUnH2dQRLBQyAtpr/haaJeM=

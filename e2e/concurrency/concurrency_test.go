@@ -10,7 +10,7 @@ import (
 	"sync"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite/v2"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func mustExec(t *testing.T, db *sql.DB, query string, args ...any) sql.Result {

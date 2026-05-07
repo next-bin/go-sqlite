@@ -1,0 +1,15 @@
+// Copyright 2022 The Ccorpus2 Authors. All rights reserved.
+// Use of the source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+// Package ccorpus2 provides a test corpus of C code.
+package ccorpus2 // import "github.com/next-bin/go-sqlite3/pkg/ccorpus2"
+
+import (
+	"embed"
+)
+
+// FS exposes the corpus.
+//
+//go:embed assets
+var FS embed.FS

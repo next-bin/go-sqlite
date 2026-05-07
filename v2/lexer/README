@@ -1,8 +1,0 @@
-This is a goinstall-able mirror of modified code already published at:
-http://git.nic.cz/redmine/projects/golexer/repository
-
-Online godoc documentation for this package available at:
-https://pkg.go.dev/github.com/next-bin/go-sqlite/v2/lexer
-
-Installation:
-$ go get github.com/next-bin/go-sqlite/v2/lexer

@@ -5,6 +5,6 @@
 //go:build windows
 // +build windows
 
-package sqlite // import "github.com/next-bin/go-sqlite/v2"
+package sqlite // import "github.com/next-bin/go-sqlite3"
 
 func setMaxOpenFiles(n int) error { return nil }

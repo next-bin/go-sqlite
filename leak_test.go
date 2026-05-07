@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite3/pkg/libc"
 )
 
 // TestOpenV2FailureResourceLeak verifies that a failed sql.Open+Ping (e.g.,

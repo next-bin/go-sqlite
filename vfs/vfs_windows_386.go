@@ -1,4 +1,4 @@
-// Code generated for windows/386 by 'ccgo -o ../vfs_windows_386.go --goos=windows --goarch=386 --cpp=/usr/bin/i686-w64-mingw32-cpp vfs.c -I /home/jnml/src/github.com/next-bin/go-sqlite/v2/libsqlite3/sqlite-amalgamation-3460000 -lsqlite3 --package-name vfs --prefix-external=X -DSQLITE_OS_WIN -hide=vfsFullPathname -hide=vfsOpen -hide=vfsRead -hide=vfsAccess -hide=vfsFileSize -hide=vfsClose -ignore-link-errors --prefix-field '
+// Code generated for windows/386 by 'ccgo -o ../vfs_windows_386.go --goos=windows --goarch=386 --cpp=/usr/bin/i686-w64-mingw32-cpp vfs.c -I /home/jnml/src/github.com/next-bin/go-sqlite3/pkg/libsqlite3/sqlite-amalgamation-3460000 -lsqlite3 --package-name vfs --prefix-external=X -DSQLITE_OS_WIN -hide=vfsFullPathname -hide=vfsOpen -hide=vfsRead -hide=vfsAccess -hide=vfsFileSize -hide=vfsClose -ignore-link-errors --prefix-field '
 
 //go:build windows && 386
 
@@ -9,9 +9,9 @@ import (
 	"time"
 	"unsafe"
 
-	libsqlite3 "github.com/next-bin/go-sqlite/v2/lib"
-	"github.com/next-bin/go-sqlite/v2/libc"
-	"github.com/next-bin/go-sqlite/v2/libc/sys/types"
+	libsqlite3 "github.com/next-bin/go-sqlite3/lib"
+	"github.com/next-bin/go-sqlite3/pkg/libc"
+	"github.com/next-bin/go-sqlite3/pkg/libc/sys/types"
 )
 
 var (

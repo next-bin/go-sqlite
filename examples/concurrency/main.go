@@ -11,7 +11,7 @@ import (
 	"log"
 	"sync"
 
-	_ "github.com/next-bin/go-sqlite/v2"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {

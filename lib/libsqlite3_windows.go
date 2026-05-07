@@ -7,7 +7,7 @@ package sqlite3
 import (
 	"math/bits"
 
-	"github.com/next-bin/go-sqlite/v2/libc"
+	"github.com/next-bin/go-sqlite3/pkg/libc"
 )
 
 func ___umulh(tls *libc.TLS, a, b uint64) uint64 {

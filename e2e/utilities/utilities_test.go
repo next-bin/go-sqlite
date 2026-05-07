@@ -5,12 +5,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/v2/mathutil"
-	"github.com/next-bin/go-sqlite/v2/opt"
-	"github.com/next-bin/go-sqlite/v2/sortutil"
-	"github.com/next-bin/go-sqlite/v2/strutil"
-	"github.com/next-bin/go-sqlite/v2/token"
-	"github.com/next-bin/go-sqlite/v2/uint128"
+	"github.com/next-bin/go-sqlite3/pkg/mathutil"
+	"github.com/next-bin/go-sqlite3/pkg/opt"
+	"github.com/next-bin/go-sqlite3/pkg/sortutil"
+	"github.com/next-bin/go-sqlite3/pkg/strutil"
+	"github.com/next-bin/go-sqlite3/pkg/token"
+	"github.com/next-bin/go-sqlite3/pkg/uint128"
 )
 
 func TestMathUtil(t *testing.T) {

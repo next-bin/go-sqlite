@@ -4,8 +4,8 @@ import (
 	"go/token"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/v2/xc"
-	"github.com/next-bin/go-sqlite/v2/y"
+	"github.com/next-bin/go-sqlite3/pkg/xc"
+	"github.com/next-bin/go-sqlite3/pkg/y"
 )
 
 func TestXCNewMemDB(t *testing.T) {

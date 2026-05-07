@@ -5,7 +5,7 @@
 //go:build freebsd
 // +build freebsd
 
-package sqlite // import "github.com/next-bin/go-sqlite/v2"
+package sqlite // import "github.com/next-bin/go-sqlite3"
 
 import (
 	"golang.org/x/sys/unix"

@@ -1,6 +1,6 @@
 NOTICE
 
-This repository (github.com/next-bin/go-sqlite) is a consolidated monorepo
+This repository (github.com/next-bin/go-sqlite3) is a consolidated monorepo
 that aggregates multiple Go modules originally developed by CZ.NIC z.s.p.o.
 and other contributors. Each subdirectory retains its original license.
 

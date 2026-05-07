@@ -1,0 +1,10 @@
+This is a goinstall-able mirror of modified code already published at:
+http://git.nic.cz/redmine/projects/gornd/repository
+
+Packages in this repository:
+
+Install: $ go get github.com/next-bin/go-sqlite3/pkg/mathutil
+Godocs:  https://pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/mathutil
+
+Install: $ go get github.com/next-bin/go-sqlite3/pkg/mathutil/mersenne
+Godocs:  https://pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/mathutil/mersenne

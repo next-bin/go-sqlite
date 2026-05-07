@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "github.com/next-bin/go-sqlite/v2"
+package sqlite // import "github.com/next-bin/go-sqlite3"
 
 import (
 	"database/sql/driver"
 
-	sqlite3 "github.com/next-bin/go-sqlite/v2/lib"
+	sqlite3 "github.com/next-bin/go-sqlite3/lib"
 )
 
 // Backup object is used to manage progress and cleanup an online backup. It

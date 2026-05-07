@@ -1,5 +1,5 @@
 Please do not tag commits unless all builders at
-https://modern-c.appspot.com/-/builder/?importpath=github.com/next-bin/go-sqlite/v2%2fsqlite are
+https://modern-c.appspot.com/-/builder/?importpath=github.com/next-bin/go-sqlite33%2fsqlite are
 happy.
 
 Since 2024-03-12 it should be no more necessary to manually tag releases at

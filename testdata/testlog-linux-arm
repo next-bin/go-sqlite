@@ -1309,5 +1309,5 @@ Current memory usage: 0 bytes
 Number of malloc()  : -1 calls
 --- PASS: TestTclTest (10507.82s)
 PASS
-ok  	github.com/next-bin/go-sqlite/v2/sqlite	10623.858s
+ok  	github.com/next-bin/go-sqlite3/pkg/sqlite	10623.858s
 Sun Sep 13 00:32:59 UTC 2020

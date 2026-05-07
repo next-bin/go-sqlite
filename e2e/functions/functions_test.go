@@ -12,8 +12,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/v2"
-	_ "github.com/next-bin/go-sqlite/v2"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {

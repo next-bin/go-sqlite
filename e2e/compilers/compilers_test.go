@@ -3,10 +3,10 @@ package compilers
 import (
 	"testing"
 
-	cc3 "github.com/next-bin/go-sqlite/v2/cc3"
-	cc4 "github.com/next-bin/go-sqlite/v2/cc4"
-	gc2 "github.com/next-bin/go-sqlite/v2/gc2"
-	gc3 "github.com/next-bin/go-sqlite/v2/gc3"
+	cc3 "github.com/next-bin/go-sqlite3/pkg/cc3"
+	cc4 "github.com/next-bin/go-sqlite3/pkg/cc4"
+	gc2 "github.com/next-bin/go-sqlite3/pkg/gc2"
+	gc3 "github.com/next-bin/go-sqlite3/pkg/gc3"
 )
 
 func TestCC3ABI(t *testing.T) {

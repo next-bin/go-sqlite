@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/v2/ebnfutil"
-	"github.com/next-bin/go-sqlite/v2/scanner"
+	"github.com/next-bin/go-sqlite3/pkg/ebnfutil"
+	"github.com/next-bin/go-sqlite3/pkg/scanner"
 )
 
 func TestEBNFUtil(t *testing.T) {

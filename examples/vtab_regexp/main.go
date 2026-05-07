@@ -11,9 +11,9 @@ import (
 	"log"
 	"regexp"
 
-	_ "github.com/next-bin/go-sqlite/v2"
-	sqlite "github.com/next-bin/go-sqlite/v2"
-	"github.com/next-bin/go-sqlite/v2/vtab"
+	_ "github.com/next-bin/go-sqlite3"
+	sqlite "github.com/next-bin/go-sqlite3"
+	"github.com/next-bin/go-sqlite3/vtab"
 )
 
 // Register a minimal REGEXP(pattern, value) UDF so SQLite can evaluate

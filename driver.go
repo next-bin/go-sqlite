@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sqlite // import "github.com/next-bin/go-sqlite/v2"
+package sqlite // import "github.com/next-bin/go-sqlite3"
 
 import (
 	"database/sql/driver"
 	"fmt"
 
-	"github.com/next-bin/go-sqlite/v2/vtab"
+	"github.com/next-bin/go-sqlite3/vtab"
 )
 
 // Driver implements database/sql/driver.Driver.

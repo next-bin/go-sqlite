@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/next-bin/go-sqlite/v2/vtab"
+	"github.com/next-bin/go-sqlite3/vtab"
 )
 
 // dummyModule is a minimal vtab.Module implementation used to verify that the
@@ -347,7 +347,7 @@ func (c *matchCursorX) Close() error {
 }
 
 // TestDummyModuleVtab verifies that a simple vtab module implemented in Go
-// can be registered and queried through the github.com/next-bin/go-sqlite/v2 driver.
+// can be registered and queried through the github.com/next-bin/go-sqlite3 driver.
 func TestDummyModuleVtab(t *testing.T) {
 	// Open an in-memory database using this driver.
 	db, err := sql.Open(driverName, ":memory:")

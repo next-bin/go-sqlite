@@ -3,8 +3,8 @@ package ir
 import (
 	"testing"
 
-	"github.com/next-bin/go-sqlite/v2/ir"
-	"github.com/next-bin/go-sqlite/v2/irgo"
+	"github.com/next-bin/go-sqlite3/pkg/ir"
+	"github.com/next-bin/go-sqlite3/pkg/irgo"
 )
 
 func TestIRPrettyString(t *testing.T) {

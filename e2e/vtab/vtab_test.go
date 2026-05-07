@@ -8,8 +8,8 @@ import (
 	"database/sql"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite/v2"
-	"github.com/next-bin/go-sqlite/v2/vtab"
+	_ "github.com/next-bin/go-sqlite3"
+	"github.com/next-bin/go-sqlite3/vtab"
 )
 
 type echoModule struct{}
