@@ -6,7 +6,7 @@
 
 **Architecture:** Examples live under `examples/<feature>/main.go` (part of root module, no separate go.mod). E2E tests live under `e2e/<feature>/` with independent go.mod simulating external consumer usage. Compliance updates touch LICENSE/AUTHORS/CONTRIBUTORS across all 49 modules.
 
-**Tech Stack:** Go 1.25, database/sql, github.com/next-bin/go-sqlite33
+**Tech Stack:** Go 1.25, database/sql, github.com/next-bin/go-sqlite3
 
 **Branch:** `feat/examples-e2e-compliance` branched from `master`
 
@@ -112,9 +112,9 @@ module e2e/basics
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/basics/doc.go`
@@ -147,7 +147,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -390,9 +390,9 @@ module e2e/transactions
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/transactions/doc.go`
@@ -420,7 +420,7 @@ import (
 	"database/sql"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -605,9 +605,9 @@ module e2e/functions
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/functions/doc.go`
@@ -637,8 +637,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -881,9 +881,9 @@ module e2e/collation
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/collation/doc.go`
@@ -911,8 +911,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -1013,9 +1013,9 @@ module e2e/backup
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/backup/doc.go`
@@ -1044,7 +1044,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -1197,9 +1197,9 @@ module e2e/hooks
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/hooks/doc.go`
@@ -1229,8 +1229,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func mustExec(t *testing.T, db *sql.DB, query string, args ...any) sql.Result {
@@ -1434,9 +1434,9 @@ module e2e/types
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/types/doc.go`
@@ -1466,7 +1466,7 @@ import (
 	"testing"
 	"time"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMemWithDSN(t *testing.T, dsn string) *sql.DB {
@@ -1608,9 +1608,9 @@ module e2e/concurrency
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/concurrency/doc.go`
@@ -1639,7 +1639,7 @@ import (
 	"sync"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func mustExec(t *testing.T, db *sql.DB, query string, args ...any) sql.Result {
@@ -1784,9 +1784,9 @@ module e2e/serialization
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/serialization/doc.go`
@@ -1814,7 +1814,7 @@ import (
 	"database/sql"
 	"testing"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -1919,9 +1919,9 @@ module e2e/context
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/context/doc.go`
@@ -1950,7 +1950,7 @@ import (
 	"testing"
 	"time"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -2024,11 +2024,11 @@ module e2e/vtab
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
 replace (
-	github.com/next-bin/go-sqlite33 => ../..
-	github.com/next-bin/go-sqlite33/pkg/vtab => ../../vtab
+	github.com/next-bin/go-sqlite3 => ../..
+	github.com/next-bin/go-sqlite3/pkg/vtab => ../../vtab
 )
 ```
 
@@ -2058,8 +2058,8 @@ import (
 	"database/sql"
 	"testing"
 
-	"github.com/next-bin/go-sqlite33/pkg/vtab"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3/pkg/vtab"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -2190,9 +2190,9 @@ module e2e/columninfo
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/columninfo/doc.go`
@@ -2220,8 +2220,8 @@ import (
 	"database/sql"
 	"testing"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -2315,9 +2315,9 @@ module e2e/integration
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 - [ ] **Step 2:** Create `e2e/integration/doc.go`
@@ -2349,8 +2349,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func mustExec(t *testing.T, db *sql.DB, query string, args ...any) sql.Result {
@@ -2582,7 +2582,7 @@ import (
 	"fmt"
 	"log"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -2667,7 +2667,7 @@ import (
 	"fmt"
 	"log"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -2740,8 +2740,8 @@ import (
 	"log"
 	"sort"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -2854,8 +2854,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -2902,7 +2902,7 @@ import (
 	"log"
 	"os"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -2966,8 +2966,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -3023,7 +3023,7 @@ import (
 	"log"
 	"time"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -3094,7 +3094,7 @@ import (
 	"log"
 	"sync"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -3143,7 +3143,7 @@ import (
 	"fmt"
 	"log"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -3198,7 +3198,7 @@ import (
 	"log"
 	"time"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -3240,7 +3240,7 @@ import (
 	"log"
 	"os"
 
-	_ "github.com/next-bin/go-sqlite33"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -3288,8 +3288,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/next-bin/go-sqlite33"
-	_ "github.com/next-bin/go-sqlite33"
+	"github.com/next-bin/go-sqlite3"
+	_ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -3558,7 +3558,7 @@ A CGo-free SQLite driver for Go's `database/sql` package, based on the SQLite 3.
 
 This is an independent fork of [modernc.org/sqlite](https://gitlab.com/cznic/sqlite), originally developed by CZ.NIC z.s.p.o. and contributors.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite33.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite33)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite3.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite3)
 
 ## Features
 
@@ -3577,12 +3577,12 @@ This is an independent fork of [modernc.org/sqlite](https://gitlab.com/cznic/sql
 
 ## Quick Start
 
-    go get github.com/next-bin/go-sqlite33
+    go get github.com/next-bin/go-sqlite3
 
 ```go
 import (
     "database/sql"
-    _ "github.com/next-bin/go-sqlite33"
+    _ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -3597,7 +3597,7 @@ func main() {
 
 ## Documentation
 
-See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sqlite33) for full API details.
+See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sqlite3) for full API details.
 
 ## Examples
 
@@ -3619,7 +3619,7 @@ The `examples/` directory contains runnable programs demonstrating all driver fe
 
 ## Virtual Tables (vtab)
 
-The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite33/pkg/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
+The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite3/pkg/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
 
 - Register: `vtab.RegisterModule(db, name, module)`. Registration applies to new connections only.
 - Schema declaration: Call `ctx.Declare("CREATE TABLE <name>(<cols...>)")` within `Create` or `Connect`. The driver does not auto-declare schemas, enabling dynamic schemas.
@@ -3724,7 +3724,7 @@ git merge feat/examples-e2e-compliance
 - [ ] **Step 2:** Extract final version numbers from go.mod require directives
 
 ```bash
-grep -r "require github.com/next-bin/go-sqlite33/pkg/" --include="go.mod" | grep -v "replace"
+grep -r "require github.com/next-bin/go-sqlite3/pkg/" --include="go.mod" | grep -v "replace"
 ```
 
 - [ ] **Step 3:** Present complete tag list to user for review

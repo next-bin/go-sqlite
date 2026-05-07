@@ -504,7 +504,7 @@ func (t *Task) main() (err error) {
 
 	switch t.goarch {
 	case "arm", "386":
-		// github.com/next-bin/go-sqlite3/libc@v1/sys/types/Off_t is 64 bit
+		// github.com/next-bin/go-sqlite3/pkg/libc@v1/sys/types/Off_t is 64 bit
 		t.D = append(t.D, "-D_FILE_OFFSET_BITS=64")
 	}
 	switch t.goarch {

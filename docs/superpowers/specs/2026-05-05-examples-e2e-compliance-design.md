@@ -68,9 +68,9 @@ module e2e/<name>
 
 go 1.25.0
 
-require github.com/next-bin/go-sqlite33 v2.0.0
+require github.com/next-bin/go-sqlite3 v2.0.0
 
-replace github.com/next-bin/go-sqlite33 => ../..
+replace github.com/next-bin/go-sqlite3 => ../..
 ```
 
 Modules that need additional sub-packages (vtab, vfs) add corresponding replace directives.
@@ -96,7 +96,7 @@ package <name>
 import (
     "database/sql"
     "testing"
-    _ "github.com/next-bin/go-sqlite33"
+    _ "github.com/next-bin/go-sqlite3"
 )
 
 func openMem(t *testing.T) *sql.DB {
@@ -167,8 +167,8 @@ The current README still presents this repo as a GitLab mirror (`modernc-org/sql
 
 1. **Remove mirror table**: Delete the GitLab/GitHub platform/role table entirely
 2. **Update project description**: Reflect that this is a CGo-free SQLite driver maintained by next-bin
-3. **Update import path**: All examples use `github.com/next-bin/go-sqlite33`
-4. **Update installation**: `go get github.com/next-bin/go-sqlite33`
+3. **Update import path**: All examples use `github.com/next-bin/go-sqlite3`
+4. **Update installation**: `go get github.com/next-bin/go-sqlite3`
 5. **Update attribution**: Acknowledge original project (modernc.org/sqlite by CZ.NIC) as upstream, but clarify this is an independent fork
 6. **Update sponsor links**: Remove or update links that reference the original maintainer's sponsorship
 7. **Update badge URLs**: Ensure pkg.go.dev badges point to the correct module path
@@ -185,7 +185,7 @@ A CGo-free SQLite driver for Go's `database/sql` package, based on the SQLite 3.
 
 This is an independent fork of [modernc.org/sqlite](https://gitlab.com/cznic/sqlite), originally developed by CZ.NIC z.s.p.o. and contributors.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite33.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite33)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite3.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite3)
 
 ## Features
 
@@ -204,12 +204,12 @@ This is an independent fork of [modernc.org/sqlite](https://gitlab.com/cznic/sql
 
 ## Quick Start
 
-    go get github.com/next-bin/go-sqlite33
+    go get github.com/next-bin/go-sqlite3
 
 ```go
 import (
     "database/sql"
-    _ "github.com/next-bin/go-sqlite33"
+    _ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -253,7 +253,7 @@ Original SQLite by [D. Richard Hipp](https://www.sqlite.org/) (Public Domain).
 After cleanup, a typical sub-module README should follow this pattern:
 
 ```markdown
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite33/pkg/<package>.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite33/pkg/<package>)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite3/pkg/<package>.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/<package>)
 
 # <package>
 
@@ -261,7 +261,7 @@ Package <package> <one-line description>.
 
 ## Installation
 
-    go get github.com/next-bin/go-sqlite33/pkg/<package>
+    go get github.com/next-bin/go-sqlite3/pkg/<package>
 
 ## Attribution
 
@@ -487,7 +487,7 @@ Go monorepo with `/v2` module path requires nested tags:
 
 ### Version Determination
 
-Each sub-module's version is derived from the current `require` directives across the monorepo. For example, if multiple go.mod files `require github.com/next-bin/go-sqlite33/pkg/libc v1.72.0`, then the tag is `v2/libc/v1.72.0`.
+Each sub-module's version is derived from the current `require` directives across the monorepo. For example, if multiple go.mod files `require github.com/next-bin/go-sqlite3/pkg/libc v1.72.0`, then the tag is `v2/libc/v1.72.0`.
 
 ### Tag List (49 modules)
 
@@ -558,8 +558,8 @@ Note: Versions above are initial estimates. Final versions must be extracted fro
 
 After tagging, verify resolution:
 ```bash
-GOFLAGS= GONOSUMCHECK=github.com/next-bin/go-sqlite33/pkg/* GONOSUMDB=github.com/next-bin/go-sqlite33/pkg/* \
-  go get github.com/next-bin/go-sqlite33@v2.0.0
+GOFLAGS= GONOSUMCHECK=github.com/next-bin/go-sqlite3/pkg/* GONOSUMDB=github.com/next-bin/go-sqlite3/pkg/* \
+  go get github.com/next-bin/go-sqlite3@v2.0.0
 ```
 
 ## File Impact Estimate

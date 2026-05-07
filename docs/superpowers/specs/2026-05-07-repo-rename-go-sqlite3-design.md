@@ -2,15 +2,15 @@
 
 ## Goal
 
-Rename the repository from `github.com/next-bin/go-sqlite3` to `github.com/next-bin/go-sqlite33`, restructure the `v2/` directory to `pkg/`, and publish all modules at v1.0.0.
+Rename the repository from `github.com/next-bin/go-sqlite3` to `github.com/next-bin/go-sqlite3`, restructure the `v2/` directory to `pkg/`, and publish all modules at v1.0.0.
 
-Success criteria: `go get github.com/next-bin/go-sqlite33@latest` resolves and installs the SQLite driver with all dependencies, zero references to the old `go-sqlite` module path remain.
+Success criteria: `go get github.com/next-bin/go-sqlite3@latest` resolves and installs the SQLite driver with all dependencies, zero references to the old `go-sqlite` module path remain.
 
 ## Context
 
 - 49 Go modules in a monorepo workspace (go.work)
-- Current root module: `github.com/next-bin/go-sqlite33`
-- Current sub-modules: `github.com/next-bin/go-sqlite33/pkg/libc`, etc.
+- Current root module: `github.com/next-bin/go-sqlite3`
+- Current sub-modules: `github.com/next-bin/go-sqlite3/pkg/libc`, etc.
 - Sub-modules live in `v2/` directory (47 directories)
 - ~1579 .go files reference the module path
 - ~40 .md files reference the module path
@@ -21,8 +21,8 @@ Success criteria: `go get github.com/next-bin/go-sqlite33@latest` resolves and i
 ## Module Path Changes
 
 ```
-Root:  github.com/next-bin/go-sqlite33      → github.com/next-bin/go-sqlite33
-Sub:   github.com/next-bin/go-sqlite33/pkg/X     → github.com/next-bin/go-sqlite33/pkg/X
+Root:  github.com/next-bin/go-sqlite3      → github.com/next-bin/go-sqlite3
+Sub:   github.com/next-bin/go-sqlite3/pkg/X     → github.com/next-bin/go-sqlite3/pkg/X
 e2e:   module name unchanged, require paths updated
 issue: module name unchanged, require paths updated
 ```
@@ -73,15 +73,15 @@ Replacement order matters — longest paths first to avoid double-replacement.
 
 #### 3a: go.mod files (48 files)
 
-1. `github.com/next-bin/go-sqlite33/pkg/` → `github.com/next-bin/go-sqlite33/pkg/` (module declarations and require directives with sub-paths)
-2. `github.com/next-bin/go-sqlite3"` → `github.com/next-bin/go-sqlite33"` (root module bare reference)
+1. `github.com/next-bin/go-sqlite3/pkg/` → `github.com/next-bin/go-sqlite3/pkg/` (module declarations and require directives with sub-paths)
+2. `github.com/next-bin/go-sqlite3"` → `github.com/next-bin/go-sqlite3"` (root module bare reference)
 3. `./v2/` → `./pkg/` (replace directive local paths)
 
 #### 3b: .go files (~1579 files)
 
-1. `"github.com/next-bin/go-sqlite33/pkg/` → `"github.com/next-bin/go-sqlite33/pkg/` (import paths with sub-modules)
-2. `"github.com/next-bin/go-sqlite3"` → `"github.com/next-bin/go-sqlite33"` (root module import)
-3. `github.com/next-bin/go-sqlite33` → `github.com/next-bin/go-sqlite33` (comments and string literals — no `/v2` in new paths)
+1. `"github.com/next-bin/go-sqlite3/pkg/` → `"github.com/next-bin/go-sqlite3/pkg/` (import paths with sub-modules)
+2. `"github.com/next-bin/go-sqlite3"` → `"github.com/next-bin/go-sqlite3"` (root module import)
+3. `github.com/next-bin/go-sqlite3` → `github.com/next-bin/go-sqlite3` (comments and string literals — no `/v2` in new paths)
 
 #### 3c: go.work (1 file)
 
@@ -89,7 +89,7 @@ Replacement order matters — longest paths first to avoid double-replacement.
 
 #### 3d: Markdown files (~40 files)
 
-- All `github.com/next-bin/go-sqlite3` references updated to `github.com/next-bin/go-sqlite33`
+- All `github.com/next-bin/go-sqlite3` references updated to `github.com/next-bin/go-sqlite3`
 - Badge URLs updated
 - Example code updated
 
@@ -112,7 +112,7 @@ go test ./...
 
 # Verify zero old-path references
 grep -r "github.com/next-bin/go-sqlite3" --include="*.go" --include="go.mod" | grep -v "go-sqlite3" | wc -l  # must be 0
-grep -r "github.com/next-bin/go-sqlite33" --include="*.go" --include="go.mod" | wc -l  # must be 0
+grep -r "github.com/next-bin/go-sqlite3" --include="*.go" --include="go.mod" | wc -l  # must be 0
 ```
 
 ### Step 6: Commit
@@ -124,12 +124,12 @@ git commit -m "refactor: rename repo go-sqlite to go-sqlite3, v2/ to pkg/"
 
 ### Step 7: GitHub Repository Rename
 
-Rename the repository on GitHub from `go-sqlite` to `go-sqlite3`. This must happen before pushing tags so that `go get github.com/next-bin/go-sqlite33@latest` resolves to the new repo name. GitHub automatically redirects the old name for existing clones.
+Rename the repository on GitHub from `go-sqlite` to `go-sqlite3`. This must happen before pushing tags so that `go get github.com/next-bin/go-sqlite3@latest` resolves to the new repo name. GitHub automatically redirects the old name for existing clones.
 
 Update local remote:
 
 ```bash
-git remote set-url origin https://github.com/next-bin/go-sqlite33
+git remote set-url origin https://github.com/next-bin/go-sqlite3
 ```
 
 ### Step 8: Tag, Push, Release
@@ -175,4 +175,4 @@ gh release create v1.0.0 --title "v1.0.0" --notes "Initial release of go-sqlite3
 
 - `/v2` major version suffix on root module
 - Sub-module version bumps to v1.1.0
-- `go get github.com/next-bin/go-sqlite33/v2@latest`
+- `go get github.com/next-bin/go-sqlite3/v2@latest`

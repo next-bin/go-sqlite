@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Rename the repository from `github.com/next-bin/go-sqlite3` to `github.com/next-bin/go-sqlite33`, restructure `v2/` → `pkg/`, and publish all 48 modules at v1.0.0.
+**Goal:** Rename the repository from `github.com/next-bin/go-sqlite3` to `github.com/next-bin/go-sqlite3`, restructure `v2/` → `pkg/`, and publish all 48 modules at v1.0.0.
 
 **Architecture:** Bulk mechanical string replacement across ~1620 files. Directory rename via `git mv`. No logic changes — only module paths, import paths, and documentation references. Single commit for all changes, then tag and release.
 
@@ -41,9 +41,9 @@ All replacements use this ordering: **longest match first, then shorter**.
 
 | # | Pattern | Replacement | Scope |
 |---|---------|-------------|-------|
-| 1 | `github.com/next-bin/go-sqlite33/pkg/` | `github.com/next-bin/go-sqlite33/pkg/` | go.mod, .go, .md |
-| 2 | `github.com/next-bin/go-sqlite33` | `github.com/next-bin/go-sqlite33` | go.mod, .go, .md (no trailing slash) |
-| 3 | `github.com/next-bin/go-sqlite3` | `github.com/next-bin/go-sqlite33` | .md (bare repo name references) |
+| 1 | `github.com/next-bin/go-sqlite3/pkg/` | `github.com/next-bin/go-sqlite3/pkg/` | go.mod, .go, .md |
+| 2 | `github.com/next-bin/go-sqlite3` | `github.com/next-bin/go-sqlite3` | go.mod, .go, .md (no trailing slash) |
+| 3 | `github.com/next-bin/go-sqlite3` | `github.com/next-bin/go-sqlite3` | .md (bare repo name references) |
 | 4 | `./v2/` | `./pkg/` | go.work |
 
 **Note:** There are NO replace directives in any go.mod files (confirmed). No bare `github.com/next-bin/go-sqlite3"` (without `/v2`) exists in .go files (confirmed). The 3 matches for `go-sqlite[^/3]` are in external URLs/comments unrelated to this module.
@@ -83,7 +83,7 @@ Expected: No output (zero tags locally and remotely).
 
 **Files:** None (GitHub operations)
 
-This step runs BEFORE code changes so that `go get github.com/next-bin/go-sqlite33` resolves immediately after we push.
+This step runs BEFORE code changes so that `go get github.com/next-bin/go-sqlite3` resolves immediately after we push.
 
 - [ ] **Step 1: Rename the repository on GitHub**
 
@@ -97,10 +97,10 @@ Expected: Repository renamed from `next-bin/go-sqlite` to `next-bin/go-sqlite3`.
 
 Run:
 ```bash
-git remote set-url origin https://github.com/next-bin/go-sqlite33
+git remote set-url origin https://github.com/next-bin/go-sqlite3
 git remote -v
 ```
-Expected: Origin now points to `https://github.com/next-bin/go-sqlite33`.
+Expected: Origin now points to `https://github.com/next-bin/go-sqlite3`.
 
 ---
 
@@ -132,27 +132,27 @@ Expected: Shows sub-module directories and count of 47 go.mod files.
 - Modify: `issue198/go.mod`
 - Modify: `e2e/*/go.mod` (19 e2e modules)
 
-- [ ] **Step 1: Replace `github.com/next-bin/go-sqlite33/pkg/` in all go.mod files**
+- [ ] **Step 1: Replace `github.com/next-bin/go-sqlite3/pkg/` in all go.mod files**
 
-This handles module declarations and require directives with sub-paths (e.g., `module github.com/next-bin/go-sqlite33/pkg/libc` → `module github.com/next-bin/go-sqlite33/pkg/libc`).
+This handles module declarations and require directives with sub-paths (e.g., `module github.com/next-bin/go-sqlite3/pkg/libc` → `module github.com/next-bin/go-sqlite3/pkg/libc`).
 
 Run:
 ```bash
-find . -name "go.mod" -exec sed -i 's|github.com/next-bin/go-sqlite33/pkg/|github.com/next-bin/go-sqlite33/pkg/|g' {} +
+find . -name "go.mod" -exec sed -i 's|github.com/next-bin/go-sqlite3/pkg/|github.com/next-bin/go-sqlite3/pkg/|g' {} +
 ```
 
 - [ ] **Step 2: Replace root module bare reference in go.mod**
 
-The root `go.mod` declares `module github.com/next-bin/go-sqlite33` and the `/v2` suffix was already consumed in Step 1 for paths with trailing `/`. But the bare `module github.com/next-bin/go-sqlite33` line (no trailing `/`) needs separate handling.
+The root `go.mod` declares `module github.com/next-bin/go-sqlite3` and the `/v2` suffix was already consumed in Step 1 for paths with trailing `/`. But the bare `module github.com/next-bin/go-sqlite3` line (no trailing `/`) needs separate handling.
 
 Run:
 ```bash
-find . -name "go.mod" -exec sed -i 's|github.com/next-bin/go-sqlite33|github.com/next-bin/go-sqlite33|g' {} +
+find . -name "go.mod" -exec sed -i 's|github.com/next-bin/go-sqlite3|github.com/next-bin/go-sqlite3|g' {} +
 ```
 
 This catches:
-- Root `go.mod`: `module github.com/next-bin/go-sqlite33` → `module github.com/next-bin/go-sqlite33`
-- E2e go.mod files: `require github.com/next-bin/go-sqlite33 v2.0.0` → `require github.com/next-bin/go-sqlite33 v1.0.0`
+- Root `go.mod`: `module github.com/next-bin/go-sqlite3` → `module github.com/next-bin/go-sqlite3`
+- E2e go.mod files: `require github.com/next-bin/go-sqlite3 v2.0.0` → `require github.com/next-bin/go-sqlite3 v1.0.0`
 - issue198 go.mod: same require pattern
 
 **Important:** This step also changes version references like `v2.0.0` in require directives. We will fix version numbers in Task 7 (version normalization).
@@ -176,9 +176,9 @@ head -1 pkg/libsqlite3/go.mod
 ```
 Expected:
 ```
-module github.com/next-bin/go-sqlite33
-module github.com/next-bin/go-sqlite33/pkg/libc
-module github.com/next-bin/go-sqlite33/pkg/libsqlite3
+module github.com/next-bin/go-sqlite3
+module github.com/next-bin/go-sqlite3/pkg/libc
+module github.com/next-bin/go-sqlite3/pkg/libsqlite3
 ```
 
 ---
@@ -208,29 +208,29 @@ Expected: All `use` entries now reference `./pkg/X` instead of `./v2/X`. E2e ent
 
 - [ ] **Step 1: Replace sub-module import paths with trailing slash**
 
-This handles patterns like `"github.com/next-bin/go-sqlite33/pkg/libc"` → `"github.com/next-bin/go-sqlite33/pkg/libc"`.
+This handles patterns like `"github.com/next-bin/go-sqlite3/pkg/libc"` → `"github.com/next-bin/go-sqlite3/pkg/libc"`.
 
 Run:
 ```bash
-find . -name "*.go" -exec sed -i 's|github.com/next-bin/go-sqlite33/pkg/|github.com/next-bin/go-sqlite33/pkg/|g' {} +
+find . -name "*.go" -exec sed -i 's|github.com/next-bin/go-sqlite3/pkg/|github.com/next-bin/go-sqlite3/pkg/|g' {} +
 ```
 
 - [ ] **Step 2: Replace root module import (no trailing slash)**
 
-This handles the import comment pattern `// import "github.com/next-bin/go-sqlite33"` and any bare references.
+This handles the import comment pattern `// import "github.com/next-bin/go-sqlite3"` and any bare references.
 
 Run:
 ```bash
-find . -name "*.go" -exec sed -i 's|github.com/next-bin/go-sqlite33"|github.com/next-bin/go-sqlite33"|g' {} +
+find . -name "*.go" -exec sed -i 's|github.com/next-bin/go-sqlite3"|github.com/next-bin/go-sqlite3"|g' {} +
 ```
 
 - [ ] **Step 3: Replace remaining comment/string references**
 
-Catch any remaining `github.com/next-bin/go-sqlite33` references in comments and string literals (without trailing quote).
+Catch any remaining `github.com/next-bin/go-sqlite3` references in comments and string literals (without trailing quote).
 
 Run:
 ```bash
-find . -name "*.go" -exec sed -i 's|github.com/next-bin/go-sqlite33|github.com/next-bin/go-sqlite33|g' {} +
+find . -name "*.go" -exec sed -i 's|github.com/next-bin/go-sqlite3|github.com/next-bin/go-sqlite3|g' {} +
 ```
 
 **Note:** After Step 2, there should be no remaining `go-sqlite/v2` patterns. Step 3 is a safety net.
@@ -240,23 +240,23 @@ find . -name "*.go" -exec sed -i 's|github.com/next-bin/go-sqlite33|github.com/n
 Run:
 ```bash
 # Should return 0 — no old /v2 path references remain
-grep -r "github.com/next-bin/go-sqlite33" --include="*.go" | wc -l
+grep -r "github.com/next-bin/go-sqlite3" --include="*.go" | wc -l
 ```
 Expected: 0
 
 Run:
 ```bash
 # Spot-check import comment in root files
-grep 'import "github.com/next-bin/go-sqlite33"' all_test.go
+grep 'import "github.com/next-bin/go-sqlite3"' all_test.go
 ```
-Expected: `package sqlite // import "github.com/next-bin/go-sqlite33"`
+Expected: `package sqlite // import "github.com/next-bin/go-sqlite3"`
 
 Run:
 ```bash
 # Spot-check sub-module import
-grep "github.com/next-bin/go-sqlite33/pkg/libc" all_test.go | head -1
+grep "github.com/next-bin/go-sqlite3/pkg/libc" all_test.go | head -1
 ```
-Expected: Shows `"github.com/next-bin/go-sqlite33/pkg/libc"` import.
+Expected: Shows `"github.com/next-bin/go-sqlite3/pkg/libc"` import.
 
 ---
 
@@ -268,14 +268,14 @@ Expected: Shows `"github.com/next-bin/go-sqlite33/pkg/libc"` import.
 
 Run:
 ```bash
-find . -name "*.md" -exec sed -i 's|github.com/next-bin/go-sqlite33/pkg/|github.com/next-bin/go-sqlite33/pkg/|g' {} +
+find . -name "*.md" -exec sed -i 's|github.com/next-bin/go-sqlite3/pkg/|github.com/next-bin/go-sqlite3/pkg/|g' {} +
 ```
 
 - [ ] **Step 2: Replace remaining root references in markdown**
 
 Run:
 ```bash
-find . -name "*.md" -exec sed -i 's|github.com/next-bin/go-sqlite33|github.com/next-bin/go-sqlite33|g' {} +
+find . -name "*.md" -exec sed -i 's|github.com/next-bin/go-sqlite3|github.com/next-bin/go-sqlite3|g' {} +
 ```
 
 - [ ] **Step 3: Replace bare repo name references in markdown**
@@ -284,7 +284,7 @@ This catches badge URLs and other bare references (e.g., `goreportcard.com/repor
 
 Run:
 ```bash
-find . -name "*.md" -exec sed -i 's|github.com/next-bin/go-sqlite3|github.com/next-bin/go-sqlite33|g' {} +
+find . -name "*.md" -exec sed -i 's|github.com/next-bin/go-sqlite3|github.com/next-bin/go-sqlite3|g' {} +
 ```
 
 **Important:** This MUST run after Steps 1 and 2 to avoid double-replacing.
@@ -315,7 +315,7 @@ head -5 README.md
 Expected:
 ```
 # go-sqlite3
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite33.svg)]...
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite3.svg)]...
 ```
 
 ---
@@ -330,15 +330,15 @@ After Tasks 4–7, the module paths are correct but version numbers in `require`
 
 Run:
 ```bash
-find . -name "go.mod" -exec sed -i 's|github.com/next-bin/go-sqlite33/pkg/\([^ ]*\) v[^ ]*|github.com/next-bin/go-sqlite33/pkg/\1 v1.0.0|g' {} +
-find . -name "go.mod" -exec sed -i 's|github.com/next-bin/go-sqlite33 v[^ ]*|github.com/next-bin/go-sqlite33 v1.0.0|g' {} +
+find . -name "go.mod" -exec sed -i 's|github.com/next-bin/go-sqlite3/pkg/\([^ ]*\) v[^ ]*|github.com/next-bin/go-sqlite3/pkg/\1 v1.0.0|g' {} +
+find . -name "go.mod" -exec sed -i 's|github.com/next-bin/go-sqlite3 v[^ ]*|github.com/next-bin/go-sqlite3 v1.0.0|g' {} +
 ```
 
 - [ ] **Step 2: Verify version references**
 
 Run:
 ```bash
-grep -r "github.com/next-bin/go-sqlite33" --include="go.mod" | grep -v "v1.0.0" | grep -v "^.*module " | grep -v "^.*go 1" | grep -v "^.*retract" | head -10
+grep -r "github.com/next-bin/go-sqlite3" --include="go.mod" | grep -v "v1.0.0" | grep -v "^.*module " | grep -v "^.*go 1" | grep -v "^.*retract" | head -10
 ```
 Expected: No output (all internal module references use v1.0.0).
 
@@ -392,7 +392,7 @@ Expected: All tests pass. This is the primary validation that import paths and m
 Run:
 ```bash
 echo "=== Checking .go and go.mod files ==="
-grep -r "github.com/next-bin/go-sqlite33" --include="*.go" --include="go.mod" | wc -l
+grep -r "github.com/next-bin/go-sqlite3" --include="*.go" --include="go.mod" | wc -l
 echo "=== Checking for bare old name (excluding external refs) ==="
 grep -rP "github.com/next-bin/go-sqlite3[^/3]" --include="*.go" --include="go.mod" | grep -v "go-sqlite-bench\|zombiezen/go-sqlite\|ccgo-sqlite-shell" | wc -l
 echo "=== Checking markdown ==="
@@ -479,18 +479,18 @@ Initial release of go-sqlite3 — a CGo-free SQLite driver for Go.
 ### Installation
 
 ```bash
-go get github.com/next-bin/go-sqlite33@latest
+go get github.com/next-bin/go-sqlite3@latest
 ```
 
 ### What Changed
 
 - Repository renamed from `next-bin/go-sqlite` to `next-bin/go-sqlite3`
-- Module path: `github.com/next-bin/go-sqlite33`
+- Module path: `github.com/next-bin/go-sqlite3`
 - Directory restructured: `v2/` → `pkg/`
 EOF
 )"
 ```
-Expected: Release created and visible at `https://github.com/next-bin/go-sqlite33/releases/tag/v1.0.0`.
+Expected: Release created and visible at `https://github.com/next-bin/go-sqlite3/releases/tag/v1.0.0`.
 
 - [ ] **Step 6: Verify go get works**
 
@@ -498,7 +498,7 @@ Run:
 ```bash
 cd /tmp && mkdir -p sqlite-test && cd sqlite-test
 go mod init sqlite-test
-go get github.com/next-bin/go-sqlite33@latest
+go get github.com/next-bin/go-sqlite3@latest
 ```
 Expected: Module resolves and downloads successfully.
 

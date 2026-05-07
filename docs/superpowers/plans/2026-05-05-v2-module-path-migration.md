@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Migrate all 49 Go modules from `github.com/next-bin/go-sqlite3/*` to `github.com/next-bin/go-sqlite33/pkg/*`, clean up all `github.com/next-bin/go-sqlite33` references, and prepare for `v2.0.0` tag.
+**Goal:** Migrate all 49 Go modules from `github.com/next-bin/go-sqlite3/*` to `github.com/next-bin/go-sqlite3/pkg/*`, clean up all `github.com/next-bin/go-sqlite3` references, and prepare for `v2.0.0` tag.
 
 **Architecture:** This is a global find-and-replace across go.mod files (module/require/replace directives), .go files (import paths), comments, and documentation files. All replacements are mechanical string substitutions. Directory layout is unchanged; `replace` directives in go.mod files resolve v2 paths to the same local directories. Note: `issue198/go.mod` uses `module example.com/issue198` (not a next-bin module) — its module declaration is intentionally NOT changed, only its require/replace lines.
 
@@ -14,13 +14,13 @@
 
 Three independent replacement passes, executed in this order to avoid double-replacement:
 
-**Pass 1 — go.mod files:** Replace `github.com/next-bin/go-sqlite3/` → `github.com/next-bin/go-sqlite33/pkg/` (handles all sub-module references in module/require/replace lines), then fix the bare root module declaration and the two go.mod files that reference the root module without sub-path.
+**Pass 1 — go.mod files:** Replace `github.com/next-bin/go-sqlite3/` → `github.com/next-bin/go-sqlite3/pkg/` (handles all sub-module references in module/require/replace lines), then fix the bare root module declaration and the two go.mod files that reference the root module without sub-path.
 
-**Pass 2 — .go import paths:** Replace `"github.com/next-bin/go-sqlite3/` → `"github.com/next-bin/go-sqlite33/pkg/` (handles all sub-path imports), then `"github.com/next-bin/go-sqlite3"` → `"github.com/next-bin/go-sqlite33"` (handles bare root import).
+**Pass 2 — .go import paths:** Replace `"github.com/next-bin/go-sqlite3/` → `"github.com/next-bin/go-sqlite3/pkg/` (handles all sub-path imports), then `"github.com/next-bin/go-sqlite3"` → `"github.com/next-bin/go-sqlite3"` (handles bare root import).
 
-**Pass 3 — github.com/next-bin/go-sqlite33 comments:** Replace `github.com/next-bin/go-sqlite33/pkg/` → `github.com/next-bin/go-sqlite33/pkg/` in .go files, plus handle bare `"github.com/next-bin/go-sqlite33"` string literals.
+**Pass 3 — github.com/next-bin/go-sqlite3 comments:** Replace `github.com/next-bin/go-sqlite3/pkg/` → `github.com/next-bin/go-sqlite3/pkg/` in .go files, plus handle bare `"github.com/next-bin/go-sqlite3"` string literals.
 
-**Pass 4 — non-Go files:** Replace `github.com/next-bin/go-sqlite33/pkg/` references in .md, .sh, Makefile files.
+**Pass 4 — non-Go files:** Replace `github.com/next-bin/go-sqlite3/pkg/` references in .md, .sh, Makefile files.
 
 **Pass 5 — documentation:** Update README.md and other docs.
 
@@ -53,19 +53,19 @@ EOF
 
 ### Task 2: Replace Module Paths in All go.mod Files (Sub-Module References)
 
-This handles the bulk of go.mod changes: every `github.com/next-bin/go-sqlite3/XXX` becomes `github.com/next-bin/go-sqlite33/pkg/XXX`.
+This handles the bulk of go.mod changes: every `github.com/next-bin/go-sqlite3/XXX` becomes `github.com/next-bin/go-sqlite3/pkg/XXX`.
 
 - [ ] **Step 1: Run sed to replace all sub-module path references in go.mod files**
 
 ```bash
 cd C:/Users/Administrator/github/go-sqlite
-find . -name "go.mod" -not -path "./.git/*" -exec sed -i 's|github\.com/next-bin/go-sqlite/|github.com/next-bin/go-sqlite33/pkg/|g' {} +
+find . -name "go.mod" -not -path "./.git/*" -exec sed -i 's|github\.com/next-bin/go-sqlite/|github.com/next-bin/go-sqlite3/pkg/|g' {} +
 ```
 
 This changes:
-- `module github.com/next-bin/go-sqlite3/libc` → `module github.com/next-bin/go-sqlite33/pkg/libc`
-- `require github.com/next-bin/go-sqlite3/libc v1.72.0` → `require github.com/next-bin/go-sqlite33/pkg/libc v1.72.0`
-- `replace github.com/next-bin/go-sqlite3/libc => ./libc` → `replace github.com/next-bin/go-sqlite33/pkg/libc => ./libc`
+- `module github.com/next-bin/go-sqlite3/libc` → `module github.com/next-bin/go-sqlite3/pkg/libc`
+- `require github.com/next-bin/go-sqlite3/libc v1.72.0` → `require github.com/next-bin/go-sqlite3/pkg/libc v1.72.0`
+- `replace github.com/next-bin/go-sqlite3/libc => ./libc` → `replace github.com/next-bin/go-sqlite3/pkg/libc => ./libc`
 
 - [ ] **Step 2: Verify the substitution**
 
@@ -101,13 +101,13 @@ Note: `issue198/go.mod` declares `module example.com/issue198` — its module de
 
 ```bash
 cd C:/Users/Administrator/github/go-sqlite
-sed -i 's|^module github\.com/next-bin/go-sqlite$|module github.com/next-bin/go-sqlite33|' go.mod
+sed -i 's|^module github\.com/next-bin/go-sqlite$|module github.com/next-bin/go-sqlite3|' go.mod
 ```
 
 - [ ] **Step 2: Fix builder/go.mod bare root references**
 
 ```bash
-sed -i 's|github\.com/next-bin/go-sqlite |github.com/next-bin/go-sqlite33 |g; s|github\.com/next-bin/go-sqlite$|github.com/next-bin/go-sqlite33|g' builder/go.mod
+sed -i 's|github\.com/next-bin/go-sqlite |github.com/next-bin/go-sqlite3 |g; s|github\.com/next-bin/go-sqlite$|github.com/next-bin/go-sqlite3|g' builder/go.mod
 ```
 
 Note: the `$` regex matches end-of-line for the `replace` directive. The space pattern handles the `require` line.
@@ -115,7 +115,7 @@ Note: the `$` regex matches end-of-line for the `replace` directive. The space p
 - [ ] **Step 3: Fix issue198/go.mod bare root references**
 
 ```bash
-sed -i 's|github\.com/next-bin/go-sqlite |github.com/next-bin/go-sqlite33 |g; s|github\.com/next-bin/go-sqlite$|github.com/next-bin/go-sqlite33|g' issue198/go.mod
+sed -i 's|github\.com/next-bin/go-sqlite |github.com/next-bin/go-sqlite3 |g; s|github\.com/next-bin/go-sqlite$|github.com/next-bin/go-sqlite3|g' issue198/go.mod
 ```
 
 - [ ] **Step 4: Verify zero bare root references remain**
@@ -141,13 +141,13 @@ head -5 cc/v4/go.mod
 
 Expected:
 ```
-module github.com/next-bin/go-sqlite33
+module github.com/next-bin/go-sqlite3
 ---
-module github.com/next-bin/go-sqlite33/pkg/mathutil
+module github.com/next-bin/go-sqlite3/pkg/mathutil
 ---
-module github.com/next-bin/go-sqlite33/pkg/libc
+module github.com/next-bin/go-sqlite3/pkg/libc
 ---
-module github.com/next-bin/go-sqlite33/pkg/cc/v4
+module github.com/next-bin/go-sqlite3/pkg/cc/v4
 ```
 
 - [ ] **Step 6: Commit**
@@ -170,12 +170,12 @@ This handles the ~1100 .go files that import `github.com/next-bin/go-sqlite3/XXX
 
 ```bash
 cd C:/Users/Administrator/github/go-sqlite
-find . -name "*.go" -not -path "./.git/*" -exec sed -i 's|"github\.com/next-bin/go-sqlite/|"github.com/next-bin/go-sqlite33/pkg/|g' {} +
+find . -name "*.go" -not -path "./.git/*" -exec sed -i 's|"github\.com/next-bin/go-sqlite/|"github.com/next-bin/go-sqlite3/pkg/|g' {} +
 ```
 
 This changes:
-- `"github.com/next-bin/go-sqlite3/libc"` → `"github.com/next-bin/go-sqlite33/pkg/libc"`
-- `"github.com/next-bin/go-sqlite3/vfs"` → `"github.com/next-bin/go-sqlite33/pkg/vfs"`
+- `"github.com/next-bin/go-sqlite3/libc"` → `"github.com/next-bin/go-sqlite3/pkg/libc"`
+- `"github.com/next-bin/go-sqlite3/vfs"` → `"github.com/next-bin/go-sqlite3/pkg/vfs"`
 - etc.
 
 - [ ] **Step 2: Verify no sub-path imports without /v2/ remain**
@@ -206,11 +206,11 @@ After Task 4, 33 .go files still have the bare root import `"github.com/next-bin
 
 ```bash
 cd C:/Users/Administrator/github/go-sqlite
-find . -name "*.go" -not -path "./.git/*" -exec sed -i 's|"github\.com/next-bin/go-sqlite"|"github.com/next-bin/go-sqlite33"|g' {} +
+find . -name "*.go" -not -path "./.git/*" -exec sed -i 's|"github\.com/next-bin/go-sqlite"|"github.com/next-bin/go-sqlite3"|g' {} +
 ```
 
 This changes:
-- `"github.com/next-bin/go-sqlite3"` → `"github.com/next-bin/go-sqlite33"`
+- `"github.com/next-bin/go-sqlite3"` → `"github.com/next-bin/go-sqlite3"`
 - Does NOT affect paths already containing `/v2/` because those have a trailing `/` before the sub-path.
 
 - [ ] **Step 2: Verify zero bare root imports remain**
@@ -231,7 +231,7 @@ echo "---"
 grep 'import' conn.go | head -5
 ```
 
-Expected: All show `"github.com/next-bin/go-sqlite33"` or `"github.com/next-bin/go-sqlite33/pkg/XXX"`.
+Expected: All show `"github.com/next-bin/go-sqlite3"` or `"github.com/next-bin/go-sqlite3/pkg/XXX"`.
 
 - [ ] **Step 4: Commit**
 
@@ -245,131 +245,131 @@ EOF
 
 ---
 
-### Task 6: Clean Up github.com/next-bin/go-sqlite33 References in .go Files
+### Task 6: Clean Up github.com/next-bin/go-sqlite3 References in .go Files
 
-625 .go files contain `github.com/next-bin/go-sqlite33` in comments and string literals. All need updating.
+625 .go files contain `github.com/next-bin/go-sqlite3` in comments and string literals. All need updating.
 
-**Important: External package names.** Some `github.com/next-bin/go-sqlite33/pkg/XXX` references point to packages that are NOT part of this monorepo (e.g., `github.com/next-bin/go-sqlite33/pkg/b`, `github.com/next-bin/go-sqlite33/pkg/bitz`, `github.com/next-bin/go-sqlite33/pkg/sqlite-bench`). These appear in builder test fixtures and historical comments. We replace them all uniformly — the builder test data is fixture strings that should reflect the new domain, and external package references in comments should point to the migrated namespace.
+**Important: External package names.** Some `github.com/next-bin/go-sqlite3/pkg/XXX` references point to packages that are NOT part of this monorepo (e.g., `github.com/next-bin/go-sqlite3/pkg/b`, `github.com/next-bin/go-sqlite3/pkg/bitz`, `github.com/next-bin/go-sqlite3/pkg/sqlite-bench`). These appear in builder test fixtures and historical comments. We replace them all uniformly — the builder test data is fixture strings that should reflect the new domain, and external package references in comments should point to the migrated namespace.
 
-- [ ] **Step 1: Replace specific github.com/next-bin/go-sqlite33 paths (longest match first to avoid partial matches)**
+- [ ] **Step 1: Replace specific github.com/next-bin/go-sqlite3 paths (longest match first to avoid partial matches)**
 
 ```bash
 cd C:/Users/Administrator/github/go-sqlite
 find . -name "*.go" -not -path "./.git/*" -exec sed -i \
-  -e 's|modernc\.org/sqlite-bench2|github.com/next-bin/go-sqlite33/pkg/sqlite-bench2|g' \
-  -e 's|modernc\.org/sqlite-bench|github.com/next-bin/go-sqlite33/pkg/sqlite-bench|g' \
-  -e 's|modernc\.org/ccgo/v4|github.com/next-bin/go-sqlite33/pkg/ccgo/v4|g' \
-  -e 's|modernc\.org/ccgo/v3|github.com/next-bin/go-sqlite33/pkg/ccgo/v3|g' \
-  -e 's|modernc\.org/ccgo/v2|github.com/next-bin/go-sqlite33/pkg/ccgo/v2|g' \
-  -e 's|modernc\.org/gc/v3|github.com/next-bin/go-sqlite33/pkg/gc/v3|g' \
-  -e 's|modernc\.org/gc/v2|github.com/next-bin/go-sqlite33/pkg/gc/v2|g' \
-  -e 's|modernc\.org/cc/v2|github.com/next-bin/go-sqlite33/pkg/cc/v2|g' \
-  -e 's|modernc\.org/cc/v3|github.com/next-bin/go-sqlite33/pkg/cc/v3|g' \
-  -e 's|modernc\.org/cc/v4|github.com/next-bin/go-sqlite33/pkg/cc/v4|g' \
-  -e 's|modernc\.org/cc/v5|github.com/next-bin/go-sqlite33/pkg/cc/v5|g' \
-  -e 's|modernc\.org/crt/v2|github.com/next-bin/go-sqlite33/pkg/crt/v2|g' \
-  -e 's|modernc\.org/crt/v3|github.com/next-bin/go-sqlite33/pkg/crt/v3|g' \
-  -e 's|modernc\.org/libc/v2|github.com/next-bin/go-sqlite33/pkg/libc/v2|g' \
-  -e 's|modernc\.org/libtcl8|github.com/next-bin/go-sqlite33/pkg/libtcl8|g' \
-  -e 's|modernc\.org/libsqlite3|github.com/next-bin/go-sqlite33/pkg/libsqlite3|g' \
+  -e 's|modernc\.org/sqlite-bench2|github.com/next-bin/go-sqlite3/pkg/sqlite-bench2|g' \
+  -e 's|modernc\.org/sqlite-bench|github.com/next-bin/go-sqlite3/pkg/sqlite-bench|g' \
+  -e 's|modernc\.org/ccgo/v4|github.com/next-bin/go-sqlite3/pkg/ccgo/v4|g' \
+  -e 's|modernc\.org/ccgo/v3|github.com/next-bin/go-sqlite3/pkg/ccgo/v3|g' \
+  -e 's|modernc\.org/ccgo/v2|github.com/next-bin/go-sqlite3/pkg/ccgo/v2|g' \
+  -e 's|modernc\.org/gc/v3|github.com/next-bin/go-sqlite3/pkg/gc/v3|g' \
+  -e 's|modernc\.org/gc/v2|github.com/next-bin/go-sqlite3/pkg/gc/v2|g' \
+  -e 's|modernc\.org/cc/v2|github.com/next-bin/go-sqlite3/pkg/cc/v2|g' \
+  -e 's|modernc\.org/cc/v3|github.com/next-bin/go-sqlite3/pkg/cc/v3|g' \
+  -e 's|modernc\.org/cc/v4|github.com/next-bin/go-sqlite3/pkg/cc/v4|g' \
+  -e 's|modernc\.org/cc/v5|github.com/next-bin/go-sqlite3/pkg/cc/v5|g' \
+  -e 's|modernc\.org/crt/v2|github.com/next-bin/go-sqlite3/pkg/crt/v2|g' \
+  -e 's|modernc\.org/crt/v3|github.com/next-bin/go-sqlite3/pkg/crt/v3|g' \
+  -e 's|modernc\.org/libc/v2|github.com/next-bin/go-sqlite3/pkg/libc/v2|g' \
+  -e 's|modernc\.org/libtcl8|github.com/next-bin/go-sqlite3/pkg/libtcl8|g' \
+  -e 's|modernc\.org/libsqlite3|github.com/next-bin/go-sqlite3/pkg/libsqlite3|g' \
   {} +
 ```
 
 Note: `sqlite-bench` and `sqlite-bench2` MUST come before `sqlite` to avoid partial match producing `/v2-bench`.
 
-- [ ] **Step 2: Replace single-component github.com/next-bin/go-sqlite33 paths (longest match first within group)**
+- [ ] **Step 2: Replace single-component github.com/next-bin/go-sqlite3 paths (longest match first within group)**
 
 ```bash
 find . -name "*.go" -not -path "./.git/*" -exec sed -i \
-  -e 's|modernc\.org/sqlite|github.com/next-bin/go-sqlite33|g' \
-  -e 's|modernc\.org/libc|github.com/next-bin/go-sqlite33/pkg/libc|g' \
-  -e 's|modernc\.org/mathutil|github.com/next-bin/go-sqlite33/pkg/mathutil|g' \
-  -e 's|modernc\.org/fileutil|github.com/next-bin/go-sqlite33/pkg/fileutil|g' \
-  -e 's|modernc\.org/memory|github.com/next-bin/go-sqlite33/pkg/memory|g' \
-  -e 's|modernc\.org/builder|github.com/next-bin/go-sqlite33/pkg/builder|g' \
-  -e 's|modernc\.org/golex|github.com/next-bin/go-sqlite33/pkg/golex|g' \
-  -e 's|modernc\.org/scanner|github.com/next-bin/go-sqlite33/pkg/scanner|g' \
-  -e 's|modernc\.org/parser|github.com/next-bin/go-sqlite33/pkg/parser|g' \
-  -e 's|modernc\.org/strutil|github.com/next-bin/go-sqlite33/pkg/strutil|g' \
-  -e 's|modernc\.org/sortutil|github.com/next-bin/go-sqlite33/pkg/sortutil|g' \
-  -e 's|modernc\.org/token|github.com/next-bin/go-sqlite33/pkg/token|g' \
-  -e 's|modernc\.org/ccir|github.com/next-bin/go-sqlite33/pkg/ccir|g' \
-  -e 's|modernc\.org/ccorpus2|github.com/next-bin/go-sqlite33/pkg/ccorpus2|g' \
-  -e 's|modernc\.org/ccorpus|github.com/next-bin/go-sqlite33/pkg/ccorpus|g' \
-  -e 's|modernc\.org/ccgo|github.com/next-bin/go-sqlite33/pkg/ccgo|g' \
-  -e 's|modernc\.org/virtual|github.com/next-bin/go-sqlite33/pkg/virtual|g' \
-  -e 's|modernc\.org/gomod|github.com/next-bin/go-sqlite33/pkg/gomod|g' \
-  -e 's|modernc\.org/goabi0|github.com/next-bin/go-sqlite33/pkg/goabi0|g' \
-  -e 's|modernc\.org/httpfs|github.com/next-bin/go-sqlite33/pkg/httpfs|g' \
-  -e 's|modernc\.org/internal|github.com/next-bin/go-sqlite33/pkg/internal|g' \
-  -e 's|modernc\.org/ebnfutil|github.com/next-bin/go-sqlite33/pkg/ebnfutil|g' \
-  -e 's|modernc\.org/ebnf|github.com/next-bin/go-sqlite33/pkg/ebnf|g' \
-  -e 's|modernc\.org/opt|github.com/next-bin/go-sqlite33/pkg/opt|g' \
-  -e 's|modernc\.org/xc|github.com/next-bin/go-sqlite33/pkg/xc|g' \
-  -e 's|modernc\.org/ir|github.com/next-bin/go-sqlite33/pkg/ir|g' \
-  -e 's|modernc\.org/irgo|github.com/next-bin/go-sqlite33/pkg/irgo|g' \
-  -e 's|modernc\.org/y|github.com/next-bin/go-sqlite33/pkg/y|g' \
-  -e 's|modernc\.org/ql|github.com/next-bin/go-sqlite33/pkg/ql|g' \
-  -e 's|modernc\.org/libz|github.com/next-bin/go-sqlite33/pkg/libz|g' \
-  -e 's|modernc\.org/cc|github.com/next-bin/go-sqlite33/pkg/cc|g' \
-  -e 's|modernc\.org/gc|github.com/next-bin/go-sqlite33/pkg/gc|g' \
-  -e 's|modernc\.org/crt|github.com/next-bin/go-sqlite33/pkg/crt|g' \
-  -e 's|modernc\.org/lex|github.com/next-bin/go-sqlite33/pkg/lex|g' \
-  -e 's|modernc\.org/lexer|github.com/next-bin/go-sqlite33/pkg/lexer|g' \
-  -e 's|modernc\.org/hash|github.com/next-bin/go-sqlite33/pkg/hash|g' \
-  -e 's|modernc\.org/rec|github.com/next-bin/go-sqlite33/pkg/rec|g' \
-  -e 's|modernc\.org/tcl|github.com/next-bin/go-sqlite33/pkg/tcl|g' \
+  -e 's|modernc\.org/sqlite|github.com/next-bin/go-sqlite3|g' \
+  -e 's|modernc\.org/libc|github.com/next-bin/go-sqlite3/pkg/libc|g' \
+  -e 's|modernc\.org/mathutil|github.com/next-bin/go-sqlite3/pkg/mathutil|g' \
+  -e 's|modernc\.org/fileutil|github.com/next-bin/go-sqlite3/pkg/fileutil|g' \
+  -e 's|modernc\.org/memory|github.com/next-bin/go-sqlite3/pkg/memory|g' \
+  -e 's|modernc\.org/builder|github.com/next-bin/go-sqlite3/pkg/builder|g' \
+  -e 's|modernc\.org/golex|github.com/next-bin/go-sqlite3/pkg/golex|g' \
+  -e 's|modernc\.org/scanner|github.com/next-bin/go-sqlite3/pkg/scanner|g' \
+  -e 's|modernc\.org/parser|github.com/next-bin/go-sqlite3/pkg/parser|g' \
+  -e 's|modernc\.org/strutil|github.com/next-bin/go-sqlite3/pkg/strutil|g' \
+  -e 's|modernc\.org/sortutil|github.com/next-bin/go-sqlite3/pkg/sortutil|g' \
+  -e 's|modernc\.org/token|github.com/next-bin/go-sqlite3/pkg/token|g' \
+  -e 's|modernc\.org/ccir|github.com/next-bin/go-sqlite3/pkg/ccir|g' \
+  -e 's|modernc\.org/ccorpus2|github.com/next-bin/go-sqlite3/pkg/ccorpus2|g' \
+  -e 's|modernc\.org/ccorpus|github.com/next-bin/go-sqlite3/pkg/ccorpus|g' \
+  -e 's|modernc\.org/ccgo|github.com/next-bin/go-sqlite3/pkg/ccgo|g' \
+  -e 's|modernc\.org/virtual|github.com/next-bin/go-sqlite3/pkg/virtual|g' \
+  -e 's|modernc\.org/gomod|github.com/next-bin/go-sqlite3/pkg/gomod|g' \
+  -e 's|modernc\.org/goabi0|github.com/next-bin/go-sqlite3/pkg/goabi0|g' \
+  -e 's|modernc\.org/httpfs|github.com/next-bin/go-sqlite3/pkg/httpfs|g' \
+  -e 's|modernc\.org/internal|github.com/next-bin/go-sqlite3/pkg/internal|g' \
+  -e 's|modernc\.org/ebnfutil|github.com/next-bin/go-sqlite3/pkg/ebnfutil|g' \
+  -e 's|modernc\.org/ebnf|github.com/next-bin/go-sqlite3/pkg/ebnf|g' \
+  -e 's|modernc\.org/opt|github.com/next-bin/go-sqlite3/pkg/opt|g' \
+  -e 's|modernc\.org/xc|github.com/next-bin/go-sqlite3/pkg/xc|g' \
+  -e 's|modernc\.org/ir|github.com/next-bin/go-sqlite3/pkg/ir|g' \
+  -e 's|modernc\.org/irgo|github.com/next-bin/go-sqlite3/pkg/irgo|g' \
+  -e 's|modernc\.org/y|github.com/next-bin/go-sqlite3/pkg/y|g' \
+  -e 's|modernc\.org/ql|github.com/next-bin/go-sqlite3/pkg/ql|g' \
+  -e 's|modernc\.org/libz|github.com/next-bin/go-sqlite3/pkg/libz|g' \
+  -e 's|modernc\.org/cc|github.com/next-bin/go-sqlite3/pkg/cc|g' \
+  -e 's|modernc\.org/gc|github.com/next-bin/go-sqlite3/pkg/gc|g' \
+  -e 's|modernc\.org/crt|github.com/next-bin/go-sqlite3/pkg/crt|g' \
+  -e 's|modernc\.org/lex|github.com/next-bin/go-sqlite3/pkg/lex|g' \
+  -e 's|modernc\.org/lexer|github.com/next-bin/go-sqlite3/pkg/lexer|g' \
+  -e 's|modernc\.org/hash|github.com/next-bin/go-sqlite3/pkg/hash|g' \
+  -e 's|modernc\.org/rec|github.com/next-bin/go-sqlite3/pkg/rec|g' \
+  -e 's|modernc\.org/tcl|github.com/next-bin/go-sqlite3/pkg/tcl|g' \
   {} +
 ```
 
-- [ ] **Step 3: Catch remaining generic `github.com/next-bin/go-sqlite33/pkg/XXX` patterns (includes external packages like b, bitz, sqlite-bench, goyacc, etc.)**
+- [ ] **Step 3: Catch remaining generic `github.com/next-bin/go-sqlite3/pkg/XXX` patterns (includes external packages like b, bitz, sqlite-bench, goyacc, etc.)**
 
 ```bash
 find . -name "*.go" -not -path "./.git/*" -exec sed -i \
-  's|modernc\.org/\([a-zA-Z0-9_]\)|github.com/next-bin/go-sqlite33/pkg/\1|g' \
+  's|modernc\.org/\([a-zA-Z0-9_]\)|github.com/next-bin/go-sqlite3/pkg/\1|g' \
   {} +
 ```
 
-This catch-all handles remaining references like `github.com/next-bin/go-sqlite33/pkg/b`, `github.com/next-bin/go-sqlite33/pkg/bitz`, `github.com/next-bin/go-sqlite33/pkg/goyacc`, `github.com/next-bin/go-sqlite33/pkg/ebnf2y`, etc. These are all replaced uniformly since they appear in builder fixture data and comments.
+This catch-all handles remaining references like `github.com/next-bin/go-sqlite3/pkg/b`, `github.com/next-bin/go-sqlite3/pkg/bitz`, `github.com/next-bin/go-sqlite3/pkg/goyacc`, `github.com/next-bin/go-sqlite3/pkg/ebnf2y`, etc. These are all replaced uniformly since they appear in builder fixture data and comments.
 
-- [ ] **Step 4: Fix bare `"github.com/next-bin/go-sqlite33"` string literals (no trailing path)**
+- [ ] **Step 4: Fix bare `"github.com/next-bin/go-sqlite3"` string literals (no trailing path)**
 
-Two .go files contain the bare string `"github.com/next-bin/go-sqlite33"` without any sub-path:
-- `ccgo/v4/lib/compile.go:31` (if present): `defaultLibs = "github.com/next-bin/go-sqlite33"` — used as a domain prefix for constructing import paths. This MUST be updated to `"github.com/next-bin/go-sqlite33"` so that concatenated paths like `defaultLibs + "/libc"` produce `github.com/next-bin/go-sqlite33/pkg/libc`.
+Two .go files contain the bare string `"github.com/next-bin/go-sqlite3"` without any sub-path:
+- `ccgo/v4/lib/compile.go:31` (if present): `defaultLibs = "github.com/next-bin/go-sqlite3"` — used as a domain prefix for constructing import paths. This MUST be updated to `"github.com/next-bin/go-sqlite3"` so that concatenated paths like `defaultLibs + "/libc"` produce `github.com/next-bin/go-sqlite3/pkg/libc`.
 
 ```bash
 find . -name "*.go" -not -path "./.git/*" -not -path "./builder/*" -exec sed -i \
-  's|"modernc\.org"|"github.com/next-bin/go-sqlite33"|g' \
+  's|"modernc\.org"|"github.com/next-bin/go-sqlite3"|g' \
   {} +
 ```
 
-Note: We exclude `builder/` because `builder/builder_test.go:1858` has `const mtag = "github.com/next-bin/go-sqlite33"` which is used for `filepath.Base(modDir) != mtag` comparisons. Changing it to the full v2 path would break `filepath.Base()` logic since `filepath.Base(".../next-bin/go-sqlite/v2")` returns `"v2"`, not the full module path. The builder module is a build infrastructure tool that may need separate migration.
+Note: We exclude `builder/` because `builder/builder_test.go:1858` has `const mtag = "github.com/next-bin/go-sqlite3"` which is used for `filepath.Base(modDir) != mtag` comparisons. Changing it to the full v2 path would break `filepath.Base()` logic since `filepath.Base(".../next-bin/go-sqlite/v2")` returns `"v2"`, not the full module path. The builder module is a build infrastructure tool that may need separate migration.
 
-- [ ] **Step 5: Check for any remaining `github.com/next-bin/go-sqlite33` references**
+- [ ] **Step 5: Check for any remaining `github.com/next-bin/go-sqlite3` references**
 
 ```bash
 grep -rPn 'modernc\.org' --include="*.go" | head -20
 ```
 
-Expected: Either zero output, or only references in URLs to external sites (like `pkg.go.dev/github.com/next-bin/go-sqlite33/pkg/...` links or historical references that should not be changed). Review any remaining hits and handle manually.
+Expected: Either zero output, or only references in URLs to external sites (like `pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/...` links or historical references that should not be changed). Review any remaining hits and handle manually.
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add -A
 git commit -m "$(cat <<'EOF'
-refactor: replace all github.com/next-bin/go-sqlite33 references with github.com/next-bin/go-sqlite33
+refactor: replace all github.com/next-bin/go-sqlite3 references with github.com/next-bin/go-sqlite3
 EOF
 )"
 ```
 
 ---
 
-### Task 7: Clean Up github.com/next-bin/go-sqlite33 References in go.mod Files
+### Task 7: Clean Up github.com/next-bin/go-sqlite3 References in go.mod Files
 
 Verify go.mod files are clean (they should already be from Task 2-3, but check).
 
-- [ ] **Step 1: Check for any remaining github.com/next-bin/go-sqlite33 in go.mod**
+- [ ] **Step 1: Check for any remaining github.com/next-bin/go-sqlite3 in go.mod**
 
 ```bash
 grep -rPn 'modernc\.org' --include="go.mod"
@@ -381,24 +381,24 @@ Expected: No output.
 
 ```bash
 find . -name "go.mod" -not -path "./.git/*" -exec sed -i \
-  's|modernc\.org/|github.com/next-bin/go-sqlite33/pkg/|g' {} +
+  's|modernc\.org/|github.com/next-bin/go-sqlite3/pkg/|g' {} +
 ```
 
 ---
 
-### Task 8: Clean Up github.com/next-bin/go-sqlite33 References in Non-Go Files
+### Task 8: Clean Up github.com/next-bin/go-sqlite3 References in Non-Go Files
 
 ~200+ references in non-.go files are not covered by previous tasks. This includes autogen `.mod` templates, documentation, build scripts, and yacc/lex files.
 
 - [ ] **Step 1: Fix autogen `.mod` template files (60 files under `*/internal/autogen/`)**
 
-These are go.mod-format templates that get copied to become `go.mod` at build time. They still have `github.com/next-bin/go-sqlite33` module paths and will produce broken go.mod files if not updated.
+These are go.mod-format templates that get copied to become `go.mod` at build time. They still have `github.com/next-bin/go-sqlite3` module paths and will produce broken go.mod files if not updated.
 
 ```bash
 cd C:/Users/Administrator/github/go-sqlite
 find . -path "*/internal/autogen/*.mod" -not -path "./.git/*" -exec sed -i \
-  -e 's|module modernc\.org/|module github.com/next-bin/go-sqlite33/pkg/|g' \
-  -e 's|modernc\.org/|github.com/next-bin/go-sqlite33/pkg/|g' \
+  -e 's|module modernc\.org/|module github.com/next-bin/go-sqlite3/pkg/|g' \
+  -e 's|modernc\.org/|github.com/next-bin/go-sqlite3/pkg/|g' \
   {} +
 ```
 
@@ -408,26 +408,26 @@ grep -rPc 'modernc\.org' --include="*.mod" | grep -v ':0$'
 ```
 Expected: No output.
 
-- [ ] **Step 2: Replace github.com/next-bin/go-sqlite33 in all other text files (broad catch-all)**
+- [ ] **Step 2: Replace github.com/next-bin/go-sqlite3 in all other text files (broad catch-all)**
 
 This handles: `.md`, `.sh`, `Makefile`, `.mk`, `.y`, `.yy`, `.l`, `.adoc`, bare `README` files, `HACKING`, `builder/commits`, `builder/results`, `testdata/testlog-*`, and any other text files.
 
 ```bash
 find . -not -path "./.git/*" -not -path "./builder/logs/*" -not -name "*.go" -not -name "go.mod" -not -name "*.mod" -not -name "*.png" -not -name "*.jpg" -not -name "*.db" -not -name "*.diff" -not -name "*.patch" -type f \
   -exec grep -l 'modernc\.org' {} + \
-  -exec sed -i 's|modernc\.org/|github.com/next-bin/go-sqlite33/pkg/|g' {} +
+  -exec sed -i 's|modernc\.org/|github.com/next-bin/go-sqlite3/pkg/|g' {} +
 ```
 
-Note: We exclude `builder/logs/` because that directory contains 1183+ historical log files under `builder/logs/github.com/next-bin/go-sqlite33/pkg/`. These are historical build logs and should be left as-is (or handled separately). The directory name `builder/logs/github.com/next-bin/go-sqlite33/pkg/` itself would need a `mv` to rename, which is out of scope for this migration.
+Note: We exclude `builder/logs/` because that directory contains 1183+ historical log files under `builder/logs/github.com/next-bin/go-sqlite3/pkg/`. These are historical build logs and should be left as-is (or handled separately). The directory name `builder/logs/github.com/next-bin/go-sqlite3/pkg/` itself would need a `mv` to rename, which is out of scope for this migration.
 
-Then catch bare `github.com/next-bin/go-sqlite33` without trailing slash:
+Then catch bare `github.com/next-bin/go-sqlite3` without trailing slash:
 ```bash
 find . -not -path "./.git/*" -not -path "./builder/logs/*" -not -name "*.go" -not -name "go.mod" -not -name "*.mod" -not -name "*.png" -not -name "*.jpg" -not -name "*.db" -not -name "*.diff" -not -name "*.patch" -type f \
   -exec grep -l 'modernc\.org' {} + \
-  -exec sed -i 's|modernc\.org|github.com/next-bin/go-sqlite33|g' {} +
+  -exec sed -i 's|modernc\.org|github.com/next-bin/go-sqlite3|g' {} +
 ```
 
-- [ ] **Step 3: Verify no github.com/next-bin/go-sqlite33 references remain outside builder/logs**
+- [ ] **Step 3: Verify no github.com/next-bin/go-sqlite3 references remain outside builder/logs**
 
 ```bash
 grep -rPn 'modernc\.org' --exclude-dir=".git" --exclude-dir="builder/logs" --exclude="*.go" --exclude="go.mod" | grep -v '.git/' | head -20
@@ -440,7 +440,7 @@ Expected: Zero or near-zero output. Review any remaining hits.
 ```bash
 git add -A
 git commit -m "$(cat <<'EOF'
-refactor: replace github.com/next-bin/go-sqlite33 references in non-Go files and autogen templates
+refactor: replace github.com/next-bin/go-sqlite3 references in non-Go files and autogen templates
 EOF
 )"
 ```
@@ -464,7 +464,7 @@ go work sync
 cat go.work
 ```
 
-Expected: `use` entries unchanged (they reference directories, not module paths). No `github.com/next-bin/go-sqlite33` anywhere.
+Expected: `use` entries unchanged (they reference directories, not module paths). No `github.com/next-bin/go-sqlite3` anywhere.
 
 - [ ] **Step 3: Commit if changed**
 
@@ -495,11 +495,11 @@ cat README.md
 - [ ] **Step 2: Update all references**
 
 Replace in README.md:
-- Any `github.com/next-bin/go-sqlite33/pkg/sqlite` → `github.com/next-bin/go-sqlite33`
-- Any `github.com/next-bin/go-sqlite33/pkg/XXX` → `github.com/next-bin/go-sqlite33/pkg/XXX`
-- Installation instructions: `go get github.com/next-bin/go-sqlite33`
-- Import example: `import _ "github.com/next-bin/go-sqlite33"`
-- Any links to github.com/next-bin/go-sqlite33 that should point to next-bin repo
+- Any `github.com/next-bin/go-sqlite3/pkg/sqlite` → `github.com/next-bin/go-sqlite3`
+- Any `github.com/next-bin/go-sqlite3/pkg/XXX` → `github.com/next-bin/go-sqlite3/pkg/XXX`
+- Installation instructions: `go get github.com/next-bin/go-sqlite3`
+- Import example: `import _ "github.com/next-bin/go-sqlite3"`
+- Any links to github.com/next-bin/go-sqlite3 that should point to next-bin repo
 
 Note: Task 8 may have already updated most README.md references. This task is a manual review pass to ensure correctness and readability.
 
@@ -567,7 +567,7 @@ go test -count=1 -timeout 600s ./...
 
 Expected: All tests pass. The 600s timeout accounts for the full workspace.
 
-- [ ] **Step 6: Verify zero github.com/next-bin/go-sqlite33 references remain (all file types, excluding builder/logs)**
+- [ ] **Step 6: Verify zero github.com/next-bin/go-sqlite3 references remain (all file types, excluding builder/logs)**
 
 ```bash
 grep -rPc 'modernc\.org' --exclude-dir=".git" --exclude-dir="builder/logs" | grep -v ':0$' | head -20
@@ -625,13 +625,13 @@ git diff master --stat
 ```bash
 git reset --soft master
 git commit -m "$(cat <<'EOF'
-feat: migrate all module paths to github.com/next-bin/go-sqlite33
+feat: migrate all module paths to github.com/next-bin/go-sqlite3
 
 Complete v2 module path migration:
 - All 49 go.mod files: module/require/replace paths updated with /v2
 - ~1200 .go files: import paths updated with /v2
-- 625 .go files: github.com/next-bin/go-sqlite33 references cleaned up
-- ~135 non-Go files: github.com/next-bin/go-sqlite33 references in docs/build files cleaned
+- 625 .go files: github.com/next-bin/go-sqlite3 references cleaned up
+- ~135 non-Go files: github.com/next-bin/go-sqlite3 references in docs/build files cleaned
 - README updated for new module path
 - Ready for v2.0.0 tag
 EOF

@@ -166,7 +166,7 @@ func main() {
 		util.MustShell(true, nil, "sh", "-c", `
 go mod init example.com/libtcl8.6
 go get \
-	github.com/next-bin/go-sqlite3/libc@latest \
+	github.com/next-bin/go-sqlite3/pkg/libc@latest \
 	github.com/next-bin/go-sqlite3/pkg/libz@latest
 `)
 		if dev {

@@ -136,7 +136,7 @@
 // -crt-import-path path
 //
 // Unless disabled by the -nostdlib option, every produced Go file imports the
-// C runtime library. Default is `github.com/next-bin/go-sqlite3/libc`.
+// C runtime library. Default is `github.com/next-bin/go-sqlite3/pkg/libc`.
 //
 // # Exporting C defines
 //

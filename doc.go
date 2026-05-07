@@ -113,7 +113,7 @@
 //
 // The /tmp/libc.log file is created as requested. No useful messages there because none are enabled in libc. Let's try to enable Xwrite as an example.
 //
-//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3/libc$ git status
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3/pkg/libc$ git status
 //	On branch master
 //	Your branch is up to date with 'origin/master'.
 //
@@ -123,13 +123,13 @@
 //	modified:   libc_linux.go
 //
 //	no changes added to commit (use "git add" and/or "git commit -a")
-//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3/libc$ git log -1
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3/pkg/libc$ git log -1
 //	commit 1e22c18cf2de8aa86d5b19b165f354f99c70479c (HEAD -> master, tag: v1.22.3, origin/master, origin/HEAD)
 //	Author: Jan Mercl <0xjnml@gmail.com>
 //	Date:   Wed Feb 22 20:27:45 2023 +0100
 //
 //	    support sqlite 3.41 on linux targets
-//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3/libc$ git diff
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3/pkg/libc$ git diff
 //	diff --git a/libc_linux.go b/libc_linux.go
 //	index 1c2f482..ac1f08d 100644
 //	--- a/libc_linux.go
@@ -161,11 +161,11 @@
 //	        t.setErrno(err)
 //	        return -1
 //	 }
-//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3/libc$
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3/pkg/libc$
 //
 // We need to tell the Go build system to use our local, patched/debug libc:
 //
-//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3$ go work use $(go env GOPATH)/src/github.com/next-bin/go-sqlite3/libc
+//	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3$ go work use $(go env GOPATH)/src/github.com/next-bin/go-sqlite3/pkg/libc
 //	0:jnml@e5-1650:~/src/github.com/next-bin/go-sqlite3$ go work use .
 //
 // And run the test again:

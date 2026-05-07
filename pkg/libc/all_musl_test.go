@@ -2558,7 +2558,7 @@ func TestLibc(t *testing.T) {
 	cwd := util.MustAbsCwd(true)
 	mustInDir(t, libcTest, func() error {
 		mustShell(t, 10*time.Minute, "go", "mod", "init", "example.com/libc_test")
-		mustShell(t, 10*time.Minute, "go", "get", "github.com/next-bin/go-sqlite3/libc@latest")
+		mustShell(t, 10*time.Minute, "go", "get", "github.com/next-bin/go-sqlite3/pkg/libc@latest")
 		mustShell(t, 10*time.Minute, "go", "work", "init")
 		mustShell(t, 10*time.Minute, "go", "work", "use", ".", cwd)
 		return nil
