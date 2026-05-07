@@ -1,6 +1,6 @@
 # go-sqlite3
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite33.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite33)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite3.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite3)
 [![Go Report Card](https://goreportcard.com/badge/github.com/next-bin/go-sqlite3)](https://goreportcard.com/report/github.com/next-bin/go-sqlite3)
 [![License: BSD](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/Go-1.26+-00ADD8?logo=go)](https://go.dev/)
@@ -39,12 +39,12 @@ This repository addresses these concerns by restructuring the project as a focus
 
 ## Quick Start
 
-    go get github.com/next-bin/go-sqlite33
+    go get github.com/next-bin/go-sqlite3
 
 ```go
 import (
     "database/sql"
-    _ "github.com/next-bin/go-sqlite33"
+    _ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -59,7 +59,7 @@ func main() {
 
 ## Documentation
 
-See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sqlite33) for full API details.
+See the [Go package documentation](https://pkg.go.dev/github.com/next-bin/go-sqlite3) for full API details.
 
 ## Examples
 
@@ -82,7 +82,7 @@ The `examples/` directory contains runnable programs demonstrating all driver fe
 
 ## Virtual Tables (vtab)
 
-The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite33/pkg/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
+The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite3/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
 
 - Register: `vtab.RegisterModule(db, name, module)`. Registration applies to new connections only.
 - Schema declaration: Call `ctx.Declare("CREATE TABLE <name>(<cols...>)")` within `Create` or `Connect`.

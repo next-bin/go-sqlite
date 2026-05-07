@@ -3,8 +3,8 @@ Package ir implements intermediate representation of compiled programs. (Work In
 
 Installation
 
-    $ go get github.com/next-bin/go-sqlite33/pkg/ir
+    $ go get github.com/next-bin/go-sqlite3/pkg/ir
 
-Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite33/pkg/ir](https://pkg.go.dev/github.com/next-bin/go-sqlite33/pkg/ir)
+Documentation: [pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/ir](https://pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/ir)
 
 Based on [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) by CZ.NIC z.s.p.o.

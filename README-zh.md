@@ -1,6 +1,6 @@
 # go-sqlite3
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite33.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite33)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite3.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite3)
 [![Go Report Card](https://goreportcard.com/badge/github.com/next-bin/go-sqlite3)](https://goreportcard.com/report/github.com/next-bin/go-sqlite3)
 [![License: BSD](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/Go-1.26+-00ADD8?logo=go)](https://go.dev/)
@@ -39,12 +39,12 @@
 
 ## 快速开始
 
-    go get github.com/next-bin/go-sqlite33
+    go get github.com/next-bin/go-sqlite3
 
 ```go
 import (
     "database/sql"
-    _ "github.com/next-bin/go-sqlite33"
+    _ "github.com/next-bin/go-sqlite3"
 )
 
 func main() {
@@ -59,7 +59,7 @@ func main() {
 
 ## 文档
 
-完整 API 文档请参阅 [Go 包文档](https://pkg.go.dev/github.com/next-bin/go-sqlite33)。
+完整 API 文档请参阅 [Go 包文档](https://pkg.go.dev/github.com/next-bin/go-sqlite3)。
 
 ## 示例
 
@@ -82,7 +82,7 @@ func main() {
 
 ## 虚拟表（vtab）
 
-驱动通过 `github.com/next-bin/go-sqlite33/pkg/vtab` 包暴露纯 Go API，用于实现 SQLite 虚拟表模块。可以将任意数据源（如向量索引、CSV 文件、远程 API）作为 SQL 表，并与 SQLite 的查询优化器集成。
+驱动通过 `github.com/next-bin/go-sqlite3/vtab` 包暴露纯 Go API，用于实现 SQLite 虚拟表模块。可以将任意数据源（如向量索引、CSV 文件、远程 API）作为 SQL 表，并与 SQLite 的查询优化器集成。
 
 - 注册：`vtab.RegisterModule(db, name, module)`。注册仅对新连接生效。
 - 模式声明：在 `Create` 或 `Connect` 中调用 `ctx.Declare("CREATE TABLE <name>(<cols...>)")`。

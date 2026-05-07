@@ -175,7 +175,7 @@ find . -name "*.go" -not -path "./.git/*" -exec sed -i 's|"github\.com/next-bin/
 
 This changes:
 - `"github.com/next-bin/go-sqlite3/libc"` → `"github.com/next-bin/go-sqlite3/pkg/libc"`
-- `"github.com/next-bin/go-sqlite3/vfs"` → `"github.com/next-bin/go-sqlite3/pkg/vfs"`
+- `"github.com/next-bin/go-sqlite3/vfs"` stays as root sub-package (no change)
 - etc.
 
 - [ ] **Step 2: Verify no sub-path imports without /v2/ remain**

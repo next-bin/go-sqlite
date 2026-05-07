@@ -4,8 +4,8 @@
 
 Package builder exports nothing, its functionality is implemented via
 
-    $ go get -u github.com/next-bin/go-sqlite33/pkg/builder
-    $ go test -timeout 24h github.com/next-bin/go-sqlite33/pkg/builder	# or other any other appropriate timeout
+    $ go get -u github.com/next-bin/go-sqlite3/pkg/builder
+    $ go test -timeout 24h github.com/next-bin/go-sqlite3/pkg/builder	# or other any other appropriate timeout
 
 ## Purpose
 
@@ -33,7 +33,7 @@ repository root.
 The above can be invoked automatically by cron, example script is in cron.sh:
 
     eval $(ssh-agent) > /dev/null
-    cd $HOME/src/github.com/next-bin/go-sqlite33/pkg/builder
+    cd $HOME/src/github.com/next-bin/go-sqlite3/pkg/builder
     go get -u -t -d
     go test -timeout 24h
 

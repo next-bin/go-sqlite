@@ -67,9 +67,9 @@ Command ccgo is a C compiler targeting Go.
 
 To install or update ccgo and its accompanying tools
 
-     $ go get [-u] github.com/next-bin/go-sqlite33/pkg/ccgo/v2/...
+     $ go get [-u] github.com/next-bin/go-sqlite3/pkg/ccgo/v2/...
 
-Online documentation: [pkg.go.dev/github.com/next-bin/go-sqlite33/pkg/ccgo/v2/ccgo](https://pkg.go.dev/github.com/next-bin/go-sqlite33/pkg/ccgo/v2/ccgo)
+Online documentation: [pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/ccgo/v2/ccgo](https://pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/ccgo/v2/ccgo)
 
 ### Changelog
 

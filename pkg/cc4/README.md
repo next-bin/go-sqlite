@@ -2,7 +2,7 @@
 [![receives](https://img.shields.io/liberapay/receives/jnml.svg?logo=liberapay)](https://liberapay.com/jnml/donate)
 [![patrons](https://img.shields.io/liberapay/patrons/jnml.svg?logo=liberapay)](https://liberapay.com/jnml/donate)
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite33/pkg/cc4.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite33/pkg/cc4)
+[![Go Reference](https://pkg.go.dev/badge/github.com/next-bin/go-sqlite3/pkg/cc4.svg)](https://pkg.go.dev/github.com/next-bin/go-sqlite3/pkg/cc4)
 
 # cc4
 

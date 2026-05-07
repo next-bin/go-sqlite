@@ -2028,7 +2028,7 @@ require github.com/next-bin/go-sqlite3 v2.0.0
 
 replace (
 	github.com/next-bin/go-sqlite3 => ../..
-	github.com/next-bin/go-sqlite3/pkg/vtab => ../../vtab
+	github.com/next-bin/go-sqlite3/vtab => ../../vtab
 )
 ```
 
@@ -2058,7 +2058,7 @@ import (
 	"database/sql"
 	"testing"
 
-	"github.com/next-bin/go-sqlite3/pkg/vtab"
+	"github.com/next-bin/go-sqlite3/vtab"
 	_ "github.com/next-bin/go-sqlite3"
 )
 
@@ -3619,7 +3619,7 @@ The `examples/` directory contains runnable programs demonstrating all driver fe
 
 ## Virtual Tables (vtab)
 
-The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite3/pkg/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
+The driver exposes a Go API to implement SQLite virtual table modules in pure Go via the `github.com/next-bin/go-sqlite3/vtab` package. This lets you back SQL tables with arbitrary data sources (e.g., vector indexes, CSV files, remote APIs) and integrate with SQLite's planner.
 
 - Register: `vtab.RegisterModule(db, name, module)`. Registration applies to new connections only.
 - Schema declaration: Call `ctx.Declare("CREATE TABLE <name>(<cols...>)")` within `Create` or `Connect`. The driver does not auto-declare schemas, enabling dynamic schemas.
