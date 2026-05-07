@@ -150,7 +150,7 @@ func main() {
 	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get github.com/next-bin/go-sqlite3/pkg/libc@v1.0.3 github.com/next-bin/go-sqlite3/pkg/libz@v1.0.3 github.com/next-bin/go-sqlite3/pkg/libtcl8.6@v1.0.3")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get github.com/next-bin/go-sqlite3/pkg/libc@v1.0.7 github.com/next-bin/go-sqlite3/pkg/libz@v1.0.7 github.com/next-bin/go-sqlite3/pkg/libtcl8.6@v1.0.7")
 		config := []string{os.Args[0]}
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/github.com/next-bin/go-sqlite3/pkg/libc $GOPATH/src/github.com/next-bin/go-sqlite3/pkg/libz $GOPATH/src/github.com/next-bin/go-sqlite3/pkg/libtcl8.6")
@@ -314,9 +314,9 @@ func main() {
 		util.MustShell(true, nil, "sh", "-c", `
 go mod init example.com/libsqlite3
 go get \
-	github.com/next-bin/go-sqlite3/pkg/libc@v1.0.3 \
-	github.com/next-bin/go-sqlite3/pkg/libtcl8.6@v1.0.3 \
-	github.com/next-bin/go-sqlite3/pkg/libz@v1.0.3 \
+	github.com/next-bin/go-sqlite3/pkg/libc@v1.0.7 \
+	github.com/next-bin/go-sqlite3/pkg/libtcl8.6@v1.0.7 \
+	github.com/next-bin/go-sqlite3/pkg/libz@v1.0.7 \
 `)
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", `

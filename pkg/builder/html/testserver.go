@@ -70,7 +70,7 @@ github.com/next-bin/go-sqlite3/pkg/b	ppc64le	2025-03-06T22:58:06+01:00	01784c5ae
 github.com/next-bin/go-sqlite3/pkg/b	riscv64	2025-03-08T11:30:56Z	01784c5ae8a6c3ae7bf38ee5e8a3b743f6d1463e	linux	riscv64	PASS	go1.24.1
 github.com/next-bin/go-sqlite3/pkg/b	s390x	2025-03-09T19:34:41+01:00	01784c5ae8a6c3ae7bf38ee5e8a3b743f6d1463e	linux	s390x	PASS	go1.24.1
 github.com/next-bin/go-sqlite3/pkg/b	win32	2025-03-10T07:53:02+01:00	01784c5ae8a6c3ae7bf38ee5e8a3b743f6d1463e	windows	386	PASS	go1.24.1
-github.com/next-bin/go-sqlite3/pkg/b	win64	2025-03-10T01:21:11+01:00	01784c5ae8a6c3ae7bf38ee5e8a3b743f6d1463e	windows	amd64	PASS	go1.24.1	v1.0.3
+github.com/next-bin/go-sqlite3/pkg/b	win64	2025-03-10T01:21:11+01:00	01784c5ae8a6c3ae7bf38ee5e8a3b743f6d1463e	windows	amd64	PASS	go1.24.1	v1.0.7
 github.com/next-bin/go-sqlite3/pkg/bitz	darwin	2025-03-09T19:30:16+01:00	9c8c8bd3b2bec38e7a421e90a94c512ea00a1b51	darwin	amd64	PASS	go1.24.1
 github.com/next-bin/go-sqlite3/pkg/bitz	darwin-m1	2025-03-09T08:30:55+01:00	9c8c8bd3b2bec38e7a421e90a94c512ea00a1b51	darwin	arm64	PASS	go1.24.1
 github.com/next-bin/go-sqlite3/pkg/bitz	e5-1650	2025-03-06T16:45:45+01:00	9c8c8bd3b2bec38e7a421e90a94c512ea00a1b51	linux	386	PASS	go1.24.1
