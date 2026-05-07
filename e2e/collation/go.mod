@@ -2,7 +2,7 @@ module e2e/collation
 
 go 1.26.0
 
-require github.com/next-bin/go-sqlite3 v1.0.3
+require github.com/next-bin/go-sqlite3 v1.0.4
 
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
