@@ -26,6 +26,7 @@ github.com/mattn/go-sqlite3 v1.14.24/go.mod h1:Uh1q+B4BYcTPb+yiD3kU8Ct7aC0hY9fxU
 github.com/ncruces/go-strftime v1.0.0 h1:HMFp8mLCTPp341M/ZnA4qaf7ZlsbTc+miZjCLOFAw7w=
 github.com/ncruces/go-strftime v1.0.0/go.mod h1:Fwc5htZGVVkseilnfgOVb9mKy6w1naJmn9CehxcKcls=
 github.com/next-bin/go-sqlite3 v1.0.0/go.mod h1:sN0C+UWIE6b09Vwc9IeTHtBvoyiLchnj7PtprtM6uLo=
+github.com/next-bin/go-sqlite3 v1.0.3/go.mod h1:RWOscrnzu3IOyRbdUD3FnX9oop2eLj2st8McGjVUfYI=
 github.com/next-bin/go-sqlite3/pkg/cc v1.0.0/go.mod h1:mWKOr+B38hUx+K9JFNETW0NPtt2UGKWVMV8uHlJENII=
 github.com/next-bin/go-sqlite3/pkg/cc v1.0.1/go.mod h1:KGhJ9zxVTXt/tGRZYPdReYFp46J4XGZGQfYnGtxv/Bo=
 github.com/next-bin/go-sqlite3/pkg/cc3 v1.0.0/go.mod h1:yVYchD57fW5KSTo7BDDdAY0Q0D4uU/+d77gJpQzrWv4=
